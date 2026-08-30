@@ -1,1 +1,3177 @@
+<!DOCTYPE html>
+<html lang="de">
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>n: – Nachrichten</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f5f7;
+    color: #111;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    height: 72px;
+    padding: 0 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(255,255,255,.96);
+
+    border-bottom: 1px solid #ddd;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+}
+
+.logo {
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: -4px;
+    cursor: pointer;
+}
+
+.header-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.header-btn {
+    border: 0;
+    background: transparent;
+
+    font-size: 20px;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.header-btn:hover {
+    background: #eee;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 45px 20px 80px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    margin-bottom: 25px;
+}
+
+.hero-label {
+    font-size: 12px;
+    font-weight: 800;
+    color: #777;
+
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 7vw, 72px);
+
+    line-height: .95;
+    letter-spacing: -4px;
+
+    margin: 8px 0;
+}
+
+.hero p {
+    color: #777;
+    font-size: 18px;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search {
+    display: none;
+    margin-bottom: 20px;
+}
+
+.search input {
+    width: 100%;
+
+    padding: 15px;
+
+    border: 1px solid #ddd;
+    border-radius: 13px;
+
+    outline: none;
+
+    font-size: 16px;
+}
+
+/* =========================
+   FILTER
+========================= */
+
+.filters {
+    display: flex;
+    gap: 8px;
+
+    overflow-x: auto;
+    padding-bottom: 20px;
+}
+
+.filter {
+    flex-shrink: 0;
+
+    padding: 10px 16px;
+
+    border: 1px solid #ddd;
+    border-radius: 999px;
+
+    background: white;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.filter.active {
+    background: #111;
+    color: white;
+    border-color: #111;
+}
+
+/* =========================
+   NEWS GRID
+========================= */
+
+.news-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+.news-card {
+    background: white;
+
+    border: 1px solid #ddd;
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.news-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.08);
+}
+
+.news-image {
+    width: 100%;
+    height: 190px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ddd,
+            #fafafa
+        );
+
+    color: #999;
+
+    font-size: 38px;
+    font-weight: 900;
+
+    overflow: hidden;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.news-card-content {
+    padding: 20px;
+}
+
+.news-meta {
+    font-size: 13px;
+    color: #777;
+
+    margin-bottom: 8px;
+}
+
+.news-card h2 {
+    margin: 0 0 10px;
+
+    font-size: 22px;
+}
+
+.news-card p {
+    color: #777;
+
+    line-height: 1.5;
+
+    margin: 0;
+}
+
+/* =========================
+   FEATURED
+========================= */
+
+.featured {
+    grid-column: 1 / -1;
+
+    background: white;
+
+    border: 1px solid #ddd;
+    border-left: 5px solid #111;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+}
+
+.featured-image {
+    width: 100%;
+    height: 280px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ddd,
+            #fafafa
+        );
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    color: #999;
+
+    font-size: 45px;
+    font-weight: 900;
+
+    overflow: hidden;
+}
+
+.featured-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.featured-content {
+    padding: 25px;
+}
+
+.featured-label {
+    font-size: 12px;
+
+    font-weight: 900;
+
+    margin-bottom: 8px;
+}
+
+.featured h2 {
+    margin: 0;
+
+    font-size:
+        clamp(28px,4vw,40px);
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status-box {
+    grid-column: 1 / -1;
+
+    background: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 20px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    color: #777;
+}
+
+/* =========================
+   ARTICLE
+========================= */
+
+.article {
+    display: none;
+
+    max-width: 850px;
+
+    margin: auto;
+}
+
+.back {
+    padding: 10px 15px;
+
+    border: 1px solid #ddd;
+
+    background: white;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+    margin-bottom: 25px;
+}
+
+.article-meta {
+    color: #777;
+    margin-bottom: 12px;
+}
+
+.article h1 {
+    font-size:
+        clamp(40px,7vw,70px);
+
+    line-height: .98;
+
+    letter-spacing: -4px;
+
+    margin: 0 0 25px;
+}
+
+.article-image {
+    width: 100%;
+    min-height: 340px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ddd,
+            #fafafa
+        );
+
+    border-radius: 22px;
+
+    color: #999;
+
+    font-size: 40px;
+    font-weight: 900;
+
+    margin-bottom: 30px;
+
+    overflow: hidden;
+}
+
+.article-image img {
+    width: 100%;
+    max-height: 550px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.article-text {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+/* =========================
+   ADMIN
+========================= */
+
+.admin {
+    display: none;
+
+    max-width: 900px;
+
+    margin: auto;
+}
+
+.login {
+    max-width: 430px;
+
+    margin: 60px auto;
+
+    padding: 30px;
+
+    background: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 22px;
+}
+
+.login input,
+.form-box input,
+.form-box textarea,
+.form-box select {
+
+    width: 100%;
+
+    padding: 13px 14px;
+
+    margin: 7px 0 17px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 12px;
+
+    background: white;
+
+    outline: none;
+
+    font-size: 16px;
+}
+
+.form-box textarea {
+    min-height: 230px;
+    resize: vertical;
+}
+
+.form-box {
+    padding: 25px;
+
+    background: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 20px;
+}
+
+.form-box label {
+    display: block;
+    font-weight: 700;
+}
+
+/* =========================
+   IMAGE UPLOAD
+========================= */
+
+.image-upload-box {
+    margin: 5px 0 20px;
+
+    padding: 18px;
+
+    border: 1px dashed #bbb;
+
+    border-radius: 15px;
+
+    background: #fafafa;
+}
+
+.image-upload-box input[type="file"] {
+    margin: 5px 0 0;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+}
+
+.image-preview {
+    display: none;
+
+    width: 100%;
+
+    max-height: 280px;
+
+    object-fit: cover;
+
+    margin-top: 15px;
+
+    border-radius: 14px;
+
+    border: 1px solid #ddd;
+}
+
+.current-image {
+    display: none;
+
+    margin-top: 10px;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.primary,
+.secondary,
+.small {
+
+    border: 0;
+
+    border-radius: 10px;
+
+    padding: 11px 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.primary {
+    background: #111;
+    color: white;
+}
+
+.primary:hover {
+    background: #333;
+}
+
+.secondary {
+    background: #eee;
+}
+
+.secondary:hover {
+    background: #ddd;
+}
+
+.primary:disabled {
+    opacity: .6;
+    cursor: wait;
+}
+
+.admin-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.admin-list {
+    display: grid;
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+.admin-item {
+    background: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 15px;
+
+    padding: 17px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.admin-item-title {
+    font-weight: 800;
+}
+
+.admin-item small {
+    color: #777;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 7px;
+}
+
+.edit {
+    background: #e0e7ff;
+}
+
+.delete {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.error {
+    color: #dc2626;
+    margin-top: 12px;
+}
+
+.success {
+    color: #15803d;
+    margin-top: 12px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+
+    padding: 30px;
+
+    color: #777;
+
+    border-top: 1px solid #ddd;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .news-grid {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .featured {
+        grid-column: auto;
+    }
+
+    .admin-item {
+        flex-direction: column;
+    }
+
+    .admin-actions {
+        width: 100%;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div
+        class="logo"
+        onclick="showHome()">
+
+        n:
+
+    </div>
+
+
+    <div class="header-actions">
+
+        <button
+            class="header-btn"
+            onclick="toggleSearch()"
+            title="Suche">
+
+            🔎
+
+        </button>
+
+
+        <button
+            class="header-btn"
+            onclick="openAdmin()"
+            title="Redaktion">
+
+            🔐
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+<!-- =========================
+     HOME
+========================= -->
+
+<section id="home">
+
+    <div class="hero">
+
+        <div class="hero-label">
+            n: Nachrichten
+        </div>
+
+        <h1>
+            Was gerade passiert.
+        </h1>
+
+        <p>
+            Aktuelle Nachrichten.
+            Einfach und direkt.
+        </p>
+
+    </div>
+
+
+    <div
+        class="search"
+        id="searchBox">
+
+        <input
+            id="searchInput"
+            type="search"
+            placeholder="Nachrichten durchsuchen..."
+            oninput="searchNews()">
+
+    </div>
+
+
+    <div class="filters">
+
+        <button
+            class="filter active"
+            onclick="filterNews('Alle',this)">
+
+            Alle
+
+        </button>
+
+
+        <button
+            class="filter"
+            onclick="filterNews('Deutschland',this)">
+
+            🇩🇪 Deutschland
+
+        </button>
+
+
+        <button
+            class="filter"
+            onclick="filterNews('Welt',this)">
+
+            🌍 Welt
+
+        </button>
+
+
+        <button
+            class="filter"
+            onclick="filterNews('Region',this)">
+
+            📍 Region
+
+        </button>
+
+
+        <button
+            class="filter"
+            onclick="filterNews('Sport',this)">
+
+            ⚽ Sport
+
+        </button>
+
+
+        <button
+            class="filter"
+            onclick="filterNews('Digital',this)">
+
+            💻 Digital
+
+        </button>
+
+    </div>
+
+
+    <div
+        class="news-grid"
+        id="newsGrid">
+
+        <div class="status-box">
+
+            Nachrichten werden geladen …
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ARTICLE
+========================= -->
+
+<section
+    class="article"
+    id="article">
+
+    <button
+        class="back"
+        onclick="showHome()">
+
+        ← Zurück
+
+    </button>
+
+
+    <div
+        class="article-meta"
+        id="articleMeta">
+    </div>
+
+
+    <h1
+        id="articleTitle">
+    </h1>
+
+
+    <div
+        class="article-image"
+        id="articleImage">
+
+        n:
+
+    </div>
+
+
+    <div
+        class="article-text"
+        id="articleText">
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ADMIN
+========================= -->
+
+<section
+    class="admin"
+    id="admin">
+
+
+    <!-- LOGIN -->
+
+    <div
+        class="login"
+        id="loginBox">
+
+        <h2>
+            🔐 n: Redaktion
+        </h2>
+
+        <p>
+            Anmeldung nur für die Redaktion.
+        </p>
+
+
+        <input
+            id="email"
+            type="email"
+            placeholder="E-Mail">
+
+
+        <input
+            id="password"
+            type="password"
+            placeholder="Passwort">
+
+
+        <button
+            class="primary"
+            onclick="login()">
+
+            Einloggen
+
+        </button>
+
+
+        <div
+            class="error"
+            id="loginError">
+        </div>
+
+    </div>
+
+
+    <!-- DASHBOARD -->
+
+    <div
+        id="dashboard"
+        style="display:none">
+
+
+        <div class="admin-top">
+
+            <h1>
+                Redaktion
+            </h1>
+
+
+            <button
+                class="secondary"
+                onclick="logout()">
+
+                Ausloggen
+
+            </button>
+
+        </div>
+
+
+        <div class="form-box">
+
+            <h2
+                id="formTitle">
+
+                Neuer Artikel
+
+            </h2>
+
+
+            <label>
+                Überschrift
+            </label>
+
+            <input
+                id="title"
+                placeholder="Überschrift">
+
+
+            <label>
+                Kurzbeschreibung
+            </label>
+
+            <input
+                id="description"
+                placeholder="Kurze Zusammenfassung">
+
+
+            <label>
+                Kategorie
+            </label>
+
+            <select id="category">
+
+                <option>
+                    Deutschland
+                </option>
+
+                <option>
+                    Welt
+                </option>
+
+                <option>
+                    Region
+                </option>
+
+                <option>
+                    Sport
+                </option>
+
+                <option>
+                    Digital
+                </option>
+
+            </select>
+
+
+            <label>
+                Region
+            </label>
+
+            <input
+                id="region"
+                placeholder="z. B. Hessen">
+
+
+            <label>
+                Artikel
+            </label>
+
+            <textarea
+                id="content"
+                placeholder="Artikel schreiben..."></textarea>
+
+
+            <!-- BILD -->
+
+            <label>
+                Artikelbild
+            </label>
+
+            <div class="image-upload-box">
+
+                <input
+                    id="imageFile"
+                    type="file"
+                    accept="image/*"
+                    onchange="previewImage(event)">
+
+                <img
+                    id="imagePreview"
+                    class="image-preview"
+                    alt="Bildvorschau">
+
+                <div
+                    id="currentImage"
+                    class="current-image">
+                </div>
+
+            </div>
+
+
+            <button
+                class="primary"
+                id="saveButton"
+                onclick="saveArticle()">
+
+                📰 Veröffentlichen
+
+            </button>
+
+
+            <button
+                class="secondary"
+                onclick="clearForm()">
+
+                Abbrechen
+
+            </button>
+
+
+            <div
+                id="formMessage"
+                class="success">
+            </div>
+
+        </div>
+
+
+        <h2>
+            Deine Artikel
+        </h2>
+
+
+        <div
+            class="admin-list"
+            id="adminList">
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+    © 2026 n: · Nachrichten
+
+</footer>
+
+
+<script>
+
+
+/* =====================================================
+   SUPABASE
+===================================================== */
+
+const SUPABASE_URL =
+    "https://eqzmsuncndfsiedyfifb.supabase.co";
+
+
+const SUPABASE_KEY =
+    "sb_publishable_eXY1gg_tIr-cRC2kdt0jbQ_QPfbEmkF";
+
+
+const STORAGE_BUCKET =
+    "news-images";
+
+
+/* =====================================================
+   VARIABLEN
+===================================================== */
+
+let articles = [];
+
+let activeFilter = "Alle";
+
+let editingId = null;
+
+let editingImageUrl = null;
+
+
+/* =====================================================
+   SUPABASE REQUEST
+===================================================== */
+
+async function supabaseRequest(
+    endpoint,
+    options = {}
+) {
+
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
+
+
+    const headers = {
+
+        "apikey":
+            SUPABASE_KEY,
+
+        "Content-Type":
+            "application/json",
+
+        ...(options.headers || {})
+
+    };
+
+
+    /*
+       Für eingeloggte Aktionen
+       immer das aktuelle Access-Token
+       verwenden.
+    */
+
+    if (token) {
+
+        headers["Authorization"] =
+            `Bearer ${token}`;
+
+    } else if (!headers["Authorization"]) {
+
+        headers["Authorization"] =
+            `Bearer ${SUPABASE_KEY}`;
+
+    }
+
+
+    const response =
+        await fetch(
+
+            `${SUPABASE_URL}/rest/v1/${endpoint}`,
+
+            {
+
+                ...options,
+
+                headers
+
+            }
+
+        );
+
+
+    if (!response.ok) {
+
+        const text =
+            await response.text();
+
+        throw new Error(
+            text || "Supabase Fehler"
+        );
+
+    }
+
+
+    const text =
+        await response.text();
+
+
+    if (!text) {
+
+        return null;
+
+    }
+
+
+    try {
+
+        return JSON.parse(text);
+
+    } catch {
+
+        return null;
+
+    }
+
+}
+
+
+/* =====================================================
+   BILD VORSCHAU
+===================================================== */
+
+function previewImage(event) {
+
+    const file =
+        event.target.files[0];
+
+
+    const preview =
+        document.getElementById(
+            "imagePreview"
+        );
+
+
+    if (!file) {
+
+        preview.style.display =
+            "none";
+
+        preview.removeAttribute(
+            "src"
+        );
+
+        return;
+
+    }
+
+
+    if (!file.type.startsWith("image/")) {
+
+        alert(
+            "Bitte eine Bilddatei auswählen."
+        );
+
+        event.target.value = "";
+
+        return;
+
+    }
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+        function(e) {
+
+            preview.src =
+                e.target.result;
+
+            preview.style.display =
+                "block";
+
+        };
+
+
+    reader.readAsDataURL(file);
+
+}
+
+
+/* =====================================================
+   BILD HOCHLADEN
+===================================================== */
+
+async function uploadImage(file) {
+
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
+
+
+    if (!token) {
+
+        throw new Error(
+            "Nicht eingeloggt. Bitte erneut einloggen."
+        );
+
+    }
+
+
+    if (!file) {
+
+        return null;
+
+    }
+
+
+    if (!file.type.startsWith("image/")) {
+
+        throw new Error(
+            "Die ausgewählte Datei ist kein Bild."
+        );
+
+    }
+
+
+    /*
+       Maximale Dateigröße:
+       10 MB
+    */
+
+    if (file.size > 10 * 1024 * 1024) {
+
+        throw new Error(
+            "Das Bild ist zu groß. Maximal 10 MB."
+        );
+
+    }
+
+
+    /*
+       Eindeutiger Dateiname
+    */
+
+    const extension =
+        file.name
+            .split(".")
+            .pop()
+            .toLowerCase()
+            .replace(
+                /[^a-z0-9]/g,
+                ""
+            );
+
+
+    const filename =
+        `${Date.now()}-${crypto.randomUUID()}.${extension}`;
+
+
+    const uploadUrl =
+        `${SUPABASE_URL}/storage/v1/object/${STORAGE_BUCKET}/${filename}`;
+
+
+    const response =
+        await fetch(
+
+            uploadUrl,
+
+            {
+
+                method: "POST",
+
+                headers: {
+
+                    "apikey":
+                        SUPABASE_KEY,
+
+                    /*
+                       WICHTIG:
+                       Nicht den Publishable Key
+                       als Benutzer senden,
+                       sondern den echten
+                       eingeloggten Access Token.
+                    */
+
+                    "Authorization":
+                        `Bearer ${token}`,
+
+                    "Content-Type":
+                        file.type,
+
+                    "x-upsert":
+                        "false"
+
+                },
+
+                body: file
+
+            }
+
+        );
+
+
+    if (!response.ok) {
+
+        const errorText =
+            await response.text();
+
+
+        throw new Error(
+            errorText ||
+            `Bild-Upload fehlgeschlagen (${response.status})`
+        );
+
+    }
+
+
+    /*
+       Öffentliche URL des Bildes
+    */
+
+    const publicUrl =
+        `${SUPABASE_URL}/storage/v1/object/public/${STORAGE_BUCKET}/${filename}`;
+
+
+    return publicUrl;
+
+}
+
+
+/* =====================================================
+   NEWS LADEN
+===================================================== */
+
+async function loadNews() {
+
+    const grid =
+        document.getElementById(
+            "newsGrid"
+        );
+
+
+    try {
+
+        const result =
+            await supabaseRequest(
+                "news?select=*&order=created_at.desc"
+            );
+
+
+        articles =
+            Array.isArray(result)
+                ? result
+                : [];
+
+
+        renderNews(articles);
+
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        grid.innerHTML = `
+
+            <div class="status-box">
+
+                <strong>
+                    Nachrichten konnten nicht geladen werden.
+                </strong>
+
+                <br><br>
+
+                ${escapeHTML(
+                    error.message
+                )}
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   BILD HTML
+===================================================== */
+
+function getNewsImageHTML(article) {
+
+    if (article.image_url) {
+
+        return `
+
+            <img
+                src="${escapeHTML(article.image_url)}"
+                alt="${escapeHTML(article.title || "Artikelbild")}"
+                loading="lazy"
+                onerror="this.parentElement.innerHTML='n:'">
+
+        `;
+
+    }
+
+
+    return "n:";
+
+}
+
+
+/* =====================================================
+   NEWS ANZEIGEN
+===================================================== */
+
+function renderNews(list) {
+
+    const grid =
+        document.getElementById(
+            "newsGrid"
+        );
+
+
+    grid.innerHTML = "";
+
+
+    if (!list.length) {
+
+        grid.innerHTML = `
+
+            <div class="status-box">
+
+                Noch keine Nachrichten vorhanden.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    if (
+        activeFilter === "Alle" &&
+        list.length > 0
+    ) {
+
+        const first =
+            list[0];
+
+
+        const featured =
+            document.createElement(
+                "div"
+            );
+
+
+        featured.className =
+            "featured";
+
+
+        featured.onclick =
+            () => openArticle(
+                first.id
+            );
+
+
+        featured.innerHTML = `
+
+            <div class="featured-image">
+
+                ${getNewsImageHTML(first)}
+
+            </div>
+
+            <div class="featured-content">
+
+                <div class="featured-label">
+
+                    ● AKTUELL
+
+                </div>
+
+                <h2>
+
+                    ${escapeHTML(
+                        first.title
+                    )}
+
+                </h2>
+
+            </div>
+
+        `;
+
+
+        grid.appendChild(
+            featured
+        );
+
+    }
+
+
+    list.forEach(
+        (item,index) => {
+
+            if (
+                activeFilter === "Alle" &&
+                index === 0
+            ) {
+
+                return;
+
+            }
+
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+
+            card.className =
+                "news-card";
+
+
+            card.onclick =
+                () => openArticle(
+                    item.id
+                );
+
+
+            card.innerHTML = `
+
+                <div class="news-image">
+
+                    ${getNewsImageHTML(item)}
+
+                </div>
+
+
+                <div
+                    class="news-card-content">
+
+                    <div
+                        class="news-meta">
+
+                        ${escapeHTML(
+                            item.category || ""
+                        )}
+
+                        ·
+
+                        ${escapeHTML(
+                            item.region || ""
+                        )}
+
+                    </div>
+
+
+                    <h2>
+
+                        ${escapeHTML(
+                            item.title || ""
+                        )}
+
+                    </h2>
+
+
+                    <p>
+
+                        ${escapeHTML(
+                            item.description || ""
+                        )}
+
+                    </p>
+
+                </div>
+
+            `;
+
+
+            grid.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+function filterNews(
+    category,
+    button
+) {
+
+    activeFilter =
+        category;
+
+
+    document
+        .querySelectorAll(
+            ".filter"
+        )
+        .forEach(
+            x =>
+                x.classList.remove(
+                    "active"
+                )
+        );
+
+
+    button.classList.add(
+        "active"
+    );
+
+
+    if (
+        category === "Alle"
+    ) {
+
+        renderNews(
+            articles
+        );
+
+        return;
+
+    }
+
+
+    const filtered =
+        articles.filter(
+            item =>
+
+                item.category ===
+                category
+
+                ||
+
+                item.region ===
+                category
+        );
+
+
+    renderNews(
+        filtered
+    );
+
+}
+
+
+/* =====================================================
+   SUCHE
+===================================================== */
+
+function toggleSearch() {
+
+    const box =
+        document.getElementById(
+            "searchBox"
+        );
+
+
+    if (
+        box.style.display ===
+        "block"
+    ) {
+
+        box.style.display =
+            "none";
+
+    } else {
+
+        box.style.display =
+            "block";
+
+
+        document
+            .getElementById(
+                "searchInput"
+            )
+            .focus();
+
+    }
+
+}
+
+
+function searchNews() {
+
+    const value =
+        document
+            .getElementById(
+                "searchInput"
+            )
+            .value
+            .toLowerCase()
+            .trim();
+
+
+    if (!value) {
+
+        renderNews(
+            articles
+        );
+
+        return;
+
+    }
+
+
+    const results =
+        articles.filter(
+            item =>
+
+                String(
+                    item.title || ""
+                )
+                .toLowerCase()
+                .includes(value)
+
+                ||
+
+                String(
+                    item.description || ""
+                )
+                .toLowerCase()
+                .includes(value)
+
+                ||
+
+                String(
+                    item.content || ""
+                )
+                .toLowerCase()
+                .includes(value)
+
+                ||
+
+                String(
+                    item.category || ""
+                )
+                .toLowerCase()
+                .includes(value)
+
+                ||
+
+                String(
+                    item.region || ""
+                )
+                .toLowerCase()
+                .includes(value)
+        );
+
+
+    renderNews(
+        results
+    );
+
+}
+
+
+/* =====================================================
+   ARTIKEL ÖFFNEN
+===================================================== */
+
+function openArticle(id) {
+
+    const article =
+        articles.find(
+            x => x.id === id
+        );
+
+
+    if (!article) {
+
+        return;
+
+    }
+
+
+    document
+        .getElementById(
+            "home"
+        )
+        .style.display =
+            "none";
+
+
+    document
+        .getElementById(
+            "admin"
+        )
+        .style.display =
+            "none";
+
+
+    document
+        .getElementById(
+            "article"
+        )
+        .style.display =
+            "block";
+
+
+    document
+        .getElementById(
+            "articleMeta"
+        )
+        .textContent =
+
+        `${article.category || ""} · ${
+            article.region || ""
+        }`;
+
+
+    document
+        .getElementById(
+            "articleTitle"
+        )
+        .textContent =
+            article.title || "";
+
+
+    const imageBox =
+        document.getElementById(
+            "articleImage"
+        );
+
+
+    if (article.image_url) {
+
+        imageBox.innerHTML = `
+
+            <img
+                src="${escapeHTML(article.image_url)}"
+                alt="${escapeHTML(article.title || "Artikelbild")}"
+                onerror="this.parentElement.innerHTML='n:'">
+
+        `;
+
+    } else {
+
+        imageBox.innerHTML =
+            "n:";
+
+    }
+
+
+    document
+        .getElementById(
+            "articleText"
+        )
+        .innerHTML =
+
+        escapeHTML(
+            article.content || ""
+        )
+        .replace(
+            /\n/g,
+            "<br><br>"
+        );
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =====================================================
+   HOME
+===================================================== */
+
+function showHome() {
+
+    document
+        .getElementById(
+            "article"
+        )
+        .style.display =
+            "none";
+
+
+    document
+        .getElementById(
+            "admin"
+        )
+        .style.display =
+            "none";
+
+
+    document
+        .getElementById(
+            "home"
+        )
+        .style.display =
+            "block";
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =====================================================
+   ADMIN ÖFFNEN
+===================================================== */
+
+function openAdmin() {
+
+    document
+        .getElementById(
+            "home"
+        )
+        .style.display =
+            "none";
+
+
+    document
+        .getElementById(
+            "article"
+        )
+        .style.display =
+            "none";
+
+
+    document
+        .getElementById(
+            "admin"
+        )
+        .style.display =
+            "block";
+
+
+    checkSession();
+
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+async function login() {
+
+    const email =
+        document
+            .getElementById(
+                "email"
+            )
+            .value
+            .trim();
+
+
+    const password =
+        document
+            .getElementById(
+                "password"
+            )
+            .value;
+
+
+    const error =
+        document
+            .getElementById(
+                "loginError"
+            );
+
+
+    error.textContent = "";
+
+
+    if (
+        !email ||
+        !password
+    ) {
+
+        error.textContent =
+            "Bitte E-Mail und Passwort eingeben.";
+
+        return;
+
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                `${SUPABASE_URL}/auth/v1/token?grant_type=password`,
+
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "apikey":
+                            SUPABASE_KEY,
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            email:
+                                email,
+
+                            password:
+                                password
+
+                        })
+
+                }
+
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (
+            !response.ok
+        ) {
+
+            throw new Error(
+
+                data.msg ||
+                data.message ||
+                "Login fehlgeschlagen."
+
+            );
+
+        }
+
+
+        sessionStorage.setItem(
+            "nAccessToken",
+            data.access_token
+        );
+
+
+        sessionStorage.setItem(
+            "nUser",
+            JSON.stringify(
+                data.user
+            )
+        );
+
+
+        showDashboard();
+
+
+    } catch (error) {
+
+        console.error(
+            error
+        );
+
+
+        document
+            .getElementById(
+                "loginError"
+            )
+            .textContent =
+                "❌ " +
+                error.message;
+
+    }
+
+}
+
+
+/* =====================================================
+   SESSION
+===================================================== */
+
+function checkSession() {
+
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
+
+
+    if (token) {
+
+        showDashboard();
+
+    } else {
+
+        document
+            .getElementById(
+                "loginBox"
+            )
+            .style.display =
+                "block";
+
+
+        document
+            .getElementById(
+                "dashboard"
+            )
+            .style.display =
+                "none";
+
+    }
+
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+function showDashboard() {
+
+    document
+        .getElementById(
+            "loginBox"
+        )
+        .style.display =
+            "none";
+
+
+    document
+        .getElementById(
+            "dashboard"
+        )
+        .style.display =
+            "block";
+
+
+    renderAdmin();
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logout() {
+
+    sessionStorage.removeItem(
+        "nAccessToken"
+    );
+
+
+    sessionStorage.removeItem(
+        "nUser"
+    );
+
+
+    document
+        .getElementById(
+            "dashboard"
+        )
+        .style.display =
+            "none";
+
+
+    document
+        .getElementById(
+            "loginBox"
+        )
+        .style.display =
+            "block";
+
+}
+
+
+/* =====================================================
+   ADMIN LISTE
+===================================================== */
+
+function renderAdmin() {
+
+    const list =
+        document.getElementById(
+            "adminList"
+        );
+
+
+    list.innerHTML = "";
+
+
+    if (!articles.length) {
+
+        list.innerHTML = `
+
+            <div class="status-box">
+
+                Noch keine Artikel.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    articles.forEach(
+        article => {
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "admin-item";
+
+
+            item.innerHTML = `
+
+                <div>
+
+                    <div
+                        class="admin-item-title">
+
+                        ${escapeHTML(
+                            article.title || ""
+                        )}
+
+                    </div>
+
+
+                    <small>
+
+                        ${escapeHTML(
+                            article.category || ""
+                        )}
+
+                        ·
+
+                        ${escapeHTML(
+                            article.region || ""
+                        )}
+
+                    </small>
+
+                </div>
+
+
+                <div
+                    class="admin-actions">
+
+
+                    <button
+                        class="small edit"
+                        onclick="editArticle(${article.id})">
+
+                        Bearbeiten
+
+                    </button>
+
+
+                    <button
+                        class="small delete"
+                        onclick="deleteArticle(${article.id})">
+
+                        Löschen
+
+                    </button>
+
+
+                </div>
+
+            `;
+
+
+            list.appendChild(
+                item
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   ARTIKEL SPEICHERN
+===================================================== */
+
+async function saveArticle() {
+
+    const title =
+        document
+            .getElementById(
+                "title"
+            )
+            .value
+            .trim();
+
+
+    const description =
+        document
+            .getElementById(
+                "description"
+            )
+            .value
+            .trim();
+
+
+    const category =
+        document
+            .getElementById(
+                "category"
+            )
+            .value;
+
+
+    const region =
+        document
+            .getElementById(
+                "region"
+            )
+            .value
+            .trim();
+
+
+    const content =
+        document
+            .getElementById(
+                "content"
+            )
+            .value
+            .trim();
+
+
+    const imageFile =
+        document
+            .getElementById(
+                "imageFile"
+            )
+            .files[0];
+
+
+    const message =
+        document
+            .getElementById(
+                "formMessage"
+            );
+
+
+    const saveButton =
+        document
+            .getElementById(
+                "saveButton"
+            );
+
+
+    if (
+        !title ||
+        !description ||
+        !region ||
+        !content
+    ) {
+
+        message.className =
+            "error";
+
+
+        message.textContent =
+            "Bitte alle Felder ausfüllen.";
+
+
+        return;
+
+    }
+
+
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
+
+
+    if (!token) {
+
+        message.className =
+            "error";
+
+
+        message.textContent =
+            "Bitte erneut einloggen.";
+
+
+        return;
+
+    }
+
+
+    try {
+
+        saveButton.disabled =
+            true;
+
+
+        saveButton.textContent =
+            "⏳ Wird gespeichert...";
+
+
+        message.className =
+            "success";
+
+
+        message.textContent =
+            "";
+
+
+        /*
+           ==========================================
+           1. BILD HOCHLADEN
+           ==========================================
+        */
+
+        let imageUrl =
+            editingImageUrl;
+
+
+        if (imageFile) {
+
+            message.textContent =
+                "🖼️ Bild wird hochgeladen...";
+
+
+            imageUrl =
+                await uploadImage(
+                    imageFile
+                );
+
+        }
+
+
+        /*
+           ==========================================
+           2. ARTIKEL SPEICHERN
+           ==========================================
+        */
+
+        if (
+            editingId !== null
+        ) {
+
+            await supabaseRequest(
+
+                `news?id=eq.${editingId}`,
+
+                {
+
+                    method:
+                        "PATCH",
+
+                    headers: {
+
+                        "Authorization":
+                            `Bearer ${token}`,
+
+                        "Prefer":
+                            "return=minimal"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            title:
+                                title,
+
+                            description:
+                                description,
+
+                            category:
+                                category,
+
+                            region:
+                                region,
+
+                            content:
+                                content,
+
+                            image_url:
+                                imageUrl
+
+                        })
+
+                }
+
+            );
+
+
+            message.className =
+                "success";
+
+
+            message.textContent =
+                "✅ Artikel aktualisiert.";
+
+        } else {
+
+
+            await supabaseRequest(
+
+                "news",
+
+                {
+
+                    method:
+                        "POST",
+
+                    headers: {
+
+                        "Authorization":
+                            `Bearer ${token}`,
+
+                        "Prefer":
+                            "return=minimal"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            title:
+                                title,
+
+                            description:
+                                description,
+
+                            category:
+                                category,
+
+                            region:
+                                region,
+
+                            content:
+                                content,
+
+                            image_url:
+                                imageUrl
+
+                        })
+
+                }
+
+            );
+
+
+            message.className =
+                "success";
+
+
+            message.textContent =
+                "📰 Artikel veröffentlicht.";
+
+        }
+
+
+        clearForm();
+
+
+        await loadNews();
+
+
+        renderAdmin();
+
+
+    } catch (error) {
+
+        console.error(
+            error
+        );
+
+
+        message.className =
+            "error";
+
+
+        message.textContent =
+            "Fehler: " +
+            error.message;
+
+    } finally {
+
+        saveButton.disabled =
+            false;
+
+
+        if (
+            editingId !== null
+        ) {
+
+            saveButton.textContent =
+                "Änderungen speichern";
+
+        } else {
+
+            saveButton.textContent =
+                "📰 Veröffentlichen";
+
+        }
+
+    }
+
+}
+
+
+/* =====================================================
+   ARTIKEL BEARBEITEN
+===================================================== */
+
+function editArticle(id) {
+
+    const article =
+        articles.find(
+            x => x.id === id
+        );
+
+
+    if (!article) {
+
+        return;
+
+    }
+
+
+    editingId =
+        id;
+
+
+    editingImageUrl =
+        article.image_url || null;
+
+
+    document
+        .getElementById(
+            "formTitle"
+        )
+        .textContent =
+            "Artikel bearbeiten";
+
+
+    document
+        .getElementById(
+            "title"
+        )
+        .value =
+            article.title || "";
+
+
+    document
+        .getElementById(
+            "description"
+        )
+        .value =
+            article.description || "";
+
+
+    document
+        .getElementById(
+            "category"
+        )
+        .value =
+            article.category || "Deutschland";
+
+
+    document
+        .getElementById(
+            "region"
+        )
+        .value =
+            article.region || "";
+
+
+    document
+        .getElementById(
+            "content"
+        )
+        .value =
+            article.content || "";
+
+
+    document
+        .getElementById(
+            "imageFile"
+        )
+        .value =
+            "";
+
+
+    const preview =
+        document.getElementById(
+            "imagePreview"
+        );
+
+
+    if (article.image_url) {
+
+        preview.src =
+            article.image_url;
+
+        preview.style.display =
+            "block";
+
+
+        document
+            .getElementById(
+                "currentImage"
+            )
+            .textContent =
+                "Aktuelles Bild – du kannst ein neues Bild auswählen.";
+
+    } else {
+
+        preview.style.display =
+            "none";
+
+
+        document
+            .getElementById(
+                "currentImage"
+            )
+            .textContent =
+                "";
+
+    }
+
+
+    document
+        .getElementById(
+            "saveButton"
+        )
+        .textContent =
+            "Änderungen speichern";
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =====================================================
+   ARTIKEL LÖSCHEN
+===================================================== */
+
+async function deleteArticle(id) {
+
+    const article =
+        articles.find(
+            x => x.id === id
+        );
+
+
+    if (!article) {
+
+        return;
+
+    }
+
+
+    if (
+        !confirm(
+            `„${article.title}“ wirklich löschen?`
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
+
+
+    if (!token) {
+
+        alert(
+            "Bitte erneut einloggen."
+        );
+
+        return;
+
+    }
+
+
+    try {
+
+        await supabaseRequest(
+
+            `news?id=eq.${id}`,
+
+            {
+
+                method:
+                    "DELETE",
+
+                headers: {
+
+                    "Authorization":
+                        `Bearer ${token}`
+
+                }
+
+            }
+
+        );
+
+
+        await loadNews();
+
+
+        renderAdmin();
+
+
+    } catch (error) {
+
+        console.error(
+            error
+        );
+
+
+        alert(
+
+            "Fehler beim Löschen:\n\n" +
+            error.message
+
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   FORM ZURÜCKSETZEN
+===================================================== */
+
+function clearForm() {
+
+    editingId =
+        null;
+
+
+    editingImageUrl =
+        null;
+
+
+    document
+        .getElementById(
+            "formTitle"
+        )
+        .textContent =
+            "Neuer Artikel";
+
+
+    document
+        .getElementById(
+            "title"
+        )
+        .value =
+            "";
+
+
+    document
+        .getElementById(
+            "description"
+        )
+        .value =
+            "";
+
+
+    document
+        .getElementById(
+            "category"
+        )
+        .value =
+            "Deutschland";
+
+
+    document
+        .getElementById(
+            "region"
+        )
+        .value =
+            "";
+
+
+    document
+        .getElementById(
+            "content"
+        )
+        .value =
+            "";
+
+
+    document
+        .getElementById(
+            "imageFile"
+        )
+        .value =
+            "";
+
+
+    const preview =
+        document.getElementById(
+            "imagePreview"
+        );
+
+
+    preview.style.display =
+        "none";
+
+
+    preview.removeAttribute(
+        "src"
+    );
+
+
+    document
+        .getElementById(
+            "currentImage"
+        )
+        .textContent =
+            "";
+
+
+    document
+        .getElementById(
+            "saveButton"
+        )
+        .textContent =
+            "📰 Veröffentlichen";
+
+
+    document
+        .getElementById(
+            "formMessage"
+        )
+        .textContent =
+            "";
+
+}
+
+
+/* =====================================================
+   HTML SICHER AUSGEBEN
+===================================================== */
+
+function escapeHTML(value) {
+
+    return String(
+        value ?? ""
+    )
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+loadNews();
+
+</script>
+
+
+</body>
+
+</html>
