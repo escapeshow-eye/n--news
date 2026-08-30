@@ -1,729 +1,1340 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>n: – Nachrichten</title>
 
 <style>
-*{box-sizing:border-box}
 
-body{
-    margin:0;
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f4f5f7;
-    color:#111;
+* {
+    box-sizing: border-box;
 }
 
-header{
-    height:72px;
-    padding:0 28px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    background:rgba(255,255,255,.96);
-    border-bottom:1px solid #ddd;
-    position:sticky;
-    top:0;
-    z-index:100;
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f5f7;
+    color: #111;
 }
 
-.logo{
-    font-size:40px;
-    font-weight:900;
-    letter-spacing:-4px;
-    cursor:pointer;
+/* =========================
+   HEADER
+========================= */
+
+header {
+    height: 72px;
+    padding: 0 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(255,255,255,.96);
+
+    border-bottom: 1px solid #ddd;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
 }
 
-.header-actions{
-    display:flex;
-    gap:8px;
+.logo {
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: -4px;
+    cursor: pointer;
 }
 
-.header-btn{
-    border:0;
-    background:transparent;
-    font-size:20px;
-    padding:10px;
-    border-radius:10px;
-    cursor:pointer;
+.header-actions {
+    display: flex;
+    gap: 8px;
 }
 
-.header-btn:hover{
-    background:#eee;
+.header-btn {
+    border: 0;
+    background: transparent;
+
+    font-size: 20px;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
 }
 
-main{
-    max-width:1200px;
-    margin:auto;
-    padding:45px 20px 80px;
+.header-btn:hover {
+    background: #eee;
 }
 
-.hero{
-    margin-bottom:25px;
+/* =========================
+   MAIN
+========================= */
+
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 45px 20px 80px;
 }
 
-.hero-label{
-    font-size:12px;
-    font-weight:800;
-    color:#777;
-    text-transform:uppercase;
-    letter-spacing:1.5px;
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    margin-bottom: 25px;
 }
 
-.hero h1{
-    font-size:clamp(42px,7vw,72px);
-    line-height:.95;
-    letter-spacing:-4px;
-    margin:8px 0;
+.hero-label {
+    font-size: 12px;
+    font-weight: 800;
+    color: #777;
+
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
-.hero p{
-    color:#777;
-    font-size:18px;
+.hero h1 {
+    font-size: clamp(42px, 7vw, 72px);
+
+    line-height: .95;
+    letter-spacing: -4px;
+
+    margin: 8px 0;
 }
 
-.search{
-    display:none;
-    margin-bottom:20px;
+.hero p {
+    color: #777;
+    font-size: 18px;
 }
 
-.search input{
-    width:100%;
-    padding:15px;
-    border:1px solid #ddd;
-    border-radius:13px;
-    outline:none;
-    font-size:16px;
+/* =========================
+   SEARCH
+========================= */
+
+.search {
+    display: none;
+    margin-bottom: 20px;
 }
 
-.filters{
-    display:flex;
-    gap:8px;
-    overflow-x:auto;
-    padding-bottom:20px;
+.search input {
+    width: 100%;
+
+    padding: 15px;
+
+    border: 1px solid #ddd;
+    border-radius: 13px;
+
+    outline: none;
+
+    font-size: 16px;
 }
 
-.filter{
-    flex-shrink:0;
-    padding:10px 16px;
-    border:1px solid #ddd;
-    border-radius:999px;
-    background:white;
-    font-weight:700;
-    cursor:pointer;
+/* =========================
+   FILTER
+========================= */
+
+.filters {
+    display: flex;
+    gap: 8px;
+
+    overflow-x: auto;
+    padding-bottom: 20px;
 }
 
-.filter.active{
-    background:#111;
-    color:white;
-    border-color:#111;
+.filter {
+    flex-shrink: 0;
+
+    padding: 10px 16px;
+
+    border: 1px solid #ddd;
+    border-radius: 999px;
+
+    background: white;
+
+    font-weight: 700;
+
+    cursor: pointer;
 }
 
-.news-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
+.filter.active {
+    background: #111;
+    color: white;
+    border-color: #111;
 }
 
-.news-card{
-    background:white;
-    border:1px solid #ddd;
-    border-radius:20px;
-    overflow:hidden;
-    cursor:pointer;
-    transition:.2s;
+/* =========================
+   NEWS GRID
+========================= */
+
+.news-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
 }
 
-.news-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 12px 30px rgba(0,0,0,.08);
+.news-card {
+    background: white;
+
+    border: 1px solid #ddd;
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition: .2s;
 }
 
-.news-image{
-    height:170px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#ddd,#fafafa);
-    color:#999;
-    font-size:38px;
-    font-weight:900;
-    overflow:hidden;
+.news-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.08);
 }
 
-.news-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+.news-image {
+    width: 100%;
+    height: 190px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ddd,
+            #fafafa
+        );
+
+    color: #999;
+
+    font-size: 38px;
+    font-weight: 900;
+
+    overflow: hidden;
 }
 
-.news-card-content{
-    padding:20px;
+.news-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
 }
 
-.news-meta{
-    font-size:13px;
-    color:#777;
-    margin-bottom:8px;
+.news-card-content {
+    padding: 20px;
 }
 
-.news-card h2{
-    margin:0 0 10px;
-    font-size:22px;
+.news-meta {
+    font-size: 13px;
+    color: #777;
+
+    margin-bottom: 8px;
 }
 
-.news-card p{
-    color:#777;
-    line-height:1.5;
-    margin:0;
+.news-card h2 {
+    margin: 0 0 10px;
+
+    font-size: 22px;
 }
 
-.featured{
-    grid-column:1/-1;
-    background:white;
-    border:1px solid #ddd;
-    border-left:5px solid #111;
-    border-radius:20px;
-    overflow:hidden;
-    cursor:pointer;
+.news-card p {
+    color: #777;
+
+    line-height: 1.5;
+
+    margin: 0;
 }
 
-.featured-image{
-    width:100%;
-    height:250px;
-    overflow:hidden;
+/* =========================
+   FEATURED
+========================= */
+
+.featured {
+    grid-column: 1 / -1;
+
+    background: white;
+
+    border: 1px solid #ddd;
+    border-left: 5px solid #111;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    cursor: pointer;
 }
 
-.featured-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+.featured-image {
+    width: 100%;
+    height: 280px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ddd,
+            #fafafa
+        );
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    color: #999;
+
+    font-size: 45px;
+    font-weight: 900;
+
+    overflow: hidden;
 }
 
-.featured-content{
-    padding:25px;
+.featured-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
 }
 
-.featured-label{
-    font-size:12px;
-    font-weight:900;
-    margin-bottom:8px;
+.featured-content {
+    padding: 25px;
 }
 
-.featured h2{
-    margin:0;
-    font-size:clamp(28px,4vw,40px);
+.featured-label {
+    font-size: 12px;
+
+    font-weight: 900;
+
+    margin-bottom: 8px;
 }
 
-.status-box{
-    grid-column:1/-1;
-    background:white;
-    border:1px solid #ddd;
-    border-radius:20px;
-    padding:35px;
-    text-align:center;
-    color:#777;
+.featured h2 {
+    margin: 0;
+
+    font-size:
+        clamp(28px,4vw,40px);
 }
 
-.article{
-    display:none;
-    max-width:850px;
-    margin:auto;
+/* =========================
+   STATUS
+========================= */
+
+.status-box {
+    grid-column: 1 / -1;
+
+    background: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 20px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    color: #777;
 }
 
-.back{
-    padding:10px 15px;
-    border:1px solid #ddd;
-    background:white;
-    border-radius:12px;
-    cursor:pointer;
-    font-weight:700;
-    margin-bottom:25px;
+/* =========================
+   ARTICLE
+========================= */
+
+.article {
+    display: none;
+
+    max-width: 850px;
+
+    margin: auto;
 }
 
-.article-meta{
-    color:#777;
-    margin-bottom:12px;
+.back {
+    padding: 10px 15px;
+
+    border: 1px solid #ddd;
+
+    background: white;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+    margin-bottom: 25px;
 }
 
-.article h1{
-    font-size:clamp(40px,7vw,70px);
-    line-height:.98;
-    letter-spacing:-4px;
-    margin:0 0 25px;
+.article-meta {
+    color: #777;
+    margin-bottom: 12px;
 }
 
-.article-image{
-    height:340px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#ddd,#fafafa);
-    border-radius:22px;
-    color:#999;
-    font-size:40px;
-    font-weight:900;
-    margin-bottom:30px;
-    overflow:hidden;
+.article h1 {
+    font-size:
+        clamp(40px,7vw,70px);
+
+    line-height: .98;
+
+    letter-spacing: -4px;
+
+    margin: 0 0 25px;
 }
 
-.article-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+.article-image {
+    width: 100%;
+    min-height: 340px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ddd,
+            #fafafa
+        );
+
+    border-radius: 22px;
+
+    color: #999;
+
+    font-size: 40px;
+    font-weight: 900;
+
+    margin-bottom: 30px;
+
+    overflow: hidden;
 }
 
-.article-text{
-    font-size:18px;
-    line-height:1.8;
+.article-image img {
+    width: 100%;
+    max-height: 550px;
+
+    object-fit: cover;
+
+    display: block;
 }
 
-.admin{
-    display:none;
-    max-width:900px;
-    margin:auto;
+.article-text {
+    font-size: 18px;
+    line-height: 1.8;
 }
 
-.login{
-    max-width:430px;
-    margin:60px auto;
-    padding:30px;
-    background:white;
-    border:1px solid #ddd;
-    border-radius:22px;
+/* =========================
+   ADMIN
+========================= */
+
+.admin {
+    display: none;
+
+    max-width: 900px;
+
+    margin: auto;
+}
+
+.login {
+    max-width: 430px;
+
+    margin: 60px auto;
+
+    padding: 30px;
+
+    background: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 22px;
 }
 
 .login input,
 .form-box input,
 .form-box textarea,
-.form-box select{
-    width:100%;
-    padding:13px 14px;
-    margin:7px 0 17px;
-    border:1px solid #ddd;
-    border-radius:12px;
-    background:white;
-    outline:none;
-    font-size:16px;
+.form-box select {
+
+    width: 100%;
+
+    padding: 13px 14px;
+
+    margin: 7px 0 17px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 12px;
+
+    background: white;
+
+    outline: none;
+
+    font-size: 16px;
 }
 
-.form-box textarea{
-    min-height:230px;
-    resize:vertical;
+.form-box textarea {
+    min-height: 230px;
+    resize: vertical;
 }
 
-.form-box{
-    padding:25px;
-    background:white;
-    border:1px solid #ddd;
-    border-radius:20px;
+.form-box {
+    padding: 25px;
+
+    background: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 20px;
 }
 
-.form-box label{
-    display:block;
-    font-weight:700;
+.form-box label {
+    display: block;
+    font-weight: 700;
 }
 
-.file-input{
-    padding:10px!important;
-    background:#fafafa!important;
+/* =========================
+   IMAGE UPLOAD
+========================= */
+
+.image-upload-box {
+    margin: 5px 0 20px;
+
+    padding: 18px;
+
+    border: 1px dashed #bbb;
+
+    border-radius: 15px;
+
+    background: #fafafa;
 }
 
-.image-preview{
-    display:none;
-    margin:5px 0 20px;
-    border-radius:15px;
-    overflow:hidden;
-    border:1px solid #ddd;
+.image-upload-box input[type="file"] {
+    margin: 5px 0 0;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
 }
 
-.image-preview img{
-    width:100%;
-    max-height:300px;
-    object-fit:cover;
-    display:block;
+.image-preview {
+    display: none;
+
+    width: 100%;
+
+    max-height: 280px;
+
+    object-fit: cover;
+
+    margin-top: 15px;
+
+    border-radius: 14px;
+
+    border: 1px solid #ddd;
 }
+
+.current-image {
+    display: none;
+
+    margin-top: 10px;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
 
 .primary,
 .secondary,
-.small{
-    border:0;
-    border-radius:10px;
-    padding:11px 16px;
-    font-weight:800;
-    cursor:pointer;
+.small {
+
+    border: 0;
+
+    border-radius: 10px;
+
+    padding: 11px 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
 }
 
-.primary{
-    background:#111;
-    color:white;
+.primary {
+    background: #111;
+    color: white;
 }
 
-.secondary{
-    background:#eee;
+.primary:hover {
+    background: #333;
 }
 
-.primary:disabled{
-    opacity:.6;
-    cursor:wait;
+.secondary {
+    background: #eee;
 }
 
-.admin-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:25px;
+.secondary:hover {
+    background: #ddd;
 }
 
-.admin-list{
-    display:grid;
-    gap:10px;
-    margin-top:15px;
+.primary:disabled {
+    opacity: .6;
+    cursor: wait;
 }
 
-.admin-item{
-    background:white;
-    border:1px solid #ddd;
-    border-radius:15px;
-    padding:17px;
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
+.admin-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
 }
 
-.admin-item-title{
-    font-weight:800;
+.admin-list {
+    display: grid;
+
+    gap: 10px;
+
+    margin-top: 15px;
 }
 
-.admin-item small{
-    color:#777;
+.admin-item {
+    background: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 15px;
+
+    padding: 17px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
 }
 
-.admin-actions{
-    display:flex;
-    gap:7px;
+.admin-item-title {
+    font-weight: 800;
 }
 
-.edit{
-    background:#e0e7ff;
+.admin-item small {
+    color: #777;
 }
 
-.delete{
-    background:#fee2e2;
-    color:#b91c1c;
+.admin-actions {
+    display: flex;
+    gap: 7px;
 }
 
-.error{
-    color:#dc2626;
-    margin-top:12px;
+.edit {
+    background: #e0e7ff;
 }
 
-.success{
-    color:#15803d;
-    margin-top:12px;
+.delete {
+    background: #fee2e2;
+    color: #b91c1c;
 }
 
-footer{
-    text-align:center;
-    padding:30px;
-    color:#777;
-    border-top:1px solid #ddd;
+.error {
+    color: #dc2626;
+    margin-top: 12px;
 }
 
-@media(max-width:850px){
-    .news-grid{
-        grid-template-columns:repeat(2,1fr);
+.success {
+    color: #15803d;
+    margin-top: 12px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+
+    padding: 30px;
+
+    color: #777;
+
+    border-top: 1px solid #ddd;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .news-grid {
+        grid-template-columns:
+            repeat(2,1fr);
     }
+
 }
 
-@media(max-width:600px){
-    .news-grid{
-        grid-template-columns:1fr;
+@media (max-width: 600px) {
+
+    .news-grid {
+        grid-template-columns: 1fr;
     }
 
-    .featured{
-        grid-column:auto;
+    .featured {
+        grid-column: auto;
     }
 
-    .admin-item{
-        flex-direction:column;
+    .admin-item {
+        flex-direction: column;
     }
+
+    .admin-actions {
+        width: 100%;
+    }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <header>
 
-<div class="logo" onclick="showHome()">n:</div>
+    <div
+        class="logo"
+        onclick="showHome()">
 
-<div class="header-actions">
+        n:
 
-<button class="header-btn"
-onclick="toggleSearch()"
-title="Suche">🔎</button>
+    </div>
 
-<button class="header-btn"
-onclick="openAdmin()"
-title="Redaktion">🔐</button>
 
-</div>
+    <div class="header-actions">
+
+        <button
+            class="header-btn"
+            onclick="toggleSearch()"
+            title="Suche">
+
+            🔎
+
+        </button>
+
+
+        <button
+            class="header-btn"
+            onclick="openAdmin()"
+            title="Redaktion">
+
+            🔐
+
+        </button>
+
+    </div>
 
 </header>
 
+
 <main>
+
+
+<!-- =========================
+     HOME
+========================= -->
 
 <section id="home">
 
-<div class="hero">
+    <div class="hero">
 
-<div class="hero-label">n: Nachrichten</div>
+        <div class="hero-label">
+            n: Nachrichten
+        </div>
 
-<h1>Was gerade passiert.</h1>
+        <h1>
+            Was gerade passiert.
+        </h1>
 
-<p>Aktuelle Nachrichten. Einfach und direkt.</p>
+        <p>
+            Aktuelle Nachrichten.
+            Einfach und direkt.
+        </p>
 
-</div>
+    </div>
 
-<div class="search" id="searchBox">
 
-<input
-id="searchInput"
-type="search"
-placeholder="Nachrichten durchsuchen..."
-oninput="searchNews()">
+    <div
+        class="search"
+        id="searchBox">
 
-</div>
+        <input
+            id="searchInput"
+            type="search"
+            placeholder="Nachrichten durchsuchen..."
+            oninput="searchNews()">
 
-<div class="filters">
+    </div>
 
-<button class="filter active"
-onclick="filterNews('Alle',this)">Alle</button>
 
-<button class="filter"
-onclick="filterNews('Deutschland',this)">🇩🇪 Deutschland</button>
+    <div class="filters">
 
-<button class="filter"
-onclick="filterNews('Welt',this)">🌍 Welt</button>
+        <button
+            class="filter active"
+            onclick="filterNews('Alle',this)">
 
-<button class="filter"
-onclick="filterNews('Region',this)">📍 Region</button>
+            Alle
 
-<button class="filter"
-onclick="filterNews('Sport',this)">⚽ Sport</button>
+        </button>
 
-<button class="filter"
-onclick="filterNews('Digital',this)">💻 Digital</button>
 
-</div>
+        <button
+            class="filter"
+            onclick="filterNews('Deutschland',this)">
 
-<div class="news-grid" id="newsGrid">
+            🇩🇪 Deutschland
 
-<div class="status-box">
-Nachrichten werden geladen …
-</div>
+        </button>
 
-</div>
+
+        <button
+            class="filter"
+            onclick="filterNews('Welt',this)">
+
+            🌍 Welt
+
+        </button>
+
+
+        <button
+            class="filter"
+            onclick="filterNews('Region',this)">
+
+            📍 Region
+
+        </button>
+
+
+        <button
+            class="filter"
+            onclick="filterNews('Sport',this)">
+
+            ⚽ Sport
+
+        </button>
+
+
+        <button
+            class="filter"
+            onclick="filterNews('Digital',this)">
+
+            💻 Digital
+
+        </button>
+
+    </div>
+
+
+    <div
+        class="news-grid"
+        id="newsGrid">
+
+        <div class="status-box">
+
+            Nachrichten werden geladen …
+
+        </div>
+
+    </div>
 
 </section>
 
-<section class="article" id="article">
 
-<button class="back" onclick="showHome()">← Zurück</button>
+<!-- =========================
+     ARTICLE
+========================= -->
 
-<div class="article-meta" id="articleMeta"></div>
+<section
+    class="article"
+    id="article">
 
-<h1 id="articleTitle"></h1>
+    <button
+        class="back"
+        onclick="showHome()">
 
-<div class="article-image" id="articleImage">n:</div>
+        ← Zurück
 
-<div class="article-text" id="articleText"></div>
+    </button>
+
+
+    <div
+        class="article-meta"
+        id="articleMeta">
+    </div>
+
+
+    <h1
+        id="articleTitle">
+    </h1>
+
+
+    <div
+        class="article-image"
+        id="articleImage">
+
+        n:
+
+    </div>
+
+
+    <div
+        class="article-text"
+        id="articleText">
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ADMIN
+========================= -->
+
+<section
+    class="admin"
+    id="admin">
+
+
+    <!-- LOGIN -->
+
+    <div
+        class="login"
+        id="loginBox">
+
+        <h2>
+            🔐 n: Redaktion
+        </h2>
+
+        <p>
+            Anmeldung nur für die Redaktion.
+        </p>
+
+
+        <input
+            id="email"
+            type="email"
+            placeholder="E-Mail">
+
+
+        <input
+            id="password"
+            type="password"
+            placeholder="Passwort">
+
+
+        <button
+            class="primary"
+            onclick="login()">
+
+            Einloggen
+
+        </button>
+
+
+        <div
+            class="error"
+            id="loginError">
+        </div>
+
+    </div>
+
+
+    <!-- DASHBOARD -->
+
+    <div
+        id="dashboard"
+        style="display:none">
+
+
+        <div class="admin-top">
+
+            <h1>
+                Redaktion
+            </h1>
+
+
+            <button
+                class="secondary"
+                onclick="logout()">
+
+                Ausloggen
+
+            </button>
+
+        </div>
+
+
+        <div class="form-box">
+
+            <h2
+                id="formTitle">
+
+                Neuer Artikel
+
+            </h2>
+
+
+            <label>
+                Überschrift
+            </label>
+
+            <input
+                id="title"
+                placeholder="Überschrift">
+
+
+            <label>
+                Kurzbeschreibung
+            </label>
+
+            <input
+                id="description"
+                placeholder="Kurze Zusammenfassung">
+
+
+            <label>
+                Kategorie
+            </label>
+
+            <select id="category">
+
+                <option>
+                    Deutschland
+                </option>
+
+                <option>
+                    Welt
+                </option>
+
+                <option>
+                    Region
+                </option>
+
+                <option>
+                    Sport
+                </option>
+
+                <option>
+                    Digital
+                </option>
+
+            </select>
+
+
+            <label>
+                Region
+            </label>
+
+            <input
+                id="region"
+                placeholder="z. B. Hessen">
+
+
+            <label>
+                Artikel
+            </label>
+
+            <textarea
+                id="content"
+                placeholder="Artikel schreiben..."></textarea>
+
+
+            <!-- BILD -->
+
+            <label>
+                Artikelbild
+            </label>
+
+            <div class="image-upload-box">
+
+                <input
+                    id="imageFile"
+                    type="file"
+                    accept="image/*"
+                    onchange="previewImage(event)">
+
+                <img
+                    id="imagePreview"
+                    class="image-preview"
+                    alt="Bildvorschau">
+
+                <div
+                    id="currentImage"
+                    class="current-image">
+                </div>
+
+            </div>
+
+
+            <button
+                class="primary"
+                id="saveButton"
+                onclick="saveArticle()">
+
+                📰 Veröffentlichen
+
+            </button>
+
+
+            <button
+                class="secondary"
+                onclick="clearForm()">
+
+                Abbrechen
+
+            </button>
+
+
+            <div
+                id="formMessage"
+                class="success">
+            </div>
+
+        </div>
+
+
+        <h2>
+            Deine Artikel
+        </h2>
+
+
+        <div
+            class="admin-list"
+            id="adminList">
+        </div>
+
+    </div>
 
 </section>
 
-<section class="admin" id="admin">
-
-<div class="login" id="loginBox">
-
-<h2>🔐 n: Redaktion</h2>
-
-<p>Anmeldung nur für die Redaktion.</p>
-
-<input id="email" type="email" placeholder="E-Mail">
-
-<input id="password" type="password" placeholder="Passwort">
-
-<button class="primary" onclick="login()">Einloggen</button>
-
-<div class="error" id="loginError"></div>
-
-</div>
-
-<div id="dashboard" style="display:none">
-
-<div class="admin-top">
-
-<h1>Redaktion</h1>
-
-<button class="secondary" onclick="logout()">Ausloggen</button>
-
-</div>
-
-<div class="form-box">
-
-<h2 id="formTitle">Neuer Artikel</h2>
-
-<label>Überschrift</label>
-
-<input id="title" placeholder="Überschrift">
-
-<label>Kurzbeschreibung</label>
-
-<input id="description" placeholder="Kurze Zusammenfassung">
-
-<label>Kategorie</label>
-
-<select id="category">
-
-<option>Deutschland</option>
-<option>Welt</option>
-<option>Region</option>
-<option>Sport</option>
-<option>Digital</option>
-
-</select>
-
-<label>Region</label>
-
-<input id="region" placeholder="z. B. Hessen">
-
-<label>Artikel</label>
-
-<textarea id="content"
-placeholder="Artikel schreiben..."></textarea>
-
-<label>Artikelbild</label>
-
-<input
-id="imageFile"
-class="file-input"
-type="file"
-accept="image/*"
-onchange="previewImage()">
-
-<div class="image-preview" id="imagePreview">
-
-<img id="preview" alt="Bildvorschau">
-
-</div>
-
-<button
-class="primary"
-id="saveButton"
-onclick="saveArticle()">
-
-📰 Veröffentlichen
-
-</button>
-
-<button
-class="secondary"
-onclick="clearForm()">
-
-Abbrechen
-
-</button>
-
-<div id="formMessage"></div>
-
-</div>
-
-<h2>Deine Artikel</h2>
-
-<div class="admin-list" id="adminList"></div>
-
-</div>
-
-</section>
 
 </main>
 
+
 <footer>
-© 2026 n: · Nachrichten
+
+    © 2026 n: · Nachrichten
+
 </footer>
 
+
 <script>
+
 
 /* =====================================================
    SUPABASE
 ===================================================== */
 
 const SUPABASE_URL =
-"https://eqzmsuncndfsiedyfifb.supabase.co";
+    "https://eqzmsuncndfsiedyfifb.supabase.co";
+
 
 const SUPABASE_KEY =
-"sb_publishable_eXY1gg_tIr-cRC2kdt0jbQ_QPfbEmkF";
+    "sb_publishable_eXY1gg_tIr-cRC2kdt0jbQ_QPfbEmkF";
 
-/* DEIN BUCKET */
+
 const STORAGE_BUCKET =
-"news-images";
+    "news-images";
 
 
 /* =====================================================
    VARIABLEN
 ===================================================== */
 
-let articles=[];
-let activeFilter="Alle";
-let editingId=null;
+let articles = [];
+
+let activeFilter = "Alle";
+
+let editingId = null;
+
+let editingImageUrl = null;
 
 
 /* =====================================================
-   API REQUEST
+   SUPABASE REQUEST
 ===================================================== */
 
-async function supabaseRequest(endpoint,options={}){
+async function supabaseRequest(
+    endpoint,
+    options = {}
+) {
 
-const token=
-sessionStorage.getItem("nAccessToken");
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
 
-const response=
-await fetch(
-`${SUPABASE_URL}/rest/v1/${endpoint}`,
-{
-...options,
-headers:{
-"apikey":SUPABASE_KEY,
-"Authorization":
-`Bearer ${token || SUPABASE_KEY}`,
-"Content-Type":"application/json",
-...(options.headers||{})
+
+    const headers = {
+
+        "apikey":
+            SUPABASE_KEY,
+
+        "Content-Type":
+            "application/json",
+
+        ...(options.headers || {})
+
+    };
+
+
+    /*
+       Für eingeloggte Aktionen
+       immer das aktuelle Access-Token
+       verwenden.
+    */
+
+    if (token) {
+
+        headers["Authorization"] =
+            `Bearer ${token}`;
+
+    } else if (!headers["Authorization"]) {
+
+        headers["Authorization"] =
+            `Bearer ${SUPABASE_KEY}`;
+
+    }
+
+
+    const response =
+        await fetch(
+
+            `${SUPABASE_URL}/rest/v1/${endpoint}`,
+
+            {
+
+                ...options,
+
+                headers
+
+            }
+
+        );
+
+
+    if (!response.ok) {
+
+        const text =
+            await response.text();
+
+        throw new Error(
+            text || "Supabase Fehler"
+        );
+
+    }
+
+
+    const text =
+        await response.text();
+
+
+    if (!text) {
+
+        return null;
+
+    }
+
+
+    try {
+
+        return JSON.parse(text);
+
+    } catch {
+
+        return null;
+
+    }
+
 }
-}
-);
 
-const text=
-await response.text();
 
-if(!response.ok){
+/* =====================================================
+   BILD VORSCHAU
+===================================================== */
 
-throw new Error(
-text || "Supabase Fehler"
-);
+function previewImage(event) {
 
-}
+    const file =
+        event.target.files[0];
 
-if(!text){
-return null;
-}
 
-try{
-return JSON.parse(text);
-}catch{
-return null;
-}
+    const preview =
+        document.getElementById(
+            "imagePreview"
+        );
+
+
+    if (!file) {
+
+        preview.style.display =
+            "none";
+
+        preview.removeAttribute(
+            "src"
+        );
+
+        return;
+
+    }
+
+
+    if (!file.type.startsWith("image/")) {
+
+        alert(
+            "Bitte eine Bilddatei auswählen."
+        );
+
+        event.target.value = "";
+
+        return;
+
+    }
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+        function(e) {
+
+            preview.src =
+                e.target.result;
+
+            preview.style.display =
+                "block";
+
+        };
+
+
+    reader.readAsDataURL(file);
 
 }
 
@@ -732,98 +1343,139 @@ return null;
    BILD HOCHLADEN
 ===================================================== */
 
-async function uploadImage(file){
+async function uploadImage(file) {
 
-if(!file)return null;
-
-const token=
-sessionStorage.getItem("nAccessToken");
-
-if(!token){
-throw new Error("Nicht eingeloggt.");
-}
-
-if(!file.type.startsWith("image/")){
-throw new Error("Bitte eine Bilddatei auswählen.");
-}
-
-if(file.size>50*1024*1024){
-throw new Error("Das Bild darf maximal 50 MB groß sein.");
-}
-
-const extension=
-file.name.includes(".")
-?
-file.name.split(".").pop().toLowerCase()
-:
-"jpg";
-
-const fileName=
-`${Date.now()}-${Math.random()
-.toString(36)
-.substring(2,10)}.${extension}`;
-
-const uploadUrl=
-`${SUPABASE_URL}/storage/v1/object/${STORAGE_BUCKET}/${fileName}`;
-
-const response=
-await fetch(uploadUrl,{
-method:"POST",
-headers:{
-"Authorization":`Bearer ${token}`,
-"apikey":SUPABASE_KEY,
-"Content-Type":file.type,
-"x-upsert":"true"
-},
-body:file
-});
-
-const text=
-await response.text();
-
-if(!response.ok){
-
-throw new Error(
-"Bild-Upload fehlgeschlagen: "+
-(text || response.status)
-);
-
-}
-
-return `${SUPABASE_URL}/storage/v1/object/public/${STORAGE_BUCKET}/${fileName}`;
-
-}
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
 
 
-/* =====================================================
-   BILDVORSCHAU
-===================================================== */
+    if (!token) {
 
-function previewImage(){
+        throw new Error(
+            "Nicht eingeloggt. Bitte erneut einloggen."
+        );
 
-const input=
-document.getElementById("imageFile");
+    }
 
-const previewBox=
-document.getElementById("imagePreview");
 
-const preview=
-document.getElementById("preview");
+    if (!file) {
 
-const file=
-input.files[0];
+        return null;
 
-if(!file){
+    }
 
-previewBox.style.display="none";
-return;
 
-}
+    if (!file.type.startsWith("image/")) {
 
-preview.src=
-URL.createObjectURL(file);
+        throw new Error(
+            "Die ausgewählte Datei ist kein Bild."
+        );
 
-previewBox.style.display="block";
+    }
+
+
+    /*
+       Maximale Dateigröße:
+       10 MB
+    */
+
+    if (file.size > 10 * 1024 * 1024) {
+
+        throw new Error(
+            "Das Bild ist zu groß. Maximal 10 MB."
+        );
+
+    }
+
+
+    /*
+       Eindeutiger Dateiname
+    */
+
+    const extension =
+        file.name
+            .split(".")
+            .pop()
+            .toLowerCase()
+            .replace(
+                /[^a-z0-9]/g,
+                ""
+            );
+
+
+    const filename =
+        `${Date.now()}-${crypto.randomUUID()}.${extension}`;
+
+
+    const uploadUrl =
+        `${SUPABASE_URL}/storage/v1/object/${STORAGE_BUCKET}/${filename}`;
+
+
+    const response =
+        await fetch(
+
+            uploadUrl,
+
+            {
+
+                method: "POST",
+
+                headers: {
+
+                    "apikey":
+                        SUPABASE_KEY,
+
+                    /*
+                       WICHTIG:
+                       Nicht den Publishable Key
+                       als Benutzer senden,
+                       sondern den echten
+                       eingeloggten Access Token.
+                    */
+
+                    "Authorization":
+                        `Bearer ${token}`,
+
+                    "Content-Type":
+                        file.type,
+
+                    "x-upsert":
+                        "false"
+
+                },
+
+                body: file
+
+            }
+
+        );
+
+
+    if (!response.ok) {
+
+        const errorText =
+            await response.text();
+
+
+        throw new Error(
+            errorText ||
+            `Bild-Upload fehlgeschlagen (${response.status})`
+        );
+
+    }
+
+
+    /*
+       Öffentliche URL des Bildes
+    */
+
+    const publicUrl =
+        `${SUPABASE_URL}/storage/v1/object/public/${STORAGE_BUCKET}/${filename}`;
+
+
+    return publicUrl;
 
 }
 
@@ -832,46 +1484,81 @@ previewBox.style.display="block";
    NEWS LADEN
 ===================================================== */
 
-async function loadNews(){
+async function loadNews() {
 
-const grid=
-document.getElementById("newsGrid");
+    const grid =
+        document.getElementById(
+            "newsGrid"
+        );
 
-try{
 
-const result=
-await supabaseRequest(
-"news?select=*&order=created_at.desc"
-);
+    try {
 
-articles=
-Array.isArray(result)
-?result
-:[];
+        const result =
+            await supabaseRequest(
+                "news?select=*&order=created_at.desc"
+            );
 
-renderNews(articles);
 
-}catch(error){
+        articles =
+            Array.isArray(result)
+                ? result
+                : [];
 
-console.error(error);
 
-grid.innerHTML=`
+        renderNews(articles);
 
-<div class="status-box">
 
-<strong>
-Nachrichten konnten nicht geladen werden.
-</strong>
+    } catch (error) {
 
-<br><br>
+        console.error(error);
 
-${escapeHTML(error.message)}
 
-</div>
+        grid.innerHTML = `
 
-`;
+            <div class="status-box">
+
+                <strong>
+                    Nachrichten konnten nicht geladen werden.
+                </strong>
+
+                <br><br>
+
+                ${escapeHTML(
+                    error.message
+                )}
+
+            </div>
+
+        `;
+
+    }
 
 }
+
+
+/* =====================================================
+   BILD HTML
+===================================================== */
+
+function getNewsImageHTML(article) {
+
+    if (article.image_url) {
+
+        return `
+
+            <img
+                src="${escapeHTML(article.image_url)}"
+                alt="${escapeHTML(article.title || "Artikelbild")}"
+                loading="lazy"
+                onerror="this.parentElement.innerHTML='n:'">
+
+        `;
+
+    }
+
+
+    return "n:";
 
 }
 
@@ -880,140 +1567,180 @@ ${escapeHTML(error.message)}
    NEWS ANZEIGEN
 ===================================================== */
 
-function renderNews(list){
+function renderNews(list) {
 
-const grid=
-document.getElementById("newsGrid");
-
-grid.innerHTML="";
-
-if(!list.length){
-
-grid.innerHTML=`
-
-<div class="status-box">
-Noch keine Nachrichten vorhanden.
-</div>
-
-`;
-
-return;
-
-}
+    const grid =
+        document.getElementById(
+            "newsGrid"
+        );
 
 
-/* FEATURED */
-
-if(activeFilter==="Alle"){
-
-const first=list[0];
-
-const featured=
-document.createElement("div");
-
-featured.className="featured";
-
-featured.onclick=
-()=>openArticle(first.id);
-
-featured.innerHTML=`
-
-${
-first.image_url
-?
-`
-<div class="featured-image">
-
-<img
-src="${escapeHTML(first.image_url)}"
-alt="">
-
-</div>
-`
-:""
-}
-
-<div class="featured-content">
-
-<div class="featured-label">
-● AKTUELL
-</div>
-
-<h2>
-${escapeHTML(first.title||"")}
-</h2>
-
-</div>
-
-`;
-
-grid.appendChild(featured);
-
-}
+    grid.innerHTML = "";
 
 
-/* CARDS */
+    if (!list.length) {
 
-list.forEach((item,index)=>{
+        grid.innerHTML = `
 
-if(
-activeFilter==="Alle" &&
-index===0
-){
-return;
-}
+            <div class="status-box">
 
-const card=
-document.createElement("article");
+                Noch keine Nachrichten vorhanden.
 
-card.className="news-card";
+            </div>
 
-card.onclick=
-()=>openArticle(item.id);
+        `;
 
-card.innerHTML=`
+        return;
 
-<div class="news-image">
+    }
 
-${
-item.image_url
-?
-`
-<img
-src="${escapeHTML(item.image_url)}"
-alt="">
-`
-:
-"n:"
-}
 
-</div>
+    if (
+        activeFilter === "Alle" &&
+        list.length > 0
+    ) {
 
-<div class="news-card-content">
+        const first =
+            list[0];
 
-<div class="news-meta">
 
-${escapeHTML(item.category||"")}
-·
-${escapeHTML(item.region||"")}
+        const featured =
+            document.createElement(
+                "div"
+            );
 
-</div>
 
-<h2>
-${escapeHTML(item.title||"")}
-</h2>
+        featured.className =
+            "featured";
 
-<p>
-${escapeHTML(item.description||"")}
-</p>
 
-</div>
+        featured.onclick =
+            () => openArticle(
+                first.id
+            );
 
-`;
 
-grid.appendChild(card);
+        featured.innerHTML = `
 
-});
+            <div class="featured-image">
+
+                ${getNewsImageHTML(first)}
+
+            </div>
+
+            <div class="featured-content">
+
+                <div class="featured-label">
+
+                    ● AKTUELL
+
+                </div>
+
+                <h2>
+
+                    ${escapeHTML(
+                        first.title
+                    )}
+
+                </h2>
+
+            </div>
+
+        `;
+
+
+        grid.appendChild(
+            featured
+        );
+
+    }
+
+
+    list.forEach(
+        (item,index) => {
+
+            if (
+                activeFilter === "Alle" &&
+                index === 0
+            ) {
+
+                return;
+
+            }
+
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+
+            card.className =
+                "news-card";
+
+
+            card.onclick =
+                () => openArticle(
+                    item.id
+                );
+
+
+            card.innerHTML = `
+
+                <div class="news-image">
+
+                    ${getNewsImageHTML(item)}
+
+                </div>
+
+
+                <div
+                    class="news-card-content">
+
+                    <div
+                        class="news-meta">
+
+                        ${escapeHTML(
+                            item.category || ""
+                        )}
+
+                        ·
+
+                        ${escapeHTML(
+                            item.region || ""
+                        )}
+
+                    </div>
+
+
+                    <h2>
+
+                        ${escapeHTML(
+                            item.title || ""
+                        )}
+
+                    </h2>
+
+
+                    <p>
+
+                        ${escapeHTML(
+                            item.description || ""
+                        )}
+
+                    </p>
+
+                </div>
+
+            `;
+
+
+            grid.appendChild(
+                card
+            );
+
+        }
+    );
 
 }
 
@@ -1022,34 +1749,62 @@ grid.appendChild(card);
    FILTER
 ===================================================== */
 
-function filterNews(category,button){
+function filterNews(
+    category,
+    button
+) {
 
-activeFilter=category;
+    activeFilter =
+        category;
 
-document
-.querySelectorAll(".filter")
-.forEach(
-x=>x.classList.remove("active")
-);
 
-button.classList.add("active");
+    document
+        .querySelectorAll(
+            ".filter"
+        )
+        .forEach(
+            x =>
+                x.classList.remove(
+                    "active"
+                )
+        );
 
-if(category==="Alle"){
 
-renderNews(articles);
+    button.classList.add(
+        "active"
+    );
 
-return;
 
-}
+    if (
+        category === "Alle"
+    ) {
 
-const filtered=
-articles.filter(
-item=>
-item.category===category ||
-item.region===category
-);
+        renderNews(
+            articles
+        );
 
-renderNews(filtered);
+        return;
+
+    }
+
+
+    const filtered =
+        articles.filter(
+            item =>
+
+                item.category ===
+                category
+
+                ||
+
+                item.region ===
+                category
+        );
+
+
+    renderNews(
+        filtered
+    );
 
 }
 
@@ -1058,78 +1813,109 @@ renderNews(filtered);
    SUCHE
 ===================================================== */
 
-function toggleSearch(){
+function toggleSearch() {
 
-const box=
-document.getElementById("searchBox");
-
-if(box.style.display==="block"){
-
-box.style.display="none";
-
-}else{
-
-box.style.display="block";
-
-document
-.getElementById("searchInput")
-.focus();
-
-}
-
-}
+    const box =
+        document.getElementById(
+            "searchBox"
+        );
 
 
-function searchNews(){
+    if (
+        box.style.display ===
+        "block"
+    ) {
 
-const value=
-document
-.getElementById("searchInput")
-.value
-.toLowerCase()
-.trim();
+        box.style.display =
+            "none";
 
-if(!value){
+    } else {
 
-renderNews(articles);
-return;
+        box.style.display =
+            "block";
+
+
+        document
+            .getElementById(
+                "searchInput"
+            )
+            .focus();
+
+    }
 
 }
 
-const results=
-articles.filter(item=>
 
-String(item.title||"")
-.toLowerCase()
-.includes(value)
+function searchNews() {
 
-||
+    const value =
+        document
+            .getElementById(
+                "searchInput"
+            )
+            .value
+            .toLowerCase()
+            .trim();
 
-String(item.description||"")
-.toLowerCase()
-.includes(value)
 
-||
+    if (!value) {
 
-String(item.content||"")
-.toLowerCase()
-.includes(value)
+        renderNews(
+            articles
+        );
 
-||
+        return;
 
-String(item.category||"")
-.toLowerCase()
-.includes(value)
+    }
 
-||
 
-String(item.region||"")
-.toLowerCase()
-.includes(value)
+    const results =
+        articles.filter(
+            item =>
 
-);
+                String(
+                    item.title || ""
+                )
+                .toLowerCase()
+                .includes(value)
 
-renderNews(results);
+                ||
+
+                String(
+                    item.description || ""
+                )
+                .toLowerCase()
+                .includes(value)
+
+                ||
+
+                String(
+                    item.content || ""
+                )
+                .toLowerCase()
+                .includes(value)
+
+                ||
+
+                String(
+                    item.category || ""
+                )
+                .toLowerCase()
+                .includes(value)
+
+                ||
+
+                String(
+                    item.region || ""
+                )
+                .toLowerCase()
+                .includes(value)
+        );
+
+
+    renderNews(
+        results
+    );
 
 }
 
@@ -1138,60 +1924,108 @@ renderNews(results);
    ARTIKEL ÖFFNEN
 ===================================================== */
 
-function openArticle(id){
+function openArticle(id) {
 
-const article=
-articles.find(
-x=>x.id===id
-);
+    const article =
+        articles.find(
+            x => x.id === id
+        );
 
-if(!article)return;
 
-document.getElementById("home")
-.style.display="none";
+    if (!article) {
 
-document.getElementById("admin")
-.style.display="none";
+        return;
 
-document.getElementById("article")
-.style.display="block";
+    }
 
-document.getElementById("articleMeta")
-.textContent=
-`${article.category||""} · ${article.region||""}`;
 
-document.getElementById("articleTitle")
-.textContent=
-article.title||"";
+    document
+        .getElementById(
+            "home"
+        )
+        .style.display =
+            "none";
 
-const imageBox=
-document.getElementById("articleImage");
 
-if(article.image_url){
+    document
+        .getElementById(
+            "admin"
+        )
+        .style.display =
+            "none";
 
-imageBox.innerHTML=`
 
-<img
-src="${escapeHTML(article.image_url)}"
-alt="Artikelbild">
+    document
+        .getElementById(
+            "article"
+        )
+        .style.display =
+            "block";
 
-`;
 
-}else{
+    document
+        .getElementById(
+            "articleMeta"
+        )
+        .textContent =
 
-imageBox.textContent="n:";
+        `${article.category || ""} · ${
+            article.region || ""
+        }`;
 
-}
 
-document.getElementById("articleText")
-.innerHTML=
-escapeHTML(article.content||"")
-.replace(/\n/g,"<br><br>");
+    document
+        .getElementById(
+            "articleTitle"
+        )
+        .textContent =
+            article.title || "";
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+
+    const imageBox =
+        document.getElementById(
+            "articleImage"
+        );
+
+
+    if (article.image_url) {
+
+        imageBox.innerHTML = `
+
+            <img
+                src="${escapeHTML(article.image_url)}"
+                alt="${escapeHTML(article.title || "Artikelbild")}"
+                onerror="this.parentElement.innerHTML='n:'">
+
+        `;
+
+    } else {
+
+        imageBox.innerHTML =
+            "n:";
+
+    }
+
+
+    document
+        .getElementById(
+            "articleText"
+        )
+        .innerHTML =
+
+        escapeHTML(
+            article.content || ""
+        )
+        .replace(
+            /\n/g,
+            "<br><br>"
+        );
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 }
 
@@ -1200,41 +2034,71 @@ behavior:"smooth"
    HOME
 ===================================================== */
 
-function showHome(){
+function showHome() {
 
-document.getElementById("article")
-.style.display="none";
+    document
+        .getElementById(
+            "article"
+        )
+        .style.display =
+            "none";
 
-document.getElementById("admin")
-.style.display="none";
 
-document.getElementById("home")
-.style.display="block";
+    document
+        .getElementById(
+            "admin"
+        )
+        .style.display =
+            "none";
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+
+    document
+        .getElementById(
+            "home"
+        )
+        .style.display =
+            "block";
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 }
 
 
 /* =====================================================
-   ADMIN
+   ADMIN ÖFFNEN
 ===================================================== */
 
-function openAdmin(){
+function openAdmin() {
 
-document.getElementById("home")
-.style.display="none";
+    document
+        .getElementById(
+            "home"
+        )
+        .style.display =
+            "none";
 
-document.getElementById("article")
-.style.display="none";
 
-document.getElementById("admin")
-.style.display="block";
+    document
+        .getElementById(
+            "article"
+        )
+        .style.display =
+            "none";
 
-checkSession();
+
+    document
+        .getElementById(
+            "admin"
+        )
+        .style.display =
+            "block";
+
+
+    checkSession();
 
 }
 
@@ -1243,99 +2107,137 @@ checkSession();
    LOGIN
 ===================================================== */
 
-async function login(){
+async function login() {
 
-const email=
-document.getElementById("email")
-.value
-.trim();
+    const email =
+        document
+            .getElementById(
+                "email"
+            )
+            .value
+            .trim();
 
-const password=
-document.getElementById("password")
-.value;
 
-const error=
-document.getElementById("loginError");
+    const password =
+        document
+            .getElementById(
+                "password"
+            )
+            .value;
 
-error.textContent="";
 
-if(!email||!password){
+    const error =
+        document
+            .getElementById(
+                "loginError"
+            );
 
-error.textContent=
-"Bitte E-Mail und Passwort eingeben.";
 
-return;
+    error.textContent = "";
 
-}
 
-try{
+    if (
+        !email ||
+        !password
+    ) {
 
-const response=
-await fetch(
+        error.textContent =
+            "Bitte E-Mail und Passwort eingeben.";
 
-`${SUPABASE_URL}/auth/v1/token?grant_type=password`,
+        return;
 
-{
-method:"POST",
+    }
 
-headers:{
-"apikey":SUPABASE_KEY,
-"Content-Type":"application/json"
-},
 
-body:JSON.stringify({
-email:email,
-password:password
-})
+    try {
 
-}
+        const response =
+            await fetch(
 
-);
+                `${SUPABASE_URL}/auth/v1/token?grant_type=password`,
 
-const text=
-await response.text();
+                {
 
-let data;
+                    method: "POST",
 
-try{
-data=JSON.parse(text);
-}catch{
-data={};
-}
+                    headers: {
 
-if(!response.ok){
+                        "apikey":
+                            SUPABASE_KEY,
 
-throw new Error(
-data.msg ||
-data.message ||
-"Login fehlgeschlagen."
-);
+                        "Content-Type":
+                            "application/json"
 
-}
+                    },
 
-sessionStorage.setItem(
-"nAccessToken",
-data.access_token
-);
+                    body:
+                        JSON.stringify({
 
-sessionStorage.setItem(
-"nUser",
-JSON.stringify(data.user)
-);
+                            email:
+                                email,
 
-showDashboard();
+                            password:
+                                password
 
-}catch(error){
+                        })
 
-console.error(error);
+                }
 
-errorMessage=
-document.getElementById("loginError");
+            );
 
-errorMessage.textContent=
-"❌ "+error.message;
 
-}
+        const data =
+            await response.json();
+
+
+        if (
+            !response.ok
+        ) {
+
+            throw new Error(
+
+                data.msg ||
+                data.message ||
+                "Login fehlgeschlagen."
+
+            );
+
+        }
+
+
+        sessionStorage.setItem(
+            "nAccessToken",
+            data.access_token
+        );
+
+
+        sessionStorage.setItem(
+            "nUser",
+            JSON.stringify(
+                data.user
+            )
+        );
+
+
+        showDashboard();
+
+
+    } catch (error) {
+
+        console.error(
+            error
+        );
+
+
+        document
+            .getElementById(
+                "loginError"
+            )
+            .textContent =
+                "❌ " +
+                error.message;
+
+    }
 
 }
 
@@ -1344,26 +2246,36 @@ errorMessage.textContent=
    SESSION
 ===================================================== */
 
-function checkSession(){
+function checkSession() {
 
-const token=
-sessionStorage.getItem(
-"nAccessToken"
-);
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
 
-if(token){
 
-showDashboard();
+    if (token) {
 
-}else{
+        showDashboard();
 
-document.getElementById("loginBox")
-.style.display="block";
+    } else {
 
-document.getElementById("dashboard")
-.style.display="none";
+        document
+            .getElementById(
+                "loginBox"
+            )
+            .style.display =
+                "block";
 
-}
+
+        document
+            .getElementById(
+                "dashboard"
+            )
+            .style.display =
+                "none";
+
+    }
 
 }
 
@@ -1372,15 +2284,25 @@ document.getElementById("dashboard")
    DASHBOARD
 ===================================================== */
 
-function showDashboard(){
+function showDashboard() {
 
-document.getElementById("loginBox")
-.style.display="none";
+    document
+        .getElementById(
+            "loginBox"
+        )
+        .style.display =
+            "none";
 
-document.getElementById("dashboard")
-.style.display="block";
 
-renderAdmin();
+    document
+        .getElementById(
+            "dashboard"
+        )
+        .style.display =
+            "block";
+
+
+    renderAdmin();
 
 }
 
@@ -1389,21 +2311,32 @@ renderAdmin();
    LOGOUT
 ===================================================== */
 
-function logout(){
+function logout() {
 
-sessionStorage.removeItem(
-"nAccessToken"
-);
+    sessionStorage.removeItem(
+        "nAccessToken"
+    );
 
-sessionStorage.removeItem(
-"nUser"
-);
 
-document.getElementById("dashboard")
-.style.display="none";
+    sessionStorage.removeItem(
+        "nUser"
+    );
 
-document.getElementById("loginBox")
-.style.display="block";
+
+    document
+        .getElementById(
+            "dashboard"
+        )
+        .style.display =
+            "none";
+
+
+    document
+        .getElementById(
+            "loginBox"
+        )
+        .style.display =
+            "block";
 
 }
 
@@ -1412,79 +2345,111 @@ document.getElementById("loginBox")
    ADMIN LISTE
 ===================================================== */
 
-function renderAdmin(){
+function renderAdmin() {
 
-const list=
-document.getElementById("adminList");
+    const list =
+        document.getElementById(
+            "adminList"
+        );
 
-list.innerHTML="";
 
-if(!articles.length){
+    list.innerHTML = "";
 
-list.innerHTML=`
 
-<div class="status-box">
-Noch keine Artikel.
-</div>
+    if (!articles.length) {
 
-`;
+        list.innerHTML = `
 
-return;
+            <div class="status-box">
 
-}
+                Noch keine Artikel.
 
-articles.forEach(article=>{
+            </div>
 
-const item=
-document.createElement("div");
+        `;
 
-item.className="admin-item";
+        return;
 
-item.innerHTML=`
+    }
 
-<div>
 
-<div class="admin-item-title">
+    articles.forEach(
+        article => {
 
-${escapeHTML(article.title||"")}
+            const item =
+                document.createElement(
+                    "div"
+                );
 
-</div>
 
-<small>
+            item.className =
+                "admin-item";
 
-${escapeHTML(article.category||"")}
-·
-${escapeHTML(article.region||"")}
 
-</small>
+            item.innerHTML = `
 
-</div>
+                <div>
 
-<div class="admin-actions">
+                    <div
+                        class="admin-item-title">
 
-<button
-class="small edit"
-onclick="editArticle(${article.id})">
+                        ${escapeHTML(
+                            article.title || ""
+                        )}
 
-Bearbeiten
+                    </div>
 
-</button>
 
-<button
-class="small delete"
-onclick="deleteArticle(${article.id})">
+                    <small>
 
-Löschen
+                        ${escapeHTML(
+                            article.category || ""
+                        )}
 
-</button>
+                        ·
 
-</div>
+                        ${escapeHTML(
+                            article.region || ""
+                        )}
 
-`;
+                    </small>
 
-list.appendChild(item);
+                </div>
 
-});
+
+                <div
+                    class="admin-actions">
+
+
+                    <button
+                        class="small edit"
+                        onclick="editArticle(${article.id})">
+
+                        Bearbeiten
+
+                    </button>
+
+
+                    <button
+                        class="small delete"
+                        onclick="deleteArticle(${article.id})">
+
+                        Löschen
+
+                    </button>
+
+
+                </div>
+
+            `;
+
+
+            list.appendChild(
+                item
+            );
+
+        }
+    );
 
 }
 
@@ -1493,401 +2458,707 @@ list.appendChild(item);
    ARTIKEL SPEICHERN
 ===================================================== */
 
-async function saveArticle(){
+async function saveArticle() {
 
-const title=
-document.getElementById("title")
-.value.trim();
+    const title =
+        document
+            .getElementById(
+                "title"
+            )
+            .value
+            .trim();
 
-const description=
-document.getElementById("description")
-.value.trim();
 
-const category=
-document.getElementById("category")
-.value;
+    const description =
+        document
+            .getElementById(
+                "description"
+            )
+            .value
+            .trim();
 
-const region=
-document.getElementById("region")
-.value.trim();
 
-const content=
-document.getElementById("content")
-.value.trim();
+    const category =
+        document
+            .getElementById(
+                "category"
+            )
+            .value;
 
-const imageInput=
-document.getElementById("imageFile");
 
-const file=
-imageInput.files[0];
+    const region =
+        document
+            .getElementById(
+                "region"
+            )
+            .value
+            .trim();
 
-const message=
-document.getElementById("formMessage");
 
-const saveButton=
-document.getElementById("saveButton");
+    const content =
+        document
+            .getElementById(
+                "content"
+            )
+            .value
+            .trim();
 
-message.className="";
-message.textContent="";
 
-if(
-!title||
-!description||
-!region||
-!content
-){
+    const imageFile =
+        document
+            .getElementById(
+                "imageFile"
+            )
+            .files[0];
 
-message.className="error";
 
-message.textContent=
-"Bitte alle Felder ausfüllen.";
+    const message =
+        document
+            .getElementById(
+                "formMessage"
+            );
 
-return;
 
-}
+    const saveButton =
+        document
+            .getElementById(
+                "saveButton"
+            );
 
-const token=
-sessionStorage.getItem(
-"nAccessToken"
-);
 
-if(!token){
+    if (
+        !title ||
+        !description ||
+        !region ||
+        !content
+    ) {
 
-message.className="error";
+        message.className =
+            "error";
 
-message.textContent=
-"Bitte erneut einloggen.";
 
-return;
+        message.textContent =
+            "Bitte alle Felder ausfüllen.";
 
-}
 
-try{
+        return;
 
-saveButton.disabled=true;
+    }
 
-saveButton.textContent=
-"⏳ Wird gespeichert...";
 
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
 
-/* BILD */
 
-let imageUrl=null;
+    if (!token) {
 
-if(file){
+        message.className =
+            "error";
 
-message.className="success";
 
-message.textContent=
-"🖼️ Bild wird hochgeladen...";
+        message.textContent =
+            "Bitte erneut einloggen.";
 
-imageUrl=
-await uploadImage(file);
 
-}
+        return;
 
+    }
 
-/* BEARBEITEN */
 
-if(editingId!==null){
+    try {
 
-const updateData={
-title:title,
-description:description,
-category:category,
-region:region,
-content:content
-};
+        saveButton.disabled =
+            true;
 
-if(imageUrl){
-updateData.image_url=imageUrl;
-}
 
-await supabaseRequest(
+        saveButton.textContent =
+            "⏳ Wird gespeichert...";
 
-`news?id=eq.${editingId}`,
 
-{
-method:"PATCH",
+        message.className =
+            "success";
 
-headers:{
-"Authorization":
-`Bearer ${token}`,
-"Prefer":
-"return=minimal"
-},
 
-body:
-JSON.stringify(updateData)
+        message.textContent =
+            "";
 
-}
 
-);
+        /*
+           ==========================================
+           1. BILD HOCHLADEN
+           ==========================================
+        */
 
-message.className="success";
+        let imageUrl =
+            editingImageUrl;
 
-message.textContent=
-"✅ Artikel aktualisiert.";
 
+        if (imageFile) {
 
-/* NEU */
+            message.textContent =
+                "🖼️ Bild wird hochgeladen...";
 
-}else{
 
-const articleData={
-title:title,
-description:description,
-category:category,
-region:region,
-content:content,
-image_url:imageUrl
-};
+            imageUrl =
+                await uploadImage(
+                    imageFile
+                );
 
-await supabaseRequest(
+        }
 
-"news",
 
-{
-method:"POST",
+        /*
+           ==========================================
+           2. ARTIKEL SPEICHERN
+           ==========================================
+        */
 
-headers:{
-"Authorization":
-`Bearer ${token}`,
-"Prefer":
-"return=minimal"
-},
+        if (
+            editingId !== null
+        ) {
 
-body:
-JSON.stringify(articleData)
+            await supabaseRequest(
 
-}
+                `news?id=eq.${editingId}`,
 
-);
+                {
 
-message.className="success";
+                    method:
+                        "PATCH",
 
-message.textContent=
-"📰 Artikel veröffentlicht.";
+                    headers: {
 
-}
+                        "Authorization":
+                            `Bearer ${token}`,
 
-clearForm();
+                        "Prefer":
+                            "return=minimal"
 
-await loadNews();
+                    },
 
-renderAdmin();
+                    body:
+                        JSON.stringify({
 
-}catch(error){
+                            title:
+                                title,
 
-console.error(error);
+                            description:
+                                description,
 
-message.className="error";
+                            category:
+                                category,
 
-message.textContent=
-"Fehler: "+error.message;
+                            region:
+                                region,
 
-}finally{
+                            content:
+                                content,
 
-saveButton.disabled=false;
+                            image_url:
+                                imageUrl
 
-if(editingId===null){
+                        })
 
-saveButton.textContent=
-"📰 Veröffentlichen";
+                }
 
-}
+            );
 
-}
 
-}
+            message.className =
+                "success";
 
 
-/* =====================================================
-   BEARBEITEN
-===================================================== */
+            message.textContent =
+                "✅ Artikel aktualisiert.";
 
-function editArticle(id){
+        } else {
 
-const article=
-articles.find(
-x=>x.id===id
-);
 
-if(!article)return;
+            await supabaseRequest(
 
-editingId=id;
+                "news",
 
-document.getElementById("formTitle")
-.textContent=
-"Artikel bearbeiten";
+                {
 
-document.getElementById("title")
-.value=
-article.title||"";
+                    method:
+                        "POST",
 
-document.getElementById("description")
-.value=
-article.description||"";
+                    headers: {
 
-document.getElementById("category")
-.value=
-article.category||"Deutschland";
+                        "Authorization":
+                            `Bearer ${token}`,
 
-document.getElementById("region")
-.value=
-article.region||"";
+                        "Prefer":
+                            "return=minimal"
 
-document.getElementById("content")
-.value=
-article.content||"";
+                    },
 
-document.getElementById("imageFile")
-.value="";
+                    body:
+                        JSON.stringify({
 
-if(article.image_url){
+                            title:
+                                title,
 
-document.getElementById("preview")
-.src=
-article.image_url;
+                            description:
+                                description,
 
-document.getElementById("imagePreview")
-.style.display=
-"block";
+                            category:
+                                category,
 
-}else{
+                            region:
+                                region,
 
-document.getElementById("imagePreview")
-.style.display=
-"none";
+                            content:
+                                content,
 
-}
+                            image_url:
+                                imageUrl
 
-document.getElementById("saveButton")
-.textContent=
-"Änderungen speichern";
+                        })
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+                }
 
-}
+            );
 
 
-/* =====================================================
-   LÖSCHEN
-===================================================== */
+            message.className =
+                "success";
 
-async function deleteArticle(id){
 
-const article=
-articles.find(
-x=>x.id===id
-);
+            message.textContent =
+                "📰 Artikel veröffentlicht.";
 
-if(!article)return;
+        }
 
-if(!confirm(
-`„${article.title}“ wirklich löschen?`
-))return;
 
-const token=
-sessionStorage.getItem(
-"nAccessToken"
-);
+        clearForm();
 
-try{
 
-await supabaseRequest(
+        await loadNews();
 
-`news?id=eq.${id}`,
 
-{
-method:"DELETE",
+        renderAdmin();
 
-headers:{
-"Authorization":
-`Bearer ${token}`
-}
-}
 
-);
+    } catch (error) {
 
-await loadNews();
+        console.error(
+            error
+        );
 
-renderAdmin();
 
-}catch(error){
+        message.className =
+            "error";
 
-console.error(error);
 
-alert(
-"Fehler beim Löschen:\n\n"+
-error.message
-);
+        message.textContent =
+            "Fehler: " +
+            error.message;
 
-}
+    } finally {
+
+        saveButton.disabled =
+            false;
+
+
+        if (
+            editingId !== null
+        ) {
+
+            saveButton.textContent =
+                "Änderungen speichern";
+
+        } else {
+
+            saveButton.textContent =
+                "📰 Veröffentlichen";
+
+        }
+
+    }
 
 }
 
 
 /* =====================================================
-   FORM RESET
+   ARTIKEL BEARBEITEN
 ===================================================== */
 
-function clearForm(){
+function editArticle(id) {
 
-editingId=null;
+    const article =
+        articles.find(
+            x => x.id === id
+        );
 
-document.getElementById("formTitle")
-.textContent=
-"Neuer Artikel";
 
-document.getElementById("title")
-.value="";
+    if (!article) {
 
-document.getElementById("description")
-.value="";
+        return;
 
-document.getElementById("category")
-.value=
-"Deutschland";
+    }
 
-document.getElementById("region")
-.value="";
 
-document.getElementById("content")
-.value="";
+    editingId =
+        id;
 
-document.getElementById("imageFile")
-.value="";
 
-document.getElementById("imagePreview")
-.style.display="none";
+    editingImageUrl =
+        article.image_url || null;
 
-document.getElementById("saveButton")
-.textContent=
-"📰 Veröffentlichen";
 
-document.getElementById("formMessage")
-.textContent="";
+    document
+        .getElementById(
+            "formTitle"
+        )
+        .textContent =
+            "Artikel bearbeiten";
+
+
+    document
+        .getElementById(
+            "title"
+        )
+        .value =
+            article.title || "";
+
+
+    document
+        .getElementById(
+            "description"
+        )
+        .value =
+            article.description || "";
+
+
+    document
+        .getElementById(
+            "category"
+        )
+        .value =
+            article.category || "Deutschland";
+
+
+    document
+        .getElementById(
+            "region"
+        )
+        .value =
+            article.region || "";
+
+
+    document
+        .getElementById(
+            "content"
+        )
+        .value =
+            article.content || "";
+
+
+    document
+        .getElementById(
+            "imageFile"
+        )
+        .value =
+            "";
+
+
+    const preview =
+        document.getElementById(
+            "imagePreview"
+        );
+
+
+    if (article.image_url) {
+
+        preview.src =
+            article.image_url;
+
+        preview.style.display =
+            "block";
+
+
+        document
+            .getElementById(
+                "currentImage"
+            )
+            .textContent =
+                "Aktuelles Bild – du kannst ein neues Bild auswählen.";
+
+    } else {
+
+        preview.style.display =
+            "none";
+
+
+        document
+            .getElementById(
+                "currentImage"
+            )
+            .textContent =
+                "";
+
+    }
+
+
+    document
+        .getElementById(
+            "saveButton"
+        )
+        .textContent =
+            "Änderungen speichern";
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 }
 
 
 /* =====================================================
-   HTML SICHERHEIT
+   ARTIKEL LÖSCHEN
 ===================================================== */
 
-function escapeHTML(value){
+async function deleteArticle(id) {
 
-return String(value??"")
+    const article =
+        articles.find(
+            x => x.id === id
+        );
 
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+
+    if (!article) {
+
+        return;
+
+    }
+
+
+    if (
+        !confirm(
+            `„${article.title}“ wirklich löschen?`
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
+
+
+    if (!token) {
+
+        alert(
+            "Bitte erneut einloggen."
+        );
+
+        return;
+
+    }
+
+
+    try {
+
+        await supabaseRequest(
+
+            `news?id=eq.${id}`,
+
+            {
+
+                method:
+                    "DELETE",
+
+                headers: {
+
+                    "Authorization":
+                        `Bearer ${token}`
+
+                }
+
+            }
+
+        );
+
+
+        await loadNews();
+
+
+        renderAdmin();
+
+
+    } catch (error) {
+
+        console.error(
+            error
+        );
+
+
+        alert(
+
+            "Fehler beim Löschen:\n\n" +
+            error.message
+
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   FORM ZURÜCKSETZEN
+===================================================== */
+
+function clearForm() {
+
+    editingId =
+        null;
+
+
+    editingImageUrl =
+        null;
+
+
+    document
+        .getElementById(
+            "formTitle"
+        )
+        .textContent =
+            "Neuer Artikel";
+
+
+    document
+        .getElementById(
+            "title"
+        )
+        .value =
+            "";
+
+
+    document
+        .getElementById(
+            "description"
+        )
+        .value =
+            "";
+
+
+    document
+        .getElementById(
+            "category"
+        )
+        .value =
+            "Deutschland";
+
+
+    document
+        .getElementById(
+            "region"
+        )
+        .value =
+            "";
+
+
+    document
+        .getElementById(
+            "content"
+        )
+        .value =
+            "";
+
+
+    document
+        .getElementById(
+            "imageFile"
+        )
+        .value =
+            "";
+
+
+    const preview =
+        document.getElementById(
+            "imagePreview"
+        );
+
+
+    preview.style.display =
+        "none";
+
+
+    preview.removeAttribute(
+        "src"
+    );
+
+
+    document
+        .getElementById(
+            "currentImage"
+        )
+        .textContent =
+            "";
+
+
+    document
+        .getElementById(
+            "saveButton"
+        )
+        .textContent =
+            "📰 Veröffentlichen";
+
+
+    document
+        .getElementById(
+            "formMessage"
+        )
+        .textContent =
+            "";
+
+}
+
+
+/* =====================================================
+   HTML SICHER AUSGEBEN
+===================================================== */
+
+function escapeHTML(value) {
+
+    return String(
+        value ?? ""
+    )
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
@@ -1900,5 +3171,7 @@ loadNews();
 
 </script>
 
+
 </body>
+
 </html>
