@@ -8,13 +8,14 @@
 
 <style>
 :root {
-    --bg: #f5f6f8;
+    --bg: #f4f5f7;
     --card: #ffffff;
     --text: #111318;
-    --muted: #747984;
-    --border: #e5e7eb;
-    --accent: #111318;
-    --danger: #e53935;
+    --muted: #737780;
+    --border: #e3e5e8;
+    --red: #e53935;
+    --blue: #2563eb;
+    --green: #16a34a;
 }
 
 * {
@@ -32,166 +33,223 @@ body {
     color: var(--text);
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 header {
     position: sticky;
     top: 0;
-    z-index: 100;
-    height: 70px;
-    background: rgba(255,255,255,0.94);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+
+    height: 72px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 32px;
+    padding: 0 30px;
+
+    background: rgba(255,255,255,.94);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid var(--border);
 }
 
 .logo {
-    font-size: 34px;
+    font-size: 37px;
     font-weight: 900;
-    letter-spacing: -3px;
+    letter-spacing: -4px;
     cursor: pointer;
-    user-select: none;
 }
 
-.header-right {
+.header-buttons {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
-.header-button {
+.icon-button {
+    width: 43px;
+    height: 43px;
+
     border: none;
-    background: transparent;
-    padding: 10px 14px;
     border-radius: 12px;
+
+    background: transparent;
+
     cursor: pointer;
-    font-size: 15px;
-}
 
-.header-button:hover {
-    background: #f0f1f3;
-}
-
-.search-button {
     font-size: 20px;
 }
 
-/* MAIN */
+.icon-button:hover {
+    background: #eef0f2;
+}
+
+/* =========================
+   MAIN
+========================= */
 
 main {
-    max-width: 1180px;
+    max-width: 1200px;
     margin: auto;
     padding: 45px 22px 80px;
 }
+
+/* =========================
+   HERO
+========================= */
 
 .hero {
     margin-bottom: 30px;
 }
 
-.hero small {
+.hero-small {
     color: var(--muted);
-    font-weight: bold;
+
+    font-size: 13px;
+    font-weight: 800;
+
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .hero h1 {
-    margin: 8px 0 5px;
-    font-size: clamp(38px, 6vw, 66px);
-    letter-spacing: -3px;
+    margin: 8px 0;
+
+    font-size: clamp(42px, 7vw, 72px);
+    line-height: .95;
+
+    letter-spacing: -4px;
 }
 
 .hero p {
     margin: 0;
+
     color: var(--muted);
+
     font-size: 18px;
 }
 
-/* FILTER */
+/* =========================
+   SEARCH
+========================= */
+
+.search-box {
+    display: none;
+
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    width: 100%;
+
+    padding: 15px 18px;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    background: white;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.search-box input:focus {
+    border-color: #999;
+}
+
+/* =========================
+   FILTER
+========================= */
 
 .filters {
     display: flex;
     gap: 8px;
+
     overflow-x: auto;
-    padding: 5px 0 18px;
+
+    padding: 5px 0 22px;
+
+    scrollbar-width: none;
+}
+
+.filters::-webkit-scrollbar {
+    display: none;
 }
 
 .filter {
-    white-space: nowrap;
-    border: 1px solid var(--border);
-    background: var(--card);
+    flex-shrink: 0;
+
     padding: 10px 16px;
+
     border-radius: 999px;
+
+    border: 1px solid var(--border);
+
+    background: white;
+
     cursor: pointer;
-    font-weight: 600;
+
+    font-weight: 700;
 }
 
 .filter:hover {
-    border-color: #aaa;
-}
-
-.filter.active {
-    background: var(--accent);
-    color: white;
-    border-color: var(--accent);
-}
-
-/* SEARCH */
-
-.search-area {
-    display: none;
-    margin-bottom: 25px;
-}
-
-.search-area input {
-    width: 100%;
-    padding: 15px 18px;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    font-size: 16px;
-    outline: none;
-    background: white;
-}
-
-.search-area input:focus {
     border-color: #999;
 }
 
-/* NEWS GRID */
+.filter.active {
+    background: var(--text);
+    color: white;
+    border-color: var(--text);
+}
+
+/* =========================
+   NEWS
+========================= */
 
 .news-grid {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 18px;
 }
 
 .news-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
     overflow: hidden;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
     cursor: pointer;
-    transition: transform .18s ease, box-shadow .18s ease;
+
+    transition: .18s;
 }
 
 .news-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0,0,0,.07);
+
+    box-shadow: 0 12px 30px rgba(0,0,0,.07);
 }
 
 .news-image {
     height: 180px;
-    background: linear-gradient(135deg,#dfe3e8,#f8f8f8);
+
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #9297a0;
-    font-weight: bold;
+
+    background: linear-gradient(135deg,#dfe3e8,#fafafa);
+
+    color: #999;
+
+    font-size: 34px;
+    font-weight: 900;
 }
 
 .news-content {
@@ -200,97 +258,131 @@ main {
 
 .news-meta {
     display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--muted);
-    font-size: 13px;
+    gap: 7px;
+
     margin-bottom: 10px;
+
+    color: var(--muted);
+
+    font-size: 13px;
 }
 
-.category {
+.news-category {
+    font-weight: 800;
     color: var(--text);
-    font-weight: bold;
 }
 
 .news-card h2 {
     margin: 0 0 10px;
+
     font-size: 22px;
     line-height: 1.15;
-    letter-spacing: -.5px;
 }
 
 .news-card p {
     margin: 0;
+
     color: var(--muted);
+
     line-height: 1.5;
 }
 
-/* BREAKING */
+/* =========================
+   BREAKING
+========================= */
 
 .breaking {
     grid-column: 1 / -1;
-    background: var(--card);
+
+    padding: 24px;
+
+    border-radius: 20px;
+
+    background: white;
+
     border: 1px solid var(--border);
-    border-left: 5px solid var(--danger);
-    border-radius: 18px;
-    padding: 20px 22px;
+    border-left: 5px solid var(--red);
+
     cursor: pointer;
 }
 
 .breaking-label {
-    color: var(--danger);
+    color: var(--red);
+
     font-size: 12px;
     font-weight: 900;
-    letter-spacing: 1px;
+
     text-transform: uppercase;
+    letter-spacing: 1px;
+
     margin-bottom: 8px;
 }
 
 .breaking h2 {
     margin: 0;
-    font-size: 27px;
+
+    font-size: clamp(26px,4vw,38px);
 }
 
-/* ARTICLE */
+/* =========================
+   ARTICLE
+========================= */
 
-.article-view {
+.article {
     display: none;
+
     max-width: 850px;
     margin: auto;
 }
 
-.back-button {
-    border: none;
-    background: white;
+.back {
+    margin-bottom: 25px;
+
+    padding: 10px 15px;
+
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 10px 15px;
+
+    background: white;
+
     cursor: pointer;
-    margin-bottom: 25px;
+
+    font-weight: 700;
 }
 
-.article-view .article-meta {
+.article-meta {
     color: var(--muted);
-    margin-bottom: 15px;
+
+    margin-bottom: 12px;
 }
 
-.article-view h1 {
-    font-size: clamp(38px, 6vw, 64px);
-    line-height: 1;
-    letter-spacing: -3px;
-    margin: 0 0 20px;
+.article h1 {
+    margin: 0 0 25px;
+
+    font-size: clamp(40px,7vw,70px);
+
+    line-height: .98;
+
+    letter-spacing: -4px;
 }
 
-.article-image {
-    height: 350px;
-    border-radius: 22px;
-    background: linear-gradient(135deg,#dfe3e8,#fafafa);
+.article-picture {
+    height: 360px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #9297a0;
-    font-weight: bold;
+
     margin-bottom: 30px;
+
+    border-radius: 22px;
+
+    background: linear-gradient(135deg,#dfe3e8,#fafafa);
+
+    color: #999;
+
+    font-size: 40px;
+    font-weight: 900;
 }
 
 .article-text {
@@ -298,40 +390,221 @@ main {
     line-height: 1.8;
 }
 
-/* EMPTY */
+/* =========================
+   ADMIN LOGIN
+========================= */
 
-.empty {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--muted);
-    grid-column: 1 / -1;
+.admin {
+    display: none;
+
+    max-width: 900px;
+    margin: auto;
 }
 
-/* FOOTER */
+.admin-login {
+    max-width: 430px;
+    margin: 70px auto;
+    padding: 30px;
 
-footer {
-    border-top: 1px solid var(--border);
-    padding: 30px 22px;
-    text-align: center;
-    color: var(--muted);
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 22px;
+}
+
+.admin-login h2 {
+    margin-top: 0;
+}
+
+.admin-login input,
+.admin-editor input,
+.admin-editor textarea,
+.admin-editor select {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    margin-top: 7px;
+    margin-bottom: 17px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: white;
+
+    font: inherit;
+
+    outline: none;
+}
+
+.admin-login input:focus,
+.admin-editor input:focus,
+.admin-editor textarea:focus {
+    border-color: #888;
+}
+
+.admin-button {
+    padding: 12px 17px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: var(--text);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: 800;
+}
+
+.admin-button:hover {
+    opacity: .85;
+}
+
+.admin-error {
+    color: var(--red);
+
+    margin-top: 12px;
+
     font-size: 14px;
 }
 
-/* MOBILE */
+/* =========================
+   ADMIN DASHBOARD
+========================= */
+
+.admin-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.admin-header h1 {
+    margin: 0;
+}
+
+.logout {
+    background: #eee;
+    color: #111;
+}
+
+.admin-editor {
+    padding: 25px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    margin-bottom: 25px;
+}
+
+.admin-editor textarea {
+    min-height: 230px;
+
+    resize: vertical;
+}
+
+.admin-editor button {
+    margin-right: 8px;
+}
+
+.article-list {
+    display: grid;
+    gap: 10px;
+}
+
+.admin-item {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 17px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 15px;
+}
+
+.admin-item-title {
+    font-weight: 800;
+}
+
+.admin-item-actions {
+    display: flex;
+    gap: 7px;
+}
+
+.small-button {
+    padding: 8px 11px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    background: #eee;
+
+    font-weight: 700;
+}
+
+.delete {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.edit {
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 30px 20px;
+
+    border-top: 1px solid var(--border);
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 850px) {
 
-    header {
-        padding: 0 18px;
-    }
-
     .news-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
     }
 
 }
 
 @media (max-width: 600px) {
+
+    header {
+        padding: 0 17px;
+    }
 
     main {
         padding: 32px 15px 60px;
@@ -349,31 +622,58 @@ footer {
         letter-spacing: -2px;
     }
 
-    .header-button {
-        padding: 8px;
+    .article h1 {
+        letter-spacing: -2px;
     }
 
-    .article-image {
+    .article-picture {
         height: 230px;
     }
+
+    .admin-item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
 }
 </style>
 </head>
 
+
 <body>
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
-    <div class="logo" onclick="goHome()">n:</div>
+    <div
+        class="logo"
+        onclick="showHome()"
+        title="Startseite"
+    >
+        n:
+    </div>
 
-    <div class="header-right">
-        <button class="header-button search-button" onclick="toggleSearch()">
+    <div class="header-buttons">
+
+        <button
+            class="icon-button"
+            onclick="toggleSearch()"
+            title="Suche"
+        >
             🔎
         </button>
 
-        <button class="header-button" onclick="showRegionMenu()">
-            DE ▾
+        <button
+            class="icon-button"
+            onclick="openAdmin()"
+            title="Redaktion"
+        >
+            🔐
         </button>
+
     </div>
 
 </header>
@@ -381,106 +681,318 @@ footer {
 
 <main>
 
-    <!-- STARTSEITE -->
+<!-- =========================
+     HOME
+========================= -->
 
-    <section id="home">
+<section id="home">
 
-        <div class="hero">
+    <div class="hero">
 
-            <small>n: Nachrichten</small>
-
-            <h1>Was gerade passiert.</h1>
-
-            <p>
-                Aktuelle Nachrichten. Einfach und direkt.
-            </p>
-
+        <div class="hero-small">
+            n: Nachrichten
         </div>
 
+        <h1>
+            Was gerade passiert.
+        </h1>
 
-        <div class="search-area" id="searchArea">
+        <p>
+            Aktuelle Nachrichten. Einfach und direkt.
+        </p>
 
-            <input
-                id="searchInput"
-                type="text"
-                placeholder="Nachrichten durchsuchen..."
-                oninput="searchNews()"
-            >
-
-        </div>
+    </div>
 
 
-        <div class="filters">
+    <div
+        class="search-box"
+        id="searchBox"
+    >
 
-            <button
-                class="filter active"
-                onclick="setCategory('Alle', this)"
-            >
-                Alle
-            </button>
+        <input
+            id="searchInput"
+            type="text"
+            placeholder="Nachrichten durchsuchen..."
+            oninput="searchNews()"
+        >
 
-            <button
-                class="filter"
-                onclick="setCategory('Deutschland', this)"
-            >
-                🇩🇪 Deutschland
-            </button>
-
-            <button
-                class="filter"
-                onclick="setCategory('Welt', this)"
-            >
-                🌍 Welt
-            </button>
-
-            <button
-                class="filter"
-                onclick="setCategory('Region', this)"
-            >
-                📍 Region
-            </button>
-
-            <button
-                class="filter"
-                onclick="setCategory('Sport', this)"
-            >
-                ⚽ Sport
-            </button>
-
-            <button
-                class="filter"
-                onclick="setCategory('Digital', this)"
-            >
-                💻 Digital
-            </button>
-
-        </div>
+    </div>
 
 
-        <div class="news-grid" id="newsGrid"></div>
+    <div class="filters">
 
-    </section>
-
-
-    <!-- ARTIKEL -->
-
-    <section id="articleView" class="article-view">
-
-        <button class="back-button" onclick="goHome()">
-            ← Zurück
+        <button
+            class="filter active"
+            onclick="filterNews('Alle',this)"
+        >
+            Alle
         </button>
 
-        <div class="article-meta" id="articleMeta"></div>
+        <button
+            class="filter"
+            onclick="filterNews('Deutschland',this)"
+        >
+            🇩🇪 Deutschland
+        </button>
 
-        <h1 id="articleTitle"></h1>
+        <button
+            class="filter"
+            onclick="filterNews('Welt',this)"
+        >
+            🌍 Welt
+        </button>
 
-        <div class="article-image">
-            n:
+        <button
+            class="filter"
+            onclick="filterNews('Region',this)"
+        >
+            📍 Region
+        </button>
+
+        <button
+            class="filter"
+            onclick="filterNews('Sport',this)"
+        >
+            ⚽ Sport
+        </button>
+
+        <button
+            class="filter"
+            onclick="filterNews('Digital',this)"
+        >
+            💻 Digital
+        </button>
+
+    </div>
+
+
+    <div
+        class="news-grid"
+        id="newsGrid"
+    ></div>
+
+</section>
+
+
+<!-- =========================
+     ARTICLE
+========================= -->
+
+<section
+    class="article"
+    id="article"
+>
+
+    <button
+        class="back"
+        onclick="showHome()"
+    >
+        ← Zurück
+    </button>
+
+    <div
+        class="article-meta"
+        id="articleMeta"
+    ></div>
+
+    <h1
+        id="articleTitle"
+    ></h1>
+
+    <div class="article-picture">
+        n:
+    </div>
+
+    <div
+        class="article-text"
+        id="articleText"
+    ></div>
+
+</section>
+
+
+<!-- =========================
+     ADMIN
+========================= -->
+
+<section
+    class="admin"
+    id="admin"
+>
+
+    <!-- LOGIN -->
+
+    <div
+        class="admin-login"
+        id="adminLogin"
+    >
+
+        <h2>
+            🔐 Redaktion
+        </h2>
+
+        <p>
+            Nur für die Redaktion von n:
+        </p>
+
+        <input
+            type="password"
+            id="passwordInput"
+            placeholder="Passwort"
+            onkeydown="if(event.key==='Enter') login()"
+        >
+
+        <button
+            class="admin-button"
+            onclick="login()"
+        >
+            Einloggen
+        </button>
+
+        <div
+            class="admin-error"
+            id="loginError"
+        ></div>
+
+    </div>
+
+
+    <!-- DASHBOARD -->
+
+    <div
+        id="adminDashboard"
+        style="display:none"
+    >
+
+        <div class="admin-header">
+
+            <h1>
+                Redaktion
+            </h1>
+
+            <button
+                class="admin-button logout"
+                onclick="logout()"
+            >
+                Ausloggen
+            </button>
+
         </div>
 
-        <div class="article-text" id="articleText"></div>
 
-    </section>
+        <!-- EDITOR -->
+
+        <div class="admin-editor">
+
+            <h2 id="editorHeading">
+                Neuer Artikel
+            </h2>
+
+
+            <label>
+                Überschrift
+            </label>
+
+            <input
+                id="titleInput"
+                type="text"
+                placeholder="Überschrift des Artikels"
+            >
+
+
+            <label>
+                Kurzbeschreibung
+            </label>
+
+            <input
+                id="descriptionInput"
+                type="text"
+                placeholder="Kurze Beschreibung"
+            >
+
+
+            <label>
+                Kategorie
+            </label>
+
+            <select id="categoryInput">
+
+                <option>
+                    Deutschland
+                </option>
+
+                <option>
+                    Welt
+                </option>
+
+                <option>
+                    Region
+                </option>
+
+                <option>
+                    Sport
+                </option>
+
+                <option>
+                    Digital
+                </option>
+
+            </select>
+
+
+            <label>
+                Region
+            </label>
+
+            <input
+                id="regionInput"
+                type="text"
+                placeholder="z. B. Hessen"
+            >
+
+
+            <label>
+                Artikeltext
+            </label>
+
+            <textarea
+                id="textInput"
+                placeholder="Schreibe hier deinen vollständigen Artikel..."
+            ></textarea>
+
+
+            <button
+                class="admin-button"
+                onclick="saveArticle()"
+            >
+                📰 Veröffentlichen
+            </button>
+
+            <button
+                class="admin-button"
+                onclick="clearEditor()"
+                style="background:#eee;color:#111"
+            >
+                Abbrechen
+            </button>
+
+        </div>
+
+
+        <!-- ARTICLE LIST -->
+
+        <h2>
+            Deine Artikel
+        </h2>
+
+        <div
+            class="article-list"
+            id="adminArticleList"
+        ></div>
+
+    </div>
+
+</section>
 
 </main>
 
@@ -494,80 +1006,87 @@ footer {
 
 <script>
 
-/*
-==================================================
-DEMO-ARTIKEL
-Später kommen diese automatisch aus Supabase.
-==================================================
-*/
+/* =========================================================
+   🔐 PASSWORT
 
-const news = [
+   HIER KANNST DU DAS PASSWORT ÄNDERN.
+========================================================= */
+
+const ADMIN_PASSWORD = "nnews2026";
+
+
+/* =========================================================
+   ARTIKEL AUS LOCAL STORAGE LADEN
+========================================================= */
+
+let news = JSON.parse(
+    localStorage.getItem("nNewsArticles")
+) || [
 
     {
         id: 1,
-        title: "Neue Entwicklungen in Deutschland",
-        description: "Das sind die wichtigsten aktuellen Entwicklungen des Tages.",
-        category: "Deutschland",
-        region: "Deutschland",
-        date: "Heute · 10:32",
-        text: `
-            Hier steht später der vollständige Artikel.
 
-            Dieser Bereich wird über das Redaktionssystem automatisch
-            mit dem veröffentlichten Artikel gefüllt.
+        title:
+            "Willkommen bei n:",
 
-            Du musst dann nicht mehr in diesem Code arbeiten.
-        `
+        description:
+            "Das ist die erste Nachricht auf unserer neuen Newsseite.",
+
+        category:
+            "Deutschland",
+
+        region:
+            "Deutschland",
+
+        date:
+            "Heute · 10:32",
+
+        text:
+            "Willkommen bei n:. Hier entsteht eine moderne, einfache und übersichtliche Nachrichtenplattform. Diese Nachricht ist zunächst ein Beispielartikel."
     },
 
     {
         id: 2,
-        title: "Was heute weltweit wichtig ist",
-        description: "Ein Überblick über aktuelle Ereignisse aus aller Welt.",
-        category: "Welt",
-        region: "Welt",
-        date: "Heute · 09:48",
-        text: `
-            Hier steht später der vollständige Nachrichtenartikel.
 
-            Die endgültige Version wird vom Admin-System geladen.
-        `
+        title:
+            "Was heute weltweit wichtig ist",
+
+        description:
+            "Ein Überblick über aktuelle Ereignisse aus aller Welt.",
+
+        category:
+            "Welt",
+
+        region:
+            "Welt",
+
+        date:
+            "Heute · 09:45",
+
+        text:
+            "Hier steht der vollständige Artikeltext. Später kannst du solche Artikel selbst über den Redaktionsbereich erstellen."
     },
 
     {
         id: 3,
-        title: "Neue Technik sorgt für Aufmerksamkeit",
-        description: "Digitales und Technik kompakt zusammengefasst.",
-        category: "Digital",
-        region: "Deutschland",
-        date: "Heute · 08:21",
-        text: `
-            Hier könnte später ein eigener Digital-Artikel stehen.
-        `
-    },
 
-    {
-        id: 4,
-        title: "Das ist heute im Sport passiert",
-        description: "Die wichtigsten Sportnachrichten des Tages.",
-        category: "Sport",
-        region: "Deutschland",
-        date: "Gestern · 21:12",
-        text: `
-            Hier könnte später ein ausführlicher Sportartikel stehen.
-        `
-    },
+        title:
+            "Neue Entwicklungen im digitalen Bereich",
 
-    {
-        id: 5,
-        title: "Nachrichten aus der Region",
-        description: "Aktuelles aus deiner Umgebung.",
-        category: "Region",
-        region: "Hessen",
-        date: "Gestern · 18:40",
-        text: `
-            Später können hier regionale Nachrichten angezeigt werden.
-        `
+        description:
+            "Technik und digitale Themen kompakt zusammengefasst.",
+
+        category:
+            "Digital",
+
+        region:
+            "Deutschland",
+
+        date:
+            "Heute · 08:21",
+
+        text:
+            "Hier steht ein Beispielartikel über digitale Entwicklungen."
     }
 
 ];
@@ -575,16 +1094,31 @@ const news = [
 
 let currentCategory = "Alle";
 
+let editingId = null;
 
-/*
-==================================================
-NEWS ANZEIGEN
-==================================================
-*/
+
+/* =========================================================
+   SPEICHERN
+========================================================= */
+
+function saveNews() {
+
+    localStorage.setItem(
+        "nNewsArticles",
+        JSON.stringify(news)
+    );
+
+}
+
+
+/* =========================================================
+   NEWS ANZEIGEN
+========================================================= */
 
 function renderNews(list = news) {
 
-    const grid = document.getElementById("newsGrid");
+    const grid =
+        document.getElementById("newsGrid");
 
     grid.innerHTML = "";
 
@@ -601,47 +1135,60 @@ function renderNews(list = news) {
     }
 
 
-    /*
-    BREAKING NEWS
-    */
+    /* AKTUELL */
 
-    if (currentCategory === "Alle" && list.length > 0) {
+    if (
+        currentCategory === "Alle" &&
+        list.length > 0
+    ) {
 
-        const breaking = list[0];
+        const first = list[0];
 
-        const breakingElement = document.createElement("div");
+        const breaking =
+            document.createElement("div");
 
-        breakingElement.className = "breaking";
+        breaking.className = "breaking";
 
-        breakingElement.onclick = () => openArticle(breaking.id);
+        breaking.onclick =
+            () => openArticle(first.id);
 
-        breakingElement.innerHTML = `
+        breaking.innerHTML = `
+
             <div class="breaking-label">
                 ● Aktuell
             </div>
 
-            <h2>${breaking.title}</h2>
+            <h2>
+                ${escapeHTML(first.title)}
+            </h2>
+
         `;
 
-        grid.appendChild(breakingElement);
+        grid.appendChild(breaking);
+
     }
 
 
-    /*
-    NORMALE KARTEN
-    */
+    /* KARTEN */
 
-    list.forEach((item, index) => {
+    list.forEach((item,index) => {
 
-        if (currentCategory === "Alle" && index === 0) {
+        if (
+            currentCategory === "Alle" &&
+            index === 0
+        ) {
             return;
         }
 
-        const card = document.createElement("article");
+
+        const card =
+            document.createElement("article");
 
         card.className = "news-card";
 
-        card.onclick = () => openArticle(item.id);
+        card.onclick =
+            () => openArticle(item.id);
+
 
         card.innerHTML = `
 
@@ -653,27 +1200,28 @@ function renderNews(list = news) {
 
                 <div class="news-meta">
 
-                    <span class="category">
-                        ${item.category}
+                    <span class="news-category">
+                        ${escapeHTML(item.category)}
                     </span>
 
                     ·
 
                     <span>
-                        ${item.date}
+                        ${escapeHTML(item.date)}
                     </span>
 
                 </div>
 
                 <h2>
-                    ${item.title}
+                    ${escapeHTML(item.title)}
                 </h2>
 
                 <p>
-                    ${item.description}
+                    ${escapeHTML(item.description)}
                 </p>
 
             </div>
+
         `;
 
         grid.appendChild(card);
@@ -683,20 +1231,20 @@ function renderNews(list = news) {
 }
 
 
-/*
-==================================================
-KATEGORIE
-==================================================
-*/
+/* =========================================================
+   FILTER
+========================================================= */
 
-function setCategory(category, button) {
+function filterNews(category,button) {
 
     currentCategory = category;
 
 
     document
         .querySelectorAll(".filter")
-        .forEach(btn => btn.classList.remove("active"));
+        .forEach(btn =>
+            btn.classList.remove("active")
+        );
 
 
     button.classList.add("active");
@@ -710,37 +1258,39 @@ function setCategory(category, button) {
     }
 
 
-    const filtered = news.filter(item => {
-
-        return item.category === category ||
-               item.region === category;
-
-    });
+    const filtered =
+        news.filter(item =>
+            item.category === category ||
+            item.region === category
+        );
 
 
     renderNews(filtered);
+
 }
 
 
-/*
-==================================================
-SUCHE
-==================================================
-*/
+/* =========================================================
+   SUCHE
+========================================================= */
 
 function toggleSearch() {
 
-    const area = document.getElementById("searchArea");
+    const box =
+        document.getElementById("searchBox");
 
-    if (area.style.display === "block") {
 
-        area.style.display = "none";
+    if (box.style.display === "block") {
+
+        box.style.display = "none";
 
     } else {
 
-        area.style.display = "block";
+        box.style.display = "block";
 
-        document.getElementById("searchInput").focus();
+        document
+            .getElementById("searchInput")
+            .focus();
 
     }
 
@@ -756,119 +1306,458 @@ function searchNews() {
         .toLowerCase();
 
 
-    const results = news.filter(item => {
+    const results =
+        news.filter(item =>
 
-        return (
-            item.title.toLowerCase().includes(value) ||
-            item.description.toLowerCase().includes(value) ||
-            item.category.toLowerCase().includes(value)
+            item.title
+                .toLowerCase()
+                .includes(value)
+
+            ||
+
+            item.description
+                .toLowerCase()
+                .includes(value)
+
+            ||
+
+            item.category
+                .toLowerCase()
+                .includes(value)
+
+            ||
+
+            item.region
+                .toLowerCase()
+                .includes(value)
+
         );
-
-    });
 
 
     renderNews(results);
+
 }
 
 
-/*
-==================================================
-ARTIKEL ÖFFNEN
-==================================================
-*/
+/* =========================================================
+   ARTIKEL ÖFFNEN
+========================================================= */
 
 function openArticle(id) {
 
+    const item =
+        news.find(article =>
+            article.id === id
+        );
+
+
+    if (!item) return;
+
+
+    document
+        .getElementById("home")
+        .style.display = "none";
+
+
+    document
+        .getElementById("admin")
+        .style.display = "none";
+
+
+    document
+        .getElementById("article")
+        .style.display = "block";
+
+
+    document
+        .getElementById("articleMeta")
+        .textContent =
+            `${item.category} · ${item.region} · ${item.date}`;
+
+
+    document
+        .getElementById("articleTitle")
+        .textContent =
+            item.title;
+
+
+    document
+        .getElementById("articleText")
+        .innerHTML =
+            escapeHTML(item.text)
+                .replace(/\n/g,"<br><br>");
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+function showHome() {
+
+    document
+        .getElementById("article")
+        .style.display = "none";
+
+
+    document
+        .getElementById("admin")
+        .style.display = "none";
+
+
+    document
+        .getElementById("home")
+        .style.display = "block";
+
+
+    renderNews(news);
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================================
+   ADMIN ÖFFNEN
+========================================================= */
+
+function openAdmin() {
+
+    document
+        .getElementById("home")
+        .style.display = "none";
+
+
+    document
+        .getElementById("article")
+        .style.display = "none";
+
+
+    document
+        .getElementById("admin")
+        .style.display = "block";
+
+
+    const loggedIn =
+        sessionStorage.getItem("nAdminLoggedIn");
+
+
+    if (loggedIn === "true") {
+
+        showDashboard();
+
+    } else {
+
+        document
+            .getElementById("adminLogin")
+            .style.display = "block";
+
+        document
+            .getElementById("adminDashboard")
+            .style.display = "none";
+
+    }
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+function login() {
+
+    const password =
+        document
+        .getElementById("passwordInput")
+        .value;
+
+
+    if (password === ADMIN_PASSWORD) {
+
+        sessionStorage.setItem(
+            "nAdminLoggedIn",
+            "true"
+        );
+
+
+        document
+            .getElementById("loginError")
+            .textContent = "";
+
+
+        document
+            .getElementById("passwordInput")
+            .value = "";
+
+
+        showDashboard();
+
+    } else {
+
+        document
+            .getElementById("loginError")
+            .textContent =
+                "❌ Falsches Passwort.";
+
+    }
+
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+function showDashboard() {
+
+    document
+        .getElementById("adminLogin")
+        .style.display = "none";
+
+
+    document
+        .getElementById("adminDashboard")
+        .style.display = "block";
+
+
+    renderAdminArticles();
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+function logout() {
+
+    sessionStorage.removeItem(
+        "nAdminLoggedIn"
+    );
+
+
+    clearEditor();
+
+
+    document
+        .getElementById("adminDashboard")
+        .style.display = "none";
+
+
+    document
+        .getElementById("adminLogin")
+        .style.display = "block";
+
+}
+
+
+/* =========================================================
+   ARTIKEL SPEICHERN
+========================================================= */
+
+function saveArticle() {
+
+    const title =
+        document
+        .getElementById("titleInput")
+        .value
+        .trim();
+
+
+    const description =
+        document
+        .getElementById("descriptionInput")
+        .value
+        .trim();
+
+
+    const category =
+        document
+        .getElementById("categoryInput")
+        .value;
+
+
+    const region =
+        document
+        .getElementById("regionInput")
+        .value
+        .trim();
+
+
+    const text =
+        document
+        .getElementById("textInput")
+        .value
+        .trim();
+
+
+    if (
+        !title ||
+        !description ||
+        !region ||
+        !text
+    ) {
+
+        alert(
+            "Bitte fülle alle Felder aus."
+        );
+
+        return;
+    }
+
+
+    if (editingId !== null) {
+
+        const article =
+            news.find(item =>
+                item.id === editingId
+            );
+
+
+        if (article) {
+
+            article.title =
+                title;
+
+            article.description =
+                description;
+
+            article.category =
+                category;
+
+            article.region =
+                region;
+
+            article.text =
+                text;
+
+        }
+
+    } else {
+
+        news.unshift({
+
+            id:
+                Date.now(),
+
+            title:
+                title,
+
+            description:
+                description,
+
+            category:
+                category,
+
+            region:
+                region,
+
+            date:
+                "Heute · " +
+                new Date().toLocaleTimeString(
+                    "de-DE",
+                    {
+                        hour: "2-digit",
+                        minute: "2-digit"
+                    }
+                ),
+
+            text:
+                text
+
+        });
+
+    }
+
+
+    saveNews();
+
+
+    clearEditor();
+
+
+    renderAdminArticles();
+
+
+    alert(
+        editingId === null
+            ? "Artikel veröffentlicht!"
+            : "Artikel aktualisiert!"
+    );
+
+}
+
+
+/* =========================================================
+   ARTIKEL BEARBEITEN
+========================================================= */
+
+function editArticle(id) {
+
     const article =
-        news.find(item => item.id === id);
+        news.find(item =>
+            item.id === id
+        );
 
 
     if (!article) return;
 
 
-    document.getElementById("home").style.display = "none";
-
-    document.getElementById("articleView").style.display = "block";
+    editingId = id;
 
 
-    document.getElementById("articleMeta").innerHTML =
-        `${article.category} · ${article.date}`;
+    document
+        .getElementById("editorHeading")
+        .textContent =
+            "Artikel bearbeiten";
 
 
-    document.getElementById("articleTitle").textContent =
-        article.title;
+    document
+        .getElementById("titleInput")
+        .value =
+            article.title;
 
 
-    document.getElementById("articleText").innerHTML =
-        article.text.replace(/\n/g, "<br><br>");
+    document
+        .getElementById("descriptionInput")
+        .value =
+            article.description;
 
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-}
+    document
+        .getElementById("categoryInput")
+        .value =
+            article.category;
 
 
-/*
-==================================================
-HOME
-==================================================
-*/
-
-function goHome() {
-
-    document.getElementById("articleView").style.display = "none";
-
-    document.getElementById("home").style.display = "block";
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-}
+    document
+        .getElementById("regionInput")
+        .value =
+            article.region;
 
 
-/*
-==================================================
-REGION
-==================================================
-*/
-
-function showRegionMenu() {
-
-    const region = prompt(
-        "Welche Region möchtest du sehen?\n\n" +
-        "Deutschland\n" +
-        "Hessen\n" +
-        "Bayern\n" +
-        "NRW\n" +
-        "Berlin"
-    );
-
-
-    if (!region) return;
-
-
-    const normalized = region.trim();
-
-
-    const results = news.filter(item =>
-        item.region.toLowerCase() === normalized.toLowerCase()
-    );
-
-
-    currentCategory = normalized;
-
-
-    document.getElementById("home").style.display = "block";
-
-    document.getElementById("articleView").style.display = "none";
-
-
-    renderNews(results);
+    document
+        .getElementById("textInput")
+        .value =
+            article.text;
 
 
     window.scrollTo({
@@ -879,11 +1768,194 @@ function showRegionMenu() {
 }
 
 
-/*
-==================================================
-START
-==================================================
-*/
+/* =========================================================
+   ARTIKEL LÖSCHEN
+========================================================= */
+
+function deleteArticle(id) {
+
+    const article =
+        news.find(item =>
+            item.id === id
+        );
+
+
+    if (!article) return;
+
+
+    const confirmed =
+        confirm(
+            `Artikel "${article.title}" wirklich löschen?`
+        );
+
+
+    if (!confirmed) return;
+
+
+    news =
+        news.filter(item =>
+            item.id !== id
+        );
+
+
+    saveNews();
+
+
+    renderAdminArticles();
+
+
+    renderNews(news);
+
+}
+
+
+/* =========================================================
+   EDITOR LEEREN
+========================================================= */
+
+function clearEditor() {
+
+    editingId = null;
+
+
+    document
+        .getElementById("editorHeading")
+        .textContent =
+            "Neuer Artikel";
+
+
+    document
+        .getElementById("titleInput")
+        .value = "";
+
+
+    document
+        .getElementById("descriptionInput")
+        .value = "";
+
+
+    document
+        .getElementById("categoryInput")
+        .value =
+            "Deutschland";
+
+
+    document
+        .getElementById("regionInput")
+        .value = "";
+
+
+    document
+        .getElementById("textInput")
+        .value = "";
+
+}
+
+
+/* =========================================================
+   ADMIN ARTIKELLISTE
+========================================================= */
+
+function renderAdminArticles() {
+
+    const container =
+        document
+        .getElementById("adminArticleList");
+
+
+    container.innerHTML = "";
+
+
+    if (news.length === 0) {
+
+        container.innerHTML = `
+            <div class="admin-item">
+                Noch keine Artikel vorhanden.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    news.forEach(item => {
+
+        const row =
+            document.createElement("div");
+
+
+        row.className =
+            "admin-item";
+
+
+        row.innerHTML = `
+
+            <div>
+
+                <div class="admin-item-title">
+                    ${escapeHTML(item.title)}
+                </div>
+
+                <small>
+                    ${escapeHTML(item.category)}
+                    ·
+                    ${escapeHTML(item.date)}
+                </small>
+
+            </div>
+
+            <div class="admin-item-actions">
+
+                <button
+                    class="small-button edit"
+                    onclick="editArticle(${item.id})"
+                >
+                    Bearbeiten
+                </button>
+
+                <button
+                    class="small-button delete"
+                    onclick="deleteArticle(${item.id})"
+                >
+                    Löschen
+                </button>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(row);
+
+    });
+
+}
+
+
+/* =========================================================
+   SICHERER TEXT
+========================================================= */
+
+function escapeHTML(text) {
+
+    return String(text)
+
+        .replace(/&/g,"&amp;")
+
+        .replace(/</g,"&lt;")
+
+        .replace(/>/g,"&gt;")
+
+        .replace(/"/g,"&quot;")
+
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================================
+   START
+========================================================= */
 
 renderNews();
 
