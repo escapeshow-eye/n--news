@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>n: – Nachrichten</title>
+
+<style>
+:root {
+    --bg: #f5f6f8;
+    --card: #ffffff;
+    --text: #111318;
+    --muted: #747984;
+    --border: #e5e7eb;
+    --accent: #111318;
+    --danger: #e53935;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* HEADER */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 70px;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 32px;
+}
+
+.logo {
+    font-size: 34px;
+    font-weight: 900;
+    letter-spacing: -3px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-button {
+    border: none;
+    background: transparent;
+    padding: 10px 14px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.header-button:hover {
+    background: #f0f1f3;
+}
+
+.search-button {
+    font-size: 20px;
+}
+
+/* MAIN */
+
+main {
+    max-width: 1180px;
+    margin: auto;
+    padding: 45px 22px 80px;
+}
+
+.hero {
+    margin-bottom: 30px;
+}
+
+.hero small {
+    color: var(--muted);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    margin: 8px 0 5px;
+    font-size: clamp(38px, 6vw, 66px);
+    letter-spacing: -3px;
+}
+
+.hero p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 18px;
+}
+
+/* FILTER */
+
+.filters {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 5px 0 18px;
+}
+
+.filter {
+    white-space: nowrap;
+    border: 1px solid var(--border);
+    background: var(--card);
+    padding: 10px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.filter:hover {
+    border-color: #aaa;
+}
+
+.filter.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+/* SEARCH */
+
+.search-area {
+    display: none;
+    margin-bottom: 25px;
+}
+
+.search-area input {
+    width: 100%;
+    padding: 15px 18px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    font-size: 16px;
+    outline: none;
+    background: white;
+}
+
+.search-area input:focus {
+    border-color: #999;
+}
+
+/* NEWS GRID */
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.news-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,.07);
+}
+
+.news-image {
+    height: 180px;
+    background: linear-gradient(135deg,#dfe3e8,#f8f8f8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9297a0;
+    font-weight: bold;
+}
+
+.news-content {
+    padding: 20px;
+}
+
+.news-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.category {
+    color: var(--text);
+    font-weight: bold;
+}
+
+.news-card h2 {
+    margin: 0 0 10px;
+    font-size: 22px;
+    line-height: 1.15;
+    letter-spacing: -.5px;
+}
+
+.news-card p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+/* BREAKING */
+
+.breaking {
+    grid-column: 1 / -1;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--danger);
+    border-radius: 18px;
+    padding: 20px 22px;
+    cursor: pointer;
+}
+
+.breaking-label {
+    color: var(--danger);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.breaking h2 {
+    margin: 0;
+    font-size: 27px;
+}
+
+/* ARTICLE */
+
+.article-view {
+    display: none;
+    max-width: 850px;
+    margin: auto;
+}
+
+.back-button {
+    border: none;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-bottom: 25px;
+}
+
+.article-view .article-meta {
+    color: var(--muted);
+    margin-bottom: 15px;
+}
+
+.article-view h1 {
+    font-size: clamp(38px, 6vw, 64px);
+    line-height: 1;
+    letter-spacing: -3px;
+    margin: 0 0 20px;
+}
+
+.article-image {
+    height: 350px;
+    border-radius: 22px;
+    background: linear-gradient(135deg,#dfe3e8,#fafafa);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9297a0;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.article-text {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+/* EMPTY */
+
+.empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--muted);
+    grid-column: 1 / -1;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 30px 22px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* MOBILE */
+
+@media (max-width: 850px) {
+
+    header {
+        padding: 0 18px;
+    }
+
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    main {
+        padding: 32px 15px 60px;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .breaking {
+        grid-column: auto;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .header-button {
+        padding: 8px;
+    }
+
+    .article-image {
+        height: 230px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo" onclick="goHome()">n:</div>
+
+    <div class="header-right">
+        <button class="header-button search-button" onclick="toggleSearch()">
+            🔎
+        </button>
+
+        <button class="header-button" onclick="showRegionMenu()">
+            DE ▾
+        </button>
+    </div>
+
+</header>
+
+
+<main>
+
+    <!-- STARTSEITE -->
+
+    <section id="home">
+
+        <div class="hero">
+
+            <small>n: Nachrichten</small>
+
+            <h1>Was gerade passiert.</h1>
+
+            <p>
+                Aktuelle Nachrichten. Einfach und direkt.
+            </p>
+
+        </div>
+
+
+        <div class="search-area" id="searchArea">
+
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="Nachrichten durchsuchen..."
+                oninput="searchNews()"
+            >
+
+        </div>
+
+
+        <div class="filters">
+
+            <button
+                class="filter active"
+                onclick="setCategory('Alle', this)"
+            >
+                Alle
+            </button>
+
+            <button
+                class="filter"
+                onclick="setCategory('Deutschland', this)"
+            >
+                🇩🇪 Deutschland
+            </button>
+
+            <button
+                class="filter"
+                onclick="setCategory('Welt', this)"
+            >
+                🌍 Welt
+            </button>
+
+            <button
+                class="filter"
+                onclick="setCategory('Region', this)"
+            >
+                📍 Region
+            </button>
+
+            <button
+                class="filter"
+                onclick="setCategory('Sport', this)"
+            >
+                ⚽ Sport
+            </button>
+
+            <button
+                class="filter"
+                onclick="setCategory('Digital', this)"
+            >
+                💻 Digital
+            </button>
+
+        </div>
+
+
+        <div class="news-grid" id="newsGrid"></div>
+
+    </section>
+
+
+    <!-- ARTIKEL -->
+
+    <section id="articleView" class="article-view">
+
+        <button class="back-button" onclick="goHome()">
+            ← Zurück
+        </button>
+
+        <div class="article-meta" id="articleMeta"></div>
+
+        <h1 id="articleTitle"></h1>
+
+        <div class="article-image">
+            n:
+        </div>
+
+        <div class="article-text" id="articleText"></div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    © 2026 n: · Nachrichten
+
+</footer>
+
+
+<script>
+
+/*
+==================================================
+DEMO-ARTIKEL
+Später kommen diese automatisch aus Supabase.
+==================================================
+*/
+
+const news = [
+
+    {
+        id: 1,
+        title: "Neue Entwicklungen in Deutschland",
+        description: "Das sind die wichtigsten aktuellen Entwicklungen des Tages.",
+        category: "Deutschland",
+        region: "Deutschland",
+        date: "Heute · 10:32",
+        text: `
+            Hier steht später der vollständige Artikel.
+
+            Dieser Bereich wird über das Redaktionssystem automatisch
+            mit dem veröffentlichten Artikel gefüllt.
+
+            Du musst dann nicht mehr in diesem Code arbeiten.
+        `
+    },
+
+    {
+        id: 2,
+        title: "Was heute weltweit wichtig ist",
+        description: "Ein Überblick über aktuelle Ereignisse aus aller Welt.",
+        category: "Welt",
+        region: "Welt",
+        date: "Heute · 09:48",
+        text: `
+            Hier steht später der vollständige Nachrichtenartikel.
+
+            Die endgültige Version wird vom Admin-System geladen.
+        `
+    },
+
+    {
+        id: 3,
+        title: "Neue Technik sorgt für Aufmerksamkeit",
+        description: "Digitales und Technik kompakt zusammengefasst.",
+        category: "Digital",
+        region: "Deutschland",
+        date: "Heute · 08:21",
+        text: `
+            Hier könnte später ein eigener Digital-Artikel stehen.
+        `
+    },
+
+    {
+        id: 4,
+        title: "Das ist heute im Sport passiert",
+        description: "Die wichtigsten Sportnachrichten des Tages.",
+        category: "Sport",
+        region: "Deutschland",
+        date: "Gestern · 21:12",
+        text: `
+            Hier könnte später ein ausführlicher Sportartikel stehen.
+        `
+    },
+
+    {
+        id: 5,
+        title: "Nachrichten aus der Region",
+        description: "Aktuelles aus deiner Umgebung.",
+        category: "Region",
+        region: "Hessen",
+        date: "Gestern · 18:40",
+        text: `
+            Später können hier regionale Nachrichten angezeigt werden.
+        `
+    }
+
+];
+
+
+let currentCategory = "Alle";
+
+
+/*
+==================================================
+NEWS ANZEIGEN
+==================================================
+*/
+
+function renderNews(list = news) {
+
+    const grid = document.getElementById("newsGrid");
+
+    grid.innerHTML = "";
+
+
+    if (list.length === 0) {
+
+        grid.innerHTML = `
+            <div class="empty">
+                Keine Nachrichten gefunden.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    /*
+    BREAKING NEWS
+    */
+
+    if (currentCategory === "Alle" && list.length > 0) {
+
+        const breaking = list[0];
+
+        const breakingElement = document.createElement("div");
+
+        breakingElement.className = "breaking";
+
+        breakingElement.onclick = () => openArticle(breaking.id);
+
+        breakingElement.innerHTML = `
+            <div class="breaking-label">
+                ● Aktuell
+            </div>
+
+            <h2>${breaking.title}</h2>
+        `;
+
+        grid.appendChild(breakingElement);
+    }
+
+
+    /*
+    NORMALE KARTEN
+    */
+
+    list.forEach((item, index) => {
+
+        if (currentCategory === "Alle" && index === 0) {
+            return;
+        }
+
+        const card = document.createElement("article");
+
+        card.className = "news-card";
+
+        card.onclick = () => openArticle(item.id);
+
+        card.innerHTML = `
+
+            <div class="news-image">
+                n:
+            </div>
+
+            <div class="news-content">
+
+                <div class="news-meta">
+
+                    <span class="category">
+                        ${item.category}
+                    </span>
+
+                    ·
+
+                    <span>
+                        ${item.date}
+                    </span>
+
+                </div>
+
+                <h2>
+                    ${item.title}
+                </h2>
+
+                <p>
+                    ${item.description}
+                </p>
+
+            </div>
+        `;
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+/*
+==================================================
+KATEGORIE
+==================================================
+*/
+
+function setCategory(category, button) {
+
+    currentCategory = category;
+
+
+    document
+        .querySelectorAll(".filter")
+        .forEach(btn => btn.classList.remove("active"));
+
+
+    button.classList.add("active");
+
+
+    if (category === "Alle") {
+
+        renderNews(news);
+
+        return;
+    }
+
+
+    const filtered = news.filter(item => {
+
+        return item.category === category ||
+               item.region === category;
+
+    });
+
+
+    renderNews(filtered);
+}
+
+
+/*
+==================================================
+SUCHE
+==================================================
+*/
+
+function toggleSearch() {
+
+    const area = document.getElementById("searchArea");
+
+    if (area.style.display === "block") {
+
+        area.style.display = "none";
+
+    } else {
+
+        area.style.display = "block";
+
+        document.getElementById("searchInput").focus();
+
+    }
+
+}
+
+
+function searchNews() {
+
+    const value =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+
+    const results = news.filter(item => {
+
+        return (
+            item.title.toLowerCase().includes(value) ||
+            item.description.toLowerCase().includes(value) ||
+            item.category.toLowerCase().includes(value)
+        );
+
+    });
+
+
+    renderNews(results);
+}
+
+
+/*
+==================================================
+ARTIKEL ÖFFNEN
+==================================================
+*/
+
+function openArticle(id) {
+
+    const article =
+        news.find(item => item.id === id);
+
+
+    if (!article) return;
+
+
+    document.getElementById("home").style.display = "none";
+
+    document.getElementById("articleView").style.display = "block";
+
+
+    document.getElementById("articleMeta").innerHTML =
+        `${article.category} · ${article.date}`;
+
+
+    document.getElementById("articleTitle").textContent =
+        article.title;
+
+
+    document.getElementById("articleText").innerHTML =
+        article.text.replace(/\n/g, "<br><br>");
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/*
+==================================================
+HOME
+==================================================
+*/
+
+function goHome() {
+
+    document.getElementById("articleView").style.display = "none";
+
+    document.getElementById("home").style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/*
+==================================================
+REGION
+==================================================
+*/
+
+function showRegionMenu() {
+
+    const region = prompt(
+        "Welche Region möchtest du sehen?\n\n" +
+        "Deutschland\n" +
+        "Hessen\n" +
+        "Bayern\n" +
+        "NRW\n" +
+        "Berlin"
+    );
+
+
+    if (!region) return;
+
+
+    const normalized = region.trim();
+
+
+    const results = news.filter(item =>
+        item.region.toLowerCase() === normalized.toLowerCase()
+    );
+
+
+    currentCategory = normalized;
+
+
+    document.getElementById("home").style.display = "block";
+
+    document.getElementById("articleView").style.display = "none";
+
+
+    renderNews(results);
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/*
+==================================================
+START
+==================================================
+*/
+
+renderNews();
+
+</script>
+
+</body>
+</html>
