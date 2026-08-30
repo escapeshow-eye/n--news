@@ -2,982 +2,701 @@
 <html lang="de">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>n: – Nachrichten</title>
 
-
 <style>
-
-/* =====================================================
-   GRUNDLAGEN
-===================================================== */
 
 * {
     box-sizing: border-box;
 }
 
 body {
-
     margin: 0;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+    font-family: Arial, Helvetica, sans-serif;
     background: #f4f5f7;
-
     color: #111;
-
 }
 
-
-/* =====================================================
+/* =========================
    HEADER
-===================================================== */
+========================= */
 
 header {
-
     height: 72px;
-
     padding: 0 28px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
-    background:
-        rgba(255,255,255,.96);
-
-    border-bottom:
-        1px solid #ddd;
-
+    background: rgba(255,255,255,.96);
+    border-bottom: 1px solid #ddd;
     position: sticky;
-
     top: 0;
-
     z-index: 100;
-
 }
 
 .logo {
-
     font-size: 40px;
-
     font-weight: 900;
-
     letter-spacing: -4px;
-
     cursor: pointer;
-
 }
 
 .header-actions {
-
     display: flex;
-
     gap: 8px;
-
 }
 
 .header-btn {
-
     border: 0;
-
     background: transparent;
-
     font-size: 20px;
-
     padding: 10px;
-
     border-radius: 10px;
-
     cursor: pointer;
-
 }
 
 .header-btn:hover {
-
     background: #eee;
-
 }
 
-
-/* =====================================================
+/* =========================
    MAIN
-===================================================== */
+========================= */
 
 main {
-
     max-width: 1200px;
-
     margin: auto;
-
-    padding:
-        45px 20px 80px;
-
+    padding: 45px 20px 80px;
 }
 
+/* =========================
+   STARTSEITE
+========================= */
 
-/* =====================================================
-   HERO
-===================================================== */
+.start-page {
+    min-height: 70vh;
+}
+
+.start-hero {
+    text-align: center;
+    padding: 35px 0 45px;
+}
+
+.start-label {
+    font-size: 13px;
+    font-weight: 900;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.start-hero h1 {
+    font-size: clamp(45px, 8vw, 80px);
+    line-height: .9;
+    letter-spacing: -5px;
+    margin: 12px 0;
+}
+
+.start-hero p {
+    color: #777;
+    font-size: 19px;
+    margin: 0;
+}
+
+/* START KARTEN */
+
+.area-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.area-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 24px;
+    padding: 30px;
+    min-height: 260px;
+    cursor: pointer;
+    transition: .2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.area-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,.1);
+}
+
+.area-icon {
+    font-size: 48px;
+}
+
+.area-card h2 {
+    font-size: 30px;
+    margin: 20px 0 8px;
+    letter-spacing: -1px;
+}
+
+.area-card p {
+    color: #777;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.area-arrow {
+    margin-top: 25px;
+    font-size: 22px;
+    font-weight: 900;
+}
+
+/* =========================
+   HOME / NEWS
+========================= */
 
 .hero {
-
     margin-bottom: 25px;
-
 }
 
 .hero-label {
-
     font-size: 12px;
-
     font-weight: 800;
-
     color: #777;
-
     text-transform: uppercase;
-
     letter-spacing: 1.5px;
-
 }
 
 .hero h1 {
-
-    font-size:
-        clamp(42px,7vw,72px);
-
+    font-size: clamp(42px, 7vw, 72px);
     line-height: .95;
-
     letter-spacing: -4px;
-
     margin: 8px 0;
-
 }
 
 .hero p {
-
     color: #777;
-
     font-size: 18px;
-
 }
 
-
-/* =====================================================
+/* =========================
    SEARCH
-===================================================== */
+========================= */
 
 .search {
-
     display: none;
-
     margin-bottom: 20px;
-
 }
 
 .search input {
-
     width: 100%;
-
     padding: 15px;
-
-    border:
-        1px solid #ddd;
-
+    border: 1px solid #ddd;
     border-radius: 13px;
-
     outline: none;
-
     font-size: 16px;
-
 }
 
-
-/* =====================================================
+/* =========================
    FILTER
-===================================================== */
+========================= */
 
 .filters {
-
     display: flex;
-
     gap: 8px;
-
     overflow-x: auto;
-
     padding-bottom: 20px;
-
 }
 
 .filter {
-
     flex-shrink: 0;
-
-    padding:
-        10px 16px;
-
-    border:
-        1px solid #ddd;
-
+    padding: 10px 16px;
+    border: 1px solid #ddd;
     border-radius: 999px;
-
     background: white;
-
     font-weight: 700;
-
     cursor: pointer;
-
 }
 
 .filter.active {
-
     background: #111;
-
     color: white;
-
     border-color: #111;
-
 }
 
-
-/* =====================================================
+/* =========================
    NEWS GRID
-===================================================== */
+========================= */
 
 .news-grid {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
+    grid-template-columns: repeat(3, 1fr);
     gap: 18px;
-
 }
 
 .news-card {
-
     background: white;
-
-    border:
-        1px solid #ddd;
-
+    border: 1px solid #ddd;
     border-radius: 20px;
-
     overflow: hidden;
-
     cursor: pointer;
-
     transition: .2s;
-
 }
 
 .news-card:hover {
-
-    transform:
-        translateY(-3px);
-
-    box-shadow:
-        0 12px 30px
-        rgba(0,0,0,.08);
-
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
 }
 
 .news-image {
-
     width: 100%;
-
     height: 190px;
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ddd,
-            #fafafa
-        );
-
+    background: linear-gradient(135deg,#ddd,#fafafa);
     color: #999;
-
     font-size: 38px;
-
     font-weight: 900;
-
     overflow: hidden;
-
 }
 
 .news-image img {
-
     width: 100%;
-
     height: 100%;
-
     object-fit: cover;
-
     display: block;
-
 }
 
 .news-card-content {
-
     padding: 20px;
-
 }
 
 .news-meta {
-
     font-size: 13px;
-
     color: #777;
-
     margin-bottom: 8px;
-
 }
 
 .news-card h2 {
-
-    margin:
-        0 0 10px;
-
+    margin: 0 0 10px;
     font-size: 22px;
-
 }
 
 .news-card p {
-
     color: #777;
-
     line-height: 1.5;
-
     margin: 0;
-
 }
 
-
-/* =====================================================
+/* =========================
    FEATURED
-===================================================== */
+========================= */
 
 .featured {
-
     grid-column: 1 / -1;
-
     background: white;
-
-    border:
-        1px solid #ddd;
-
-    border-left:
-        5px solid #111;
-
+    border: 1px solid #ddd;
+    border-left: 5px solid #111;
     border-radius: 20px;
-
     overflow: hidden;
-
     cursor: pointer;
-
 }
 
 .featured-image {
-
     width: 100%;
-
     height: 280px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ddd,
-            #fafafa
-        );
-
+    background: linear-gradient(135deg,#ddd,#fafafa);
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     color: #999;
-
     font-size: 45px;
-
     font-weight: 900;
-
     overflow: hidden;
-
 }
 
 .featured-image img {
-
     width: 100%;
-
     height: 100%;
-
     object-fit: cover;
-
     display: block;
-
 }
 
 .featured-content {
-
     padding: 25px;
-
 }
 
 .featured-label {
-
     font-size: 12px;
-
     font-weight: 900;
-
     margin-bottom: 8px;
-
 }
 
 .featured h2 {
-
     margin: 0;
-
-    font-size:
-        clamp(28px,4vw,40px);
-
+    font-size: clamp(28px,4vw,40px);
 }
 
-
-/* =====================================================
+/* =========================
    STATUS
-===================================================== */
+========================= */
 
 .status-box {
-
     grid-column: 1 / -1;
-
     background: white;
-
-    border:
-        1px solid #ddd;
-
+    border: 1px solid #ddd;
     border-radius: 20px;
-
     padding: 35px;
-
     text-align: center;
-
     color: #777;
-
 }
 
-
-/* =====================================================
+/* =========================
    ARTICLE
-===================================================== */
+========================= */
 
 .article {
-
     display: none;
-
     max-width: 850px;
-
     margin: auto;
-
 }
 
 .back {
-
-    padding:
-        10px 15px;
-
-    border:
-        1px solid #ddd;
-
+    padding: 10px 15px;
+    border: 1px solid #ddd;
     background: white;
-
     border-radius: 12px;
-
     cursor: pointer;
-
     font-weight: 700;
-
     margin-bottom: 25px;
-
 }
 
 .article-meta {
-
     color: #777;
-
     margin-bottom: 12px;
-
 }
 
 .article h1 {
-
-    font-size:
-        clamp(40px,7vw,70px);
-
+    font-size: clamp(40px,7vw,70px);
     line-height: .98;
-
     letter-spacing: -4px;
-
-    margin:
-        0 0 25px;
-
+    margin: 0 0 25px;
 }
 
 .article-image {
-
     width: 100%;
-
     min-height: 340px;
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ddd,
-            #fafafa
-        );
-
+    background: linear-gradient(135deg,#ddd,#fafafa);
     border-radius: 22px;
-
     color: #999;
-
     font-size: 40px;
-
     font-weight: 900;
-
     margin-bottom: 30px;
-
     overflow: hidden;
-
 }
 
 .article-image img {
-
     width: 100%;
-
     max-height: 550px;
-
     object-fit: cover;
-
     display: block;
-
 }
 
 .article-text {
-
     font-size: 18px;
-
     line-height: 1.8;
-
 }
 
+/* =========================
+   EXTRA BEREICHE
+========================= */
 
-/* =====================================================
+.special-page {
+    display: none;
+    max-width: 900px;
+    margin: auto;
+}
+
+.special-header {
+    margin-bottom: 30px;
+}
+
+.special-label {
+    font-size: 12px;
+    font-weight: 900;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.special-header h1 {
+    font-size: clamp(42px,7vw,70px);
+    letter-spacing: -4px;
+    margin: 8px 0;
+}
+
+.special-header p {
+    color: #777;
+    font-size: 18px;
+}
+
+.special-box {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 22px;
+    padding: 30px;
+    margin-bottom: 15px;
+}
+
+.special-box h2 {
+    margin-top: 0;
+}
+
+/* =========================
    ADMIN
-===================================================== */
+========================= */
 
 .admin {
-
     display: none;
-
     max-width: 900px;
-
     margin: auto;
-
 }
 
 .login {
-
     max-width: 430px;
-
-    margin:
-        60px auto;
-
+    margin: 60px auto;
     padding: 30px;
-
     background: white;
-
-    border:
-        1px solid #ddd;
-
+    border: 1px solid #ddd;
     border-radius: 22px;
-
 }
 
 .login input,
 .form-box input,
 .form-box textarea,
 .form-box select {
-
     width: 100%;
-
-    padding:
-        13px 14px;
-
-    margin:
-        7px 0 17px;
-
-    border:
-        1px solid #ddd;
-
+    padding: 13px 14px;
+    margin: 7px 0 17px;
+    border: 1px solid #ddd;
     border-radius: 12px;
-
     background: white;
-
     outline: none;
-
     font-size: 16px;
-
 }
 
 .form-box textarea {
-
     min-height: 230px;
-
     resize: vertical;
-
 }
 
 .form-box {
-
     padding: 25px;
-
     background: white;
-
-    border:
-        1px solid #ddd;
-
+    border: 1px solid #ddd;
     border-radius: 20px;
-
 }
 
 .form-box label {
-
     display: block;
-
     font-weight: 700;
-
 }
 
-
-/* =====================================================
+/* =========================
    IMAGE UPLOAD
-===================================================== */
+========================= */
 
 .image-upload-box {
-
-    margin:
-        5px 0 20px;
-
+    margin: 5px 0 20px;
     padding: 18px;
-
-    border:
-        1px dashed #bbb;
-
+    border: 1px dashed #bbb;
     border-radius: 15px;
-
     background: #fafafa;
-
 }
 
 .image-upload-box input[type="file"] {
-
-    margin:
-        5px 0 0;
-
+    margin: 5px 0 0;
     padding: 0;
-
     border: 0;
-
     background: transparent;
-
 }
 
 .image-preview {
-
     display: none;
-
     width: 100%;
-
     max-height: 280px;
-
     object-fit: cover;
-
     margin-top: 15px;
-
     border-radius: 14px;
-
-    border:
-        1px solid #ddd;
-
+    border: 1px solid #ddd;
 }
 
 .current-image {
-
     display: none;
-
     margin-top: 10px;
-
     color: #777;
-
     font-size: 14px;
-
 }
 
-
-/* =====================================================
+/* =========================
    BUTTONS
-===================================================== */
+========================= */
 
 .primary,
 .secondary,
 .small {
-
     border: 0;
-
     border-radius: 10px;
-
-    padding:
-        11px 16px;
-
+    padding: 11px 16px;
     font-weight: 800;
-
     cursor: pointer;
-
 }
 
 .primary {
-
     background: #111;
-
     color: white;
-
 }
 
 .primary:hover {
-
     background: #333;
-
 }
 
 .secondary {
-
     background: #eee;
-
 }
 
 .secondary:hover {
-
     background: #ddd;
-
 }
 
 .primary:disabled {
-
     opacity: .6;
-
     cursor: wait;
-
 }
 
 .admin-top {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     margin-bottom: 25px;
-
 }
 
 .admin-list {
-
     display: grid;
-
     gap: 10px;
-
     margin-top: 15px;
-
 }
 
 .admin-item {
-
     background: white;
-
-    border:
-        1px solid #ddd;
-
+    border: 1px solid #ddd;
     border-radius: 15px;
-
     padding: 17px;
-
     display: flex;
-
     justify-content: space-between;
-
     gap: 15px;
-
 }
 
 .admin-item-title {
-
     font-weight: 800;
-
 }
 
 .admin-item small {
-
     color: #777;
-
 }
 
 .admin-actions {
-
     display: flex;
-
     gap: 7px;
-
 }
 
 .edit {
-
     background: #e0e7ff;
-
 }
 
 .delete {
-
     background: #fee2e2;
-
     color: #b91c1c;
-
 }
 
 .error {
-
     color: #dc2626;
-
     margin-top: 12px;
-
 }
 
 .success {
-
     color: #15803d;
-
     margin-top: 12px;
-
 }
 
-
-/* =====================================================
+/* =========================
    FOOTER
-===================================================== */
+========================= */
 
 footer {
-
     text-align: center;
-
     padding: 30px;
-
     color: #777;
-
-    border-top:
-        1px solid #ddd;
-
+    border-top: 1px solid #ddd;
 }
 
-
-/* =====================================================
+/* =========================
    MOBILE
-===================================================== */
+========================= */
 
-@media (max-width:850px) {
+@media (max-width: 850px) {
 
     .news-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
 
-        grid-template-columns:
-            repeat(2,1fr);
-
+    .area-grid {
+        grid-template-columns: 1fr;
     }
 
 }
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
 
     .news-grid {
-
         grid-template-columns: 1fr;
-
     }
 
     .featured {
-
         grid-column: auto;
-
     }
 
     .admin-item {
-
         flex-direction: column;
-
     }
 
     .admin-actions {
-
         width: 100%;
-
     }
 
 }
 
 </style>
-
 </head>
 
-
 <body>
-
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
 
 <header>
 
     <div
         class="logo"
-        onclick="showHome()">
+        onclick="showStart()">
 
         n:
 
     </div>
-
 
     <div class="header-actions">
 
@@ -989,7 +708,6 @@ footer {
             🔎
 
         </button>
-
 
         <button
             class="header-btn"
@@ -1005,46 +723,155 @@ footer {
 </header>
 
 
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
 <main>
 
 
 <!-- =====================================================
-     HOME
+     STARTSEITE
 ===================================================== -->
 
-<section id="home">
+<section
+    id="startPage"
+    class="start-page">
 
-    <div class="hero">
+    <div class="start-hero">
 
-        <div class="hero-label">
-
-            n: Nachrichten
-
+        <div class="start-label">
+            n: Plattform
         </div>
 
-
         <h1>
-
-            Was gerade passiert.
-
+            Was möchtest du öffnen?
         </h1>
 
-
         <p>
-
-            Aktuelle Nachrichten.
-            Einfach und direkt.
-
+            Nachrichten, Verkehr und regionale Informationen.
         </p>
 
     </div>
 
 
-    <!-- SUCHE -->
+    <div class="area-grid">
+
+
+        <!-- NACHRICHTEN -->
+
+        <div
+            class="area-card"
+            onclick="openNews()">
+
+            <div>
+
+                <div class="area-icon">
+                    📰
+                </div>
+
+                <h2>
+                    n: Nachrichten
+                </h2>
+
+                <p>
+                    Aktuelle Nachrichten aus Deutschland,
+                    der Welt, der Region, Sport und Digital.
+                </p>
+
+            </div>
+
+            <div class="area-arrow">
+                →
+            </div>
+
+        </div>
+
+
+        <!-- VERKEHR -->
+
+        <div
+            class="area-card"
+            onclick="openTraffic()">
+
+            <div>
+
+                <div class="area-icon">
+                    🚦
+                </div>
+
+                <h2>
+                    Verkehr & Route
+                </h2>
+
+                <p>
+                    Verkehrslage, Störungen und Routen
+                    übersichtlich auf einer Seite.
+                </p>
+
+            </div>
+
+            <div class="area-arrow">
+                →
+            </div>
+
+        </div>
+
+
+        <!-- BEREICH -->
+
+        <div
+            class="area-card"
+            onclick="openArea()">
+
+            <div>
+
+                <div class="area-icon">
+                    📍
+                </div>
+
+                <h2>
+                    n: Bereich
+                </h2>
+
+                <p>
+                    Regionale Informationen, Orte,
+                    Veranstaltungen und mehr.
+                </p>
+
+            </div>
+
+            <div class="area-arrow">
+                →
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     NEWS
+===================================================== -->
+
+<section
+    id="home"
+    style="display:none;">
+
+    <div class="hero">
+
+        <div class="hero-label">
+            n: Nachrichten
+        </div>
+
+        <h1>
+            Was gerade passiert.
+        </h1>
+
+        <p>
+            Aktuelle Nachrichten. Einfach und direkt.
+        </p>
+
+    </div>
+
 
     <div
         class="search"
@@ -1059,76 +886,53 @@ footer {
     </div>
 
 
-    <!-- FILTER -->
-
     <div class="filters">
 
         <button
             class="filter active"
             onclick="filterNews('Alle',this)">
-
             Alle
-
         </button>
-
 
         <button
             class="filter"
             onclick="filterNews('Deutschland',this)">
-
             🇩🇪 Deutschland
-
         </button>
-
 
         <button
             class="filter"
             onclick="filterNews('Welt',this)">
-
             🌍 Welt
-
         </button>
-
 
         <button
             class="filter"
             onclick="filterNews('Region',this)">
-
             📍 Region
-
         </button>
-
 
         <button
             class="filter"
             onclick="filterNews('Sport',this)">
-
             ⚽ Sport
-
         </button>
-
 
         <button
             class="filter"
             onclick="filterNews('Digital',this)">
-
             💻 Digital
-
         </button>
 
     </div>
 
-
-    <!-- NEWS -->
 
     <div
         class="news-grid"
         id="newsGrid">
 
         <div class="status-box">
-
             Nachrichten werden geladen …
-
         </div>
 
     </div>
@@ -1137,48 +941,165 @@ footer {
 
 
 <!-- =====================================================
-     ARTICLE
+     ARTIKEL
 ===================================================== -->
 
 <section
     class="article"
     id="article">
 
-
     <button
         class="back"
-        onclick="showHome()">
+        onclick="openNews()">
 
         ← Zurück
 
     </button>
 
-
     <div
         class="article-meta"
         id="articleMeta">
-
     </div>
-
 
     <h1
         id="articleTitle">
-
     </h1>
-
 
     <div
         class="article-image"
         id="articleImage">
-
         n:
-
     </div>
-
 
     <div
         class="article-text"
         id="articleText">
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     VERKEHR
+===================================================== -->
+
+<section
+    id="traffic"
+    class="special-page">
+
+    <button
+        class="back"
+        onclick="showStart()">
+
+        ← Startseite
+
+    </button>
+
+    <div class="special-header">
+
+        <div class="special-label">
+            n: Verkehr
+        </div>
+
+        <h1>
+            Verkehr & Route
+        </h1>
+
+        <p>
+            Alles rund um Verkehr, Störungen und deine Route.
+        </p>
+
+    </div>
+
+
+    <div class="special-box">
+
+        <h2>
+            🚦 Verkehr
+        </h2>
+
+        <p>
+            Dieser Bereich wird als nächstes mit
+            aktuellen Verkehrsinformationen ausgebaut.
+        </p>
+
+    </div>
+
+
+    <div class="special-box">
+
+        <h2>
+            🗺️ Route
+        </h2>
+
+        <p>
+            Hier können später Start und Ziel eingegeben
+            und eine passende Route angezeigt werden.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     N: BEREICH
+===================================================== -->
+
+<section
+    id="area"
+    class="special-page">
+
+    <button
+        class="back"
+        onclick="showStart()">
+
+        ← Startseite
+
+    </button>
+
+    <div class="special-header">
+
+        <div class="special-label">
+            n: Bereich
+        </div>
+
+        <h1>
+            Dein Bereich.
+        </h1>
+
+        <p>
+            Regionale Informationen direkt auf einen Blick.
+        </p>
+
+    </div>
+
+
+    <div class="special-box">
+
+        <h2>
+            📍 Regional
+        </h2>
+
+        <p>
+            Hier können später regionale Nachrichten,
+            Veranstaltungen und Informationen aus deinem
+            Bereich erscheinen.
+        </p>
+
+    </div>
+
+
+    <div class="special-box">
+
+        <h2>
+            📅 Veranstaltungen
+        </h2>
+
+        <p>
+            Dieser Bereich kann später mit lokalen
+            Veranstaltungen gefüllt werden.
+        </p>
 
     </div>
 
@@ -1194,37 +1115,27 @@ footer {
     id="admin">
 
 
-    <!-- LOGIN -->
-
     <div
         class="login"
         id="loginBox">
 
         <h2>
-
             🔐 n: Redaktion
-
         </h2>
 
-
         <p>
-
             Anmeldung nur für die Redaktion.
-
         </p>
-
 
         <input
             id="email"
             type="email"
             placeholder="E-Mail">
 
-
         <input
             id="password"
             type="password"
             placeholder="Passwort">
-
 
         <button
             class="primary"
@@ -1234,17 +1145,13 @@ footer {
 
         </button>
 
-
         <div
             class="error"
             id="loginError">
-
         </div>
 
     </div>
 
-
-    <!-- DASHBOARD -->
 
     <div
         id="dashboard"
@@ -1254,11 +1161,8 @@ footer {
         <div class="admin-top">
 
             <h1>
-
                 Redaktion
-
             </h1>
-
 
             <button
                 class="secondary"
@@ -1275,18 +1179,13 @@ footer {
 
             <h2
                 id="formTitle">
-
                 Neuer Artikel
-
             </h2>
 
 
             <label>
-
                 Überschrift
-
             </label>
-
 
             <input
                 id="title"
@@ -1294,11 +1193,8 @@ footer {
 
 
             <label>
-
                 Kurzbeschreibung
-
             </label>
-
 
             <input
                 id="description"
@@ -1306,43 +1202,23 @@ footer {
 
 
             <label>
-
                 Kategorie
-
             </label>
-
 
             <select id="category">
 
-                <option>
-                    Deutschland
-                </option>
-
-                <option>
-                    Welt
-                </option>
-
-                <option>
-                    Region
-                </option>
-
-                <option>
-                    Sport
-                </option>
-
-                <option>
-                    Digital
-                </option>
+                <option>Deutschland</option>
+                <option>Welt</option>
+                <option>Region</option>
+                <option>Sport</option>
+                <option>Digital</option>
 
             </select>
 
 
             <label>
-
                 Region
-
             </label>
-
 
             <input
                 id="region"
@@ -1350,25 +1226,17 @@ footer {
 
 
             <label>
-
                 Artikel
-
             </label>
-
 
             <textarea
                 id="content"
                 placeholder="Artikel schreiben..."></textarea>
 
 
-            <!-- BILD -->
-
             <label>
-
                 Artikelbild
-
             </label>
-
 
             <div class="image-upload-box">
 
@@ -1378,17 +1246,14 @@ footer {
                     accept="image/*"
                     onchange="previewImage(event)">
 
-
                 <img
                     id="imagePreview"
                     class="image-preview"
                     alt="Bildvorschau">
 
-
                 <div
                     id="currentImage"
                     class="current-image">
-
                 </div>
 
             </div>
@@ -1403,7 +1268,6 @@ footer {
 
             </button>
 
-
             <button
                 class="secondary"
                 onclick="clearForm()">
@@ -1416,81 +1280,47 @@ footer {
             <div
                 id="formMessage"
                 class="success">
-
             </div>
 
         </div>
 
 
         <h2>
-
             Deine Artikel
-
         </h2>
 
 
         <div
             class="admin-list"
             id="adminList">
-
         </div>
 
     </div>
 
 </section>
 
-
 </main>
 
 
 <footer>
-
     © 2026 n: · Nachrichten
-
 </footer>
-
-
-<!-- =====================================================
-     SUPABASE JAVASCRIPT
-===================================================== -->
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
 <script>
 
 /* =====================================================
-   SUPABASE KONFIGURATION
+   SUPABASE
 ===================================================== */
 
 const SUPABASE_URL =
     "https://eqzmsuncndfsiedyfifb.supabase.co";
 
-
 const SUPABASE_KEY =
     "sb_publishable_eXY1gg_tIr-cRC2kdt0jbQ_QPfbEmkF";
 
-
 const STORAGE_BUCKET =
     "news-images";
-
-
-/* =====================================================
-   SUPABASE CLIENT
-===================================================== */
-
-const db =
-    supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY,
-        {
-            auth: {
-                persistSession: true,
-                autoRefreshToken: true,
-                detectSessionInUrl: true
-            }
-        }
-    );
 
 
 /* =====================================================
@@ -1507,6 +1337,185 @@ let editingImageUrl = null;
 
 
 /* =====================================================
+   BEREICHE
+===================================================== */
+
+function hideAllPages() {
+
+    document.getElementById("startPage").style.display = "none";
+    document.getElementById("home").style.display = "none";
+    document.getElementById("article").style.display = "none";
+    document.getElementById("traffic").style.display = "none";
+    document.getElementById("area").style.display = "none";
+    document.getElementById("admin").style.display = "none";
+
+}
+
+
+function showStart() {
+
+    hideAllPages();
+
+    document.getElementById("startPage").style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+function openNews() {
+
+    hideAllPages();
+
+    document.getElementById("home").style.display = "block";
+
+    loadNews();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+function openTraffic() {
+
+    hideAllPages();
+
+    document.getElementById("traffic").style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+function openArea() {
+
+    hideAllPages();
+
+    document.getElementById("area").style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =====================================================
+   SUPABASE REQUEST
+===================================================== */
+
+async function supabaseRequest(endpoint, options = {}) {
+
+    const token =
+        sessionStorage.getItem("nAccessToken");
+
+
+    const headers = {
+
+        "apikey":
+            SUPABASE_KEY,
+
+        "Content-Type":
+            "application/json",
+
+        ...(options.headers || {})
+
+    };
+
+
+    if (token) {
+
+        headers["Authorization"] =
+            `Bearer ${token}`;
+
+    } else if (!headers["Authorization"]) {
+
+        /*
+         * Für öffentliche GET-Anfragen:
+         * Publishable Key verwenden.
+         */
+
+        headers["Authorization"] =
+            `Bearer ${SUPABASE_KEY}`;
+
+    }
+
+
+    const response =
+        await fetch(
+            `${SUPABASE_URL}/rest/v1/${endpoint}`,
+            {
+                ...options,
+                headers
+            }
+        );
+
+
+    if (!response.ok) {
+
+        const text =
+            await response.text();
+
+        /*
+         * Abgelaufene Session automatisch löschen.
+         */
+
+        if (
+            text.includes("JWT expired") ||
+            response.status === 401
+        ) {
+
+            sessionStorage.removeItem(
+                "nAccessToken"
+            );
+
+            sessionStorage.removeItem(
+                "nUser"
+            );
+
+        }
+
+
+        throw new Error(
+            text || "Supabase Fehler"
+        );
+
+    }
+
+
+    const text =
+        await response.text();
+
+
+    if (!text) {
+        return null;
+    }
+
+
+    try {
+
+        return JSON.parse(text);
+
+    } catch {
+
+        return null;
+
+    }
+
+}
+
+
+/* =====================================================
    BILD VORSCHAU
 ===================================================== */
 
@@ -1516,19 +1525,13 @@ function previewImage(event) {
         event.target.files[0];
 
     const preview =
-        document.getElementById(
-            "imagePreview"
-        );
+        document.getElementById("imagePreview");
 
 
     if (!file) {
 
-        preview.style.display =
-            "none";
-
-        preview.removeAttribute(
-            "src"
-        );
+        preview.style.display = "none";
+        preview.removeAttribute("src");
 
         return;
 
@@ -1539,22 +1542,6 @@ function previewImage(event) {
 
         alert(
             "Bitte eine Bilddatei auswählen."
-        );
-
-        event.target.value = "";
-
-        return;
-
-    }
-
-
-    if (
-        file.size >
-        10 * 1024 * 1024
-    ) {
-
-        alert(
-            "Das Bild ist zu groß. Maximal 10 MB."
         );
 
         event.target.value = "";
@@ -1586,10 +1573,23 @@ function previewImage(event) {
 
 
 /* =====================================================
-   BILD HOCHLADEN
+   BILD UPLOAD
 ===================================================== */
 
 async function uploadImage(file) {
+
+    const token =
+        sessionStorage.getItem("nAccessToken");
+
+
+    if (!token) {
+
+        throw new Error(
+            "Nicht eingeloggt. Bitte erneut einloggen."
+        );
+
+    }
+
 
     if (!file) {
 
@@ -1607,10 +1607,7 @@ async function uploadImage(file) {
     }
 
 
-    if (
-        file.size >
-        10 * 1024 * 1024
-    ) {
+    if (file.size > 10 * 1024 * 1024) {
 
         throw new Error(
             "Das Bild ist zu groß. Maximal 10 MB."
@@ -1618,37 +1615,6 @@ async function uploadImage(file) {
 
     }
 
-
-    /*
-       Aktuelle Supabase Session holen.
-    */
-
-    const {
-        data: sessionData,
-        error: sessionError
-    } =
-        await db.auth.getSession();
-
-
-    if (sessionError) {
-
-        throw sessionError;
-
-    }
-
-
-    if (!sessionData.session) {
-
-        throw new Error(
-            "Nicht eingeloggt. Bitte erneut einloggen."
-        );
-
-    }
-
-
-    /*
-       Dateiendung
-    */
 
     const extension =
         file.name
@@ -1661,63 +1627,73 @@ async function uploadImage(file) {
             );
 
 
-    const safeExtension =
-        extension ||
-        "jpg";
-
-
-    /*
-       Eindeutiger Dateiname
-    */
-
     const filename =
-        `${Date.now()}-${crypto.randomUUID()}.${safeExtension}`;
+        `${Date.now()}-${crypto.randomUUID()}.${extension}`;
 
 
-    /*
-       Upload über Supabase Storage.
-    */
+    const uploadUrl =
+        `${SUPABASE_URL}/storage/v1/object/${STORAGE_BUCKET}/${filename}`;
 
-    const {
-        error
-    } =
-        await db.storage
-            .from(STORAGE_BUCKET)
-            .upload(
-                filename,
-                file,
-                {
-                    contentType:
+
+    const response =
+        await fetch(
+            uploadUrl,
+            {
+                method: "POST",
+
+                headers: {
+
+                    "apikey":
+                        SUPABASE_KEY,
+
+                    "Authorization":
+                        `Bearer ${token}`,
+
+                    "Content-Type":
                         file.type,
 
-                    upsert:
-                        false
-                }
+                    "x-upsert":
+                        "false"
+
+                },
+
+                body: file
+
+            }
+        );
+
+
+    if (!response.ok) {
+
+        const errorText =
+            await response.text();
+
+
+        if (
+            errorText.includes("JWT expired") ||
+            response.status === 401
+        ) {
+
+            sessionStorage.removeItem(
+                "nAccessToken"
             );
 
+            sessionStorage.removeItem(
+                "nUser"
+            );
 
-    if (error) {
+        }
 
-        throw error;
+
+        throw new Error(
+            errorText ||
+            `Bild-Upload fehlgeschlagen (${response.status})`
+        );
 
     }
 
 
-    /*
-       Öffentliche URL
-    */
-
-    const {
-        data
-    } =
-        db.storage
-            .from(STORAGE_BUCKET)
-            .getPublicUrl(
-                filename
-            );
-
-
-    return data.publicUrl;
+    return `${SUPABASE_URL}/storage/v1/object/public/${STORAGE_BUCKET}/${filename}`;
 
 }
 
@@ -1729,95 +1705,38 @@ async function uploadImage(file) {
 async function loadNews() {
 
     const grid =
-        document.getElementById(
-            "newsGrid"
-        );
-
-
-    grid.innerHTML = `
-
-        <div class="status-box">
-
-            Nachrichten werden geladen …
-
-        </div>
-
-    `;
+        document.getElementById("newsGrid");
 
 
     try {
 
-        /*
-           KEIN eigener JWT.
-
-           Supabase Client verwaltet
-           die Authentifizierung selbst.
-        */
-
-        const {
-            data,
-            error
-        } =
-            await db
-                .from("news")
-                .select("*")
-                .order(
-                    "created_at",
-                    {
-                        ascending:
-                            false
-                    }
-                );
+        grid.innerHTML = `
+            <div class="status-box">
+                Nachrichten werden geladen …
+            </div>
+        `;
 
 
-        if (error) {
-
-            throw error;
-
-        }
+        const result =
+            await supabaseRequest(
+                "news?select=*&order=created_at.desc"
+            );
 
 
         articles =
-            Array.isArray(data)
-                ? data
+            Array.isArray(result)
+                ? result
                 : [];
 
 
-        renderNews(
-            articles
-        );
+        renderNews(articles);
+
+        renderAdmin();
 
 
     } catch (error) {
 
-        console.error(
-            "NEWS FEHLER:",
-            error
-        );
-
-
-        /*
-           Falls eine alte Session
-           wirklich kaputt ist,
-           entfernen wir sie.
-
-           Die öffentlichen News
-           können danach trotzdem
-           wieder geladen werden.
-        */
-
-        if (
-            String(
-                error.message ||
-                ""
-            )
-            .toLowerCase()
-            .includes("jwt expired")
-        ) {
-
-            await db.auth.signOut();
-
-        }
+        console.error(error);
 
 
         grid.innerHTML = `
@@ -1830,26 +1749,50 @@ async function loadNews() {
 
                 <br><br>
 
-                ${escapeHTML(
-                    error.message ||
-                    "Unbekannter Fehler"
-                )}
+                ${escapeHTML(error.message)}
 
                 <br><br>
 
-                <button
-                    class="primary"
-                    onclick="loadNews()">
-
-                    🔄 Erneut versuchen
-
-                </button>
+                ${
+                    error.message.includes("JWT expired")
+                    ? `
+                        <button
+                            class="primary"
+                            onclick="forceLogout()">
+                            Sitzung zurücksetzen
+                        </button>
+                    `
+                    : ""
+                }
 
             </div>
 
         `;
 
     }
+
+}
+
+
+/* =====================================================
+   SESSION ZURÜCKSETZEN
+===================================================== */
+
+function forceLogout() {
+
+    sessionStorage.removeItem(
+        "nAccessToken"
+    );
+
+    sessionStorage.removeItem(
+        "nUser"
+    );
+
+    alert(
+        "Die alte Sitzung wurde entfernt. Bitte erneut einloggen."
+    );
+
+    showStart();
 
 }
 
@@ -1865,17 +1808,10 @@ function getNewsImageHTML(article) {
         return `
 
             <img
-                src="${escapeHTML(
-                    article.image_url
-                )}"
-                alt="${escapeHTML(
-                    article.title ||
-                    "Artikelbild"
-                )}"
+                src="${escapeHTML(article.image_url)}"
+                alt="${escapeHTML(article.title || "Artikelbild")}"
                 loading="lazy"
-                onerror="
-                    this.parentElement.innerHTML='n:';
-                ">
+                onerror="this.parentElement.innerHTML='n:'">
 
         `;
 
@@ -1894,9 +1830,7 @@ function getNewsImageHTML(article) {
 function renderNews(list) {
 
     const grid =
-        document.getElementById(
-            "newsGrid"
-        );
+        document.getElementById("newsGrid");
 
 
     grid.innerHTML = "";
@@ -1919,10 +1853,6 @@ function renderNews(list) {
     }
 
 
-    /*
-       ERSTER ARTIKEL = FEATURED
-    */
-
     if (
         activeFilter === "Alle" &&
         list.length > 0
@@ -1933,9 +1863,7 @@ function renderNews(list) {
 
 
         const featured =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
 
         featured.className =
@@ -1943,39 +1871,25 @@ function renderNews(list) {
 
 
         featured.onclick =
-            () =>
-                openArticle(
-                    first.id
-                );
+            () => openArticle(first.id);
 
 
         featured.innerHTML = `
 
             <div class="featured-image">
 
-                ${getNewsImageHTML(
-                    first
-                )}
+                ${getNewsImageHTML(first)}
 
             </div>
-
 
             <div class="featured-content">
 
                 <div class="featured-label">
-
                     ● AKTUELL
-
                 </div>
 
-
                 <h2>
-
-                    ${escapeHTML(
-                        first.title ||
-                        ""
-                    )}
-
+                    ${escapeHTML(first.title)}
                 </h2>
 
             </div>
@@ -1983,16 +1897,10 @@ function renderNews(list) {
         `;
 
 
-        grid.appendChild(
-            featured
-        );
+        grid.appendChild(featured);
 
     }
 
-
-    /*
-       NORMALE KARTEN
-    */
 
     list.forEach(
         (item,index) => {
@@ -2008,9 +1916,7 @@ function renderNews(list) {
 
 
             const card =
-                document.createElement(
-                    "article"
-                );
+                document.createElement("article");
 
 
             card.className =
@@ -2018,19 +1924,14 @@ function renderNews(list) {
 
 
             card.onclick =
-                () =>
-                    openArticle(
-                        item.id
-                    );
+                () => openArticle(item.id);
 
 
             card.innerHTML = `
 
                 <div class="news-image">
 
-                    ${getNewsImageHTML(
-                        item
-                    )}
+                    ${getNewsImageHTML(item)}
 
                 </div>
 
@@ -2039,37 +1940,25 @@ function renderNews(list) {
 
                     <div class="news-meta">
 
-                        ${escapeHTML(
-                            item.category ||
-                            ""
-                        )}
+                        ${escapeHTML(item.category || "")}
 
                         ·
 
-                        ${escapeHTML(
-                            item.region ||
-                            ""
-                        )}
+                        ${escapeHTML(item.region || "")}
 
                     </div>
 
 
                     <h2>
 
-                        ${escapeHTML(
-                            item.title ||
-                            ""
-                        )}
+                        ${escapeHTML(item.title || "")}
 
                     </h2>
 
 
                     <p>
 
-                        ${escapeHTML(
-                            item.description ||
-                            ""
-                        )}
+                        ${escapeHTML(item.description || "")}
 
                     </p>
 
@@ -2078,9 +1967,7 @@ function renderNews(list) {
             `;
 
 
-            grid.appendChild(
-                card
-            );
+            grid.appendChild(card);
 
         }
     );
@@ -2092,39 +1979,26 @@ function renderNews(list) {
    FILTER
 ===================================================== */
 
-function filterNews(
-    category,
-    button
-) {
+function filterNews(category, button) {
 
     activeFilter =
         category;
 
 
     document
-        .querySelectorAll(
-            ".filter"
-        )
+        .querySelectorAll(".filter")
         .forEach(
             x =>
-                x.classList.remove(
-                    "active"
-                )
+                x.classList.remove("active")
         );
 
 
-    button.classList.add(
-        "active"
-    );
+    button.classList.add("active");
 
 
-    if (
-        category === "Alle"
-    ) {
+    if (category === "Alle") {
 
-        renderNews(
-            articles
-        );
+        renderNews(articles);
 
         return;
 
@@ -2134,20 +2008,12 @@ function filterNews(
     const filtered =
         articles.filter(
             item =>
-
-                item.category ===
-                category
-
-                ||
-
-                item.region ===
-                category
+                item.category === category ||
+                item.region === category
         );
 
 
-    renderNews(
-        filtered
-    );
+    renderNews(filtered);
 
 }
 
@@ -2158,30 +2024,33 @@ function filterNews(
 
 function toggleSearch() {
 
-    const box =
-        document.getElementById(
-            "searchBox"
-        );
-
+    /*
+     * Suche nur im Nachrichtenbereich.
+     */
 
     if (
-        box.style.display ===
-        "block"
+        document.getElementById("home").style.display !== "block"
     ) {
 
-        box.style.display =
-            "none";
+        openNews();
+
+    }
+
+
+    const box =
+        document.getElementById("searchBox");
+
+
+    if (box.style.display === "block") {
+
+        box.style.display = "none";
 
     } else {
 
-        box.style.display =
-            "block";
-
+        box.style.display = "block";
 
         document
-            .getElementById(
-                "searchInput"
-            )
+            .getElementById("searchInput")
             .focus();
 
     }
@@ -2193,9 +2062,7 @@ function searchNews() {
 
     const value =
         document
-            .getElementById(
-                "searchInput"
-            )
+            .getElementById("searchInput")
             .value
             .toLowerCase()
             .trim();
@@ -2203,9 +2070,7 @@ function searchNews() {
 
     if (!value) {
 
-        renderNews(
-            articles
-        );
+        renderNews(articles);
 
         return;
 
@@ -2216,54 +2081,37 @@ function searchNews() {
         articles.filter(
             item =>
 
-                String(
-                    item.title ||
-                    ""
-                )
-                .toLowerCase()
-                .includes(value)
+                String(item.title || "")
+                    .toLowerCase()
+                    .includes(value)
 
                 ||
 
-                String(
-                    item.description ||
-                    ""
-                )
-                .toLowerCase()
-                .includes(value)
+                String(item.description || "")
+                    .toLowerCase()
+                    .includes(value)
 
                 ||
 
-                String(
-                    item.content ||
-                    ""
-                )
-                .toLowerCase()
-                .includes(value)
+                String(item.content || "")
+                    .toLowerCase()
+                    .includes(value)
 
                 ||
 
-                String(
-                    item.category ||
-                    ""
-                )
-                .toLowerCase()
-                .includes(value)
+                String(item.category || "")
+                    .toLowerCase()
+                    .includes(value)
 
                 ||
 
-                String(
-                    item.region ||
-                    ""
-                )
-                .toLowerCase()
-                .includes(value)
+                String(item.region || "")
+                    .toLowerCase()
+                    .includes(value)
         );
 
 
-    renderNews(
-        results
-    );
+    renderNews(results);
 
 }
 
@@ -2276,65 +2124,37 @@ function openArticle(id) {
 
     const article =
         articles.find(
-            x =>
-                x.id === id
+            x => x.id === id
         );
 
 
     if (!article) {
-
         return;
-
     }
 
 
-    document
-        .getElementById(
-            "home"
-        )
-        .style.display =
-            "none";
+    hideAllPages();
 
 
     document
-        .getElementById(
-            "admin"
-        )
-        .style.display =
-            "none";
+        .getElementById("article")
+        .style.display = "block";
 
 
     document
-        .getElementById(
-            "article"
-        )
-        .style.display =
-            "block";
-
-
-    document
-        .getElementById(
-            "articleMeta"
-        )
+        .getElementById("articleMeta")
         .textContent =
-            `${article.category || ""} · ${
-                article.region || ""
-            }`;
+            `${article.category || ""} · ${article.region || ""}`;
 
 
     document
-        .getElementById(
-            "articleTitle"
-        )
+        .getElementById("articleTitle")
         .textContent =
-            article.title ||
-            "";
+            article.title || "";
 
 
     const imageBox =
-        document.getElementById(
-            "articleImage"
-        );
+        document.getElementById("articleImage");
 
 
     if (article.image_url) {
@@ -2342,92 +2162,34 @@ function openArticle(id) {
         imageBox.innerHTML = `
 
             <img
-                src="${escapeHTML(
-                    article.image_url
-                )}"
-                alt="${escapeHTML(
-                    article.title ||
-                    "Artikelbild"
-                )}"
-                onerror="
-                    this.parentElement.innerHTML='n:';
-                ">
+                src="${escapeHTML(article.image_url)}"
+                alt="${escapeHTML(article.title || "Artikelbild")}"
+                onerror="this.parentElement.innerHTML='n:'">
 
         `;
 
     } else {
 
-        imageBox.innerHTML =
-            "n:";
+        imageBox.innerHTML = "n:";
 
     }
 
 
     document
-        .getElementById(
-            "articleText"
-        )
+        .getElementById("articleText")
         .innerHTML =
-
-        escapeHTML(
-            article.content ||
-            ""
-        )
-        .replace(
-            /\n/g,
-            "<br><br>"
-        );
+            escapeHTML(
+                article.content || ""
+            )
+            .replace(
+                /\n/g,
+                "<br><br>"
+            );
 
 
     window.scrollTo({
-
         top: 0,
-
-        behavior:
-            "smooth"
-
-    });
-
-}
-
-
-/* =====================================================
-   HOME
-===================================================== */
-
-function showHome() {
-
-    document
-        .getElementById(
-            "article"
-        )
-        .style.display =
-            "none";
-
-
-    document
-        .getElementById(
-            "admin"
-        )
-        .style.display =
-            "none";
-
-
-    document
-        .getElementById(
-            "home"
-        )
-        .style.display =
-            "block";
-
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior:
-            "smooth"
-
+        behavior: "smooth"
     });
 
 }
@@ -2437,33 +2199,22 @@ function showHome() {
    ADMIN ÖFFNEN
 ===================================================== */
 
-async function openAdmin() {
+function openAdmin() {
+
+    hideAllPages();
 
     document
-        .getElementById(
-            "home"
-        )
-        .style.display =
-            "none";
+        .getElementById("admin")
+        .style.display = "block";
 
 
-    document
-        .getElementById(
-            "article"
-        )
-        .style.display =
-            "none";
+    checkSession();
 
 
-    document
-        .getElementById(
-            "admin"
-        )
-        .style.display =
-            "block";
-
-
-    await checkSession();
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 }
 
@@ -2476,35 +2227,25 @@ async function login() {
 
     const email =
         document
-            .getElementById(
-                "email"
-            )
+            .getElementById("email")
             .value
             .trim();
 
 
     const password =
         document
-            .getElementById(
-                "password"
-            )
+            .getElementById("password")
             .value;
 
 
     const error =
-        document
-            .getElementById(
-                "loginError"
-            );
+        document.getElementById("loginError");
 
 
     error.textContent = "";
 
 
-    if (
-        !email ||
-        !password
-    ) {
+    if (!email || !password) {
 
         error.textContent =
             "Bitte E-Mail und Passwort eingeben.";
@@ -2516,36 +2257,62 @@ async function login() {
 
     try {
 
-        const {
-            data,
-            error: loginError
-        } =
-            await db.auth
-                .signInWithPassword({
+        const response =
+            await fetch(
+                `${SUPABASE_URL}/auth/v1/token?grant_type=password`,
+                {
+                    method: "POST",
 
-                    email:
-                        email,
+                    headers: {
 
-                    password:
-                        password
+                        "apikey":
+                            SUPABASE_KEY,
 
-                });
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            email:
+                                email,
+
+                            password:
+                                password
+
+                        })
+
+                }
+            );
 
 
-        if (loginError) {
-
-            throw loginError;
-
-        }
+        const data =
+            await response.json();
 
 
-        if (!data.session) {
+        if (!response.ok) {
 
             throw new Error(
-                "Keine gültige Sitzung erhalten."
+                data.msg ||
+                data.message ||
+                "Login fehlgeschlagen."
             );
 
         }
+
+
+        sessionStorage.setItem(
+            "nAccessToken",
+            data.access_token
+        );
+
+
+        sessionStorage.setItem(
+            "nUser",
+            JSON.stringify(data.user)
+        );
 
 
         showDashboard();
@@ -2553,22 +2320,12 @@ async function login() {
 
     } catch (error) {
 
-        console.error(
-            "LOGIN FEHLER:",
-            error
-        );
-
+        console.error(error);
 
         document
-            .getElementById(
-                "loginError"
-            )
+            .getElementById("loginError")
             .textContent =
-                "❌ " +
-                (
-                    error.message ||
-                    "Login fehlgeschlagen."
-                );
+                "❌ " + error.message;
 
     }
 
@@ -2579,72 +2336,28 @@ async function login() {
    SESSION
 ===================================================== */
 
-async function checkSession() {
+function checkSession() {
 
-    try {
-
-        const {
-            data,
-            error
-        } =
-            await db.auth.getSession();
-
-
-        if (error) {
-
-            throw error;
-
-        }
-
-
-        if (data.session) {
-
-            showDashboard();
-
-        } else {
-
-            document
-                .getElementById(
-                    "loginBox"
-                )
-                .style.display =
-                    "block";
-
-
-            document
-                .getElementById(
-                    "dashboard"
-                )
-                .style.display =
-                    "none";
-
-        }
-
-    } catch (error) {
-
-        console.error(
-            "SESSION FEHLER:",
-            error
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
         );
 
 
-        await db.auth.signOut();
+    if (token) {
+
+        showDashboard();
+
+    } else {
+
+        document
+            .getElementById("loginBox")
+            .style.display = "block";
 
 
         document
-            .getElementById(
-                "loginBox"
-            )
-            .style.display =
-                "block";
-
-
-        document
-            .getElementById(
-                "dashboard"
-            )
-            .style.display =
-                "none";
+            .getElementById("dashboard")
+            .style.display = "none";
 
     }
 
@@ -2658,20 +2371,16 @@ async function checkSession() {
 function showDashboard() {
 
     document
-        .getElementById(
-            "loginBox"
-        )
-        .style.display =
-            "none";
+        .getElementById("loginBox")
+        .style.display = "none";
 
 
     document
-        .getElementById(
-            "dashboard"
-        )
-        .style.display =
-            "block";
+        .getElementById("dashboard")
+        .style.display = "block";
 
+
+    loadNews();
 
     renderAdmin();
 
@@ -2682,25 +2391,25 @@ function showDashboard() {
    LOGOUT
 ===================================================== */
 
-async function logout() {
+function logout() {
 
-    await db.auth.signOut();
+    sessionStorage.removeItem(
+        "nAccessToken"
+    );
 
-
-    document
-        .getElementById(
-            "dashboard"
-        )
-        .style.display =
-            "none";
+    sessionStorage.removeItem(
+        "nUser"
+    );
 
 
     document
-        .getElementById(
-            "loginBox"
-        )
-        .style.display =
-            "block";
+        .getElementById("dashboard")
+        .style.display = "none";
+
+
+    document
+        .getElementById("loginBox")
+        .style.display = "block";
 
 }
 
@@ -2712,9 +2421,12 @@ async function logout() {
 function renderAdmin() {
 
     const list =
-        document.getElementById(
-            "adminList"
-        );
+        document.getElementById("adminList");
+
+
+    if (!list) {
+        return;
+    }
 
 
     list.innerHTML = "";
@@ -2741,9 +2453,7 @@ function renderAdmin() {
         article => {
 
             const item =
-                document.createElement(
-                    "div"
-                );
+                document.createElement("div");
 
 
             item.className =
@@ -2754,39 +2464,27 @@ function renderAdmin() {
 
                 <div>
 
-                    <div
-                        class="admin-item-title">
+                    <div class="admin-item-title">
 
-                        ${escapeHTML(
-                            article.title ||
-                            ""
-                        )}
+                        ${escapeHTML(article.title || "")}
 
                     </div>
 
 
                     <small>
 
-                        ${escapeHTML(
-                            article.category ||
-                            ""
-                        )}
+                        ${escapeHTML(article.category || "")}
 
                         ·
 
-                        ${escapeHTML(
-                            article.region ||
-                            ""
-                        )}
+                        ${escapeHTML(article.region || "")}
 
                     </small>
 
                 </div>
 
 
-                <div
-                    class="admin-actions">
-
+                <div class="admin-actions">
 
                     <button
                         class="small edit"
@@ -2810,9 +2508,7 @@ function renderAdmin() {
             `;
 
 
-            list.appendChild(
-                item
-            );
+            list.appendChild(item);
 
         }
     );
@@ -2828,66 +2524,50 @@ async function saveArticle() {
 
     const title =
         document
-            .getElementById(
-                "title"
-            )
+            .getElementById("title")
             .value
             .trim();
 
 
     const description =
         document
-            .getElementById(
-                "description"
-            )
+            .getElementById("description")
             .value
             .trim();
 
 
     const category =
         document
-            .getElementById(
-                "category"
-            )
+            .getElementById("category")
             .value;
 
 
     const region =
         document
-            .getElementById(
-                "region"
-            )
+            .getElementById("region")
             .value
             .trim();
 
 
     const content =
         document
-            .getElementById(
-                "content"
-            )
+            .getElementById("content")
             .value
             .trim();
 
 
     const imageFile =
         document
-            .getElementById(
-                "imageFile"
-            )
+            .getElementById("imageFile")
             .files[0];
 
 
     const message =
-        document.getElementById(
-            "formMessage"
-        );
+        document.getElementById("formMessage");
 
 
     const saveButton =
-        document.getElementById(
-            "saveButton"
-        );
+        document.getElementById("saveButton");
 
 
     if (
@@ -2908,56 +2588,39 @@ async function saveArticle() {
     }
 
 
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
+
+
+    if (!token) {
+
+        message.className =
+            "error";
+
+        message.textContent =
+            "Bitte erneut einloggen.";
+
+        return;
+
+    }
+
+
     try {
 
         saveButton.disabled =
             true;
 
-
         saveButton.textContent =
             "⏳ Wird gespeichert...";
-
 
         message.className =
             "success";
 
-
         message.textContent =
             "";
 
-
-        /*
-           Session prüfen
-        */
-
-        const {
-            data: sessionData,
-            error: sessionError
-        } =
-            await db.auth.getSession();
-
-
-        if (sessionError) {
-
-            throw sessionError;
-
-        }
-
-
-        if (!sessionData.session) {
-
-            throw new Error(
-                "Deine Anmeldung ist abgelaufen. Bitte erneut einloggen."
-            );
-
-        }
-
-
-        /*
-           ==========================================
-           BILD
-           ==========================================
-        */
 
         let imageUrl =
             editingImageUrl;
@@ -2977,103 +2640,105 @@ async function saveArticle() {
         }
 
 
-        /*
-           ==========================================
-           ARTIKELDATEN
-           ==========================================
-        */
+        if (editingId !== null) {
 
-        const articleData = {
+            await supabaseRequest(
 
-            title:
-                title,
+                `news?id=eq.${editingId}`,
 
-            description:
-                description,
+                {
 
-            category:
-                category,
+                    method:
+                        "PATCH",
 
-            region:
-                region,
+                    headers: {
 
-            content:
-                content,
+                        "Authorization":
+                            `Bearer ${token}`,
 
-            image_url:
-                imageUrl
+                        "Prefer":
+                            "return=minimal"
 
-        };
+                    },
 
+                    body:
+                        JSON.stringify({
 
-        /*
-           ==========================================
-           BEARBEITEN
-           ==========================================
-        */
+                            title:
+                                title,
 
-        if (
-            editingId !== null
-        ) {
+                            description:
+                                description,
 
-            const {
-                error
-            } =
-                await db
-                    .from("news")
-                    .update(
-                        articleData
-                    )
-                    .eq(
-                        "id",
-                        editingId
-                    );
+                            category:
+                                category,
 
+                            region:
+                                region,
 
-            if (error) {
+                            content:
+                                content,
 
-                throw error;
+                            image_url:
+                                imageUrl
 
-            }
+                        })
 
+                }
 
-            message.className =
-                "success";
+            );
 
 
             message.textContent =
                 "✅ Artikel aktualisiert.";
 
-        }
+        } else {
 
+            await supabaseRequest(
 
-        /*
-           ==========================================
-           NEU ERSTELLEN
-           ==========================================
-        */
+                "news",
 
-        else {
+                {
 
-            const {
-                error
-            } =
-                await db
-                    .from("news")
-                    .insert(
-                        articleData
-                    );
+                    method:
+                        "POST",
 
+                    headers: {
 
-            if (error) {
+                        "Authorization":
+                            `Bearer ${token}`,
 
-                throw error;
+                        "Prefer":
+                            "return=minimal"
 
-            }
+                    },
 
+                    body:
+                        JSON.stringify({
 
-            message.className =
-                "success";
+                            title:
+                                title,
+
+                            description:
+                                description,
+
+                            category:
+                                category,
+
+                            region:
+                                region,
+
+                            content:
+                                content,
+
+                            image_url:
+                                imageUrl
+
+                        })
+
+                }
+
+            );
 
 
             message.textContent =
@@ -3084,51 +2749,32 @@ async function saveArticle() {
 
         clearForm();
 
-
         await loadNews();
-
 
         renderAdmin();
 
 
     } catch (error) {
 
-        console.error(
-            "SPEICHER FEHLER:",
-            error
-        );
+        console.error(error);
 
 
         message.className =
             "error";
 
-
         message.textContent =
             "Fehler: " +
-            (
-                error.message ||
-                "Unbekannter Fehler"
-            );
+            error.message;
 
     } finally {
 
         saveButton.disabled =
             false;
 
-
-        if (
+        saveButton.textContent =
             editingId !== null
-        ) {
-
-            saveButton.textContent =
-                "Änderungen speichern";
-
-        } else {
-
-            saveButton.textContent =
-                "📰 Veröffentlichen";
-
-        }
+                ? "Änderungen speichern"
+                : "📰 Veröffentlichen";
 
     }
 
@@ -3143,15 +2789,12 @@ function editArticle(id) {
 
     const article =
         articles.find(
-            x =>
-                x.id === id
+            x => x.id === id
         );
 
 
     if (!article) {
-
         return;
-
     }
 
 
@@ -3160,75 +2803,57 @@ function editArticle(id) {
 
 
     editingImageUrl =
-        article.image_url ||
-        null;
+        article.image_url || null;
 
 
     document
-        .getElementById(
-            "formTitle"
-        )
+        .getElementById("formTitle")
         .textContent =
             "Artikel bearbeiten";
 
 
     document
-        .getElementById(
-            "title"
-        )
+        .getElementById("title")
         .value =
-            article.title ||
-            "";
+            article.title || "";
 
 
     document
-        .getElementById(
-            "description"
-        )
+        .getElementById("description")
         .value =
-            article.description ||
-            "";
+            article.description || "";
 
 
     document
-        .getElementById(
-            "category"
-        )
+        .getElementById("category")
         .value =
-            article.category ||
-            "Deutschland";
+            article.category || "Deutschland";
 
 
     document
-        .getElementById(
-            "region"
-        )
+        .getElementById("region")
         .value =
-            article.region ||
-            "";
+            article.region || "";
 
 
     document
-        .getElementById(
-            "content"
-        )
+        .getElementById("content")
         .value =
-            article.content ||
-            "";
+            article.content || "";
 
 
     document
-        .getElementById(
-            "imageFile"
-        )
+        .getElementById("imageFile")
         .value =
             "";
 
 
     const preview =
-        document.getElementById(
-            "imagePreview"
-        );
+        document.getElementById("imagePreview");
+
+
+    const current =
+        document.getElementById("currentImage");
 
 
     if (article.image_url) {
@@ -3239,45 +2864,35 @@ function editArticle(id) {
         preview.style.display =
             "block";
 
+        current.style.display =
+            "block";
 
-        document
-            .getElementById(
-                "currentImage"
-            )
-            .textContent =
-                "Aktuelles Bild – du kannst ein neues Bild auswählen.";
+        current.textContent =
+            "Aktuelles Bild – du kannst ein neues Bild auswählen.";
 
     } else {
 
         preview.style.display =
             "none";
 
+        current.style.display =
+            "none";
 
-        document
-            .getElementById(
-                "currentImage"
-            )
-            .textContent =
-                "";
+        current.textContent =
+            "";
 
     }
 
 
     document
-        .getElementById(
-            "saveButton"
-        )
+        .getElementById("saveButton")
         .textContent =
             "Änderungen speichern";
 
 
     window.scrollTo({
-
         top: 0,
-
-        behavior:
-            "smooth"
-
+        behavior: "smooth"
     });
 
 }
@@ -3291,15 +2906,12 @@ async function deleteArticle(id) {
 
     const article =
         articles.find(
-            x =>
-                x.id === id
+            x => x.id === id
         );
 
 
     if (!article) {
-
         return;
-
     }
 
 
@@ -3308,6 +2920,21 @@ async function deleteArticle(id) {
             `„${article.title}“ wirklich löschen?`
         )
     ) {
+        return;
+    }
+
+
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
+
+
+    if (!token) {
+
+        alert(
+            "Bitte erneut einloggen."
+        );
 
         return;
 
@@ -3316,70 +2943,39 @@ async function deleteArticle(id) {
 
     try {
 
-        const {
-            data: sessionData,
-            error: sessionError
-        } =
-            await db.auth.getSession();
+        await supabaseRequest(
 
+            `news?id=eq.${id}`,
 
-        if (sessionError) {
+            {
 
-            throw sessionError;
+                method:
+                    "DELETE",
 
-        }
+                headers: {
 
+                    "Authorization":
+                        `Bearer ${token}`
 
-        if (!sessionData.session) {
+                }
 
-            throw new Error(
-                "Bitte erneut einloggen."
-            );
+            }
 
-        }
-
-
-        const {
-            error
-        } =
-            await db
-                .from("news")
-                .delete()
-                .eq(
-                    "id",
-                    id
-                );
-
-
-        if (error) {
-
-            throw error;
-
-        }
+        );
 
 
         await loadNews();
-
 
         renderAdmin();
 
 
     } catch (error) {
 
-        console.error(
-            "DELETE FEHLER:",
-            error
-        );
-
+        console.error(error);
 
         alert(
-
             "Fehler beim Löschen:\n\n" +
-            (
-                error.message ||
-                "Unbekannter Fehler"
-            )
-
+            error.message
         );
 
     }
@@ -3402,96 +2998,78 @@ function clearForm() {
 
 
     document
-        .getElementById(
-            "formTitle"
-        )
+        .getElementById("formTitle")
         .textContent =
             "Neuer Artikel";
 
 
     document
-        .getElementById(
-            "title"
-        )
+        .getElementById("title")
         .value =
             "";
 
 
     document
-        .getElementById(
-            "description"
-        )
+        .getElementById("description")
         .value =
             "";
 
 
     document
-        .getElementById(
-            "category"
-        )
+        .getElementById("category")
         .value =
             "Deutschland";
 
 
     document
-        .getElementById(
-            "region"
-        )
+        .getElementById("region")
         .value =
             "";
 
 
     document
-        .getElementById(
-            "content"
-        )
+        .getElementById("content")
         .value =
             "";
 
 
     document
-        .getElementById(
-            "imageFile"
-        )
+        .getElementById("imageFile")
         .value =
             "";
 
 
     const preview =
-        document.getElementById(
-            "imagePreview"
-        );
+        document.getElementById("imagePreview");
 
 
     preview.style.display =
         "none";
 
 
-    preview.removeAttribute(
-        "src"
-    );
+    preview.removeAttribute("src");
 
 
     document
-        .getElementById(
-            "currentImage"
-        )
+        .getElementById("currentImage")
+        .style.display =
+            "none";
+
+
+    document
+        .getElementById("currentImage")
         .textContent =
             "";
 
 
     document
-        .getElementById(
-            "saveButton"
-        )
+        .getElementById("saveButton")
         .textContent =
             "📰 Veröffentlichen";
 
 
     document
-        .getElementById(
-            "formMessage"
-        )
+        .getElementById("formMessage")
         .textContent =
             "";
 
@@ -3504,75 +3082,28 @@ function clearForm() {
 
 function escapeHTML(value) {
 
-    return String(
-        value ?? ""
-    )
+    return String(value ?? "")
 
-        .replace(
-            /&/g,
-            "&amp;"
-        )
+        .replace(/&/g,"&amp;")
 
-        .replace(
-            /</g,
-            "&lt;"
-        )
+        .replace(/</g,"&lt;")
 
-        .replace(
-            />/g,
-            "&gt;"
-        )
+        .replace(/>/g,"&gt;")
 
-        .replace(
-            /"/g,
-            "&quot;"
-        )
+        .replace(/"/g,"&quot;")
 
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+        .replace(/'/g,"&#039;");
 
 }
-
-
-/* =====================================================
-   AUTH STATE
-===================================================== */
-
-db.auth.onAuthStateChange(
-    (event, session) => {
-
-        console.log(
-            "AUTH:",
-            event
-        );
-
-
-        if (
-            event ===
-            "TOKEN_REFRESHED"
-        ) {
-
-            console.log(
-                "✅ Supabase Token automatisch erneuert."
-            );
-
-        }
-
-    }
-);
 
 
 /* =====================================================
    START
 ===================================================== */
 
-loadNews();
+showStart();
 
 </script>
 
-
 </body>
-
 </html>
