@@ -33,12 +33,10 @@ header {
     justify-content: space-between;
 
     background: rgba(255,255,255,.96);
-
     border-bottom: 1px solid #ddd;
 
     position: sticky;
     top: 0;
-
     z-index: 100;
 }
 
@@ -59,11 +57,9 @@ header {
     background: transparent;
 
     font-size: 20px;
-
     padding: 10px;
 
     border-radius: 10px;
-
     cursor: pointer;
 }
 
@@ -100,7 +96,6 @@ main {
 
 .hero h1 {
     font-size: clamp(42px, 7vw, 72px);
-
     line-height: .95;
     letter-spacing: -4px;
 
@@ -130,7 +125,6 @@ main {
     border-radius: 13px;
 
     outline: none;
-
     font-size: 16px;
 }
 
@@ -157,7 +151,6 @@ main {
     background: white;
 
     font-weight: 700;
-
     cursor: pointer;
 }
 
@@ -187,7 +180,6 @@ main {
     border-radius: 20px;
 
     overflow: hidden;
-
     cursor: pointer;
 
     transition: .2s;
@@ -205,7 +197,6 @@ main {
     height: 190px;
 
     display: flex;
-
     justify-content: center;
     align-items: center;
 
@@ -229,7 +220,6 @@ main {
     height: 100%;
 
     object-fit: cover;
-
     display: block;
 }
 
@@ -246,15 +236,12 @@ main {
 
 .news-card h2 {
     margin: 0 0 10px;
-
     font-size: 22px;
 }
 
 .news-card p {
     color: #777;
-
     line-height: 1.5;
-
     margin: 0;
 }
 
@@ -273,7 +260,6 @@ main {
     border-radius: 20px;
 
     overflow: hidden;
-
     cursor: pointer;
 }
 
@@ -289,7 +275,6 @@ main {
         );
 
     display: flex;
-
     justify-content: center;
     align-items: center;
 
@@ -306,7 +291,6 @@ main {
     height: 100%;
 
     object-fit: cover;
-
     display: block;
 }
 
@@ -316,9 +300,7 @@ main {
 
 .featured-label {
     font-size: 12px;
-
     font-weight: 900;
-
     margin-bottom: 8px;
 }
 
@@ -387,7 +369,6 @@ main {
         clamp(40px,7vw,70px);
 
     line-height: .98;
-
     letter-spacing: -4px;
 
     margin: 0 0 25px;
@@ -398,7 +379,6 @@ main {
     min-height: 340px;
 
     display: flex;
-
     justify-content: center;
     align-items: center;
 
@@ -426,7 +406,6 @@ main {
     max-height: 550px;
 
     object-fit: cover;
-
     display: block;
 }
 
@@ -443,7 +422,6 @@ main {
     display: none;
 
     max-width: 900px;
-
     margin: auto;
 }
 
@@ -546,8 +524,6 @@ main {
 }
 
 .current-image {
-    display: none;
-
     margin-top: 10px;
 
     color: #777;
@@ -716,7 +692,6 @@ footer {
 
 <body>
 
-
 <header>
 
     <div
@@ -726,7 +701,6 @@ footer {
         n:
 
     </div>
-
 
     <div class="header-actions">
 
@@ -738,7 +712,6 @@ footer {
             🔎
 
         </button>
-
 
         <button
             class="header-btn"
@@ -804,7 +777,6 @@ footer {
 
         </button>
 
-
         <button
             class="filter"
             onclick="filterNews('Deutschland',this)">
@@ -812,7 +784,6 @@ footer {
             🇩🇪 Deutschland
 
         </button>
-
 
         <button
             class="filter"
@@ -822,7 +793,6 @@ footer {
 
         </button>
 
-
         <button
             class="filter"
             onclick="filterNews('Region',this)">
@@ -831,7 +801,6 @@ footer {
 
         </button>
 
-
         <button
             class="filter"
             onclick="filterNews('Sport',this)">
@@ -839,7 +808,6 @@ footer {
             ⚽ Sport
 
         </button>
-
 
         <button
             class="filter"
@@ -883,17 +851,14 @@ footer {
 
     </button>
 
-
     <div
         class="article-meta"
         id="articleMeta">
     </div>
 
-
     <h1
         id="articleTitle">
     </h1>
-
 
     <div
         class="article-image"
@@ -902,7 +867,6 @@ footer {
         n:
 
     </div>
-
 
     <div
         class="article-text"
@@ -921,8 +885,6 @@ footer {
     id="admin">
 
 
-    <!-- LOGIN -->
-
     <div
         class="login"
         id="loginBox">
@@ -935,18 +897,15 @@ footer {
             Anmeldung nur für die Redaktion.
         </p>
 
-
         <input
             id="email"
             type="email"
             placeholder="E-Mail">
 
-
         <input
             id="password"
             type="password"
             placeholder="Passwort">
-
 
         <button
             class="primary"
@@ -956,7 +915,6 @@ footer {
 
         </button>
 
-
         <div
             class="error"
             id="loginError">
@@ -964,8 +922,6 @@ footer {
 
     </div>
 
-
-    <!-- DASHBOARD -->
 
     <div
         id="dashboard"
@@ -977,7 +933,6 @@ footer {
             <h1>
                 Redaktion
             </h1>
-
 
             <button
                 class="secondary"
@@ -1024,23 +979,23 @@ footer {
 
             <select id="category">
 
-                <option>
+                <option value="Deutschland">
                     Deutschland
                 </option>
 
-                <option>
+                <option value="Welt">
                     Welt
                 </option>
 
-                <option>
+                <option value="Region">
                     Region
                 </option>
 
-                <option>
+                <option value="Sport">
                     Sport
                 </option>
 
-                <option>
+                <option value="Digital">
                     Digital
                 </option>
 
@@ -1064,8 +1019,6 @@ footer {
                 id="content"
                 placeholder="Artikel schreiben..."></textarea>
 
-
-            <!-- BILD -->
 
             <label>
                 Artikelbild
@@ -1101,7 +1054,6 @@ footer {
 
             </button>
 
-
             <button
                 class="secondary"
                 onclick="clearForm()">
@@ -1109,7 +1061,6 @@ footer {
                 Abbrechen
 
             </button>
-
 
             <div
                 id="formMessage"
@@ -1133,7 +1084,6 @@ footer {
 
 </section>
 
-
 </main>
 
 
@@ -1144,8 +1094,14 @@ footer {
 </footer>
 
 
-<script>
+<!-- =====================================================
+     SUPABASE JS
+===================================================== -->
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
 
 /* =====================================================
    SUPABASE
@@ -1154,13 +1110,25 @@ footer {
 const SUPABASE_URL =
     "https://eqzmsuncndfsiedyfifb.supabase.co";
 
-
 const SUPABASE_KEY =
     "sb_publishable_eXY1gg_tIr-cRC2kdt0jbQ_QPfbEmkF";
 
-
 const STORAGE_BUCKET =
     "news-images";
+
+
+const supabase =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY,
+        {
+            auth: {
+                persistSession: true,
+                autoRefreshToken: true,
+                detectSessionInUrl: false
+            }
+        }
+    );
 
 
 /* =====================================================
@@ -1177,102 +1145,39 @@ let editingImageUrl = null;
 
 
 /* =====================================================
-   SUPABASE REQUEST
+   SESSION AUTOMATISCH ÜBERWACHEN
 ===================================================== */
 
-async function supabaseRequest(
-    endpoint,
-    options = {}
-) {
+supabase.auth.onAuthStateChange(
+    async (event, session) => {
 
-    const token =
-        sessionStorage.getItem(
-            "nAccessToken"
+        console.log(
+            "Auth:",
+            event
         );
 
+        if (
+            event === "TOKEN_REFRESHED"
+        ) {
 
-    const headers = {
+            console.log(
+                "🔄 Sitzung automatisch erneuert."
+            );
 
-        "apikey":
-            SUPABASE_KEY,
+        }
 
-        "Content-Type":
-            "application/json",
+        if (
+            event === "SIGNED_OUT"
+        ) {
 
-        ...(options.headers || {})
+            console.log(
+                "👋 Ausgeloggt."
+            );
 
-    };
-
-
-    /*
-       Für eingeloggte Aktionen
-       immer das aktuelle Access-Token
-       verwenden.
-    */
-
-    if (token) {
-
-        headers["Authorization"] =
-            `Bearer ${token}`;
-
-    } else if (!headers["Authorization"]) {
-
-        headers["Authorization"] =
-            `Bearer ${SUPABASE_KEY}`;
+        }
 
     }
-
-
-    const response =
-        await fetch(
-
-            `${SUPABASE_URL}/rest/v1/${endpoint}`,
-
-            {
-
-                ...options,
-
-                headers
-
-            }
-
-        );
-
-
-    if (!response.ok) {
-
-        const text =
-            await response.text();
-
-        throw new Error(
-            text || "Supabase Fehler"
-        );
-
-    }
-
-
-    const text =
-        await response.text();
-
-
-    if (!text) {
-
-        return null;
-
-    }
-
-
-    try {
-
-        return JSON.parse(text);
-
-    } catch {
-
-        return null;
-
-    }
-
-}
+);
 
 
 /* =====================================================
@@ -1284,12 +1189,10 @@ function previewImage(event) {
     const file =
         event.target.files[0];
 
-
     const preview =
         document.getElementById(
             "imagePreview"
         );
-
 
     if (!file) {
 
@@ -1304,8 +1207,11 @@ function previewImage(event) {
 
     }
 
-
-    if (!file.type.startsWith("image/")) {
+    if (
+        !file.type.startsWith(
+            "image/"
+        )
+    ) {
 
         alert(
             "Bitte eine Bilddatei auswählen."
@@ -1317,10 +1223,23 @@ function previewImage(event) {
 
     }
 
+    if (
+        file.size >
+        10 * 1024 * 1024
+    ) {
+
+        alert(
+            "Das Bild darf maximal 10 MB groß sein."
+        );
+
+        event.target.value = "";
+
+        return;
+
+    }
 
     const reader =
         new FileReader();
-
 
     reader.onload =
         function(e) {
@@ -1333,7 +1252,6 @@ function previewImage(event) {
 
         };
 
-
     reader.readAsDataURL(file);
 
 }
@@ -1345,29 +1263,15 @@ function previewImage(event) {
 
 async function uploadImage(file) {
 
-    const token =
-        sessionStorage.getItem(
-            "nAccessToken"
-        );
-
-
-    if (!token) {
-
-        throw new Error(
-            "Nicht eingeloggt. Bitte erneut einloggen."
-        );
-
-    }
-
-
     if (!file) {
-
         return null;
-
     }
 
-
-    if (!file.type.startsWith("image/")) {
+    if (
+        !file.type.startsWith(
+            "image/"
+        )
+    ) {
 
         throw new Error(
             "Die ausgewählte Datei ist kein Bild."
@@ -1375,13 +1279,10 @@ async function uploadImage(file) {
 
     }
 
-
-    /*
-       Maximale Dateigröße:
-       10 MB
-    */
-
-    if (file.size > 10 * 1024 * 1024) {
+    if (
+        file.size >
+        10 * 1024 * 1024
+    ) {
 
         throw new Error(
             "Das Bild ist zu groß. Maximal 10 MB."
@@ -1390,9 +1291,26 @@ async function uploadImage(file) {
     }
 
 
-    /*
-       Eindeutiger Dateiname
-    */
+    const {
+        data: {
+            session
+        },
+        error: sessionError
+    } =
+        await supabase.auth.getSession();
+
+
+    if (
+        sessionError ||
+        !session
+    ) {
+
+        throw new Error(
+            "Deine Anmeldung ist abgelaufen. Bitte erneut einloggen."
+        );
+
+    }
+
 
     const extension =
         file.name
@@ -1409,73 +1327,48 @@ async function uploadImage(file) {
         `${Date.now()}-${crypto.randomUUID()}.${extension}`;
 
 
-    const uploadUrl =
-        `${SUPABASE_URL}/storage/v1/object/${STORAGE_BUCKET}/${filename}`;
-
-
-    const response =
-        await fetch(
-
-            uploadUrl,
-
-            {
-
-                method: "POST",
-
-                headers: {
-
-                    "apikey":
-                        SUPABASE_KEY,
-
-                    /*
-                       WICHTIG:
-                       Nicht den Publishable Key
-                       als Benutzer senden,
-                       sondern den echten
-                       eingeloggten Access Token.
-                    */
-
-                    "Authorization":
-                        `Bearer ${token}`,
-
-                    "Content-Type":
+    const {
+        error
+    } =
+        await supabase.storage
+            .from(STORAGE_BUCKET)
+            .upload(
+                filename,
+                file,
+                {
+                    contentType:
                         file.type,
+                    upsert:
+                        false
+                }
+            );
 
-                    "x-upsert":
-                        "false"
 
-                },
+    if (error) {
 
-                body: file
-
-            }
-
+        console.error(
+            "Upload:",
+            error
         );
 
-
-    if (!response.ok) {
-
-        const errorText =
-            await response.text();
-
-
         throw new Error(
-            errorText ||
-            `Bild-Upload fehlgeschlagen (${response.status})`
+            error.message
         );
 
     }
 
 
-    /*
-       Öffentliche URL des Bildes
-    */
+    const {
+        data
+    } =
+        supabase.storage
+            .from(STORAGE_BUCKET)
+            .getPublicUrl(
+                filename
+            );
 
-    const publicUrl =
-        `${SUPABASE_URL}/storage/v1/object/public/${STORAGE_BUCKET}/${filename}`;
 
-
-    return publicUrl;
+    return data.publicUrl;
 
 }
 
@@ -1491,27 +1384,63 @@ async function loadNews() {
             "newsGrid"
         );
 
+    grid.innerHTML = `
+
+        <div class="status-box">
+
+            Nachrichten werden geladen …
+
+        </div>
+
+    `;
+
 
     try {
 
-        const result =
-            await supabaseRequest(
-                "news?select=*&order=created_at.desc"
-            );
+        /*
+           Supabase übernimmt jetzt
+           automatisch das richtige
+           JWT und erneuert es bei Bedarf.
+        */
+
+        const {
+            data,
+            error
+        } =
+            await supabase
+                .from("news")
+                .select("*")
+                .order(
+                    "created_at",
+                    {
+                        ascending: false
+                    }
+                );
+
+
+        if (error) {
+
+            throw error;
+
+        }
 
 
         articles =
-            Array.isArray(result)
-                ? result
+            Array.isArray(data)
+                ? data
                 : [];
 
 
-        renderNews(articles);
+        renderNews(
+            articles
+        );
 
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            error
+        );
 
 
         grid.innerHTML = `
@@ -1525,8 +1454,19 @@ async function loadNews() {
                 <br><br>
 
                 ${escapeHTML(
-                    error.message
+                    error.message ||
+                    "Unbekannter Fehler"
                 )}
+
+                <br><br>
+
+                <button
+                    class="secondary"
+                    onclick="loadNews()">
+
+                    🔄 Erneut versuchen
+
+                </button>
 
             </div>
 
@@ -1543,7 +1483,9 @@ async function loadNews() {
 
 function getNewsImageHTML(article) {
 
-    if (article.image_url) {
+    if (
+        article.image_url
+    ) {
 
         return `
 
@@ -1551,12 +1493,11 @@ function getNewsImageHTML(article) {
                 src="${escapeHTML(article.image_url)}"
                 alt="${escapeHTML(article.title || "Artikelbild")}"
                 loading="lazy"
-                onerror="this.parentElement.innerHTML='n:'">
+                onerror="this.style.display='none'; this.parentElement.innerHTML='n:'">
 
         `;
 
     }
-
 
     return "n:";
 
@@ -1564,7 +1505,7 @@ function getNewsImageHTML(article) {
 
 
 /* =====================================================
-   NEWS ANZEIGEN
+   NEWS RENDERN
 ===================================================== */
 
 function renderNews(list) {
@@ -1578,7 +1519,9 @@ function renderNews(list) {
     grid.innerHTML = "";
 
 
-    if (!list.length) {
+    if (
+        !list.length
+    ) {
 
         grid.innerHTML = `
 
@@ -1596,7 +1539,8 @@ function renderNews(list) {
 
 
     if (
-        activeFilter === "Alle" &&
+        activeFilter === "Alle"
+        &&
         list.length > 0
     ) {
 
@@ -1615,9 +1559,10 @@ function renderNews(list) {
 
 
         featured.onclick =
-            () => openArticle(
-                first.id
-            );
+            () =>
+                openArticle(
+                    first.id
+                );
 
 
         featured.innerHTML = `
@@ -1660,7 +1605,8 @@ function renderNews(list) {
         (item,index) => {
 
             if (
-                activeFilter === "Alle" &&
+                activeFilter === "Alle"
+                &&
                 index === 0
             ) {
 
@@ -1680,9 +1626,10 @@ function renderNews(list) {
 
 
             card.onclick =
-                () => openArticle(
-                    item.id
-                );
+                () =>
+                    openArticle(
+                        item.id
+                    );
 
 
             card.innerHTML = `
@@ -1693,12 +1640,9 @@ function renderNews(list) {
 
                 </div>
 
+                <div class="news-card-content">
 
-                <div
-                    class="news-card-content">
-
-                    <div
-                        class="news-meta">
+                    <div class="news-meta">
 
                         ${escapeHTML(
                             item.category || ""
@@ -1712,7 +1656,6 @@ function renderNews(list) {
 
                     </div>
 
-
                     <h2>
 
                         ${escapeHTML(
@@ -1720,7 +1663,6 @@ function renderNews(list) {
                         )}
 
                     </h2>
-
 
                     <p>
 
@@ -1791,14 +1733,11 @@ function filterNews(
     const filtered =
         articles.filter(
             item =>
-
                 item.category ===
-                category
-
+                    category
                 ||
-
                 item.region ===
-                category
+                    category
         );
 
 
@@ -1833,7 +1772,6 @@ function toggleSearch() {
 
         box.style.display =
             "block";
-
 
         document
             .getElementById(
@@ -1871,45 +1809,51 @@ function searchNews() {
 
     const results =
         articles.filter(
-            item =>
+            item => {
 
-                String(
-                    item.title || ""
-                )
-                .toLowerCase()
-                .includes(value)
+                return (
 
-                ||
+                    String(
+                        item.title || ""
+                    )
+                    .toLowerCase()
+                    .includes(value)
 
-                String(
-                    item.description || ""
-                )
-                .toLowerCase()
-                .includes(value)
+                    ||
 
-                ||
+                    String(
+                        item.description || ""
+                    )
+                    .toLowerCase()
+                    .includes(value)
 
-                String(
-                    item.content || ""
-                )
-                .toLowerCase()
-                .includes(value)
+                    ||
 
-                ||
+                    String(
+                        item.content || ""
+                    )
+                    .toLowerCase()
+                    .includes(value)
 
-                String(
-                    item.category || ""
-                )
-                .toLowerCase()
-                .includes(value)
+                    ||
 
-                ||
+                    String(
+                        item.category || ""
+                    )
+                    .toLowerCase()
+                    .includes(value)
 
-                String(
-                    item.region || ""
-                )
-                .toLowerCase()
-                .includes(value)
+                    ||
+
+                    String(
+                        item.region || ""
+                    )
+                    .toLowerCase()
+                    .includes(value)
+
+                );
+
+            }
         );
 
 
@@ -1928,14 +1872,13 @@ function openArticle(id) {
 
     const article =
         articles.find(
-            x => x.id === id
+            x =>
+                x.id === id
         );
 
 
     if (!article) {
-
         return;
-
     }
 
 
@@ -1988,7 +1931,9 @@ function openArticle(id) {
         );
 
 
-    if (article.image_url) {
+    if (
+        article.image_url
+    ) {
 
         imageBox.innerHTML = `
 
@@ -2072,7 +2017,7 @@ function showHome() {
    ADMIN ÖFFNEN
 ===================================================== */
 
-function openAdmin() {
+async function openAdmin() {
 
     document
         .getElementById(
@@ -2098,7 +2043,7 @@ function openAdmin() {
             "block";
 
 
-    checkSession();
+    await checkSession();
 
 }
 
@@ -2151,71 +2096,34 @@ async function login() {
 
     try {
 
-        const response =
-            await fetch(
+        const {
+            data,
+            error: loginError
+        } =
+            await supabase.auth
+                .signInWithPassword({
 
-                `${SUPABASE_URL}/auth/v1/token?grant_type=password`,
+                    email:
+                        email,
 
-                {
+                    password:
+                        password
 
-                    method: "POST",
-
-                    headers: {
-
-                        "apikey":
-                            SUPABASE_KEY,
-
-                        "Content-Type":
-                            "application/json"
-
-                    },
-
-                    body:
-                        JSON.stringify({
-
-                            email:
-                                email,
-
-                            password:
-                                password
-
-                        })
-
-                }
-
-            );
-
-
-        const data =
-            await response.json();
+                });
 
 
         if (
-            !response.ok
+            loginError
         ) {
 
-            throw new Error(
-
-                data.msg ||
-                data.message ||
-                "Login fehlgeschlagen."
-
-            );
+            throw loginError;
 
         }
 
 
-        sessionStorage.setItem(
-            "nAccessToken",
-            data.access_token
-        );
-
-
-        sessionStorage.setItem(
-            "nUser",
-            JSON.stringify(
-                data.user
-            )
+        console.log(
+            "Login erfolgreich:",
+            data.user
         );
 
 
@@ -2234,8 +2142,12 @@ async function login() {
                 "loginError"
             )
             .textContent =
+
                 "❌ " +
-                error.message;
+                (
+                    error.message ||
+                    "Login fehlgeschlagen."
+                );
 
     }
 
@@ -2243,22 +2155,61 @@ async function login() {
 
 
 /* =====================================================
-   SESSION
+   SESSION PRÜFEN
 ===================================================== */
 
-function checkSession() {
+async function checkSession() {
 
-    const token =
-        sessionStorage.getItem(
-            "nAccessToken"
+    try {
+
+        const {
+            data,
+            error
+        } =
+            await supabase.auth
+                .getSession();
+
+
+        if (
+            error
+        ) {
+
+            throw error;
+
+        }
+
+
+        if (
+            data.session
+        ) {
+
+            showDashboard();
+
+        } else {
+
+            document
+                .getElementById(
+                    "loginBox"
+                )
+                .style.display =
+                    "block";
+
+
+            document
+                .getElementById(
+                    "dashboard"
+                )
+                .style.display =
+                    "none";
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            error
         );
 
-
-    if (token) {
-
-        showDashboard();
-
-    } else {
 
         document
             .getElementById(
@@ -2311,16 +2262,9 @@ function showDashboard() {
    LOGOUT
 ===================================================== */
 
-function logout() {
+async function logout() {
 
-    sessionStorage.removeItem(
-        "nAccessToken"
-    );
-
-
-    sessionStorage.removeItem(
-        "nUser"
-    );
+    await supabase.auth.signOut();
 
 
     document
@@ -2356,7 +2300,9 @@ function renderAdmin() {
     list.innerHTML = "";
 
 
-    if (!articles.length) {
+    if (
+        !articles.length
+    ) {
 
         list.innerHTML = `
 
@@ -2390,15 +2336,13 @@ function renderAdmin() {
 
                 <div>
 
-                    <div
-                        class="admin-item-title">
+                    <div class="admin-item-title">
 
                         ${escapeHTML(
                             article.title || ""
                         )}
 
                     </div>
-
 
                     <small>
 
@@ -2416,10 +2360,7 @@ function renderAdmin() {
 
                 </div>
 
-
-                <div
-                    class="admin-actions">
-
+                <div class="admin-actions">
 
                     <button
                         class="small edit"
@@ -2429,7 +2370,6 @@ function renderAdmin() {
 
                     </button>
 
-
                     <button
                         class="small delete"
                         onclick="deleteArticle(${article.id})">
@@ -2437,7 +2377,6 @@ function renderAdmin() {
                         Löschen
 
                     </button>
-
 
                 </div>
 
@@ -2513,17 +2452,15 @@ async function saveArticle() {
 
 
     const message =
-        document
-            .getElementById(
-                "formMessage"
-            );
+        document.getElementById(
+            "formMessage"
+        );
 
 
     const saveButton =
-        document
-            .getElementById(
-                "saveButton"
-            );
+        document.getElementById(
+            "saveButton"
+        );
 
 
     if (
@@ -2536,31 +2473,8 @@ async function saveArticle() {
         message.className =
             "error";
 
-
         message.textContent =
             "Bitte alle Felder ausfüllen.";
-
-
-        return;
-
-    }
-
-
-    const token =
-        sessionStorage.getItem(
-            "nAccessToken"
-        );
-
-
-    if (!token) {
-
-        message.className =
-            "error";
-
-
-        message.textContent =
-            "Bitte erneut einloggen.";
-
 
         return;
 
@@ -2572,30 +2486,27 @@ async function saveArticle() {
         saveButton.disabled =
             true;
 
-
         saveButton.textContent =
             "⏳ Wird gespeichert...";
 
-
         message.className =
             "success";
-
 
         message.textContent =
             "";
 
 
         /*
-           ==========================================
-           1. BILD HOCHLADEN
-           ==========================================
+           BILD
         */
 
         let imageUrl =
             editingImageUrl;
 
 
-        if (imageFile) {
+        if (
+            imageFile
+        ) {
 
             message.textContent =
                 "🖼️ Bild wird hochgeladen...";
@@ -2610,64 +2521,56 @@ async function saveArticle() {
 
 
         /*
-           ==========================================
-           2. ARTIKEL SPEICHERN
-           ==========================================
+           ARTIKEL
         */
+
+        message.textContent =
+            "📰 Artikel wird gespeichert...";
+
 
         if (
             editingId !== null
         ) {
 
-            await supabaseRequest(
+            const {
+                error
+            } =
+                await supabase
+                    .from("news")
+                    .update({
 
-                `news?id=eq.${editingId}`,
+                        title:
+                            title,
 
-                {
+                        description:
+                            description,
 
-                    method:
-                        "PATCH",
+                        category:
+                            category,
 
-                    headers: {
+                        region:
+                            region,
 
-                        "Authorization":
-                            `Bearer ${token}`,
+                        content:
+                            content,
 
-                        "Prefer":
-                            "return=minimal"
+                        image_url:
+                            imageUrl
 
-                    },
-
-                    body:
-                        JSON.stringify({
-
-                            title:
-                                title,
-
-                            description:
-                                description,
-
-                            category:
-                                category,
-
-                            region:
-                                region,
-
-                            content:
-                                content,
-
-                            image_url:
-                                imageUrl
-
-                        })
-
-                }
-
-            );
+                    })
+                    .eq(
+                        "id",
+                        editingId
+                    );
 
 
-            message.className =
-                "success";
+            if (
+                error
+            ) {
+
+                throw error;
+
+            }
 
 
             message.textContent =
@@ -2675,56 +2578,41 @@ async function saveArticle() {
 
         } else {
 
+            const {
+                error
+            } =
+                await supabase
+                    .from("news")
+                    .insert({
 
-            await supabaseRequest(
+                        title:
+                            title,
 
-                "news",
+                        description:
+                            description,
 
-                {
+                        category:
+                            category,
 
-                    method:
-                        "POST",
+                        region:
+                            region,
 
-                    headers: {
+                        content:
+                            content,
 
-                        "Authorization":
-                            `Bearer ${token}`,
+                        image_url:
+                            imageUrl
 
-                        "Prefer":
-                            "return=minimal"
-
-                    },
-
-                    body:
-                        JSON.stringify({
-
-                            title:
-                                title,
-
-                            description:
-                                description,
-
-                            category:
-                                category,
-
-                            region:
-                                region,
-
-                            content:
-                                content,
-
-                            image_url:
-                                imageUrl
-
-                        })
-
-                }
-
-            );
+                    });
 
 
-            message.className =
-                "success";
+            if (
+                error
+            ) {
+
+                throw error;
+
+            }
 
 
             message.textContent =
@@ -2755,7 +2643,10 @@ async function saveArticle() {
 
         message.textContent =
             "Fehler: " +
-            error.message;
+            (
+                error.message ||
+                "Unbekannter Fehler"
+            );
 
     } finally {
 
@@ -2763,19 +2654,10 @@ async function saveArticle() {
             false;
 
 
-        if (
+        saveButton.textContent =
             editingId !== null
-        ) {
-
-            saveButton.textContent =
-                "Änderungen speichern";
-
-        } else {
-
-            saveButton.textContent =
-                "📰 Veröffentlichen";
-
-        }
+                ? "Änderungen speichern"
+                : "📰 Veröffentlichen";
 
     }
 
@@ -2790,14 +2672,13 @@ function editArticle(id) {
 
     const article =
         articles.find(
-            x => x.id === id
+            x =>
+                x.id === id
         );
 
 
     if (!article) {
-
         return;
-
     }
 
 
@@ -2806,7 +2687,8 @@ function editArticle(id) {
 
 
     editingImageUrl =
-        article.image_url || null;
+        article.image_url ||
+        null;
 
 
     document
@@ -2838,7 +2720,8 @@ function editArticle(id) {
             "category"
         )
         .value =
-            article.category || "Deutschland";
+            article.category ||
+            "Deutschland";
 
 
     document
@@ -2871,7 +2754,15 @@ function editArticle(id) {
         );
 
 
-    if (article.image_url) {
+    const current =
+        document.getElementById(
+            "currentImage"
+        );
+
+
+    if (
+        article.image_url
+    ) {
 
         preview.src =
             article.image_url;
@@ -2879,26 +2770,16 @@ function editArticle(id) {
         preview.style.display =
             "block";
 
-
-        document
-            .getElementById(
-                "currentImage"
-            )
-            .textContent =
-                "Aktuelles Bild – du kannst ein neues Bild auswählen.";
+        current.textContent =
+            "Aktuelles Bild – du kannst ein neues Bild auswählen.";
 
     } else {
 
         preview.style.display =
             "none";
 
-
-        document
-            .getElementById(
-                "currentImage"
-            )
-            .textContent =
-                "";
+        current.textContent =
+            "";
 
     }
 
@@ -2927,14 +2808,13 @@ async function deleteArticle(id) {
 
     const article =
         articles.find(
-            x => x.id === id
+            x =>
+                x.id === id
         );
 
 
     if (!article) {
-
         return;
-
     }
 
 
@@ -2949,44 +2829,27 @@ async function deleteArticle(id) {
     }
 
 
-    const token =
-        sessionStorage.getItem(
-            "nAccessToken"
-        );
-
-
-    if (!token) {
-
-        alert(
-            "Bitte erneut einloggen."
-        );
-
-        return;
-
-    }
-
-
     try {
 
-        await supabaseRequest(
+        const {
+            error
+        } =
+            await supabase
+                .from("news")
+                .delete()
+                .eq(
+                    "id",
+                    id
+                );
 
-            `news?id=eq.${id}`,
 
-            {
+        if (
+            error
+        ) {
 
-                method:
-                    "DELETE",
+            throw error;
 
-                headers: {
-
-                    "Authorization":
-                        `Bearer ${token}`
-
-                }
-
-            }
-
-        );
+        }
 
 
         await loadNews();
@@ -3003,10 +2866,11 @@ async function deleteArticle(id) {
 
 
         alert(
-
             "Fehler beim Löschen:\n\n" +
-            error.message
-
+            (
+                error.message ||
+                "Unbekannter Fehler"
+            )
         );
 
     }
@@ -3171,7 +3035,5 @@ loadNews();
 
 </script>
 
-
 </body>
-
 </html>
