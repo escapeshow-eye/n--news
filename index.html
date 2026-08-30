@@ -45,9 +45,7 @@ header {
 .logo {
     font-size: 40px;
     font-weight: 900;
-
     letter-spacing: -4px;
-
     cursor: pointer;
 }
 
@@ -59,13 +57,9 @@ header {
 .header-btn {
     border: 0;
     background: transparent;
-
     font-size: 20px;
-
     padding: 10px;
-
     border-radius: 10px;
-
     cursor: pointer;
 }
 
@@ -79,9 +73,7 @@ header {
 
 main {
     max-width: 1200px;
-
     margin: auto;
-
     padding: 45px 20px 80px;
 }
 
@@ -95,29 +87,21 @@ main {
 
 .hero-label {
     font-size: 12px;
-
     font-weight: 800;
-
     color: #777;
-
     text-transform: uppercase;
-
     letter-spacing: 1.5px;
 }
 
 .hero h1 {
     font-size: clamp(42px, 7vw, 72px);
-
     line-height: .95;
-
     letter-spacing: -4px;
-
     margin: 8px 0;
 }
 
 .hero p {
     color: #777;
-
     font-size: 18px;
 }
 
@@ -127,21 +111,15 @@ main {
 
 .search {
     display: none;
-
     margin-bottom: 20px;
 }
 
 .search input {
     width: 100%;
-
     padding: 15px;
-
     border: 1px solid #ddd;
-
     border-radius: 13px;
-
     outline: none;
-
     font-size: 16px;
 }
 
@@ -151,35 +129,24 @@ main {
 
 .filters {
     display: flex;
-
     gap: 8px;
-
     overflow-x: auto;
-
     padding-bottom: 20px;
 }
 
 .filter {
     flex-shrink: 0;
-
     padding: 10px 16px;
-
     border: 1px solid #ddd;
-
     border-radius: 999px;
-
     background: white;
-
     font-weight: 700;
-
     cursor: pointer;
 }
 
 .filter.active {
     background: #111;
-
     color: white;
-
     border-color: #111;
 }
 
@@ -189,53 +156,38 @@ main {
 
 .news-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
+    grid-template-columns: repeat(3, 1fr);
     gap: 18px;
 }
 
 .news-card {
     background: white;
-
     border: 1px solid #ddd;
-
     border-radius: 20px;
-
     overflow: hidden;
-
     cursor: pointer;
-
     transition: .2s;
 }
 
 .news-card:hover {
     transform: translateY(-3px);
-
-    box-shadow:
-        0 12px 30px rgba(0,0,0,.08);
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
 }
 
 .news-image {
     height: 170px;
-
     display: flex;
-
     justify-content: center;
     align-items: center;
 
-    background:
-        linear-gradient(
-            135deg,
-            #ddd,
-            #fafafa
-        );
+    background: linear-gradient(
+        135deg,
+        #ddd,
+        #fafafa
+    );
 
     color: #999;
-
     font-size: 38px;
-
     font-weight: 900;
 }
 
@@ -245,23 +197,18 @@ main {
 
 .news-meta {
     font-size: 13px;
-
     color: #777;
-
     margin-bottom: 8px;
 }
 
 .news-card h2 {
     margin: 0 0 10px;
-
     font-size: 22px;
 }
 
 .news-card p {
     color: #777;
-
     line-height: 1.5;
-
     margin: 0;
 }
 
@@ -273,11 +220,8 @@ main {
     grid-column: 1 / -1;
 
     background: white;
-
     border: 1px solid #ddd;
-
     border-left: 5px solid #111;
-
     border-radius: 20px;
 
     padding: 25px;
@@ -285,19 +229,19 @@ main {
     cursor: pointer;
 }
 
+.featured:hover {
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+}
+
 .featured-label {
     font-size: 12px;
-
     font-weight: 900;
-
     margin-bottom: 8px;
 }
 
 .featured h2 {
     margin: 0;
-
-    font-size:
-        clamp(28px,4vw,40px);
+    font-size: clamp(28px,4vw,40px);
 }
 
 /* =========================
@@ -308,15 +252,12 @@ main {
     grid-column: 1 / -1;
 
     background: white;
-
     border: 1px solid #ddd;
-
     border-radius: 20px;
 
     padding: 35px;
 
     text-align: center;
-
     color: #777;
 }
 
@@ -326,9 +267,7 @@ main {
 
 .article {
     display: none;
-
     max-width: 850px;
-
     margin: auto;
 }
 
@@ -336,13 +275,10 @@ main {
     padding: 10px 15px;
 
     border: 1px solid #ddd;
-
     background: white;
-
     border-radius: 12px;
 
     cursor: pointer;
-
     font-weight: 700;
 
     margin-bottom: 25px;
@@ -350,18 +286,13 @@ main {
 
 .article-meta {
     color: #777;
-
     margin-bottom: 12px;
 }
 
 .article h1 {
-    font-size:
-        clamp(40px,7vw,70px);
-
+    font-size: clamp(40px,7vw,70px);
     line-height: .98;
-
     letter-spacing: -4px;
-
     margin: 0 0 25px;
 }
 
@@ -369,23 +300,19 @@ main {
     height: 340px;
 
     display: flex;
-
     justify-content: center;
     align-items: center;
 
-    background:
-        linear-gradient(
-            135deg,
-            #ddd,
-            #fafafa
-        );
+    background: linear-gradient(
+        135deg,
+        #ddd,
+        #fafafa
+    );
 
     border-radius: 22px;
 
     color: #999;
-
     font-size: 40px;
-
     font-weight: 900;
 
     margin-bottom: 30px;
@@ -393,7 +320,6 @@ main {
 
 .article-text {
     font-size: 18px;
-
     line-height: 1.8;
 }
 
@@ -403,9 +329,7 @@ main {
 
 .admin {
     display: none;
-
     max-width: 900px;
-
     margin: auto;
 }
 
@@ -447,7 +371,6 @@ main {
 
 .form-box textarea {
     min-height: 230px;
-
     resize: vertical;
 }
 
@@ -463,7 +386,6 @@ main {
 
 .form-box label {
     display: block;
-
     font-weight: 700;
 }
 
@@ -484,7 +406,6 @@ main {
 
 .primary {
     background: #111;
-
     color: white;
 }
 
@@ -504,9 +425,7 @@ main {
 
 .admin-list {
     display: grid;
-
     gap: 10px;
-
     margin-top: 15px;
 }
 
@@ -536,7 +455,6 @@ main {
 
 .admin-actions {
     display: flex;
-
     gap: 7px;
 }
 
@@ -546,19 +464,16 @@ main {
 
 .delete {
     background: #fee2e2;
-
     color: #b91c1c;
 }
 
 .error {
     color: #dc2626;
-
     margin-top: 12px;
 }
 
 .success {
     color: #15803d;
-
     margin-top: 12px;
 }
 
@@ -583,8 +498,7 @@ footer {
 @media (max-width: 850px) {
 
     .news-grid {
-        grid-template-columns:
-            repeat(2,1fr);
+        grid-template-columns: repeat(2,1fr);
     }
 }
 
@@ -608,9 +522,7 @@ footer {
 
 </head>
 
-
 <body>
-
 
 <header>
 
@@ -622,7 +534,6 @@ footer {
 
     </div>
 
-
     <div class="header-actions">
 
         <button
@@ -633,7 +544,6 @@ footer {
             🔎
 
         </button>
-
 
         <button
             class="header-btn"
@@ -648,9 +558,7 @@ footer {
 
 </header>
 
-
 <main>
-
 
 <!-- =========================
      HOME
@@ -675,7 +583,6 @@ footer {
 
     </div>
 
-
     <div
         class="search"
         id="searchBox">
@@ -688,7 +595,6 @@ footer {
 
     </div>
 
-
     <div class="filters">
 
         <button
@@ -699,7 +605,6 @@ footer {
 
         </button>
 
-
         <button
             class="filter"
             onclick="filterNews('Deutschland',this)">
@@ -707,7 +612,6 @@ footer {
             🇩🇪 Deutschland
 
         </button>
-
 
         <button
             class="filter"
@@ -717,7 +621,6 @@ footer {
 
         </button>
 
-
         <button
             class="filter"
             onclick="filterNews('Region',this)">
@@ -726,7 +629,6 @@ footer {
 
         </button>
 
-
         <button
             class="filter"
             onclick="filterNews('Sport',this)">
@@ -734,7 +636,6 @@ footer {
             ⚽ Sport
 
         </button>
-
 
         <button
             class="filter"
@@ -746,21 +647,17 @@ footer {
 
     </div>
 
-
     <div
         class="news-grid"
         id="newsGrid">
 
         <div class="status-box">
-
             Nachrichten werden geladen …
-
         </div>
 
     </div>
 
 </section>
-
 
 <!-- =========================
      ARTICLE
@@ -778,24 +675,18 @@ footer {
 
     </button>
 
-
     <div
         class="article-meta"
         id="articleMeta">
     </div>
 
-
     <h1
         id="articleTitle">
     </h1>
 
-
     <div class="article-image">
-
         n:
-
     </div>
-
 
     <div
         class="article-text"
@@ -804,7 +695,6 @@ footer {
 
 </section>
 
-
 <!-- =========================
      ADMIN
 ========================= -->
@@ -812,7 +702,6 @@ footer {
 <section
     class="admin"
     id="admin">
-
 
     <!-- LOGIN -->
 
@@ -828,18 +717,15 @@ footer {
             Anmeldung nur für die Redaktion.
         </p>
 
-
         <input
             id="email"
             type="email"
             placeholder="E-Mail">
 
-
         <input
             id="password"
             type="password"
             placeholder="Passwort">
-
 
         <button
             class="primary"
@@ -849,7 +735,6 @@ footer {
 
         </button>
 
-
         <div
             class="error"
             id="loginError">
@@ -857,20 +742,17 @@ footer {
 
     </div>
 
-
     <!-- DASHBOARD -->
 
     <div
         id="dashboard"
         style="display:none">
 
-
         <div class="admin-top">
 
             <h1>
                 Redaktion
             </h1>
-
 
             <button
                 class="secondary"
@@ -882,7 +764,6 @@ footer {
 
         </div>
 
-
         <div class="form-box">
 
             <h2
@@ -892,7 +773,6 @@ footer {
 
             </h2>
 
-
             <label>
                 Überschrift
             </label>
@@ -900,7 +780,6 @@ footer {
             <input
                 id="title"
                 placeholder="Überschrift">
-
 
             <label>
                 Kurzbeschreibung
@@ -910,35 +789,19 @@ footer {
                 id="description"
                 placeholder="Kurze Zusammenfassung">
 
-
             <label>
                 Kategorie
             </label>
 
             <select id="category">
 
-                <option>
-                    Deutschland
-                </option>
-
-                <option>
-                    Welt
-                </option>
-
-                <option>
-                    Region
-                </option>
-
-                <option>
-                    Sport
-                </option>
-
-                <option>
-                    Digital
-                </option>
+                <option>Deutschland</option>
+                <option>Welt</option>
+                <option>Region</option>
+                <option>Sport</option>
+                <option>Digital</option>
 
             </select>
-
 
             <label>
                 Region
@@ -948,7 +811,6 @@ footer {
                 id="region"
                 placeholder="z. B. Hessen">
 
-
             <label>
                 Artikel
             </label>
@@ -956,7 +818,6 @@ footer {
             <textarea
                 id="content"
                 placeholder="Artikel schreiben..."></textarea>
-
 
             <button
                 class="primary"
@@ -967,7 +828,6 @@ footer {
 
             </button>
 
-
             <button
                 class="secondary"
                 onclick="clearForm()">
@@ -976,7 +836,6 @@ footer {
 
             </button>
 
-
             <div
                 id="formMessage"
                 class="success">
@@ -984,11 +843,9 @@ footer {
 
         </div>
 
-
         <h2>
             Deine Artikel
         </h2>
-
 
         <div
             class="admin-list"
@@ -999,9 +856,7 @@ footer {
 
 </section>
 
-
 </main>
-
 
 <footer>
 
@@ -1009,20 +864,14 @@ footer {
 
 </footer>
 
-
 <script>
-
 
 /* =====================================================
    SUPABASE
-   =====================================================
-
-   NUR HIER DEINEN PUBLISHABLE KEY EINSETZEN.
 ===================================================== */
 
 const SUPABASE_URL =
     "https://eqzmsuncndfsiedyfifb.supabase.co";
-
 
 const SUPABASE_KEY =
     "sb_publishable_eXY1gg_tIr-cRC2kdt0jbQ_QPfbEmkF";
@@ -1076,34 +925,42 @@ async function supabaseRequest(
     );
 
 
+    const text =
+        await response.text();
+
+
     if (!response.ok) {
 
-        const text =
-            await response.text();
+        let errorMessage =
+            text || "Supabase Fehler";
+
+        try {
+
+            const errorData =
+                text ? JSON.parse(text) : {};
+
+            errorMessage =
+                errorData.message ||
+                errorData.msg ||
+                errorData.hint ||
+                text ||
+                "Supabase Fehler";
+
+        } catch {
+
+            // Antwort war kein JSON.
+            // Der reine Text wird verwendet.
+
+        }
 
         throw new Error(
-            text || "Supabase Fehler"
+            errorMessage
         );
 
     }
 
 
-    /*
-       WICHTIG:
-
-       Supabase kann bei INSERT,
-       UPDATE oder DELETE eine
-       komplett leere Antwort liefern.
-
-       Deshalb NICHT direkt
-       response.json() verwenden.
-    */
-
-    const text =
-        await response.text();
-
-
-    if (!text) {
+    if (!text.trim()) {
 
         return null;
 
@@ -1149,7 +1006,9 @@ async function loadNews() {
                 : [];
 
 
-        renderNews(articles);
+        renderNews(
+            articles
+        );
 
 
     } catch (error) {
@@ -1240,17 +1099,13 @@ function renderNews(list) {
         featured.innerHTML = `
 
             <div class="featured-label">
-
                 ● AKTUELL
-
             </div>
 
             <h2>
-
                 ${escapeHTML(
                     first.title
                 )}
-
             </h2>
 
         `;
@@ -1295,17 +1150,12 @@ function renderNews(list) {
             card.innerHTML = `
 
                 <div class="news-image">
-
                     n:
-
                 </div>
 
+                <div class="news-card-content">
 
-                <div
-                    class="news-card-content">
-
-                    <div
-                        class="news-meta">
+                    <div class="news-meta">
 
                         ${escapeHTML(
                             item.category || ""
@@ -1319,7 +1169,6 @@ function renderNews(list) {
 
                     </div>
 
-
                     <h2>
 
                         ${escapeHTML(
@@ -1327,7 +1176,6 @@ function renderNews(list) {
                         )}
 
                     </h2>
-
 
                     <p>
 
@@ -1535,14 +1383,12 @@ function openArticle(id) {
 
     const article =
         articles.find(
-            x => x.id === id
+            x => String(x.id) === String(id)
         );
 
 
     if (!article) {
-
         return;
-
     }
 
 
@@ -1575,10 +1421,7 @@ function openArticle(id) {
             "articleMeta"
         )
         .textContent =
-
-        `${article.category || ""} · ${
-            article.region || ""
-        }`;
+            `${article.category || ""} · ${article.region || ""}`;
 
 
     document
@@ -1594,14 +1437,13 @@ function openArticle(id) {
             "articleText"
         )
         .innerHTML =
-
-        escapeHTML(
-            article.content || ""
-        )
-        .replace(
-            /\n/g,
-            "<br><br>"
-        );
+            escapeHTML(
+                article.content || ""
+            )
+            .replace(
+                /\n/g,
+                "<br><br>"
+            );
 
 
     window.scrollTo({
@@ -1768,8 +1610,43 @@ async function login() {
             );
 
 
-        const data =
-            await response.json();
+        /*
+           WICHTIG:
+
+           NICHT response.json() verwenden.
+
+           Erst Text lesen und danach
+           nur dann JSON parsen, wenn
+           tatsächlich Inhalt vorhanden ist.
+        */
+
+        const responseText =
+            await response.text();
+
+
+        let data = {};
+
+
+        if (
+            responseText.trim()
+        ) {
+
+            try {
+
+                data =
+                    JSON.parse(
+                        responseText
+                    );
+
+            } catch {
+
+                throw new Error(
+                    "Supabase hat keine gültige JSON-Antwort zurückgegeben."
+                );
+
+            }
+
+        }
 
 
         if (
@@ -1780,8 +1657,20 @@ async function login() {
 
                 data.msg ||
                 data.message ||
+                data.error_description ||
                 "Login fehlgeschlagen."
 
+            );
+
+        }
+
+
+        if (
+            !data.access_token
+        ) {
+
+            throw new Error(
+                "Login fehlgeschlagen: Kein Zugangstoken erhalten."
             );
 
         }
@@ -1796,7 +1685,7 @@ async function login() {
         sessionStorage.setItem(
             "nUser",
             JSON.stringify(
-                data.user
+                data.user || {}
             )
         );
 
@@ -1943,9 +1832,7 @@ function renderAdmin() {
         list.innerHTML = `
 
             <div class="status-box">
-
                 Noch keine Artikel.
-
             </div>
 
         `;
@@ -1972,15 +1859,13 @@ function renderAdmin() {
 
                 <div>
 
-                    <div
-                        class="admin-item-title">
+                    <div class="admin-item-title">
 
                         ${escapeHTML(
                             article.title || ""
                         )}
 
                     </div>
-
 
                     <small>
 
@@ -1998,28 +1883,23 @@ function renderAdmin() {
 
                 </div>
 
-
-                <div
-                    class="admin-actions">
-
+                <div class="admin-actions">
 
                     <button
                         class="small edit"
-                        onclick="editArticle(${article.id})">
+                        onclick="editArticle('${String(article.id).replace(/'/g, "\\'")}')">
 
                         Bearbeiten
 
                     </button>
 
-
                     <button
                         class="small delete"
-                        onclick="deleteArticle(${article.id})">
+                        onclick="deleteArticle('${String(article.id).replace(/'/g, "\\'")}')">
 
                         Löschen
 
                     </button>
-
 
                 </div>
 
@@ -2142,7 +2022,7 @@ async function saveArticle() {
 
             await supabaseRequest(
 
-                `news?id=eq.${editingId}`,
+                `news?id=eq.${encodeURIComponent(editingId)}`,
 
                 {
 
@@ -2192,7 +2072,6 @@ async function saveArticle() {
                 "✅ Artikel aktualisiert.";
 
         } else {
-
 
             await supabaseRequest(
 
@@ -2285,14 +2164,13 @@ function editArticle(id) {
 
     const article =
         articles.find(
-            x => x.id === id
+            x =>
+                String(x.id) === String(id)
         );
 
 
     if (!article) {
-
         return;
-
     }
 
 
@@ -2372,14 +2250,13 @@ async function deleteArticle(id) {
 
     const article =
         articles.find(
-            x => x.id === id
+            x =>
+                String(x.id) === String(id)
         );
 
 
     if (!article) {
-
         return;
-
     }
 
 
@@ -2400,11 +2277,22 @@ async function deleteArticle(id) {
         );
 
 
+    if (!token) {
+
+        alert(
+            "Deine Sitzung ist abgelaufen. Bitte erneut einloggen."
+        );
+
+        return;
+
+    }
+
+
     try {
 
         await supabaseRequest(
 
-            `news?id=eq.${id}`,
+            `news?id=eq.${encodeURIComponent(id)}`,
 
             {
 
@@ -2414,7 +2302,10 @@ async function deleteArticle(id) {
                 headers: {
 
                     "Authorization":
-                        `Bearer ${token}`
+                        `Bearer ${token}`,
+
+                    "Prefer":
+                        "return=minimal"
 
                 }
 
@@ -2561,7 +2452,6 @@ function escapeHTML(value) {
 loadNews();
 
 </script>
-
 
 </body>
 
