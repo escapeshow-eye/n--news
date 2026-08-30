@@ -20,10 +20,6 @@ body {
     color: #111;
 }
 
-/* =========================
-   HEADER
-========================= */
-
 header {
     height: 72px;
     padding: 0 28px;
@@ -62,19 +58,13 @@ header {
     background: #eee;
 }
 
-/* =========================
-   MAIN
-========================= */
-
 main {
     max-width: 1200px;
     margin: auto;
     padding: 45px 20px 80px;
 }
 
-/* =========================
-   STARTSEITE
-========================= */
+/* START */
 
 .start-page {
     min-height: 70vh;
@@ -105,8 +95,6 @@ main {
     font-size: 19px;
     margin: 0;
 }
-
-/* START KARTEN */
 
 .area-grid {
     display: grid;
@@ -154,9 +142,7 @@ main {
     font-weight: 900;
 }
 
-/* =========================
-   HOME / NEWS
-========================= */
+/* NEWS */
 
 .hero {
     margin-bottom: 25px;
@@ -182,10 +168,6 @@ main {
     font-size: 18px;
 }
 
-/* =========================
-   SEARCH
-========================= */
-
 .search {
     display: none;
     margin-bottom: 20px;
@@ -199,10 +181,6 @@ main {
     outline: none;
     font-size: 16px;
 }
-
-/* =========================
-   FILTER
-========================= */
 
 .filters {
     display: flex;
@@ -226,10 +204,6 @@ main {
     color: white;
     border-color: #111;
 }
-
-/* =========================
-   NEWS GRID
-========================= */
 
 .news-grid {
     display: grid;
@@ -292,10 +266,6 @@ main {
     margin: 0;
 }
 
-/* =========================
-   FEATURED
-========================= */
-
 .featured {
     grid-column: 1 / -1;
     background: white;
@@ -323,7 +293,6 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
 }
 
 .featured-content {
@@ -341,10 +310,6 @@ main {
     font-size: clamp(28px,4vw,40px);
 }
 
-/* =========================
-   STATUS
-========================= */
-
 .status-box {
     grid-column: 1 / -1;
     background: white;
@@ -355,9 +320,7 @@ main {
     color: #777;
 }
 
-/* =========================
-   ARTICLE
-========================= */
+/* ARTICLE */
 
 .article {
     display: none;
@@ -406,7 +369,6 @@ main {
     width: 100%;
     max-height: 550px;
     object-fit: cover;
-    display: block;
 }
 
 .article-text {
@@ -414,13 +376,11 @@ main {
     line-height: 1.8;
 }
 
-/* =========================
-   EXTRA BEREICHE
-========================= */
+/* SPECIAL */
 
 .special-page {
     display: none;
-    max-width: 900px;
+    max-width: 1000px;
     margin: auto;
 }
 
@@ -459,9 +419,166 @@ main {
     margin-top: 0;
 }
 
-/* =========================
-   ADMIN
-========================= */
+/* ROUTE */
+
+.route-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 10px;
+}
+
+.route-input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 13px;
+    font-size: 16px;
+    outline: none;
+}
+
+.route-input:focus {
+    border-color: #111;
+}
+
+.route-button {
+    border: 0;
+    background: #111;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 13px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.route-button:hover {
+    background: #333;
+}
+
+.route-result {
+    display: none;
+    margin-top: 20px;
+}
+
+.route-summary {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.route-stat {
+    background: #f5f5f5;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.route-stat small {
+    color: #777;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.route-stat strong {
+    font-size: 24px;
+}
+
+.map-box {
+    height: 350px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #eee;
+    border: 1px solid #ddd;
+}
+
+.map-box iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* TRAFFIC */
+
+.traffic-controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.road-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 16px;
+}
+
+.traffic-button {
+    border: 0;
+    background: #111;
+    color: white;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.traffic-button.secondary {
+    background: #eee;
+    color: #111;
+}
+
+.traffic-list {
+    display: grid;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.traffic-item {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 18px;
+    padding: 20px;
+}
+
+.traffic-item.warning {
+    border-left: 5px solid #f59e0b;
+}
+
+.traffic-item.closure {
+    border-left: 5px solid #dc2626;
+}
+
+.traffic-item.roadwork {
+    border-left: 5px solid #2563eb;
+}
+
+.traffic-item h3 {
+    margin: 0 0 8px;
+}
+
+.traffic-item p {
+    color: #666;
+    line-height: 1.5;
+}
+
+.traffic-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 900;
+    background: #eee;
+    padding: 6px 9px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+}
+
+.source-note {
+    font-size: 12px;
+    color: #888;
+    margin-top: 15px;
+}
+
+/* ADMIN */
 
 .admin {
     display: none;
@@ -509,10 +626,6 @@ main {
     font-weight: 700;
 }
 
-/* =========================
-   IMAGE UPLOAD
-========================= */
-
 .image-upload-box {
     margin: 5px 0 20px;
     padding: 18px;
@@ -545,10 +658,6 @@ main {
     font-size: 14px;
 }
 
-/* =========================
-   BUTTONS
-========================= */
-
 .primary,
 .secondary,
 .small {
@@ -564,16 +673,8 @@ main {
     color: white;
 }
 
-.primary:hover {
-    background: #333;
-}
-
 .secondary {
     background: #eee;
-}
-
-.secondary:hover {
-    background: #ddd;
 }
 
 .primary:disabled {
@@ -636,20 +737,12 @@ main {
     margin-top: 12px;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
 footer {
     text-align: center;
     padding: 30px;
     color: #777;
     border-top: 1px solid #ddd;
 }
-
-/* =========================
-   MOBILE
-========================= */
 
 @media (max-width: 850px) {
 
@@ -658,6 +751,10 @@ footer {
     }
 
     .area-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .route-form {
         grid-template-columns: 1fr;
     }
 
@@ -677,8 +774,8 @@ footer {
         flex-direction: column;
     }
 
-    .admin-actions {
-        width: 100%;
+    .route-summary {
+        grid-template-columns: 1fr;
     }
 
 }
@@ -690,35 +787,25 @@ footer {
 
 <header>
 
-    <div
-        class="logo"
-        onclick="showStart()">
+<div class="logo" onclick="showStart()">n:</div>
 
-        n:
+<div class="header-actions">
 
-    </div>
+<button
+class="header-btn"
+onclick="toggleSearch()"
+title="Suche">
+🔎
+</button>
 
-    <div class="header-actions">
+<button
+class="header-btn"
+onclick="openAdmin()"
+title="Redaktion">
+🔐
+</button>
 
-        <button
-            class="header-btn"
-            onclick="toggleSearch()"
-            title="Suche">
-
-            🔎
-
-        </button>
-
-        <button
-            class="header-btn"
-            onclick="openAdmin()"
-            title="Redaktion">
-
-            🔐
-
-        </button>
-
-    </div>
+</div>
 
 </header>
 
@@ -727,575 +814,645 @@ footer {
 
 
 <!-- =====================================================
-     STARTSEITE
+START
 ===================================================== -->
 
-<section
-    id="startPage"
-    class="start-page">
+<section id="startPage" class="start-page">
 
-    <div class="start-hero">
+<div class="start-hero">
 
-        <div class="start-label">
-            n: Plattform
-        </div>
+<div class="start-label">
+n: Plattform
+</div>
 
-        <h1>
-            Was möchtest du öffnen?
-        </h1>
+<h1>
+Was möchtest du öffnen?
+</h1>
 
-        <p>
-            Nachrichten, Verkehr und regionale Informationen.
-        </p>
+<p>
+Nachrichten, Verkehr und regionale Informationen.
+</p>
 
-    </div>
+</div>
 
 
-    <div class="area-grid">
+<div class="area-grid">
 
 
-        <!-- NACHRICHTEN -->
+<div class="area-card" onclick="openNews()">
 
-        <div
-            class="area-card"
-            onclick="openNews()">
+<div>
 
-            <div>
+<div class="area-icon">
+📰
+</div>
 
-                <div class="area-icon">
-                    📰
-                </div>
+<h2>
+n: Nachrichten
+</h2>
 
-                <h2>
-                    n: Nachrichten
-                </h2>
+<p>
+Aktuelle Nachrichten aus Deutschland,
+der Welt, der Region, Sport und Digital.
+</p>
 
-                <p>
-                    Aktuelle Nachrichten aus Deutschland,
-                    der Welt, der Region, Sport und Digital.
-                </p>
+</div>
 
-            </div>
+<div class="area-arrow">
+→
+</div>
 
-            <div class="area-arrow">
-                →
-            </div>
-
-        </div>
+</div>
 
 
-        <!-- VERKEHR -->
+<div class="area-card" onclick="openTraffic()">
 
-        <div
-            class="area-card"
-            onclick="openTraffic()">
+<div>
 
-            <div>
+<div class="area-icon">
+🚦
+</div>
 
-                <div class="area-icon">
-                    🚦
-                </div>
+<h2>
+Verkehr & Route
+</h2>
 
-                <h2>
-                    Verkehr & Route
-                </h2>
+<p>
+Verkehrslage, Störungen und Routen
+übersichtlich auf einer Seite.
+</p>
 
-                <p>
-                    Verkehrslage, Störungen und Routen
-                    übersichtlich auf einer Seite.
-                </p>
+</div>
 
-            </div>
+<div class="area-arrow">
+→
+</div>
 
-            <div class="area-arrow">
-                →
-            </div>
-
-        </div>
+</div>
 
 
-        <!-- BEREICH -->
+<div class="area-card" onclick="openArea()">
 
-        <div
-            class="area-card"
-            onclick="openArea()">
+<div>
 
-            <div>
+<div class="area-icon">
+📍
+</div>
 
-                <div class="area-icon">
-                    📍
-                </div>
+<h2>
+n: Bereich
+</h2>
 
-                <h2>
-                    n: Bereich
-                </h2>
+<p>
+Regionale Informationen, Orte,
+Veranstaltungen und mehr.
+</p>
 
-                <p>
-                    Regionale Informationen, Orte,
-                    Veranstaltungen und mehr.
-                </p>
+</div>
 
-            </div>
+<div class="area-arrow">
+→
+</div>
 
-            <div class="area-arrow">
-                →
-            </div>
+</div>
 
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
 <!-- =====================================================
-     NEWS
+NEWS
 ===================================================== -->
 
-<section
-    id="home"
-    style="display:none;">
+<section id="home" style="display:none;">
 
-    <div class="hero">
+<div class="hero">
 
-        <div class="hero-label">
-            n: Nachrichten
-        </div>
+<div class="hero-label">
+n: Nachrichten
+</div>
 
-        <h1>
-            Was gerade passiert.
-        </h1>
+<h1>
+Was gerade passiert.
+</h1>
 
-        <p>
-            Aktuelle Nachrichten. Einfach und direkt.
-        </p>
+<p>
+Aktuelle Nachrichten. Einfach und direkt.
+</p>
 
-    </div>
+</div>
 
 
-    <div
-        class="search"
-        id="searchBox">
+<div class="search" id="searchBox">
 
-        <input
-            id="searchInput"
-            type="search"
-            placeholder="Nachrichten durchsuchen..."
-            oninput="searchNews()">
+<input
+id="searchInput"
+type="search"
+placeholder="Nachrichten durchsuchen..."
+oninput="searchNews()">
 
-    </div>
+</div>
 
 
-    <div class="filters">
+<div class="filters">
 
-        <button
-            class="filter active"
-            onclick="filterNews('Alle',this)">
-            Alle
-        </button>
+<button class="filter active"
+onclick="filterNews('Alle',this)">
+Alle
+</button>
 
-        <button
-            class="filter"
-            onclick="filterNews('Deutschland',this)">
-            🇩🇪 Deutschland
-        </button>
+<button class="filter"
+onclick="filterNews('Deutschland',this)">
+🇩🇪 Deutschland
+</button>
 
-        <button
-            class="filter"
-            onclick="filterNews('Welt',this)">
-            🌍 Welt
-        </button>
+<button class="filter"
+onclick="filterNews('Welt',this)">
+🌍 Welt
+</button>
 
-        <button
-            class="filter"
-            onclick="filterNews('Region',this)">
-            📍 Region
-        </button>
+<button class="filter"
+onclick="filterNews('Region',this)">
+📍 Region
+</button>
 
-        <button
-            class="filter"
-            onclick="filterNews('Sport',this)">
-            ⚽ Sport
-        </button>
+<button class="filter"
+onclick="filterNews('Sport',this)">
+⚽ Sport
+</button>
 
-        <button
-            class="filter"
-            onclick="filterNews('Digital',this)">
-            💻 Digital
-        </button>
+<button class="filter"
+onclick="filterNews('Digital',this)">
+💻 Digital
+</button>
 
-    </div>
+</div>
 
 
-    <div
-        class="news-grid"
-        id="newsGrid">
+<div class="news-grid" id="newsGrid">
 
-        <div class="status-box">
-            Nachrichten werden geladen …
-        </div>
+<div class="status-box">
+Nachrichten werden geladen …
+</div>
 
-    </div>
+</div>
 
 </section>
 
 
 <!-- =====================================================
-     ARTIKEL
+ARTICLE
 ===================================================== -->
 
-<section
-    class="article"
-    id="article">
+<section class="article" id="article">
 
-    <button
-        class="back"
-        onclick="openNews()">
+<button class="back" onclick="openNews()">
+← Zurück
+</button>
 
-        ← Zurück
+<div class="article-meta" id="articleMeta"></div>
 
-    </button>
+<h1 id="articleTitle"></h1>
 
-    <div
-        class="article-meta"
-        id="articleMeta">
-    </div>
+<div class="article-image" id="articleImage">
+n:
+</div>
 
-    <h1
-        id="articleTitle">
-    </h1>
-
-    <div
-        class="article-image"
-        id="articleImage">
-        n:
-    </div>
-
-    <div
-        class="article-text"
-        id="articleText">
-    </div>
+<div class="article-text" id="articleText"></div>
 
 </section>
 
 
 <!-- =====================================================
-     VERKEHR
+VERKEHR
 ===================================================== -->
 
-<section
-    id="traffic"
-    class="special-page">
+<section id="traffic" class="special-page">
 
-    <button
-        class="back"
-        onclick="showStart()">
+<button class="back" onclick="showStart()">
+← Startseite
+</button>
 
-        ← Startseite
+<div class="special-header">
 
-    </button>
+<div class="special-label">
+n: Verkehr
+</div>
 
-    <div class="special-header">
+<h1>
+Verkehr & Route
+</h1>
 
-        <div class="special-label">
-            n: Verkehr
-        </div>
+<p>
+Route berechnen und aktuelle Verkehrsmeldungen abrufen.
+</p>
 
-        <h1>
-            Verkehr & Route
-        </h1>
-
-        <p>
-            Alles rund um Verkehr, Störungen und deine Route.
-        </p>
-
-    </div>
+</div>
 
 
-    <div class="special-box">
+<!-- ROUTE -->
 
-        <h2>
-            🚦 Verkehr
-        </h2>
+<div class="special-box">
 
-        <p>
-            Dieser Bereich wird als nächstes mit
-            aktuellen Verkehrsinformationen ausgebaut.
-        </p>
+<h2>
+🗺️ Route berechnen
+</h2>
 
-    </div>
+<p>
+Gib Start und Ziel ein.
+</p>
+
+<div class="route-form">
+
+<input
+id="routeStart"
+class="route-input"
+placeholder="Start, z. B. Gelnhausen">
+
+<input
+id="routeDestination"
+class="route-input"
+placeholder="Ziel, z. B. Frankfurt">
+
+<button
+class="route-button"
+onclick="calculateRoute()">
+
+Route berechnen
+
+</button>
+
+</div>
 
 
-    <div class="special-box">
+<div
+id="routeStatus"
+style="margin-top:15px;color:#777;">
+</div>
 
-        <h2>
-            🗺️ Route
-        </h2>
 
-        <p>
-            Hier können später Start und Ziel eingegeben
-            und eine passende Route angezeigt werden.
-        </p>
+<div
+id="routeResult"
+class="route-result">
 
-    </div>
+
+<div class="route-summary">
+
+<div class="route-stat">
+
+<small>
+Entfernung
+</small>
+
+<strong id="routeDistance">
+–
+</strong>
+
+</div>
+
+
+<div class="route-stat">
+
+<small>
+Fahrzeit
+</small>
+
+<strong id="routeDuration">
+–
+</strong>
+
+</div>
+
+
+<div class="route-stat">
+
+<small>
+Route
+</small>
+
+<strong>
+🚗 Auto
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="map-box">
+
+<iframe
+id="routeMap"
+loading="lazy">
+</iframe>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- VERKEHR -->
+
+<div class="special-box">
+
+<h2>
+🚦 Verkehrsmeldungen
+</h2>
+
+<p>
+Aktuelle Meldungen für eine Autobahn anzeigen.
+</p>
+
+
+<div class="traffic-controls">
+
+<input
+id="roadInput"
+class="road-input"
+placeholder="Autobahn, z. B. A3"
+value="A3">
+
+<button
+class="traffic-button"
+onclick="loadTraffic()">
+
+Verkehr laden
+
+</button>
+
+<button
+class="traffic-button secondary"
+onclick="loadTraffic()">
+
+🔄 Aktualisieren
+
+</button>
+
+</div>
+
+
+<div
+id="trafficStatus"
+style="margin-top:15px;color:#777;">
+</div>
+
+
+<div
+id="trafficList"
+class="traffic-list">
+</div>
+
+
+<div class="source-note">
+Datenquelle: Die Autobahn GmbH des Bundes.
+</div>
+
+</div>
 
 </section>
 
 
 <!-- =====================================================
-     N: BEREICH
+BEREICH
 ===================================================== -->
 
-<section
-    id="area"
-    class="special-page">
+<section id="area" class="special-page">
 
-    <button
-        class="back"
-        onclick="showStart()">
+<button class="back" onclick="showStart()">
+← Startseite
+</button>
 
-        ← Startseite
+<div class="special-header">
 
-    </button>
+<div class="special-label">
+n: Bereich
+</div>
 
-    <div class="special-header">
+<h1>
+Dein Bereich.
+</h1>
 
-        <div class="special-label">
-            n: Bereich
-        </div>
+<p>
+Regionale Informationen direkt auf einen Blick.
+</p>
 
-        <h1>
-            Dein Bereich.
-        </h1>
-
-        <p>
-            Regionale Informationen direkt auf einen Blick.
-        </p>
-
-    </div>
+</div>
 
 
-    <div class="special-box">
+<div class="special-box">
 
-        <h2>
-            📍 Regional
-        </h2>
+<h2>
+📍 Regional
+</h2>
 
-        <p>
-            Hier können später regionale Nachrichten,
-            Veranstaltungen und Informationen aus deinem
-            Bereich erscheinen.
-        </p>
+<p>
+Hier können später regionale Nachrichten,
+Veranstaltungen und Informationen aus deinem
+Bereich erscheinen.
+</p>
 
-    </div>
+</div>
 
 
-    <div class="special-box">
+<div class="special-box">
 
-        <h2>
-            📅 Veranstaltungen
-        </h2>
+<h2>
+📅 Veranstaltungen
+</h2>
 
-        <p>
-            Dieser Bereich kann später mit lokalen
-            Veranstaltungen gefüllt werden.
-        </p>
+<p>
+Dieser Bereich kann später mit lokalen
+Veranstaltungen gefüllt werden.
+</p>
 
-    </div>
+</div>
 
 </section>
 
 
 <!-- =====================================================
-     ADMIN
+ADMIN
 ===================================================== -->
 
-<section
-    class="admin"
-    id="admin">
+<section class="admin" id="admin">
+
+<div class="login" id="loginBox">
+
+<h2>
+🔐 n: Redaktion
+</h2>
+
+<p>
+Anmeldung nur für die Redaktion.
+</p>
+
+<input
+id="email"
+type="email"
+placeholder="E-Mail">
+
+<input
+id="password"
+type="password"
+placeholder="Passwort">
+
+<button
+class="primary"
+onclick="login()">
+
+Einloggen
+
+</button>
+
+<div
+class="error"
+id="loginError">
+</div>
+
+</div>
 
 
-    <div
-        class="login"
-        id="loginBox">
+<div id="dashboard" style="display:none">
 
-        <h2>
-            🔐 n: Redaktion
-        </h2>
+<div class="admin-top">
 
-        <p>
-            Anmeldung nur für die Redaktion.
-        </p>
+<h1>
+Redaktion
+</h1>
 
-        <input
-            id="email"
-            type="email"
-            placeholder="E-Mail">
+<button
+class="secondary"
+onclick="logout()">
 
-        <input
-            id="password"
-            type="password"
-            placeholder="Passwort">
+Ausloggen
 
-        <button
-            class="primary"
-            onclick="login()">
+</button>
 
-            Einloggen
-
-        </button>
-
-        <div
-            class="error"
-            id="loginError">
-        </div>
-
-    </div>
+</div>
 
 
-    <div
-        id="dashboard"
-        style="display:none">
+<div class="form-box">
+
+<h2 id="formTitle">
+Neuer Artikel
+</h2>
 
 
-        <div class="admin-top">
+<label>
+Überschrift
+</label>
 
-            <h1>
-                Redaktion
-            </h1>
-
-            <button
-                class="secondary"
-                onclick="logout()">
-
-                Ausloggen
-
-            </button>
-
-        </div>
+<input
+id="title"
+placeholder="Überschrift">
 
 
-        <div class="form-box">
+<label>
+Kurzbeschreibung
+</label>
 
-            <h2
-                id="formTitle">
-                Neuer Artikel
-            </h2>
-
-
-            <label>
-                Überschrift
-            </label>
-
-            <input
-                id="title"
-                placeholder="Überschrift">
+<input
+id="description"
+placeholder="Kurze Zusammenfassung">
 
 
-            <label>
-                Kurzbeschreibung
-            </label>
+<label>
+Kategorie
+</label>
 
-            <input
-                id="description"
-                placeholder="Kurze Zusammenfassung">
+<select id="category">
 
+<option>Deutschland</option>
+<option>Welt</option>
+<option>Region</option>
+<option>Sport</option>
+<option>Digital</option>
 
-            <label>
-                Kategorie
-            </label>
-
-            <select id="category">
-
-                <option>Deutschland</option>
-                <option>Welt</option>
-                <option>Region</option>
-                <option>Sport</option>
-                <option>Digital</option>
-
-            </select>
+</select>
 
 
-            <label>
-                Region
-            </label>
+<label>
+Region
+</label>
 
-            <input
-                id="region"
-                placeholder="z. B. Hessen">
-
-
-            <label>
-                Artikel
-            </label>
-
-            <textarea
-                id="content"
-                placeholder="Artikel schreiben..."></textarea>
+<input
+id="region"
+placeholder="z. B. Hessen">
 
 
-            <label>
-                Artikelbild
-            </label>
+<label>
+Artikel
+</label>
 
-            <div class="image-upload-box">
-
-                <input
-                    id="imageFile"
-                    type="file"
-                    accept="image/*"
-                    onchange="previewImage(event)">
-
-                <img
-                    id="imagePreview"
-                    class="image-preview"
-                    alt="Bildvorschau">
-
-                <div
-                    id="currentImage"
-                    class="current-image">
-                </div>
-
-            </div>
+<textarea
+id="content"
+placeholder="Artikel schreiben..."></textarea>
 
 
-            <button
-                class="primary"
-                id="saveButton"
-                onclick="saveArticle()">
+<label>
+Artikelbild
+</label>
 
-                📰 Veröffentlichen
+<div class="image-upload-box">
 
-            </button>
+<input
+id="imageFile"
+type="file"
+accept="image/*"
+onchange="previewImage(event)">
 
-            <button
-                class="secondary"
-                onclick="clearForm()">
+<img
+id="imagePreview"
+class="image-preview"
+alt="Bildvorschau">
 
-                Abbrechen
+<div
+id="currentImage"
+class="current-image">
+</div>
 
-            </button>
-
-
-            <div
-                id="formMessage"
-                class="success">
-            </div>
-
-        </div>
-
-
-        <h2>
-            Deine Artikel
-        </h2>
+</div>
 
 
-        <div
-            class="admin-list"
-            id="adminList">
-        </div>
+<button
+class="primary"
+id="saveButton"
+onclick="saveArticle()">
 
-    </div>
+📰 Veröffentlichen
+
+</button>
+
+<button
+class="secondary"
+onclick="clearForm()">
+
+Abbrechen
+
+</button>
+
+
+<div
+id="formMessage"
+class="success">
+</div>
+
+</div>
+
+
+<h2>
+Deine Artikel
+</h2>
+
+<div
+class="admin-list"
+id="adminList">
+</div>
+
+</div>
 
 </section>
 
@@ -1303,1802 +1460,1904 @@ footer {
 
 
 <footer>
-    © 2026 n: · Nachrichten
+© 2026 n: · Nachrichten
 </footer>
 
 
 <script>
 
 /* =====================================================
-   SUPABASE
+SUPABASE
 ===================================================== */
 
 const SUPABASE_URL =
-    "https://eqzmsuncndfsiedyfifb.supabase.co";
+"https://eqzmsuncndfsiedyfifb.supabase.co";
 
 const SUPABASE_KEY =
-    "sb_publishable_eXY1gg_tIr-cRC2kdt0jbQ_QPfbEmkF";
+"sb_publishable_eXY1gg_tIr-cRC2kdt0jbQ_QPfbEmkF";
 
 const STORAGE_BUCKET =
-    "news-images";
+"news-images";
 
-
-/* =====================================================
-   VARIABLEN
-===================================================== */
 
 let articles = [];
-
 let activeFilter = "Alle";
-
 let editingId = null;
-
 let editingImageUrl = null;
 
 
 /* =====================================================
-   BEREICHE
+BEREICHE
 ===================================================== */
 
 function hideAllPages() {
 
-    document.getElementById("startPage").style.display = "none";
-    document.getElementById("home").style.display = "none";
-    document.getElementById("article").style.display = "none";
-    document.getElementById("traffic").style.display = "none";
-    document.getElementById("area").style.display = "none";
-    document.getElementById("admin").style.display = "none";
+document.getElementById("startPage").style.display = "none";
+document.getElementById("home").style.display = "none";
+document.getElementById("article").style.display = "none";
+document.getElementById("traffic").style.display = "none";
+document.getElementById("area").style.display = "none";
+document.getElementById("admin").style.display = "none";
 
 }
 
 
 function showStart() {
 
-    hideAllPages();
+hideAllPages();
 
-    document.getElementById("startPage").style.display = "block";
+document.getElementById("startPage").style.display = "block";
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 }
 
 
 function openNews() {
 
-    hideAllPages();
+hideAllPages();
 
-    document.getElementById("home").style.display = "block";
+document.getElementById("home").style.display = "block";
 
-    loadNews();
+loadNews();
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 }
 
 
 function openTraffic() {
 
-    hideAllPages();
+hideAllPages();
 
-    document.getElementById("traffic").style.display = "block";
+document.getElementById("traffic").style.display = "block";
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+loadTraffic();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 }
 
 
 function openArea() {
 
-    hideAllPages();
+hideAllPages();
 
-    document.getElementById("area").style.display = "block";
+document.getElementById("area").style.display = "block";
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 }
 
 
 /* =====================================================
-   SUPABASE REQUEST
+ROUTE
 ===================================================== */
 
-async function supabaseRequest(endpoint, options = {}) {
+async function geocode(place) {
 
-    const token =
-        sessionStorage.getItem("nAccessToken");
+const url =
+"https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" +
+encodeURIComponent(place);
 
+const response =
+await fetch(url,{
+headers:{
+"Accept":"application/json"
+}
+});
 
-    const headers = {
+if(!response.ok){
+throw new Error("Ort konnte nicht gesucht werden.");
+}
 
-        "apikey":
-            SUPABASE_KEY,
+const data =
+await response.json();
 
-        "Content-Type":
-            "application/json",
+if(!data.length){
+throw new Error(
+`„${place}“ wurde nicht gefunden.`
+);
+}
 
-        ...(options.headers || {})
+return {
+lat:parseFloat(data[0].lat),
+lon:parseFloat(data[0].lon),
+name:data[0].display_name
+};
 
-    };
-
-
-    if (token) {
-
-        headers["Authorization"] =
-            `Bearer ${token}`;
-
-    } else if (!headers["Authorization"]) {
-
-        /*
-         * Für öffentliche GET-Anfragen:
-         * Publishable Key verwenden.
-         */
-
-        headers["Authorization"] =
-            `Bearer ${SUPABASE_KEY}`;
-
-    }
+}
 
 
-    const response =
-        await fetch(
-            `${SUPABASE_URL}/rest/v1/${endpoint}`,
-            {
-                ...options,
-                headers
-            }
-        );
+async function calculateRoute() {
+
+const start =
+document
+.getElementById("routeStart")
+.value
+.trim();
+
+const destination =
+document
+.getElementById("routeDestination")
+.value
+.trim();
+
+const status =
+document.getElementById("routeStatus");
+
+const result =
+document.getElementById("routeResult");
 
 
-    if (!response.ok) {
+if(!start || !destination){
 
-        const text =
-            await response.text();
+status.textContent =
+"Bitte Start und Ziel eingeben.";
 
-        /*
-         * Abgelaufene Session automatisch löschen.
-         */
+result.style.display =
+"none";
 
-        if (
-            text.includes("JWT expired") ||
-            response.status === 401
-        ) {
+return;
 
-            sessionStorage.removeItem(
-                "nAccessToken"
-            );
-
-            sessionStorage.removeItem(
-                "nUser"
-            );
-
-        }
+}
 
 
-        throw new Error(
-            text || "Supabase Fehler"
-        );
+status.textContent =
+"📍 Orte werden gesucht …";
 
-    }
-
-
-    const text =
-        await response.text();
+result.style.display =
+"none";
 
 
-    if (!text) {
-        return null;
-    }
+try {
+
+const startPoint =
+await geocode(start);
+
+status.textContent =
+"📍 Ziel wird gesucht …";
+
+const endPoint =
+await geocode(destination);
+
+status.textContent =
+"🗺️ Route wird berechnet …";
 
 
-    try {
+const routeUrl =
+`https://router.project-osrm.org/route/v1/driving/` +
+`${startPoint.lon},${startPoint.lat};` +
+`${endPoint.lon},${endPoint.lat}` +
+`?overview=false`;
 
-        return JSON.parse(text);
+const response =
+await fetch(routeUrl);
 
-    } catch {
+if(!response.ok){
 
-        return null;
+throw new Error(
+"Routenserver nicht erreichbar."
+);
 
-    }
+}
+
+const data =
+await response.json();
+
+if(
+data.code !== "Ok" ||
+!data.routes ||
+!data.routes.length
+){
+
+throw new Error(
+"Keine Route gefunden."
+);
+
+}
+
+const route =
+data.routes[0];
+
+const distance =
+route.distance / 1000;
+
+const duration =
+route.duration / 60;
+
+
+document
+.getElementById("routeDistance")
+.textContent =
+distance < 10
+? distance.toFixed(1) + " km"
+: Math.round(distance) + " km";
+
+
+const hours =
+Math.floor(duration / 60);
+
+const minutes =
+Math.round(duration % 60);
+
+
+document
+.getElementById("routeDuration")
+.textContent =
+hours > 0
+? `${hours} h ${minutes} min`
+: `${minutes} min`;
+
+
+/*
+ * OpenStreetMap-Karte.
+ * Die Karte zeigt den Bereich zwischen Start
+ * und Ziel. Die eigentliche Route wird oben
+ * berechnet.
+ */
+
+const minLat =
+Math.min(startPoint.lat,endPoint.lat);
+
+const maxLat =
+Math.max(startPoint.lat,endPoint.lat);
+
+const minLon =
+Math.min(startPoint.lon,endPoint.lon);
+
+const maxLon =
+Math.max(startPoint.lon,endPoint.lon);
+
+
+const paddingLat =
+Math.max((maxLat-minLat)*0.25,0.03);
+
+const paddingLon =
+Math.max((maxLon-minLon)*0.25,0.03);
+
+
+const bbox =
+`${minLon-paddingLon},` +
+`${minLat-paddingLat},` +
+`${maxLon+paddingLon},` +
+`${maxLat+paddingLat}`;
+
+
+const mapUrl =
+"https://www.openstreetmap.org/export/embed.html" +
+"?bbox=" +
+encodeURIComponent(bbox) +
+"&layer=mapnik" +
+`&marker=${startPoint.lat},${startPoint.lon}`;
+
+
+document
+.getElementById("routeMap")
+.src =
+mapUrl;
+
+
+result.style.display =
+"block";
+
+status.innerHTML =
+`<strong>${escapeHTML(startPoint.name)}</strong>` +
+` → ` +
+`<strong>${escapeHTML(endPoint.name)}</strong>`;
+
+}
+catch(error){
+
+console.error(error);
+
+status.textContent =
+"❌ " + error.message;
+
+result.style.display =
+"none";
+
+}
 
 }
 
 
 /* =====================================================
-   BILD VORSCHAU
+VERKEHR
 ===================================================== */
 
-function previewImage(event) {
+async function loadTraffic() {
 
-    const file =
-        event.target.files[0];
-
-    const preview =
-        document.getElementById("imagePreview");
-
-
-    if (!file) {
-
-        preview.style.display = "none";
-        preview.removeAttribute("src");
-
-        return;
-
-    }
+const roadInput =
+document
+.getElementById("roadInput")
+.value
+.trim()
+.toUpperCase()
+.replace(/\s/g,"");
 
 
-    if (!file.type.startsWith("image/")) {
+const status =
+document.getElementById("trafficStatus");
 
-        alert(
-            "Bitte eine Bilddatei auswählen."
-        );
-
-        event.target.value = "";
-
-        return;
-
-    }
+const list =
+document.getElementById("trafficList");
 
 
-    const reader =
-        new FileReader();
+if(!roadInput){
+
+status.textContent =
+"Bitte eine Autobahn eingeben, z. B. A3.";
+
+return;
+
+}
 
 
-    reader.onload =
-        function(e) {
+status.textContent =
+`🚦 Verkehrsmeldungen für ${roadInput} werden geladen …`;
 
-            preview.src =
-                e.target.result;
-
-            preview.style.display =
-                "block";
-
-        };
+list.innerHTML = "";
 
 
-    reader.readAsDataURL(file);
+try {
+
+const base =
+"https://verkehr.autobahn.de/o/autobahn/" +
+encodeURIComponent(roadInput) +
+"/services/";
+
+
+const endpoints = [
+
+{
+type:"warning",
+name:"Verkehrsmeldungen",
+url:base+"warning"
+},
+
+{
+type:"closure",
+name:"Sperrungen",
+url:base+"closure"
+},
+
+{
+type:"roadwork",
+name:"Baustellen",
+url:base+"roadworks"
+}
+
+];
+
+
+let allItems = [];
+
+
+for(const endpoint of endpoints){
+
+try{
+
+const response =
+await fetch(endpoint.url);
+
+if(!response.ok){
+continue;
+}
+
+const data =
+await response.json();
+
+const items =
+extractArray(data);
+
+items.forEach(item=>{
+
+allItems.push({
+
+...item,
+
+nType:endpoint.type,
+
+nTypeName:endpoint.name
+
+});
+
+});
+
+}
+catch(error){
+
+console.warn(
+endpoint.name,
+error
+);
+
+}
+
+}
+
+
+if(!allItems.length){
+
+status.innerHTML =
+`Keine aktuellen Meldungen für <strong>${escapeHTML(roadInput)}</strong> gefunden.`;
+
+return;
+
+}
+
+
+status.innerHTML =
+`<strong>${allItems.length}</strong> aktuelle Meldung(en) für <strong>${escapeHTML(roadInput)}</strong>`;
+
+
+allItems.forEach(item=>{
+
+const box =
+document.createElement("div");
+
+box.className =
+"traffic-item " +
+item.nType;
+
+
+const title =
+getTrafficTitle(item);
+
+const description =
+getTrafficDescription(item);
+
+
+box.innerHTML = `
+
+<span class="traffic-badge">
+${trafficIcon(item.nType)}
+${escapeHTML(item.nTypeName)}
+</span>
+
+<h3>
+${escapeHTML(title)}
+</h3>
+
+<p>
+${escapeHTML(description)}
+</p>
+
+`;
+
+
+list.appendChild(box);
+
+});
+
+}
+catch(error){
+
+console.error(error);
+
+status.textContent =
+"❌ Verkehrsdaten konnten nicht geladen werden.";
+
+list.innerHTML = `
+
+<div class="status-box">
+
+<strong>
+Verkehrsdaten nicht verfügbar.
+</strong>
+
+<br><br>
+
+Bitte später erneut versuchen.
+
+</div>
+
+`;
+
+}
+
+}
+
+
+function extractArray(data){
+
+if(Array.isArray(data)){
+return data;
+}
+
+const possibleKeys = [
+"warning",
+"warnings",
+"closure",
+"closures",
+"roadworks",
+"roadwork",
+"items",
+"roads"
+];
+
+for(const key of possibleKeys){
+
+if(Array.isArray(data[key])){
+return data[key];
+}
+
+}
+
+return [];
+
+}
+
+
+function getTrafficTitle(item){
+
+return (
+item.title ||
+item.headline ||
+item.subtitle ||
+item.description ||
+item.display_type ||
+item.type ||
+"Verkehrsmeldung"
+);
+
+}
+
+
+function getTrafficDescription(item){
+
+return (
+item.description ||
+item.subtitle ||
+item.text ||
+item.message ||
+item.information ||
+item.detail ||
+"Keine weiteren Informationen verfügbar."
+);
+
+}
+
+
+function trafficIcon(type){
+
+if(type === "closure"){
+return "⛔";
+}
+
+if(type === "roadwork"){
+return "🚧";
+}
+
+return "⚠️";
 
 }
 
 
 /* =====================================================
-   BILD UPLOAD
+SUPABASE
 ===================================================== */
 
-async function uploadImage(file) {
+async function supabaseRequest(endpoint,options={}){
 
-    const token =
-        sessionStorage.getItem("nAccessToken");
+const token =
+sessionStorage.getItem("nAccessToken");
 
+const headers = {
 
-    if (!token) {
+"apikey":SUPABASE_KEY,
 
-        throw new Error(
-            "Nicht eingeloggt. Bitte erneut einloggen."
-        );
+"Content-Type":"application/json",
 
-    }
+...(options.headers || {})
 
-
-    if (!file) {
-
-        return null;
-
-    }
+};
 
 
-    if (!file.type.startsWith("image/")) {
+if(token){
 
-        throw new Error(
-            "Die ausgewählte Datei ist kein Bild."
-        );
+headers["Authorization"] =
+`Bearer ${token}`;
 
-    }
+}
+else if(!headers["Authorization"]){
 
+headers["Authorization"] =
+`Bearer ${SUPABASE_KEY}`;
 
-    if (file.size > 10 * 1024 * 1024) {
-
-        throw new Error(
-            "Das Bild ist zu groß. Maximal 10 MB."
-        );
-
-    }
+}
 
 
-    const extension =
-        file.name
-            .split(".")
-            .pop()
-            .toLowerCase()
-            .replace(
-                /[^a-z0-9]/g,
-                ""
-            );
+const response =
+await fetch(
+`${SUPABASE_URL}/rest/v1/${endpoint}`,
+{
+...options,
+headers
+}
+);
 
 
-    const filename =
-        `${Date.now()}-${crypto.randomUUID()}.${extension}`;
+if(!response.ok){
+
+const text =
+await response.text();
+
+if(
+text.includes("JWT expired") ||
+response.status === 401
+){
+
+sessionStorage.removeItem(
+"nAccessToken"
+);
+
+sessionStorage.removeItem(
+"nUser"
+);
+
+}
+
+throw new Error(
+text || "Supabase Fehler"
+);
+
+}
 
 
-    const uploadUrl =
-        `${SUPABASE_URL}/storage/v1/object/${STORAGE_BUCKET}/${filename}`;
+const text =
+await response.text();
 
+if(!text){
+return null;
+}
 
-    const response =
-        await fetch(
-            uploadUrl,
-            {
-                method: "POST",
-
-                headers: {
-
-                    "apikey":
-                        SUPABASE_KEY,
-
-                    "Authorization":
-                        `Bearer ${token}`,
-
-                    "Content-Type":
-                        file.type,
-
-                    "x-upsert":
-                        "false"
-
-                },
-
-                body: file
-
-            }
-        );
-
-
-    if (!response.ok) {
-
-        const errorText =
-            await response.text();
-
-
-        if (
-            errorText.includes("JWT expired") ||
-            response.status === 401
-        ) {
-
-            sessionStorage.removeItem(
-                "nAccessToken"
-            );
-
-            sessionStorage.removeItem(
-                "nUser"
-            );
-
-        }
-
-
-        throw new Error(
-            errorText ||
-            `Bild-Upload fehlgeschlagen (${response.status})`
-        );
-
-    }
-
-
-    return `${SUPABASE_URL}/storage/v1/object/public/${STORAGE_BUCKET}/${filename}`;
+try{
+return JSON.parse(text);
+}
+catch{
+return null;
+}
 
 }
 
 
 /* =====================================================
-   NEWS LADEN
+BILD
 ===================================================== */
 
-async function loadNews() {
+function previewImage(event){
 
-    const grid =
-        document.getElementById("newsGrid");
+const file =
+event.target.files[0];
 
-
-    try {
-
-        grid.innerHTML = `
-            <div class="status-box">
-                Nachrichten werden geladen …
-            </div>
-        `;
+const preview =
+document.getElementById("imagePreview");
 
 
-        const result =
-            await supabaseRequest(
-                "news?select=*&order=created_at.desc"
-            );
+if(!file){
+
+preview.style.display="none";
+preview.removeAttribute("src");
+
+return;
+
+}
 
 
-        articles =
-            Array.isArray(result)
-                ? result
-                : [];
+if(!file.type.startsWith("image/")){
+
+alert("Bitte eine Bilddatei auswählen.");
+
+event.target.value="";
+
+return;
+
+}
 
 
-        renderNews(articles);
+const reader =
+new FileReader();
 
-        renderAdmin();
+reader.onload =
+e=>{
+
+preview.src =
+e.target.result;
+
+preview.style.display =
+"block";
+
+};
+
+reader.readAsDataURL(file);
+
+}
 
 
-    } catch (error) {
+async function uploadImage(file){
 
-        console.error(error);
+const token =
+sessionStorage.getItem("nAccessToken");
 
+if(!token){
+throw new Error(
+"Nicht eingeloggt. Bitte erneut einloggen."
+);
+}
 
-        grid.innerHTML = `
+if(!file){
+return null;
+}
 
-            <div class="status-box">
+if(!file.type.startsWith("image/")){
+throw new Error(
+"Die ausgewählte Datei ist kein Bild."
+);
+}
 
-                <strong>
-                    Nachrichten konnten nicht geladen werden.
-                </strong>
+if(file.size > 10*1024*1024){
+throw new Error(
+"Das Bild ist zu groß. Maximal 10 MB."
+);
+}
 
-                <br><br>
+const extension =
+file.name
+.split(".")
+.pop()
+.toLowerCase()
+.replace(/[^a-z0-9]/g,"");
 
-                ${escapeHTML(error.message)}
+const filename =
+`${Date.now()}-${crypto.randomUUID()}.${extension}`;
 
-                <br><br>
+const uploadUrl =
+`${SUPABASE_URL}/storage/v1/object/` +
+`${STORAGE_BUCKET}/${filename}`;
 
-                ${
-                    error.message.includes("JWT expired")
-                    ? `
-                        <button
-                            class="primary"
-                            onclick="forceLogout()">
-                            Sitzung zurücksetzen
-                        </button>
-                    `
-                    : ""
-                }
+const response =
+await fetch(
+uploadUrl,
+{
+method:"POST",
 
-            </div>
+headers:{
+"apikey":SUPABASE_KEY,
+"Authorization":`Bearer ${token}`,
+"Content-Type":file.type,
+"x-upsert":"false"
+},
 
-        `;
+body:file
+}
+);
 
-    }
+if(!response.ok){
+
+const errorText =
+await response.text();
+
+throw new Error(
+errorText ||
+`Bild-Upload fehlgeschlagen (${response.status})`
+);
+
+}
+
+return `${SUPABASE_URL}/storage/v1/object/public/` +
+`${STORAGE_BUCKET}/${filename}`;
 
 }
 
 
 /* =====================================================
-   SESSION ZURÜCKSETZEN
+NEWS LADEN
 ===================================================== */
 
-function forceLogout() {
+async function loadNews(){
 
-    sessionStorage.removeItem(
-        "nAccessToken"
-    );
+const grid =
+document.getElementById("newsGrid");
 
-    sessionStorage.removeItem(
-        "nUser"
-    );
+try{
 
-    alert(
-        "Die alte Sitzung wurde entfernt. Bitte erneut einloggen."
-    );
+grid.innerHTML = `
 
-    showStart();
+<div class="status-box">
+Nachrichten werden geladen …
+</div>
+
+`;
+
+const result =
+await supabaseRequest(
+"news?select=*&order=created_at.desc"
+);
+
+articles =
+Array.isArray(result)
+? result
+: [];
+
+renderNews(articles);
+renderAdmin();
+
+}
+catch(error){
+
+console.error(error);
+
+grid.innerHTML = `
+
+<div class="status-box">
+
+<strong>
+Nachrichten konnten nicht geladen werden.
+</strong>
+
+<br><br>
+
+${escapeHTML(error.message)}
+
+</div>
+
+`;
+
+}
 
 }
 
 
 /* =====================================================
-   BILD HTML
+NEWS
 ===================================================== */
 
-function getNewsImageHTML(article) {
+function getNewsImageHTML(article){
 
-    if (article.image_url) {
+if(article.image_url){
 
-        return `
+return `
 
-            <img
-                src="${escapeHTML(article.image_url)}"
-                alt="${escapeHTML(article.title || "Artikelbild")}"
-                loading="lazy"
-                onerror="this.parentElement.innerHTML='n:'">
+<img
+src="${escapeHTML(article.image_url)}"
+alt="${escapeHTML(article.title || "Artikelbild")}"
+loading="lazy"
+onerror="this.parentElement.innerHTML='n:'">
 
-        `;
+`;
 
-    }
+}
+
+return "n:";
+
+}
 
 
-    return "n:";
+function renderNews(list){
+
+const grid =
+document.getElementById("newsGrid");
+
+grid.innerHTML="";
+
+
+if(!list.length){
+
+grid.innerHTML = `
+
+<div class="status-box">
+Noch keine Nachrichten vorhanden.
+</div>
+
+`;
+
+return;
+
+}
+
+
+if(
+activeFilter==="Alle" &&
+list.length>0
+){
+
+const first =
+list[0];
+
+const featured =
+document.createElement("div");
+
+featured.className =
+"featured";
+
+featured.onclick =
+()=>openArticle(first.id);
+
+featured.innerHTML = `
+
+<div class="featured-image">
+${getNewsImageHTML(first)}
+</div>
+
+<div class="featured-content">
+
+<div class="featured-label">
+● AKTUELL
+</div>
+
+<h2>
+${escapeHTML(first.title)}
+</h2>
+
+</div>
+
+`;
+
+grid.appendChild(featured);
+
+}
+
+
+list.forEach(
+(item,index)=>{
+
+if(
+activeFilter==="Alle" &&
+index===0
+){
+return;
+}
+
+const card =
+document.createElement("article");
+
+card.className =
+"news-card";
+
+card.onclick =
+()=>openArticle(item.id);
+
+card.innerHTML = `
+
+<div class="news-image">
+${getNewsImageHTML(item)}
+</div>
+
+<div class="news-card-content">
+
+<div class="news-meta">
+${escapeHTML(item.category || "")}
+·
+${escapeHTML(item.region || "")}
+</div>
+
+<h2>
+${escapeHTML(item.title || "")}
+</h2>
+
+<p>
+${escapeHTML(item.description || "")}
+</p>
+
+</div>
+
+`;
+
+grid.appendChild(card);
+
+}
+);
+
+}
+
+
+function filterNews(category,button){
+
+activeFilter =
+category;
+
+document
+.querySelectorAll(".filter")
+.forEach(
+x=>x.classList.remove("active")
+);
+
+button.classList.add("active");
+
+if(category==="Alle"){
+
+renderNews(articles);
+
+return;
+
+}
+
+const filtered =
+articles.filter(
+item =>
+item.category===category ||
+item.region===category
+);
+
+renderNews(filtered);
 
 }
 
 
 /* =====================================================
-   NEWS ANZEIGEN
+SUCHE
 ===================================================== */
 
-function renderNews(list) {
+function toggleSearch(){
 
-    const grid =
-        document.getElementById("newsGrid");
+if(
+document.getElementById("home").style.display!=="block"
+){
 
+openNews();
 
-    grid.innerHTML = "";
+}
 
+const box =
+document.getElementById("searchBox");
 
-    if (!list.length) {
+if(box.style.display==="block"){
 
-        grid.innerHTML = `
+box.style.display="none";
 
-            <div class="status-box">
+}
+else{
 
-                Noch keine Nachrichten vorhanden.
+box.style.display="block";
 
-            </div>
+document
+.getElementById("searchInput")
+.focus();
 
-        `;
+}
 
-        return;
+}
 
-    }
 
+function searchNews(){
 
-    if (
-        activeFilter === "Alle" &&
-        list.length > 0
-    ) {
+const value =
+document
+.getElementById("searchInput")
+.value
+.toLowerCase()
+.trim();
 
-        const first =
-            list[0];
+if(!value){
 
+renderNews(articles);
 
-        const featured =
-            document.createElement("div");
+return;
 
+}
 
-        featured.className =
-            "featured";
+const results =
+articles.filter(
+item=>
+String(item.title||"")
+.toLowerCase()
+.includes(value)
+||
+String(item.description||"")
+.toLowerCase()
+.includes(value)
+||
+String(item.content||"")
+.toLowerCase()
+.includes(value)
+||
+String(item.category||"")
+.toLowerCase()
+.includes(value)
+||
+String(item.region||"")
+.toLowerCase()
+.includes(value)
+);
 
-
-        featured.onclick =
-            () => openArticle(first.id);
-
-
-        featured.innerHTML = `
-
-            <div class="featured-image">
-
-                ${getNewsImageHTML(first)}
-
-            </div>
-
-            <div class="featured-content">
-
-                <div class="featured-label">
-                    ● AKTUELL
-                </div>
-
-                <h2>
-                    ${escapeHTML(first.title)}
-                </h2>
-
-            </div>
-
-        `;
-
-
-        grid.appendChild(featured);
-
-    }
-
-
-    list.forEach(
-        (item,index) => {
-
-            if (
-                activeFilter === "Alle" &&
-                index === 0
-            ) {
-
-                return;
-
-            }
-
-
-            const card =
-                document.createElement("article");
-
-
-            card.className =
-                "news-card";
-
-
-            card.onclick =
-                () => openArticle(item.id);
-
-
-            card.innerHTML = `
-
-                <div class="news-image">
-
-                    ${getNewsImageHTML(item)}
-
-                </div>
-
-
-                <div class="news-card-content">
-
-                    <div class="news-meta">
-
-                        ${escapeHTML(item.category || "")}
-
-                        ·
-
-                        ${escapeHTML(item.region || "")}
-
-                    </div>
-
-
-                    <h2>
-
-                        ${escapeHTML(item.title || "")}
-
-                    </h2>
-
-
-                    <p>
-
-                        ${escapeHTML(item.description || "")}
-
-                    </p>
-
-                </div>
-
-            `;
-
-
-            grid.appendChild(card);
-
-        }
-    );
+renderNews(results);
 
 }
 
 
 /* =====================================================
-   FILTER
+ARTIKEL
 ===================================================== */
 
-function filterNews(category, button) {
+function openArticle(id){
 
-    activeFilter =
-        category;
+const article =
+articles.find(
+x=>x.id===id
+);
 
+if(!article){
+return;
+}
 
-    document
-        .querySelectorAll(".filter")
-        .forEach(
-            x =>
-                x.classList.remove("active")
-        );
+hideAllPages();
 
+document
+.getElementById("article")
+.style.display="block";
 
-    button.classList.add("active");
+document
+.getElementById("articleMeta")
+.textContent =
+`${article.category||""} · ${article.region||""}`;
 
+document
+.getElementById("articleTitle")
+.textContent =
+article.title||"";
 
-    if (category === "Alle") {
+const imageBox =
+document.getElementById("articleImage");
 
-        renderNews(articles);
+if(article.image_url){
 
-        return;
+imageBox.innerHTML = `
 
-    }
+<img
+src="${escapeHTML(article.image_url)}"
+alt="${escapeHTML(article.title||"Artikelbild")}"
+onerror="this.parentElement.innerHTML='n:'">
 
+`;
 
-    const filtered =
-        articles.filter(
-            item =>
-                item.category === category ||
-                item.region === category
-        );
+}
+else{
 
+imageBox.innerHTML="n:";
 
-    renderNews(filtered);
+}
+
+document
+.getElementById("articleText")
+.innerHTML =
+escapeHTML(article.content||"")
+.replace(/\n/g,"<br><br>");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 }
 
 
 /* =====================================================
-   SUCHE
+ADMIN
 ===================================================== */
 
-function toggleSearch() {
+function openAdmin(){
 
-    /*
-     * Suche nur im Nachrichtenbereich.
-     */
+hideAllPages();
 
-    if (
-        document.getElementById("home").style.display !== "block"
-    ) {
+document
+.getElementById("admin")
+.style.display="block";
 
-        openNews();
+checkSession();
 
-    }
-
-
-    const box =
-        document.getElementById("searchBox");
-
-
-    if (box.style.display === "block") {
-
-        box.style.display = "none";
-
-    } else {
-
-        box.style.display = "block";
-
-        document
-            .getElementById("searchInput")
-            .focus();
-
-    }
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 }
 
 
-function searchNews() {
+async function login(){
 
-    const value =
-        document
-            .getElementById("searchInput")
-            .value
-            .toLowerCase()
-            .trim();
+const email =
+document
+.getElementById("email")
+.value
+.trim();
 
+const password =
+document
+.getElementById("password")
+.value;
 
-    if (!value) {
+const error =
+document.getElementById("loginError");
 
-        renderNews(articles);
-
-        return;
-
-    }
-
-
-    const results =
-        articles.filter(
-            item =>
-
-                String(item.title || "")
-                    .toLowerCase()
-                    .includes(value)
-
-                ||
-
-                String(item.description || "")
-                    .toLowerCase()
-                    .includes(value)
-
-                ||
-
-                String(item.content || "")
-                    .toLowerCase()
-                    .includes(value)
-
-                ||
-
-                String(item.category || "")
-                    .toLowerCase()
-                    .includes(value)
-
-                ||
-
-                String(item.region || "")
-                    .toLowerCase()
-                    .includes(value)
-        );
+error.textContent="";
 
 
-    renderNews(results);
+if(!email || !password){
+
+error.textContent =
+"Bitte E-Mail und Passwort eingeben.";
+
+return;
+
+}
+
+try{
+
+const response =
+await fetch(
+`${SUPABASE_URL}/auth/v1/token?grant_type=password`,
+{
+method:"POST",
+
+headers:{
+"apikey":SUPABASE_KEY,
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+email,
+password
+})
+}
+);
+
+const data =
+await response.json();
+
+if(!response.ok){
+
+throw new Error(
+data.msg ||
+data.message ||
+"Login fehlgeschlagen."
+);
+
+}
+
+sessionStorage.setItem(
+"nAccessToken",
+data.access_token
+);
+
+sessionStorage.setItem(
+"nUser",
+JSON.stringify(data.user)
+);
+
+showDashboard();
+
+}
+catch(error){
+
+console.error(error);
+
+document
+.getElementById("loginError")
+.textContent =
+"❌ " + error.message;
+
+}
+
+}
+
+
+function checkSession(){
+
+const token =
+sessionStorage.getItem(
+"nAccessToken"
+);
+
+if(token){
+
+showDashboard();
+
+}
+else{
+
+document
+.getElementById("loginBox")
+.style.display="block";
+
+document
+.getElementById("dashboard")
+.style.display="none";
+
+}
+
+}
+
+
+function showDashboard(){
+
+document
+.getElementById("loginBox")
+.style.display="none";
+
+document
+.getElementById("dashboard")
+.style.display="block";
+
+loadNews();
+
+renderAdmin();
+
+}
+
+
+function logout(){
+
+sessionStorage.removeItem(
+"nAccessToken"
+);
+
+sessionStorage.removeItem(
+"nUser"
+);
+
+document
+.getElementById("dashboard")
+.style.display="none";
+
+document
+.getElementById("loginBox")
+.style.display="block";
+
+}
+
+
+function renderAdmin(){
+
+const list =
+document.getElementById("adminList");
+
+if(!list){
+return;
+}
+
+list.innerHTML="";
+
+
+if(!articles.length){
+
+list.innerHTML = `
+
+<div class="status-box">
+Noch keine Artikel.
+</div>
+
+`;
+
+return;
+
+}
+
+
+articles.forEach(
+article=>{
+
+const item =
+document.createElement("div");
+
+item.className =
+"admin-item";
+
+item.innerHTML = `
+
+<div>
+
+<div class="admin-item-title">
+${escapeHTML(article.title||"")}
+</div>
+
+<small>
+${escapeHTML(article.category||"")}
+·
+${escapeHTML(article.region||"")}
+</small>
+
+</div>
+
+<div class="admin-actions">
+
+<button
+class="small edit"
+onclick="editArticle(${article.id})">
+Bearbeiten
+</button>
+
+<button
+class="small delete"
+onclick="deleteArticle(${article.id})">
+Löschen
+</button>
+
+</div>
+
+`;
+
+list.appendChild(item);
+
+}
+);
 
 }
 
 
 /* =====================================================
-   ARTIKEL ÖFFNEN
+ARTIKEL SPEICHERN
 ===================================================== */
 
-function openArticle(id) {
+async function saveArticle(){
 
-    const article =
-        articles.find(
-            x => x.id === id
-        );
+const title =
+document.getElementById("title")
+.value.trim();
 
+const description =
+document.getElementById("description")
+.value.trim();
 
-    if (!article) {
-        return;
-    }
+const category =
+document.getElementById("category")
+.value;
 
+const region =
+document.getElementById("region")
+.value.trim();
 
-    hideAllPages();
+const content =
+document.getElementById("content")
+.value.trim();
 
+const imageFile =
+document.getElementById("imageFile")
+.files[0];
 
-    document
-        .getElementById("article")
-        .style.display = "block";
+const message =
+document.getElementById("formMessage");
 
-
-    document
-        .getElementById("articleMeta")
-        .textContent =
-            `${article.category || ""} · ${article.region || ""}`;
-
-
-    document
-        .getElementById("articleTitle")
-        .textContent =
-            article.title || "";
-
-
-    const imageBox =
-        document.getElementById("articleImage");
+const saveButton =
+document.getElementById("saveButton");
 
 
-    if (article.image_url) {
+if(
+!title ||
+!description ||
+!region ||
+!content
+){
 
-        imageBox.innerHTML = `
+message.className="error";
 
-            <img
-                src="${escapeHTML(article.image_url)}"
-                alt="${escapeHTML(article.title || "Artikelbild")}"
-                onerror="this.parentElement.innerHTML='n:'">
+message.textContent =
+"Bitte alle Felder ausfüllen.";
 
-        `;
+return;
 
-    } else {
-
-        imageBox.innerHTML = "n:";
-
-    }
-
-
-    document
-        .getElementById("articleText")
-        .innerHTML =
-            escapeHTML(
-                article.content || ""
-            )
-            .replace(
-                /\n/g,
-                "<br><br>"
-            );
+}
 
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+const token =
+sessionStorage.getItem(
+"nAccessToken"
+);
+
+if(!token){
+
+message.className="error";
+
+message.textContent =
+"Bitte erneut einloggen.";
+
+return;
+
+}
+
+
+try{
+
+saveButton.disabled=true;
+
+saveButton.textContent =
+"⏳ Wird gespeichert...";
+
+let imageUrl =
+editingImageUrl;
+
+if(imageFile){
+
+message.textContent =
+"🖼️ Bild wird hochgeladen...";
+
+imageUrl =
+await uploadImage(imageFile);
+
+}
+
+
+if(editingId!==null){
+
+await supabaseRequest(
+`news?id=eq.${editingId}`,
+{
+method:"PATCH",
+
+headers:{
+"Authorization":
+`Bearer ${token}`,
+
+"Prefer":
+"return=minimal"
+},
+
+body:JSON.stringify({
+
+title,
+description,
+category,
+region,
+content,
+image_url:imageUrl
+
+})
+
+}
+);
+
+message.textContent =
+"✅ Artikel aktualisiert.";
+
+}
+else{
+
+await supabaseRequest(
+"news",
+{
+method:"POST",
+
+headers:{
+"Authorization":
+`Bearer ${token}`,
+
+"Prefer":
+"return=minimal"
+},
+
+body:JSON.stringify({
+
+title,
+description,
+category,
+region,
+content,
+image_url:imageUrl
+
+})
+
+}
+);
+
+message.textContent =
+"📰 Artikel veröffentlicht.";
+
+}
+
+clearForm();
+
+await loadNews();
+
+renderAdmin();
+
+}
+catch(error){
+
+console.error(error);
+
+message.className="error";
+
+message.textContent =
+"Fehler: " +
+error.message;
+
+}
+finally{
+
+saveButton.disabled=false;
+
+saveButton.textContent =
+editingId!==null
+? "Änderungen speichern"
+: "📰 Veröffentlichen";
+
+}
 
 }
 
 
 /* =====================================================
-   ADMIN ÖFFNEN
+EDIT
 ===================================================== */
 
-function openAdmin() {
+function editArticle(id){
 
-    hideAllPages();
+const article =
+articles.find(
+x=>x.id===id
+);
 
-    document
-        .getElementById("admin")
-        .style.display = "block";
+if(!article){
+return;
+}
 
+editingId=id;
 
-    checkSession();
+editingImageUrl =
+article.image_url||null;
 
+document
+.getElementById("formTitle")
+.textContent =
+"Artikel bearbeiten";
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+document
+.getElementById("title")
+.value =
+article.title||"";
+
+document
+.getElementById("description")
+.value =
+article.description||"";
+
+document
+.getElementById("category")
+.value =
+article.category||"Deutschland";
+
+document
+.getElementById("region")
+.value =
+article.region||"";
+
+document
+.getElementById("content")
+.value =
+article.content||"";
+
+document
+.getElementById("imageFile")
+.value="";
+
+const preview =
+document.getElementById("imagePreview");
+
+const current =
+document.getElementById("currentImage");
+
+if(article.image_url){
+
+preview.src =
+article.image_url;
+
+preview.style.display="block";
+
+current.style.display="block";
+
+current.textContent =
+"Aktuelles Bild – du kannst ein neues Bild auswählen.";
+
+}
+else{
+
+preview.style.display="none";
+
+current.style.display="none";
+
+}
+
+document
+.getElementById("saveButton")
+.textContent =
+"Änderungen speichern";
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 }
 
 
 /* =====================================================
-   LOGIN
+DELETE
 ===================================================== */
 
-async function login() {
+async function deleteArticle(id){
 
-    const email =
-        document
-            .getElementById("email")
-            .value
-            .trim();
+const article =
+articles.find(
+x=>x.id===id
+);
 
+if(!article){
+return;
+}
 
-    const password =
-        document
-            .getElementById("password")
-            .value;
+if(
+!confirm(
+`„${article.title}“ wirklich löschen?`
+)
+){
+return;
+}
 
+const token =
+sessionStorage.getItem(
+"nAccessToken"
+);
 
-    const error =
-        document.getElementById("loginError");
+if(!token){
 
+alert(
+"Bitte erneut einloggen."
+);
 
-    error.textContent = "";
+return;
 
+}
 
-    if (!email || !password) {
+try{
 
-        error.textContent =
-            "Bitte E-Mail und Passwort eingeben.";
+await supabaseRequest(
+`news?id=eq.${id}`,
+{
+method:"DELETE",
 
-        return;
+headers:{
+"Authorization":
+`Bearer ${token}`
+}
+}
+);
 
-    }
+await loadNews();
 
+renderAdmin();
 
-    try {
+}
+catch(error){
 
-        const response =
-            await fetch(
-                `${SUPABASE_URL}/auth/v1/token?grant_type=password`,
-                {
-                    method: "POST",
+console.error(error);
 
-                    headers: {
+alert(
+"Fehler beim Löschen:\n\n" +
+error.message
+);
 
-                        "apikey":
-                            SUPABASE_KEY,
-
-                        "Content-Type":
-                            "application/json"
-
-                    },
-
-                    body:
-                        JSON.stringify({
-
-                            email:
-                                email,
-
-                            password:
-                                password
-
-                        })
-
-                }
-            );
-
-
-        const data =
-            await response.json();
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                data.msg ||
-                data.message ||
-                "Login fehlgeschlagen."
-            );
-
-        }
-
-
-        sessionStorage.setItem(
-            "nAccessToken",
-            data.access_token
-        );
-
-
-        sessionStorage.setItem(
-            "nUser",
-            JSON.stringify(data.user)
-        );
-
-
-        showDashboard();
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        document
-            .getElementById("loginError")
-            .textContent =
-                "❌ " + error.message;
-
-    }
+}
 
 }
 
 
 /* =====================================================
-   SESSION
+FORM RESET
 ===================================================== */
 
-function checkSession() {
+function clearForm(){
 
-    const token =
-        sessionStorage.getItem(
-            "nAccessToken"
-        );
+editingId=null;
+editingImageUrl=null;
 
+document
+.getElementById("formTitle")
+.textContent =
+"Neuer Artikel";
 
-    if (token) {
+document
+.getElementById("title")
+.value="";
 
-        showDashboard();
+document
+.getElementById("description")
+.value="";
 
-    } else {
+document
+.getElementById("category")
+.value="Deutschland";
 
-        document
-            .getElementById("loginBox")
-            .style.display = "block";
+document
+.getElementById("region")
+.value="";
 
+document
+.getElementById("content")
+.value="";
 
-        document
-            .getElementById("dashboard")
-            .style.display = "none";
+document
+.getElementById("imageFile")
+.value="";
 
-    }
+const preview =
+document.getElementById("imagePreview");
+
+preview.style.display="none";
+
+preview.removeAttribute("src");
+
+document
+.getElementById("currentImage")
+.style.display="none";
+
+document
+.getElementById("currentImage")
+.textContent="";
+
+document
+.getElementById("saveButton")
+.textContent =
+"📰 Veröffentlichen";
+
+document
+.getElementById("formMessage")
+.textContent="";
 
 }
 
 
 /* =====================================================
-   DASHBOARD
+HTML SICHER
 ===================================================== */
 
-function showDashboard() {
+function escapeHTML(value){
 
-    document
-        .getElementById("loginBox")
-        .style.display = "none";
+return String(value??"")
 
-
-    document
-        .getElementById("dashboard")
-        .style.display = "block";
-
-
-    loadNews();
-
-    renderAdmin();
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
 
 
 /* =====================================================
-   LOGOUT
-===================================================== */
-
-function logout() {
-
-    sessionStorage.removeItem(
-        "nAccessToken"
-    );
-
-    sessionStorage.removeItem(
-        "nUser"
-    );
-
-
-    document
-        .getElementById("dashboard")
-        .style.display = "none";
-
-
-    document
-        .getElementById("loginBox")
-        .style.display = "block";
-
-}
-
-
-/* =====================================================
-   ADMIN LISTE
-===================================================== */
-
-function renderAdmin() {
-
-    const list =
-        document.getElementById("adminList");
-
-
-    if (!list) {
-        return;
-    }
-
-
-    list.innerHTML = "";
-
-
-    if (!articles.length) {
-
-        list.innerHTML = `
-
-            <div class="status-box">
-
-                Noch keine Artikel.
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    articles.forEach(
-        article => {
-
-            const item =
-                document.createElement("div");
-
-
-            item.className =
-                "admin-item";
-
-
-            item.innerHTML = `
-
-                <div>
-
-                    <div class="admin-item-title">
-
-                        ${escapeHTML(article.title || "")}
-
-                    </div>
-
-
-                    <small>
-
-                        ${escapeHTML(article.category || "")}
-
-                        ·
-
-                        ${escapeHTML(article.region || "")}
-
-                    </small>
-
-                </div>
-
-
-                <div class="admin-actions">
-
-                    <button
-                        class="small edit"
-                        onclick="editArticle(${article.id})">
-
-                        Bearbeiten
-
-                    </button>
-
-
-                    <button
-                        class="small delete"
-                        onclick="deleteArticle(${article.id})">
-
-                        Löschen
-
-                    </button>
-
-                </div>
-
-            `;
-
-
-            list.appendChild(item);
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   ARTIKEL SPEICHERN
-===================================================== */
-
-async function saveArticle() {
-
-    const title =
-        document
-            .getElementById("title")
-            .value
-            .trim();
-
-
-    const description =
-        document
-            .getElementById("description")
-            .value
-            .trim();
-
-
-    const category =
-        document
-            .getElementById("category")
-            .value;
-
-
-    const region =
-        document
-            .getElementById("region")
-            .value
-            .trim();
-
-
-    const content =
-        document
-            .getElementById("content")
-            .value
-            .trim();
-
-
-    const imageFile =
-        document
-            .getElementById("imageFile")
-            .files[0];
-
-
-    const message =
-        document.getElementById("formMessage");
-
-
-    const saveButton =
-        document.getElementById("saveButton");
-
-
-    if (
-        !title ||
-        !description ||
-        !region ||
-        !content
-    ) {
-
-        message.className =
-            "error";
-
-        message.textContent =
-            "Bitte alle Felder ausfüllen.";
-
-        return;
-
-    }
-
-
-    const token =
-        sessionStorage.getItem(
-            "nAccessToken"
-        );
-
-
-    if (!token) {
-
-        message.className =
-            "error";
-
-        message.textContent =
-            "Bitte erneut einloggen.";
-
-        return;
-
-    }
-
-
-    try {
-
-        saveButton.disabled =
-            true;
-
-        saveButton.textContent =
-            "⏳ Wird gespeichert...";
-
-        message.className =
-            "success";
-
-        message.textContent =
-            "";
-
-
-        let imageUrl =
-            editingImageUrl;
-
-
-        if (imageFile) {
-
-            message.textContent =
-                "🖼️ Bild wird hochgeladen...";
-
-
-            imageUrl =
-                await uploadImage(
-                    imageFile
-                );
-
-        }
-
-
-        if (editingId !== null) {
-
-            await supabaseRequest(
-
-                `news?id=eq.${editingId}`,
-
-                {
-
-                    method:
-                        "PATCH",
-
-                    headers: {
-
-                        "Authorization":
-                            `Bearer ${token}`,
-
-                        "Prefer":
-                            "return=minimal"
-
-                    },
-
-                    body:
-                        JSON.stringify({
-
-                            title:
-                                title,
-
-                            description:
-                                description,
-
-                            category:
-                                category,
-
-                            region:
-                                region,
-
-                            content:
-                                content,
-
-                            image_url:
-                                imageUrl
-
-                        })
-
-                }
-
-            );
-
-
-            message.textContent =
-                "✅ Artikel aktualisiert.";
-
-        } else {
-
-            await supabaseRequest(
-
-                "news",
-
-                {
-
-                    method:
-                        "POST",
-
-                    headers: {
-
-                        "Authorization":
-                            `Bearer ${token}`,
-
-                        "Prefer":
-                            "return=minimal"
-
-                    },
-
-                    body:
-                        JSON.stringify({
-
-                            title:
-                                title,
-
-                            description:
-                                description,
-
-                            category:
-                                category,
-
-                            region:
-                                region,
-
-                            content:
-                                content,
-
-                            image_url:
-                                imageUrl
-
-                        })
-
-                }
-
-            );
-
-
-            message.textContent =
-                "📰 Artikel veröffentlicht.";
-
-        }
-
-
-        clearForm();
-
-        await loadNews();
-
-        renderAdmin();
-
-
-    } catch (error) {
-
-        console.error(error);
-
-
-        message.className =
-            "error";
-
-        message.textContent =
-            "Fehler: " +
-            error.message;
-
-    } finally {
-
-        saveButton.disabled =
-            false;
-
-        saveButton.textContent =
-            editingId !== null
-                ? "Änderungen speichern"
-                : "📰 Veröffentlichen";
-
-    }
-
-}
-
-
-/* =====================================================
-   ARTIKEL BEARBEITEN
-===================================================== */
-
-function editArticle(id) {
-
-    const article =
-        articles.find(
-            x => x.id === id
-        );
-
-
-    if (!article) {
-        return;
-    }
-
-
-    editingId =
-        id;
-
-
-    editingImageUrl =
-        article.image_url || null;
-
-
-    document
-        .getElementById("formTitle")
-        .textContent =
-            "Artikel bearbeiten";
-
-
-    document
-        .getElementById("title")
-        .value =
-            article.title || "";
-
-
-    document
-        .getElementById("description")
-        .value =
-            article.description || "";
-
-
-    document
-        .getElementById("category")
-        .value =
-            article.category || "Deutschland";
-
-
-    document
-        .getElementById("region")
-        .value =
-            article.region || "";
-
-
-    document
-        .getElementById("content")
-        .value =
-            article.content || "";
-
-
-    document
-        .getElementById("imageFile")
-        .value =
-            "";
-
-
-    const preview =
-        document.getElementById("imagePreview");
-
-
-    const current =
-        document.getElementById("currentImage");
-
-
-    if (article.image_url) {
-
-        preview.src =
-            article.image_url;
-
-        preview.style.display =
-            "block";
-
-        current.style.display =
-            "block";
-
-        current.textContent =
-            "Aktuelles Bild – du kannst ein neues Bild auswählen.";
-
-    } else {
-
-        preview.style.display =
-            "none";
-
-        current.style.display =
-            "none";
-
-        current.textContent =
-            "";
-
-    }
-
-
-    document
-        .getElementById("saveButton")
-        .textContent =
-            "Änderungen speichern";
-
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-}
-
-
-/* =====================================================
-   ARTIKEL LÖSCHEN
-===================================================== */
-
-async function deleteArticle(id) {
-
-    const article =
-        articles.find(
-            x => x.id === id
-        );
-
-
-    if (!article) {
-        return;
-    }
-
-
-    if (
-        !confirm(
-            `„${article.title}“ wirklich löschen?`
-        )
-    ) {
-        return;
-    }
-
-
-    const token =
-        sessionStorage.getItem(
-            "nAccessToken"
-        );
-
-
-    if (!token) {
-
-        alert(
-            "Bitte erneut einloggen."
-        );
-
-        return;
-
-    }
-
-
-    try {
-
-        await supabaseRequest(
-
-            `news?id=eq.${id}`,
-
-            {
-
-                method:
-                    "DELETE",
-
-                headers: {
-
-                    "Authorization":
-                        `Bearer ${token}`
-
-                }
-
-            }
-
-        );
-
-
-        await loadNews();
-
-        renderAdmin();
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        alert(
-            "Fehler beim Löschen:\n\n" +
-            error.message
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   FORM ZURÜCKSETZEN
-===================================================== */
-
-function clearForm() {
-
-    editingId =
-        null;
-
-
-    editingImageUrl =
-        null;
-
-
-    document
-        .getElementById("formTitle")
-        .textContent =
-            "Neuer Artikel";
-
-
-    document
-        .getElementById("title")
-        .value =
-            "";
-
-
-    document
-        .getElementById("description")
-        .value =
-            "";
-
-
-    document
-        .getElementById("category")
-        .value =
-            "Deutschland";
-
-
-    document
-        .getElementById("region")
-        .value =
-            "";
-
-
-    document
-        .getElementById("content")
-        .value =
-            "";
-
-
-    document
-        .getElementById("imageFile")
-        .value =
-            "";
-
-
-    const preview =
-        document.getElementById("imagePreview");
-
-
-    preview.style.display =
-        "none";
-
-
-    preview.removeAttribute("src");
-
-
-    document
-        .getElementById("currentImage")
-        .style.display =
-            "none";
-
-
-    document
-        .getElementById("currentImage")
-        .textContent =
-            "";
-
-
-    document
-        .getElementById("saveButton")
-        .textContent =
-            "📰 Veröffentlichen";
-
-
-    document
-        .getElementById("formMessage")
-        .textContent =
-            "";
-
-}
-
-
-/* =====================================================
-   HTML SICHER AUSGEBEN
-===================================================== */
-
-function escapeHTML(value) {
-
-    return String(value ?? "")
-
-        .replace(/&/g,"&amp;")
-
-        .replace(/</g,"&lt;")
-
-        .replace(/>/g,"&gt;")
-
-        .replace(/"/g,"&quot;")
-
-        .replace(/'/g,"&#039;");
-
-}
-
-
-/* =====================================================
-   START
+START
 ===================================================== */
 
 showStart();
