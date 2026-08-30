@@ -9,773 +9,966 @@
 
 <style>
 
-* {
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f4f5f7;
-    color: #111;
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f5f7;
+    color:#111;
 }
 
-header {
-    height: 72px;
-    padding: 0 28px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(255,255,255,.96);
-    border-bottom: 1px solid #ddd;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+header{
+    height:72px;
+    padding:0 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid #ddd;
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
-.logo {
-    font-size: 40px;
-    font-weight: 900;
-    letter-spacing: -4px;
-    cursor: pointer;
+.logo{
+    font-size:40px;
+    font-weight:900;
+    letter-spacing:-4px;
+    cursor:pointer;
 }
 
-.header-actions {
-    display: flex;
-    gap: 8px;
+.header-actions{
+    display:flex;
+    gap:8px;
 }
 
-.header-btn {
-    border: 0;
-    background: transparent;
-    font-size: 20px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
+.header-btn{
+    border:0;
+    background:transparent;
+    font-size:20px;
+    padding:10px;
+    border-radius:10px;
+    cursor:pointer;
 }
 
-.header-btn:hover {
-    background: #eee;
+.header-btn:hover{
+    background:#eee;
 }
 
-main {
-    max-width: 1200px;
-    margin: auto;
-    padding: 45px 20px 80px;
+main{
+    max-width:1200px;
+    margin:auto;
+    padding:45px 20px 80px;
 }
 
-/* START */
-
-.start-page {
-    min-height: 70vh;
+.start-page{
+    min-height:70vh;
 }
 
-.start-hero {
-    text-align: center;
-    padding: 35px 0 45px;
+.start-hero{
+    text-align:center;
+    padding:35px 0 45px;
 }
 
-.start-label {
-    font-size: 13px;
-    font-weight: 900;
-    color: #777;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+.start-label{
+    font-size:13px;
+    font-weight:900;
+    color:#777;
+    text-transform:uppercase;
+    letter-spacing:2px;
 }
 
-.start-hero h1 {
-    font-size: clamp(45px, 8vw, 80px);
-    line-height: .9;
-    letter-spacing: -5px;
-    margin: 12px 0;
+.start-hero h1{
+    font-size:clamp(45px,8vw,80px);
+    line-height:.9;
+    letter-spacing:-5px;
+    margin:12px 0;
 }
 
-.start-hero p {
-    color: #777;
-    font-size: 19px;
-    margin: 0;
+.start-hero p{
+    color:#777;
+    font-size:19px;
+    margin:0;
 }
 
-.area-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+.area-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
 }
 
-.area-card {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 24px;
-    padding: 30px;
-    min-height: 260px;
-    cursor: pointer;
-    transition: .2s;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.area-card{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:24px;
+    padding:30px;
+    min-height:260px;
+    cursor:pointer;
+    transition:.2s;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 }
 
-.area-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0,0,0,.1);
+.area-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px rgba(0,0,0,.1);
 }
 
-.area-icon {
-    font-size: 48px;
+.area-icon{
+    font-size:48px;
 }
 
-.area-card h2 {
-    font-size: 30px;
-    margin: 20px 0 8px;
-    letter-spacing: -1px;
+.area-card h2{
+    font-size:30px;
+    margin:20px 0 8px;
+    letter-spacing:-1px;
 }
 
-.area-card p {
-    color: #777;
-    line-height: 1.5;
-    margin: 0;
+.area-card p{
+    color:#777;
+    line-height:1.5;
+    margin:0;
 }
 
-.area-arrow {
-    margin-top: 25px;
-    font-size: 22px;
-    font-weight: 900;
+.area-arrow{
+    margin-top:25px;
+    font-size:22px;
+    font-weight:900;
 }
 
 /* NEWS */
 
-.hero {
-    margin-bottom: 25px;
+.hero{
+    margin-bottom:25px;
 }
 
-.hero-label {
-    font-size: 12px;
-    font-weight: 800;
-    color: #777;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+.hero-label{
+    font-size:12px;
+    font-weight:800;
+    color:#777;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
 }
 
-.hero h1 {
-    font-size: clamp(42px, 7vw, 72px);
-    line-height: .95;
-    letter-spacing: -4px;
-    margin: 8px 0;
+.hero h1{
+    font-size:clamp(42px,7vw,72px);
+    line-height:.95;
+    letter-spacing:-4px;
+    margin:8px 0;
 }
 
-.hero p {
-    color: #777;
-    font-size: 18px;
+.hero p{
+    color:#777;
+    font-size:18px;
 }
 
-.search {
-    display: none;
-    margin-bottom: 20px;
+.search{
+    display:none;
+    margin-bottom:20px;
 }
 
-.search input {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 13px;
-    outline: none;
-    font-size: 16px;
+.search input{
+    width:100%;
+    padding:15px;
+    border:1px solid #ddd;
+    border-radius:13px;
+    outline:none;
+    font-size:16px;
 }
 
-.filters {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    padding-bottom: 20px;
+.filters{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding-bottom:20px;
 }
 
-.filter {
-    flex-shrink: 0;
-    padding: 10px 16px;
-    border: 1px solid #ddd;
-    border-radius: 999px;
-    background: white;
-    font-weight: 700;
-    cursor: pointer;
+.filter{
+    flex-shrink:0;
+    padding:10px 16px;
+    border:1px solid #ddd;
+    border-radius:999px;
+    background:white;
+    font-weight:700;
+    cursor:pointer;
 }
 
-.filter.active {
-    background: #111;
-    color: white;
-    border-color: #111;
+.filter.active{
+    background:#111;
+    color:white;
+    border-color:#111;
 }
 
-.news-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+.news-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
 }
 
-.news-card {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: .2s;
+.news-card{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:20px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.2s;
 }
 
-.news-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+.news-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
 }
 
-.news-image {
-    width: 100%;
-    height: 190px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg,#ddd,#fafafa);
-    color: #999;
-    font-size: 38px;
-    font-weight: 900;
-    overflow: hidden;
+.news-image{
+    width:100%;
+    height:190px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ddd,#fafafa);
+    color:#999;
+    font-size:38px;
+    font-weight:900;
+    overflow:hidden;
 }
 
-.news-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+.news-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
 }
 
-.news-card-content {
-    padding: 20px;
+.news-card-content{
+    padding:20px;
 }
 
-.news-meta {
-    font-size: 13px;
-    color: #777;
-    margin-bottom: 8px;
+.news-meta{
+    font-size:13px;
+    color:#777;
+    margin-bottom:8px;
 }
 
-.news-card h2 {
-    margin: 0 0 10px;
-    font-size: 22px;
+.news-card h2{
+    margin:0 0 10px;
+    font-size:22px;
 }
 
-.news-card p {
-    color: #777;
-    line-height: 1.5;
-    margin: 0;
+.news-card p{
+    color:#777;
+    line-height:1.5;
+    margin:0;
 }
 
-.featured {
-    grid-column: 1 / -1;
-    background: white;
-    border: 1px solid #ddd;
-    border-left: 5px solid #111;
-    border-radius: 20px;
-    overflow: hidden;
-    cursor: pointer;
+.featured{
+    grid-column:1/-1;
+    background:white;
+    border:1px solid #ddd;
+    border-left:5px solid #111;
+    border-radius:20px;
+    overflow:hidden;
+    cursor:pointer;
 }
 
-.featured-image {
-    width: 100%;
-    height: 280px;
-    background: linear-gradient(135deg,#ddd,#fafafa);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #999;
-    font-size: 45px;
-    font-weight: 900;
-    overflow: hidden;
+.featured-image{
+    width:100%;
+    height:280px;
+    background:linear-gradient(135deg,#ddd,#fafafa);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#999;
+    font-size:45px;
+    font-weight:900;
+    overflow:hidden;
 }
 
-.featured-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.featured-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-.featured-content {
-    padding: 25px;
+.featured-content{
+    padding:25px;
 }
 
-.featured-label {
-    font-size: 12px;
-    font-weight: 900;
-    margin-bottom: 8px;
+.featured-label{
+    font-size:12px;
+    font-weight:900;
+    margin-bottom:8px;
 }
 
-.featured h2 {
-    margin: 0;
-    font-size: clamp(28px,4vw,40px);
+.featured h2{
+    margin:0;
+    font-size:clamp(28px,4vw,40px);
 }
 
-.status-box {
-    grid-column: 1 / -1;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    padding: 35px;
-    text-align: center;
-    color: #777;
+.status-box{
+    grid-column:1/-1;
+    background:white;
+    border:1px solid #ddd;
+    border-radius:20px;
+    padding:35px;
+    text-align:center;
+    color:#777;
 }
 
 /* ARTICLE */
 
-.article {
-    display: none;
-    max-width: 850px;
-    margin: auto;
+.article{
+    display:none;
+    max-width:850px;
+    margin:auto;
 }
 
-.back {
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    background: white;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: 700;
-    margin-bottom: 25px;
+.back{
+    padding:10px 15px;
+    border:1px solid #ddd;
+    background:white;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:700;
+    margin-bottom:25px;
 }
 
-.article-meta {
-    color: #777;
-    margin-bottom: 12px;
+.article-meta{
+    color:#777;
+    margin-bottom:12px;
 }
 
-.article h1 {
-    font-size: clamp(40px,7vw,70px);
-    line-height: .98;
-    letter-spacing: -4px;
-    margin: 0 0 25px;
+.article h1{
+    font-size:clamp(40px,7vw,70px);
+    line-height:.98;
+    letter-spacing:-4px;
+    margin:0 0 25px;
 }
 
-.article-image {
-    width: 100%;
-    min-height: 340px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg,#ddd,#fafafa);
-    border-radius: 22px;
-    color: #999;
-    font-size: 40px;
-    font-weight: 900;
-    margin-bottom: 30px;
-    overflow: hidden;
+.article-image{
+    width:100%;
+    min-height:340px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ddd,#fafafa);
+    border-radius:22px;
+    color:#999;
+    font-size:40px;
+    font-weight:900;
+    margin-bottom:30px;
+    overflow:hidden;
 }
 
-.article-image img {
-    width: 100%;
-    max-height: 550px;
-    object-fit: cover;
+.article-image img{
+    width:100%;
+    max-height:550px;
+    object-fit:cover;
 }
 
-.article-text {
-    font-size: 18px;
-    line-height: 1.8;
+.article-text{
+    font-size:18px;
+    line-height:1.8;
 }
 
 /* SPECIAL */
 
-.special-page {
-    display: none;
-    max-width: 1000px;
-    margin: auto;
+.special-page{
+    display:none;
+    max-width:1000px;
+    margin:auto;
 }
 
-.special-header {
-    margin-bottom: 30px;
+.special-header{
+    margin-bottom:30px;
 }
 
-.special-label {
-    font-size: 12px;
-    font-weight: 900;
-    color: #777;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+.special-label{
+    font-size:12px;
+    font-weight:900;
+    color:#777;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
 }
 
-.special-header h1 {
-    font-size: clamp(42px,7vw,70px);
-    letter-spacing: -4px;
-    margin: 8px 0;
+.special-header h1{
+    font-size:clamp(42px,7vw,70px);
+    letter-spacing:-4px;
+    margin:8px 0;
 }
 
-.special-header p {
-    color: #777;
-    font-size: 18px;
+.special-header p{
+    color:#777;
+    font-size:18px;
 }
 
-.special-box {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 22px;
-    padding: 30px;
-    margin-bottom: 15px;
+.special-box{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:22px;
+    padding:30px;
+    margin-bottom:15px;
 }
 
-.special-box h2 {
-    margin-top: 0;
+.special-box h2{
+    margin-top:0;
 }
 
 /* ROUTE */
 
-.route-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr auto;
-    gap: 10px;
+.route-form{
+    display:grid;
+    grid-template-columns:1fr 1fr auto;
+    gap:10px;
 }
 
-.route-input {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 13px;
-    font-size: 16px;
-    outline: none;
+.route-input{
+    width:100%;
+    padding:15px;
+    border:1px solid #ddd;
+    border-radius:13px;
+    font-size:16px;
+    outline:none;
 }
 
-.route-input:focus {
-    border-color: #111;
+.route-input:focus{
+    border-color:#111;
 }
 
-.route-button {
-    border: 0;
-    background: #111;
-    color: white;
-    padding: 15px 20px;
-    border-radius: 13px;
-    font-weight: 800;
-    cursor: pointer;
+.route-button{
+    border:0;
+    background:#111;
+    color:white;
+    padding:15px 20px;
+    border-radius:13px;
+    font-weight:800;
+    cursor:pointer;
 }
 
-.route-button:hover {
-    background: #333;
+.route-button:hover{
+    background:#333;
 }
 
-.route-result {
-    display: none;
-    margin-top: 20px;
+.route-result{
+    display:none;
+    margin-top:20px;
 }
 
-.route-summary {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 12px;
-    margin-bottom: 15px;
+.route-summary{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-bottom:15px;
 }
 
-.route-stat {
-    background: #f5f5f5;
-    border-radius: 15px;
-    padding: 20px;
+.route-stat{
+    background:#f5f5f5;
+    border-radius:15px;
+    padding:20px;
 }
 
-.route-stat small {
-    color: #777;
-    display: block;
-    margin-bottom: 5px;
+.route-stat small{
+    color:#777;
+    display:block;
+    margin-bottom:5px;
 }
 
-.route-stat strong {
-    font-size: 24px;
+.route-stat strong{
+    font-size:24px;
 }
 
-.map-box {
-    height: 350px;
-    border-radius: 20px;
-    overflow: hidden;
-    background: #eee;
-    border: 1px solid #ddd;
+.map-box{
+    height:350px;
+    border-radius:20px;
+    overflow:hidden;
+    background:#eee;
+    border:1px solid #ddd;
 }
 
-.map-box iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
+.map-box iframe{
+    width:100%;
+    height:100%;
+    border:0;
 }
 
 /* TRAFFIC */
 
-.traffic-controls {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+.traffic-controls{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
 }
 
-.road-input {
-    flex: 1;
-    min-width: 200px;
-    padding: 14px;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    font-size: 16px;
+.road-input{
+    flex:1;
+    min-width:200px;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    font-size:16px;
 }
 
-.traffic-button {
-    border: 0;
-    background: #111;
-    color: white;
-    padding: 14px 18px;
-    border-radius: 12px;
-    font-weight: 800;
-    cursor: pointer;
+.traffic-button{
+    border:0;
+    background:#111;
+    color:white;
+    padding:14px 18px;
+    border-radius:12px;
+    font-weight:800;
+    cursor:pointer;
 }
 
-.traffic-button.secondary {
-    background: #eee;
-    color: #111;
+.traffic-button.secondary{
+    background:#eee;
+    color:#111;
 }
 
-.traffic-list {
-    display: grid;
-    gap: 12px;
-    margin-top: 20px;
+.traffic-list{
+    display:grid;
+    gap:12px;
+    margin-top:20px;
 }
 
-.traffic-item {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 18px;
-    padding: 20px;
+.traffic-item{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:18px;
+    padding:20px;
 }
 
-.traffic-item.warning {
-    border-left: 5px solid #f59e0b;
+.traffic-item.warning{
+    border-left:5px solid #f59e0b;
 }
 
-.traffic-item.closure {
-    border-left: 5px solid #dc2626;
+.traffic-item.closure{
+    border-left:5px solid #dc2626;
 }
 
-.traffic-item.roadwork {
-    border-left: 5px solid #2563eb;
+.traffic-item.roadwork{
+    border-left:5px solid #2563eb;
 }
 
-.traffic-item h3 {
-    margin: 0 0 8px;
+.traffic-item h3{
+    margin:0 0 8px;
 }
 
-.traffic-item p {
-    color: #666;
-    line-height: 1.5;
+.traffic-item p{
+    color:#666;
+    line-height:1.5;
 }
 
-.traffic-badge {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 900;
-    background: #eee;
-    padding: 6px 9px;
-    border-radius: 999px;
-    margin-bottom: 10px;
+.traffic-badge{
+    display:inline-block;
+    font-size:12px;
+    font-weight:900;
+    background:#eee;
+    padding:6px 9px;
+    border-radius:999px;
+    margin-bottom:10px;
 }
 
-.source-note {
-    font-size: 12px;
-    color: #888;
-    margin-top: 15px;
+.source-note{
+    font-size:12px;
+    color:#888;
+    margin-top:15px;
+}
+
+/* =====================================================
+BEREICH
+===================================================== */
+
+.area-location{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.location-main{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.location-icon{
+    width:65px;
+    height:65px;
+    border-radius:18px;
+    background:#111;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+}
+
+.location-name{
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:-1px;
+}
+
+.location-sub{
+    color:#777;
+    margin-top:4px;
+}
+
+.location-button{
+    border:0;
+    background:#111;
+    color:white;
+    padding:13px 17px;
+    border-radius:12px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.location-button.secondary{
+    background:#eee;
+    color:#111;
+}
+
+.area-grid-inner{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.area-weather{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.weather-main{
+    grid-column:1/-1;
+    background:#f5f5f5;
+    border-radius:18px;
+    padding:25px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.weather-temp{
+    font-size:60px;
+    font-weight:900;
+    letter-spacing:-5px;
+}
+
+.weather-icon{
+    font-size:58px;
+}
+
+.weather-description{
+    color:#777;
+    font-size:16px;
+}
+
+.weather-stat{
+    background:#f5f5f5;
+    padding:18px;
+    border-radius:15px;
+}
+
+.weather-stat small{
+    display:block;
+    color:#777;
+    margin-bottom:5px;
+}
+
+.weather-stat strong{
+    font-size:20px;
+}
+
+.local-news-list,
+.events-list{
+    display:grid;
+    gap:10px;
+}
+
+.local-news{
+    padding:17px;
+    border:1px solid #ddd;
+    border-radius:15px;
+    cursor:pointer;
+    transition:.15s;
+}
+
+.local-news:hover{
+    background:#f7f7f7;
+}
+
+.local-news-meta{
+    font-size:12px;
+    color:#777;
+    margin-bottom:6px;
+}
+
+.local-news-title{
+    font-size:18px;
+    font-weight:800;
+}
+
+.event-card{
+    border:1px solid #ddd;
+    border-radius:16px;
+    padding:17px;
+}
+
+.event-date{
+    font-size:12px;
+    color:#777;
+    font-weight:800;
+    margin-bottom:6px;
+}
+
+.event-title{
+    font-size:18px;
+    font-weight:900;
+}
+
+.event-location{
+    color:#777;
+    margin-top:5px;
+    font-size:14px;
+}
+
+.area-loading{
+    color:#777;
+    text-align:center;
+    padding:20px;
+}
+
+.area-error{
+    color:#dc2626;
+    background:#fff5f5;
+    border:1px solid #fecaca;
+    padding:18px;
+    border-radius:15px;
+}
+
+.area-private-note{
+    font-size:12px;
+    color:#888;
+    margin-top:15px;
 }
 
 /* ADMIN */
 
-.admin {
-    display: none;
-    max-width: 900px;
-    margin: auto;
+.admin{
+    display:none;
+    max-width:900px;
+    margin:auto;
 }
 
-.login {
-    max-width: 430px;
-    margin: 60px auto;
-    padding: 30px;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 22px;
+.login{
+    max-width:430px;
+    margin:60px auto;
+    padding:30px;
+    background:white;
+    border:1px solid #ddd;
+    border-radius:22px;
 }
 
 .login input,
 .form-box input,
 .form-box textarea,
-.form-box select {
-    width: 100%;
-    padding: 13px 14px;
-    margin: 7px 0 17px;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    background: white;
-    outline: none;
-    font-size: 16px;
+.form-box select{
+    width:100%;
+    padding:13px 14px;
+    margin:7px 0 17px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    background:white;
+    outline:none;
+    font-size:16px;
 }
 
-.form-box textarea {
-    min-height: 230px;
-    resize: vertical;
+.form-box textarea{
+    min-height:230px;
+    resize:vertical;
 }
 
-.form-box {
-    padding: 25px;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 20px;
+.form-box{
+    padding:25px;
+    background:white;
+    border:1px solid #ddd;
+    border-radius:20px;
 }
 
-.form-box label {
-    display: block;
-    font-weight: 700;
+.form-box label{
+    display:block;
+    font-weight:700;
 }
 
-.image-upload-box {
-    margin: 5px 0 20px;
-    padding: 18px;
-    border: 1px dashed #bbb;
-    border-radius: 15px;
-    background: #fafafa;
+.image-upload-box{
+    margin:5px 0 20px;
+    padding:18px;
+    border:1px dashed #bbb;
+    border-radius:15px;
+    background:#fafafa;
 }
 
-.image-upload-box input[type="file"] {
-    margin: 5px 0 0;
-    padding: 0;
-    border: 0;
-    background: transparent;
+.image-upload-box input[type="file"]{
+    margin:5px 0 0;
+    padding:0;
+    border:0;
+    background:transparent;
 }
 
-.image-preview {
-    display: none;
-    width: 100%;
-    max-height: 280px;
-    object-fit: cover;
-    margin-top: 15px;
-    border-radius: 14px;
-    border: 1px solid #ddd;
+.image-preview{
+    display:none;
+    width:100%;
+    max-height:280px;
+    object-fit:cover;
+    margin-top:15px;
+    border-radius:14px;
+    border:1px solid #ddd;
 }
 
-.current-image {
-    display: none;
-    margin-top: 10px;
-    color: #777;
-    font-size: 14px;
+.current-image{
+    display:none;
+    margin-top:10px;
+    color:#777;
+    font-size:14px;
 }
 
 .primary,
 .secondary,
-.small {
-    border: 0;
-    border-radius: 10px;
-    padding: 11px 16px;
-    font-weight: 800;
-    cursor: pointer;
+.small{
+    border:0;
+    border-radius:10px;
+    padding:11px 16px;
+    font-weight:800;
+    cursor:pointer;
 }
 
-.primary {
-    background: #111;
-    color: white;
+.primary{
+    background:#111;
+    color:white;
 }
 
-.secondary {
-    background: #eee;
+.secondary{
+    background:#eee;
 }
 
-.primary:disabled {
-    opacity: .6;
-    cursor: wait;
+.primary:disabled{
+    opacity:.6;
+    cursor:wait;
 }
 
-.admin-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
+.admin-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
 }
 
-.admin-list {
-    display: grid;
-    gap: 10px;
-    margin-top: 15px;
+.admin-list{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
 }
 
-.admin-item {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    padding: 17px;
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
+.admin-item{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:15px;
+    padding:17px;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
 }
 
-.admin-item-title {
-    font-weight: 800;
+.admin-item-title{
+    font-weight:800;
 }
 
-.admin-item small {
-    color: #777;
+.admin-item small{
+    color:#777;
 }
 
-.admin-actions {
-    display: flex;
-    gap: 7px;
+.admin-actions{
+    display:flex;
+    gap:7px;
 }
 
-.edit {
-    background: #e0e7ff;
+.edit{
+    background:#e0e7ff;
 }
 
-.delete {
-    background: #fee2e2;
-    color: #b91c1c;
+.delete{
+    background:#fee2e2;
+    color:#b91c1c;
 }
 
-.error {
-    color: #dc2626;
-    margin-top: 12px;
+.error{
+    color:#dc2626;
+    margin-top:12px;
 }
 
-.success {
-    color: #15803d;
-    margin-top: 12px;
+.success{
+    color:#15803d;
+    margin-top:12px;
 }
 
-footer {
-    text-align: center;
-    padding: 30px;
-    color: #777;
-    border-top: 1px solid #ddd;
+footer{
+    text-align:center;
+    padding:30px;
+    color:#777;
+    border-top:1px solid #ddd;
 }
 
-@media (max-width: 850px) {
+@media(max-width:850px){
 
-    .news-grid {
-        grid-template-columns: repeat(2,1fr);
+    .news-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .area-grid {
-        grid-template-columns: 1fr;
+    .area-grid{
+        grid-template-columns:1fr;
     }
 
-    .route-form {
-        grid-template-columns: 1fr;
+    .route-form{
+        grid-template-columns:1fr;
+    }
+
+    .area-grid-inner{
+        grid-template-columns:1fr;
     }
 
 }
 
-@media (max-width: 600px) {
+@media(max-width:600px){
 
-    .news-grid {
-        grid-template-columns: 1fr;
+    .news-grid{
+        grid-template-columns:1fr;
     }
 
-    .featured {
-        grid-column: auto;
+    .featured{
+        grid-column:auto;
     }
 
-    .admin-item {
-        flex-direction: column;
+    .admin-item{
+        flex-direction:column;
     }
 
-    .route-summary {
-        grid-template-columns: 1fr;
+    .route-summary{
+        grid-template-columns:1fr;
+    }
+
+    .weather-main{
+        align-items:flex-start;
+    }
+
+    .weather-temp{
+        font-size:48px;
     }
 
 }
@@ -809,9 +1002,7 @@ title="Redaktion">
 
 </header>
 
-
 <main>
-
 
 <!-- =====================================================
 START
@@ -835,9 +1026,7 @@ Nachrichten, Verkehr und regionale Informationen.
 
 </div>
 
-
 <div class="area-grid">
-
 
 <div class="area-card" onclick="openNews()">
 
@@ -904,8 +1093,8 @@ n: Bereich
 </h2>
 
 <p>
-Regionale Informationen, Orte,
-Veranstaltungen und mehr.
+Dein Standort, Wetter, Veranstaltungen
+und Nachrichten direkt aus deiner Region.
 </p>
 
 </div>
@@ -943,7 +1132,6 @@ Aktuelle Nachrichten. Einfach und direkt.
 
 </div>
 
-
 <div class="search" id="searchBox">
 
 <input
@@ -953,7 +1141,6 @@ placeholder="Nachrichten durchsuchen..."
 oninput="searchNews()">
 
 </div>
-
 
 <div class="filters">
 
@@ -988,7 +1175,6 @@ onclick="filterNews('Digital',this)">
 </button>
 
 </div>
-
 
 <div class="news-grid" id="newsGrid">
 
@@ -1050,9 +1236,6 @@ Route berechnen und aktuelle Verkehrsmeldungen abrufen.
 
 </div>
 
-
-<!-- ROUTE -->
-
 <div class="special-box">
 
 <h2>
@@ -1078,24 +1261,19 @@ placeholder="Ziel, z. B. Frankfurt">
 <button
 class="route-button"
 onclick="calculateRoute()">
-
 Route berechnen
-
 </button>
 
 </div>
-
 
 <div
 id="routeStatus"
 style="margin-top:15px;color:#777;">
 </div>
 
-
 <div
 id="routeResult"
 class="route-result">
-
 
 <div class="route-summary">
 
@@ -1111,7 +1289,6 @@ Entfernung
 
 </div>
 
-
 <div class="route-stat">
 
 <small>
@@ -1123,7 +1300,6 @@ Fahrzeit
 </strong>
 
 </div>
-
 
 <div class="route-stat">
 
@@ -1139,7 +1315,6 @@ Route
 
 </div>
 
-
 <div class="map-box">
 
 <iframe
@@ -1154,8 +1329,6 @@ loading="lazy">
 </div>
 
 
-<!-- VERKEHR -->
-
 <div class="special-box">
 
 <h2>
@@ -1165,7 +1338,6 @@ loading="lazy">
 <p>
 Aktuelle Meldungen für eine Autobahn anzeigen.
 </p>
-
 
 <div class="traffic-controls">
 
@@ -1178,33 +1350,26 @@ value="A3">
 <button
 class="traffic-button"
 onclick="loadTraffic()">
-
 Verkehr laden
-
 </button>
 
 <button
 class="traffic-button secondary"
 onclick="loadTraffic()">
-
 🔄 Aktualisieren
-
 </button>
 
 </div>
-
 
 <div
 id="trafficStatus"
 style="margin-top:15px;color:#777;">
 </div>
 
-
 <div
 id="trafficList"
 class="traffic-list">
 </div>
-
 
 <div class="source-note">
 Datenquelle: Die Autobahn GmbH des Bundes.
@@ -1216,7 +1381,7 @@ Datenquelle: Die Autobahn GmbH des Bundes.
 
 
 <!-- =====================================================
-BEREICH
+MEIN BEREICH
 ===================================================== -->
 
 <section id="area" class="special-page">
@@ -1228,16 +1393,88 @@ BEREICH
 <div class="special-header">
 
 <div class="special-label">
-n: Bereich
+n: Persönlich
 </div>
 
 <h1>
-Dein Bereich.
+Mein Bereich.
 </h1>
 
 <p>
-Regionale Informationen direkt auf einen Blick.
+Alles aus deiner Umgebung – an einem Ort.
 </p>
+
+</div>
+
+
+<!-- STANDORT -->
+
+<div class="special-box">
+
+<div class="area-location">
+
+<div class="location-main">
+
+<div class="location-icon">
+📍
+</div>
+
+<div>
+
+<div
+id="areaLocationName"
+class="location-name">
+Standort wird gesucht …
+</div>
+
+<div
+id="areaLocationSub"
+class="location-sub">
+Bitte Standort freigeben.
+</div>
+
+</div>
+
+</div>
+
+<div>
+
+<button
+class="location-button"
+onclick="requestLocation()">
+📍 Standort aktualisieren
+</button>
+
+</div>
+
+</div>
+
+<div class="area-private-note">
+Dein Standort wird nur in diesem Browser verwendet und nicht
+in deiner n:-Datenbank gespeichert.
+</div>
+
+</div>
+
+
+<!-- WETTER + INFOS -->
+
+<div class="area-grid-inner">
+
+
+<div class="special-box">
+
+<h2>
+🌤️ Wetter
+</h2>
+
+<div id="areaWeather">
+
+<div class="area-loading">
+Wetter wird geladen …
+</div>
+
+</div>
 
 </div>
 
@@ -1245,14 +1482,18 @@ Regionale Informationen direkt auf einen Blick.
 <div class="special-box">
 
 <h2>
-📍 Regional
+📰 Nachrichten aus deiner Region
 </h2>
 
-<p>
-Hier können später regionale Nachrichten,
-Veranstaltungen und Informationen aus deinem
-Bereich erscheinen.
-</p>
+<div
+id="localNewsList"
+class="local-news-list">
+
+<div class="area-loading">
+Regionale Nachrichten werden geladen …
+</div>
+
+</div>
 
 </div>
 
@@ -1260,13 +1501,42 @@ Bereich erscheinen.
 <div class="special-box">
 
 <h2>
-📅 Veranstaltungen
+📅 Veranstaltungen in deiner Nähe
 </h2>
 
-<p>
-Dieser Bereich kann später mit lokalen
-Veranstaltungen gefüllt werden.
-</p>
+<div
+id="eventsList"
+class="events-list">
+
+<div class="area-loading">
+Veranstaltungen werden geladen …
+</div>
+
+</div>
+
+<div class="source-note">
+Veranstaltungen werden über öffentliche OpenStreetMap-Daten gesucht.
+</div>
+
+</div>
+
+
+<div class="special-box">
+
+<h2>
+🗞️ Lokale Informationen
+</h2>
+
+<div
+id="localInfo">
+
+<div class="area-loading">
+Lokale Informationen werden geladen …
+</div>
+
+</div>
+
+</div>
 
 </div>
 
@@ -1302,9 +1572,7 @@ placeholder="Passwort">
 <button
 class="primary"
 onclick="login()">
-
 Einloggen
-
 </button>
 
 <div
@@ -1326,20 +1594,16 @@ Redaktion
 <button
 class="secondary"
 onclick="logout()">
-
 Ausloggen
-
 </button>
 
 </div>
-
 
 <div class="form-box">
 
 <h2 id="formTitle">
 Neuer Artikel
 </h2>
-
 
 <label>
 Überschrift
@@ -1349,7 +1613,6 @@ Neuer Artikel
 id="title"
 placeholder="Überschrift">
 
-
 <label>
 Kurzbeschreibung
 </label>
@@ -1357,7 +1620,6 @@ Kurzbeschreibung
 <input
 id="description"
 placeholder="Kurze Zusammenfassung">
-
 
 <label>
 Kategorie
@@ -1373,7 +1635,6 @@ Kategorie
 
 </select>
 
-
 <label>
 Region
 </label>
@@ -1382,7 +1643,6 @@ Region
 id="region"
 placeholder="z. B. Hessen">
 
-
 <label>
 Artikel
 </label>
@@ -1390,7 +1650,6 @@ Artikel
 <textarea
 id="content"
 placeholder="Artikel schreiben..."></textarea>
-
 
 <label>
 Artikelbild
@@ -1416,24 +1675,18 @@ class="current-image">
 
 </div>
 
-
 <button
 class="primary"
 id="saveButton"
 onclick="saveArticle()">
-
 📰 Veröffentlichen
-
 </button>
 
 <button
 class="secondary"
 onclick="clearForm()">
-
 Abbrechen
-
 </button>
-
 
 <div
 id="formMessage"
@@ -1441,7 +1694,6 @@ class="success">
 </div>
 
 </div>
-
 
 <h2>
 Deine Artikel
@@ -1479,34 +1731,33 @@ const SUPABASE_KEY =
 const STORAGE_BUCKET =
 "news-images";
 
-
-let articles = [];
-let activeFilter = "Alle";
-let editingId = null;
-let editingImageUrl = null;
+let articles=[];
+let activeFilter="Alle";
+let editingId=null;
+let editingImageUrl=null;
 
 
 /* =====================================================
 BEREICHE
 ===================================================== */
 
-function hideAllPages() {
+function hideAllPages(){
 
-document.getElementById("startPage").style.display = "none";
-document.getElementById("home").style.display = "none";
-document.getElementById("article").style.display = "none";
-document.getElementById("traffic").style.display = "none";
-document.getElementById("area").style.display = "none";
-document.getElementById("admin").style.display = "none";
+document.getElementById("startPage").style.display="none";
+document.getElementById("home").style.display="none";
+document.getElementById("article").style.display="none";
+document.getElementById("traffic").style.display="none";
+document.getElementById("area").style.display="none";
+document.getElementById("admin").style.display="none";
 
 }
 
 
-function showStart() {
+function showStart(){
 
 hideAllPages();
 
-document.getElementById("startPage").style.display = "block";
+document.getElementById("startPage").style.display="block";
 
 window.scrollTo({
 top:0,
@@ -1516,11 +1767,11 @@ behavior:"smooth"
 }
 
 
-function openNews() {
+function openNews(){
 
 hideAllPages();
 
-document.getElementById("home").style.display = "block";
+document.getElementById("home").style.display="block";
 
 loadNews();
 
@@ -1532,11 +1783,11 @@ behavior:"smooth"
 }
 
 
-function openTraffic() {
+function openTraffic(){
 
 hideAllPages();
 
-document.getElementById("traffic").style.display = "block";
+document.getElementById("traffic").style.display="block";
 
 loadTraffic();
 
@@ -1548,11 +1799,13 @@ behavior:"smooth"
 }
 
 
-function openArea() {
+function openArea(){
 
 hideAllPages();
 
-document.getElementById("area").style.display = "block";
+document.getElementById("area").style.display="block";
+
+loadPersonalArea();
 
 window.scrollTo({
 top:0,
@@ -1563,13 +1816,1063 @@ behavior:"smooth"
 
 
 /* =====================================================
+MEIN BEREICH
+===================================================== */
+
+let userLocation=null;
+let userPlace=null;
+
+
+/*
+    Der Standort wird NICHT in Supabase gespeichert.
+    Er liegt ausschließlich lokal im Browser.
+*/
+
+function requestLocation(){
+
+const name =
+document.getElementById("areaLocationName");
+
+const sub =
+document.getElementById("areaLocationSub");
+
+name.textContent="Standort wird gesucht …";
+sub.textContent="Bitte Standortfreigabe bestätigen.";
+
+if(!navigator.geolocation){
+
+name.textContent="Standort nicht unterstützt";
+sub.textContent="Dein Browser unterstützt keine Standortabfrage.";
+
+return;
+
+}
+
+navigator.geolocation.getCurrentPosition(
+
+async position=>{
+
+userLocation={
+lat:position.coords.latitude,
+lon:position.coords.longitude
+};
+
+localStorage.setItem(
+"n_user_location",
+JSON.stringify(userLocation)
+);
+
+name.textContent="Standort gefunden";
+sub.textContent=
+`${userLocation.lat.toFixed(4)}, ${userLocation.lon.toFixed(4)}`;
+
+await loadPersonalAreaData();
+
+},
+
+error=>{
+
+console.error(error);
+
+name.textContent="Standort konnte nicht ermittelt werden";
+
+if(error.code===1){
+
+sub.textContent=
+"Standortfreigabe wurde nicht erlaubt.";
+
+}
+else{
+
+sub.textContent=
+"Bitte erneut versuchen.";
+
+}
+
+}
+
+);
+
+}
+
+
+function loadSavedLocation(){
+
+try{
+
+const saved =
+localStorage.getItem("n_user_location");
+
+if(saved){
+
+const parsed=
+JSON.parse(saved);
+
+if(
+typeof parsed.lat==="number" &&
+typeof parsed.lon==="number"
+){
+
+userLocation=parsed;
+
+return true;
+
+}
+
+}
+
+}
+catch(error){
+
+console.warn(error);
+
+}
+
+return false;
+
+}
+
+
+async function loadPersonalArea(){
+
+document.getElementById("areaWeather").innerHTML=`
+
+<div class="area-loading">
+🌍 Persönlichen Bereich wird geladen …
+</div>
+
+`;
+
+document.getElementById("localNewsList").innerHTML=`
+
+<div class="area-loading">
+📰 Regionale Nachrichten werden geladen …
+</div>
+
+`;
+
+document.getElementById("eventsList").innerHTML=`
+
+<div class="area-loading">
+📅 Veranstaltungen werden gesucht …
+</div>
+
+`;
+
+document.getElementById("localInfo").innerHTML=`
+
+<div class="area-loading">
+📍 Region wird ermittelt …
+</div>
+
+`;
+
+
+if(!loadSavedLocation()){
+
+requestLocation();
+
+return;
+
+}
+
+await loadPersonalAreaData();
+
+}
+
+
+async function loadPersonalAreaData(){
+
+if(!userLocation){
+
+requestLocation();
+
+return;
+
+}
+
+const name =
+document.getElementById("areaLocationName");
+
+const sub =
+document.getElementById("areaLocationSub");
+
+name.textContent="Region wird ermittelt …";
+sub.textContent=
+`${userLocation.lat.toFixed(4)}, ${userLocation.lon.toFixed(4)}`;
+
+
+try{
+
+const place =
+await reverseGeocode(
+userLocation.lat,
+userLocation.lon
+);
+
+userPlace=place;
+
+name.textContent =
+place.city ||
+place.town ||
+place.village ||
+place.municipality ||
+place.county ||
+"Deine Region";
+
+sub.textContent =
+[
+place.state,
+place.country
+]
+.filter(Boolean)
+.join(" · ");
+
+
+await Promise.all([
+
+loadAreaWeather(),
+
+loadAreaEvents(),
+
+loadAreaNews(),
+
+loadLocalInfo()
+
+]);
+
+}
+catch(error){
+
+console.error(error);
+
+document.getElementById("localInfo").innerHTML=`
+
+<div class="area-error">
+❌ Deine Region konnte nicht ermittelt werden.
+</div>
+
+`;
+
+}
+
+}
+
+
+/* =====================================================
+REVERSE GEOCODING
+===================================================== */
+
+async function reverseGeocode(lat,lon){
+
+const url =
+"https://nominatim.openstreetmap.org/reverse" +
+"?format=json" +
+"&zoom=10" +
+"&addressdetails=1" +
+`&lat=${encodeURIComponent(lat)}` +
+`&lon=${encodeURIComponent(lon)}`;
+
+const response =
+await fetch(url,{
+headers:{
+"Accept":"application/json"
+}
+});
+
+if(!response.ok){
+
+throw new Error(
+"Standort konnte nicht ermittelt werden."
+);
+
+}
+
+const data =
+await response.json();
+
+return data.address || {};
+
+}
+
+
+/* =====================================================
+WETTER
+===================================================== */
+
+async function loadAreaWeather(){
+
+if(!userLocation){
+return;
+}
+
+const box =
+document.getElementById("areaWeather");
+
+box.innerHTML=`
+
+<div class="area-loading">
+🌤️ Wetter wird geladen …
+</div>
+
+`;
+
+try{
+
+const url =
+"https://api.open-meteo.com/v1/forecast" +
+`?latitude=${encodeURIComponent(userLocation.lat)}` +
+`&longitude=${encodeURIComponent(userLocation.lon)}` +
+"&current=temperature_2m,relative_humidity_2m,apparent_temperature," +
+"precipitation,rain,weather_code,wind_speed_10m" +
+"&timezone=auto";
+
+const response =
+await fetch(url);
+
+if(!response.ok){
+
+throw new Error(
+"Wetterdienst nicht erreichbar."
+);
+
+}
+
+const data =
+await response.json();
+
+const current =
+data.current;
+
+const temp =
+Math.round(current.temperature_2m);
+
+const feels =
+Math.round(current.apparent_temperature);
+
+const humidity =
+Math.round(current.relative_humidity_2m);
+
+const wind =
+Math.round(current.wind_speed_10m);
+
+const rain =
+Number(current.precipitation||0);
+
+const weather =
+getWeatherDescription(
+current.weather_code
+);
+
+box.innerHTML=`
+
+<div class="area-weather">
+
+<div class="weather-main">
+
+<div>
+
+<div class="weather-temp">
+${temp}°
+</div>
+
+<div class="weather-description">
+${weather.text}
+</div>
+
+<div class="weather-description">
+Gefühlt ${feels}°
+</div>
+
+</div>
+
+<div class="weather-icon">
+${weather.icon}
+</div>
+
+</div>
+
+<div class="weather-stat">
+
+<small>
+💧 Luftfeuchtigkeit
+</small>
+
+<strong>
+${humidity} %
+</strong>
+
+</div>
+
+<div class="weather-stat">
+
+<small>
+💨 Wind
+</small>
+
+<strong>
+${wind} km/h
+</strong>
+
+</div>
+
+<div class="weather-stat">
+
+<small>
+🌧️ Niederschlag
+</small>
+
+<strong>
+${rain} mm
+</strong>
+
+</div>
+
+<div class="weather-stat">
+
+<small>
+🕒 Aktualisiert
+</small>
+
+<strong>
+Jetzt
+</strong>
+
+</div>
+
+</div>
+
+`;
+
+}
+catch(error){
+
+console.error(error);
+
+box.innerHTML=`
+
+<div class="area-error">
+❌ Wetter konnte nicht geladen werden.
+</div>
+
+`;
+
+}
+
+}
+
+
+function getWeatherDescription(code){
+
+const map={
+
+0:{
+text:"Klarer Himmel",
+icon:"☀️"
+},
+
+1:{
+text:"Überwiegend klar",
+icon:"🌤️"
+},
+
+2:{
+text:"Teilweise bewölkt",
+icon:"⛅"
+},
+
+3:{
+text:"Bedeckt",
+icon:"☁️"
+},
+
+45:{
+text:"Nebel",
+icon:"🌫️"
+},
+
+48:{
+text:"Reifnebel",
+icon:"🌫️"
+},
+
+51:{
+text:"Leichter Nieselregen",
+icon:"🌦️"
+},
+
+53:{
+text:"Nieselregen",
+icon:"🌦️"
+},
+
+55:{
+text:"Starker Nieselregen",
+icon:"🌧️"
+},
+
+61:{
+text:"Leichter Regen",
+icon:"🌦️"
+},
+
+63:{
+text:"Regen",
+icon:"🌧️"
+},
+
+65:{
+text:"Starker Regen",
+icon:"🌧️"
+},
+
+71:{
+text:"Leichter Schneefall",
+icon:"🌨️"
+},
+
+73:{
+text:"Schneefall",
+icon:"❄️"
+},
+
+75:{
+text:"Starker Schneefall",
+icon:"❄️"
+},
+
+80:{
+text:"Regenschauer",
+icon:"🌦️"
+},
+
+81:{
+text:"Regenschauer",
+icon:"🌧️"
+},
+
+82:{
+text:"Starke Regenschauer",
+icon:"🌧️"
+},
+
+95:{
+text:"Gewitter",
+icon:"⛈️"
+},
+
+96:{
+text:"Gewitter mit Hagel",
+icon:"⛈️"
+},
+
+99:{
+text:"Starkes Gewitter mit Hagel",
+icon:"⛈️"
+}
+
+};
+
+return map[code] || {
+text:"Wetter",
+icon:"🌤️"
+};
+
+}
+
+
+/* =====================================================
+REGIONALE NACHRICHTEN
+===================================================== */
+
+async function loadAreaNews(){
+
+const list =
+document.getElementById("localNewsList");
+
+if(!articles.length){
+
+try{
+
+const result =
+await supabaseRequest(
+"news?select=*&order=created_at.desc"
+);
+
+articles =
+Array.isArray(result)
+? result
+: [];
+
+}
+catch(error){
+
+console.error(error);
+
+}
+
+}
+
+if(!articles.length){
+
+list.innerHTML=`
+
+<div class="area-loading">
+Noch keine regionalen Nachrichten vorhanden.
+</div>
+
+`;
+
+return;
+
+}
+
+
+const regionNames=[];
+
+if(userPlace){
+
+[
+"city",
+"town",
+"village",
+"municipality",
+"county",
+"state",
+"state_district"
+]
+.forEach(key=>{
+
+if(userPlace[key]){
+regionNames.push(
+String(userPlace[key]).toLowerCase()
+);
+}
+
+});
+
+}
+
+
+const regional =
+articles.filter(article=>{
+
+const region =
+String(article.region||"").toLowerCase();
+
+const content =
+(
+String(article.title||"")+
+" "+
+String(article.description||"")
+).toLowerCase();
+
+return regionNames.some(name=>
+name &&
+(
+region.includes(name) ||
+content.includes(name)
+)
+);
+
+});
+
+
+if(!regional.length){
+
+list.innerHTML=`
+
+<div class="area-loading">
+
+Keine passenden Nachrichten aus deiner Region gefunden.
+
+<br><br>
+
+<button
+class="location-button secondary"
+onclick="openNews()">
+Alle Nachrichten öffnen
+</button>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+list.innerHTML="";
+
+regional.slice(0,6).forEach(article=>{
+
+const item =
+document.createElement("div");
+
+item.className="local-news";
+
+item.onclick=
+()=>openArticle(article.id);
+
+item.innerHTML=`
+
+<div class="local-news-meta">
+
+${escapeHTML(article.category||"Region")}
+
+·
+
+${escapeHTML(article.region||"Lokal")}
+
+</div>
+
+<div class="local-news-title">
+
+${escapeHTML(article.title||"")}
+
+</div>
+
+`;
+
+list.appendChild(item);
+
+});
+
+}
+
+
+/* =====================================================
+VERANSTALTUNGEN
+===================================================== */
+
+async function loadAreaEvents(){
+
+const list =
+document.getElementById("eventsList");
+
+if(!userLocation){
+
+return;
+
+}
+
+try{
+
+const radius=15000;
+
+const query=`
+
+[out:json][timeout:20];
+
+(
+
+node["amenity"="events_venue"]
+(
+around:${radius},
+${userLocation.lat},
+${userLocation.lon}
+);
+
+node["tourism"="attraction"]
+(
+around:${radius},
+${userLocation.lat},
+${userLocation.lon}
+);
+
+node["amenity"="theatre"]
+(
+around:${radius},
+${userLocation.lat},
+${userLocation.lon}
+);
+
+node["amenity"="community_centre"]
+(
+around:${radius},
+${userLocation.lat},
+${userLocation.lon}
+);
+
+way["amenity"="theatre"]
+(
+around:${radius},
+${userLocation.lat},
+${userLocation.lon}
+);
+
+way["amenity"="events_venue"]
+(
+around:${radius},
+${userLocation.lat},
+${userLocation.lon}
+);
+
+);
+
+out center tags;
+
+`;
+
+const response =
+await fetch(
+"https://overpass-api.de/api/interpreter",
+{
+method:"POST",
+body:query
+}
+);
+
+if(!response.ok){
+
+throw new Error(
+"Veranstaltungsdienst nicht erreichbar."
+);
+
+}
+
+const data =
+await response.json();
+
+const elements =
+Array.isArray(data.elements)
+? data.elements
+: [];
+
+const unique=[];
+
+const seen=new Set();
+
+elements.forEach(item=>{
+
+const tags=item.tags||{};
+
+const title =
+tags.name ||
+tags.event ||
+tags.description;
+
+if(!title){
+return;
+}
+
+const key=
+title.toLowerCase();
+
+if(seen.has(key)){
+return;
+}
+
+seen.add(key);
+
+unique.push({
+title,
+city:
+tags["addr:city"] ||
+tags["addr:town"] ||
+tags["addr:municipality"] ||
+"",
+street:
+tags["addr:street"] ||
+"",
+type:
+getEventType(tags)
+});
+
+});
+
+
+if(!unique.length){
+
+list.innerHTML=`
+
+<div class="area-loading">
+
+Keine passenden Veranstaltungsorte in der Nähe gefunden.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+list.innerHTML="";
+
+unique.slice(0,8).forEach(event=>{
+
+const card =
+document.createElement("div");
+
+card.className="event-card";
+
+card.innerHTML=`
+
+<div class="event-date">
+📍 IN DEINER NÄHE
+</div>
+
+<div class="event-title">
+${escapeHTML(event.title)}
+</div>
+
+<div class="event-location">
+
+${escapeHTML(
+[
+event.type,
+event.street,
+event.city
+]
+.filter(Boolean)
+.join(" · ")
+)}
+
+</div>
+
+`;
+
+list.appendChild(card);
+
+});
+
+}
+catch(error){
+
+console.error(error);
+
+list.innerHTML=`
+
+<div class="area-error">
+
+❌ Veranstaltungen konnten gerade nicht geladen werden.
+
+</div>
+
+`;
+
+}
+
+}
+
+
+function getEventType(tags){
+
+if(tags.amenity==="theatre"){
+return"Theater";
+}
+
+if(tags.amenity==="community_centre"){
+return"Veranstaltungsort";
+}
+
+if(tags.tourism==="attraction"){
+return"Sehenswürdigkeit";
+}
+
+return"Veranstaltungsort";
+
+}
+
+
+/* =====================================================
+LOKALE INFOS
+===================================================== */
+
+async function loadLocalInfo(){
+
+const box =
+document.getElementById("localInfo");
+
+if(!userPlace){
+
+box.innerHTML=`
+
+<div class="area-loading">
+Keine Region verfügbar.
+</div>
+
+`;
+
+return;
+
+}
+
+const city =
+userPlace.city ||
+userPlace.town ||
+userPlace.village ||
+userPlace.municipality ||
+userPlace.county ||
+"deiner Region";
+
+const state =
+userPlace.state ||
+"";
+
+const postcode =
+userPlace.postcode ||
+"";
+
+box.innerHTML=`
+
+<div style="
+background:#f5f5f5;
+border-radius:18px;
+padding:22px;
+">
+
+<div style="
+font-size:13px;
+color:#777;
+font-weight:800;
+text-transform:uppercase;
+letter-spacing:1px;
+margin-bottom:8px;
+">
+DEINE REGION
+</div>
+
+<div style="
+font-size:30px;
+font-weight:900;
+letter-spacing:-1px;
+">
+${escapeHTML(city)}
+</div>
+
+<div style="
+color:#777;
+margin-top:5px;
+">
+${escapeHTML(
+[
+postcode,
+state
+]
+.filter(Boolean)
+.join(" · ")
+)}
+</div>
+
+</div>
+
+`;
+
+}
+
+
+/* =====================================================
 ROUTE
 ===================================================== */
 
-async function geocode(place) {
+async function geocode(place){
 
 const url =
-"https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" +
+"https://nominatim.openstreetmap.org/search?format=json&limit=1&q="+
 encodeURIComponent(place);
 
 const response =
@@ -1580,19 +2883,25 @@ headers:{
 });
 
 if(!response.ok){
-throw new Error("Ort konnte nicht gesucht werden.");
+
+throw new Error(
+"Ort konnte nicht gesucht werden."
+);
+
 }
 
 const data =
 await response.json();
 
 if(!data.length){
+
 throw new Error(
 `„${place}“ wurde nicht gefunden.`
 );
+
 }
 
-return {
+return{
 lat:parseFloat(data[0].lat),
 lon:parseFloat(data[0].lon),
 name:data[0].display_name
@@ -1601,19 +2910,13 @@ name:data[0].display_name
 }
 
 
-async function calculateRoute() {
+async function calculateRoute(){
 
 const start =
-document
-.getElementById("routeStart")
-.value
-.trim();
+document.getElementById("routeStart").value.trim();
 
 const destination =
-document
-.getElementById("routeDestination")
-.value
-.trim();
+document.getElementById("routeDestination").value.trim();
 
 const status =
 document.getElementById("routeStatus");
@@ -1621,49 +2924,43 @@ document.getElementById("routeStatus");
 const result =
 document.getElementById("routeResult");
 
-
 if(!start || !destination){
 
-status.textContent =
+status.textContent=
 "Bitte Start und Ziel eingeben.";
 
-result.style.display =
-"none";
+result.style.display="none";
 
 return;
 
 }
 
-
-status.textContent =
+status.textContent=
 "📍 Orte werden gesucht …";
 
-result.style.display =
-"none";
+result.style.display="none";
 
+try{
 
-try {
-
-const startPoint =
+const startPoint=
 await geocode(start);
 
-status.textContent =
+status.textContent=
 "📍 Ziel wird gesucht …";
 
-const endPoint =
+const endPoint=
 await geocode(destination);
 
-status.textContent =
+status.textContent=
 "🗺️ Route wird berechnet …";
 
-
-const routeUrl =
-`https://router.project-osrm.org/route/v1/driving/` +
-`${startPoint.lon},${startPoint.lat};` +
-`${endPoint.lon},${endPoint.lat}` +
+const routeUrl=
+`https://router.project-osrm.org/route/v1/driving/`+
+`${startPoint.lon},${startPoint.lat};`+
+`${endPoint.lon},${endPoint.lat}`+
 `?overview=false`;
 
-const response =
+const response=
 await fetch(routeUrl);
 
 if(!response.ok){
@@ -1674,11 +2971,11 @@ throw new Error(
 
 }
 
-const data =
+const data=
 await response.json();
 
 if(
-data.code !== "Ok" ||
+data.code!=="Ok" ||
 !data.routes ||
 !data.routes.length
 ){
@@ -1689,93 +2986,62 @@ throw new Error(
 
 }
 
-const route =
-data.routes[0];
+const route=data.routes[0];
 
-const distance =
-route.distance / 1000;
+const distance=route.distance/1000;
+const duration=route.duration/60;
 
-const duration =
-route.duration / 60;
+document.getElementById("routeDistance").textContent=
+distance<10
+?distance.toFixed(1)+" km"
+:Math.round(distance)+" km";
 
+const hours=Math.floor(duration/60);
+const minutes=Math.round(duration%60);
 
-document
-.getElementById("routeDistance")
-.textContent =
-distance < 10
-? distance.toFixed(1) + " km"
-: Math.round(distance) + " km";
+document.getElementById("routeDuration").textContent=
+hours>0
+?`${hours} h ${minutes} min`
+:`${minutes} min`;
 
-
-const hours =
-Math.floor(duration / 60);
-
-const minutes =
-Math.round(duration % 60);
-
-
-document
-.getElementById("routeDuration")
-.textContent =
-hours > 0
-? `${hours} h ${minutes} min`
-: `${minutes} min`;
-
-
-/*
- * OpenStreetMap-Karte.
- * Die Karte zeigt den Bereich zwischen Start
- * und Ziel. Die eigentliche Route wird oben
- * berechnet.
- */
-
-const minLat =
+const minLat=
 Math.min(startPoint.lat,endPoint.lat);
 
-const maxLat =
+const maxLat=
 Math.max(startPoint.lat,endPoint.lat);
 
-const minLon =
+const minLon=
 Math.min(startPoint.lon,endPoint.lon);
 
-const maxLon =
+const maxLon=
 Math.max(startPoint.lon,endPoint.lon);
 
+const paddingLat=
+Math.max((maxLat-minLat)*.25,.03);
 
-const paddingLat =
-Math.max((maxLat-minLat)*0.25,0.03);
+const paddingLon=
+Math.max((maxLon-minLon)*.25,.03);
 
-const paddingLon =
-Math.max((maxLon-minLon)*0.25,0.03);
-
-
-const bbox =
-`${minLon-paddingLon},` +
-`${minLat-paddingLat},` +
-`${maxLon+paddingLon},` +
+const bbox=
+`${minLon-paddingLon},`+
+`${minLat-paddingLat},`+
+`${maxLon+paddingLon},`+
 `${maxLat+paddingLat}`;
 
-
-const mapUrl =
-"https://www.openstreetmap.org/export/embed.html" +
-"?bbox=" +
-encodeURIComponent(bbox) +
-"&layer=mapnik" +
+const mapUrl=
+"https://www.openstreetmap.org/export/embed.html"+
+"?bbox="+
+encodeURIComponent(bbox)+
+"&layer=mapnik"+
 `&marker=${startPoint.lat},${startPoint.lon}`;
 
+document.getElementById("routeMap").src=mapUrl;
 
-document
-.getElementById("routeMap")
-.src =
-mapUrl;
+result.style.display="block";
 
-
-result.style.display =
-"block";
-
-status.innerHTML =
-`<strong>${escapeHTML(startPoint.name)}</strong>` +
-` → ` +
+status.innerHTML=
+`<strong>${escapeHTML(startPoint.name)}</strong>`+
+` → `+
 `<strong>${escapeHTML(endPoint.name)}</strong>`;
 
 }
@@ -1783,11 +3049,10 @@ catch(error){
 
 console.error(error);
 
-status.textContent =
-"❌ " + error.message;
+status.textContent=
+"❌ "+error.message;
 
-result.style.display =
-"none";
+result.style.display="none";
 
 }
 
@@ -1798,9 +3063,9 @@ result.style.display =
 VERKEHR
 ===================================================== */
 
-async function loadTraffic() {
+async function loadTraffic(){
 
-const roadInput =
+const roadInput=
 document
 .getElementById("roadInput")
 .value
@@ -1808,39 +3073,34 @@ document
 .toUpperCase()
 .replace(/\s/g,"");
 
-
-const status =
+const status=
 document.getElementById("trafficStatus");
 
-const list =
+const list=
 document.getElementById("trafficList");
-
 
 if(!roadInput){
 
-status.textContent =
+status.textContent=
 "Bitte eine Autobahn eingeben, z. B. A3.";
 
 return;
 
 }
 
-
-status.textContent =
+status.textContent=
 `🚦 Verkehrsmeldungen für ${roadInput} werden geladen …`;
 
-list.innerHTML = "";
+list.innerHTML="";
 
+try{
 
-try {
-
-const base =
-"https://verkehr.autobahn.de/o/autobahn/" +
-encodeURIComponent(roadInput) +
+const base=
+"https://verkehr.autobahn.de/o/autobahn/"+
+encodeURIComponent(roadInput)+
 "/services/";
 
-
-const endpoints = [
+const endpoints=[
 
 {
 type:"warning",
@@ -1862,25 +3122,23 @@ url:base+"roadworks"
 
 ];
 
-
-let allItems = [];
-
+let allItems=[];
 
 for(const endpoint of endpoints){
 
 try{
 
-const response =
+const response=
 await fetch(endpoint.url);
 
 if(!response.ok){
 continue;
 }
 
-const data =
+const data=
 await response.json();
 
-const items =
+const items=
 extractArray(data);
 
 items.forEach(item=>{
@@ -1900,48 +3158,39 @@ nTypeName:endpoint.name
 }
 catch(error){
 
-console.warn(
-endpoint.name,
-error
-);
+console.warn(endpoint.name,error);
 
 }
 
 }
-
 
 if(!allItems.length){
 
-status.innerHTML =
+status.innerHTML=
 `Keine aktuellen Meldungen für <strong>${escapeHTML(roadInput)}</strong> gefunden.`;
 
 return;
 
 }
 
-
-status.innerHTML =
+status.innerHTML=
 `<strong>${allItems.length}</strong> aktuelle Meldung(en) für <strong>${escapeHTML(roadInput)}</strong>`;
-
 
 allItems.forEach(item=>{
 
-const box =
+const box=
 document.createElement("div");
 
-box.className =
-"traffic-item " +
-item.nType;
+box.className=
+"traffic-item "+item.nType;
 
-
-const title =
+const title=
 getTrafficTitle(item);
 
-const description =
+const description=
 getTrafficDescription(item);
 
-
-box.innerHTML = `
+box.innerHTML=`
 
 <span class="traffic-badge">
 ${trafficIcon(item.nType)}
@@ -1958,7 +3207,6 @@ ${escapeHTML(description)}
 
 `;
 
-
 list.appendChild(box);
 
 });
@@ -1968,10 +3216,10 @@ catch(error){
 
 console.error(error);
 
-status.textContent =
+status.textContent=
 "❌ Verkehrsdaten konnten nicht geladen werden.";
 
-list.innerHTML = `
+list.innerHTML=`
 
 <div class="status-box">
 
@@ -1998,7 +3246,7 @@ if(Array.isArray(data)){
 return data;
 }
 
-const possibleKeys = [
+const possibleKeys=[
 "warning",
 "warnings",
 "closure",
@@ -2017,20 +3265,20 @@ return data[key];
 
 }
 
-return [];
+return[];
 
 }
 
 
 function getTrafficTitle(item){
 
-return (
-item.title ||
-item.headline ||
-item.subtitle ||
-item.description ||
-item.display_type ||
-item.type ||
+return(
+item.title||
+item.headline||
+item.subtitle||
+item.description||
+item.display_type||
+item.type||
 "Verkehrsmeldung"
 );
 
@@ -2039,13 +3287,13 @@ item.type ||
 
 function getTrafficDescription(item){
 
-return (
-item.description ||
-item.subtitle ||
-item.text ||
-item.message ||
-item.information ||
-item.detail ||
+return(
+item.description||
+item.subtitle||
+item.text||
+item.message||
+item.information||
+item.detail||
 "Keine weiteren Informationen verfügbar."
 );
 
@@ -2054,54 +3302,52 @@ item.detail ||
 
 function trafficIcon(type){
 
-if(type === "closure"){
-return "⛔";
+if(type==="closure"){
+return"⛔";
 }
 
-if(type === "roadwork"){
-return "🚧";
+if(type==="roadwork"){
+return"🚧";
 }
 
-return "⚠️";
+return"⚠️";
 
 }
 
 
 /* =====================================================
-SUPABASE
+SUPABASE REQUEST
 ===================================================== */
 
 async function supabaseRequest(endpoint,options={}){
 
-const token =
+const token=
 sessionStorage.getItem("nAccessToken");
 
-const headers = {
+const headers={
 
 "apikey":SUPABASE_KEY,
 
 "Content-Type":"application/json",
 
-...(options.headers || {})
+...(options.headers||{})
 
 };
 
-
 if(token){
 
-headers["Authorization"] =
+headers["Authorization"]=
 `Bearer ${token}`;
 
 }
 else if(!headers["Authorization"]){
 
-headers["Authorization"] =
+headers["Authorization"]=
 `Bearer ${SUPABASE_KEY}`;
 
 }
 
-
-const response =
+const response=
 await fetch(
 `${SUPABASE_URL}/rest/v1/${endpoint}`,
 {
@@ -2110,35 +3356,28 @@ headers
 }
 );
 
-
 if(!response.ok){
 
-const text =
+const text=
 await response.text();
 
 if(
-text.includes("JWT expired") ||
-response.status === 401
+text.includes("JWT expired")||
+response.status===401
 ){
 
-sessionStorage.removeItem(
-"nAccessToken"
-);
-
-sessionStorage.removeItem(
-"nUser"
-);
+sessionStorage.removeItem("nAccessToken");
+sessionStorage.removeItem("nUser");
 
 }
 
 throw new Error(
-text || "Supabase Fehler"
+text||"Supabase Fehler"
 );
 
 }
 
-
-const text =
+const text=
 await response.text();
 
 if(!text){
@@ -2161,12 +3400,11 @@ BILD
 
 function previewImage(event){
 
-const file =
+const file=
 event.target.files[0];
 
-const preview =
+const preview=
 document.getElementById("imagePreview");
-
 
 if(!file){
 
@@ -2176,7 +3414,6 @@ preview.removeAttribute("src");
 return;
 
 }
-
 
 if(!file.type.startsWith("image/")){
 
@@ -2188,18 +3425,13 @@ return;
 
 }
 
-
-const reader =
+const reader=
 new FileReader();
 
-reader.onload =
-e=>{
+reader.onload=e=>{
 
-preview.src =
-e.target.result;
-
-preview.style.display =
-"block";
+preview.src=e.target.result;
+preview.style.display="block";
 
 };
 
@@ -2210,13 +3442,15 @@ reader.readAsDataURL(file);
 
 async function uploadImage(file){
 
-const token =
+const token=
 sessionStorage.getItem("nAccessToken");
 
 if(!token){
+
 throw new Error(
 "Nicht eingeloggt. Bitte erneut einloggen."
 );
+
 }
 
 if(!file){
@@ -2224,32 +3458,36 @@ return null;
 }
 
 if(!file.type.startsWith("image/")){
+
 throw new Error(
 "Die ausgewählte Datei ist kein Bild."
 );
+
 }
 
-if(file.size > 10*1024*1024){
+if(file.size>10*1024*1024){
+
 throw new Error(
 "Das Bild ist zu groß. Maximal 10 MB."
 );
+
 }
 
-const extension =
+const extension=
 file.name
 .split(".")
 .pop()
 .toLowerCase()
 .replace(/[^a-z0-9]/g,"");
 
-const filename =
+const filename=
 `${Date.now()}-${crypto.randomUUID()}.${extension}`;
 
-const uploadUrl =
-`${SUPABASE_URL}/storage/v1/object/` +
+const uploadUrl=
+`${SUPABASE_URL}/storage/v1/object/`+
 `${STORAGE_BUCKET}/${filename}`;
 
-const response =
+const response=
 await fetch(
 uploadUrl,
 {
@@ -2268,17 +3506,17 @@ body:file
 
 if(!response.ok){
 
-const errorText =
+const errorText=
 await response.text();
 
 throw new Error(
-errorText ||
+errorText||
 `Bild-Upload fehlgeschlagen (${response.status})`
 );
 
 }
 
-return `${SUPABASE_URL}/storage/v1/object/public/` +
+return`${SUPABASE_URL}/storage/v1/object/public/`+
 `${STORAGE_BUCKET}/${filename}`;
 
 }
@@ -2290,12 +3528,12 @@ NEWS LADEN
 
 async function loadNews(){
 
-const grid =
+const grid=
 document.getElementById("newsGrid");
 
 try{
 
-grid.innerHTML = `
+grid.innerHTML=`
 
 <div class="status-box">
 Nachrichten werden geladen …
@@ -2303,15 +3541,15 @@ Nachrichten werden geladen …
 
 `;
 
-const result =
+const result=
 await supabaseRequest(
 "news?select=*&order=created_at.desc"
 );
 
-articles =
+articles=
 Array.isArray(result)
-? result
-: [];
+?result
+:[];
 
 renderNews(articles);
 renderAdmin();
@@ -2321,7 +3559,7 @@ catch(error){
 
 console.error(error);
 
-grid.innerHTML = `
+grid.innerHTML=`
 
 <div class="status-box">
 
@@ -2350,11 +3588,11 @@ function getNewsImageHTML(article){
 
 if(article.image_url){
 
-return `
+return`
 
 <img
 src="${escapeHTML(article.image_url)}"
-alt="${escapeHTML(article.title || "Artikelbild")}"
+alt="${escapeHTML(article.title||"Artikelbild")}"
 loading="lazy"
 onerror="this.parentElement.innerHTML='n:'">
 
@@ -2362,22 +3600,21 @@ onerror="this.parentElement.innerHTML='n:'">
 
 }
 
-return "n:";
+return"n:";
 
 }
 
 
 function renderNews(list){
 
-const grid =
+const grid=
 document.getElementById("newsGrid");
 
 grid.innerHTML="";
 
-
 if(!list.length){
 
-grid.innerHTML = `
+grid.innerHTML=`
 
 <div class="status-box">
 Noch keine Nachrichten vorhanden.
@@ -2389,25 +3626,22 @@ return;
 
 }
 
-
 if(
-activeFilter==="Alle" &&
+activeFilter==="Alle"&&
 list.length>0
 ){
 
-const first =
-list[0];
+const first=list[0];
 
-const featured =
+const featured=
 document.createElement("div");
 
-featured.className =
-"featured";
+featured.className="featured";
 
-featured.onclick =
+featured.onclick=
 ()=>openArticle(first.id);
 
-featured.innerHTML = `
+featured.innerHTML=`
 
 <div class="featured-image">
 ${getNewsImageHTML(first)}
@@ -2431,27 +3665,24 @@ grid.appendChild(featured);
 
 }
 
-
-list.forEach(
-(item,index)=>{
+list.forEach((item,index)=>{
 
 if(
-activeFilter==="Alle" &&
+activeFilter==="Alle"&&
 index===0
 ){
 return;
 }
 
-const card =
+const card=
 document.createElement("article");
 
-card.className =
-"news-card";
+card.className="news-card";
 
-card.onclick =
+card.onclick=
 ()=>openArticle(item.id);
 
-card.innerHTML = `
+card.innerHTML=`
 
 <div class="news-image">
 ${getNewsImageHTML(item)}
@@ -2460,17 +3691,17 @@ ${getNewsImageHTML(item)}
 <div class="news-card-content">
 
 <div class="news-meta">
-${escapeHTML(item.category || "")}
+${escapeHTML(item.category||"")}
 ·
-${escapeHTML(item.region || "")}
+${escapeHTML(item.region||"")}
 </div>
 
 <h2>
-${escapeHTML(item.title || "")}
+${escapeHTML(item.title||"")}
 </h2>
 
 <p>
-${escapeHTML(item.description || "")}
+${escapeHTML(item.description||"")}
 </p>
 
 </div>
@@ -2479,22 +3710,18 @@ ${escapeHTML(item.description || "")}
 
 grid.appendChild(card);
 
-}
-);
+});
 
 }
 
 
 function filterNews(category,button){
 
-activeFilter =
-category;
+activeFilter=category;
 
 document
 .querySelectorAll(".filter")
-.forEach(
-x=>x.classList.remove("active")
-);
+.forEach(x=>x.classList.remove("active"));
 
 button.classList.add("active");
 
@@ -2506,10 +3733,10 @@ return;
 
 }
 
-const filtered =
+const filtered=
 articles.filter(
-item =>
-item.category===category ||
+item=>
+item.category===category||
 item.region===category
 );
 
@@ -2532,7 +3759,7 @@ openNews();
 
 }
 
-const box =
+const box=
 document.getElementById("searchBox");
 
 if(box.style.display==="block"){
@@ -2555,7 +3782,7 @@ document
 
 function searchNews(){
 
-const value =
+const value=
 document
 .getElementById("searchInput")
 .value
@@ -2570,7 +3797,7 @@ return;
 
 }
 
-const results =
+const results=
 articles.filter(
 item=>
 String(item.title||"")
@@ -2605,10 +3832,8 @@ ARTIKEL
 
 function openArticle(id){
 
-const article =
-articles.find(
-x=>x.id===id
-);
+const article=
+articles.find(x=>x.id===id);
 
 if(!article){
 return;
@@ -2622,20 +3847,20 @@ document
 
 document
 .getElementById("articleMeta")
-.textContent =
+.textContent=
 `${article.category||""} · ${article.region||""}`;
 
 document
 .getElementById("articleTitle")
-.textContent =
+.textContent=
 article.title||"";
 
-const imageBox =
+const imageBox=
 document.getElementById("articleImage");
 
 if(article.image_url){
 
-imageBox.innerHTML = `
+imageBox.innerHTML=`
 
 <img
 src="${escapeHTML(article.image_url)}"
@@ -2653,7 +3878,7 @@ imageBox.innerHTML="n:";
 
 document
 .getElementById("articleText")
-.innerHTML =
+.innerHTML=
 escapeHTML(article.content||"")
 .replace(/\n/g,"<br><br>");
 
@@ -2689,26 +3914,23 @@ behavior:"smooth"
 
 async function login(){
 
-const email =
-document
-.getElementById("email")
+const email=
+document.getElementById("email")
 .value
 .trim();
 
-const password =
-document
-.getElementById("password")
+const password=
+document.getElementById("password")
 .value;
 
-const error =
+const error=
 document.getElementById("loginError");
 
 error.textContent="";
 
+if(!email||!password){
 
-if(!email || !password){
-
-error.textContent =
+error.textContent=
 "Bitte E-Mail und Passwort eingeben.";
 
 return;
@@ -2717,7 +3939,7 @@ return;
 
 try{
 
-const response =
+const response=
 await fetch(
 `${SUPABASE_URL}/auth/v1/token?grant_type=password`,
 {
@@ -2735,14 +3957,14 @@ password
 }
 );
 
-const data =
+const data=
 await response.json();
 
 if(!response.ok){
 
 throw new Error(
-data.msg ||
-data.message ||
+data.msg||
+data.message||
 "Login fehlgeschlagen."
 );
 
@@ -2767,8 +3989,8 @@ console.error(error);
 
 document
 .getElementById("loginError")
-.textContent =
-"❌ " + error.message;
+.textContent=
+"❌ "+error.message;
 
 }
 
@@ -2777,7 +3999,7 @@ document
 
 function checkSession(){
 
-const token =
+const token=
 sessionStorage.getItem(
 "nAccessToken"
 );
@@ -2842,7 +4064,7 @@ document
 
 function renderAdmin(){
 
-const list =
+const list=
 document.getElementById("adminList");
 
 if(!list){
@@ -2851,10 +4073,9 @@ return;
 
 list.innerHTML="";
 
-
 if(!articles.length){
 
-list.innerHTML = `
+list.innerHTML=`
 
 <div class="status-box">
 Noch keine Artikel.
@@ -2866,17 +4087,14 @@ return;
 
 }
 
+articles.forEach(article=>{
 
-articles.forEach(
-article=>{
-
-const item =
+const item=
 document.createElement("div");
 
-item.className =
-"admin-item";
+item.className="admin-item";
 
-item.innerHTML = `
+item.innerHTML=`
 
 <div>
 
@@ -2912,8 +4130,7 @@ Löschen
 
 list.appendChild(item);
 
-}
-);
+});
 
 }
 
@@ -2924,55 +4141,53 @@ ARTIKEL SPEICHERN
 
 async function saveArticle(){
 
-const title =
+const title=
 document.getElementById("title")
 .value.trim();
 
-const description =
+const description=
 document.getElementById("description")
 .value.trim();
 
-const category =
+const category=
 document.getElementById("category")
 .value;
 
-const region =
+const region=
 document.getElementById("region")
 .value.trim();
 
-const content =
+const content=
 document.getElementById("content")
 .value.trim();
 
-const imageFile =
+const imageFile=
 document.getElementById("imageFile")
 .files[0];
 
-const message =
+const message=
 document.getElementById("formMessage");
 
-const saveButton =
+const saveButton=
 document.getElementById("saveButton");
 
-
 if(
-!title ||
-!description ||
-!region ||
+!title||
+!description||
+!region||
 !content
 ){
 
 message.className="error";
 
-message.textContent =
+message.textContent=
 "Bitte alle Felder ausfüllen.";
 
 return;
 
 }
 
-
-const token =
+const token=
 sessionStorage.getItem(
 "nAccessToken"
 );
@@ -2981,34 +4196,32 @@ if(!token){
 
 message.className="error";
 
-message.textContent =
+message.textContent=
 "Bitte erneut einloggen.";
 
 return;
 
 }
 
-
 try{
 
 saveButton.disabled=true;
 
-saveButton.textContent =
+saveButton.textContent=
 "⏳ Wird gespeichert...";
 
-let imageUrl =
+let imageUrl=
 editingImageUrl;
 
 if(imageFile){
 
-message.textContent =
+message.textContent=
 "🖼️ Bild wird hochgeladen...";
 
-imageUrl =
+imageUrl=
 await uploadImage(imageFile);
 
 }
-
 
 if(editingId!==null){
 
@@ -3039,7 +4252,7 @@ image_url:imageUrl
 }
 );
 
-message.textContent =
+message.textContent=
 "✅ Artikel aktualisiert.";
 
 }
@@ -3072,7 +4285,7 @@ image_url:imageUrl
 }
 );
 
-message.textContent =
+message.textContent=
 "📰 Artikel veröffentlicht.";
 
 }
@@ -3090,19 +4303,18 @@ console.error(error);
 
 message.className="error";
 
-message.textContent =
-"Fehler: " +
-error.message;
+message.textContent=
+"Fehler: "+error.message;
 
 }
 finally{
 
 saveButton.disabled=false;
 
-saveButton.textContent =
+saveButton.textContent=
 editingId!==null
-? "Änderungen speichern"
-: "📰 Veröffentlichen";
+?"Änderungen speichern"
+:"📰 Veröffentlichen";
 
 }
 
@@ -3115,10 +4327,8 @@ EDIT
 
 function editArticle(id){
 
-const article =
-articles.find(
-x=>x.id===id
-);
+const article=
+articles.find(x=>x.id===id);
 
 if(!article){
 return;
@@ -3126,59 +4336,59 @@ return;
 
 editingId=id;
 
-editingImageUrl =
+editingImageUrl=
 article.image_url||null;
 
 document
 .getElementById("formTitle")
-.textContent =
+.textContent=
 "Artikel bearbeiten";
 
 document
 .getElementById("title")
-.value =
+.value=
 article.title||"";
 
 document
 .getElementById("description")
-.value =
+.value=
 article.description||"";
 
 document
 .getElementById("category")
-.value =
+.value=
 article.category||"Deutschland";
 
 document
 .getElementById("region")
-.value =
+.value=
 article.region||"";
 
 document
 .getElementById("content")
-.value =
+.value=
 article.content||"";
 
 document
 .getElementById("imageFile")
 .value="";
 
-const preview =
+const preview=
 document.getElementById("imagePreview");
 
-const current =
+const current=
 document.getElementById("currentImage");
 
 if(article.image_url){
 
-preview.src =
+preview.src=
 article.image_url;
 
 preview.style.display="block";
 
 current.style.display="block";
 
-current.textContent =
+current.textContent=
 "Aktuelles Bild – du kannst ein neues Bild auswählen.";
 
 }
@@ -3192,7 +4402,7 @@ current.style.display="none";
 
 document
 .getElementById("saveButton")
-.textContent =
+.textContent=
 "Änderungen speichern";
 
 window.scrollTo({
@@ -3209,10 +4419,8 @@ DELETE
 
 async function deleteArticle(id){
 
-const article =
-articles.find(
-x=>x.id===id
-);
+const article=
+articles.find(x=>x.id===id);
 
 if(!article){
 return;
@@ -3226,7 +4434,7 @@ if(
 return;
 }
 
-const token =
+const token=
 sessionStorage.getItem(
 "nAccessToken"
 );
@@ -3265,7 +4473,7 @@ catch(error){
 console.error(error);
 
 alert(
-"Fehler beim Löschen:\n\n" +
+"Fehler beim Löschen:\n\n"+
 error.message
 );
 
@@ -3285,7 +4493,7 @@ editingImageUrl=null;
 
 document
 .getElementById("formTitle")
-.textContent =
+.textContent=
 "Neuer Artikel";
 
 document
@@ -3312,7 +4520,7 @@ document
 .getElementById("imageFile")
 .value="";
 
-const preview =
+const preview=
 document.getElementById("imagePreview");
 
 preview.style.display="none";
@@ -3329,7 +4537,7 @@ document
 
 document
 .getElementById("saveButton")
-.textContent =
+.textContent=
 "📰 Veröffentlichen";
 
 document
