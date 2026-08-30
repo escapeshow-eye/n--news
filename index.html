@@ -3,386 +3,248 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>n: – Nachrichten</title>
 
 <style>
-:root {
-    --bg: #f4f5f7;
-    --card: #ffffff;
-    --text: #111318;
-    --muted: #737780;
-    --border: #e3e5e8;
-    --red: #e53935;
-    --blue: #2563eb;
-    --green: #16a34a;
-}
-
 * {
     box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
 }
 
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: var(--bg);
-    color: var(--text);
+    background: #f4f5f7;
+    color: #111;
 }
 
-/* =========================
-   HEADER
-========================= */
-
 header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-
     height: 72px;
-
+    padding: 0 28px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    padding: 0 30px;
-
-    background: rgba(255,255,255,.94);
-    backdrop-filter: blur(15px);
-
-    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,.95);
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .logo {
-    font-size: 37px;
+    font-size: 40px;
     font-weight: 900;
     letter-spacing: -4px;
     cursor: pointer;
 }
 
-.header-buttons {
+.header-actions {
     display: flex;
     gap: 8px;
 }
 
-.icon-button {
-    width: 43px;
-    height: 43px;
-
-    border: none;
-    border-radius: 12px;
-
+.header-btn {
+    border: 0;
     background: transparent;
-
-    cursor: pointer;
-
     font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
-.icon-button:hover {
-    background: #eef0f2;
+.header-btn:hover {
+    background: #eee;
 }
-
-/* =========================
-   MAIN
-========================= */
 
 main {
     max-width: 1200px;
     margin: auto;
-    padding: 45px 22px 80px;
+    padding: 45px 20px 80px;
 }
-
-/* =========================
-   HERO
-========================= */
 
 .hero {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
-.hero-small {
-    color: var(--muted);
-
-    font-size: 13px;
+.hero-label {
+    font-size: 12px;
     font-weight: 800;
-
+    color: #777;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
 }
 
 .hero h1 {
-    margin: 8px 0;
-
     font-size: clamp(42px, 7vw, 72px);
     line-height: .95;
-
     letter-spacing: -4px;
+    margin: 8px 0;
 }
 
 .hero p {
-    margin: 0;
-
-    color: var(--muted);
-
+    color: #777;
     font-size: 18px;
 }
 
-/* =========================
-   SEARCH
-========================= */
-
-.search-box {
+.search {
     display: none;
-
     margin-bottom: 20px;
 }
 
-.search-box input {
+.search input {
     width: 100%;
-
-    padding: 15px 18px;
-
-    border: 1px solid var(--border);
-    border-radius: 14px;
-
-    background: white;
-
-    font-size: 16px;
-
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 13px;
     outline: none;
 }
-
-.search-box input:focus {
-    border-color: #999;
-}
-
-/* =========================
-   FILTER
-========================= */
 
 .filters {
     display: flex;
     gap: 8px;
-
     overflow-x: auto;
-
-    padding: 5px 0 22px;
-
-    scrollbar-width: none;
-}
-
-.filters::-webkit-scrollbar {
-    display: none;
+    padding-bottom: 20px;
 }
 
 .filter {
     flex-shrink: 0;
-
     padding: 10px 16px;
-
+    border: 1px solid #ddd;
     border-radius: 999px;
-
-    border: 1px solid var(--border);
-
     background: white;
-
-    cursor: pointer;
-
     font-weight: 700;
-}
-
-.filter:hover {
-    border-color: #999;
+    cursor: pointer;
 }
 
 .filter.active {
-    background: var(--text);
+    background: #111;
     color: white;
-    border-color: var(--text);
+    border-color: #111;
 }
-
-/* =========================
-   NEWS
-========================= */
 
 .news-grid {
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
-
     gap: 18px;
 }
 
 .news-card {
-    overflow: hidden;
-
-    background: var(--card);
-
-    border: 1px solid var(--border);
-
+    background: white;
+    border: 1px solid #ddd;
     border-radius: 20px;
-
+    overflow: hidden;
     cursor: pointer;
-
-    transition: .18s;
+    transition: .2s;
 }
 
 .news-card:hover {
     transform: translateY(-3px);
-
-    box-shadow: 0 12px 30px rgba(0,0,0,.07);
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
 }
 
 .news-image {
-    height: 180px;
-
+    height: 170px;
     display: flex;
-    align-items: center;
     justify-content: center;
-
-    background: linear-gradient(135deg,#dfe3e8,#fafafa);
-
+    align-items: center;
+    background: linear-gradient(135deg,#ddd,#fafafa);
     color: #999;
-
-    font-size: 34px;
+    font-size: 38px;
     font-weight: 900;
 }
 
-.news-content {
+.news-card-content {
     padding: 20px;
 }
 
 .news-meta {
-    display: flex;
-    gap: 7px;
-
-    margin-bottom: 10px;
-
-    color: var(--muted);
-
     font-size: 13px;
-}
-
-.news-category {
-    font-weight: 800;
-    color: var(--text);
+    color: #777;
+    margin-bottom: 8px;
 }
 
 .news-card h2 {
     margin: 0 0 10px;
-
     font-size: 22px;
-    line-height: 1.15;
 }
 
 .news-card p {
-    margin: 0;
-
-    color: var(--muted);
-
+    color: #777;
     line-height: 1.5;
+    margin: 0;
 }
 
-/* =========================
-   BREAKING
-========================= */
-
-.breaking {
+.featured {
     grid-column: 1 / -1;
-
-    padding: 24px;
-
-    border-radius: 20px;
-
     background: white;
-
-    border: 1px solid var(--border);
-    border-left: 5px solid var(--red);
-
+    border: 1px solid #ddd;
+    border-left: 5px solid #111;
+    border-radius: 20px;
+    padding: 25px;
     cursor: pointer;
 }
 
-.breaking-label {
-    color: var(--red);
-
+.featured-label {
     font-size: 12px;
     font-weight: 900;
-
-    text-transform: uppercase;
-    letter-spacing: 1px;
-
     margin-bottom: 8px;
 }
 
-.breaking h2 {
+.featured h2 {
     margin: 0;
-
-    font-size: clamp(26px,4vw,38px);
+    font-size: clamp(28px,4vw,40px);
 }
 
-/* =========================
-   ARTICLE
-========================= */
+.status-box {
+    grid-column: 1 / -1;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 35px;
+    text-align: center;
+    color: #777;
+}
+
+/* ARTICLE */
 
 .article {
     display: none;
-
     max-width: 850px;
     margin: auto;
 }
 
 .back {
-    margin-bottom: 25px;
-
     padding: 10px 15px;
-
-    border: 1px solid var(--border);
-    border-radius: 12px;
-
+    border: 1px solid #ddd;
     background: white;
-
+    border-radius: 12px;
     cursor: pointer;
-
     font-weight: 700;
+    margin-bottom: 25px;
 }
 
 .article-meta {
-    color: var(--muted);
-
+    color: #777;
     margin-bottom: 12px;
 }
 
 .article h1 {
-    margin: 0 0 25px;
-
     font-size: clamp(40px,7vw,70px);
-
     line-height: .98;
-
     letter-spacing: -4px;
+    margin: 0 0 25px;
 }
 
-.article-picture {
-    height: 360px;
-
+.article-image {
+    height: 340px;
     display: flex;
-    align-items: center;
     justify-content: center;
-
-    margin-bottom: 30px;
-
+    align-items: center;
+    background: linear-gradient(135deg,#ddd,#fafafa);
     border-radius: 22px;
-
-    background: linear-gradient(135deg,#dfe3e8,#fafafa);
-
     color: #999;
-
     font-size: 40px;
     font-weight: 900;
+    margin-bottom: 30px;
 }
 
 .article-text {
@@ -390,176 +252,110 @@ main {
     line-height: 1.8;
 }
 
-/* =========================
-   ADMIN LOGIN
-========================= */
+/* ADMIN */
 
 .admin {
     display: none;
-
     max-width: 900px;
     margin: auto;
 }
 
-.admin-login {
+.login {
     max-width: 430px;
-    margin: 70px auto;
+    margin: 60px auto;
     padding: 30px;
-
     background: white;
-
-    border: 1px solid var(--border);
-
+    border: 1px solid #ddd;
     border-radius: 22px;
 }
 
-.admin-login h2 {
-    margin-top: 0;
-}
-
-.admin-login input,
-.admin-editor input,
-.admin-editor textarea,
-.admin-editor select {
+.login input,
+.form-box input,
+.form-box textarea,
+.form-box select {
     width: 100%;
-
     padding: 13px 14px;
-
-    margin-top: 7px;
-    margin-bottom: 17px;
-
-    border: 1px solid var(--border);
-
+    margin: 7px 0 17px;
+    border: 1px solid #ddd;
     border-radius: 12px;
-
     background: white;
-
-    font: inherit;
-
     outline: none;
 }
 
-.admin-login input:focus,
-.admin-editor input:focus,
-.admin-editor textarea:focus {
-    border-color: #888;
-}
-
-.admin-button {
-    padding: 12px 17px;
-
-    border: none;
-
-    border-radius: 12px;
-
-    background: var(--text);
-
-    color: white;
-
-    cursor: pointer;
-
-    font-weight: 800;
-}
-
-.admin-button:hover {
-    opacity: .85;
-}
-
-.admin-error {
-    color: var(--red);
-
-    margin-top: 12px;
-
-    font-size: 14px;
-}
-
-/* =========================
-   ADMIN DASHBOARD
-========================= */
-
-.admin-header {
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-
-    margin-bottom: 25px;
-}
-
-.admin-header h1 {
-    margin: 0;
-}
-
-.logout {
-    background: #eee;
-    color: #111;
-}
-
-.admin-editor {
-    padding: 25px;
-
-    background: white;
-
-    border: 1px solid var(--border);
-
-    border-radius: 20px;
-
-    margin-bottom: 25px;
-}
-
-.admin-editor textarea {
+.form-box textarea {
     min-height: 230px;
-
     resize: vertical;
 }
 
-.admin-editor button {
-    margin-right: 8px;
+.form-box {
+    padding: 25px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 20px;
 }
 
-.article-list {
+.form-box label {
+    display: block;
+    font-weight: 700;
+}
+
+.primary,
+.secondary,
+.small {
+    border: 0;
+    border-radius: 10px;
+    padding: 11px 16px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.primary {
+    background: #111;
+    color: white;
+}
+
+.secondary {
+    background: #eee;
+}
+
+.admin-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.admin-list {
     display: grid;
     gap: 10px;
+    margin-top: 15px;
 }
 
 .admin-item {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 15px;
-
-    padding: 17px;
-
     background: white;
-
-    border: 1px solid var(--border);
-
+    border: 1px solid #ddd;
     border-radius: 15px;
+    padding: 17px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
 }
 
 .admin-item-title {
     font-weight: 800;
 }
 
-.admin-item-actions {
+.admin-item small {
+    color: #777;
+}
+
+.admin-actions {
     display: flex;
     gap: 7px;
 }
 
-.small-button {
-    padding: 8px 11px;
-
-    border: none;
-
-    border-radius: 9px;
-
-    cursor: pointer;
-
-    background: #eee;
-
-    font-weight: 700;
+.edit {
+    background: #e0e7ff;
 }
 
 .delete {
@@ -567,110 +363,66 @@ main {
     color: #b91c1c;
 }
 
-.edit {
-    background: #e0e7ff;
-    color: #3730a3;
+.error {
+    color: #dc2626;
+    margin-top: 12px;
 }
 
-/* =========================
-   FOOTER
-========================= */
+.success {
+    color: #15803d;
+    margin-top: 12px;
+}
 
 footer {
-    padding: 30px 20px;
-
-    border-top: 1px solid var(--border);
-
     text-align: center;
-
-    color: var(--muted);
-
-    font-size: 14px;
+    padding: 30px;
+    color: #777;
+    border-top: 1px solid #ddd;
 }
 
-/* =========================
-   MOBILE
-========================= */
-
 @media (max-width: 850px) {
-
     .news-grid {
         grid-template-columns: repeat(2,1fr);
     }
-
 }
 
 @media (max-width: 600px) {
-
-    header {
-        padding: 0 17px;
-    }
-
-    main {
-        padding: 32px 15px 60px;
-    }
-
     .news-grid {
         grid-template-columns: 1fr;
     }
 
-    .breaking {
+    .featured {
         grid-column: auto;
     }
 
-    .hero h1 {
-        letter-spacing: -2px;
-    }
-
-    .article h1 {
-        letter-spacing: -2px;
-    }
-
-    .article-picture {
-        height: 230px;
-    }
-
     .admin-item {
-        align-items: flex-start;
         flex-direction: column;
     }
-
 }
 </style>
 </head>
 
-
 <body>
-
-<!-- =========================
-     HEADER
-========================= -->
 
 <header>
 
-    <div
-        class="logo"
-        onclick="showHome()"
-        title="Startseite"
-    >
+    <div class="logo" onclick="showHome()">
         n:
     </div>
 
-    <div class="header-buttons">
+    <div class="header-actions">
 
         <button
-            class="icon-button"
+            class="header-btn"
             onclick="toggleSearch()"
-            title="Suche"
-        >
+            title="Suche">
             🔎
         </button>
 
         <button
-            class="icon-button"
+            class="header-btn"
             onclick="openAdmin()"
-            title="Redaktion"
-        >
+            title="Redaktion">
             🔐
         </button>
 
@@ -681,15 +433,11 @@ footer {
 
 <main>
 
-<!-- =========================
-     HOME
-========================= -->
-
 <section id="home">
 
     <div class="hero">
 
-        <div class="hero-small">
+        <div class="hero-label">
             n: Nachrichten
         </div>
 
@@ -704,17 +452,13 @@ footer {
     </div>
 
 
-    <div
-        class="search-box"
-        id="searchBox"
-    >
+    <div class="search" id="searchBox">
 
         <input
             id="searchInput"
-            type="text"
+            type="search"
             placeholder="Nachrichten durchsuchen..."
-            oninput="searchNews()"
-        >
+            oninput="searchNews()">
 
     </div>
 
@@ -723,43 +467,37 @@ footer {
 
         <button
             class="filter active"
-            onclick="filterNews('Alle',this)"
-        >
+            onclick="filterNews('Alle',this)">
             Alle
         </button>
 
         <button
             class="filter"
-            onclick="filterNews('Deutschland',this)"
-        >
+            onclick="filterNews('Deutschland',this)">
             🇩🇪 Deutschland
         </button>
 
         <button
             class="filter"
-            onclick="filterNews('Welt',this)"
-        >
+            onclick="filterNews('Welt',this)">
             🌍 Welt
         </button>
 
         <button
             class="filter"
-            onclick="filterNews('Region',this)"
-        >
+            onclick="filterNews('Region',this)">
             📍 Region
         </button>
 
         <button
             class="filter"
-            onclick="filterNews('Sport',this)"
-        >
+            onclick="filterNews('Sport',this)">
             ⚽ Sport
         </button>
 
         <button
             class="filter"
-            onclick="filterNews('Digital',this)"
-        >
+            onclick="filterNews('Digital',this)">
             💻 Digital
         </button>
 
@@ -768,123 +506,102 @@ footer {
 
     <div
         class="news-grid"
-        id="newsGrid"
-    ></div>
+        id="newsGrid">
+
+        <div class="status-box">
+            Nachrichten werden geladen …
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- =========================
-     ARTICLE
-========================= -->
-
-<section
-    class="article"
-    id="article"
->
+<section class="article" id="article">
 
     <button
         class="back"
-        onclick="showHome()"
-    >
+        onclick="showHome()">
         ← Zurück
     </button>
 
     <div
         class="article-meta"
-        id="articleMeta"
-    ></div>
+        id="articleMeta">
+    </div>
 
-    <h1
-        id="articleTitle"
-    ></h1>
+    <h1 id="articleTitle"></h1>
 
-    <div class="article-picture">
+    <div class="article-image">
         n:
     </div>
 
     <div
         class="article-text"
-        id="articleText"
-    ></div>
+        id="articleText">
+    </div>
 
 </section>
 
 
-<!-- =========================
-     ADMIN
-========================= -->
+<section class="admin" id="admin">
 
-<section
-    class="admin"
-    id="admin"
->
-
-    <!-- LOGIN -->
-
-    <div
-        class="admin-login"
-        id="adminLogin"
-    >
+    <div class="login" id="loginBox">
 
         <h2>
-            🔐 Redaktion
+            🔐 n: Redaktion
         </h2>
 
         <p>
-            Nur für die Redaktion von n:
+            Anmeldung nur für die Redaktion.
         </p>
 
         <input
+            id="email"
+            type="email"
+            placeholder="E-Mail">
+
+        <input
+            id="password"
             type="password"
-            id="passwordInput"
-            placeholder="Passwort"
-            onkeydown="if(event.key==='Enter') login()"
-        >
+            placeholder="Passwort">
 
         <button
-            class="admin-button"
-            onclick="login()"
-        >
+            class="primary"
+            onclick="login()">
             Einloggen
         </button>
 
         <div
-            class="admin-error"
-            id="loginError"
-        ></div>
+            class="error"
+            id="loginError">
+        </div>
 
     </div>
 
 
-    <!-- DASHBOARD -->
-
     <div
-        id="adminDashboard"
-        style="display:none"
-    >
+        id="dashboard"
+        style="display:none">
 
-        <div class="admin-header">
+        <div class="admin-top">
 
             <h1>
                 Redaktion
             </h1>
 
             <button
-                class="admin-button logout"
-                onclick="logout()"
-            >
+                class="secondary"
+                onclick="logout()">
                 Ausloggen
             </button>
 
         </div>
 
 
-        <!-- EDITOR -->
+        <div class="form-box">
 
-        <div class="admin-editor">
-
-            <h2 id="editorHeading">
+            <h2 id="formTitle">
                 Neuer Artikel
             </h2>
 
@@ -894,10 +611,8 @@ footer {
             </label>
 
             <input
-                id="titleInput"
-                type="text"
-                placeholder="Überschrift des Artikels"
-            >
+                id="title"
+                placeholder="Überschrift">
 
 
             <label>
@@ -905,37 +620,21 @@ footer {
             </label>
 
             <input
-                id="descriptionInput"
-                type="text"
-                placeholder="Kurze Beschreibung"
-            >
+                id="description"
+                placeholder="Kurze Zusammenfassung">
 
 
             <label>
                 Kategorie
             </label>
 
-            <select id="categoryInput">
+            <select id="category">
 
-                <option>
-                    Deutschland
-                </option>
-
-                <option>
-                    Welt
-                </option>
-
-                <option>
-                    Region
-                </option>
-
-                <option>
-                    Sport
-                </option>
-
-                <option>
-                    Digital
-                </option>
+                <option>Deutschland</option>
+                <option>Welt</option>
+                <option>Region</option>
+                <option>Sport</option>
+                <option>Digital</option>
 
             </select>
 
@@ -945,50 +644,49 @@ footer {
             </label>
 
             <input
-                id="regionInput"
-                type="text"
-                placeholder="z. B. Hessen"
-            >
+                id="region"
+                placeholder="z. B. Hessen">
 
 
             <label>
-                Artikeltext
+                Artikel
             </label>
 
             <textarea
-                id="textInput"
-                placeholder="Schreibe hier deinen vollständigen Artikel..."
-            ></textarea>
+                id="content"
+                placeholder="Artikel schreiben...">
+            </textarea>
 
 
             <button
-                class="admin-button"
-                onclick="saveArticle()"
-            >
+                class="primary"
+                id="saveButton"
+                onclick="saveArticle()">
                 📰 Veröffentlichen
             </button>
 
             <button
-                class="admin-button"
-                onclick="clearEditor()"
-                style="background:#eee;color:#111"
-            >
+                class="secondary"
+                onclick="clearForm()">
                 Abbrechen
             </button>
 
+            <div
+                id="formMessage"
+                class="success">
+            </div>
+
         </div>
 
-
-        <!-- ARTICLE LIST -->
 
         <h2>
             Deine Artikel
         </h2>
 
         <div
-            class="article-list"
-            id="adminArticleList"
-        ></div>
+            class="admin-list"
+            id="adminList">
+        </div>
 
     </div>
 
@@ -998,124 +696,112 @@ footer {
 
 
 <footer>
-
     © 2026 n: · Nachrichten
-
 </footer>
 
 
 <script>
 
-/* =========================================================
-   🔐 PASSWORT
+/* =====================================================
+   n: SUPABASE
+   HIER NUR DIESE BEIDEN FELDER ÄNDERN
+===================================================== */
 
-   HIER KANNST DU DAS PASSWORT ÄNDERN.
-========================================================= */
+const SUPABASE_URL =
+    "https://eqzmsuncndfsiedyfifb.supabase.co";
 
-const ADMIN_PASSWORD = "nnews2026";
-
-
-/* =========================================================
-   ARTIKEL AUS LOCAL STORAGE LADEN
-========================================================= */
-
-let news = JSON.parse(
-    localStorage.getItem("nNewsArticles")
-) || [
-
-    {
-        id: 1,
-
-        title:
-            "Willkommen bei n:",
-
-        description:
-            "Das ist die erste Nachricht auf unserer neuen Newsseite.",
-
-        category:
-            "Deutschland",
-
-        region:
-            "Deutschland",
-
-        date:
-            "Heute · 10:32",
-
-        text:
-            "Willkommen bei n:. Hier entsteht eine moderne, einfache und übersichtliche Nachrichtenplattform. Diese Nachricht ist zunächst ein Beispielartikel."
-    },
-
-    {
-        id: 2,
-
-        title:
-            "Was heute weltweit wichtig ist",
-
-        description:
-            "Ein Überblick über aktuelle Ereignisse aus aller Welt.",
-
-        category:
-            "Welt",
-
-        region:
-            "Welt",
-
-        date:
-            "Heute · 09:45",
-
-        text:
-            "Hier steht der vollständige Artikeltext. Später kannst du solche Artikel selbst über den Redaktionsbereich erstellen."
-    },
-
-    {
-        id: 3,
-
-        title:
-            "Neue Entwicklungen im digitalen Bereich",
-
-        description:
-            "Technik und digitale Themen kompakt zusammengefasst.",
-
-        category:
-            "Digital",
-
-        region:
-            "Deutschland",
-
-        date:
-            "Heute · 08:21",
-
-        text:
-            "Hier steht ein Beispielartikel über digitale Entwicklungen."
-    }
-
-];
+const SUPABASE_KEY =
+    "sb_publishable_eXY1gg_tIr-cRC2kdt0jbQ_QPfbEmkF";
 
 
-let currentCategory = "Alle";
+/* =====================================================
+   VARIABLEN
+===================================================== */
+
+let articles = [];
+
+let activeFilter = "Alle";
 
 let editingId = null;
 
 
-/* =========================================================
-   SPEICHERN
-========================================================= */
+/* =====================================================
+   SUPABASE ANFRAGE
+===================================================== */
 
-function saveNews() {
+async function supabaseRequest(endpoint, options = {}) {
 
-    localStorage.setItem(
-        "nNewsArticles",
-        JSON.stringify(news)
+    const response = await fetch(
+        `${SUPABASE_URL}/rest/v1/${endpoint}`,
+        {
+            ...options,
+
+            headers: {
+                "apikey": SUPABASE_KEY,
+                "Authorization":
+                    `Bearer ${SUPABASE_KEY}`,
+                "Content-Type":
+                    "application/json",
+                ...(options.headers || {})
+            }
+        }
     );
 
+    if (!response.ok) {
+
+        const text = await response.text();
+
+        throw new Error(text);
+    }
+
+    if (response.status === 204) {
+        return null;
+    }
+
+    return response.json();
 }
 
 
-/* =========================================================
-   NEWS ANZEIGEN
-========================================================= */
+/* =====================================================
+   NACHRICHTEN LADEN
+===================================================== */
 
-function renderNews(list = news) {
+async function loadNews() {
+
+    const grid =
+        document.getElementById("newsGrid");
+
+    try {
+
+        articles = await supabaseRequest(
+            "news?select=*&order=created_at.desc"
+        );
+
+        renderNews(articles);
+
+    } catch (error) {
+
+        console.error(error);
+
+        grid.innerHTML = `
+            <div class="status-box">
+                <strong>
+                    Nachrichten konnten nicht geladen werden.
+                </strong>
+                <br><br>
+                Bitte überprüfe deine Supabase-Tabelle
+                und den Publishable Key.
+            </div>
+        `;
+    }
+}
+
+
+/* =====================================================
+   NACHRICHTEN ANZEIGEN
+===================================================== */
+
+function renderNews(list) {
 
     const grid =
         document.getElementById("newsGrid");
@@ -1123,11 +809,11 @@ function renderNews(list = news) {
     grid.innerHTML = "";
 
 
-    if (list.length === 0) {
+    if (!list.length) {
 
         grid.innerHTML = `
-            <div class="empty">
-                Keine Nachrichten gefunden.
+            <div class="status-box">
+                Noch keine Nachrichten vorhanden.
             </div>
         `;
 
@@ -1135,51 +821,43 @@ function renderNews(list = news) {
     }
 
 
-    /* AKTUELL */
-
     if (
-        currentCategory === "Alle" &&
+        activeFilter === "Alle" &&
         list.length > 0
     ) {
 
         const first = list[0];
 
-        const breaking =
+        const featured =
             document.createElement("div");
 
-        breaking.className = "breaking";
+        featured.className = "featured";
 
-        breaking.onclick =
+        featured.onclick =
             () => openArticle(first.id);
 
-        breaking.innerHTML = `
-
-            <div class="breaking-label">
-                ● Aktuell
+        featured.innerHTML = `
+            <div class="featured-label">
+                ● AKTUELL
             </div>
 
             <h2>
                 ${escapeHTML(first.title)}
             </h2>
-
         `;
 
-        grid.appendChild(breaking);
-
+        grid.appendChild(featured);
     }
 
-
-    /* KARTEN */
 
     list.forEach((item,index) => {
 
         if (
-            currentCategory === "Alle" &&
+            activeFilter === "Alle" &&
             index === 0
         ) {
             return;
         }
-
 
         const card =
             document.createElement("article");
@@ -1189,27 +867,17 @@ function renderNews(list = news) {
         card.onclick =
             () => openArticle(item.id);
 
-
         card.innerHTML = `
-
             <div class="news-image">
                 n:
             </div>
 
-            <div class="news-content">
+            <div class="news-card-content">
 
                 <div class="news-meta">
-
-                    <span class="news-category">
-                        ${escapeHTML(item.category)}
-                    </span>
-
+                    ${escapeHTML(item.category)}
                     ·
-
-                    <span>
-                        ${escapeHTML(item.date)}
-                    </span>
-
+                    ${escapeHTML(item.region)}
                 </div>
 
                 <h2>
@@ -1221,64 +889,57 @@ function renderNews(list = news) {
                 </p>
 
             </div>
-
         `;
 
         grid.appendChild(card);
 
     });
-
 }
 
 
-/* =========================================================
+/* =====================================================
    FILTER
-========================================================= */
+===================================================== */
 
 function filterNews(category,button) {
 
-    currentCategory = category;
-
+    activeFilter = category;
 
     document
         .querySelectorAll(".filter")
-        .forEach(btn =>
-            btn.classList.remove("active")
+        .forEach(
+            x => x.classList.remove("active")
         );
-
 
     button.classList.add("active");
 
 
     if (category === "Alle") {
 
-        renderNews(news);
+        renderNews(articles);
 
         return;
     }
 
 
     const filtered =
-        news.filter(item =>
+        articles.filter(item =>
             item.category === category ||
             item.region === category
         );
 
-
     renderNews(filtered);
-
 }
 
 
-/* =========================================================
+/* =====================================================
    SUCHE
-========================================================= */
+===================================================== */
 
 function toggleSearch() {
 
     const box =
         document.getElementById("searchBox");
-
 
     if (box.style.display === "block") {
 
@@ -1291,9 +952,7 @@ function toggleSearch() {
         document
             .getElementById("searchInput")
             .focus();
-
     }
-
 }
 
 
@@ -1301,68 +960,76 @@ function searchNews() {
 
     const value =
         document
-        .getElementById("searchInput")
-        .value
-        .toLowerCase();
+            .getElementById("searchInput")
+            .value
+            .toLowerCase()
+            .trim();
+
+
+    if (!value) {
+
+        renderNews(articles);
+
+        return;
+    }
 
 
     const results =
-        news.filter(item =>
+        articles.filter(item =>
 
-            item.title
+            String(item.title)
                 .toLowerCase()
                 .includes(value)
 
             ||
 
-            item.description
+            String(item.description)
                 .toLowerCase()
                 .includes(value)
 
             ||
 
-            item.category
+            String(item.content)
                 .toLowerCase()
                 .includes(value)
 
             ||
 
-            item.region
+            String(item.category)
                 .toLowerCase()
                 .includes(value)
 
+            ||
+
+            String(item.region)
+                .toLowerCase()
+                .includes(value)
         );
 
 
     renderNews(results);
-
 }
 
 
-/* =========================================================
-   ARTIKEL ÖFFNEN
-========================================================= */
+/* =====================================================
+   ARTIKEL
+===================================================== */
 
 function openArticle(id) {
 
-    const item =
-        news.find(article =>
-            article.id === id
-        );
+    const article =
+        articles.find(x => x.id === id);
 
-
-    if (!item) return;
+    if (!article) return;
 
 
     document
         .getElementById("home")
         .style.display = "none";
 
-
     document
         .getElementById("admin")
         .style.display = "none";
-
 
     document
         .getElementById("article")
@@ -1372,33 +1039,32 @@ function openArticle(id) {
     document
         .getElementById("articleMeta")
         .textContent =
-            `${item.category} · ${item.region} · ${item.date}`;
+            `${article.category} · ${article.region}`;
 
 
     document
         .getElementById("articleTitle")
         .textContent =
-            item.title;
+            article.title;
 
 
     document
         .getElementById("articleText")
         .innerHTML =
-            escapeHTML(item.text)
-                .replace(/\n/g,"<br><br>");
+            escapeHTML(article.content)
+            .replace(/\n/g,"<br><br>");
 
 
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
-
 }
 
 
-/* =========================================================
-   HOME
-========================================================= */
+/* =====================================================
+   STARTSEITE
+===================================================== */
 
 function showHome() {
 
@@ -1406,31 +1072,24 @@ function showHome() {
         .getElementById("article")
         .style.display = "none";
 
-
     document
         .getElementById("admin")
         .style.display = "none";
-
 
     document
         .getElementById("home")
         .style.display = "block";
 
-
-    renderNews(news);
-
-
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
-
 }
 
 
-/* =========================================================
-   ADMIN ÖFFNEN
-========================================================= */
+/* =====================================================
+   ADMIN
+===================================================== */
 
 function openAdmin() {
 
@@ -1438,285 +1097,407 @@ function openAdmin() {
         .getElementById("home")
         .style.display = "none";
 
-
     document
         .getElementById("article")
         .style.display = "none";
-
 
     document
         .getElementById("admin")
         .style.display = "block";
 
-
-    const loggedIn =
-        sessionStorage.getItem("nAdminLoggedIn");
-
-
-    if (loggedIn === "true") {
-
-        showDashboard();
-
-    } else {
-
-        document
-            .getElementById("adminLogin")
-            .style.display = "block";
-
-        document
-            .getElementById("adminDashboard")
-            .style.display = "none";
-
-    }
-
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
+    checkSession();
 }
 
 
-/* =========================================================
+/* =====================================================
    LOGIN
-========================================================= */
+===================================================== */
 
-function login() {
+async function login() {
+
+    const email =
+        document
+            .getElementById("email")
+            .value
+            .trim();
 
     const password =
         document
-        .getElementById("passwordInput")
-        .value;
+            .getElementById("password")
+            .value;
+
+    const error =
+        document
+            .getElementById("loginError");
 
 
-    if (password === ADMIN_PASSWORD) {
+    error.textContent = "";
+
+
+    if (!email || !password) {
+
+        error.textContent =
+            "Bitte E-Mail und Passwort eingeben.";
+
+        return;
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                `${SUPABASE_URL}/auth/v1/token?grant_type=password`,
+                {
+                    method: "POST",
+
+                    headers: {
+                        "apikey": SUPABASE_KEY,
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        email,
+                        password
+                    })
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.msg ||
+                data.message ||
+                "Login fehlgeschlagen."
+            );
+        }
+
 
         sessionStorage.setItem(
-            "nAdminLoggedIn",
-            "true"
+            "nAccessToken",
+            data.access_token
         );
 
 
-        document
-            .getElementById("loginError")
-            .textContent = "";
-
-
-        document
-            .getElementById("passwordInput")
-            .value = "";
+        sessionStorage.setItem(
+            "nUser",
+            JSON.stringify(data.user)
+        );
 
 
         showDashboard();
 
-    } else {
+    } catch (error) {
+
+        console.error(error);
 
         document
             .getElementById("loginError")
             .textContent =
-                "❌ Falsches Passwort.";
-
+                "❌ " + error.message;
     }
-
 }
 
 
-/* =========================================================
+/* =====================================================
+   SESSION
+===================================================== */
+
+function checkSession() {
+
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
+
+
+    if (token) {
+
+        showDashboard();
+
+    } else {
+
+        document
+            .getElementById("loginBox")
+            .style.display = "block";
+
+        document
+            .getElementById("dashboard")
+            .style.display = "none";
+    }
+}
+
+
+/* =====================================================
    DASHBOARD
-========================================================= */
+===================================================== */
 
 function showDashboard() {
 
     document
-        .getElementById("adminLogin")
+        .getElementById("loginBox")
         .style.display = "none";
 
-
     document
-        .getElementById("adminDashboard")
+        .getElementById("dashboard")
         .style.display = "block";
 
-
-    renderAdminArticles();
-
+    renderAdmin();
 }
 
 
-/* =========================================================
+/* =====================================================
    LOGOUT
-========================================================= */
+===================================================== */
 
 function logout() {
 
     sessionStorage.removeItem(
-        "nAdminLoggedIn"
+        "nAccessToken"
+    );
+
+    sessionStorage.removeItem(
+        "nUser"
     );
 
 
-    clearEditor();
-
-
     document
-        .getElementById("adminDashboard")
+        .getElementById("dashboard")
         .style.display = "none";
 
-
     document
-        .getElementById("adminLogin")
+        .getElementById("loginBox")
         .style.display = "block";
-
 }
 
 
-/* =========================================================
-   ARTIKEL SPEICHERN
-========================================================= */
+/* =====================================================
+   ADMIN ARTIKEL
+===================================================== */
 
-function saveArticle() {
+function renderAdmin() {
+
+    const list =
+        document.getElementById("adminList");
+
+    list.innerHTML = "";
+
+
+    if (!articles.length) {
+
+        list.innerHTML = `
+            <div class="status-box">
+                Noch keine Artikel.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    articles.forEach(article => {
+
+        const item =
+            document.createElement("div");
+
+        item.className = "admin-item";
+
+        item.innerHTML = `
+
+            <div>
+
+                <div class="admin-item-title">
+                    ${escapeHTML(article.title)}
+                </div>
+
+                <small>
+                    ${escapeHTML(article.category)}
+                    ·
+                    ${escapeHTML(article.region)}
+                </small>
+
+            </div>
+
+            <div class="admin-actions">
+
+                <button
+                    class="small edit"
+                    onclick="editArticle(${article.id})">
+                    Bearbeiten
+                </button>
+
+                <button
+                    class="small delete"
+                    onclick="deleteArticle(${article.id})">
+                    Löschen
+                </button>
+
+            </div>
+        `;
+
+        list.appendChild(item);
+    });
+}
+
+
+/* =====================================================
+   ARTIKEL ERSTELLEN / BEARBEITEN
+===================================================== */
+
+async function saveArticle() {
 
     const title =
-        document
-        .getElementById("titleInput")
-        .value
-        .trim();
-
+        document.getElementById("title")
+        .value.trim();
 
     const description =
-        document
-        .getElementById("descriptionInput")
-        .value
-        .trim();
-
+        document.getElementById("description")
+        .value.trim();
 
     const category =
-        document
-        .getElementById("categoryInput")
+        document.getElementById("category")
         .value;
 
-
     const region =
-        document
-        .getElementById("regionInput")
-        .value
-        .trim();
+        document.getElementById("region")
+        .value.trim();
 
+    const content =
+        document.getElementById("content")
+        .value.trim();
 
-    const text =
-        document
-        .getElementById("textInput")
-        .value
-        .trim();
+    const message =
+        document.getElementById("formMessage");
 
 
     if (
         !title ||
         !description ||
         !region ||
-        !text
+        !content
     ) {
 
-        alert(
-            "Bitte fülle alle Felder aus."
-        );
+        message.className = "error";
+
+        message.textContent =
+            "Bitte alle Felder ausfüllen.";
 
         return;
     }
 
 
-    if (editingId !== null) {
-
-        const article =
-            news.find(item =>
-                item.id === editingId
-            );
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
 
 
-        if (article) {
+    if (!token) {
 
-            article.title =
-                title;
+        message.className = "error";
 
-            article.description =
-                description;
+        message.textContent =
+            "Bitte erneut einloggen.";
 
-            article.category =
-                category;
-
-            article.region =
-                region;
-
-            article.text =
-                text;
-
-        }
-
-    } else {
-
-        news.unshift({
-
-            id:
-                Date.now(),
-
-            title:
-                title,
-
-            description:
-                description,
-
-            category:
-                category,
-
-            region:
-                region,
-
-            date:
-                "Heute · " +
-                new Date().toLocaleTimeString(
-                    "de-DE",
-                    {
-                        hour: "2-digit",
-                        minute: "2-digit"
-                    }
-                ),
-
-            text:
-                text
-
-        });
-
+        return;
     }
 
 
-    saveNews();
+    try {
+
+        if (editingId !== null) {
+
+            await supabaseRequest(
+                `news?id=eq.${editingId}`,
+                {
+                    method: "PATCH",
+
+                    headers: {
+                        "Authorization":
+                            `Bearer ${token}`,
+                        "Prefer":
+                            "return=minimal"
+                    },
+
+                    body: JSON.stringify({
+                        title,
+                        description,
+                        category,
+                        region,
+                        content
+                    })
+                }
+            );
+
+            message.className = "success";
+
+            message.textContent =
+                "✅ Artikel aktualisiert.";
+
+        } else {
+
+            await supabaseRequest(
+                "news",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Authorization":
+                            `Bearer ${token}`,
+                        "Prefer":
+                            "return=minimal"
+                    },
+
+                    body: JSON.stringify({
+                        title,
+                        description,
+                        category,
+                        region,
+                        content
+                    })
+                }
+            );
+
+            message.className = "success";
+
+            message.textContent =
+                "📰 Artikel veröffentlicht.";
+        }
 
 
-    clearEditor();
+        clearForm();
+
+        await loadNews();
+
+        renderAdmin();
 
 
-    renderAdminArticles();
+    } catch (error) {
 
+        console.error(error);
 
-    alert(
-        editingId === null
-            ? "Artikel veröffentlicht!"
-            : "Artikel aktualisiert!"
-    );
+        message.className = "error";
 
+        message.textContent =
+            "Fehler: " + error.message;
+    }
 }
 
 
-/* =========================================================
-   ARTIKEL BEARBEITEN
-========================================================= */
+/* =====================================================
+   BEARBEITEN
+===================================================== */
 
 function editArticle(id) {
 
     const article =
-        news.find(item =>
-            item.id === id
-        );
-
+        articles.find(x => x.id === id);
 
     if (!article) return;
 
@@ -1725,239 +1506,181 @@ function editArticle(id) {
 
 
     document
-        .getElementById("editorHeading")
+        .getElementById("formTitle")
         .textContent =
             "Artikel bearbeiten";
 
 
     document
-        .getElementById("titleInput")
+        .getElementById("title")
         .value =
             article.title;
 
 
     document
-        .getElementById("descriptionInput")
+        .getElementById("description")
         .value =
             article.description;
 
 
     document
-        .getElementById("categoryInput")
+        .getElementById("category")
         .value =
             article.category;
 
 
     document
-        .getElementById("regionInput")
+        .getElementById("region")
         .value =
             article.region;
 
 
     document
-        .getElementById("textInput")
+        .getElementById("content")
         .value =
-            article.text;
+            article.content;
+
+
+    document
+        .getElementById("saveButton")
+        .textContent =
+            "Änderungen speichern";
 
 
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
-
 }
 
 
-/* =========================================================
-   ARTIKEL LÖSCHEN
-========================================================= */
+/* =====================================================
+   LÖSCHEN
+===================================================== */
 
-function deleteArticle(id) {
+async function deleteArticle(id) {
 
     const article =
-        news.find(item =>
-            item.id === id
-        );
-
+        articles.find(x => x.id === id);
 
     if (!article) return;
 
 
-    const confirmed =
-        confirm(
-            `Artikel "${article.title}" wirklich löschen?`
+    if (
+        !confirm(
+            `„${article.title}“ wirklich löschen?`
+        )
+    ) {
+        return;
+    }
+
+
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
         );
 
 
-    if (!confirmed) return;
+    try {
 
+        await supabaseRequest(
+            `news?id=eq.${id}`,
+            {
+                method: "DELETE",
 
-    news =
-        news.filter(item =>
-            item.id !== id
+                headers: {
+                    "Authorization":
+                        `Bearer ${token}`
+                }
+            }
         );
 
 
-    saveNews();
+        await loadNews();
+
+        renderAdmin();
 
 
-    renderAdminArticles();
+    } catch (error) {
 
+        console.error(error);
 
-    renderNews(news);
-
+        alert(
+            "Fehler beim Löschen:\n\n" +
+            error.message
+        );
+    }
 }
 
 
-/* =========================================================
-   EDITOR LEEREN
-========================================================= */
+/* =====================================================
+   FORM ZURÜCKSETZEN
+===================================================== */
 
-function clearEditor() {
+function clearForm() {
 
     editingId = null;
 
 
     document
-        .getElementById("editorHeading")
+        .getElementById("formTitle")
         .textContent =
             "Neuer Artikel";
 
 
     document
-        .getElementById("titleInput")
+        .getElementById("title")
         .value = "";
 
 
     document
-        .getElementById("descriptionInput")
+        .getElementById("description")
         .value = "";
 
 
     document
-        .getElementById("categoryInput")
+        .getElementById("category")
         .value =
             "Deutschland";
 
 
     document
-        .getElementById("regionInput")
+        .getElementById("region")
         .value = "";
 
 
     document
-        .getElementById("textInput")
+        .getElementById("content")
         .value = "";
 
+
+    document
+        .getElementById("saveButton")
+        .textContent =
+            "📰 Veröffentlichen";
 }
 
 
-/* =========================================================
-   ADMIN ARTIKELLISTE
-========================================================= */
+/* =====================================================
+   SICHERE HTML-AUSGABE
+===================================================== */
 
-function renderAdminArticles() {
+function escapeHTML(value) {
 
-    const container =
-        document
-        .getElementById("adminArticleList");
-
-
-    container.innerHTML = "";
-
-
-    if (news.length === 0) {
-
-        container.innerHTML = `
-            <div class="admin-item">
-                Noch keine Artikel vorhanden.
-            </div>
-        `;
-
-        return;
-    }
-
-
-    news.forEach(item => {
-
-        const row =
-            document.createElement("div");
-
-
-        row.className =
-            "admin-item";
-
-
-        row.innerHTML = `
-
-            <div>
-
-                <div class="admin-item-title">
-                    ${escapeHTML(item.title)}
-                </div>
-
-                <small>
-                    ${escapeHTML(item.category)}
-                    ·
-                    ${escapeHTML(item.date)}
-                </small>
-
-            </div>
-
-            <div class="admin-item-actions">
-
-                <button
-                    class="small-button edit"
-                    onclick="editArticle(${item.id})"
-                >
-                    Bearbeiten
-                </button>
-
-                <button
-                    class="small-button delete"
-                    onclick="deleteArticle(${item.id})"
-                >
-                    Löschen
-                </button>
-
-            </div>
-
-        `;
-
-
-        container.appendChild(row);
-
-    });
-
-}
-
-
-/* =========================================================
-   SICHERER TEXT
-========================================================= */
-
-function escapeHTML(text) {
-
-    return String(text)
-
+    return String(value)
         .replace(/&/g,"&amp;")
-
         .replace(/</g,"&lt;")
-
         .replace(/>/g,"&gt;")
-
         .replace(/"/g,"&quot;")
-
         .replace(/'/g,"&#039;");
-
 }
 
 
-/* =========================================================
+/* =====================================================
    START
-========================================================= */
+===================================================== */
 
-renderNews();
+loadNews();
 
 </script>
 
