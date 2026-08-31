@@ -1,41 +1,24 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>n: – Nachrichten</title>
 
-<!-- PWA -->
-<link rel="manifest" href="manifest.json">
-
 <meta name="theme-color" content="#111111">
+<meta name="description" content="n: Nachrichten, Verkehr und regionale Informationen.">
 
-<meta
-    name="apple-mobile-web-app-capable"
-    content="yes">
-
-<meta
-    name="apple-mobile-web-app-status-bar-style"
-    content="black">
-
-<meta
-    name="apple-mobile-web-app-title"
-    content="n:">
-
-<link
-    rel="apple-touch-icon"
-    href="icons/icon-192.png">
-
+<link rel="manifest" href="manifest.json">
 
 <style>
 
 *{
     box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
@@ -45,14 +28,31 @@ body{
     color:#111;
 }
 
+button,
+input,
+textarea,
+select{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+/* =====================================================
+HEADER
+===================================================== */
+
 header{
     height:72px;
     padding:0 28px;
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     background:rgba(255,255,255,.96);
     border-bottom:1px solid #ddd;
+
     position:sticky;
     top:0;
     z-index:100;
@@ -73,15 +73,28 @@ header{
 .header-btn{
     border:0;
     background:transparent;
+
     font-size:20px;
+
     padding:10px;
     border-radius:10px;
+
     cursor:pointer;
 }
 
 .header-btn:hover{
     background:#eee;
 }
+
+/* Installationsbutton */
+
+#installHeaderBtn{
+    display:none;
+}
+
+/* =====================================================
+MAIN
+===================================================== */
 
 main{
     max-width:1200px;
@@ -93,6 +106,10 @@ main{
     min-height:70vh;
 }
 
+/* =====================================================
+START
+===================================================== */
+
 .start-hero{
     text-align:center;
     padding:35px 0 45px;
@@ -103,7 +120,9 @@ main{
 .special-label{
     font-size:12px;
     font-weight:900;
+
     color:#777;
+
     text-transform:uppercase;
     letter-spacing:1.5px;
 }
@@ -112,8 +131,11 @@ main{
 .hero h1,
 .special-header h1{
     font-size:clamp(42px,7vw,80px);
+
     line-height:.95;
+
     letter-spacing:-5px;
+
     margin:10px 0;
 }
 
@@ -124,21 +146,34 @@ main{
     font-size:18px;
 }
 
+/* =====================================================
+START CARDS
+===================================================== */
+
 .area-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:18px;
 }
 
 .area-card,
 .sendeplan-card{
     background:white;
+
     border:1px solid #ddd;
     border-radius:24px;
+
     padding:30px;
+
     min-height:260px;
+
     cursor:pointer;
+
     transition:.2s;
+
     display:flex;
     flex-direction:column;
     justify-content:space-between;
@@ -147,37 +182,92 @@ main{
 .area-card:hover,
 .sendeplan-card:hover{
     transform:translateY(-5px);
-    box-shadow:0 15px 35px rgba(0,0,0,.1);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.1);
 }
 
 .area-icon{
-    font-size:48px;
+    font-size:38px;
+    font-weight:900;
+    color:#111;
 }
 
 .area-card h2,
 .sendeplan-card h2{
     font-size:30px;
+
     margin:20px 0 8px;
+
     letter-spacing:-1px;
 }
 
 .area-card p,
 .sendeplan-card p{
     color:#777;
+
     line-height:1.5;
+
     margin:0;
 }
 
 .area-arrow{
     margin-top:25px;
+
     font-size:22px;
+
     font-weight:900;
 }
 
+/* =====================================================
+INSTALL CARD
+===================================================== */
 
-/* =========================
+.install-card{
+    background:#111;
+    color:white;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    min-height:260px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.install-card:hover{
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.2);
+}
+
+.install-card .area-icon{
+    color:white;
+}
+
+.install-card p{
+    color:#bbb;
+
+    line-height:1.5;
+
+    margin:0;
+}
+
+.install-card .area-arrow{
+    color:white;
+}
+
+/* =====================================================
 NEWS
-========================= */
+===================================================== */
 
 #home{
     display:none;
@@ -189,77 +279,113 @@ NEWS
 
 .search{
     display:none;
+
     margin-bottom:20px;
 }
 
 .search input{
     width:100%;
+
     padding:15px;
+
     border:1px solid #ddd;
     border-radius:13px;
+
     outline:none;
+
     font-size:16px;
 }
 
 .filters{
     display:flex;
+
     gap:8px;
+
     overflow-x:auto;
+
     padding-bottom:20px;
 }
 
 .filter{
     flex-shrink:0;
+
     padding:10px 16px;
+
     border:1px solid #ddd;
     border-radius:999px;
+
     background:white;
+
     font-weight:700;
+
     cursor:pointer;
 }
 
 .filter.active{
     background:#111;
     color:white;
+
     border-color:#111;
 }
 
 .news-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:18px;
 }
 
 .news-card{
     background:white;
+
     border:1px solid #ddd;
     border-radius:20px;
+
     overflow:hidden;
+
     cursor:pointer;
+
     transition:.2s;
 }
 
 .news-card:hover{
     transform:translateY(-3px);
-    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.08);
 }
 
 .news-image{
     width:100%;
     height:190px;
+
     display:flex;
+
     justify-content:center;
     align-items:center;
-    background:linear-gradient(135deg,#ddd,#fafafa);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ddd,
+            #fafafa
+        );
+
     color:#999;
+
     font-size:38px;
+
     font-weight:900;
+
     overflow:hidden;
 }
 
 .news-image img{
     width:100%;
     height:100%;
+
     object-fit:cover;
 }
 
@@ -269,47 +395,71 @@ NEWS
 
 .news-meta{
     font-size:13px;
+
     color:#777;
+
     margin-bottom:8px;
 }
 
 .news-card h2{
     margin:0 0 10px;
+
     font-size:22px;
 }
 
 .news-card p{
     color:#777;
+
     line-height:1.5;
+
     margin:0;
 }
 
 .featured{
     grid-column:1/-1;
+
     background:white;
+
     border:1px solid #ddd;
+
     border-left:5px solid #111;
+
     border-radius:20px;
+
     overflow:hidden;
+
     cursor:pointer;
 }
 
 .featured-image{
     width:100%;
     height:280px;
-    background:linear-gradient(135deg,#ddd,#fafafa);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ddd,
+            #fafafa
+        );
+
     display:flex;
+
     justify-content:center;
     align-items:center;
+
     color:#999;
+
     font-size:45px;
+
     font-weight:900;
+
     overflow:hidden;
 }
 
 .featured-image img{
     width:100%;
     height:100%;
+
     object-fit:cover;
 }
 
@@ -319,100 +469,145 @@ NEWS
 
 .featured-label{
     font-size:12px;
+
     font-weight:900;
+
     margin-bottom:8px;
 }
 
 .featured h2{
     margin:0;
-    font-size:clamp(28px,4vw,40px);
+
+    font-size:
+        clamp(28px,4vw,40px);
 }
 
 .status-box{
     grid-column:1/-1;
+
     background:white;
+
     border:1px solid #ddd;
+
     border-radius:20px;
+
     padding:35px;
+
     text-align:center;
+
     color:#777;
 }
 
-
-/* =========================
+/* =====================================================
 ARTICLE
-========================= */
+===================================================== */
 
 .article{
     display:none;
+
     max-width:850px;
+
     margin:auto;
 }
 
 .back{
     padding:10px 15px;
+
     border:1px solid #ddd;
+
     background:white;
+
     border-radius:12px;
+
     cursor:pointer;
+
     font-weight:700;
+
     margin-bottom:25px;
 }
 
 .article-meta{
     color:#777;
+
     margin-bottom:12px;
 }
 
 .article h1{
-    font-size:clamp(40px,7vw,70px);
+    font-size:
+        clamp(40px,7vw,70px);
+
     line-height:.98;
+
     letter-spacing:-4px;
+
     margin:0 0 25px;
 }
 
 .article-image{
     width:100%;
+
     min-height:340px;
+
     display:flex;
+
     justify-content:center;
     align-items:center;
-    background:linear-gradient(135deg,#ddd,#fafafa);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ddd,
+            #fafafa
+        );
+
     border-radius:22px;
+
     color:#999;
+
     font-size:40px;
+
     font-weight:900;
+
     margin-bottom:30px;
+
     overflow:hidden;
 }
 
 .article-image img{
     width:100%;
+
     max-height:550px;
+
     object-fit:cover;
 }
 
 .article-text{
     font-size:18px;
+
     line-height:1.8;
 }
 
-
-/* =========================
-SPECIAL
-========================= */
+/* =====================================================
+SPECIAL PAGES
+===================================================== */
 
 .special-page{
     display:none;
+
     max-width:1000px;
+
     margin:auto;
 }
 
 .special-box{
     background:white;
+
     border:1px solid #ddd;
+
     border-radius:22px;
+
     padding:30px;
+
     margin-bottom:15px;
 }
 
@@ -420,23 +615,30 @@ SPECIAL
     margin-top:0;
 }
 
-
-/* =========================
+/* =====================================================
 ROUTE
-========================= */
+===================================================== */
 
 .route-form{
     display:grid;
-    grid-template-columns:1fr 1fr auto;
+
+    grid-template-columns:
+        1fr 1fr auto;
+
     gap:10px;
 }
 
 .route-input{
     width:100%;
+
     padding:15px;
+
     border:1px solid #ddd;
+
     border-radius:13px;
+
     font-size:16px;
+
     outline:none;
 }
 
@@ -444,35 +646,50 @@ ROUTE
 .traffic-button,
 .primary{
     border:0;
+
     background:#111;
+
     color:white;
+
     padding:15px 20px;
+
     border-radius:13px;
+
     font-weight:800;
+
     cursor:pointer;
 }
 
 .route-result{
     display:none;
+
     margin-top:20px;
 }
 
 .route-summary{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:12px;
+
     margin-bottom:15px;
 }
 
 .route-stat{
     background:#f5f5f5;
+
     border-radius:15px;
+
     padding:20px;
 }
 
 .route-stat small{
     color:#777;
+
     display:block;
+
     margin-bottom:5px;
 }
 
@@ -482,54 +699,71 @@ ROUTE
 
 .map-box{
     height:350px;
+
     border-radius:20px;
+
     overflow:hidden;
+
     background:#eee;
+
     border:1px solid #ddd;
 }
 
 .map-box iframe{
     width:100%;
     height:100%;
+
     border:0;
 }
 
-
-/* =========================
+/* =====================================================
 TRAFFIC
-========================= */
+===================================================== */
 
 .traffic-controls{
     display:flex;
+
     gap:10px;
+
     flex-wrap:wrap;
 }
 
 .road-input{
     flex:1;
+
     min-width:200px;
+
     padding:14px;
+
     border:1px solid #ddd;
+
     border-radius:12px;
+
     font-size:16px;
 }
 
 .traffic-button.secondary,
 .secondary{
     background:#eee;
+
     color:#111;
 }
 
 .traffic-list{
     display:grid;
+
     gap:12px;
+
     margin-top:20px;
 }
 
 .traffic-item{
     background:white;
+
     border:1px solid #ddd;
+
     border-radius:18px;
+
     padding:20px;
 }
 
@@ -551,36 +785,57 @@ TRAFFIC
 
 .traffic-item p{
     color:#666;
+
     line-height:1.5;
 }
 
 .traffic-badge{
     display:inline-block;
+
     font-size:12px;
+
     font-weight:900;
+
     background:#eee;
+
     padding:6px 9px;
+
     border-radius:999px;
+
     margin-bottom:10px;
 }
 
+.source-note{
+    margin-top:20px;
 
-/* =========================
+    color:#888;
+
+    font-size:13px;
+}
+
+/* =====================================================
 ADMIN
-========================= */
+===================================================== */
 
 .admin{
     display:none;
+
     max-width:900px;
+
     margin:auto;
 }
 
 .login{
     max-width:430px;
+
     margin:60px auto;
+
     padding:30px;
+
     background:white;
+
     border:1px solid #ddd;
+
     border-radius:22px;
 }
 
@@ -589,85 +844,125 @@ ADMIN
 .form-box textarea,
 .form-box select{
     width:100%;
+
     padding:13px 14px;
+
     margin:7px 0 17px;
+
     border:1px solid #ddd;
+
     border-radius:12px;
+
     background:white;
+
     outline:none;
+
     font-size:16px;
 }
 
 .form-box textarea{
     min-height:230px;
+
     resize:vertical;
 }
 
 .form-box{
     padding:25px;
+
     background:white;
+
     border:1px solid #ddd;
+
     border-radius:20px;
 }
 
 .form-box label{
     display:block;
+
     font-weight:700;
 }
 
 .image-upload-box{
     margin:5px 0 20px;
+
     padding:18px;
+
     border:1px dashed #bbb;
+
     border-radius:15px;
+
     background:#fafafa;
 }
 
 .image-upload-box input[type=file]{
     margin:5px 0 0;
+
     padding:0;
+
     border:0;
+
     background:transparent;
 }
 
 .image-preview{
     display:none;
+
     width:100%;
+
     max-height:280px;
+
     object-fit:cover;
+
     margin-top:15px;
+
     border-radius:14px;
+
     border:1px solid #ddd;
 }
 
 .current-image{
     display:none;
+
     margin-top:10px;
+
     color:#777;
+
     font-size:14px;
 }
 
 .admin-top{
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     margin-bottom:25px;
 }
 
 .admin-list{
     display:grid;
+
     gap:10px;
+
     margin-top:15px;
 }
 
 .admin-item{
     background:white;
+
     border:1px solid #ddd;
+
     border-radius:15px;
+
     padding:17px;
+
     display:flex;
+
     justify-content:space-between;
+
     gap:15px;
+
     align-items:center;
 }
 
@@ -681,15 +976,21 @@ ADMIN
 
 .admin-actions{
     display:flex;
+
     gap:7px;
+
     flex-wrap:wrap;
 }
 
 .small{
     border:0;
+
     border-radius:10px;
+
     padding:11px 16px;
+
     font-weight:800;
+
     cursor:pointer;
 }
 
@@ -699,94 +1000,300 @@ ADMIN
 
 .delete{
     background:#fee2e2;
+
     color:#b91c1c;
 }
 
 .connect{
     background:#dcfce7;
+
     color:#166534;
 }
 
 .duplicate{
     background:#fef3c7;
+
     color:#92400e;
 }
 
 .error{
     color:#dc2626;
+
     margin-top:12px;
 }
 
 .success{
     color:#15803d;
+
     margin-top:12px;
 }
 
+/* =====================================================
+INSTALLATIONS-MODAL
+===================================================== */
 
-/* =========================
-VERBINDUNGEN
-========================= */
+.install-picker{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    z-index:1000;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+}
+
+.install-modal{
+    width:min(600px,100%);
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.25);
+}
+
+.install-header{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:15px;
+}
+
+.install-close{
+    border:0;
+
+    background:#eee;
+
+    width:40px;
+    height:40px;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:20px;
+}
+
+.device-choice{
+    display:grid;
+
+    gap:10px;
+
+    margin-top:25px;
+}
+
+.device-button{
+    width:100%;
+
+    text-align:left;
+
+    padding:18px;
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    border-radius:16px;
+
+    transition:.15s;
+}
+
+.device-button:hover{
+    background:#f5f5f5;
+
+    border-color:#111;
+}
+
+.device-button strong{
+    display:block;
+
+    font-size:18px;
+
+    margin-bottom:5px;
+}
+
+.device-button span{
+    color:#777;
+
+    font-size:14px;
+}
+
+.install-instructions{
+    display:none;
+
+    margin-top:25px;
+
+    padding-top:25px;
+
+    border-top:1px solid #ddd;
+}
+
+.install-instructions h3{
+    margin-top:0;
+}
+
+.install-steps{
+    display:grid;
+
+    gap:12px;
+}
+
+.install-step{
+    background:#f5f5f5;
+
+    border-radius:15px;
+
+    padding:16px;
+}
+
+.install-step strong{
+    display:block;
+
+    margin-bottom:5px;
+}
+
+.install-note{
+    margin-top:18px;
+
+    padding:15px;
+
+    background:#f1f1f1;
+
+    border-radius:14px;
+
+    color:#555;
+
+    line-height:1.5;
+}
+
+.install-actions{
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:8px;
+
+    margin-top:22px;
+}
+
+/* =====================================================
+CONNECTIONS
+===================================================== */
 
 .connection-picker{
     display:none;
+
     position:fixed;
+
     inset:0;
+
     background:rgba(0,0,0,.5);
+
     z-index:999;
+
     align-items:center;
+
     justify-content:center;
+
     padding:20px;
 }
 
 .connection-modal{
     width:min(700px,100%);
+
     max-height:85vh;
+
     overflow:auto;
+
     background:white;
+
     border-radius:24px;
+
     padding:25px;
-    box-shadow:0 20px 60px rgba(0,0,0,.25);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.25);
 }
 
 .connection-header{
     display:flex;
+
     justify-content:space-between;
+
     gap:15px;
+
     align-items:flex-start;
 }
 
 .connection-close{
     border:0;
+
     background:#eee;
+
     width:40px;
+
     height:40px;
+
     border-radius:50%;
+
     cursor:pointer;
+
     font-size:20px;
 }
 
 .connection-search{
     width:100%;
+
     padding:14px;
+
     border:1px solid #ddd;
+
     border-radius:12px;
+
     margin:18px 0;
+
     font-size:16px;
+
     outline:none;
 }
 
 .connection-items{
     display:grid;
+
     gap:9px;
 }
 
 .connection-item{
     display:flex;
+
     align-items:center;
+
     gap:12px;
+
     padding:14px;
+
     border:1px solid #ddd;
+
     border-radius:15px;
+
     cursor:pointer;
 }
 
@@ -796,6 +1303,7 @@ VERBINDUNGEN
 
 .connection-item input{
     width:20px;
+
     height:20px;
 }
 
@@ -809,28 +1317,40 @@ VERBINDUNGEN
 
 .connection-item-meta{
     color:#777;
+
     font-size:13px;
+
     margin-top:4px;
 }
 
 .connection-actions{
     display:flex;
+
     justify-content:flex-end;
+
     gap:8px;
+
     margin-top:20px;
 }
 
 .related-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(220px,1fr));
+
     gap:10px;
 }
 
 .related-card{
     background:#f7f7f7;
+
     border:1px solid #ddd;
+
     border-radius:14px;
+
     padding:16px;
+
     cursor:pointer;
 }
 
@@ -840,6 +1360,7 @@ VERBINDUNGEN
 
 .related-card strong{
     display:block;
+
     margin-bottom:6px;
 }
 
@@ -847,174 +1368,32 @@ VERBINDUNGEN
     color:#777;
 }
 
-
-/* =========================
-INSTALLATION
-========================= */
-
-.install-page{
-    display:none;
-    max-width:900px;
-    margin:auto;
-}
-
-.install-hero{
-    text-align:center;
-    margin-bottom:30px;
-}
-
-.install-hero h1{
-    font-size:clamp(42px,7vw,70px);
-    letter-spacing:-4px;
-    line-height:.95;
-    margin:10px 0;
-}
-
-.install-hero p{
-    color:#777;
-    font-size:18px;
-}
-
-.device-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-}
-
-.device-card{
-    background:white;
-    border:1px solid #ddd;
-    border-radius:22px;
-    padding:28px;
-    cursor:pointer;
-    transition:.2s;
-    text-align:center;
-}
-
-.device-card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 15px 35px rgba(0,0,0,.1);
-}
-
-.device-icon{
-    font-size:55px;
-    margin-bottom:15px;
-}
-
-.device-card h2{
-    margin:0 0 8px;
-}
-
-.device-card p{
-    color:#777;
-    line-height:1.5;
-}
-
-.install-instructions{
-    display:none;
-    margin-top:20px;
-}
-
-.install-box{
-    background:white;
-    border:1px solid #ddd;
-    border-radius:22px;
-    padding:30px;
-}
-
-.install-box h2{
-    margin-top:0;
-}
-
-.install-step{
-    display:flex;
-    gap:15px;
-    align-items:flex-start;
-    padding:15px 0;
-    border-bottom:1px solid #eee;
-}
-
-.install-step:last-child{
-    border-bottom:0;
-}
-
-.step-number{
-    flex-shrink:0;
-    width:34px;
-    height:34px;
-    border-radius:50%;
-    background:#111;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:900;
-}
-
-.install-button{
-    border:0;
-    background:#111;
-    color:white;
-    padding:15px 22px;
-    border-radius:13px;
-    font-weight:800;
-    cursor:pointer;
-    font-size:16px;
-    margin-top:15px;
-}
-
-.install-button:hover{
-    opacity:.85;
-}
-
-.install-button:disabled{
-    opacity:.5;
-    cursor:not-allowed;
-}
-
-.install-note{
-    margin-top:20px;
-    background:#f4f5f7;
-    border-radius:15px;
-    padding:18px;
-    color:#666;
-    line-height:1.5;
-}
-
-.device-change{
-    margin-top:20px;
-    border:1px solid #ddd;
-    background:white;
-    padding:11px 16px;
-    border-radius:11px;
-    font-weight:700;
-    cursor:pointer;
-}
-
-
-/* =========================
+/* =====================================================
 FOOTER
-========================= */
+===================================================== */
 
 footer{
     text-align:center;
+
     padding:30px;
+
     color:#777;
+
     border-top:1px solid #ddd;
 }
 
+/* =====================================================
+RESPONSIVE
+===================================================== */
 
 @media(max-width:850px){
 
     .news-grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
     .area-grid{
-        grid-template-columns:1fr;
-    }
-
-    .device-grid{
         grid-template-columns:1fr;
     }
 
@@ -1024,8 +1403,15 @@ footer{
 
 }
 
-
 @media(max-width:600px){
+
+    header{
+        padding:0 18px;
+    }
+
+    .logo{
+        font-size:36px;
+    }
 
     .news-grid{
         grid-template-columns:1fr;
@@ -1041,19 +1427,23 @@ footer{
 
     .admin-item{
         flex-direction:column;
+
         align-items:flex-start;
     }
 
-    .connection-modal{
-        padding:18px;
+    .connection-modal,
+    .install-modal{
+        padding:20px;
     }
 
 }
 
+/* =====================================================
+SCRIPT
+===================================================== */
+
 </style>
-
 </head>
-
 
 <body>
 
@@ -1066,28 +1456,33 @@ footer{
         n:
     </div>
 
+
     <div class="header-actions">
+
+        <!-- NUR AUF STARTSEITE SICHTBAR -->
+
+        <button
+            id="installHeaderBtn"
+            class="header-btn"
+            onclick="openInstallPicker()"
+            title="n: installieren">
+            ▣
+        </button>
+
 
         <button
             class="header-btn"
             onclick="toggleSearch()"
             title="Suche">
-            🔎
+            /
         </button>
 
-        <!-- NEU -->
-        <button
-            class="header-btn"
-            onclick="openInstall()"
-            title="n: installieren">
-            📲
-        </button>
 
         <button
             class="header-btn"
             onclick="openAdmin()"
             title="Redaktion">
-            🔐
+            +
         </button>
 
     </div>
@@ -1098,9 +1493,9 @@ footer{
 <main>
 
 
-<!-- =========================
+<!-- =====================================================
 STARTSEITE
-========================= -->
+===================================================== -->
 
 <section
     id="startPage"
@@ -1133,7 +1528,7 @@ STARTSEITE
             <div>
 
                 <div class="area-icon">
-                    📰
+                    n:
                 </div>
 
                 <h2>
@@ -1161,7 +1556,7 @@ STARTSEITE
             <div>
 
                 <div class="area-icon">
-                    🚦
+                    V
                 </div>
 
                 <h2>
@@ -1189,7 +1584,7 @@ STARTSEITE
             <div>
 
                 <div class="area-icon">
-                    📍
+                    +
                 </div>
 
                 <h2>
@@ -1217,7 +1612,7 @@ STARTSEITE
             <div>
 
                 <div class="area-icon">
-                    📺
+                    TV
                 </div>
 
                 <h2>
@@ -1225,8 +1620,8 @@ STARTSEITE
                 </h2>
 
                 <p>
-                    Alle Sendungen, Termine und geplanten
-                    Nachrichten auf einen Blick.
+                    Alle Sendungen, Termine und
+                    geplanten Nachrichten auf einen Blick.
                 </p>
 
             </div>
@@ -1238,16 +1633,16 @@ STARTSEITE
         </div>
 
 
-        <!-- NEU INSTALLIEREN -->
+        <!-- INSTALLATION -->
 
         <div
-            class="area-card"
-            onclick="openInstall()">
+            class="install-card"
+            onclick="openInstallPicker()">
 
             <div>
 
                 <div class="area-icon">
-                    📲
+                    +
                 </div>
 
                 <h2>
@@ -1255,8 +1650,8 @@ STARTSEITE
                 </h2>
 
                 <p>
-                    n: auf deinem Smartphone, Tablet
-                    oder Computer zum Home-Bildschirm hinzufügen.
+                    Füge n: zum Home-Bildschirm hinzu
+                    und öffne die Seite wie eine App.
                 </p>
 
             </div>
@@ -1267,15 +1662,15 @@ STARTSEITE
 
         </div>
 
+
     </div>
 
 </section>
 
 
-
-<!-- =========================
+<!-- =====================================================
 NEWS
-========================= -->
+===================================================== -->
 
 <section id="home">
 
@@ -1320,31 +1715,31 @@ NEWS
         <button
             class="filter"
             onclick="filterNews('Deutschland',this)">
-            🇩🇪 Deutschland
+            Deutschland
         </button>
 
         <button
             class="filter"
             onclick="filterNews('Welt',this)">
-            🌍 Welt
+            Welt
         </button>
 
         <button
             class="filter"
             onclick="filterNews('Region',this)">
-            📍 Region
+            Region
         </button>
 
         <button
             class="filter"
             onclick="filterNews('Sport',this)">
-            ⚽ Sport
+            Sport
         </button>
 
         <button
             class="filter"
             onclick="filterNews('Digital',this)">
-            💻 Digital
+            Digital
         </button>
 
     </div>
@@ -1363,10 +1758,9 @@ NEWS
 </section>
 
 
-
-<!-- =========================
+<!-- =====================================================
 ARTIKEL
-========================= -->
+===================================================== -->
 
 <section
     class="article"
@@ -1383,7 +1777,9 @@ ARTIKEL
         id="articleMeta">
     </div>
 
-    <h1 id="articleTitle"></h1>
+    <h1
+        id="articleTitle">
+    </h1>
 
     <div
         class="article-image"
@@ -1396,412 +1792,16 @@ ARTIKEL
         id="articleText">
     </div>
 
-    <div id="articleConnections"></div>
-
-</section>
-
-
-
-<!-- =========================
-INSTALLIEREN
-========================= -->
-
-<section
-    id="installPage"
-    class="install-page">
-
-    <button
-        class="back"
-        onclick="showStart()">
-        ← Startseite
-    </button>
-
-
-    <div class="install-hero">
-
-        <div class="special-label">
-            n: App
-        </div>
-
-        <h1>
-            n: auf dein Gerät.
-        </h1>
-
-        <p>
-            Nutze n: wie eine App direkt von deinem
-            Home-Bildschirm oder Desktop.
-        </p>
-
-    </div>
-
-
     <div
-        id="deviceSelection"
-        class="special-box">
-
-        <h2>
-            📱 Welches Gerät benutzt du?
-        </h2>
-
-        <p>
-            Wähle dein Gerät aus, damit wir dir
-            die passende Anleitung anzeigen.
-        </p>
-
-
-        <div class="device-grid">
-
-
-            <div
-                class="device-card"
-                onclick="selectDevice('iphone')">
-
-                <div class="device-icon">
-                    🍎
-                </div>
-
-                <h2>
-                    iPhone / iPad
-                </h2>
-
-                <p>
-                    Safari auf iOS oder iPadOS
-                </p>
-
-            </div>
-
-
-            <div
-                class="device-card"
-                onclick="selectDevice('android')">
-
-                <div class="device-icon">
-                    🤖
-                </div>
-
-                <h2>
-                    Android
-                </h2>
-
-                <p>
-                    Chrome oder kompatibler Browser
-                </p>
-
-            </div>
-
-
-            <div
-                class="device-card"
-                onclick="selectDevice('computer')">
-
-                <div class="device-icon">
-                    💻
-                </div>
-
-                <h2>
-                    PC / Laptop
-                </h2>
-
-                <p>
-                    Chrome, Edge oder kompatibler Browser
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- IPHONE -->
-
-    <div
-        id="installIphone"
-        class="install-instructions">
-
-        <div class="install-box">
-
-            <div class="special-label">
-                iPhone / iPad
-            </div>
-
-            <h2>
-                📱 n: zum Home-Bildschirm hinzufügen
-            </h2>
-
-            <div class="install-step">
-
-                <div class="step-number">
-                    1
-                </div>
-
-                <div>
-                    Öffne n: in <strong>Safari</strong>.
-                </div>
-
-            </div>
-
-
-            <div class="install-step">
-
-                <div class="step-number">
-                    2
-                </div>
-
-                <div>
-                    Tippe unten bzw. oben auf das
-                    <strong>Teilen-Symbol</strong>.
-                </div>
-
-            </div>
-
-
-            <div class="install-step">
-
-                <div class="step-number">
-                    3
-                </div>
-
-                <div>
-                    Wähle
-                    <strong>„Zum Home-Bildschirm“</strong>.
-                </div>
-
-            </div>
-
-
-            <div class="install-step">
-
-                <div class="step-number">
-                    4
-                </div>
-
-                <div>
-                    Tippe auf <strong>„Hinzufügen“</strong>.
-                </div>
-
-            </div>
-
-
-            <div class="install-note">
-
-                💡 Danach findest du n: direkt auf deinem
-                Home-Bildschirm – mit dem n:-Icon und ohne
-                dass du jedes Mal die Website suchen musst.
-
-            </div>
-
-
-            <button
-                class="device-change"
-                onclick="changeDevice()">
-                ← Anderes Gerät auswählen
-            </button>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- ANDROID -->
-
-    <div
-        id="installAndroid"
-        class="install-instructions">
-
-        <div class="install-box">
-
-            <div class="special-label">
-                Android
-            </div>
-
-            <h2>
-                🤖 n: installieren
-            </h2>
-
-
-            <div class="install-step">
-
-                <div class="step-number">
-                    1
-                </div>
-
-                <div>
-                    Öffne n: in <strong>Google Chrome</strong>.
-                </div>
-
-            </div>
-
-
-            <div class="install-step">
-
-                <div class="step-number">
-                    2
-                </div>
-
-                <div>
-                    Öffne das Menü über
-                    <strong>⋮</strong>.
-                </div>
-
-            </div>
-
-
-            <div class="install-step">
-
-                <div class="step-number">
-                    3
-                </div>
-
-                <div>
-                    Suche nach
-                    <strong>„App installieren“</strong>
-                    oder
-                    <strong>„Zum Startbildschirm hinzufügen“</strong>.
-                </div>
-
-            </div>
-
-
-            <div class="install-step">
-
-                <div class="step-number">
-                    4
-                </div>
-
-                <div>
-                    Bestätige die Installation.
-                </div>
-
-            </div>
-
-
-            <button
-                id="androidInstallButton"
-                class="install-button"
-                onclick="installApp()"
-                style="display:none">
-                📲 n: installieren
-            </button>
-
-
-            <div class="install-note">
-
-                💡 Wenn der Installieren-Button oben erscheint,
-                kannst du die Installation direkt über n:
-                starten.
-
-            </div>
-
-
-            <button
-                class="device-change"
-                onclick="changeDevice()">
-                ← Anderes Gerät auswählen
-            </button>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- COMPUTER -->
-
-    <div
-        id="installComputer"
-        class="install-instructions">
-
-        <div class="install-box">
-
-            <div class="special-label">
-                PC / Laptop
-            </div>
-
-            <h2>
-                💻 n: installieren
-            </h2>
-
-
-            <div class="install-step">
-
-                <div class="step-number">
-                    1
-                </div>
-
-                <div>
-                    Öffne n: in
-                    <strong>Chrome oder Edge</strong>.
-                </div>
-
-            </div>
-
-
-            <div class="install-step">
-
-                <div class="step-number">
-                    2
-                </div>
-
-                <div>
-                    Suche rechts in der Adresszeile
-                    nach dem
-                    <strong>Installieren-Symbol</strong>.
-                </div>
-
-            </div>
-
-
-            <div class="install-step">
-
-                <div class="step-number">
-                    3
-                </div>
-
-                <div>
-                    Klicke auf
-                    <strong>„Installieren“</strong>.
-                </div>
-
-            </div>
-
-
-            <button
-                id="computerInstallButton"
-                class="install-button"
-                onclick="installApp()"
-                style="display:none">
-                📲 n: installieren
-            </button>
-
-
-            <div class="install-note">
-
-                💡 Nach der Installation kannst du n:
-                wie eine normale App über das Startmenü
-                bzw. deinen Desktop öffnen.
-
-            </div>
-
-
-            <button
-                class="device-change"
-                onclick="changeDevice()">
-                ← Anderes Gerät auswählen
-            </button>
-
-        </div>
-
+        id="articleConnections">
     </div>
 
 </section>
 
 
-
-<!-- =========================
+<!-- =====================================================
 VERKEHR
-========================= -->
+===================================================== -->
 
 <section
     id="traffic"
@@ -1812,6 +1812,7 @@ VERKEHR
         onclick="showStart()">
         ← Startseite
     </button>
+
 
     <div class="special-header">
 
@@ -1833,12 +1834,13 @@ VERKEHR
     <div class="special-box">
 
         <h2>
-            🗺️ Route berechnen
+            Route berechnen
         </h2>
 
         <p>
             Gib Start und Ziel ein.
         </p>
+
 
         <div class="route-form">
 
@@ -1847,10 +1849,12 @@ VERKEHR
                 class="route-input"
                 placeholder="Start, z. B. Gelnhausen">
 
+
             <input
                 id="routeDestination"
                 class="route-input"
                 placeholder="Ziel, z. B. Frankfurt">
+
 
             <button
                 class="route-button"
@@ -1879,7 +1883,8 @@ VERKEHR
                         Entfernung
                     </small>
 
-                    <strong id="routeDistance">
+                    <strong
+                        id="routeDistance">
                         –
                     </strong>
 
@@ -1892,7 +1897,8 @@ VERKEHR
                         Fahrzeit
                     </small>
 
-                    <strong id="routeDuration">
+                    <strong
+                        id="routeDuration">
                         –
                     </strong>
 
@@ -1906,7 +1912,7 @@ VERKEHR
                     </small>
 
                     <strong>
-                        🚗 Auto
+                        Auto
                     </strong>
 
                 </div>
@@ -1931,7 +1937,7 @@ VERKEHR
     <div class="special-box">
 
         <h2>
-            🚦 Verkehrsmeldungen
+            Verkehrsmeldungen
         </h2>
 
         <p>
@@ -1947,16 +1953,18 @@ VERKEHR
                 placeholder="Autobahn, z. B. A3"
                 value="A3">
 
+
             <button
                 class="traffic-button"
                 onclick="loadTraffic()">
                 Verkehr laden
             </button>
 
+
             <button
                 class="traffic-button secondary"
                 onclick="loadTraffic()">
-                🔄 Aktualisieren
+                Aktualisieren
             </button>
 
         </div>
@@ -1973,15 +1981,19 @@ VERKEHR
             class="traffic-list">
         </div>
 
+
+        <div class="source-note">
+            Datenquelle: Die Autobahn GmbH des Bundes.
+        </div>
+
     </div>
 
 </section>
 
 
-
-<!-- =========================
+<!-- =====================================================
 BEREICH
-========================= -->
+===================================================== -->
 
 <section
     id="area"
@@ -1992,6 +2004,7 @@ BEREICH
         onclick="showStart()">
         ← Startseite
     </button>
+
 
     <div class="special-header">
 
@@ -2013,7 +2026,7 @@ BEREICH
     <div class="special-box">
 
         <h2>
-            📍 Regional
+            Regional
         </h2>
 
         <p>
@@ -2028,7 +2041,7 @@ BEREICH
     <div class="special-box">
 
         <h2>
-            📅 Veranstaltungen
+            Veranstaltungen
         </h2>
 
         <p>
@@ -2041,42 +2054,46 @@ BEREICH
 </section>
 
 
-
-<!-- =========================
+<!-- =====================================================
 ADMIN
-========================= -->
+===================================================== -->
 
 <section
     class="admin"
     id="admin">
+
 
     <div
         class="login"
         id="loginBox">
 
         <h2>
-            🔐 n: Redaktion
+            n: Redaktion
         </h2>
 
         <p>
             Anmeldung nur für die Redaktion.
         </p>
 
+
         <input
             id="email"
             type="email"
             placeholder="E-Mail">
+
 
         <input
             id="password"
             type="password"
             placeholder="Passwort">
 
+
         <button
             class="primary"
             onclick="login()">
             Einloggen
         </button>
+
 
         <div
             class="error"
@@ -2090,11 +2107,13 @@ ADMIN
         id="dashboard"
         style="display:none">
 
+
         <div class="admin-top">
 
             <h1>
                 Redaktion
             </h1>
+
 
             <button
                 class="secondary small"
@@ -2111,6 +2130,7 @@ ADMIN
                 Neuer Artikel
             </h2>
 
+
             <label>
                 Überschrift
             </label>
@@ -2119,6 +2139,7 @@ ADMIN
                 id="title"
                 placeholder="Überschrift">
 
+
             <label>
                 Kurzbeschreibung
             </label>
@@ -2126,6 +2147,7 @@ ADMIN
             <input
                 id="description"
                 placeholder="Kurze Zusammenfassung">
+
 
             <label>
                 Kategorie
@@ -2155,6 +2177,7 @@ ADMIN
 
             </select>
 
+
             <label>
                 Region
             </label>
@@ -2162,6 +2185,7 @@ ADMIN
             <input
                 id="region"
                 placeholder="z. B. Hessen">
+
 
             <label>
                 Artikel
@@ -2171,9 +2195,20 @@ ADMIN
                 id="content"
                 placeholder="Artikel schreiben..."></textarea>
 
+
+            <p style="color:#777;font-size:13px">
+
+                Tipp:
+                <strong>**Text**</strong>
+                wird auf der Website automatisch fett dargestellt.
+
+            </p>
+
+
             <label>
                 Artikelbild
             </label>
+
 
             <div class="image-upload-box">
 
@@ -2183,10 +2218,12 @@ ADMIN
                     accept="image/*"
                     onchange="previewImage(event)">
 
+
                 <img
                     id="imagePreview"
                     class="image-preview"
                     alt="Bildvorschau">
+
 
                 <div
                     id="currentImage"
@@ -2195,18 +2232,21 @@ ADMIN
 
             </div>
 
+
             <button
                 class="primary"
                 id="saveButton"
                 onclick="saveArticle()">
-                📰 Veröffentlichen
+                Veröffentlichen
             </button>
+
 
             <button
                 class="secondary small"
                 onclick="clearForm()">
                 Abbrechen
             </button>
+
 
             <div
                 id="formMessage"
@@ -2219,6 +2259,7 @@ ADMIN
         <h2>
             Deine Artikel
         </h2>
+
 
         <div
             class="admin-list"
@@ -2237,6 +2278,410 @@ ADMIN
 </footer>
 
 
+<!-- =====================================================
+INSTALLATIONS-FENSTER
+===================================================== -->
+
+<div
+    id="installPicker"
+    class="install-picker"
+    onclick="outsideInstallClick(event)">
+
+
+    <div class="install-modal">
+
+
+        <div class="install-header">
+
+            <div>
+
+                <div class="special-label">
+                    n: Installation
+                </div>
+
+                <h2 style="margin:8px 0">
+                    n: zum Home-Bildschirm hinzufügen
+                </h2>
+
+                <p
+                    style="color:#777;margin:0">
+                    Wähle zuerst dein Gerät aus.
+                </p>
+
+            </div>
+
+
+            <button
+                class="install-close"
+                onclick="closeInstallPicker()">
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- GERÄTEAUSWAHL -->
+
+        <div
+            id="deviceChoice"
+            class="device-choice">
+
+
+            <button
+                class="device-button"
+                onclick="showInstallInstructions('apple')">
+
+                <strong>
+                    iPhone / iPad
+                </strong>
+
+                <span>
+                    Safari auf iOS oder iPadOS
+                </span>
+
+            </button>
+
+
+            <button
+                class="device-button"
+                onclick="showInstallInstructions('android')">
+
+                <strong>
+                    Android
+                </strong>
+
+                <span>
+                    Chrome oder ein unterstützter Browser
+                </span>
+
+            </button>
+
+
+            <button
+                class="device-button"
+                onclick="showInstallInstructions('computer')">
+
+                <strong>
+                    Computer
+                </strong>
+
+                <span>
+                    Windows, macOS oder Linux
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <!-- APPLE -->
+
+        <div
+            id="installApple"
+            class="install-instructions">
+
+            <h3>
+                iPhone oder iPad
+            </h3>
+
+
+            <div class="install-steps">
+
+                <div class="install-step">
+
+                    <strong>
+                        1. Safari öffnen
+                    </strong>
+
+                    Öffne n: direkt in Safari.
+
+                </div>
+
+
+                <div class="install-step">
+
+                    <strong>
+                        2. Teilen öffnen
+                    </strong>
+
+                    Tippe unten bzw. oben auf das
+                    Teilen-Symbol von Safari.
+
+                </div>
+
+
+                <div class="install-step">
+
+                    <strong>
+                        3. Zum Home-Bildschirm
+                    </strong>
+
+                    Wähle
+                    „Zum Home-Bildschirm“
+                    aus.
+
+                </div>
+
+
+                <div class="install-step">
+
+                    <strong>
+                        4. Hinzufügen
+                    </strong>
+
+                    Bestätige mit
+                    „Hinzufügen“.
+
+                </div>
+
+            </div>
+
+
+            <div class="install-note">
+
+                Danach erscheint n: direkt auf deinem
+                Home-Bildschirm und kann wie eine App
+                geöffnet werden.
+
+            </div>
+
+        </div>
+
+
+        <!-- ANDROID -->
+
+        <div
+            id="installAndroid"
+            class="install-instructions">
+
+            <h3>
+                Android
+            </h3>
+
+
+            <div class="install-steps">
+
+                <div class="install-step">
+
+                    <strong>
+                        1. n: im Browser öffnen
+                    </strong>
+
+                    Öffne diese Website in Chrome
+                    oder einem unterstützten Browser.
+
+                </div>
+
+
+                <div class="install-step">
+
+                    <strong>
+                        2. Browser-Menü öffnen
+                    </strong>
+
+                    Öffne das Menü des Browsers.
+
+                </div>
+
+
+                <div class="install-step">
+
+                    <strong>
+                        3. Installation auswählen
+                    </strong>
+
+                    Wähle
+                    „Zum Startbildschirm hinzufügen“
+                    oder „App installieren“.
+
+                </div>
+
+
+                <div class="install-step">
+
+                    <strong>
+                        4. Bestätigen
+                    </strong>
+
+                    Bestätige die Installation.
+
+                </div>
+
+            </div>
+
+
+            <div class="install-note">
+
+                Wenn dein Browser direkt eine
+                Installationsmeldung für n: anzeigt,
+                kannst du diese ebenfalls verwenden.
+
+            </div>
+
+        </div>
+
+
+        <!-- COMPUTER -->
+
+        <div
+            id="installComputer"
+            class="install-instructions">
+
+            <h3>
+                Computer
+            </h3>
+
+
+            <div class="install-steps">
+
+                <div class="install-step">
+
+                    <strong>
+                        1. n: öffnen
+                    </strong>
+
+                    Öffne die Website in einem
+                    unterstützten Browser.
+
+                </div>
+
+
+                <div class="install-step">
+
+                    <strong>
+                        2. Installationssymbol suchen
+                    </strong>
+
+                    In unterstützten Browsern kann
+                    neben der Adresszeile ein
+                    Installationssymbol erscheinen.
+
+                </div>
+
+
+                <div class="install-step">
+
+                    <strong>
+                        3. Installieren
+                    </strong>
+
+                    Klicke auf „Installieren“ und
+                    bestätige den Vorgang.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="install-actions"
+            id="installActions"
+            style="display:none">
+
+            <button
+                class="secondary small"
+                onclick="backToDeviceChoice()">
+                Zurück
+            </button>
+
+
+            <button
+                class="primary"
+                onclick="closeInstallPicker()">
+                Fertig
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+VERBINDUNGS-FENSTER
+===================================================== -->
+
+<div
+    id="connectionPicker"
+    class="connection-picker"
+    onclick="outsideConnectionClick(event)">
+
+
+    <div class="connection-modal">
+
+
+        <div class="connection-header">
+
+            <div>
+
+                <div class="special-label">
+                    n: Redaktion
+                </div>
+
+                <h2 style="margin:8px 0">
+                    Artikel verbinden
+                </h2>
+
+                <p
+                    id="connectionSourceTitle"
+                    style="color:#777;margin:0">
+                </p>
+
+            </div>
+
+
+            <button
+                class="connection-close"
+                onclick="closeConnectionPicker()">
+                ×
+            </button>
+
+        </div>
+
+
+        <input
+            id="connectionSearch"
+            class="connection-search"
+            placeholder="Artikel suchen..."
+            oninput="renderConnectionItems">
+
+
+        <div
+            id="connectionItems"
+            class="connection-items">
+        </div>
+
+
+        <div
+            id="connectionPickerMessage"
+            class="success">
+        </div>
+
+
+        <div class="connection-actions">
+
+            <button
+                class="secondary small"
+                onclick="closeConnectionPicker()">
+                Abbrechen
+            </button>
+
+
+            <button
+                class="primary"
+                onclick="saveSelectedConnections()">
+                Verbindungen speichern
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
 
 <script>
 
@@ -2254,104 +2699,53 @@ const STORAGE_BUCKET =
 "news-images";
 
 
-let articles=[];
-let activeFilter="Alle";
-let editingId=null;
-let editingImageUrl=null;
+let articles = [];
+
+let activeFilter = "Alle";
+
+let editingId = null;
+
+let editingImageUrl = null;
 
 
 /* =====================================================
-PWA INSTALLATION
+SEITEN
 ===================================================== */
 
-let deferredInstallPrompt=null;
+function hideAllPages(){
 
+    document.getElementById("startPage").style.display="none";
 
-/*
-    Browser merkt sich Installationsmöglichkeit.
-*/
+    document.getElementById("home").style.display="none";
 
-window.addEventListener(
-    "beforeinstallprompt",
-    event=>{
+    document.getElementById("article").style.display="none";
 
-        event.preventDefault();
+    document.getElementById("traffic").style.display="none";
 
-        deferredInstallPrompt=event;
+    document.getElementById("area").style.display="none";
 
-        updateInstallButtons();
+    document.getElementById("admin").style.display="none";
 
-    }
-);
+    /*
+    Installationsbutton oben nur auf der Startseite
+    */
 
-
-/*
-    Wenn die App installiert wurde.
-*/
-
-window.addEventListener(
-    "appinstalled",
-    ()=>{
-
-        deferredInstallPrompt=null;
-
-        updateInstallButtons();
-
-        alert(
-            "🎉 n: wurde erfolgreich installiert!"
-        );
-
-    }
-);
-
-
-/*
-    Service Worker registrieren.
-*/
-
-if("serviceWorker" in navigator){
-
-    window.addEventListener(
-        "load",
-        ()=>{
-
-            navigator.serviceWorker
-                .register("sw.js")
-                .then(
-                    registration=>{
-                        console.log(
-                            "n: Service Worker aktiv",
-                            registration
-                        );
-                    }
-                )
-                .catch(
-                    error=>{
-                        console.warn(
-                            "Service Worker konnte nicht registriert werden:",
-                            error
-                        );
-                    }
-                );
-
-        }
-    );
+    document.getElementById("installHeaderBtn").style.display="none";
 
 }
 
 
-/* =====================================================
-INSTALL-SEITE
-===================================================== */
-
-function openInstall(){
+function showStart(){
 
     hideAllPages();
 
-    document.getElementById("installPage")
-        .style.display="block";
+    document.getElementById("startPage").style.display="block";
 
-    resetInstallSelection();
+    /*
+    Handy-/Installationssymbol nur auf Startseite
+    */
+
+    document.getElementById("installHeaderBtn").style.display="block";
 
     window.scrollTo({
         top:0,
@@ -2361,12 +2755,104 @@ function openInstall(){
 }
 
 
-function resetInstallSelection(){
+function openNews(){
 
-    document.getElementById("deviceSelection")
-        .style.display="block";
+    hideAllPages();
 
-    document.getElementById("installIphone")
+    document.getElementById("home").style.display="block";
+
+    loadNews();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+function openTraffic(){
+
+    hideAllPages();
+
+    document.getElementById("traffic").style.display="block";
+
+    loadTraffic();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+function openArea(){
+
+    hideAllPages();
+
+    document.getElementById("area").style.display="block";
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+SENDEPLAN
+===================================================== */
+
+function openSendeplan(){
+
+    window.location.href="sendeplan.html";
+
+}
+
+
+/* =====================================================
+INSTALLATION
+===================================================== */
+
+function openInstallPicker(){
+
+    const picker =
+        document.getElementById("installPicker");
+
+    picker.style.display="flex";
+
+    backToDeviceChoice();
+
+}
+
+
+function closeInstallPicker(){
+
+    document.getElementById("installPicker")
+        .style.display="none";
+
+}
+
+
+function outsideInstallClick(event){
+
+    if(
+        event.target ===
+        document.getElementById("installPicker")
+    ){
+
+        closeInstallPicker();
+
+    }
+
+}
+
+
+function hideAllInstallInstructions(){
+
+    document.getElementById("installApple")
         .style.display="none";
 
     document.getElementById("installAndroid")
@@ -2378,24 +2864,20 @@ function resetInstallSelection(){
 }
 
 
-function selectDevice(device){
+function showInstallInstructions(device){
 
-    document.getElementById("deviceSelection")
+    document.getElementById("deviceChoice")
         .style.display="none";
 
-    document.getElementById("installIphone")
-        .style.display="none";
+    hideAllInstallInstructions();
 
-    document.getElementById("installAndroid")
-        .style.display="none";
-
-    document.getElementById("installComputer")
-        .style.display="none";
+    document.getElementById("installActions")
+        .style.display="flex";
 
 
-    if(device==="iphone"){
+    if(device==="apple"){
 
-        document.getElementById("installIphone")
+        document.getElementById("installApple")
             .style.display="block";
 
     }
@@ -2416,193 +2898,65 @@ function selectDevice(device){
 
     }
 
-
-    updateInstallButtons();
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
 }
 
 
-function changeDevice(){
+function backToDeviceChoice(){
 
-    resetInstallSelection();
+    document.getElementById("deviceChoice")
+        .style.display="grid";
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+    hideAllInstallInstructions();
 
-}
-
-
-function updateInstallButtons(){
-
-    const androidButton =
-        document.getElementById(
-            "androidInstallButton"
-        );
-
-    const computerButton =
-        document.getElementById(
-            "computerInstallButton"
-        );
-
-    if(!androidButton || !computerButton){
-        return;
-    }
-
-
-    if(deferredInstallPrompt){
-
-        androidButton.style.display="inline-block";
-
-        computerButton.style.display="inline-block";
-
-    }
-    else{
-
-        androidButton.style.display="none";
-
-        computerButton.style.display="none";
-
-    }
-
-}
-
-
-async function installApp(){
-
-    if(!deferredInstallPrompt){
-
-        alert(
-            "Die direkte Installation wird von diesem Browser momentan nicht angeboten. Bitte nutze die Anleitung auf dieser Seite."
-        );
-
-        return;
-    }
-
-
-    deferredInstallPrompt.prompt();
-
-
-    const result =
-        await deferredInstallPrompt.userChoice;
-
-
-    console.log(
-        "Installationsentscheidung:",
-        result.outcome
-    );
-
-
-    deferredInstallPrompt=null;
-
-    updateInstallButtons();
+    document.getElementById("installActions")
+        .style.display="none";
 
 }
 
 
 /* =====================================================
-SEITEN
+PWA INSTALLATION
 ===================================================== */
 
-function hideAllPages(){
-
-    document.getElementById("startPage")
-        .style.display="none";
-
-    document.getElementById("home")
-        .style.display="none";
-
-    document.getElementById("article")
-        .style.display="none";
-
-    document.getElementById("traffic")
-        .style.display="none";
-
-    document.getElementById("area")
-        .style.display="none";
-
-    document.getElementById("admin")
-        .style.display="none";
-
-    document.getElementById("installPage")
-        .style.display="none";
-
-}
+let deferredInstallPrompt = null;
 
 
-function showStart(){
+window.addEventListener(
+    "beforeinstallprompt",
+    event=>{
 
-    hideAllPages();
+        event.preventDefault();
 
-    document.getElementById("startPage")
-        .style.display="block";
+        deferredInstallPrompt=event;
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
+    }
+);
 
 
-function openNews(){
+async function tryNativeInstall(){
 
-    hideAllPages();
+    if(!deferredInstallPrompt){
 
-    document.getElementById("home")
-        .style.display="block";
+        return false;
 
-    loadNews();
+    }
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+    deferredInstallPrompt.prompt();
 
-}
+    try{
 
+        await deferredInstallPrompt.userChoice;
 
-function openTraffic(){
+    }
+    catch(error){
 
-    hideAllPages();
+        console.warn(error);
 
-    document.getElementById("traffic")
-        .style.display="block";
+    }
 
-    loadTraffic();
+    deferredInstallPrompt=null;
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-function openArea(){
-
-    hideAllPages();
-
-    document.getElementById("area")
-        .style.display="block";
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-function openSendeplan(){
-
-    window.location.href="sendeplan.html";
+    return true;
 
 }
 
@@ -2646,10 +3000,14 @@ async function geocode(place){
 
     }
 
-    return {
+    return{
+
         lat:parseFloat(data[0].lat),
+
         lon:parseFloat(data[0].lon),
+
         name:data[0].display_name
+
     };
 
 }
@@ -2662,15 +3020,18 @@ async function calculateRoute(){
             "routeStart"
         ).value.trim();
 
+
     const destination =
         document.getElementById(
             "routeDestination"
         ).value.trim();
 
+
     const status =
         document.getElementById(
             "routeStatus"
         );
+
 
     const result =
         document.getElementById(
@@ -2678,7 +3039,10 @@ async function calculateRoute(){
         );
 
 
-    if(!start || !destination){
+    if(
+        !start ||
+        !destination
+    ){
 
         status.textContent =
             "Bitte Start und Ziel eingeben.";
@@ -2691,7 +3055,7 @@ async function calculateRoute(){
 
 
     status.textContent =
-        "📍 Orte werden gesucht …";
+        "Orte werden gesucht …";
 
     result.style.display="none";
 
@@ -2703,7 +3067,7 @@ async function calculateRoute(){
 
 
         status.textContent =
-            "📍 Ziel wird gesucht …";
+            "Ziel wird gesucht …";
 
 
         const endPoint =
@@ -2711,7 +3075,7 @@ async function calculateRoute(){
 
 
         status.textContent =
-            "🗺️ Route wird berechnet …";
+            "Route wird berechnet …";
 
 
         const routeUrl =
@@ -2857,14 +3221,13 @@ async function calculateRoute(){
             ` → `+
             `<strong>${escapeHTML(endPoint.name)}</strong>`;
 
-
     }
     catch(error){
 
         console.error(error);
 
         status.textContent =
-            "❌ "+error.message;
+            "Fehler: "+error.message;
 
         result.style.display="none";
 
@@ -2912,7 +3275,8 @@ async function loadTraffic(){
 
 
     status.textContent =
-        `🚦 Verkehrsmeldungen für ${roadInput} werden geladen …`;
+        `Verkehrsmeldungen für ${roadInput} werden geladen …`;
+
 
     list.innerHTML="";
 
@@ -2926,21 +3290,25 @@ async function loadTraffic(){
 
 
         const endpoints=[
+
             {
                 type:"warning",
                 name:"Verkehrsmeldungen",
                 url:base+"warning"
             },
+
             {
                 type:"closure",
                 name:"Sperrungen",
                 url:base+"closure"
             },
+
             {
                 type:"roadwork",
                 name:"Baustellen",
                 url:base+"roadworks"
             }
+
         ];
 
 
@@ -2960,9 +3328,8 @@ async function loadTraffic(){
                     );
 
 
-                if(!response.ok){
+                if(!response.ok)
                     continue;
-                }
 
 
                 const data =
@@ -2973,17 +3340,21 @@ async function loadTraffic(){
                     extractArray(data);
 
 
-                items.forEach(
-                    item=>{
+                items.forEach(item=>{
 
-                        allItems.push({
-                            ...item,
-                            nType:endpoint.type,
-                            nTypeName:endpoint.name
-                        });
+                    allItems.push({
 
-                    }
-                );
+                        ...item,
+
+                        nType:
+                            endpoint.type,
+
+                        nTypeName:
+                            endpoint.name
+
+                    });
+
+                });
 
             }
             catch(error){
@@ -3012,43 +3383,40 @@ async function loadTraffic(){
             `<strong>${allItems.length}</strong> aktuelle Meldung(en) für <strong>${escapeHTML(roadInput)}</strong>`;
 
 
-        allItems.forEach(
-            item=>{
+        allItems.forEach(item=>{
 
-                const box =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                box.className =
-                    "traffic-item "+
-                    item.nType;
+            const box =
+                document.createElement(
+                    "div"
+                );
 
 
-                box.innerHTML=`
-
-                    <span class="traffic-badge">
-                        ${trafficIcon(item.nType)}
-                        ${escapeHTML(item.nTypeName)}
-                    </span>
-
-                    <h3>
-                        ${escapeHTML(getTrafficTitle(item))}
-                    </h3>
-
-                    <p>
-                        ${escapeHTML(getTrafficDescription(item))}
-                    </p>
-
-                `;
+            box.className =
+                "traffic-item "+
+                item.nType;
 
 
-                list.appendChild(box);
+            box.innerHTML=`
 
-            }
-        );
+                <span class="traffic-badge">
+                    ${trafficIcon(item.nType)}
+                    ${escapeHTML(item.nTypeName)}
+                </span>
 
+                <h3>
+                    ${escapeHTML(getTrafficTitle(item))}
+                </h3>
+
+                <p>
+                    ${escapeHTML(getTrafficDescription(item))}
+                </p>
+
+            `;
+
+
+            list.appendChild(box);
+
+        });
 
     }
     catch(error){
@@ -3056,7 +3424,23 @@ async function loadTraffic(){
         console.error(error);
 
         status.textContent =
-            "❌ Verkehrsdaten konnten nicht geladen werden.";
+            "Verkehrsdaten konnten nicht geladen werden.";
+
+        list.innerHTML=`
+
+            <div class="status-box">
+
+                <strong>
+                    Verkehrsdaten nicht verfügbar.
+                </strong>
+
+                <br><br>
+
+                Bitte später erneut versuchen.
+
+            </div>
+
+        `;
 
     }
 
@@ -3066,11 +3450,14 @@ async function loadTraffic(){
 function extractArray(data){
 
     if(Array.isArray(data)){
+
         return data;
+
     }
 
 
     const possibleKeys=[
+
         "warning",
         "warnings",
         "closure",
@@ -3079,6 +3466,7 @@ function extractArray(data){
         "roadwork",
         "items",
         "roads"
+
     ];
 
 
@@ -3104,13 +3492,21 @@ function extractArray(data){
 function getTrafficTitle(item){
 
     return(
+
         item.title||
+
         item.headline||
+
         item.subtitle||
+
         item.description||
+
         item.display_type||
+
         item.type||
+
         "Verkehrsmeldung"
+
     );
 
 }
@@ -3119,13 +3515,21 @@ function getTrafficTitle(item){
 function getTrafficDescription(item){
 
     return(
+
         item.description||
+
         item.subtitle||
+
         item.text||
+
         item.message||
+
         item.information||
+
         item.detail||
+
         "Keine weiteren Informationen verfügbar."
+
     );
 
 }
@@ -3133,21 +3537,19 @@ function getTrafficDescription(item){
 
 function trafficIcon(type){
 
-    if(type==="closure"){
-        return "⛔";
-    }
+    if(type==="closure")
+        return "Sperrung";
 
-    if(type==="roadwork"){
-        return "🚧";
-    }
+    if(type==="roadwork")
+        return "Baustelle";
 
-    return "⚠️";
+    return "Warnung";
 
 }
 
 
 /* =====================================================
-SUPABASE REQUEST
+SUPABASE
 ===================================================== */
 
 async function supabaseRequest(
@@ -3162,15 +3564,21 @@ async function supabaseRequest(
 
 
     const headers={
-        "apikey":SUPABASE_KEY,
-        "Content-Type":"application/json",
+
+        "apikey":
+            SUPABASE_KEY,
+
+        "Content-Type":
+            "application/json",
+
         ...(options.headers||{})
+
     };
 
 
     if(token){
 
-        headers["Authorization"]=
+        headers["Authorization"] =
             `Bearer ${token}`;
 
     }
@@ -3178,7 +3586,7 @@ async function supabaseRequest(
         !headers["Authorization"]
     ){
 
-        headers["Authorization"]=
+        headers["Authorization"] =
             `Bearer ${SUPABASE_KEY}`;
 
     }
@@ -3217,7 +3625,8 @@ async function supabaseRequest(
 
 
         throw new Error(
-            text||"Supabase Fehler"
+            text ||
+            "Supabase Fehler"
         );
 
     }
@@ -3227,9 +3636,8 @@ async function supabaseRequest(
         await response.text();
 
 
-    if(!text){
+    if(!text)
         return null;
-    }
 
 
     try{
@@ -3273,15 +3681,32 @@ function previewImage(event){
     }
 
 
+    if(
+        !file.type.startsWith("image/")
+    ){
+
+        alert(
+            "Bitte eine Bilddatei auswählen."
+        );
+
+        event.target.value="";
+
+        return;
+
+    }
+
+
     const reader =
         new FileReader();
 
 
     reader.onload=e=>{
 
-        preview.src=e.target.result;
+        preview.src =
+            e.target.result;
 
-        preview.style.display="block";
+        preview.style.display =
+            "block";
 
     };
 
@@ -3308,8 +3733,30 @@ async function uploadImage(file){
     }
 
 
-    if(!file){
+    if(!file)
         return null;
+
+
+    if(
+        !file.type.startsWith("image/")
+    ){
+
+        throw new Error(
+            "Die ausgewählte Datei ist kein Bild."
+        );
+
+    }
+
+
+    if(
+        file.size >
+        10*1024*1024
+    ){
+
+        throw new Error(
+            "Das Bild ist zu groß. Maximal 10 MB."
+        );
+
     }
 
 
@@ -3338,14 +3785,25 @@ async function uploadImage(file){
             uploadUrl,
             {
                 method:"POST",
+
                 headers:{
-                    "apikey":SUPABASE_KEY,
+
+                    "apikey":
+                        SUPABASE_KEY,
+
                     "Authorization":
                         `Bearer ${token}`,
-                    "Content-Type":file.type,
-                    "x-upsert":"false"
+
+                    "Content-Type":
+                        file.type,
+
+                    "x-upsert":
+                        "false"
+
                 },
+
                 body:file
+
             }
         );
 
@@ -3355,8 +3813,9 @@ async function uploadImage(file){
         const errorText =
             await response.text();
 
+
         throw new Error(
-            errorText||
+            errorText ||
             `Bild-Upload fehlgeschlagen (${response.status})`
         );
 
@@ -3372,7 +3831,7 @@ async function uploadImage(file){
 
 
 /* =====================================================
-NEWS
+NEWS LADEN
 ===================================================== */
 
 async function loadNews(){
@@ -3410,7 +3869,6 @@ async function loadNews(){
 
         renderAdmin();
 
-
     }
     catch(error){
 
@@ -3437,6 +3895,10 @@ async function loadNews(){
 }
 
 
+/* =====================================================
+NEWS DARSTELLUNG
+===================================================== */
+
 function getNewsImageHTML(article){
 
     if(article.image_url){
@@ -3452,6 +3914,7 @@ function getNewsImageHTML(article){
         `;
 
     }
+
 
     return "n:";
 
@@ -3499,7 +3962,8 @@ function renderNews(list){
             );
 
 
-        featured.className="featured";
+        featured.className =
+            "featured";
 
 
         featured.onclick =
@@ -3515,7 +3979,7 @@ function renderNews(list){
             <div class="featured-content">
 
                 <div class="featured-label">
-                    ● AKTUELL
+                    AKTUELL
                 </div>
 
                 <h2>
@@ -3539,7 +4003,9 @@ function renderNews(list){
                 activeFilter==="Alle" &&
                 index===0
             ){
+
                 return;
+
             }
 
 
@@ -3549,7 +4015,8 @@ function renderNews(list){
                 );
 
 
-            card.className="news-card";
+            card.className =
+                "news-card";
 
 
             card.onclick =
@@ -3591,15 +4058,22 @@ function renderNews(list){
 }
 
 
-function filterNews(category,button){
+function filterNews(
+    category,
+    button
+){
 
-    activeFilter=category;
+    activeFilter =
+        category;
 
 
     document
         .querySelectorAll(".filter")
         .forEach(
-            x=>x.classList.remove("active")
+            x=>
+                x.classList.remove(
+                    "active"
+                )
         );
 
 
@@ -3618,7 +4092,7 @@ function filterNews(category,button){
     const filtered =
         articles.filter(
             item=>
-                item.category===category||
+                item.category===category ||
                 item.region===category
         );
 
@@ -3651,7 +4125,9 @@ function toggleSearch(){
         );
 
 
-    if(box.style.display==="block"){
+    if(
+        box.style.display==="block"
+    ){
 
         box.style.display="none";
 
@@ -3660,9 +4136,9 @@ function toggleSearch(){
 
         box.style.display="block";
 
-        document
-            .getElementById("searchInput")
-            .focus();
+        document.getElementById(
+            "searchInput"
+        ).focus();
 
     }
 
@@ -3692,21 +4168,35 @@ function searchNews(){
     const results =
         articles.filter(
             item=>
+
                 String(item.title||"")
                     .toLowerCase()
-                    .includes(value)||
+                    .includes(value)
+
+                ||
+
                 String(item.description||"")
                     .toLowerCase()
-                    .includes(value)||
+                    .includes(value)
+
+                ||
+
                 String(item.content||"")
                     .toLowerCase()
-                    .includes(value)||
+                    .includes(value)
+
+                ||
+
                 String(item.category||"")
                     .toLowerCase()
-                    .includes(value)||
+                    .includes(value)
+
+                ||
+
                 String(item.region||"")
                     .toLowerCase()
                     .includes(value)
+
         );
 
 
@@ -3723,13 +4213,14 @@ function openArticle(id){
 
     const article =
         articles.find(
-            x=>String(x.id)===String(id)
+            x=>
+                String(x.id)===
+                String(id)
         );
 
 
-    if(!article){
+    if(!article)
         return;
-    }
 
 
     hideAllPages();
@@ -3787,6 +4278,11 @@ function openArticle(id){
         );
 
 
+    renderArticleConnections(
+        article.id
+    );
+
+
     window.scrollTo({
         top:0,
         behavior:"smooth"
@@ -3794,6 +4290,10 @@ function openArticle(id){
 
 }
 
+
+/* =====================================================
+MARKDOWN
+===================================================== */
 
 function renderMarkdown(value){
 
@@ -3859,7 +4359,9 @@ async function login(){
     const email =
         document.getElementById(
             "email"
-        ).value.trim();
+        )
+        .value
+        .trim();
 
 
     const password =
@@ -3877,7 +4379,10 @@ async function login(){
     error.textContent="";
 
 
-    if(!email||!password){
+    if(
+        !email ||
+        !password
+    ){
 
         error.textContent =
             "Bitte E-Mail und Passwort eingeben.";
@@ -3894,15 +4399,25 @@ async function login(){
                 `${SUPABASE_URL}/auth/v1/token?grant_type=password`,
                 {
                     method:"POST",
+
                     headers:{
-                        "apikey":SUPABASE_KEY,
+
+                        "apikey":
+                            SUPABASE_KEY,
+
                         "Content-Type":
                             "application/json"
+
                     },
+
                     body:JSON.stringify({
+
                         email,
+
                         password
+
                     })
+
                 }
             );
 
@@ -3944,7 +4459,7 @@ async function login(){
         document.getElementById(
             "loginError"
         ).textContent =
-            "❌ "+error.message;
+            "Fehler: "+error.message;
 
     }
 
@@ -4022,7 +4537,7 @@ function logout(){
 
 
 /* =====================================================
-ADMIN-LISTE
+ADMIN LISTE
 ===================================================== */
 
 function renderAdmin(){
@@ -4033,9 +4548,8 @@ function renderAdmin(){
         );
 
 
-    if(!list){
+    if(!list)
         return;
-    }
 
 
     list.innerHTML="";
@@ -4065,7 +4579,14 @@ function renderAdmin(){
                 );
 
 
-            item.className="admin-item";
+            item.className =
+                "admin-item";
+
+
+            const connectionCount =
+                getConnections(
+                    article.id
+                ).length;
 
 
             item.innerHTML=`
@@ -4080,9 +4601,15 @@ function renderAdmin(){
                         ${escapeHTML(article.category||"")}
                         ·
                         ${escapeHTML(article.region||"")}
+                        ${
+                            connectionCount
+                            ? ` · ${connectionCount} verbunden`
+                            : ""
+                        }
                     </small>
 
                 </div>
+
 
                 <div class="admin-actions">
 
@@ -4092,11 +4619,20 @@ function renderAdmin(){
                         Bearbeiten
                     </button>
 
+
+                    <button
+                        class="small connect"
+                        onclick="manageConnections(${article.id})">
+                        Verbinden
+                    </button>
+
+
                     <button
                         class="small duplicate"
                         onclick="duplicateArticle(${article.id})">
-                        ⧉ Duplizieren
+                        Duplizieren
                     </button>
+
 
                     <button
                         class="small delete"
@@ -4188,12 +4724,30 @@ async function saveArticle(){
     }
 
 
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
+
+
+    if(!token){
+
+        message.className="error";
+
+        message.textContent =
+            "Bitte erneut einloggen.";
+
+        return;
+
+    }
+
+
     try{
 
         saveButton.disabled=true;
 
         saveButton.textContent =
-            "⏳ Wird gespeichert...";
+            "Wird gespeichert...";
 
 
         let imageUrl =
@@ -4201,6 +4755,10 @@ async function saveArticle(){
 
 
         if(imageFile){
+
+            message.textContent =
+                "Bild wird hochgeladen...";
+
 
             imageUrl =
                 await uploadImage(
@@ -4216,24 +4774,40 @@ async function saveArticle(){
                 `news?id=eq.${editingId}`,
                 {
                     method:"PATCH",
+
                     headers:{
+
+                        "Authorization":
+                            `Bearer ${token}`,
+
                         "Prefer":
                             "return=minimal"
+
                     },
+
                     body:JSON.stringify({
+
                         title,
+
                         description,
+
                         category,
+
                         region,
+
                         content,
-                        image_url:imageUrl
+
+                        image_url:
+                            imageUrl
+
                     })
+
                 }
             );
 
 
             message.textContent =
-                "✅ Artikel aktualisiert.";
+                "Artikel aktualisiert.";
 
         }
         else{
@@ -4242,24 +4816,40 @@ async function saveArticle(){
                 "news",
                 {
                     method:"POST",
+
                     headers:{
+
+                        "Authorization":
+                            `Bearer ${token}`,
+
                         "Prefer":
                             "return=minimal"
+
                     },
+
                     body:JSON.stringify({
+
                         title,
+
                         description,
+
                         category,
+
                         region,
+
                         content,
-                        image_url:imageUrl
+
+                        image_url:
+                            imageUrl
+
                     })
+
                 }
             );
 
 
             message.textContent =
-                "📰 Artikel veröffentlicht.";
+                "Artikel veröffentlicht.";
 
         }
 
@@ -4267,7 +4857,6 @@ async function saveArticle(){
         clearForm();
 
         await loadNews();
-
 
     }
     catch(error){
@@ -4287,7 +4876,7 @@ async function saveArticle(){
         saveButton.textContent =
             editingId!==null
             ? "Änderungen speichern"
-            : "📰 Veröffentlichen";
+            : "Veröffentlichen";
 
     }
 
@@ -4302,13 +4891,14 @@ function editArticle(id){
 
     const article =
         articles.find(
-            x=>String(x.id)===String(id)
+            x=>
+                String(x.id)===
+                String(id)
         );
 
 
-    if(!article){
+    if(!article)
         return;
-    }
 
 
     editingId=id;
@@ -4338,7 +4928,8 @@ function editArticle(id){
     document.getElementById(
         "category"
     ).value =
-        article.category||"Deutschland";
+        article.category||
+        "Deutschland";
 
 
     document.getElementById(
@@ -4353,19 +4944,43 @@ function editArticle(id){
         article.content||"";
 
 
+    document.getElementById(
+        "imageFile"
+    ).value="";
+
+
+    const preview =
+        document.getElementById(
+            "imagePreview"
+        );
+
+
+    const current =
+        document.getElementById(
+            "currentImage"
+        );
+
+
     if(article.image_url){
-
-        const preview =
-            document.getElementById(
-                "imagePreview"
-            );
-
 
         preview.src =
             article.image_url;
 
+        preview.style.display =
+            "block";
 
-        preview.style.display="block";
+        current.style.display =
+            "block";
+
+        current.textContent =
+            "Aktuelles Bild – du kannst ein neues Bild auswählen.";
+
+    }
+    else{
+
+        preview.style.display="none";
+
+        current.style.display="none";
 
     }
 
@@ -4392,13 +5007,14 @@ function duplicateArticle(id){
 
     const article =
         articles.find(
-            x=>String(x.id)===String(id)
+            x=>
+                String(x.id)===
+                String(id)
         );
 
 
-    if(!article){
+    if(!article)
         return;
-    }
 
 
     editingId=null;
@@ -4416,7 +5032,8 @@ function duplicateArticle(id){
     document.getElementById(
         "title"
     ).value =
-        (article.title||"")+" – Update";
+        (article.title||"")+
+        " – Update";
 
 
     document.getElementById(
@@ -4428,7 +5045,8 @@ function duplicateArticle(id){
     document.getElementById(
         "category"
     ).value =
-        article.category||"Deutschland";
+        article.category||
+        "Deutschland";
 
 
     document.getElementById(
@@ -4444,9 +5062,14 @@ function duplicateArticle(id){
 
 
     document.getElementById(
+        "imageFile"
+    ).value="";
+
+
+    document.getElementById(
         "saveButton"
     ).textContent =
-        "📰 Als neuen Artikel veröffentlichen";
+        "Als neuen Artikel veröffentlichen";
 
 
     window.scrollTo({
@@ -4465,13 +5088,14 @@ async function deleteArticle(id){
 
     const article =
         articles.find(
-            x=>String(x.id)===String(id)
+            x=>
+                String(x.id)===
+                String(id)
         );
 
 
-    if(!article){
+    if(!article)
         return;
-    }
 
 
     if(
@@ -4485,12 +5109,37 @@ async function deleteArticle(id){
     }
 
 
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
+
+
+    if(!token){
+
+        alert(
+            "Bitte erneut einloggen."
+        );
+
+        return;
+
+    }
+
+
     try{
 
         await supabaseRequest(
             `news?id=eq.${id}`,
             {
-                method:"DELETE"
+                method:"DELETE",
+
+                headers:{
+
+                    "Authorization":
+                        `Bearer ${token}`
+
+                }
+
             }
         );
 
@@ -4541,7 +5190,8 @@ function clearForm(){
 
     document.getElementById(
         "category"
-    ).value="Deutschland";
+    ).value =
+        "Deutschland";
 
 
     document.getElementById(
@@ -4565,20 +5215,30 @@ function clearForm(){
         );
 
 
-    preview.style.display="none";
+    preview.style.display =
+        "none";
 
-    preview.removeAttribute("src");
+
+    preview.removeAttribute(
+        "src"
+    );
 
 
     document.getElementById(
         "currentImage"
-    ).style.display="none";
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "currentImage"
+    ).textContent="";
 
 
     document.getElementById(
         "saveButton"
     ).textContent =
-        "📰 Veröffentlichen";
+        "Veröffentlichen";
 
 
     document.getElementById(
@@ -4589,37 +5249,577 @@ function clearForm(){
 
 
 /* =====================================================
+ARTIKEL-VERBINDUNGEN
+===================================================== */
+
+let articleConnections =
+    JSON.parse(
+        localStorage.getItem(
+            "n_article_connections"
+        )||"{}"
+    );
+
+
+function saveConnections(){
+
+    localStorage.setItem(
+        "n_article_connections",
+        JSON.stringify(
+            articleConnections
+        )
+    );
+
+}
+
+
+function getConnections(id){
+
+    return Array.isArray(
+        articleConnections[id]
+    )
+    ? articleConnections[id]
+    : [];
+
+}
+
+
+function connectArticles(a,b){
+
+    a=String(a);
+
+    b=String(b);
+
+
+    if(a===b)
+        return;
+
+
+    if(!articleConnections[a]){
+
+        articleConnections[a]=[];
+
+    }
+
+
+    if(!articleConnections[b]){
+
+        articleConnections[b]=[];
+
+    }
+
+
+    if(
+        !articleConnections[a]
+            .includes(b)
+    ){
+
+        articleConnections[a]
+            .push(b);
+
+    }
+
+
+    if(
+        !articleConnections[b]
+            .includes(a)
+    ){
+
+        articleConnections[b]
+            .push(a);
+
+    }
+
+}
+
+
+function disconnectArticles(a,b){
+
+    a=String(a);
+
+    b=String(b);
+
+
+    articleConnections[a] =
+        (
+            articleConnections[a]||
+            []
+        )
+        .filter(
+            x=>
+                String(x)!==b
+        );
+
+
+    articleConnections[b] =
+        (
+            articleConnections[b]||
+            []
+        )
+        .filter(
+            x=>
+                String(x)!==a
+        );
+
+}
+
+
+window.connectionSourceId=null;
+
+
+function manageConnections(id){
+
+    const article =
+        articles.find(
+            x=>
+                String(x.id)===
+                String(id)
+        );
+
+
+    if(!article)
+        return;
+
+
+    window.connectionSourceId =
+        String(id);
+
+
+    document.getElementById(
+        "connectionSourceTitle"
+    ).textContent =
+        "Verbindungen für: "+
+        (article.title||"Ohne Titel");
+
+
+    document.getElementById(
+        "connectionSearch"
+    ).value="";
+
+
+    document.getElementById(
+        "connectionPickerMessage"
+    ).textContent="";
+
+
+    renderConnectionItems();
+
+
+    document.getElementById(
+        "connectionPicker"
+    ).style.display="flex";
+
+}
+
+
+function renderConnectionItems(){
+
+    const container =
+        document.getElementById(
+            "connectionItems"
+        );
+
+
+    if(!container)
+        return;
+
+
+    const sourceId =
+        String(
+            window.connectionSourceId||
+            ""
+        );
+
+
+    const source =
+        articles.find(
+            x=>
+                String(x.id)===
+                sourceId
+        );
+
+
+    if(!source){
+
+        container.innerHTML="";
+
+        return;
+
+    }
+
+
+    const connected =
+        getConnections(
+            sourceId
+        ).map(String);
+
+
+    const search =
+        (
+            document.getElementById(
+                "connectionSearch"
+            )?.value||
+            ""
+        )
+        .toLowerCase()
+        .trim();
+
+
+    const available =
+        articles.filter(
+            article=>{
+
+                if(
+                    String(article.id)===
+                    sourceId
+                ){
+
+                    return false;
+
+                }
+
+
+                const text =
+                    `${article.title||""} ${article.category||""} ${article.region||""}`
+                    .toLowerCase();
+
+
+                return(
+                    !search||
+                    text.includes(search)
+                );
+
+            }
+        );
+
+
+    if(!available.length){
+
+        container.innerHTML=`
+
+            <div class="status-box">
+                Keine passenden Artikel gefunden.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML="";
+
+
+    available.forEach(
+        article=>{
+
+            const checked =
+                connected.includes(
+                    String(article.id)
+                );
+
+
+            const item =
+                document.createElement(
+                    "label"
+                );
+
+
+            item.className =
+                "connection-item";
+
+
+            item.innerHTML=`
+
+                <input
+                    type="checkbox"
+                    value="${escapeHTML(article.id)}"
+                    ${checked?"checked":""}>
+
+
+                <div class="connection-item-main">
+
+                    <div class="connection-item-title">
+                        ${escapeHTML(article.title||"Ohne Titel")}
+                    </div>
+
+
+                    <div class="connection-item-meta">
+                        ${escapeHTML(article.category||"")}
+                        ·
+                        ${escapeHTML(article.region||"")}
+                    </div>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(item);
+
+        }
+    );
+
+}
+
+
+/* Suche im Verbindungsfenster */
+
+document.addEventListener(
+    "input",
+    event=>{
+
+        if(
+            event.target.id===
+            "connectionSearch"
+        ){
+
+            renderConnectionItems();
+
+        }
+
+    }
+);
+
+
+function saveSelectedConnections(){
+
+    const sourceId =
+        String(
+            window.connectionSourceId||
+            ""
+        );
+
+
+    if(!sourceId)
+        return;
+
+
+    const selected =
+        Array.from(
+            document.querySelectorAll(
+                "#connectionItems input[type='checkbox']:checked"
+            )
+        )
+        .map(
+            checkbox=>
+                String(
+                    checkbox.value
+                )
+        );
+
+
+    const oldConnections =
+        getConnections(
+            sourceId
+        ).map(String);
+
+
+    oldConnections.forEach(
+        otherId=>{
+
+            disconnectArticles(
+                sourceId,
+                otherId
+            );
+
+        }
+    );
+
+
+    selected.forEach(
+        otherId=>{
+
+            connectArticles(
+                sourceId,
+                otherId
+            );
+
+        }
+    );
+
+
+    saveConnections();
+
+    renderAdmin();
+
+    renderArticleConnections(
+        sourceId
+    );
+
+
+    const message =
+        document.getElementById(
+            "connectionPickerMessage"
+        );
+
+
+    message.className =
+        "success";
+
+
+    message.textContent =
+        "Verbindungen gespeichert.";
+
+
+    setTimeout(
+        ()=>closeConnectionPicker(),
+        700
+    );
+
+}
+
+
+function closeConnectionPicker(){
+
+    document.getElementById(
+        "connectionPicker"
+    ).style.display="none";
+
+
+    window.connectionSourceId =
+        null;
+
+}
+
+
+function outsideConnectionClick(
+    event
+){
+
+    if(
+        event.target===
+        document.getElementById(
+            "connectionPicker"
+        )
+    ){
+
+        closeConnectionPicker();
+
+    }
+
+}
+
+
+/* =====================================================
+VERBUNDENE ARTIKEL
+===================================================== */
+
+function renderArticleConnections(id){
+
+    const box =
+        document.getElementById(
+            "articleConnections"
+        );
+
+
+    if(!box)
+        return;
+
+
+    const ids =
+        getConnections(id);
+
+
+    const related =
+        ids
+            .map(
+                x=>
+                    articles.find(
+                        a=>
+                            String(a.id)===
+                            String(x)
+                    )
+            )
+            .filter(Boolean);
+
+
+    if(!related.length){
+
+        box.innerHTML="";
+
+        return;
+
+    }
+
+
+    box.innerHTML=`
+
+        <div class="special-box">
+
+            <h2>
+                Dazu passend
+            </h2>
+
+            <div class="related-grid">
+
+                ${
+                    related.map(
+                        a=>`
+
+                            <div
+                                class="related-card"
+                                onclick="openArticle(${a.id})">
+
+                                <strong>
+                                    ${renderMarkdown(a.title||"")}
+                                </strong>
+
+                                <small>
+                                    ${escapeHTML(a.category||"")}
+                                    ·
+                                    ${escapeHTML(a.region||"")}
+                                </small>
+
+                            </div>
+
+                        `
+                    ).join("")
+                }
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
 HTML SICHER
 ===================================================== */
 
 function escapeHTML(value){
 
-    return String(value??"")
+    return String(
+        value??""
+    )
 
-        .replace(
-            /&/g,
-            "&amp;"
-        )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
 
-        .replace(
-            /</g,
-            "&lt;"
-        )
+    .replace(
+        /</g,
+        "&lt;"
+    )
 
-        .replace(
-            />/g,
-            "&gt;"
-        )
+    .replace(
+        />/g,
+        "&gt;"
+    )
 
-        .replace(
-            /"/g,
-            "&quot;"
-        )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
 
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+    .replace(
+        /'/g,
+        "&#039;"
+    );
 
 }
 
