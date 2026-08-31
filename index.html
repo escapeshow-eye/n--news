@@ -104,11 +104,7 @@ header{
     background:#eee;
 }
 
-
-/* =====================================================
-   INSTALLATIONSBUTTON
-   NUR AUF STARTSEITE
-===================================================== */
+/* Installation oben nur auf Startseite */
 
 #installHeaderBtn{
     display:none;
@@ -122,7 +118,6 @@ header{
 main{
     max-width:1200px;
     margin:auto;
-
     padding:45px 20px 80px;
 }
 
@@ -136,19 +131,14 @@ main{
     min-height:70vh;
 }
 
-.start-page{
-    min-height:70vh;
-}
-
 .start-hero{
     text-align:center;
-    padding:20px 0 35px;
+    padding:25px 0 35px;
 }
 
 .start-label{
     font-size:12px;
     font-weight:900;
-
     color:#777;
 
     text-transform:uppercase;
@@ -157,7 +147,6 @@ main{
 
 .start-hero h1{
     font-size:clamp(48px,8vw,82px);
-
     line-height:.9;
     letter-spacing:-6px;
 
@@ -172,7 +161,7 @@ main{
 
 
 /* =====================================================
-   KOMPAKTE START-AUSWAHL
+   KOMPAKTE STARTLEISTE
 ===================================================== */
 
 .start-menu{
@@ -223,22 +212,21 @@ main{
 
 
 /* =====================================================
-   INSTALLATION AUF STARTSEITE
+   INSTALLATIONSBUTTON AUF START
 ===================================================== */
 
 .install-start-button{
     width:100%;
 
-    margin-top:15px;
-
     min-height:64px;
+
+    margin-top:15px;
 
     border:1px solid #111;
 
     border-radius:16px;
 
     background:#111;
-
     color:white;
 
     font-size:16px;
@@ -264,19 +252,16 @@ main{
     margin-bottom:25px;
 }
 
-.hero-label,
-.special-label{
+.hero-label{
     font-size:12px;
     font-weight:800;
-
     color:#777;
 
     text-transform:uppercase;
     letter-spacing:1.5px;
 }
 
-.hero h1,
-.special-header h1{
+.hero h1{
     font-size:clamp(42px,7vw,72px);
 
     line-height:.95;
@@ -285,15 +270,14 @@ main{
     margin:8px 0;
 }
 
-.hero p,
-.special-header p{
+.hero p{
     color:#777;
     font-size:18px;
 }
 
 
 /* =====================================================
-   SUCHFELD
+   SEARCH
 ===================================================== */
 
 .search{
@@ -310,6 +294,7 @@ main{
     border-radius:13px;
 
     outline:none;
+
     font-size:16px;
 }
 
@@ -344,7 +329,6 @@ main{
 .filter.active{
     background:#111;
     color:white;
-
     border-color:#111;
 }
 
@@ -369,7 +353,6 @@ main{
     border-radius:20px;
 
     overflow:hidden;
-
     cursor:pointer;
 
     transition:.2s;
@@ -387,7 +370,6 @@ main{
     height:190px;
 
     display:flex;
-
     justify-content:center;
     align-items:center;
 
@@ -411,7 +393,6 @@ main{
     height:100%;
 
     object-fit:cover;
-
     display:block;
 }
 
@@ -422,7 +403,6 @@ main{
 .news-meta{
     font-size:13px;
     color:#777;
-
     margin-bottom:8px;
 }
 
@@ -433,9 +413,7 @@ main{
 
 .news-card p{
     color:#777;
-
     line-height:1.5;
-
     margin:0;
 }
 
@@ -455,7 +433,6 @@ main{
     border-radius:20px;
 
     overflow:hidden;
-
     cursor:pointer;
 }
 
@@ -471,7 +448,6 @@ main{
         );
 
     display:flex;
-
     justify-content:center;
     align-items:center;
 
@@ -488,7 +464,6 @@ main{
     height:100%;
 
     object-fit:cover;
-
     display:block;
 }
 
@@ -499,7 +474,6 @@ main{
 .featured-label{
     font-size:12px;
     font-weight:900;
-
     margin-bottom:8px;
 }
 
@@ -533,7 +507,7 @@ main{
 
 
 /* =====================================================
-   ARTIKEL
+   ARTICLE
 ===================================================== */
 
 .article{
@@ -575,11 +549,9 @@ main{
 
 .article-image{
     width:100%;
-
     min-height:340px;
 
     display:flex;
-
     justify-content:center;
     align-items:center;
 
@@ -604,11 +576,9 @@ main{
 
 .article-image img{
     width:100%;
-
     max-height:550px;
 
     object-fit:cover;
-
     display:block;
 }
 
@@ -631,6 +601,32 @@ main{
 
 .special-header{
     margin-bottom:25px;
+}
+
+.special-label{
+    font-size:12px;
+    font-weight:900;
+
+    color:#777;
+
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+}
+
+.special-header h1{
+    font-size:
+        clamp(42px,7vw,76px);
+
+    line-height:.95;
+
+    letter-spacing:-5px;
+
+    margin:10px 0;
+}
+
+.special-header p{
+    color:#777;
+    font-size:18px;
 }
 
 .special-box{
@@ -723,7 +719,6 @@ main{
     color:#777;
 
     display:block;
-
     margin-bottom:5px;
 }
 
@@ -757,15 +752,12 @@ main{
 
 .traffic-controls{
     display:flex;
-
     gap:10px;
-
     flex-wrap:wrap;
 }
 
 .road-input{
     flex:1;
-
     min-width:200px;
 
     padding:14px;
@@ -780,15 +772,12 @@ main{
 .traffic-button.secondary,
 .secondary{
     background:#eee;
-
     color:#111;
 }
 
 .traffic-list{
     display:grid;
-
     gap:12px;
-
     margin-top:20px;
 }
 
@@ -828,7 +817,6 @@ main{
     display:inline-block;
 
     font-size:12px;
-
     font-weight:900;
 
     background:#eee;
@@ -897,7 +885,6 @@ main{
 
 .form-box textarea{
     min-height:230px;
-
     resize:vertical;
 }
 
@@ -928,7 +915,7 @@ main{
     background:#fafafa;
 }
 
-.image-upload-box input[type="file"]{
+.image-upload-box input[type=file]{
     margin:5px 0 0;
 
     padding:0;
@@ -979,6 +966,7 @@ main{
     display:flex;
 
     justify-content:space-between;
+
     align-items:center;
 
     margin-bottom:25px;
@@ -1042,32 +1030,28 @@ main{
 
 .delete{
     background:#fee2e2;
-
     color:#b91c1c;
 }
 
 .error{
     color:#dc2626;
-
     margin-top:12px;
 }
 
 .success{
     color:#15803d;
-
     margin-top:12px;
 }
 
 
 /* =====================================================
-   INSTALLATIONSMODAL
+   INSTALLATIONS-MODAL
 ===================================================== */
 
 .install-picker{
     display:none;
 
     position:fixed;
-
     inset:0;
 
     background:rgba(0,0,0,.55);
@@ -1124,9 +1108,7 @@ main{
 
 .device-choice{
     display:grid;
-
     gap:10px;
-
     margin-top:25px;
 }
 
@@ -1148,7 +1130,6 @@ main{
 
 .device-button:hover{
     background:#f5f5f5;
-
     border-color:#111;
 }
 
@@ -1156,13 +1137,11 @@ main{
     display:block;
 
     font-size:18px;
-
     margin-bottom:5px;
 }
 
 .device-button span{
     color:#777;
-
     font-size:14px;
 }
 
@@ -1182,7 +1161,6 @@ main{
 
 .install-steps{
     display:grid;
-
     gap:12px;
 }
 
@@ -1196,7 +1174,6 @@ main{
 
 .install-step strong{
     display:block;
-
     margin-bottom:5px;
 }
 
@@ -1232,7 +1209,7 @@ main{
 
 
 /* =====================================================
-   NEUE NEWS BENACHRICHTIGUNG
+   NEWS-BENACHRICHTIGUNG
 ===================================================== */
 
 .news-notification{
@@ -1381,6 +1358,7 @@ footer{
         min-height:62px;
 
         border-right:0;
+
         border-bottom:1px solid #ddd;
     }
 
@@ -1447,7 +1425,7 @@ footer{
     <div class="header-actions">
 
 
-        <!-- Nur Startseite -->
+        <!-- Installation nur auf Startseite -->
 
         <button
             id="installHeaderBtn"
@@ -1483,6 +1461,7 @@ footer{
 
         </button>
 
+
     </div>
 
 </header>
@@ -1496,31 +1475,23 @@ footer{
 ===================================================== -->
 
 <section
-    id="startPage"
-    class="start-page">
+    id="startPage">
 
 
     <div class="start-hero">
 
-
         <div class="start-label">
-
             n: Plattform
-
         </div>
 
 
         <h1>
-
             n:
-
         </h1>
 
 
         <p>
-
             Was möchtest du öffnen?
-
         </p>
 
     </div>
@@ -1685,6 +1656,7 @@ footer{
 
         </button>
 
+
     </div>
 
 
@@ -1748,11 +1720,12 @@ footer{
         id="articleText">
     </div>
 
+
 </section>
 
 
 <!-- =====================================================
-   VERKEHR & ROUTE
+   VERKEHR
 ===================================================== -->
 
 <section
@@ -1791,6 +1764,7 @@ footer{
             Route berechnen und aktuelle Verkehrsmeldungen abrufen.
 
         </p>
+
 
     </div>
 
@@ -1857,11 +1831,8 @@ footer{
 
                 <div class="route-stat">
 
-
                     <small>
-
                         Entfernung
-
                     </small>
 
 
@@ -1872,17 +1843,13 @@ footer{
 
                     </strong>
 
-
                 </div>
 
 
                 <div class="route-stat">
 
-
                     <small>
-
                         Fahrzeit
-
                     </small>
 
 
@@ -1893,26 +1860,19 @@ footer{
 
                     </strong>
 
-
                 </div>
 
 
                 <div class="route-stat">
 
-
                     <small>
-
                         Route
-
                     </small>
 
 
                     <strong>
-
                         Auto
-
                     </strong>
-
 
                 </div>
 
@@ -1931,12 +1891,14 @@ footer{
 
             </div>
 
+
         </div>
+
 
     </div>
 
 
-    <!-- VERKEHR -->
+    <!-- VERKEHRSMELDUNGEN -->
 
     <div class="special-box">
 
@@ -1982,6 +1944,7 @@ footer{
 
             </button>
 
+
         </div>
 
 
@@ -2003,6 +1966,7 @@ footer{
             Die Autobahn GmbH des Bundes.
 
         </div>
+
 
     </div>
 
@@ -2050,6 +2014,7 @@ footer{
 
         </p>
 
+
     </div>
 
 
@@ -2071,6 +2036,7 @@ footer{
 
         </p>
 
+
     </div>
 
 
@@ -2091,7 +2057,9 @@ footer{
 
         </p>
 
+
     </div>
+
 
 </section>
 
@@ -2150,6 +2118,7 @@ footer{
             id="loginError">
         </div>
 
+
     </div>
 
 
@@ -2175,6 +2144,7 @@ footer{
                 Ausloggen
 
             </button>
+
 
         </div>
 
@@ -2226,37 +2196,27 @@ footer{
 
 
                 <option value="Deutschland">
-
                     Deutschland
-
                 </option>
 
 
                 <option value="Welt">
-
                     Welt
-
                 </option>
 
 
                 <option value="Region">
-
                     Region
-
                 </option>
 
 
                 <option value="Sport">
-
                     Sport
-
                 </option>
 
 
                 <option value="Digital">
-
                     Digital
-
                 </option>
 
 
@@ -2343,6 +2303,7 @@ footer{
                 class="success">
             </div>
 
+
         </div>
 
 
@@ -2361,7 +2322,9 @@ footer{
 
     </div>
 
+
 </section>
+
 
 </main>
 
@@ -2410,7 +2373,8 @@ footer{
                 </h2>
 
 
-                <p style="color:#777;margin:0">
+                <p
+                    style="color:#777;margin:0">
 
                     Wähle zuerst dein Gerät aus.
 
@@ -2427,6 +2391,7 @@ footer{
                 ×
 
             </button>
+
 
         </div>
 
@@ -2526,9 +2491,7 @@ footer{
 
 
                     <strong>
-
                         1. Safari öffnen
-
                     </strong>
 
 
@@ -2541,9 +2504,7 @@ footer{
 
 
                     <strong>
-
                         2. Teilen öffnen
-
                     </strong>
 
 
@@ -2556,13 +2517,13 @@ footer{
 
 
                     <strong>
-
                         3. Zum Home-Bildschirm
-
                     </strong>
 
 
-                    Wähle „Zum Home-Bildschirm“ aus.
+                    Wähle
+                    „Zum Home-Bildschirm“
+                    aus.
 
                 </div>
 
@@ -2571,13 +2532,12 @@ footer{
 
 
                     <strong>
-
                         4. Hinzufügen
-
                     </strong>
 
 
-                    Bestätige mit „Hinzufügen“.
+                    Bestätige mit
+                    „Hinzufügen“.
 
                 </div>
 
@@ -2587,11 +2547,14 @@ footer{
 
             <div class="install-note">
 
-                Danach erscheint n: direkt auf dem
+
+                Danach erscheint n: direkt auf deinem
                 Home-Bildschirm und kann wie eine App
                 geöffnet werden.
 
+
             </div>
+
 
         </div>
 
@@ -2617,9 +2580,7 @@ footer{
 
 
                     <strong>
-
                         1. n: öffnen
-
                     </strong>
 
 
@@ -2633,9 +2594,7 @@ footer{
 
 
                     <strong>
-
                         2. Installation starten
-
                     </strong>
 
 
@@ -2650,9 +2609,7 @@ footer{
 
 
                     <strong>
-
                         3. Bestätigen
-
                     </strong>
 
 
@@ -2666,9 +2623,11 @@ footer{
 
             <div class="install-note">
 
-                Wenn dein Browser die direkte Installation
-                unterstützt, kannst du n: auch direkt
-                über den Installationsdialog installieren.
+
+                Wenn dein Browser die direkte
+                Installation unterstützt, kann
+                n: auch direkt installiert werden.
+
 
             </div>
 
@@ -2682,6 +2641,7 @@ footer{
                 Jetzt installieren
 
             </button>
+
 
         </div>
 
@@ -2707,13 +2667,12 @@ footer{
 
 
                     <strong>
-
                         1. n: öffnen
-
                     </strong>
 
 
-                    Öffne n: in einem unterstützten Browser.
+                    Öffne n: in einem
+                    unterstützten Browser.
 
                 </div>
 
@@ -2722,9 +2681,7 @@ footer{
 
 
                     <strong>
-
                         2. Installationssymbol
-
                     </strong>
 
 
@@ -2739,9 +2696,7 @@ footer{
 
 
                     <strong>
-
                         3. Installieren
-
                     </strong>
 
 
@@ -2752,6 +2707,7 @@ footer{
 
 
             </div>
+
 
         </div>
 
@@ -2782,13 +2738,15 @@ footer{
 
         </div>
 
+
     </div>
+
 
 </div>
 
 
 <!-- =====================================================
-   NEUE NEWS MELDUNG
+   NEUE NEWS BENACHRICHTIGUNG
 ===================================================== -->
 
 <div
@@ -2841,6 +2799,7 @@ footer{
 
     </div>
 
+
 </div>
 
 
@@ -2860,8 +2819,10 @@ footer{
 const SUPABASE_URL =
     "https://eqzmsuncndfsiedyfifb.supabase.co";
 
+
 const SUPABASE_KEY =
     "sb_publishable_eXY1gg_tIr-cRC2kdt0jbQ_QPfbEmkF";
+
 
 const STORAGE_BUCKET =
     "news-images";
@@ -2992,10 +2953,6 @@ function openNews(){
 }
 
 
-/* =====================================================
-   VERKEHR
-===================================================== */
-
 function openTraffic(){
 
     hideAllPages();
@@ -3022,10 +2979,6 @@ function openTraffic(){
 }
 
 
-/* =====================================================
-   BEREICH
-===================================================== */
-
 function openArea(){
 
     hideAllPages();
@@ -3048,10 +3001,6 @@ function openArea(){
 
 }
 
-
-/* =====================================================
-   SENDEPLAN
-===================================================== */
 
 function openSendeplan(){
 
@@ -3139,7 +3088,7 @@ async function tryNativeInstall(){
     catch(error){
 
         console.warn(
-            "Installation:",
+            "PWA Installation:",
             error
         );
 
@@ -3163,7 +3112,8 @@ function openInstallPicker(){
 
     document.getElementById(
         "installPicker"
-    ).style.display="flex";
+    ).style.display =
+        "flex";
 
 
     backToDeviceChoice();
@@ -3178,7 +3128,8 @@ function closeInstallPicker(){
 
     document.getElementById(
         "installPicker"
-    ).style.display="none";
+    ).style.display =
+        "none";
 
 }
 
@@ -3290,7 +3241,7 @@ function backToDeviceChoice(){
 
 
 /* =====================================================
-   ROUTE / GEOCODING
+   ROUTE
 ===================================================== */
 
 async function geocode(place){
@@ -3305,8 +3256,7 @@ async function geocode(place){
             url,
             {
                 headers:{
-                    "Accept":
-                        "application/json"
+                    "Accept":"application/json"
                 }
             }
         );
@@ -3363,13 +3313,17 @@ async function calculateRoute(){
     const start =
         document.getElementById(
             "routeStart"
-        ).value.trim();
+        )
+        .value
+        .trim();
 
 
     const destination =
         document.getElementById(
             "routeDestination"
-        ).value.trim();
+        )
+        .value
+        .trim();
 
 
     const status =
@@ -3611,7 +3565,7 @@ async function calculateRoute(){
 
 
 /* =====================================================
-   VERKEHRSMELDUNGEN
+   VERKEHR
 ===================================================== */
 
 async function loadTraffic(){
@@ -3677,24 +3631,21 @@ async function loadTraffic(){
                 type:"warning",
                 name:"Verkehrsmeldungen",
                 url:
-                    base+
-                    "warning"
+                    base+"warning"
             },
 
             {
                 type:"closure",
                 name:"Sperrungen",
                 url:
-                    base+
-                    "closure"
+                    base+"closure"
             },
 
             {
                 type:"roadwork",
                 name:"Baustellen",
                 url:
-                    base+
-                    "roadworks"
+                    base+"roadworks"
             }
 
         ];
@@ -3994,7 +3945,7 @@ function trafficIcon(type){
 
 
 /* =====================================================
-   BILD VORSCHAU
+   BILDVORSCHAU
 ===================================================== */
 
 function previewImage(event){
@@ -4089,7 +4040,7 @@ function previewImage(event){
 
 
 /* =====================================================
-   BILD UPLOAD
+   BILD HOCHLADEN
 ===================================================== */
 
 async function uploadImage(file){
@@ -4256,9 +4207,9 @@ async function loadNews(
 
 
         /*
-         * Erster Start:
-         * vorhandene Artikel werden als bekannt
-         * gespeichert und NICHT gemeldet.
+         * ERSTER LADEN:
+         * Alle vorhandenen Artikel gelten als
+         * bereits bekannt.
          */
 
         if(
@@ -4289,8 +4240,8 @@ async function loadNews(
 
 
         /*
-         * Nur neue IDs gelten als neue Nachrichten.
-         * Bearbeiten = gleiche ID = keine Meldung.
+         * Nur IDs, die vorher unbekannt waren,
+         * gelten als NEUE News.
          */
 
         const knownIds =
@@ -4317,7 +4268,12 @@ async function loadNews(
         renderAdmin();
 
 
-        const isNewsPageOpen =
+        /*
+         * Nur wenn gerade die News-Seite geöffnet ist,
+         * wird eine Meldung angezeigt.
+         */
+
+        const isNewsOpen =
             document.getElementById(
                 "home"
             ).style.display ===
@@ -4326,17 +4282,18 @@ async function loadNews(
 
         if(
             backgroundCheck &&
-            isNewsPageOpen &&
+            isNewsOpen &&
             newlyCreated.length
         ){
 
+            /*
+             * Neuester Artikel zuerst,
+             * weil Supabase bereits nach created_at
+             * absteigend sortiert.
+             */
+
             const newest =
                 newlyCreated[0];
-
-
-            rememberKnownNews(
-                newArticles
-            );
 
 
             showNewsNotification(
@@ -4344,13 +4301,16 @@ async function loadNews(
             );
 
         }
-        else{
 
-            rememberKnownNews(
-                newArticles
-            );
 
-        }
+        /*
+         * Nach jeder Abfrage werden die vorhandenen
+         * IDs als bekannt gespeichert.
+         */
+
+        rememberKnownNews(
+            newArticles
+        );
 
     }
     catch(error){
@@ -4361,16 +4321,16 @@ async function loadNews(
         );
 
 
-        /*
-         * Die Startseite bleibt bei einem
-         * vorübergehenden Netzwerkproblem normal.
-         */
-
         const grid =
             document.getElementById(
                 "newsGrid"
             );
 
+
+        /*
+         * Nur auf der News-Seite selbst
+         * die Fehlermeldung anzeigen.
+         */
 
         if(
             document.getElementById(
@@ -4408,6 +4368,7 @@ async function loadNews(
                         Erneut versuchen
 
                     </button>
+
 
                 </div>
 
@@ -4536,15 +4497,15 @@ function renderCurrentNews(){
     }
 
 
-    const searchInput =
+    const input =
         document.getElementById(
             "searchInput"
         );
 
 
     const search =
-        searchInput
-        ? searchInput.value
+        input
+        ? input.value
             .toLowerCase()
             .trim()
         : "";
@@ -4554,56 +4515,49 @@ function renderCurrentNews(){
 
         list =
             list.filter(
-                article => {
+                article =>
+                    String(
+                        article.title||
+                        ""
+                    )
+                    .toLowerCase()
+                    .includes(search)
 
-                    return(
+                    ||
 
-                        String(
-                            article.title||
-                            ""
-                        )
-                        .toLowerCase()
-                        .includes(search)
+                    String(
+                        article.description||
+                        ""
+                    )
+                    .toLowerCase()
+                    .includes(search)
 
-                        ||
+                    ||
 
-                        String(
-                            article.description||
-                            ""
-                        )
-                        .toLowerCase()
-                        .includes(search)
+                    String(
+                        article.content||
+                        ""
+                    )
+                    .toLowerCase()
+                    .includes(search)
 
-                        ||
+                    ||
 
-                        String(
-                            article.content||
-                            ""
-                        )
-                        .toLowerCase()
-                        .includes(search)
+                    String(
+                        article.category||
+                        ""
+                    )
+                    .toLowerCase()
+                    .includes(search)
 
-                        ||
+                    ||
 
-                        String(
-                            article.category||
-                            ""
-                        )
-                        .toLowerCase()
-                        .includes(search)
-
-                        ||
-
-                        String(
-                            article.region||
-                            ""
-                        )
-                        .toLowerCase()
-                        .includes(search)
-
-                    );
-
-                }
+                    String(
+                        article.region||
+                        ""
+                    )
+                    .toLowerCase()
+                    .includes(search)
             );
 
     }
@@ -4616,7 +4570,9 @@ function renderCurrentNews(){
 }
 
 
-function renderNews(list){
+function renderNews(
+    list
+){
 
     const grid =
         document.getElementById(
@@ -4660,7 +4616,7 @@ function renderNews(list){
 
 
     /*
-     * DAS IST WIEDER DEINE ALTE NEWS-OPTIK:
+     * GENAU WIE IN DEINER BISHERIGEN NEWS-SEITE:
      * Erster Artikel = Featured
      */
 
@@ -4668,7 +4624,7 @@ function renderNews(list){
         activeFilter ===
             "Alle" &&
         !hasSearch &&
-        list.length
+        list.length > 0
     ){
 
         const first =
@@ -4686,10 +4642,13 @@ function renderNews(list){
 
 
         featured.onclick =
-            () =>
+            function(){
+
                 openArticle(
                     first.id
                 );
+
+            };
 
 
         featured.innerHTML=`
@@ -4736,7 +4695,10 @@ function renderNews(list){
 
 
     list.forEach(
-        (item,index)=>{
+        function(
+            item,
+            index
+        ){
 
             if(
                 activeFilter ===
@@ -4761,10 +4723,13 @@ function renderNews(list){
 
 
             card.onclick =
-                () =>
+                function(){
+
                     openArticle(
                         item.id
                     );
+
+                };
 
 
             card.innerHTML=`
@@ -4931,7 +4896,9 @@ function searchNews(){
    ARTIKEL
 ===================================================== */
 
-function openArticle(id){
+function openArticle(
+    id
+){
 
     const article =
         articles.find(
@@ -4939,13 +4906,13 @@ function openArticle(id){
                 String(
                     item.id
                 ) ===
-                String(id)
+                String(
+                    id
+                )
         );
 
 
-    if(
-        !article
-    ){
+    if(!article){
 
         loadNews(false);
 
@@ -5055,7 +5022,7 @@ function openArticle(id){
 
 
 /* =====================================================
-   BENACHRICHTIGUNG
+   NEWS-BENACHRICHTIGUNG
 ===================================================== */
 
 function showNewsNotification(
@@ -5068,6 +5035,11 @@ function showNewsNotification(
 
     }
 
+
+    /*
+     * Falls bereits eine Meldung offen ist,
+     * ersetzen wir sie durch die neueste.
+     */
 
     notificationArticleId =
         article.id;
@@ -5650,6 +5622,10 @@ async function saveArticle(){
         editingId !== null;
 
 
+    const editingIdBeforeSave =
+        editingId;
+
+
     try{
 
         saveButton.disabled =
@@ -5725,7 +5701,7 @@ async function saveArticle(){
                     )
                     .eq(
                         "id",
-                        editingId
+                        editingIdBeforeSave
                     );
 
 
@@ -5821,7 +5797,7 @@ async function saveArticle(){
 
 
 /* =====================================================
-   ARTIKEL BEARBEITEN
+   EDIT
 ===================================================== */
 
 function editArticle(
@@ -5961,7 +5937,7 @@ function editArticle(
 
 
 /* =====================================================
-   ARTIKEL LÖSCHEN
+   DELETE
 ===================================================== */
 
 async function deleteArticle(
@@ -6157,7 +6133,7 @@ supabaseClient.auth.onAuthStateChange(
 
 
 /* =====================================================
-   NEUE NEWS ALLE 40 SEKUNDEN PRÜFEN
+   NEWS AUTOMATISCH PRÜFEN
 ===================================================== */
 
 setInterval(
@@ -6197,6 +6173,11 @@ if(
                 .catch(
                     error=>{
 
+                        /*
+                         * Die normale Website
+                         * funktioniert auch ohne sw.js.
+                         */
+
                         console.warn(
                             "Service Worker nicht verfügbar:",
                             error
@@ -6222,5 +6203,4 @@ showStart();
 </script>
 
 </body>
-
 </html>
