@@ -4,30 +4,18 @@
 <head>
 
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>n: – Nachrichten</title>
 
-<meta
-    name="theme-color"
-    content="#111111">
-
+<meta name="theme-color" content="#111111">
 <meta
     name="description"
     content="n: Nachrichten, Verkehr und regionale Informationen.">
 
-<link
-    rel="manifest"
-    href="manifest.json">
+<link rel="manifest" href="manifest.json">
 
 <style>
-
-/* =====================================================
-   GRUNDLAGEN
-===================================================== */
 
 *{
     box-sizing:border-box;
@@ -57,7 +45,7 @@ button{
 
 
 /* =====================================================
-   HEADER
+HEADER
 ===================================================== */
 
 header{
@@ -81,7 +69,6 @@ header{
     font-weight:900;
     letter-spacing:-4px;
     cursor:pointer;
-    user-select:none;
 }
 
 .header-actions{
@@ -97,14 +84,11 @@ header{
     padding:10px;
 
     border-radius:10px;
-    cursor:pointer;
 }
 
 .header-btn:hover{
     background:#eee;
 }
-
-/* Installation oben nur auf Startseite */
 
 #installHeaderBtn{
     display:none;
@@ -112,7 +96,7 @@ header{
 
 
 /* =====================================================
-   MAIN
+MAIN
 ===================================================== */
 
 main{
@@ -123,7 +107,7 @@ main{
 
 
 /* =====================================================
-   STARTSEITE
+STARTSEITE
 ===================================================== */
 
 #startPage{
@@ -161,11 +145,14 @@ main{
 
 
 /* =====================================================
-   KOMPAKTE STARTLEISTE
+START-MENÜ
 ===================================================== */
 
 .start-menu{
     width:100%;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
 
     background:white;
 
@@ -173,16 +160,10 @@ main{
     border-radius:18px;
 
     overflow:hidden;
-
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.04);
 }
 
 .start-menu-button{
-    min-height:72px;
+    min-height:74px;
 
     border:0;
     border-right:1px solid #ddd;
@@ -190,12 +171,10 @@ main{
     background:white;
     color:#111;
 
-    padding:15px;
-
     font-size:16px;
     font-weight:800;
 
-    transition:.15s;
+    padding:15px;
 }
 
 .start-menu-button:last-child{
@@ -206,15 +185,6 @@ main{
     background:#f5f5f5;
 }
 
-.start-menu-button:active{
-    background:#eee;
-}
-
-
-/* =====================================================
-   INSTALLATIONSBUTTON AUF START
-===================================================== */
-
 .install-start-button{
     width:100%;
 
@@ -222,17 +192,14 @@ main{
 
     margin-top:15px;
 
-    border:1px solid #111;
-
-    border-radius:16px;
-
     background:#111;
     color:white;
 
+    border:0;
+    border-radius:16px;
+
     font-size:16px;
     font-weight:800;
-
-    transition:.15s;
 }
 
 .install-start-button:hover{
@@ -241,7 +208,7 @@ main{
 
 
 /* =====================================================
-   NEWS
+NEWS
 ===================================================== */
 
 #home{
@@ -263,7 +230,6 @@ main{
 
 .hero h1{
     font-size:clamp(42px,7vw,72px);
-
     line-height:.95;
     letter-spacing:-4px;
 
@@ -277,7 +243,7 @@ main{
 
 
 /* =====================================================
-   SEARCH
+SEARCH
 ===================================================== */
 
 .search{
@@ -300,7 +266,7 @@ main{
 
 
 /* =====================================================
-   FILTER
+FILTER
 ===================================================== */
 
 .filters{
@@ -323,18 +289,18 @@ main{
     background:white;
 
     font-weight:700;
-    cursor:pointer;
 }
 
 .filter.active{
     background:#111;
     color:white;
+
     border-color:#111;
 }
 
 
 /* =====================================================
-   NEWS GRID
+NEWS GRID
 ===================================================== */
 
 .news-grid{
@@ -353,6 +319,7 @@ main{
     border-radius:20px;
 
     overflow:hidden;
+
     cursor:pointer;
 
     transition:.2s;
@@ -403,23 +370,27 @@ main{
 .news-meta{
     font-size:13px;
     color:#777;
+
     margin-bottom:8px;
 }
 
 .news-card h2{
     margin:0 0 10px;
+
     font-size:22px;
 }
 
 .news-card p{
     color:#777;
+
     line-height:1.5;
+
     margin:0;
 }
 
 
 /* =====================================================
-   FEATURED
+FEATURED
 ===================================================== */
 
 .featured{
@@ -433,6 +404,7 @@ main{
     border-radius:20px;
 
     overflow:hidden;
+
     cursor:pointer;
 }
 
@@ -448,6 +420,7 @@ main{
         );
 
     display:flex;
+
     justify-content:center;
     align-items:center;
 
@@ -473,7 +446,9 @@ main{
 
 .featured-label{
     font-size:12px;
+
     font-weight:900;
+
     margin-bottom:8px;
 }
 
@@ -486,7 +461,7 @@ main{
 
 
 /* =====================================================
-   STATUS
+STATUS
 ===================================================== */
 
 .status-box{
@@ -507,13 +482,14 @@ main{
 
 
 /* =====================================================
-   ARTICLE
+ARTICLE
 ===================================================== */
 
 .article{
     display:none;
 
     max-width:850px;
+
     margin:auto;
 }
 
@@ -526,7 +502,6 @@ main{
 
     border-radius:12px;
 
-    cursor:pointer;
     font-weight:700;
 
     margin-bottom:25px;
@@ -534,6 +509,7 @@ main{
 
 .article-meta{
     color:#777;
+
     margin-bottom:12px;
 }
 
@@ -542,6 +518,7 @@ main{
         clamp(40px,7vw,70px);
 
     line-height:.98;
+
     letter-spacing:-4px;
 
     margin:0 0 25px;
@@ -549,9 +526,11 @@ main{
 
 .article-image{
     width:100%;
+
     min-height:340px;
 
     display:flex;
+
     justify-content:center;
     align-items:center;
 
@@ -589,13 +568,14 @@ main{
 
 
 /* =====================================================
-   SPECIAL PAGES
+SPECIAL PAGES
 ===================================================== */
 
 .special-page{
     display:none;
 
     max-width:1000px;
+
     margin:auto;
 }
 
@@ -618,7 +598,6 @@ main{
         clamp(42px,7vw,76px);
 
     line-height:.95;
-
     letter-spacing:-5px;
 
     margin:10px 0;
@@ -647,7 +626,7 @@ main{
 
 
 /* =====================================================
-   ROUTE
+ROUTE
 ===================================================== */
 
 .route-form{
@@ -673,9 +652,7 @@ main{
     outline:none;
 }
 
-.route-button,
-.traffic-button,
-.primary{
+.route-button{
     border:0;
 
     background:#111;
@@ -687,12 +664,11 @@ main{
     border-radius:13px;
 
     font-weight:800;
-
-    cursor:pointer;
 }
 
 .route-result{
     display:none;
+
     margin-top:20px;
 }
 
@@ -719,6 +695,7 @@ main{
     color:#777;
 
     display:block;
+
     margin-bottom:5px;
 }
 
@@ -747,17 +724,20 @@ main{
 
 
 /* =====================================================
-   VERKEHR
+TRAFFIC
 ===================================================== */
 
 .traffic-controls{
     display:flex;
+
     gap:10px;
+
     flex-wrap:wrap;
 }
 
 .road-input{
     flex:1;
+
     min-width:200px;
 
     padding:14px;
@@ -769,15 +749,30 @@ main{
     font-size:16px;
 }
 
-.traffic-button.secondary,
-.secondary{
+.traffic-button{
+    border:0;
+
+    background:#111;
+
+    color:white;
+
+    padding:14px 20px;
+
+    border-radius:12px;
+
+    font-weight:800;
+}
+
+.traffic-button.secondary{
     background:#eee;
     color:#111;
 }
 
 .traffic-list{
     display:grid;
+
     gap:12px;
+
     margin-top:20px;
 }
 
@@ -817,6 +812,7 @@ main{
     display:inline-block;
 
     font-size:12px;
+
     font-weight:900;
 
     background:#eee;
@@ -838,13 +834,14 @@ main{
 
 
 /* =====================================================
-   ADMIN
+ADMIN
 ===================================================== */
 
 .admin{
     display:none;
 
     max-width:900px;
+
     margin:auto;
 }
 
@@ -866,6 +863,7 @@ main{
 .form-box input,
 .form-box textarea,
 .form-box select{
+
     width:100%;
 
     padding:13px 14px;
@@ -885,6 +883,7 @@ main{
 
 .form-box textarea{
     min-height:230px;
+
     resize:vertical;
 }
 
@@ -900,6 +899,7 @@ main{
 
 .form-box label{
     display:block;
+
     font-weight:700;
 }
 
@@ -915,7 +915,7 @@ main{
     background:#fafafa;
 }
 
-.image-upload-box input[type=file]{
+.image-upload-box input[type="file"]{
     margin:5px 0 0;
 
     padding:0;
@@ -949,17 +949,14 @@ main{
     font-size:14px;
 }
 
-.primary:hover{
-    background:#333;
+.primary{
+    background:#111;
+    color:white;
 }
 
-.secondary:hover{
-    background:#ddd;
-}
-
-.primary:disabled{
-    opacity:.6;
-    cursor:wait;
+.secondary{
+    background:#eee;
+    color:#111;
 }
 
 .admin-top{
@@ -1020,8 +1017,6 @@ main{
     padding:11px 16px;
 
     font-weight:800;
-
-    cursor:pointer;
 }
 
 .edit{
@@ -1030,28 +1025,32 @@ main{
 
 .delete{
     background:#fee2e2;
+
     color:#b91c1c;
 }
 
 .error{
     color:#dc2626;
+
     margin-top:12px;
 }
 
 .success{
     color:#15803d;
+
     margin-top:12px;
 }
 
 
 /* =====================================================
-   INSTALLATIONS-MODAL
+INSTALLATION
 ===================================================== */
 
 .install-picker{
     display:none;
 
     position:fixed;
+
     inset:0;
 
     background:rgba(0,0,0,.55);
@@ -1101,14 +1100,14 @@ main{
 
     border-radius:50%;
 
-    cursor:pointer;
-
     font-size:20px;
 }
 
 .device-choice{
     display:grid;
+
     gap:10px;
+
     margin-top:25px;
 }
 
@@ -1124,12 +1123,11 @@ main{
     border:1px solid #ddd;
 
     border-radius:16px;
-
-    transition:.15s;
 }
 
 .device-button:hover{
     background:#f5f5f5;
+
     border-color:#111;
 }
 
@@ -1137,11 +1135,13 @@ main{
     display:block;
 
     font-size:18px;
+
     margin-bottom:5px;
 }
 
 .device-button span{
     color:#777;
+
     font-size:14px;
 }
 
@@ -1161,6 +1161,7 @@ main{
 
 .install-steps{
     display:grid;
+
     gap:12px;
 }
 
@@ -1174,6 +1175,7 @@ main{
 
 .install-step strong{
     display:block;
+
     margin-bottom:5px;
 }
 
@@ -1199,17 +1201,15 @@ main{
     gap:8px;
 
     margin-top:22px;
-
-    flex-wrap:wrap;
 }
 
-.install-native-button{
+#nativeInstallButton{
     display:none;
 }
 
 
 /* =====================================================
-   NEWS-BENACHRICHTIGUNG
+NEUE NEWS BENACHRICHTIGUNG
 ===================================================== */
 
 .news-notification{
@@ -1278,13 +1278,11 @@ main{
     justify-content:flex-end;
 
     gap:8px;
-
-    flex-wrap:wrap;
 }
 
 
 /* =====================================================
-   FOOTER
+FOOTER
 ===================================================== */
 
 footer{
@@ -1299,7 +1297,7 @@ footer{
 
 
 /* =====================================================
-   RESPONSIVE
+RESPONSIVE
 ===================================================== */
 
 @media(max-width:900px){
@@ -1342,21 +1340,11 @@ footer{
         padding:30px 15px 60px;
     }
 
-    .start-hero{
-        padding:15px 0 25px;
-    }
-
-    .start-hero h1{
-        letter-spacing:-4px;
-    }
-
     .start-menu{
         grid-template-columns:1fr;
     }
 
     .start-menu-button{
-        min-height:62px;
-
         border-right:0;
 
         border-bottom:1px solid #ddd;
@@ -1386,16 +1374,8 @@ footer{
         width:100%;
     }
 
-    .admin-actions button{
-        flex:1;
-    }
-
     .install-modal{
         padding:20px;
-    }
-
-    .news-notification{
-        top:82px;
     }
 
 }
@@ -1404,11 +1384,12 @@ footer{
 
 </head>
 
+
 <body>
 
 
 <!-- =====================================================
-   HEADER
+HEADER
 ===================================================== -->
 
 <header>
@@ -1425,8 +1406,6 @@ footer{
     <div class="header-actions">
 
 
-        <!-- Installation nur auf Startseite -->
-
         <button
             id="installHeaderBtn"
             class="header-btn"
@@ -1438,8 +1417,6 @@ footer{
         </button>
 
 
-        <!-- Suche -->
-
         <button
             class="header-btn"
             onclick="toggleSearch()"
@@ -1449,8 +1426,6 @@ footer{
 
         </button>
 
-
-        <!-- Redaktion -->
 
         <button
             class="header-btn"
@@ -1471,7 +1446,7 @@ footer{
 
 
 <!-- =====================================================
-   STARTSEITE
+STARTSEITE
 ===================================================== -->
 
 <section
@@ -1480,19 +1455,27 @@ footer{
 
     <div class="start-hero">
 
+
         <div class="start-label">
+
             n: Plattform
+
         </div>
 
 
         <h1>
+
             n:
+
         </h1>
 
 
         <p>
+
             Was möchtest du öffnen?
+
         </p>
+
 
     </div>
 
@@ -1552,7 +1535,7 @@ footer{
 
 
 <!-- =====================================================
-   NEWS
+NEWS
 ===================================================== -->
 
 <section
@@ -1583,6 +1566,7 @@ footer{
 
         </p>
 
+
     </div>
 
 
@@ -1596,6 +1580,7 @@ footer{
             type="search"
             placeholder="Nachrichten durchsuchen..."
             oninput="searchNews()">
+
 
     </div>
 
@@ -1674,11 +1659,12 @@ footer{
 
     </div>
 
+
 </section>
 
 
 <!-- =====================================================
-   ARTIKEL
+ARTIKEL
 ===================================================== -->
 
 <section
@@ -1725,7 +1711,7 @@ footer{
 
 
 <!-- =====================================================
-   VERKEHR
+VERKEHR
 ===================================================== -->
 
 <section
@@ -1768,8 +1754,6 @@ footer{
 
     </div>
 
-
-    <!-- ROUTE -->
 
     <div class="special-box">
 
@@ -1831,6 +1815,7 @@ footer{
 
                 <div class="route-stat">
 
+
                     <small>
                         Entfernung
                     </small>
@@ -1843,10 +1828,12 @@ footer{
 
                     </strong>
 
+
                 </div>
 
 
                 <div class="route-stat">
+
 
                     <small>
                         Fahrzeit
@@ -1860,10 +1847,12 @@ footer{
 
                     </strong>
 
+
                 </div>
 
 
                 <div class="route-stat">
+
 
                     <small>
                         Route
@@ -1871,8 +1860,11 @@ footer{
 
 
                     <strong>
+
                         Auto
+
                     </strong>
+
 
                 </div>
 
@@ -1897,8 +1889,6 @@ footer{
 
     </div>
 
-
-    <!-- VERKEHRSMELDUNGEN -->
 
     <div class="special-box">
 
@@ -1970,11 +1960,12 @@ footer{
 
     </div>
 
+
 </section>
 
 
 <!-- =====================================================
-   BEREICH
+BEREICH
 ===================================================== -->
 
 <section
@@ -2065,7 +2056,7 @@ footer{
 
 
 <!-- =====================================================
-   ADMIN
+ADMIN
 ===================================================== -->
 
 <section
@@ -2329,10 +2320,6 @@ footer{
 </main>
 
 
-<!-- =====================================================
-   FOOTER
-===================================================== -->
-
 <footer>
 
     © 2026 n: · Nachrichten
@@ -2341,7 +2328,7 @@ footer{
 
 
 <!-- =====================================================
-   INSTALLATIONSMODAL
+INSTALLATIONSMODAL
 ===================================================== -->
 
 <div
@@ -2373,8 +2360,7 @@ footer{
                 </h2>
 
 
-                <p
-                    style="color:#777;margin:0">
+                <p style="color:#777;margin:0">
 
                     Wähle zuerst dein Gerät aus.
 
@@ -2407,16 +2393,12 @@ footer{
 
 
                 <strong>
-
                     iPhone / iPad
-
                 </strong>
 
 
                 <span>
-
                     Safari auf iOS oder iPadOS
-
                 </span>
 
 
@@ -2429,16 +2411,12 @@ footer{
 
 
                 <strong>
-
                     Android
-
                 </strong>
 
 
                 <span>
-
                     Chrome oder unterstützter Browser
-
                 </span>
 
 
@@ -2451,16 +2429,12 @@ footer{
 
 
                 <strong>
-
                     Computer
-
                 </strong>
 
 
                 <span>
-
                     Windows, macOS oder Linux
-
                 </span>
 
 
@@ -2469,8 +2443,6 @@ footer{
 
         </div>
 
-
-        <!-- APPLE -->
 
         <div
             id="installApple"
@@ -2489,11 +2461,9 @@ footer{
 
                 <div class="install-step">
 
-
                     <strong>
                         1. Safari öffnen
                     </strong>
-
 
                     Öffne n: direkt in Safari.
 
@@ -2502,11 +2472,9 @@ footer{
 
                 <div class="install-step">
 
-
                     <strong>
                         2. Teilen öffnen
                     </strong>
-
 
                     Öffne das Teilen-Menü von Safari.
 
@@ -2515,29 +2483,22 @@ footer{
 
                 <div class="install-step">
 
-
                     <strong>
                         3. Zum Home-Bildschirm
                     </strong>
 
-
-                    Wähle
-                    „Zum Home-Bildschirm“
-                    aus.
+                    Wähle „Zum Home-Bildschirm“ aus.
 
                 </div>
 
 
                 <div class="install-step">
 
-
                     <strong>
                         4. Hinzufügen
                     </strong>
 
-
-                    Bestätige mit
-                    „Hinzufügen“.
+                    Bestätige mit „Hinzufügen“.
 
                 </div>
 
@@ -2547,19 +2508,15 @@ footer{
 
             <div class="install-note">
 
-
                 Danach erscheint n: direkt auf deinem
                 Home-Bildschirm und kann wie eine App
                 geöffnet werden.
-
 
             </div>
 
 
         </div>
 
-
-        <!-- ANDROID -->
 
         <div
             id="installAndroid"
@@ -2578,11 +2535,9 @@ footer{
 
                 <div class="install-step">
 
-
                     <strong>
                         1. n: öffnen
                     </strong>
-
 
                     Öffne n: in Chrome oder einem
                     unterstützten Browser.
@@ -2592,11 +2547,9 @@ footer{
 
                 <div class="install-step">
 
-
                     <strong>
                         2. Installation starten
                     </strong>
-
 
                     Öffne das Browser-Menü und wähle
                     „App installieren“ oder
@@ -2607,11 +2560,9 @@ footer{
 
                 <div class="install-step">
 
-
                     <strong>
                         3. Bestätigen
                     </strong>
-
 
                     Bestätige die Installation.
 
@@ -2623,18 +2574,15 @@ footer{
 
             <div class="install-note">
 
-
-                Wenn dein Browser die direkte
-                Installation unterstützt, kann
-                n: auch direkt installiert werden.
-
+                Wenn dein Browser die direkte Installation
+                unterstützt, kann n: direkt installiert werden.
 
             </div>
 
 
             <button
                 id="nativeInstallButton"
-                class="primary install-native-button"
+                class="primary"
                 onclick="tryNativeInstall()"
                 style="margin-top:15px">
 
@@ -2645,8 +2593,6 @@ footer{
 
         </div>
 
-
-        <!-- COMPUTER -->
 
         <div
             id="installComputer"
@@ -2665,25 +2611,20 @@ footer{
 
                 <div class="install-step">
 
-
                     <strong>
                         1. n: öffnen
                     </strong>
 
-
-                    Öffne n: in einem
-                    unterstützten Browser.
+                    Öffne n: in einem unterstützten Browser.
 
                 </div>
 
 
                 <div class="install-step">
 
-
                     <strong>
                         2. Installationssymbol
                     </strong>
-
 
                     Bei unterstützten Browsern kann
                     neben der Adresszeile ein
@@ -2694,11 +2635,9 @@ footer{
 
                 <div class="install-step">
 
-
                     <strong>
                         3. Installieren
                     </strong>
-
 
                     Klicke auf „Installieren“ und
                     bestätige den Vorgang.
@@ -2746,7 +2685,7 @@ footer{
 
 
 <!-- =====================================================
-   NEUE NEWS BENACHRICHTIGUNG
+NEUE NEWS
 ===================================================== -->
 
 <div
@@ -2804,7 +2743,7 @@ footer{
 
 
 <!-- =====================================================
-   SUPABASE
+SUPABASE
 ===================================================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -2813,22 +2752,20 @@ footer{
 <script>
 
 /* =====================================================
-   SUPABASE
+SUPABASE
 ===================================================== */
 
 const SUPABASE_URL =
     "https://eqzmsuncndfsiedyfifb.supabase.co";
 
-
 const SUPABASE_KEY =
     "sb_publishable_eXY1gg_tIr-cRC2kdt0jbQ_QPfbEmkF";
-
 
 const STORAGE_BUCKET =
     "news-images";
 
 
-const supabaseClient =
+const supabase =
     window.supabase.createClient(
         SUPABASE_URL,
         SUPABASE_KEY,
@@ -2843,7 +2780,7 @@ const supabaseClient =
 
 
 /* =====================================================
-   VARIABLEN
+VARIABLEN
 ===================================================== */
 
 let articles = [];
@@ -2856,13 +2793,13 @@ let editingImageUrl = null;
 
 let deferredInstallPrompt = null;
 
-let newsInitialized = false;
+let knownNewsIds = [];
 
 let notificationArticleId = null;
 
 
 /* =====================================================
-   SEITEN
+SEITEN
 ===================================================== */
 
 function hideAllPages(){
@@ -2942,7 +2879,7 @@ function openNews(){
     ).style.display="none";
 
 
-    loadNews(false);
+    loadNews();
 
 
     window.scrollTo({
@@ -3011,7 +2948,7 @@ function openSendeplan(){
 
 
 /* =====================================================
-   PWA
+PWA INSTALLATION
 ===================================================== */
 
 window.addEventListener(
@@ -3052,11 +2989,8 @@ function updateNativeInstallButton(){
         );
 
 
-    if(!button){
-
+    if(!button)
         return;
-
-    }
 
 
     button.style.display =
@@ -3088,7 +3022,6 @@ async function tryNativeInstall(){
     catch(error){
 
         console.warn(
-            "PWA Installation:",
             error
         );
 
@@ -3105,19 +3038,17 @@ async function tryNativeInstall(){
 
 
 /* =====================================================
-   INSTALLATIONSMODAL
+INSTALLATIONSMODAL
 ===================================================== */
 
 function openInstallPicker(){
 
     document.getElementById(
         "installPicker"
-    ).style.display =
-        "flex";
+    ).style.display="flex";
 
 
     backToDeviceChoice();
-
 
     updateNativeInstallButton();
 
@@ -3128,8 +3059,7 @@ function closeInstallPicker(){
 
     document.getElementById(
         "installPicker"
-    ).style.display =
-        "none";
+    ).style.display="none";
 
 }
 
@@ -3152,7 +3082,7 @@ function outsideInstallClick(
 }
 
 
-function hideAllInstallInstructions(){
+function hideInstallInstructions(){
 
     document.getElementById(
         "installApple"
@@ -3180,7 +3110,7 @@ function showInstallInstructions(
     ).style.display="none";
 
 
-    hideAllInstallInstructions();
+    hideInstallInstructions();
 
 
     document.getElementById(
@@ -3230,7 +3160,7 @@ function backToDeviceChoice(){
     ).style.display="grid";
 
 
-    hideAllInstallInstructions();
+    hideInstallInstructions();
 
 
     document.getElementById(
@@ -3241,7 +3171,7 @@ function backToDeviceChoice(){
 
 
 /* =====================================================
-   ROUTE
+ROUTE
 ===================================================== */
 
 async function geocode(place){
@@ -3256,15 +3186,14 @@ async function geocode(place){
             url,
             {
                 headers:{
-                    "Accept":"application/json"
+                    "Accept":
+                        "application/json"
                 }
             }
         );
 
 
-    if(
-        !response.ok
-    ){
+    if(!response.ok){
 
         throw new Error(
             "Ort konnte nicht gesucht werden."
@@ -3277,9 +3206,7 @@ async function geocode(place){
         await response.json();
 
 
-    if(
-        !data.length
-    ){
+    if(!data.length){
 
         throw new Error(
             `„${place}“ wurde nicht gefunden.`
@@ -3346,10 +3273,8 @@ async function calculateRoute(){
         status.textContent =
             "Bitte Start und Ziel eingeben.";
 
-
         result.style.display =
             "none";
-
 
         return;
 
@@ -3358,7 +3283,6 @@ async function calculateRoute(){
 
     status.textContent =
         "Orte werden gesucht …";
-
 
     result.style.display =
         "none";
@@ -3399,9 +3323,7 @@ async function calculateRoute(){
             );
 
 
-        if(
-            !response.ok
-        ){
+        if(!response.ok){
 
             throw new Error(
                 "Routenserver nicht erreichbar."
@@ -3518,7 +3440,9 @@ async function calculateRoute(){
             `${maxLat+paddingLat}`;
 
 
-        const mapUrl =
+        document.getElementById(
+            "routeMap"
+        ).src =
             "https://www.openstreetmap.org/export/embed.html"+
             "?bbox="+
             encodeURIComponent(
@@ -3526,12 +3450,6 @@ async function calculateRoute(){
             )+
             "&layer=mapnik"+
             `&marker=${startPoint.lat},${startPoint.lon}`;
-
-
-        document.getElementById(
-            "routeMap"
-        ).src =
-            mapUrl;
 
 
         result.style.display =
@@ -3565,7 +3483,7 @@ async function calculateRoute(){
 
 
 /* =====================================================
-   VERKEHR
+VERKEHR
 ===================================================== */
 
 async function loadTraffic(){
@@ -3595,9 +3513,7 @@ async function loadTraffic(){
         );
 
 
-    if(
-        !roadInput
-    ){
+    if(!roadInput){
 
         status.textContent =
             "Bitte eine Autobahn eingeben, z. B. A3.";
@@ -3631,21 +3547,24 @@ async function loadTraffic(){
                 type:"warning",
                 name:"Verkehrsmeldungen",
                 url:
-                    base+"warning"
+                    base+
+                    "warning"
             },
 
             {
                 type:"closure",
                 name:"Sperrungen",
                 url:
-                    base+"closure"
+                    base+
+                    "closure"
             },
 
             {
                 type:"roadwork",
                 name:"Baustellen",
                 url:
-                    base+"roadworks"
+                    base+
+                    "roadworks"
             }
 
         ];
@@ -3669,11 +3588,8 @@ async function loadTraffic(){
 
                 if(
                     !response.ok
-                ){
-
+                )
                     continue;
-
-                }
 
 
                 const data =
@@ -3805,12 +3721,7 @@ async function loadTraffic(){
 
             <div class="status-box">
 
-                <strong>
-
-                    Verkehrsdaten nicht verfügbar.
-
-                </strong>
-
+                Verkehrsdaten nicht verfügbar.
 
                 <br><br>
 
@@ -3836,7 +3747,7 @@ function extractArray(data){
     }
 
 
-    const possibleKeys=[
+    const keys=[
 
         "warning",
         "warnings",
@@ -3852,7 +3763,7 @@ function extractArray(data){
 
     for(
         const key
-        of possibleKeys
+        of keys
     ){
 
         if(
@@ -3878,17 +3789,11 @@ function getTrafficTitle(item){
     return(
 
         item.title||
-
         item.headline||
-
         item.subtitle||
-
         item.description||
-
         item.display_type||
-
         item.type||
-
         "Verkehrsmeldung"
 
     );
@@ -3901,17 +3806,11 @@ function getTrafficDescription(item){
     return(
 
         item.description||
-
         item.subtitle||
-
         item.text||
-
         item.message||
-
         item.information||
-
         item.detail||
-
         "Keine weiteren Informationen verfügbar."
 
     );
@@ -3923,20 +3822,14 @@ function trafficIcon(type){
 
     if(
         type==="closure"
-    ){
-
+    )
         return "Sperrung";
-
-    }
 
 
     if(
         type==="roadwork"
-    ){
-
+    )
         return "Baustelle";
-
-    }
 
 
     return "Warnung";
@@ -3945,7 +3838,7 @@ function trafficIcon(type){
 
 
 /* =====================================================
-   BILDVORSCHAU
+BILD VORSCHAU
 ===================================================== */
 
 function previewImage(event){
@@ -4020,7 +3913,7 @@ function previewImage(event){
 
 
     reader.onload =
-        event=>{
+        function(event){
 
             preview.src =
                 event.target.result;
@@ -4040,16 +3933,13 @@ function previewImage(event){
 
 
 /* =====================================================
-   BILD HOCHLADEN
+BILD HOCHLADEN
 ===================================================== */
 
 async function uploadImage(file){
 
-    if(!file){
-
+    if(!file)
         return null;
-
-    }
 
 
     if(
@@ -4078,21 +3968,22 @@ async function uploadImage(file){
 
 
     const {
-        data:sessionData,
+        data:{
+            session
+        },
         error:sessionError
     } =
-        await supabaseClient.auth.getSession();
-
-
-    if(sessionError){
-
-        throw sessionError;
-
-    }
+        await supabase.auth.getSession();
 
 
     if(
-        !sessionData.session
+        sessionError
+    )
+        throw sessionError;
+
+
+    if(
+        !session
     ){
 
         throw new Error(
@@ -4110,22 +4001,18 @@ async function uploadImage(file){
             .replace(
                 /[^a-z0-9]/g,
                 ""
-            );
-
-
-    const safeExtension =
-        extension ||
+            ) ||
         "jpg";
 
 
     const filename =
-        `${Date.now()}-${crypto.randomUUID()}.${safeExtension}`;
+        `${Date.now()}-${crypto.randomUUID()}.${extension}`;
 
 
     const {
         error
     } =
-        await supabaseClient
+        await supabase
             .storage
             .from(
                 STORAGE_BUCKET
@@ -4143,17 +4030,14 @@ async function uploadImage(file){
             );
 
 
-    if(error){
-
+    if(error)
         throw error;
-
-    }
 
 
     const {
         data
     } =
-        supabaseClient
+        supabase
             .storage
             .from(
                 STORAGE_BUCKET
@@ -4169,20 +4053,29 @@ async function uploadImage(file){
 
 
 /* =====================================================
-   NEWS LADEN
+NEWS LADEN
 ===================================================== */
 
-async function loadNews(
-    backgroundCheck=false
-){
+async function loadNews(){
+
+    const grid =
+        document.getElementById(
+            "newsGrid"
+        );
+
 
     try{
+
+        /*
+         * DAS BLEIBT DIE FUNKTIONIERENDE
+         * SUPABASE-ABFRAGE.
+         */
 
         const {
             data,
             error
         } =
-            await supabaseClient
+            await supabase
                 .from("news")
                 .select("*")
                 .order(
@@ -4200,181 +4093,132 @@ async function loadNews(
         }
 
 
-        const newArticles =
+        const freshArticles =
             Array.isArray(data)
             ? data
             : [];
 
 
         /*
-         * ERSTER LADEN:
-         * Alle vorhandenen Artikel gelten als
-         * bereits bekannt.
+         * Beim allerersten Laden:
+         * nichts melden.
          */
 
         if(
-            !newsInitialized
+            knownNewsIds.length===0
         ){
 
-            articles =
-                newArticles;
+            knownNewsIds =
+                freshArticles
+                    .map(
+                        article =>
+                            String(
+                                article.id
+                            )
+                    );
 
 
-            newsInitialized =
-                true;
+            saveKnownNewsIds();
+
+        }
+        else{
+
+            /*
+             * Nur IDs, die vorher nicht bekannt waren,
+             * sind neue Nachrichten.
+             */
+
+            const newArticles =
+                freshArticles.filter(
+                    article =>
+                        !knownNewsIds.includes(
+                            String(
+                                article.id
+                            )
+                        )
+                );
 
 
-            rememberKnownNews(
-                newArticles
-            );
+            if(
+                newArticles.length > 0 &&
+                document.getElementById(
+                    "home"
+                ).style.display === "block"
+            ){
+
+                showNewsNotification(
+                    newArticles[0]
+                );
+
+            }
 
 
-            renderCurrentNews();
+            knownNewsIds =
+                freshArticles
+                    .map(
+                        article =>
+                            String(
+                                article.id
+                            )
+                    );
 
-            renderAdmin();
 
-
-            return;
+            saveKnownNewsIds();
 
         }
 
 
-        /*
-         * Nur IDs, die vorher unbekannt waren,
-         * gelten als NEUE News.
-         */
-
-        const knownIds =
-            getKnownNewsIds();
-
-
-        const newlyCreated =
-            newArticles.filter(
-                article =>
-                    !knownIds.includes(
-                        String(
-                            article.id
-                        )
-                    )
-            );
-
-
         articles =
-            newArticles;
+            freshArticles;
 
 
         renderCurrentNews();
 
         renderAdmin();
 
-
-        /*
-         * Nur wenn gerade die News-Seite geöffnet ist,
-         * wird eine Meldung angezeigt.
-         */
-
-        const isNewsOpen =
-            document.getElementById(
-                "home"
-            ).style.display ===
-            "block";
-
-
-        if(
-            backgroundCheck &&
-            isNewsOpen &&
-            newlyCreated.length
-        ){
-
-            /*
-             * Neuester Artikel zuerst,
-             * weil Supabase bereits nach created_at
-             * absteigend sortiert.
-             */
-
-            const newest =
-                newlyCreated[0];
-
-
-            showNewsNotification(
-                newest
-            );
-
-        }
-
-
-        /*
-         * Nach jeder Abfrage werden die vorhandenen
-         * IDs als bekannt gespeichert.
-         */
-
-        rememberKnownNews(
-            newArticles
-        );
-
     }
     catch(error){
 
         console.error(
-            "News laden:",
+            "News:",
             error
         );
 
 
-        const grid =
-            document.getElementById(
-                "newsGrid"
-            );
+        grid.innerHTML=`
+
+            <div class="status-box">
+
+                <strong>
+
+                    Nachrichten konnten nicht geladen werden.
+
+                </strong>
 
 
-        /*
-         * Nur auf der News-Seite selbst
-         * die Fehlermeldung anzeigen.
-         */
-
-        if(
-            document.getElementById(
-                "home"
-            ).style.display ===
-            "block"
-        ){
-
-            grid.innerHTML=`
-
-                <div class="status-box">
-
-                    <strong>
-
-                        Nachrichten konnten nicht geladen werden.
-
-                    </strong>
+                <br><br>
 
 
-                    <br><br>
-
-                    ${escapeHTML(
-                        error.message||
-                        "Unbekannter Fehler"
-                    )}
+                ${escapeHTML(
+                    error.message||
+                    "Unbekannter Fehler"
+                )}
 
 
-                    <br><br>
+                <br><br>
 
 
-                    <button
-                        class="secondary"
-                        onclick="loadNews(false)">
+                <button
+                    class="secondary"
+                    onclick="loadNews()">
 
-                        Erneut versuchen
+                    Erneut versuchen
 
-                    </button>
+                </button>
 
+            </div>
 
-                </div>
-
-            `;
-
-        }
+        `;
 
     }
 
@@ -4382,70 +4226,61 @@ async function loadNews(
 
 
 /* =====================================================
-   BEKANNTE NEWS
+BEKANNTE NEWS SPEICHERN
 ===================================================== */
 
-const KNOWN_NEWS_KEY =
-    "n_known_news_ids";
-
-
-function getKnownNewsIds(){
-
-    try{
-
-        const stored =
-            JSON.parse(
-                localStorage.getItem(
-                    KNOWN_NEWS_KEY
-                )||
-                "[]"
-            );
-
-
-        return Array.isArray(
-            stored
-        )
-        ? stored.map(String)
-        : [];
-
-    }
-    catch{
-
-        return [];
-
-    }
-
-}
-
-
-function rememberKnownNews(
-    newsList
-){
-
-    const ids =
-        newsList
-            .map(
-                article =>
-                    String(
-                        article.id
-                    )
-            )
-            .slice(
-                0,
-                500
-            );
-
+function saveKnownNewsIds(){
 
     localStorage.setItem(
-        KNOWN_NEWS_KEY,
-        JSON.stringify(ids)
+        "n_known_news_ids",
+        JSON.stringify(
+            knownNewsIds.slice(
+                0,
+                500
+            )
+        )
     );
 
 }
 
 
+function loadKnownNewsIds(){
+
+    try{
+
+        const saved =
+            JSON.parse(
+                localStorage.getItem(
+                    "n_known_news_ids"
+                )||
+                "[]"
+            );
+
+
+        if(
+            Array.isArray(saved)
+        ){
+
+            knownNewsIds =
+                saved.map(
+                    String
+                );
+
+        }
+
+    }
+    catch{
+
+        knownNewsIds =
+            [];
+
+    }
+
+}
+
+
 /* =====================================================
-   NEWS DARSTELLUNG
+NEWS RENDER
 ===================================================== */
 
 function getNewsImageHTML(
@@ -4460,9 +4295,9 @@ function getNewsImageHTML(
 
             <img
                 src="${escapeHTML(article.image_url)}"
-                alt="${escapeHTML(article.title || "Artikelbild")}"
+                alt="${escapeHTML(article.title||"Artikelbild")}"
                 loading="lazy"
-                onerror="this.style.display='none'; this.parentElement.textContent='n:'">
+                onerror="this.style.display='none';this.parentElement.textContent='n:'">
 
         `;
 
@@ -4516,6 +4351,7 @@ function renderCurrentNews(){
         list =
             list.filter(
                 article =>
+
                     String(
                         article.title||
                         ""
@@ -4558,6 +4394,7 @@ function renderCurrentNews(){
                     )
                     .toLowerCase()
                     .includes(search)
+
             );
 
     }
@@ -4604,20 +4441,20 @@ function renderNews(
     }
 
 
-    const searchInput =
+    const input =
         document.getElementById(
             "searchInput"
         );
 
 
     const hasSearch =
-        searchInput &&
-        searchInput.value.trim();
+        input &&
+        input.value.trim();
 
 
     /*
-     * GENAU WIE IN DEINER BISHERIGEN NEWS-SEITE:
-     * Erster Artikel = Featured
+     * ORIGINAL-LOOK:
+     * erster Artikel groß
      */
 
     if(
@@ -4642,13 +4479,10 @@ function renderNews(
 
 
         featured.onclick =
-            function(){
-
+            () =>
                 openArticle(
                     first.id
                 );
-
-            };
 
 
         featured.innerHTML=`
@@ -4695,10 +4529,10 @@ function renderNews(
 
 
     list.forEach(
-        function(
+        (
             item,
             index
-        ){
+        )=>{
 
             if(
                 activeFilter ===
@@ -4723,13 +4557,10 @@ function renderNews(
 
 
             card.onclick =
-                function(){
-
+                () =>
                     openArticle(
                         item.id
                     );
-
-                };
 
 
             card.innerHTML=`
@@ -4803,7 +4634,7 @@ function renderNews(
 
 
 /* =====================================================
-   FILTER
+FILTER
 ===================================================== */
 
 function filterNews(
@@ -4820,8 +4651,8 @@ function filterNews(
             ".filter"
         )
         .forEach(
-            element =>
-                element.classList.remove(
+            item =>
+                item.classList.remove(
                     "active"
                 )
         );
@@ -4838,7 +4669,7 @@ function filterNews(
 
 
 /* =====================================================
-   SUCHE
+SUCHE
 ===================================================== */
 
 function toggleSearch(){
@@ -4893,7 +4724,7 @@ function searchNews(){
 
 
 /* =====================================================
-   ARTIKEL
+ARTIKEL
 ===================================================== */
 
 function openArticle(
@@ -4912,13 +4743,8 @@ function openArticle(
         );
 
 
-    if(!article){
-
-        loadNews(false);
-
+    if(!article)
         return;
-
-    }
 
 
     hideAllPages();
@@ -4931,6 +4757,13 @@ function openArticle(
 
 
     document.getElementById(
+        "articleTitle"
+    ).textContent =
+        article.title||
+        "";
+
+
+    document.getElementById(
         "articleMeta"
     ).textContent =
 
@@ -4939,13 +4772,6 @@ function openArticle(
             ? " · "+article.region
             : ""
         }`;
-
-
-    document.getElementById(
-        "articleTitle"
-    ).textContent =
-        article.title||
-        "";
 
 
     const imageBox =
@@ -4978,11 +4804,9 @@ function openArticle(
 
 
         image.onerror =
-            function(){
-
+            ()=>{
                 imageBox.textContent =
                     "n:";
-
             };
 
 
@@ -5022,24 +4846,12 @@ function openArticle(
 
 
 /* =====================================================
-   NEWS-BENACHRICHTIGUNG
+NEWS MELDUNG
 ===================================================== */
 
 function showNewsNotification(
     article
 ){
-
-    if(!article){
-
-        return;
-
-    }
-
-
-    /*
-     * Falls bereits eine Meldung offen ist,
-     * ersetzen wir sie durch die neueste.
-     */
 
     notificationArticleId =
         article.id;
@@ -5050,12 +4862,6 @@ function showNewsNotification(
     ).textContent =
         article.title||
         "Neue Nachricht";
-
-
-    document.getElementById(
-        "newsNotificationText"
-    ).textContent =
-        "Eine neue Nachricht wurde gerade veröffentlicht. Möchtest du sie anschauen?";
 
 
     document.getElementById(
@@ -5103,7 +4909,7 @@ function openNotificationArticle(){
 
 
 /* =====================================================
-   ADMIN
+ADMIN
 ===================================================== */
 
 async function openAdmin(){
@@ -5174,7 +4980,7 @@ async function login(){
             data,
             error
         } =
-            await supabaseClient
+            await supabase
                 .auth
                 .signInWithPassword({
 
@@ -5194,19 +5000,12 @@ async function login(){
         }
 
 
-        console.log(
-            "Login erfolgreich:",
-            data.user
-        );
-
-
         showDashboard();
 
     }
     catch(error){
 
         console.error(
-            "Login:",
             error
         );
 
@@ -5231,7 +5030,7 @@ async function checkSession(){
             data,
             error
         } =
-            await supabaseClient
+            await supabase
                 .auth
                 .getSession();
 
@@ -5269,7 +5068,6 @@ async function checkSession(){
     catch(error){
 
         console.error(
-            "Session:",
             error
         );
 
@@ -5311,20 +5109,9 @@ function showDashboard(){
 
 async function logout(){
 
-    try{
-
-        await supabaseClient
-            .auth
-            .signOut();
-
-    }
-    catch(error){
-
-        console.error(
-            error
-        );
-
-    }
+    await supabase
+        .auth
+        .signOut();
 
 
     document.getElementById(
@@ -5345,7 +5132,7 @@ async function logout(){
 
 
 /* =====================================================
-   ADMIN LISTE
+ADMIN LISTE
 ===================================================== */
 
 function renderAdmin(){
@@ -5356,11 +5143,8 @@ function renderAdmin(){
         );
 
 
-    if(!list){
-
+    if(!list)
         return;
-
-    }
 
 
     list.innerHTML =
@@ -5400,128 +5184,67 @@ function renderAdmin(){
                 "admin-item";
 
 
-            const left =
-                document.createElement(
-                    "div"
-                );
+            item.innerHTML=`
+
+                <div>
+
+                    <div class="admin-item-title">
+
+                        ${escapeHTML(
+                            article.title||
+                            ""
+                        )}
+
+                    </div>
 
 
-            const title =
-                document.createElement(
-                    "div"
-                );
+                    <small>
+
+                        ${escapeHTML(
+                            article.category||
+                            ""
+                        )}
+
+                        ${
+                            article.region
+                            ? " · "
+                            : ""
+                        }
+
+                        ${escapeHTML(
+                            article.region||
+                            ""
+                        )}
+
+                    </small>
+
+                </div>
 
 
-            title.className =
-                "admin-item-title";
+                <div class="admin-actions">
 
 
-            title.textContent =
-                article.title||
-                "";
+                    <button
+                        class="small edit"
+                        onclick="editArticle(${article.id})">
+
+                        Bearbeiten
+
+                    </button>
 
 
-            const small =
-                document.createElement(
-                    "small"
-                );
+                    <button
+                        class="small delete"
+                        onclick="deleteArticle(${article.id})">
+
+                        Löschen
+
+                    </button>
 
 
-            small.textContent =
+                </div>
 
-                `${article.category||""}${
-                    article.region
-                    ? " · "+article.region
-                    : ""
-                }`;
-
-
-            left.appendChild(
-                title
-            );
-
-
-            left.appendChild(
-                small
-            );
-
-
-            const actions =
-                document.createElement(
-                    "div"
-                );
-
-
-            actions.className =
-                "admin-actions";
-
-
-            const editButton =
-                document.createElement(
-                    "button"
-                );
-
-
-            editButton.className =
-                "small edit";
-
-
-            editButton.textContent =
-                "Bearbeiten";
-
-
-            editButton.onclick =
-                function(){
-
-                    editArticle(
-                        article.id
-                    );
-
-                };
-
-
-            const deleteButton =
-                document.createElement(
-                    "button"
-                );
-
-
-            deleteButton.className =
-                "small delete";
-
-
-            deleteButton.textContent =
-                "Löschen";
-
-
-            deleteButton.onclick =
-                function(){
-
-                    deleteArticle(
-                        article.id
-                    );
-
-                };
-
-
-            actions.appendChild(
-                editButton
-            );
-
-
-            actions.appendChild(
-                deleteButton
-            );
-
-
-            item.appendChild(
-                left
-            );
-
-
-            item.appendChild(
-                actions
-            );
+            `;
 
 
             list.appendChild(
@@ -5535,7 +5258,7 @@ function renderAdmin(){
 
 
 /* =====================================================
-   ARTIKEL SPEICHERN
+ARTIKEL SPEICHERN
 ===================================================== */
 
 async function saveArticle(){
@@ -5543,47 +5266,37 @@ async function saveArticle(){
     const title =
         document.getElementById(
             "title"
-        )
-        .value
-        .trim();
+        ).value.trim();
 
 
     const description =
         document.getElementById(
             "description"
-        )
-        .value
-        .trim();
+        ).value.trim();
 
 
     const category =
         document.getElementById(
             "category"
-        )
-        .value;
+        ).value;
 
 
     const region =
         document.getElementById(
             "region"
-        )
-        .value
-        .trim();
+        ).value.trim();
 
 
     const content =
         document.getElementById(
             "content"
-        )
-        .value
-        .trim();
+        ).value.trim();
 
 
     const imageFile =
         document.getElementById(
             "imageFile"
-        )
-        .files[0];
+        ).files[0];
 
 
     const message =
@@ -5618,11 +5331,7 @@ async function saveArticle(){
     }
 
 
-    const wasEditing =
-        editingId !== null;
-
-
-    const editingIdBeforeSave =
+    const currentEditingId =
         editingId;
 
 
@@ -5636,14 +5345,6 @@ async function saveArticle(){
             "Wird gespeichert...";
 
 
-        message.className =
-            "success";
-
-
-        message.textContent =
-            "";
-
-
         let imageUrl =
             editingImageUrl;
 
@@ -5651,10 +5352,6 @@ async function saveArticle(){
         if(
             imageFile
         ){
-
-            message.textContent =
-                "Bild wird hochgeladen...";
-
 
             imageUrl =
                 await uploadImage(
@@ -5664,7 +5361,7 @@ async function saveArticle(){
         }
 
 
-        const articleData = {
+        const row={
 
             title:
                 title,
@@ -5688,20 +5385,21 @@ async function saveArticle(){
 
 
         if(
-            wasEditing
+            currentEditingId !==
+            null
         ){
 
             const {
                 error
             } =
-                await supabaseClient
+                await supabase
                     .from("news")
                     .update(
-                        articleData
+                        row
                     )
                     .eq(
                         "id",
-                        editingIdBeforeSave
+                        currentEditingId
                     );
 
 
@@ -5710,10 +5408,6 @@ async function saveArticle(){
                 throw error;
 
             }
-
-
-            message.textContent =
-                "Artikel aktualisiert.";
 
         }
         else{
@@ -5721,10 +5415,10 @@ async function saveArticle(){
             const {
                 error
             } =
-                await supabaseClient
+                await supabase
                     .from("news")
                     .insert(
-                        articleData
+                        row
                     );
 
 
@@ -5734,22 +5428,12 @@ async function saveArticle(){
 
             }
 
-
-            message.textContent =
-                "Artikel veröffentlicht.";
-
         }
 
 
         clearForm();
 
-
-        await loadNews(
-            false
-        );
-
-
-        renderAdmin();
+        await loadNews();
 
 
         message.className =
@@ -5757,7 +5441,8 @@ async function saveArticle(){
 
 
         message.textContent =
-            wasEditing
+            currentEditingId !==
+            null
             ? "Artikel aktualisiert."
             : "Artikel veröffentlicht.";
 
@@ -5765,7 +5450,6 @@ async function saveArticle(){
     catch(error){
 
         console.error(
-            "Speichern:",
             error
         );
 
@@ -5797,7 +5481,7 @@ async function saveArticle(){
 
 
 /* =====================================================
-   EDIT
+EDIT
 ===================================================== */
 
 function editArticle(
@@ -5814,11 +5498,8 @@ function editArticle(
         );
 
 
-    if(!article){
-
+    if(!article)
         return;
-
-    }
 
 
     editingId =
@@ -5883,12 +5564,6 @@ function editArticle(
         );
 
 
-    const current =
-        document.getElementById(
-            "currentImage"
-        );
-
-
     if(
         article.image_url
     ){
@@ -5901,8 +5576,10 @@ function editArticle(
             "block";
 
 
-        current.textContent =
-            "Aktuelles Bild – du kannst ein neues Bild auswählen.";
+        document.getElementById(
+            "currentImage"
+        ).textContent =
+            "Aktuelles Bild – du kannst ein neues auswählen.";
 
     }
     else{
@@ -5916,7 +5593,9 @@ function editArticle(
         );
 
 
-        current.textContent =
+        document.getElementById(
+            "currentImage"
+        ).textContent =
             "";
 
     }
@@ -5937,7 +5616,7 @@ function editArticle(
 
 
 /* =====================================================
-   DELETE
+DELETE
 ===================================================== */
 
 async function deleteArticle(
@@ -5954,11 +5633,8 @@ async function deleteArticle(
         );
 
 
-    if(!article){
-
+    if(!article)
         return;
-
-    }
 
 
     if(
@@ -5977,7 +5653,7 @@ async function deleteArticle(
         const {
             error
         } =
-            await supabaseClient
+            await supabase
                 .from("news")
                 .delete()
                 .eq(
@@ -5993,9 +5669,7 @@ async function deleteArticle(
         }
 
 
-        await loadNews(
-            false
-        );
+        await loadNews();
 
 
         renderAdmin();
@@ -6004,7 +5678,6 @@ async function deleteArticle(
     catch(error){
 
         console.error(
-            "Löschen:",
             error
         );
 
@@ -6023,7 +5696,7 @@ async function deleteArticle(
 
 
 /* =====================================================
-   FORM RESET
+CLEAR FORM
 ===================================================== */
 
 function clearForm(){
@@ -6104,48 +5777,63 @@ function clearForm(){
     ).textContent =
         "Veröffentlichen";
 
+}
 
-    document.getElementById(
-        "formMessage"
-    ).textContent =
-        "";
+
+/* =====================================================
+HTML SICHER
+===================================================== */
+
+function escapeHTML(
+    value
+){
+
+    return String(
+        value ?? ""
+    )
+
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+
+    .replace(
+        /</g,
+        "&lt;"
+    )
+
+    .replace(
+        />/g,
+        "&gt;"
+    )
+
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+
+    .replace(
+        /'/g,
+        "&#039;"
+    );
 
 }
 
 
 /* =====================================================
-   AUTH
-===================================================== */
-
-supabaseClient.auth.onAuthStateChange(
-    (
-        event,
-        session
-    )=>{
-
-        console.log(
-            "Auth:",
-            event
-        );
-
-    }
-);
-
-
-/* =====================================================
-   NEWS AUTOMATISCH PRÜFEN
+AUTOMATISCHE NEUE NEWS PRÜFUNG
 ===================================================== */
 
 setInterval(
     ()=>{
-        loadNews(true);
+        loadNews();
     },
     40000
 );
 
 
 /* =====================================================
-   SERVICE WORKER
+SERVICE WORKER
 ===================================================== */
 
 if(
@@ -6155,37 +5843,17 @@ if(
     window.addEventListener(
         "load",
         ()=>{
-
             navigator.serviceWorker
                 .register(
                     "sw.js"
                 )
-                .then(
-                    registration=>{
-
-                        console.log(
-                            "Service Worker aktiv:",
-                            registration.scope
-                        );
-
-                    }
-                )
                 .catch(
-                    error=>{
-
-                        /*
-                         * Die normale Website
-                         * funktioniert auch ohne sw.js.
-                         */
-
+                    error =>
                         console.warn(
-                            "Service Worker nicht verfügbar:",
+                            "Service Worker:",
                             error
-                        );
-
-                    }
+                        )
                 );
-
         }
     );
 
@@ -6193,10 +5861,12 @@ if(
 
 
 /* =====================================================
-   START
+START
 ===================================================== */
 
-loadNews(false);
+loadKnownNewsIds();
+
+loadNews();
 
 showStart();
 
