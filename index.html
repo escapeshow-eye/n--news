@@ -2,415 +2,203 @@
 <html lang="de">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>n: – Nachrichten</title>
 
-<meta name="theme-color" content="#111111">
-<meta
-    name="description"
-    content="n: Nachrichten, Verkehr und regionale Informationen.">
-
-<link rel="manifest" href="manifest.json">
-
 <style>
 
-*{
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f5f7;
+    color: #111;
 }
 
-body{
-    margin:0;
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f4f5f7;
-    color:#111;
+/* =========================
+   HEADER
+========================= */
+
+header {
+    height: 72px;
+    padding: 0 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(255,255,255,.96);
+    border-bottom: 1px solid #ddd;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-button,
-input,
-textarea,
-select{
-    font-family:inherit;
+.logo {
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: -4px;
+    cursor: pointer;
 }
 
-button{
-    cursor:pointer;
+.header-actions {
+    display: flex;
+    gap: 8px;
 }
 
+.header-btn {
+    border: 0;
+    background: transparent;
 
-/* =====================================================
-HEADER
-===================================================== */
+    font-size: 20px;
+    padding: 10px;
 
-header{
-    height:72px;
-    padding:0 28px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    background:rgba(255,255,255,.96);
-    border-bottom:1px solid #ddd;
-
-    position:sticky;
-    top:0;
-    z-index:100;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
-.logo{
-    font-size:40px;
-    font-weight:900;
-    letter-spacing:-4px;
-    cursor:pointer;
+.header-btn:hover {
+    background: #eee;
 }
 
-.header-actions{
-    display:flex;
-    gap:8px;
+/* =========================
+   MAIN
+========================= */
+
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 45px 20px 80px;
 }
 
-.header-btn{
-    border:0;
-    background:transparent;
+/* =========================
+   HERO
+========================= */
 
-    font-size:20px;
-    padding:10px;
-
-    border-radius:10px;
+.hero {
+    margin-bottom: 25px;
 }
 
-.header-btn:hover{
-    background:#eee;
+.hero-label {
+    font-size: 12px;
+    font-weight: 800;
+    color: #777;
+
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
-#installHeaderBtn{
-    display:none;
+.hero h1 {
+    font-size: clamp(42px, 7vw, 72px);
+    line-height: .95;
+    letter-spacing: -4px;
+
+    margin: 8px 0;
 }
 
-
-/* =====================================================
-MAIN
-===================================================== */
-
-main{
-    max-width:1200px;
-    margin:auto;
-    padding:45px 20px 80px;
+.hero p {
+    color: #777;
+    font-size: 18px;
 }
 
+/* =========================
+   SEARCH
+========================= */
 
-/* =====================================================
-STARTSEITE
-===================================================== */
-
-#startPage{
-    display:block;
-    min-height:70vh;
+.search {
+    display: none;
+    margin-bottom: 20px;
 }
 
-.start-hero{
-    text-align:center;
-    padding:25px 0 35px;
+.search input {
+    width: 100%;
+
+    padding: 15px;
+
+    border: 1px solid #ddd;
+    border-radius: 13px;
+
+    outline: none;
+    font-size: 16px;
 }
 
-.start-label{
-    font-size:12px;
-    font-weight:900;
-    color:#777;
+/* =========================
+   FILTER
+========================= */
 
-    text-transform:uppercase;
-    letter-spacing:1.5px;
+.filters {
+    display: flex;
+    gap: 8px;
+
+    overflow-x: auto;
+    padding-bottom: 20px;
 }
 
-.start-hero h1{
-    font-size:clamp(48px,8vw,82px);
-    line-height:.9;
-    letter-spacing:-6px;
+.filter {
+    flex-shrink: 0;
 
-    margin:10px 0;
+    padding: 10px 16px;
+
+    border: 1px solid #ddd;
+    border-radius: 999px;
+
+    background: white;
+
+    font-weight: 700;
+    cursor: pointer;
 }
 
-.start-hero p{
-    color:#777;
-    font-size:18px;
-    margin:0;
+.filter.active {
+    background: #111;
+    color: white;
+    border-color: #111;
 }
 
+/* =========================
+   NEWS GRID
+========================= */
 
-/* =====================================================
-START-MENÜ
-===================================================== */
-
-.start-menu{
-    width:100%;
-
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-
-    background:white;
-
-    border:1px solid #ddd;
-    border-radius:18px;
-
-    overflow:hidden;
-}
-
-.start-menu-button{
-    min-height:74px;
-
-    border:0;
-    border-right:1px solid #ddd;
-
-    background:white;
-    color:#111;
-
-    font-size:16px;
-    font-weight:800;
-
-    padding:15px;
-}
-
-.start-menu-button:last-child{
-    border-right:0;
-}
-
-.start-menu-button:hover{
-    background:#f5f5f5;
-}
-
-.install-start-button{
-    width:100%;
-
-    min-height:64px;
-
-    margin-top:15px;
-
-    background:#111;
-    color:white;
-
-    border:0;
-    border-radius:16px;
-
-    font-size:16px;
-    font-weight:800;
-}
-
-.install-start-button:hover{
-    background:#222;
-}
-
-
-/* =====================================================
-NEWS
-===================================================== */
-
-#home{
-    display:none;
-}
-
-.hero{
-    margin-bottom:25px;
-}
-
-.hero-label{
-    font-size:12px;
-    font-weight:800;
-    color:#777;
-
-    text-transform:uppercase;
-    letter-spacing:1.5px;
-}
-
-.hero h1{
-    font-size:clamp(42px,7vw,72px);
-    line-height:.95;
-    letter-spacing:-4px;
-
-    margin:8px 0;
-}
-
-.hero p{
-    color:#777;
-    font-size:18px;
-}
-
-
-/* =====================================================
-SEARCH
-===================================================== */
-
-.search{
-    display:none;
-    margin-bottom:20px;
-}
-
-.search input{
-    width:100%;
-
-    padding:15px;
-
-    border:1px solid #ddd;
-    border-radius:13px;
-
-    outline:none;
-
-    font-size:16px;
-}
-
-
-/* =====================================================
-FILTER
-===================================================== */
-
-.filters{
-    display:flex;
-    gap:8px;
-
-    overflow-x:auto;
-
-    padding-bottom:20px;
-}
-
-.filter{
-    flex-shrink:0;
-
-    padding:10px 16px;
-
-    border:1px solid #ddd;
-    border-radius:999px;
-
-    background:white;
-
-    font-weight:700;
-}
-
-.filter.active{
-    background:#111;
-    color:white;
-
-    border-color:#111;
-}
-
-
-/* =====================================================
-NEWS GRID
-===================================================== */
-
-.news-grid{
-    display:grid;
+.news-grid {
+    display: grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(3, 1fr);
 
-    gap:18px;
+    gap: 18px;
 }
 
-.news-card{
-    background:white;
+.news-card {
+    background: white;
 
-    border:1px solid #ddd;
-    border-radius:20px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
 
-    overflow:hidden;
+    overflow: hidden;
+    cursor: pointer;
 
-    cursor:pointer;
-
-    transition:.2s;
+    transition: .2s;
 }
 
-.news-card:hover{
-    transform:translateY(-3px);
+.news-card:hover {
+    transform: translateY(-3px);
 
     box-shadow:
         0 12px 30px rgba(0,0,0,.08);
 }
 
-.news-image{
-    width:100%;
-    height:190px;
+.news-image {
+    width: 100%;
+    height: 190px;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ddd,
-            #fafafa
-        );
-
-    color:#999;
-
-    font-size:38px;
-    font-weight:900;
-
-    overflow:hidden;
-}
-
-.news-image img{
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-    display:block;
-}
-
-.news-card-content{
-    padding:20px;
-}
-
-.news-meta{
-    font-size:13px;
-    color:#777;
-
-    margin-bottom:8px;
-}
-
-.news-card h2{
-    margin:0 0 10px;
-
-    font-size:22px;
-}
-
-.news-card p{
-    color:#777;
-
-    line-height:1.5;
-
-    margin:0;
-}
-
-
-/* =====================================================
-FEATURED
-===================================================== */
-
-.featured{
-    grid-column:1/-1;
-
-    background:white;
-
-    border:1px solid #ddd;
-    border-left:5px solid #111;
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-    cursor:pointer;
-}
-
-.featured-image{
-    width:100%;
-    height:280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     background:
         linear-gradient(
@@ -419,120 +207,180 @@ FEATURED
             #fafafa
         );
 
-    display:flex;
+    color: #999;
 
-    justify-content:center;
-    align-items:center;
+    font-size: 38px;
+    font-weight: 900;
 
-    color:#999;
-
-    font-size:45px;
-    font-weight:900;
-
-    overflow:hidden;
+    overflow: hidden;
 }
 
-.featured-image img{
-    width:100%;
-    height:100%;
+.news-image img {
+    width: 100%;
+    height: 100%;
 
-    object-fit:cover;
-    display:block;
+    object-fit: cover;
+    display: block;
 }
 
-.featured-content{
-    padding:25px;
+.news-card-content {
+    padding: 20px;
 }
 
-.featured-label{
-    font-size:12px;
+.news-meta {
+    font-size: 13px;
+    color: #777;
 
-    font-weight:900;
-
-    margin-bottom:8px;
+    margin-bottom: 8px;
 }
 
-.featured h2{
-    margin:0;
+.news-card h2 {
+    margin: 0 0 10px;
+    font-size: 22px;
+}
+
+.news-card p {
+    color: #777;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* =========================
+   FEATURED
+========================= */
+
+.featured {
+    grid-column: 1 / -1;
+
+    background: white;
+
+    border: 1px solid #ddd;
+    border-left: 5px solid #111;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.featured-image {
+    width: 100%;
+    height: 280px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ddd,
+            #fafafa
+        );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #999;
+
+    font-size: 45px;
+    font-weight: 900;
+
+    overflow: hidden;
+}
+
+.featured-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    display: block;
+}
+
+.featured-content {
+    padding: 25px;
+}
+
+.featured-label {
+    font-size: 12px;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+
+.featured h2 {
+    margin: 0;
 
     font-size:
         clamp(28px,4vw,40px);
 }
 
+/* =========================
+   STATUS
+========================= */
 
-/* =====================================================
-STATUS
-===================================================== */
+.status-box {
+    grid-column: 1 / -1;
 
-.status-box{
-    grid-column:1/-1;
+    background: white;
 
-    background:white;
+    border: 1px solid #ddd;
 
-    border:1px solid #ddd;
+    border-radius: 20px;
 
-    border-radius:20px;
+    padding: 35px;
 
-    padding:35px;
+    text-align: center;
 
-    text-align:center;
-
-    color:#777;
+    color: #777;
 }
 
+/* =========================
+   ARTICLE
+========================= */
 
-/* =====================================================
-ARTICLE
-===================================================== */
+.article {
+    display: none;
 
-.article{
-    display:none;
+    max-width: 850px;
 
-    max-width:850px;
-
-    margin:auto;
+    margin: auto;
 }
 
-.back{
-    padding:10px 15px;
+.back {
+    padding: 10px 15px;
 
-    border:1px solid #ddd;
+    border: 1px solid #ddd;
 
-    background:white;
+    background: white;
 
-    border-radius:12px;
+    border-radius: 12px;
 
-    font-weight:700;
+    cursor: pointer;
 
-    margin-bottom:25px;
+    font-weight: 700;
+
+    margin-bottom: 25px;
 }
 
-.article-meta{
-    color:#777;
-
-    margin-bottom:12px;
+.article-meta {
+    color: #777;
+    margin-bottom: 12px;
 }
 
-.article h1{
+.article h1 {
     font-size:
         clamp(40px,7vw,70px);
 
-    line-height:.98;
+    line-height: .98;
+    letter-spacing: -4px;
 
-    letter-spacing:-4px;
-
-    margin:0 0 25px;
+    margin: 0 0 25px;
 }
 
-.article-image{
-    width:100%;
+.article-image {
+    width: 100%;
+    min-height: 340px;
 
-    min-height:340px;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     background:
         linear-gradient(
@@ -541,841 +389,298 @@ ARTICLE
             #fafafa
         );
 
-    border-radius:22px;
+    border-radius: 22px;
 
-    color:#999;
+    color: #999;
 
-    font-size:40px;
-    font-weight:900;
+    font-size: 40px;
+    font-weight: 900;
 
-    margin-bottom:30px;
+    margin-bottom: 30px;
 
-    overflow:hidden;
+    overflow: hidden;
 }
 
-.article-image img{
-    width:100%;
-    max-height:550px;
+.article-image img {
+    width: 100%;
+    max-height: 550px;
 
-    object-fit:cover;
-    display:block;
+    object-fit: cover;
+    display: block;
 }
 
-.article-text{
-    font-size:18px;
-    line-height:1.8;
+.article-text {
+    font-size: 18px;
+    line-height: 1.8;
 }
 
+/* =========================
+   ADMIN
+========================= */
 
-/* =====================================================
-SPECIAL PAGES
-===================================================== */
+.admin {
+    display: none;
 
-.special-page{
-    display:none;
-
-    max-width:1000px;
-
-    margin:auto;
+    max-width: 900px;
+    margin: auto;
 }
 
-.special-header{
-    margin-bottom:25px;
-}
+.login {
+    max-width: 430px;
 
-.special-label{
-    font-size:12px;
-    font-weight:900;
+    margin: 60px auto;
 
-    color:#777;
+    padding: 30px;
 
-    text-transform:uppercase;
-    letter-spacing:1.5px;
-}
+    background: white;
 
-.special-header h1{
-    font-size:
-        clamp(42px,7vw,76px);
+    border: 1px solid #ddd;
 
-    line-height:.95;
-    letter-spacing:-5px;
-
-    margin:10px 0;
-}
-
-.special-header p{
-    color:#777;
-    font-size:18px;
-}
-
-.special-box{
-    background:white;
-
-    border:1px solid #ddd;
-
-    border-radius:22px;
-
-    padding:30px;
-
-    margin-bottom:15px;
-}
-
-.special-box h2{
-    margin-top:0;
-}
-
-
-/* =====================================================
-ROUTE
-===================================================== */
-
-.route-form{
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr auto;
-
-    gap:10px;
-}
-
-.route-input{
-    width:100%;
-
-    padding:15px;
-
-    border:1px solid #ddd;
-
-    border-radius:13px;
-
-    font-size:16px;
-
-    outline:none;
-}
-
-.route-button{
-    border:0;
-
-    background:#111;
-
-    color:white;
-
-    padding:15px 20px;
-
-    border-radius:13px;
-
-    font-weight:800;
-}
-
-.route-result{
-    display:none;
-
-    margin-top:20px;
-}
-
-.route-summary{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:12px;
-
-    margin-bottom:15px;
-}
-
-.route-stat{
-    background:#f5f5f5;
-
-    border-radius:15px;
-
-    padding:20px;
-}
-
-.route-stat small{
-    color:#777;
-
-    display:block;
-
-    margin-bottom:5px;
-}
-
-.route-stat strong{
-    font-size:24px;
-}
-
-.map-box{
-    height:350px;
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-    background:#eee;
-
-    border:1px solid #ddd;
-}
-
-.map-box iframe{
-    width:100%;
-    height:100%;
-
-    border:0;
-}
-
-
-/* =====================================================
-TRAFFIC
-===================================================== */
-
-.traffic-controls{
-    display:flex;
-
-    gap:10px;
-
-    flex-wrap:wrap;
-}
-
-.road-input{
-    flex:1;
-
-    min-width:200px;
-
-    padding:14px;
-
-    border:1px solid #ddd;
-
-    border-radius:12px;
-
-    font-size:16px;
-}
-
-.traffic-button{
-    border:0;
-
-    background:#111;
-
-    color:white;
-
-    padding:14px 20px;
-
-    border-radius:12px;
-
-    font-weight:800;
-}
-
-.traffic-button.secondary{
-    background:#eee;
-    color:#111;
-}
-
-.traffic-list{
-    display:grid;
-
-    gap:12px;
-
-    margin-top:20px;
-}
-
-.traffic-item{
-    background:white;
-
-    border:1px solid #ddd;
-
-    border-radius:18px;
-
-    padding:20px;
-}
-
-.traffic-item.warning{
-    border-left:5px solid #f59e0b;
-}
-
-.traffic-item.closure{
-    border-left:5px solid #dc2626;
-}
-
-.traffic-item.roadwork{
-    border-left:5px solid #2563eb;
-}
-
-.traffic-item h3{
-    margin:0 0 8px;
-}
-
-.traffic-item p{
-    color:#666;
-
-    line-height:1.5;
-}
-
-.traffic-badge{
-    display:inline-block;
-
-    font-size:12px;
-
-    font-weight:900;
-
-    background:#eee;
-
-    padding:6px 9px;
-
-    border-radius:999px;
-
-    margin-bottom:10px;
-}
-
-.source-note{
-    margin-top:20px;
-
-    color:#888;
-
-    font-size:13px;
-}
-
-
-/* =====================================================
-ADMIN
-===================================================== */
-
-.admin{
-    display:none;
-
-    max-width:900px;
-
-    margin:auto;
-}
-
-.login{
-    max-width:430px;
-
-    margin:60px auto;
-
-    padding:30px;
-
-    background:white;
-
-    border:1px solid #ddd;
-
-    border-radius:22px;
+    border-radius: 22px;
 }
 
 .login input,
 .form-box input,
 .form-box textarea,
-.form-box select{
+.form-box select {
 
-    width:100%;
+    width: 100%;
 
-    padding:13px 14px;
+    padding: 13px 14px;
 
-    margin:7px 0 17px;
+    margin: 7px 0 17px;
 
-    border:1px solid #ddd;
+    border: 1px solid #ddd;
 
-    border-radius:12px;
+    border-radius: 12px;
 
-    background:white;
+    background: white;
 
-    outline:none;
+    outline: none;
 
-    font-size:16px;
+    font-size: 16px;
 }
 
-.form-box textarea{
-    min-height:230px;
-
-    resize:vertical;
+.form-box textarea {
+    min-height: 230px;
+    resize: vertical;
 }
 
-.form-box{
-    padding:25px;
+.form-box {
+    padding: 25px;
 
-    background:white;
+    background: white;
 
-    border:1px solid #ddd;
+    border: 1px solid #ddd;
 
-    border-radius:20px;
+    border-radius: 20px;
 }
 
-.form-box label{
-    display:block;
-
-    font-weight:700;
+.form-box label {
+    display: block;
+    font-weight: 700;
 }
 
-.image-upload-box{
-    margin:5px 0 20px;
+/* =========================
+   IMAGE UPLOAD
+========================= */
 
-    padding:18px;
+.image-upload-box {
+    margin: 5px 0 20px;
 
-    border:1px dashed #bbb;
+    padding: 18px;
 
-    border-radius:15px;
+    border: 1px dashed #bbb;
 
-    background:#fafafa;
+    border-radius: 15px;
+
+    background: #fafafa;
 }
 
-.image-upload-box input[type="file"]{
-    margin:5px 0 0;
+.image-upload-box input[type="file"] {
+    margin: 5px 0 0;
 
-    padding:0;
+    padding: 0;
 
-    border:0;
+    border: 0;
 
-    background:transparent;
+    background: transparent;
 }
 
-.image-preview{
-    display:none;
+.image-preview {
+    display: none;
 
-    width:100%;
+    width: 100%;
 
-    max-height:280px;
+    max-height: 280px;
 
-    object-fit:cover;
+    object-fit: cover;
 
-    margin-top:15px;
+    margin-top: 15px;
 
-    border-radius:14px;
+    border-radius: 14px;
 
-    border:1px solid #ddd;
+    border: 1px solid #ddd;
 }
 
-.current-image{
-    margin-top:10px;
+.current-image {
+    margin-top: 10px;
 
-    color:#777;
+    color: #777;
 
-    font-size:14px;
+    font-size: 14px;
 }
 
-.primary{
-    background:#111;
-    color:white;
+/* =========================
+   BUTTONS
+========================= */
+
+.primary,
+.secondary,
+.small {
+
+    border: 0;
+
+    border-radius: 10px;
+
+    padding: 11px 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
 }
 
-.secondary{
-    background:#eee;
-    color:#111;
+.primary {
+    background: #111;
+    color: white;
 }
 
-.admin-top{
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:25px;
+.primary:hover {
+    background: #333;
 }
 
-.admin-list{
-    display:grid;
-
-    gap:10px;
-
-    margin-top:15px;
+.secondary {
+    background: #eee;
 }
 
-.admin-item{
-    background:white;
-
-    border:1px solid #ddd;
-
-    border-radius:15px;
-
-    padding:17px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:15px;
+.secondary:hover {
+    background: #ddd;
 }
 
-.admin-item-title{
-    font-weight:800;
+.primary:disabled {
+    opacity: .6;
+    cursor: wait;
 }
 
-.admin-item small{
-    color:#777;
+.admin-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
 }
 
-.admin-actions{
-    display:flex;
+.admin-list {
+    display: grid;
 
-    gap:7px;
+    gap: 10px;
 
-    flex-wrap:wrap;
+    margin-top: 15px;
 }
 
-.small{
-    border:0;
+.admin-item {
+    background: white;
 
-    border-radius:10px;
+    border: 1px solid #ddd;
 
-    padding:11px 16px;
+    border-radius: 15px;
 
-    font-weight:800;
+    padding: 17px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
 }
 
-.edit{
-    background:#e0e7ff;
+.admin-item-title {
+    font-weight: 800;
 }
 
-.delete{
-    background:#fee2e2;
-
-    color:#b91c1c;
+.admin-item small {
+    color: #777;
 }
 
-.error{
-    color:#dc2626;
-
-    margin-top:12px;
+.admin-actions {
+    display: flex;
+    gap: 7px;
 }
 
-.success{
-    color:#15803d;
-
-    margin-top:12px;
+.edit {
+    background: #e0e7ff;
 }
 
-
-/* =====================================================
-INSTALLATION
-===================================================== */
-
-.install-picker{
-    display:none;
-
-    position:fixed;
-
-    inset:0;
-
-    background:rgba(0,0,0,.55);
-
-    z-index:1000;
-
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
+.delete {
+    background: #fee2e2;
+    color: #b91c1c;
 }
 
-.install-modal{
-    width:min(600px,100%);
-
-    max-height:90vh;
-
-    overflow:auto;
-
-    background:white;
-
-    border-radius:24px;
-
-    padding:30px;
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.25);
+.error {
+    color: #dc2626;
+    margin-top: 12px;
 }
 
-.install-header{
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:flex-start;
-
-    gap:15px;
+.success {
+    color: #15803d;
+    margin-top: 12px;
 }
 
-.install-close{
-    border:0;
+/* =========================
+   FOOTER
+========================= */
 
-    background:#eee;
+footer {
+    text-align: center;
 
-    width:40px;
-    height:40px;
+    padding: 30px;
 
-    border-radius:50%;
+    color: #777;
 
-    font-size:20px;
+    border-top: 1px solid #ddd;
 }
 
-.device-choice{
-    display:grid;
+/* =========================
+   MOBILE
+========================= */
 
-    gap:10px;
+@media (max-width: 850px) {
 
-    margin-top:25px;
-}
-
-.device-button{
-    width:100%;
-
-    text-align:left;
-
-    padding:18px;
-
-    background:white;
-
-    border:1px solid #ddd;
-
-    border-radius:16px;
-}
-
-.device-button:hover{
-    background:#f5f5f5;
-
-    border-color:#111;
-}
-
-.device-button strong{
-    display:block;
-
-    font-size:18px;
-
-    margin-bottom:5px;
-}
-
-.device-button span{
-    color:#777;
-
-    font-size:14px;
-}
-
-.install-instructions{
-    display:none;
-
-    margin-top:25px;
-
-    padding-top:25px;
-
-    border-top:1px solid #ddd;
-}
-
-.install-instructions h3{
-    margin-top:0;
-}
-
-.install-steps{
-    display:grid;
-
-    gap:12px;
-}
-
-.install-step{
-    background:#f5f5f5;
-
-    border-radius:15px;
-
-    padding:16px;
-}
-
-.install-step strong{
-    display:block;
-
-    margin-bottom:5px;
-}
-
-.install-note{
-    margin-top:18px;
-
-    padding:15px;
-
-    background:#f1f1f1;
-
-    border-radius:14px;
-
-    color:#555;
-
-    line-height:1.5;
-}
-
-.install-actions{
-    display:flex;
-
-    justify-content:flex-end;
-
-    gap:8px;
-
-    margin-top:22px;
-}
-
-#nativeInstallButton{
-    display:none;
-}
-
-
-/* =====================================================
-NEUE NEWS BENACHRICHTIGUNG
-===================================================== */
-
-.news-notification{
-    display:none;
-
-    position:fixed;
-
-    left:50%;
-    top:90px;
-
-    transform:translateX(-50%);
-
-    width:min(560px,calc(100% - 30px));
-
-    background:white;
-
-    border:1px solid #ddd;
-
-    border-radius:18px;
-
-    box-shadow:
-        0 15px 45px rgba(0,0,0,.18);
-
-    z-index:1200;
-
-    padding:22px;
-}
-
-.news-notification-label{
-    font-size:11px;
-
-    font-weight:900;
-
-    color:#777;
-
-    text-transform:uppercase;
-
-    letter-spacing:1.4px;
-
-    margin-bottom:7px;
-}
-
-.news-notification-title{
-    font-size:22px;
-
-    font-weight:900;
-
-    line-height:1.15;
-
-    margin-bottom:8px;
-}
-
-.news-notification-text{
-    color:#777;
-
-    font-size:14px;
-
-    line-height:1.5;
-
-    margin-bottom:18px;
-}
-
-.news-notification-actions{
-    display:flex;
-
-    justify-content:flex-end;
-
-    gap:8px;
-}
-
-
-/* =====================================================
-FOOTER
-===================================================== */
-
-footer{
-    text-align:center;
-
-    padding:30px;
-
-    color:#777;
-
-    border-top:1px solid #ddd;
-}
-
-
-/* =====================================================
-RESPONSIVE
-===================================================== */
-
-@media(max-width:900px){
-
-    .start-menu{
+    .news-grid {
         grid-template-columns:
             repeat(2,1fr);
     }
 
-    .start-menu-button:nth-child(2){
-        border-right:0;
-    }
-
-    .start-menu-button:nth-child(-n+2){
-        border-bottom:1px solid #ddd;
-    }
-
-    .news-grid{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-    .route-form{
-        grid-template-columns:1fr;
-    }
-
 }
 
-@media(max-width:600px){
+@media (max-width: 600px) {
 
-    header{
-        padding:0 16px;
+    .news-grid {
+        grid-template-columns: 1fr;
     }
 
-    .logo{
-        font-size:36px;
+    .featured {
+        grid-column: auto;
     }
 
-    main{
-        padding:30px 15px 60px;
+    .admin-item {
+        flex-direction: column;
     }
 
-    .start-menu{
-        grid-template-columns:1fr;
-    }
-
-    .start-menu-button{
-        border-right:0;
-
-        border-bottom:1px solid #ddd;
-    }
-
-    .start-menu-button:last-child{
-        border-bottom:0;
-    }
-
-    .news-grid{
-        grid-template-columns:1fr;
-    }
-
-    .featured{
-        grid-column:auto;
-    }
-
-    .route-summary{
-        grid-template-columns:1fr;
-    }
-
-    .admin-item{
-        flex-direction:column;
-    }
-
-    .admin-actions{
-        width:100%;
-    }
-
-    .install-modal{
-        padding:20px;
+    .admin-actions {
+        width: 100%;
     }
 
 }
@@ -1387,35 +692,17 @@ RESPONSIVE
 
 <body>
 
-
-<!-- =====================================================
-HEADER
-===================================================== -->
-
 <header>
 
     <div
         class="logo"
-        onclick="showStart()">
+        onclick="showHome()">
 
         n:
 
     </div>
 
-
     <div class="header-actions">
-
-
-        <button
-            id="installHeaderBtn"
-            class="header-btn"
-            onclick="openInstallPicker()"
-            title="n: installieren">
-
-            ▣
-
-        </button>
-
 
         <button
             class="header-btn"
@@ -1426,7 +713,6 @@ HEADER
 
         </button>
 
-
         <button
             class="header-btn"
             onclick="openAdmin()"
@@ -1436,7 +722,6 @@ HEADER
 
         </button>
 
-
     </div>
 
 </header>
@@ -1445,127 +730,26 @@ HEADER
 <main>
 
 
-<!-- =====================================================
-STARTSEITE
-===================================================== -->
+<!-- =========================
+     HOME
+========================= -->
 
-<section
-    id="startPage">
-
-
-    <div class="start-hero">
-
-
-        <div class="start-label">
-
-            n: Plattform
-
-        </div>
-
-
-        <h1>
-
-            n:
-
-        </h1>
-
-
-        <p>
-
-            Was möchtest du öffnen?
-
-        </p>
-
-
-    </div>
-
-
-    <div class="start-menu">
-
-
-        <button
-            class="start-menu-button"
-            onclick="openNews()">
-
-            Nachrichten
-
-        </button>
-
-
-        <button
-            class="start-menu-button"
-            onclick="openTraffic()">
-
-            Verkehr & Route
-
-        </button>
-
-
-        <button
-            class="start-menu-button"
-            onclick="openArea()">
-
-            n: Bereich
-
-        </button>
-
-
-        <button
-            class="start-menu-button"
-            onclick="openSendeplan()">
-
-            Sendeplan
-
-        </button>
-
-
-    </div>
-
-
-    <button
-        class="install-start-button"
-        onclick="openInstallPicker()">
-
-        n: zum Home-Bildschirm hinzufügen
-
-    </button>
-
-
-</section>
-
-
-<!-- =====================================================
-NEWS
-===================================================== -->
-
-<section
-    id="home">
-
+<section id="home">
 
     <div class="hero">
 
-
         <div class="hero-label">
-
             n: Nachrichten
-
         </div>
 
-
         <h1>
-
             Was gerade passiert.
-
         </h1>
 
-
         <p>
-
             Aktuelle Nachrichten.
             Einfach und direkt.
-
         </p>
-
 
     </div>
 
@@ -1574,19 +758,16 @@ NEWS
         class="search"
         id="searchBox">
 
-
         <input
             id="searchInput"
             type="search"
             placeholder="Nachrichten durchsuchen..."
             oninput="searchNews()">
 
-
     </div>
 
 
     <div class="filters">
-
 
         <button
             class="filter active"
@@ -1596,7 +777,6 @@ NEWS
 
         </button>
 
-
         <button
             class="filter"
             onclick="filterNews('Deutschland',this)">
@@ -1604,7 +784,6 @@ NEWS
             🇩🇪 Deutschland
 
         </button>
-
 
         <button
             class="filter"
@@ -1614,7 +793,6 @@ NEWS
 
         </button>
 
-
         <button
             class="filter"
             onclick="filterNews('Region',this)">
@@ -1622,7 +800,6 @@ NEWS
             📍 Region
 
         </button>
-
 
         <button
             class="filter"
@@ -1632,7 +809,6 @@ NEWS
 
         </button>
 
-
         <button
             class="filter"
             onclick="filterNews('Digital',this)">
@@ -1641,7 +817,6 @@ NEWS
 
         </button>
 
-
     </div>
 
 
@@ -1649,48 +824,41 @@ NEWS
         class="news-grid"
         id="newsGrid">
 
-
         <div class="status-box">
 
             Nachrichten werden geladen …
 
         </div>
 
-
     </div>
-
 
 </section>
 
 
-<!-- =====================================================
-ARTIKEL
-===================================================== -->
+<!-- =========================
+     ARTICLE
+========================= -->
 
 <section
     class="article"
     id="article">
 
-
     <button
         class="back"
-        onclick="openNews()">
+        onclick="showHome()">
 
         ← Zurück
 
     </button>
-
 
     <div
         class="article-meta"
         id="articleMeta">
     </div>
 
-
     <h1
         id="articleTitle">
     </h1>
-
 
     <div
         class="article-image"
@@ -1700,364 +868,17 @@ ARTIKEL
 
     </div>
 
-
     <div
         class="article-text"
         id="articleText">
     </div>
 
-
 </section>
 
 
-<!-- =====================================================
-VERKEHR
-===================================================== -->
-
-<section
-    id="traffic"
-    class="special-page">
-
-
-    <button
-        class="back"
-        onclick="showStart()">
-
-        ← Startseite
-
-    </button>
-
-
-    <div class="special-header">
-
-
-        <div class="special-label">
-
-            n: Verkehr
-
-        </div>
-
-
-        <h1>
-
-            Verkehr & Route
-
-        </h1>
-
-
-        <p>
-
-            Route berechnen und aktuelle Verkehrsmeldungen abrufen.
-
-        </p>
-
-
-    </div>
-
-
-    <div class="special-box">
-
-
-        <h2>
-
-            Route berechnen
-
-        </h2>
-
-
-        <p>
-
-            Gib Start und Ziel ein.
-
-        </p>
-
-
-        <div class="route-form">
-
-
-            <input
-                id="routeStart"
-                class="route-input"
-                placeholder="Start, z. B. Gelnhausen">
-
-
-            <input
-                id="routeDestination"
-                class="route-input"
-                placeholder="Ziel, z. B. Frankfurt">
-
-
-            <button
-                class="route-button"
-                onclick="calculateRoute()">
-
-                Route berechnen
-
-            </button>
-
-
-        </div>
-
-
-        <div
-            id="routeStatus"
-            style="margin-top:15px;color:#777;">
-        </div>
-
-
-        <div
-            id="routeResult"
-            class="route-result">
-
-
-            <div class="route-summary">
-
-
-                <div class="route-stat">
-
-
-                    <small>
-                        Entfernung
-                    </small>
-
-
-                    <strong
-                        id="routeDistance">
-
-                        –
-
-                    </strong>
-
-
-                </div>
-
-
-                <div class="route-stat">
-
-
-                    <small>
-                        Fahrzeit
-                    </small>
-
-
-                    <strong
-                        id="routeDuration">
-
-                        –
-
-                    </strong>
-
-
-                </div>
-
-
-                <div class="route-stat">
-
-
-                    <small>
-                        Route
-                    </small>
-
-
-                    <strong>
-
-                        Auto
-
-                    </strong>
-
-
-                </div>
-
-
-            </div>
-
-
-            <div class="map-box">
-
-
-                <iframe
-                    id="routeMap"
-                    loading="lazy">
-                </iframe>
-
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-
-    <div class="special-box">
-
-
-        <h2>
-
-            Verkehrsmeldungen
-
-        </h2>
-
-
-        <p>
-
-            Aktuelle Meldungen für eine Autobahn anzeigen.
-
-        </p>
-
-
-        <div class="traffic-controls">
-
-
-            <input
-                id="roadInput"
-                class="road-input"
-                placeholder="Autobahn, z. B. A3"
-                value="A3">
-
-
-            <button
-                class="traffic-button"
-                onclick="loadTraffic()">
-
-                Verkehr laden
-
-            </button>
-
-
-            <button
-                class="traffic-button secondary"
-                onclick="loadTraffic()">
-
-                Aktualisieren
-
-            </button>
-
-
-        </div>
-
-
-        <div
-            id="trafficStatus"
-            style="margin-top:15px;color:#777;">
-        </div>
-
-
-        <div
-            id="trafficList"
-            class="traffic-list">
-        </div>
-
-
-        <div class="source-note">
-
-            Datenquelle:
-            Die Autobahn GmbH des Bundes.
-
-        </div>
-
-
-    </div>
-
-
-</section>
-
-
-<!-- =====================================================
-BEREICH
-===================================================== -->
-
-<section
-    id="area"
-    class="special-page">
-
-
-    <button
-        class="back"
-        onclick="showStart()">
-
-        ← Startseite
-
-    </button>
-
-
-    <div class="special-header">
-
-
-        <div class="special-label">
-
-            n: Bereich
-
-        </div>
-
-
-        <h1>
-
-            Dein Bereich.
-
-        </h1>
-
-
-        <p>
-
-            Regionale Informationen direkt auf einen Blick.
-
-        </p>
-
-
-    </div>
-
-
-    <div class="special-box">
-
-
-        <h2>
-
-            Regional
-
-        </h2>
-
-
-        <p>
-
-            Hier können regionale Nachrichten,
-            Veranstaltungen und Informationen aus deinem
-            Bereich erscheinen.
-
-        </p>
-
-
-    </div>
-
-
-    <div class="special-box">
-
-
-        <h2>
-
-            Veranstaltungen
-
-        </h2>
-
-
-        <p>
-
-            Dieser Bereich kann später mit lokalen
-            Veranstaltungen gefüllt werden.
-
-        </p>
-
-
-    </div>
-
-
-</section>
-
-
-<!-- =====================================================
-ADMIN
-===================================================== -->
+<!-- =========================
+     ADMIN
+========================= -->
 
 <section
     class="admin"
@@ -2068,32 +889,23 @@ ADMIN
         class="login"
         id="loginBox">
 
-
         <h2>
-
             🔐 n: Redaktion
-
         </h2>
 
-
         <p>
-
             Anmeldung nur für die Redaktion.
-
         </p>
-
 
         <input
             id="email"
             type="email"
             placeholder="E-Mail">
 
-
         <input
             id="password"
             type="password"
             placeholder="Passwort">
-
 
         <button
             class="primary"
@@ -2103,12 +915,10 @@ ADMIN
 
         </button>
 
-
         <div
             class="error"
             id="loginError">
         </div>
-
 
     </div>
 
@@ -2120,13 +930,9 @@ ADMIN
 
         <div class="admin-top">
 
-
             <h1>
-
                 Redaktion
-
             </h1>
-
 
             <button
                 class="secondary"
@@ -2136,12 +942,10 @@ ADMIN
 
             </button>
 
-
         </div>
 
 
         <div class="form-box">
-
 
             <h2
                 id="formTitle">
@@ -2152,11 +956,8 @@ ADMIN
 
 
             <label>
-
                 Überschrift
-
             </label>
-
 
             <input
                 id="title"
@@ -2164,11 +965,8 @@ ADMIN
 
 
             <label>
-
                 Kurzbeschreibung
-
             </label>
-
 
             <input
                 id="description"
@@ -2176,50 +974,37 @@ ADMIN
 
 
             <label>
-
                 Kategorie
-
             </label>
 
-
-            <select
-                id="category">
-
+            <select id="category">
 
                 <option value="Deutschland">
                     Deutschland
                 </option>
 
-
                 <option value="Welt">
                     Welt
                 </option>
-
 
                 <option value="Region">
                     Region
                 </option>
 
-
                 <option value="Sport">
                     Sport
                 </option>
-
 
                 <option value="Digital">
                     Digital
                 </option>
 
-
             </select>
 
 
             <label>
-
                 Region
-
             </label>
-
 
             <input
                 id="region"
@@ -2227,11 +1012,8 @@ ADMIN
 
 
             <label>
-
                 Artikel
-
             </label>
-
 
             <textarea
                 id="content"
@@ -2239,14 +1021,10 @@ ADMIN
 
 
             <label>
-
                 Artikelbild
-
             </label>
 
-
             <div class="image-upload-box">
-
 
                 <input
                     id="imageFile"
@@ -2254,18 +1032,15 @@ ADMIN
                     accept="image/*"
                     onchange="previewImage(event)">
 
-
                 <img
                     id="imagePreview"
                     class="image-preview"
                     alt="Bildvorschau">
 
-
                 <div
                     id="currentImage"
                     class="current-image">
                 </div>
-
 
             </div>
 
@@ -2275,10 +1050,9 @@ ADMIN
                 id="saveButton"
                 onclick="saveArticle()">
 
-                Veröffentlichen
+                📰 Veröffentlichen
 
             </button>
-
 
             <button
                 class="secondary"
@@ -2288,20 +1062,16 @@ ADMIN
 
             </button>
 
-
             <div
                 id="formMessage"
                 class="success">
             </div>
 
-
         </div>
 
 
         <h2>
-
             Deine Artikel
-
         </h2>
 
 
@@ -2310,12 +1080,9 @@ ADMIN
             id="adminList">
         </div>
 
-
     </div>
 
-
 </section>
-
 
 </main>
 
@@ -2328,422 +1095,7 @@ ADMIN
 
 
 <!-- =====================================================
-INSTALLATIONSMODAL
-===================================================== -->
-
-<div
-    id="installPicker"
-    class="install-picker"
-    onclick="outsideInstallClick(event)">
-
-
-    <div class="install-modal">
-
-
-        <div class="install-header">
-
-
-            <div>
-
-
-                <div class="special-label">
-
-                    n: Installation
-
-                </div>
-
-
-                <h2 style="margin:8px 0">
-
-                    n: zum Home-Bildschirm hinzufügen
-
-                </h2>
-
-
-                <p style="color:#777;margin:0">
-
-                    Wähle zuerst dein Gerät aus.
-
-                </p>
-
-
-            </div>
-
-
-            <button
-                class="install-close"
-                onclick="closeInstallPicker()">
-
-                ×
-
-            </button>
-
-
-        </div>
-
-
-        <div
-            id="deviceChoice"
-            class="device-choice">
-
-
-            <button
-                class="device-button"
-                onclick="showInstallInstructions('apple')">
-
-
-                <strong>
-                    iPhone / iPad
-                </strong>
-
-
-                <span>
-                    Safari auf iOS oder iPadOS
-                </span>
-
-
-            </button>
-
-
-            <button
-                class="device-button"
-                onclick="showInstallInstructions('android')">
-
-
-                <strong>
-                    Android
-                </strong>
-
-
-                <span>
-                    Chrome oder unterstützter Browser
-                </span>
-
-
-            </button>
-
-
-            <button
-                class="device-button"
-                onclick="showInstallInstructions('computer')">
-
-
-                <strong>
-                    Computer
-                </strong>
-
-
-                <span>
-                    Windows, macOS oder Linux
-                </span>
-
-
-            </button>
-
-
-        </div>
-
-
-        <div
-            id="installApple"
-            class="install-instructions">
-
-
-            <h3>
-
-                iPhone oder iPad
-
-            </h3>
-
-
-            <div class="install-steps">
-
-
-                <div class="install-step">
-
-                    <strong>
-                        1. Safari öffnen
-                    </strong>
-
-                    Öffne n: direkt in Safari.
-
-                </div>
-
-
-                <div class="install-step">
-
-                    <strong>
-                        2. Teilen öffnen
-                    </strong>
-
-                    Öffne das Teilen-Menü von Safari.
-
-                </div>
-
-
-                <div class="install-step">
-
-                    <strong>
-                        3. Zum Home-Bildschirm
-                    </strong>
-
-                    Wähle „Zum Home-Bildschirm“ aus.
-
-                </div>
-
-
-                <div class="install-step">
-
-                    <strong>
-                        4. Hinzufügen
-                    </strong>
-
-                    Bestätige mit „Hinzufügen“.
-
-                </div>
-
-
-            </div>
-
-
-            <div class="install-note">
-
-                Danach erscheint n: direkt auf deinem
-                Home-Bildschirm und kann wie eine App
-                geöffnet werden.
-
-            </div>
-
-
-        </div>
-
-
-        <div
-            id="installAndroid"
-            class="install-instructions">
-
-
-            <h3>
-
-                Android
-
-            </h3>
-
-
-            <div class="install-steps">
-
-
-                <div class="install-step">
-
-                    <strong>
-                        1. n: öffnen
-                    </strong>
-
-                    Öffne n: in Chrome oder einem
-                    unterstützten Browser.
-
-                </div>
-
-
-                <div class="install-step">
-
-                    <strong>
-                        2. Installation starten
-                    </strong>
-
-                    Öffne das Browser-Menü und wähle
-                    „App installieren“ oder
-                    „Zum Startbildschirm hinzufügen“.
-
-                </div>
-
-
-                <div class="install-step">
-
-                    <strong>
-                        3. Bestätigen
-                    </strong>
-
-                    Bestätige die Installation.
-
-                </div>
-
-
-            </div>
-
-
-            <div class="install-note">
-
-                Wenn dein Browser die direkte Installation
-                unterstützt, kann n: direkt installiert werden.
-
-            </div>
-
-
-            <button
-                id="nativeInstallButton"
-                class="primary"
-                onclick="tryNativeInstall()"
-                style="margin-top:15px">
-
-                Jetzt installieren
-
-            </button>
-
-
-        </div>
-
-
-        <div
-            id="installComputer"
-            class="install-instructions">
-
-
-            <h3>
-
-                Computer
-
-            </h3>
-
-
-            <div class="install-steps">
-
-
-                <div class="install-step">
-
-                    <strong>
-                        1. n: öffnen
-                    </strong>
-
-                    Öffne n: in einem unterstützten Browser.
-
-                </div>
-
-
-                <div class="install-step">
-
-                    <strong>
-                        2. Installationssymbol
-                    </strong>
-
-                    Bei unterstützten Browsern kann
-                    neben der Adresszeile ein
-                    Installationssymbol erscheinen.
-
-                </div>
-
-
-                <div class="install-step">
-
-                    <strong>
-                        3. Installieren
-                    </strong>
-
-                    Klicke auf „Installieren“ und
-                    bestätige den Vorgang.
-
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-
-        <div
-            class="install-actions"
-            id="installActions"
-            style="display:none">
-
-
-            <button
-                class="secondary small"
-                onclick="backToDeviceChoice()">
-
-                Zurück
-
-            </button>
-
-
-            <button
-                class="primary small"
-                onclick="closeInstallPicker()">
-
-                Fertig
-
-            </button>
-
-
-        </div>
-
-
-    </div>
-
-
-</div>
-
-
-<!-- =====================================================
-NEUE NEWS
-===================================================== -->
-
-<div
-    id="newsNotification"
-    class="news-notification">
-
-
-    <div class="news-notification-label">
-
-        Neue Nachricht
-
-    </div>
-
-
-    <div
-        id="newsNotificationTitle"
-        class="news-notification-title">
-    </div>
-
-
-    <div
-        id="newsNotificationText"
-        class="news-notification-text">
-
-        Eine neue Nachricht wurde veröffentlicht.
-
-    </div>
-
-
-    <div class="news-notification-actions">
-
-
-        <button
-            class="secondary small"
-            onclick="closeNewsNotification()">
-
-            Später
-
-        </button>
-
-
-        <button
-            class="primary small"
-            onclick="openNotificationArticle()">
-
-            Anschauen
-
-        </button>
-
-
-    </div>
-
-
-</div>
-
-
-<!-- =====================================================
-SUPABASE
+     SUPABASE JS
 ===================================================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -2752,7 +1104,7 @@ SUPABASE
 <script>
 
 /* =====================================================
-SUPABASE
+   SUPABASE
 ===================================================== */
 
 const SUPABASE_URL =
@@ -2770,17 +1122,17 @@ const supabase =
         SUPABASE_URL,
         SUPABASE_KEY,
         {
-            auth:{
-                persistSession:true,
-                autoRefreshToken:true,
-                detectSessionInUrl:false
+            auth: {
+                persistSession: true,
+                autoRefreshToken: true,
+                detectSessionInUrl: false
             }
         }
     );
 
 
 /* =====================================================
-VARIABLEN
+   VARIABLEN
 ===================================================== */
 
 let articles = [];
@@ -2791,1162 +1143,135 @@ let editingId = null;
 
 let editingImageUrl = null;
 
-let deferredInstallPrompt = null;
-
-let knownNewsIds = [];
-
-let notificationArticleId = null;
-
 
 /* =====================================================
-SEITEN
+   SESSION AUTOMATISCH ÜBERWACHEN
 ===================================================== */
 
-function hideAllPages(){
+supabase.auth.onAuthStateChange(
+    async (event, session) => {
 
-    document.getElementById(
-        "startPage"
-    ).style.display="none";
+        console.log(
+            "Auth:",
+            event
+        );
 
+        if (
+            event === "TOKEN_REFRESHED"
+        ) {
 
-    document.getElementById(
-        "home"
-    ).style.display="none";
+            console.log(
+                "🔄 Sitzung automatisch erneuert."
+            );
 
+        }
 
-    document.getElementById(
-        "article"
-    ).style.display="none";
+        if (
+            event === "SIGNED_OUT"
+        ) {
 
+            console.log(
+                "👋 Ausgeloggt."
+            );
 
-    document.getElementById(
-        "traffic"
-    ).style.display="none";
-
-
-    document.getElementById(
-        "area"
-    ).style.display="none";
-
-
-    document.getElementById(
-        "admin"
-    ).style.display="none";
-
-
-    document.getElementById(
-        "installHeaderBtn"
-    ).style.display="none";
-
-}
-
-
-function showStart(){
-
-    hideAllPages();
-
-
-    document.getElementById(
-        "startPage"
-    ).style.display="block";
-
-
-    document.getElementById(
-        "installHeaderBtn"
-    ).style.display="block";
-
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-function openNews(){
-
-    hideAllPages();
-
-
-    document.getElementById(
-        "home"
-    ).style.display="block";
-
-
-    document.getElementById(
-        "installHeaderBtn"
-    ).style.display="none";
-
-
-    loadNews();
-
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-function openTraffic(){
-
-    hideAllPages();
-
-
-    document.getElementById(
-        "traffic"
-    ).style.display="block";
-
-
-    document.getElementById(
-        "installHeaderBtn"
-    ).style.display="none";
-
-
-    loadTraffic();
-
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-function openArea(){
-
-    hideAllPages();
-
-
-    document.getElementById(
-        "area"
-    ).style.display="block";
-
-
-    document.getElementById(
-        "installHeaderBtn"
-    ).style.display="none";
-
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-function openSendeplan(){
-
-    window.location.href =
-        "sendeplan.html";
-
-}
-
-
-/* =====================================================
-PWA INSTALLATION
-===================================================== */
-
-window.addEventListener(
-    "beforeinstallprompt",
-    event=>{
-
-        event.preventDefault();
-
-        deferredInstallPrompt =
-            event;
-
-        updateNativeInstallButton();
+        }
 
     }
 );
 
 
-window.addEventListener(
-    "appinstalled",
-    ()=>{
-
-        deferredInstallPrompt =
-            null;
-
-        updateNativeInstallButton();
-
-        closeInstallPicker();
-
-    }
-);
-
-
-function updateNativeInstallButton(){
-
-    const button =
-        document.getElementById(
-            "nativeInstallButton"
-        );
-
-
-    if(!button)
-        return;
-
-
-    button.style.display =
-        deferredInstallPrompt
-        ? "block"
-        : "none";
-
-}
-
-
-async function tryNativeInstall(){
-
-    if(
-        !deferredInstallPrompt
-    ){
-
-        return;
-
-    }
-
-
-    try{
-
-        await deferredInstallPrompt.prompt();
-
-        await deferredInstallPrompt.userChoice;
-
-    }
-    catch(error){
-
-        console.warn(
-            error
-        );
-
-    }
-
-
-    deferredInstallPrompt =
-        null;
-
-
-    updateNativeInstallButton();
-
-}
-
-
 /* =====================================================
-INSTALLATIONSMODAL
+   BILD VORSCHAU
 ===================================================== */
 
-function openInstallPicker(){
-
-    document.getElementById(
-        "installPicker"
-    ).style.display="flex";
-
-
-    backToDeviceChoice();
-
-    updateNativeInstallButton();
-
-}
-
-
-function closeInstallPicker(){
-
-    document.getElementById(
-        "installPicker"
-    ).style.display="none";
-
-}
-
-
-function outsideInstallClick(
-    event
-){
-
-    if(
-        event.target ===
-        document.getElementById(
-            "installPicker"
-        )
-    ){
-
-        closeInstallPicker();
-
-    }
-
-}
-
-
-function hideInstallInstructions(){
-
-    document.getElementById(
-        "installApple"
-    ).style.display="none";
-
-
-    document.getElementById(
-        "installAndroid"
-    ).style.display="none";
-
-
-    document.getElementById(
-        "installComputer"
-    ).style.display="none";
-
-}
-
-
-function showInstallInstructions(
-    device
-){
-
-    document.getElementById(
-        "deviceChoice"
-    ).style.display="none";
-
-
-    hideInstallInstructions();
-
-
-    document.getElementById(
-        "installActions"
-    ).style.display="flex";
-
-
-    if(
-        device==="apple"
-    ){
-
-        document.getElementById(
-            "installApple"
-        ).style.display="block";
-
-    }
-
-
-    if(
-        device==="android"
-    ){
-
-        document.getElementById(
-            "installAndroid"
-        ).style.display="block";
-
-    }
-
-
-    if(
-        device==="computer"
-    ){
-
-        document.getElementById(
-            "installComputer"
-        ).style.display="block";
-
-    }
-
-}
-
-
-function backToDeviceChoice(){
-
-    document.getElementById(
-        "deviceChoice"
-    ).style.display="grid";
-
-
-    hideInstallInstructions();
-
-
-    document.getElementById(
-        "installActions"
-    ).style.display="none";
-
-}
-
-
-/* =====================================================
-ROUTE
-===================================================== */
-
-async function geocode(place){
-
-    const url =
-        "https://nominatim.openstreetmap.org/search?format=json&limit=1&q="+
-        encodeURIComponent(place);
-
-
-    const response =
-        await fetch(
-            url,
-            {
-                headers:{
-                    "Accept":
-                        "application/json"
-                }
-            }
-        );
-
-
-    if(!response.ok){
-
-        throw new Error(
-            "Ort konnte nicht gesucht werden."
-        );
-
-    }
-
-
-    const data =
-        await response.json();
-
-
-    if(!data.length){
-
-        throw new Error(
-            `„${place}“ wurde nicht gefunden.`
-        );
-
-    }
-
-
-    return{
-
-        lat:
-            parseFloat(
-                data[0].lat
-            ),
-
-        lon:
-            parseFloat(
-                data[0].lon
-            ),
-
-        name:
-            data[0].display_name
-
-    };
-
-}
-
-
-async function calculateRoute(){
-
-    const start =
-        document.getElementById(
-            "routeStart"
-        )
-        .value
-        .trim();
-
-
-    const destination =
-        document.getElementById(
-            "routeDestination"
-        )
-        .value
-        .trim();
-
-
-    const status =
-        document.getElementById(
-            "routeStatus"
-        );
-
-
-    const result =
-        document.getElementById(
-            "routeResult"
-        );
-
-
-    if(
-        !start ||
-        !destination
-    ){
-
-        status.textContent =
-            "Bitte Start und Ziel eingeben.";
-
-        result.style.display =
-            "none";
-
-        return;
-
-    }
-
-
-    status.textContent =
-        "Orte werden gesucht …";
-
-    result.style.display =
-        "none";
-
-
-    try{
-
-        const startPoint =
-            await geocode(
-                start
-            );
-
-
-        status.textContent =
-            "Ziel wird gesucht …";
-
-
-        const endPoint =
-            await geocode(
-                destination
-            );
-
-
-        status.textContent =
-            "Route wird berechnet …";
-
-
-        const routeUrl =
-            `https://router.project-osrm.org/route/v1/driving/`+
-            `${startPoint.lon},${startPoint.lat};`+
-            `${endPoint.lon},${endPoint.lat}`+
-            `?overview=false`;
-
-
-        const response =
-            await fetch(
-                routeUrl
-            );
-
-
-        if(!response.ok){
-
-            throw new Error(
-                "Routenserver nicht erreichbar."
-            );
-
-        }
-
-
-        const data =
-            await response.json();
-
-
-        if(
-            data.code!=="Ok" ||
-            !data.routes ||
-            !data.routes.length
-        ){
-
-            throw new Error(
-                "Keine Route gefunden."
-            );
-
-        }
-
-
-        const route =
-            data.routes[0];
-
-
-        const distance =
-            route.distance/1000;
-
-
-        const duration =
-            route.duration/60;
-
-
-        document.getElementById(
-            "routeDistance"
-        ).textContent =
-
-            distance<10
-            ? distance.toFixed(1)+" km"
-            : Math.round(distance)+" km";
-
-
-        const hours =
-            Math.floor(
-                duration/60
-            );
-
-
-        const minutes =
-            Math.round(
-                duration%60
-            );
-
-
-        document.getElementById(
-            "routeDuration"
-        ).textContent =
-
-            hours>0
-            ? `${hours} h ${minutes} min`
-            : `${minutes} min`;
-
-
-        const minLat =
-            Math.min(
-                startPoint.lat,
-                endPoint.lat
-            );
-
-
-        const maxLat =
-            Math.max(
-                startPoint.lat,
-                endPoint.lat
-            );
-
-
-        const minLon =
-            Math.min(
-                startPoint.lon,
-                endPoint.lon
-            );
-
-
-        const maxLon =
-            Math.max(
-                startPoint.lon,
-                endPoint.lon
-            );
-
-
-        const paddingLat =
-            Math.max(
-                (maxLat-minLat)*.25,
-                .03
-            );
-
-
-        const paddingLon =
-            Math.max(
-                (maxLon-minLon)*.25,
-                .03
-            );
-
-
-        const bbox =
-            `${minLon-paddingLon},`+
-            `${minLat-paddingLat},`+
-            `${maxLon+paddingLon},`+
-            `${maxLat+paddingLat}`;
-
-
-        document.getElementById(
-            "routeMap"
-        ).src =
-            "https://www.openstreetmap.org/export/embed.html"+
-            "?bbox="+
-            encodeURIComponent(
-                bbox
-            )+
-            "&layer=mapnik"+
-            `&marker=${startPoint.lat},${startPoint.lon}`;
-
-
-        result.style.display =
-            "block";
-
-
-        status.innerHTML =
-            `<strong>${escapeHTML(startPoint.name)}</strong>`+
-            ` → `+
-            `<strong>${escapeHTML(endPoint.name)}</strong>`;
-
-    }
-    catch(error){
-
-        console.error(
-            error
-        );
-
-
-        status.textContent =
-            "Fehler: "+
-            error.message;
-
-
-        result.style.display =
-            "none";
-
-    }
-
-}
-
-
-/* =====================================================
-VERKEHR
-===================================================== */
-
-async function loadTraffic(){
-
-    const roadInput =
-        document.getElementById(
-            "roadInput"
-        )
-        .value
-        .trim()
-        .toUpperCase()
-        .replace(
-            /\s/g,
-            ""
-        );
-
-
-    const status =
-        document.getElementById(
-            "trafficStatus"
-        );
-
-
-    const list =
-        document.getElementById(
-            "trafficList"
-        );
-
-
-    if(!roadInput){
-
-        status.textContent =
-            "Bitte eine Autobahn eingeben, z. B. A3.";
-
-        return;
-
-    }
-
-
-    status.textContent =
-        `Verkehrsmeldungen für ${roadInput} werden geladen …`;
-
-
-    list.innerHTML =
-        "";
-
-
-    try{
-
-        const base =
-            "https://verkehr.autobahn.de/o/autobahn/"+
-            encodeURIComponent(
-                roadInput
-            )+
-            "/services/";
-
-
-        const endpoints=[
-
-            {
-                type:"warning",
-                name:"Verkehrsmeldungen",
-                url:
-                    base+
-                    "warning"
-            },
-
-            {
-                type:"closure",
-                name:"Sperrungen",
-                url:
-                    base+
-                    "closure"
-            },
-
-            {
-                type:"roadwork",
-                name:"Baustellen",
-                url:
-                    base+
-                    "roadworks"
-            }
-
-        ];
-
-
-        let allItems=[];
-
-
-        for(
-            const endpoint
-            of endpoints
-        ){
-
-            try{
-
-                const response =
-                    await fetch(
-                        endpoint.url
-                    );
-
-
-                if(
-                    !response.ok
-                )
-                    continue;
-
-
-                const data =
-                    await response.json();
-
-
-                const items =
-                    extractArray(
-                        data
-                    );
-
-
-                items.forEach(
-                    item=>{
-
-                        allItems.push({
-
-                            ...item,
-
-                            nType:
-                                endpoint.type,
-
-                            nTypeName:
-                                endpoint.name
-
-                        });
-
-                    }
-                );
-
-            }
-            catch(error){
-
-                console.warn(
-                    endpoint.name,
-                    error
-                );
-
-            }
-
-        }
-
-
-        if(
-            !allItems.length
-        ){
-
-            status.innerHTML =
-                `Keine aktuellen Meldungen für <strong>${escapeHTML(roadInput)}</strong> gefunden.`;
-
-            return;
-
-        }
-
-
-        status.innerHTML =
-            `<strong>${allItems.length}</strong> aktuelle Meldung(en) für <strong>${escapeHTML(roadInput)}</strong>`;
-
-
-        allItems.forEach(
-            item=>{
-
-                const box =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                box.className =
-                    "traffic-item "+
-                    item.nType;
-
-
-                box.innerHTML=`
-
-                    <span class="traffic-badge">
-
-                        ${trafficIcon(
-                            item.nType
-                        )}
-
-                        ${escapeHTML(
-                            item.nTypeName
-                        )}
-
-                    </span>
-
-
-                    <h3>
-
-                        ${escapeHTML(
-                            getTrafficTitle(item)
-                        )}
-
-                    </h3>
-
-
-                    <p>
-
-                        ${escapeHTML(
-                            getTrafficDescription(item)
-                        )}
-
-                    </p>
-
-                `;
-
-
-                list.appendChild(
-                    box
-                );
-
-            }
-        );
-
-    }
-    catch(error){
-
-        console.error(
-            error
-        );
-
-
-        status.textContent =
-            "Verkehrsdaten konnten nicht geladen werden.";
-
-
-        list.innerHTML=`
-
-            <div class="status-box">
-
-                Verkehrsdaten nicht verfügbar.
-
-                <br><br>
-
-                Bitte später erneut versuchen.
-
-            </div>
-
-        `;
-
-    }
-
-}
-
-
-function extractArray(data){
-
-    if(
-        Array.isArray(data)
-    ){
-
-        return data;
-
-    }
-
-
-    const keys=[
-
-        "warning",
-        "warnings",
-        "closure",
-        "closures",
-        "roadworks",
-        "roadwork",
-        "items",
-        "roads"
-
-    ];
-
-
-    for(
-        const key
-        of keys
-    ){
-
-        if(
-            Array.isArray(
-                data[key]
-            )
-        ){
-
-            return data[key];
-
-        }
-
-    }
-
-
-    return [];
-
-}
-
-
-function getTrafficTitle(item){
-
-    return(
-
-        item.title||
-        item.headline||
-        item.subtitle||
-        item.description||
-        item.display_type||
-        item.type||
-        "Verkehrsmeldung"
-
-    );
-
-}
-
-
-function getTrafficDescription(item){
-
-    return(
-
-        item.description||
-        item.subtitle||
-        item.text||
-        item.message||
-        item.information||
-        item.detail||
-        "Keine weiteren Informationen verfügbar."
-
-    );
-
-}
-
-
-function trafficIcon(type){
-
-    if(
-        type==="closure"
-    )
-        return "Sperrung";
-
-
-    if(
-        type==="roadwork"
-    )
-        return "Baustelle";
-
-
-    return "Warnung";
-
-}
-
-
-/* =====================================================
-BILD VORSCHAU
-===================================================== */
-
-function previewImage(event){
+function previewImage(event) {
 
     const file =
         event.target.files[0];
-
 
     const preview =
         document.getElementById(
             "imagePreview"
         );
 
-
-    if(!file){
+    if (!file) {
 
         preview.style.display =
             "none";
-
 
         preview.removeAttribute(
             "src"
         );
 
-
         return;
 
     }
 
-
-    if(
+    if (
         !file.type.startsWith(
             "image/"
         )
-    ){
+    ) {
 
         alert(
             "Bitte eine Bilddatei auswählen."
         );
 
-
-        event.target.value =
-            "";
-
+        event.target.value = "";
 
         return;
 
     }
 
-
-    if(
+    if (
         file.size >
-        10*1024*1024
-    ){
+        10 * 1024 * 1024
+    ) {
 
         alert(
             "Das Bild darf maximal 10 MB groß sein."
         );
 
-
-        event.target.value =
-            "";
-
+        event.target.value = "";
 
         return;
 
     }
 
-
     const reader =
         new FileReader();
 
-
     reader.onload =
-        function(event){
+        function(e) {
 
             preview.src =
-                event.target.result;
-
+                e.target.result;
 
             preview.style.display =
                 "block";
 
         };
 
-
-    reader.readAsDataURL(
-        file
-    );
+    reader.readAsDataURL(file);
 
 }
 
 
 /* =====================================================
-BILD HOCHLADEN
+   BILD HOCHLADEN
 ===================================================== */
 
-async function uploadImage(file){
+async function uploadImage(file) {
 
-    if(!file)
+    if (!file) {
         return null;
+    }
 
-
-    if(
+    if (
         !file.type.startsWith(
             "image/"
         )
-    ){
+    ) {
 
         throw new Error(
             "Die ausgewählte Datei ist kein Bild."
@@ -3954,11 +1279,10 @@ async function uploadImage(file){
 
     }
 
-
-    if(
+    if (
         file.size >
-        10*1024*1024
-    ){
+        10 * 1024 * 1024
+    ) {
 
         throw new Error(
             "Das Bild ist zu groß. Maximal 10 MB."
@@ -3968,23 +1292,18 @@ async function uploadImage(file){
 
 
     const {
-        data:{
+        data: {
             session
         },
-        error:sessionError
+        error: sessionError
     } =
         await supabase.auth.getSession();
 
 
-    if(
-        sessionError
-    )
-        throw sessionError;
-
-
-    if(
+    if (
+        sessionError ||
         !session
-    ){
+    ) {
 
         throw new Error(
             "Deine Anmeldung ist abgelaufen. Bitte erneut einloggen."
@@ -4001,8 +1320,7 @@ async function uploadImage(file){
             .replace(
                 /[^a-z0-9]/g,
                 ""
-            ) ||
-        "jpg";
+            );
 
 
     const filename =
@@ -4012,36 +1330,39 @@ async function uploadImage(file){
     const {
         error
     } =
-        await supabase
-            .storage
-            .from(
-                STORAGE_BUCKET
-            )
+        await supabase.storage
+            .from(STORAGE_BUCKET)
             .upload(
                 filename,
                 file,
                 {
                     contentType:
                         file.type,
-
                     upsert:
                         false
                 }
             );
 
 
-    if(error)
-        throw error;
+    if (error) {
+
+        console.error(
+            "Upload:",
+            error
+        );
+
+        throw new Error(
+            error.message
+        );
+
+    }
 
 
     const {
         data
     } =
-        supabase
-            .storage
-            .from(
-                STORAGE_BUCKET
-            )
+        supabase.storage
+            .from(STORAGE_BUCKET)
             .getPublicUrl(
                 filename
             );
@@ -4053,23 +1374,34 @@ async function uploadImage(file){
 
 
 /* =====================================================
-NEWS LADEN
+   NEWS LADEN
 ===================================================== */
 
-async function loadNews(){
+async function loadNews() {
 
     const grid =
         document.getElementById(
             "newsGrid"
         );
 
+    grid.innerHTML = `
 
-    try{
+        <div class="status-box">
+
+            Nachrichten werden geladen …
+
+        </div>
+
+    `;
+
+
+    try {
 
         /*
-         * DAS BLEIBT DIE FUNKTIONIERENDE
-         * SUPABASE-ABFRAGE.
-         */
+           Supabase übernimmt jetzt
+           automatisch das richtige
+           JWT und erneuert es bei Bedarf.
+        */
 
         const {
             data,
@@ -4081,138 +1413,58 @@ async function loadNews(){
                 .order(
                     "created_at",
                     {
-                        ascending:false
+                        ascending: false
                     }
                 );
 
 
-        if(error){
+        if (error) {
 
             throw error;
 
         }
 
 
-        const freshArticles =
-            Array.isArray(data)
-            ? data
-            : [];
-
-
-        /*
-         * Beim allerersten Laden:
-         * nichts melden.
-         */
-
-        if(
-            knownNewsIds.length===0
-        ){
-
-            knownNewsIds =
-                freshArticles
-                    .map(
-                        article =>
-                            String(
-                                article.id
-                            )
-                    );
-
-
-            saveKnownNewsIds();
-
-        }
-        else{
-
-            /*
-             * Nur IDs, die vorher nicht bekannt waren,
-             * sind neue Nachrichten.
-             */
-
-            const newArticles =
-                freshArticles.filter(
-                    article =>
-                        !knownNewsIds.includes(
-                            String(
-                                article.id
-                            )
-                        )
-                );
-
-
-            if(
-                newArticles.length > 0 &&
-                document.getElementById(
-                    "home"
-                ).style.display === "block"
-            ){
-
-                showNewsNotification(
-                    newArticles[0]
-                );
-
-            }
-
-
-            knownNewsIds =
-                freshArticles
-                    .map(
-                        article =>
-                            String(
-                                article.id
-                            )
-                    );
-
-
-            saveKnownNewsIds();
-
-        }
-
-
         articles =
-            freshArticles;
+            Array.isArray(data)
+                ? data
+                : [];
 
 
-        renderCurrentNews();
+        renderNews(
+            articles
+        );
 
-        renderAdmin();
 
-    }
-    catch(error){
+    } catch (error) {
 
         console.error(
-            "News:",
             error
         );
 
 
-        grid.innerHTML=`
+        grid.innerHTML = `
 
             <div class="status-box">
 
                 <strong>
-
                     Nachrichten konnten nicht geladen werden.
-
                 </strong>
-
 
                 <br><br>
 
-
                 ${escapeHTML(
-                    error.message||
+                    error.message ||
                     "Unbekannter Fehler"
                 )}
 
-
                 <br><br>
-
 
                 <button
                     class="secondary"
                     onclick="loadNews()">
 
-                    Erneut versuchen
+                    🔄 Erneut versuchen
 
                 </button>
 
@@ -4226,190 +1478,37 @@ async function loadNews(){
 
 
 /* =====================================================
-BEKANNTE NEWS SPEICHERN
+   BILD HTML
 ===================================================== */
 
-function saveKnownNewsIds(){
+function getNewsImageHTML(article) {
 
-    localStorage.setItem(
-        "n_known_news_ids",
-        JSON.stringify(
-            knownNewsIds.slice(
-                0,
-                500
-            )
-        )
-    );
-
-}
-
-
-function loadKnownNewsIds(){
-
-    try{
-
-        const saved =
-            JSON.parse(
-                localStorage.getItem(
-                    "n_known_news_ids"
-                )||
-                "[]"
-            );
-
-
-        if(
-            Array.isArray(saved)
-        ){
-
-            knownNewsIds =
-                saved.map(
-                    String
-                );
-
-        }
-
-    }
-    catch{
-
-        knownNewsIds =
-            [];
-
-    }
-
-}
-
-
-/* =====================================================
-NEWS RENDER
-===================================================== */
-
-function getNewsImageHTML(
-    article
-){
-
-    if(
+    if (
         article.image_url
-    ){
+    ) {
 
         return `
 
             <img
                 src="${escapeHTML(article.image_url)}"
-                alt="${escapeHTML(article.title||"Artikelbild")}"
+                alt="${escapeHTML(article.title || "Artikelbild")}"
                 loading="lazy"
-                onerror="this.style.display='none';this.parentElement.textContent='n:'">
+                onerror="this.style.display='none'; this.parentElement.innerHTML='n:'">
 
         `;
 
     }
-
 
     return "n:";
 
 }
 
 
-function renderCurrentNews(){
+/* =====================================================
+   NEWS RENDERN
+===================================================== */
 
-    let list =
-        articles.slice();
-
-
-    if(
-        activeFilter !==
-        "Alle"
-    ){
-
-        list =
-            list.filter(
-                article =>
-                    article.category ===
-                        activeFilter ||
-                    article.region ===
-                        activeFilter
-            );
-
-    }
-
-
-    const input =
-        document.getElementById(
-            "searchInput"
-        );
-
-
-    const search =
-        input
-        ? input.value
-            .toLowerCase()
-            .trim()
-        : "";
-
-
-    if(search){
-
-        list =
-            list.filter(
-                article =>
-
-                    String(
-                        article.title||
-                        ""
-                    )
-                    .toLowerCase()
-                    .includes(search)
-
-                    ||
-
-                    String(
-                        article.description||
-                        ""
-                    )
-                    .toLowerCase()
-                    .includes(search)
-
-                    ||
-
-                    String(
-                        article.content||
-                        ""
-                    )
-                    .toLowerCase()
-                    .includes(search)
-
-                    ||
-
-                    String(
-                        article.category||
-                        ""
-                    )
-                    .toLowerCase()
-                    .includes(search)
-
-                    ||
-
-                    String(
-                        article.region||
-                        ""
-                    )
-                    .toLowerCase()
-                    .includes(search)
-
-            );
-
-    }
-
-
-    renderNews(
-        list
-    );
-
-}
-
-
-function renderNews(
-    list
-){
+function renderNews(list) {
 
     const grid =
         document.getElementById(
@@ -4417,52 +1516,33 @@ function renderNews(
         );
 
 
-    grid.innerHTML =
-        "";
+    grid.innerHTML = "";
 
 
-    if(
+    if (
         !list.length
-    ){
+    ) {
 
-        grid.innerHTML=`
+        grid.innerHTML = `
 
             <div class="status-box">
 
-                Keine passenden Nachrichten gefunden.
+                Noch keine Nachrichten vorhanden.
 
             </div>
 
         `;
-
 
         return;
 
     }
 
 
-    const input =
-        document.getElementById(
-            "searchInput"
-        );
-
-
-    const hasSearch =
-        input &&
-        input.value.trim();
-
-
-    /*
-     * ORIGINAL-LOOK:
-     * erster Artikel groß
-     */
-
-    if(
-        activeFilter ===
-            "Alle" &&
-        !hasSearch &&
+    if (
+        activeFilter === "Alle"
+        &&
         list.length > 0
-    ){
+    ) {
 
         const first =
             list[0];
@@ -4485,19 +1565,15 @@ function renderNews(
                 );
 
 
-        featured.innerHTML=`
+        featured.innerHTML = `
 
             <div class="featured-image">
 
-                ${getNewsImageHTML(
-                    first
-                )}
+                ${getNewsImageHTML(first)}
 
             </div>
 
-
             <div class="featured-content">
-
 
                 <div class="featured-label">
 
@@ -4505,16 +1581,13 @@ function renderNews(
 
                 </div>
 
-
                 <h2>
 
                     ${escapeHTML(
-                        first.title||
-                        ""
+                        first.title
                     )}
 
                 </h2>
-
 
             </div>
 
@@ -4529,17 +1602,13 @@ function renderNews(
 
 
     list.forEach(
-        (
-            item,
-            index
-        )=>{
+        (item,index) => {
 
-            if(
-                activeFilter ===
-                    "Alle" &&
-                !hasSearch &&
+            if (
+                activeFilter === "Alle"
+                &&
                 index === 0
-            ){
+            ) {
 
                 return;
 
@@ -4563,60 +1632,45 @@ function renderNews(
                     );
 
 
-            card.innerHTML=`
+            card.innerHTML = `
 
                 <div class="news-image">
 
-                    ${getNewsImageHTML(
-                        item
-                    )}
+                    ${getNewsImageHTML(item)}
 
                 </div>
 
-
                 <div class="news-card-content">
-
 
                     <div class="news-meta">
 
                         ${escapeHTML(
-                            item.category||
-                            ""
+                            item.category || ""
                         )}
 
-                        ${
-                            item.region
-                            ? " · "
-                            : ""
-                        }
+                        ·
 
                         ${escapeHTML(
-                            item.region||
-                            ""
+                            item.region || ""
                         )}
 
                     </div>
 
-
                     <h2>
 
                         ${escapeHTML(
-                            item.title||
-                            ""
+                            item.title || ""
                         )}
 
                     </h2>
 
-
                     <p>
 
                         ${escapeHTML(
-                            item.description||
-                            ""
+                            item.description || ""
                         )}
 
                     </p>
-
 
                 </div>
 
@@ -4634,13 +1688,13 @@ function renderNews(
 
 
 /* =====================================================
-FILTER
+   FILTER
 ===================================================== */
 
 function filterNews(
     category,
     button
-){
+) {
 
     activeFilter =
         category;
@@ -4651,8 +1705,8 @@ function filterNews(
             ".filter"
         )
         .forEach(
-            item =>
-                item.classList.remove(
+            x =>
+                x.classList.remove(
                     "active"
                 )
         );
@@ -4663,28 +1717,42 @@ function filterNews(
     );
 
 
-    renderCurrentNews();
+    if (
+        category === "Alle"
+    ) {
+
+        renderNews(
+            articles
+        );
+
+        return;
+
+    }
+
+
+    const filtered =
+        articles.filter(
+            item =>
+                item.category ===
+                    category
+                ||
+                item.region ===
+                    category
+        );
+
+
+    renderNews(
+        filtered
+    );
 
 }
 
 
 /* =====================================================
-SUCHE
+   SUCHE
 ===================================================== */
 
-function toggleSearch(){
-
-    if(
-        document.getElementById(
-            "home"
-        ).style.display !==
-        "block"
-    ){
-
-        openNews();
-
-    }
-
+function toggleSearch() {
 
     const box =
         document.getElementById(
@@ -4692,86 +1760,169 @@ function toggleSearch(){
         );
 
 
-    if(
+    if (
         box.style.display ===
         "block"
-    ){
+    ) {
 
         box.style.display =
             "none";
 
-    }
-    else{
+    } else {
 
         box.style.display =
             "block";
 
-
-        document.getElementById(
-            "searchInput"
-        ).focus();
+        document
+            .getElementById(
+                "searchInput"
+            )
+            .focus();
 
     }
 
 }
 
 
-function searchNews(){
+function searchNews() {
 
-    renderCurrentNews();
+    const value =
+        document
+            .getElementById(
+                "searchInput"
+            )
+            .value
+            .toLowerCase()
+            .trim();
+
+
+    if (!value) {
+
+        renderNews(
+            articles
+        );
+
+        return;
+
+    }
+
+
+    const results =
+        articles.filter(
+            item => {
+
+                return (
+
+                    String(
+                        item.title || ""
+                    )
+                    .toLowerCase()
+                    .includes(value)
+
+                    ||
+
+                    String(
+                        item.description || ""
+                    )
+                    .toLowerCase()
+                    .includes(value)
+
+                    ||
+
+                    String(
+                        item.content || ""
+                    )
+                    .toLowerCase()
+                    .includes(value)
+
+                    ||
+
+                    String(
+                        item.category || ""
+                    )
+                    .toLowerCase()
+                    .includes(value)
+
+                    ||
+
+                    String(
+                        item.region || ""
+                    )
+                    .toLowerCase()
+                    .includes(value)
+
+                );
+
+            }
+        );
+
+
+    renderNews(
+        results
+    );
 
 }
 
 
 /* =====================================================
-ARTIKEL
+   ARTIKEL ÖFFNEN
 ===================================================== */
 
-function openArticle(
-    id
-){
+function openArticle(id) {
 
     const article =
         articles.find(
-            item =>
-                String(
-                    item.id
-                ) ===
-                String(
-                    id
-                )
+            x =>
+                x.id === id
         );
 
 
-    if(!article)
+    if (!article) {
         return;
+    }
 
 
-    hideAllPages();
+    document
+        .getElementById(
+            "home"
+        )
+        .style.display =
+            "none";
 
 
-    document.getElementById(
-        "article"
-    ).style.display =
-        "block";
+    document
+        .getElementById(
+            "admin"
+        )
+        .style.display =
+            "none";
 
 
-    document.getElementById(
-        "articleTitle"
-    ).textContent =
-        article.title||
-        "";
+    document
+        .getElementById(
+            "article"
+        )
+        .style.display =
+            "block";
 
 
-    document.getElementById(
-        "articleMeta"
-    ).textContent =
+    document
+        .getElementById(
+            "articleMeta"
+        )
+        .textContent =
 
-        `${article.category||""}${
-            article.region
-            ? " · "+article.region
-            : ""
+        `${article.category || ""} · ${
+            article.region || ""
         }`;
+
+
+    document
+        .getElementById(
+            "articleTitle"
+        )
+        .textContent =
+            article.title || "";
 
 
     const imageBox =
@@ -4780,193 +1931,163 @@ function openArticle(
         );
 
 
-    imageBox.innerHTML =
-        "";
-
-
-    if(
+    if (
         article.image_url
-    ){
+    ) {
 
-        const image =
-            document.createElement(
-                "img"
-            );
+        imageBox.innerHTML = `
 
+            <img
+                src="${escapeHTML(article.image_url)}"
+                alt="${escapeHTML(article.title || "Artikelbild")}"
+                onerror="this.parentElement.innerHTML='n:'">
 
-        image.src =
-            article.image_url;
+        `;
 
+    } else {
 
-        image.alt =
-            article.title||
-            "Artikelbild";
-
-
-        image.onerror =
-            ()=>{
-                imageBox.textContent =
-                    "n:";
-            };
-
-
-        imageBox.appendChild(
-            image
-        );
-
-    }
-    else{
-
-        imageBox.textContent =
+        imageBox.innerHTML =
             "n:";
 
     }
 
 
-    document.getElementById(
-        "articleText"
-    ).innerHTML =
+    document
+        .getElementById(
+            "articleText"
+        )
+        .innerHTML =
 
         escapeHTML(
-            article.content||
-            ""
+            article.content || ""
         )
         .replace(
-            /\r?\n/g,
+            /\n/g,
             "<br><br>"
         );
 
 
     window.scrollTo({
-        top:0,
-        behavior:"smooth"
+        top: 0,
+        behavior: "smooth"
     });
 
 }
 
 
 /* =====================================================
-NEWS MELDUNG
+   HOME
 ===================================================== */
 
-function showNewsNotification(
-    article
-){
+function showHome() {
 
-    notificationArticleId =
-        article.id;
-
-
-    document.getElementById(
-        "newsNotificationTitle"
-    ).textContent =
-        article.title||
-        "Neue Nachricht";
+    document
+        .getElementById(
+            "article"
+        )
+        .style.display =
+            "none";
 
 
-    document.getElementById(
-        "newsNotification"
-    ).style.display =
-        "block";
-
-}
-
-
-function closeNewsNotification(){
-
-    document.getElementById(
-        "newsNotification"
-    ).style.display =
-        "none";
+    document
+        .getElementById(
+            "admin"
+        )
+        .style.display =
+            "none";
 
 
-    notificationArticleId =
-        null;
-
-}
-
-
-function openNotificationArticle(){
-
-    const id =
-        notificationArticleId;
+    document
+        .getElementById(
+            "home"
+        )
+        .style.display =
+            "block";
 
 
-    closeNewsNotification();
-
-
-    if(
-        id !== null
-    ){
-
-        openArticle(
-            id
-        );
-
-    }
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 }
 
 
 /* =====================================================
-ADMIN
+   ADMIN ÖFFNEN
 ===================================================== */
 
-async function openAdmin(){
+async function openAdmin() {
 
-    hideAllPages();
+    document
+        .getElementById(
+            "home"
+        )
+        .style.display =
+            "none";
 
 
-    document.getElementById(
-        "admin"
-    ).style.display =
-        "block";
+    document
+        .getElementById(
+            "article"
+        )
+        .style.display =
+            "none";
+
+
+    document
+        .getElementById(
+            "admin"
+        )
+        .style.display =
+            "block";
 
 
     await checkSession();
 
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
 }
 
 
-async function login(){
+/* =====================================================
+   LOGIN
+===================================================== */
+
+async function login() {
 
     const email =
-        document.getElementById(
-            "email"
-        )
-        .value
-        .trim();
+        document
+            .getElementById(
+                "email"
+            )
+            .value
+            .trim();
 
 
     const password =
-        document.getElementById(
-            "password"
-        )
-        .value;
+        document
+            .getElementById(
+                "password"
+            )
+            .value;
 
 
-    const errorBox =
-        document.getElementById(
-            "loginError"
-        );
+    const error =
+        document
+            .getElementById(
+                "loginError"
+            );
 
 
-    errorBox.textContent =
-        "";
+    error.textContent = "";
 
 
-    if(
+    if (
         !email ||
         !password
-    ){
+    ) {
 
-        errorBox.textContent =
+        error.textContent =
             "Bitte E-Mail und Passwort eingeben.";
 
         return;
@@ -4974,14 +2095,13 @@ async function login(){
     }
 
 
-    try{
+    try {
 
         const {
             data,
-            error
+            error: loginError
         } =
-            await supabase
-                .auth
+            await supabase.auth
                 .signInWithPassword({
 
                     email:
@@ -4993,113 +2113,145 @@ async function login(){
                 });
 
 
-        if(error){
+        if (
+            loginError
+        ) {
 
-            throw error;
+            throw loginError;
 
         }
 
 
+        console.log(
+            "Login erfolgreich:",
+            data.user
+        );
+
+
         showDashboard();
 
-    }
-    catch(error){
+
+    } catch (error) {
 
         console.error(
             error
         );
 
 
-        errorBox.textContent =
-            "❌ "+
-            (
-                error.message||
-                "Login fehlgeschlagen."
-            );
+        document
+            .getElementById(
+                "loginError"
+            )
+            .textContent =
+
+                "❌ " +
+                (
+                    error.message ||
+                    "Login fehlgeschlagen."
+                );
 
     }
 
 }
 
 
-async function checkSession(){
+/* =====================================================
+   SESSION PRÜFEN
+===================================================== */
 
-    try{
+async function checkSession() {
+
+    try {
 
         const {
             data,
             error
         } =
-            await supabase
-                .auth
+            await supabase.auth
                 .getSession();
 
 
-        if(error){
+        if (
+            error
+        ) {
 
             throw error;
 
         }
 
 
-        if(
+        if (
             data.session
-        ){
+        ) {
 
             showDashboard();
 
+        } else {
+
+            document
+                .getElementById(
+                    "loginBox"
+                )
+                .style.display =
+                    "block";
+
+
+            document
+                .getElementById(
+                    "dashboard"
+                )
+                .style.display =
+                    "none";
+
         }
-        else{
 
-            document.getElementById(
-                "loginBox"
-            ).style.display =
-                "block";
-
-
-            document.getElementById(
-                "dashboard"
-            ).style.display =
-                "none";
-
-        }
-
-    }
-    catch(error){
+    } catch (error) {
 
         console.error(
             error
         );
 
 
-        document.getElementById(
-            "loginBox"
-        ).style.display =
-            "block";
+        document
+            .getElementById(
+                "loginBox"
+            )
+            .style.display =
+                "block";
 
 
-        document.getElementById(
-            "dashboard"
-        ).style.display =
-            "none";
+        document
+            .getElementById(
+                "dashboard"
+            )
+            .style.display =
+                "none";
 
     }
 
 }
 
 
-function showDashboard(){
+/* =====================================================
+   DASHBOARD
+===================================================== */
 
-    document.getElementById(
-        "loginBox"
-    ).style.display =
-        "none";
+function showDashboard() {
+
+    document
+        .getElementById(
+            "loginBox"
+        )
+        .style.display =
+            "none";
 
 
-    document.getElementById(
-        "dashboard"
-    ).style.display =
-        "block";
+    document
+        .getElementById(
+            "dashboard"
+        )
+        .style.display =
+            "block";
 
 
     renderAdmin();
@@ -5107,35 +2259,38 @@ function showDashboard(){
 }
 
 
-async function logout(){
+/* =====================================================
+   LOGOUT
+===================================================== */
 
-    await supabase
-        .auth
-        .signOut();
+async function logout() {
 
-
-    document.getElementById(
-        "dashboard"
-    ).style.display =
-        "none";
+    await supabase.auth.signOut();
 
 
-    document.getElementById(
-        "loginBox"
-    ).style.display =
-        "block";
+    document
+        .getElementById(
+            "dashboard"
+        )
+        .style.display =
+            "none";
 
 
-    showStart();
+    document
+        .getElementById(
+            "loginBox"
+        )
+        .style.display =
+            "block";
 
 }
 
 
 /* =====================================================
-ADMIN LISTE
+   ADMIN LISTE
 ===================================================== */
 
-function renderAdmin(){
+function renderAdmin() {
 
     const list =
         document.getElementById(
@@ -5143,19 +2298,14 @@ function renderAdmin(){
         );
 
 
-    if(!list)
-        return;
+    list.innerHTML = "";
 
 
-    list.innerHTML =
-        "";
-
-
-    if(
+    if (
         !articles.length
-    ){
+    ) {
 
-        list.innerHTML=`
+        list.innerHTML = `
 
             <div class="status-box">
 
@@ -5165,14 +2315,13 @@ function renderAdmin(){
 
         `;
 
-
         return;
 
     }
 
 
     articles.forEach(
-        article=>{
+        article => {
 
             const item =
                 document.createElement(
@@ -5184,45 +2333,35 @@ function renderAdmin(){
                 "admin-item";
 
 
-            item.innerHTML=`
+            item.innerHTML = `
 
                 <div>
 
                     <div class="admin-item-title">
 
                         ${escapeHTML(
-                            article.title||
-                            ""
+                            article.title || ""
                         )}
 
                     </div>
 
-
                     <small>
 
                         ${escapeHTML(
-                            article.category||
-                            ""
+                            article.category || ""
                         )}
 
-                        ${
-                            article.region
-                            ? " · "
-                            : ""
-                        }
+                        ·
 
                         ${escapeHTML(
-                            article.region||
-                            ""
+                            article.region || ""
                         )}
 
                     </small>
 
                 </div>
 
-
                 <div class="admin-actions">
-
 
                     <button
                         class="small edit"
@@ -5232,7 +2371,6 @@ function renderAdmin(){
 
                     </button>
 
-
                     <button
                         class="small delete"
                         onclick="deleteArticle(${article.id})">
@@ -5240,7 +2378,6 @@ function renderAdmin(){
                         Löschen
 
                     </button>
-
 
                 </div>
 
@@ -5258,45 +2395,61 @@ function renderAdmin(){
 
 
 /* =====================================================
-ARTIKEL SPEICHERN
+   ARTIKEL SPEICHERN
 ===================================================== */
 
-async function saveArticle(){
+async function saveArticle() {
 
     const title =
-        document.getElementById(
-            "title"
-        ).value.trim();
+        document
+            .getElementById(
+                "title"
+            )
+            .value
+            .trim();
 
 
     const description =
-        document.getElementById(
-            "description"
-        ).value.trim();
+        document
+            .getElementById(
+                "description"
+            )
+            .value
+            .trim();
 
 
     const category =
-        document.getElementById(
-            "category"
-        ).value;
+        document
+            .getElementById(
+                "category"
+            )
+            .value;
 
 
     const region =
-        document.getElementById(
-            "region"
-        ).value.trim();
+        document
+            .getElementById(
+                "region"
+            )
+            .value
+            .trim();
 
 
     const content =
-        document.getElementById(
-            "content"
-        ).value.trim();
+        document
+            .getElementById(
+                "content"
+            )
+            .value
+            .trim();
 
 
     const imageFile =
-        document.getElementById(
-            "imageFile"
-        ).files[0];
+        document
+            .getElementById(
+                "imageFile"
+            )
+            .files[0];
 
 
     const message =
@@ -5311,47 +2464,54 @@ async function saveArticle(){
         );
 
 
-    if(
+    if (
         !title ||
         !description ||
         !region ||
         !content
-    ){
+    ) {
 
         message.className =
             "error";
 
-
         message.textContent =
             "Bitte alle Felder ausfüllen.";
-
 
         return;
 
     }
 
 
-    const currentEditingId =
-        editingId;
-
-
-    try{
+    try {
 
         saveButton.disabled =
             true;
 
-
         saveButton.textContent =
-            "Wird gespeichert...";
+            "⏳ Wird gespeichert...";
 
+        message.className =
+            "success";
+
+        message.textContent =
+            "";
+
+
+        /*
+           BILD
+        */
 
         let imageUrl =
             editingImageUrl;
 
 
-        if(
+        if (
             imageFile
-        ){
+        ) {
+
+            message.textContent =
+                "🖼️ Bild wird hochgeladen...";
+
 
             imageUrl =
                 await uploadImage(
@@ -5361,93 +2521,117 @@ async function saveArticle(){
         }
 
 
-        const row={
+        /*
+           ARTIKEL
+        */
 
-            title:
-                title,
-
-            description:
-                description,
-
-            category:
-                category,
-
-            region:
-                region,
-
-            content:
-                content,
-
-            image_url:
-                imageUrl
-
-        };
+        message.textContent =
+            "📰 Artikel wird gespeichert...";
 
 
-        if(
-            currentEditingId !==
-            null
-        ){
+        if (
+            editingId !== null
+        ) {
 
             const {
                 error
             } =
                 await supabase
                     .from("news")
-                    .update(
-                        row
-                    )
+                    .update({
+
+                        title:
+                            title,
+
+                        description:
+                            description,
+
+                        category:
+                            category,
+
+                        region:
+                            region,
+
+                        content:
+                            content,
+
+                        image_url:
+                            imageUrl
+
+                    })
                     .eq(
                         "id",
-                        currentEditingId
+                        editingId
                     );
 
 
-            if(error){
+            if (
+                error
+            ) {
 
                 throw error;
 
             }
 
-        }
-        else{
+
+            message.textContent =
+                "✅ Artikel aktualisiert.";
+
+        } else {
 
             const {
                 error
             } =
                 await supabase
                     .from("news")
-                    .insert(
-                        row
-                    );
+                    .insert({
+
+                        title:
+                            title,
+
+                        description:
+                            description,
+
+                        category:
+                            category,
+
+                        region:
+                            region,
+
+                        content:
+                            content,
+
+                        image_url:
+                            imageUrl
+
+                    });
 
 
-            if(error){
+            if (
+                error
+            ) {
 
                 throw error;
 
             }
+
+
+            message.textContent =
+                "📰 Artikel veröffentlicht.";
 
         }
 
 
         clearForm();
 
+
         await loadNews();
 
 
-        message.className =
-            "success";
+        renderAdmin();
 
 
-        message.textContent =
-            currentEditingId !==
-            null
-            ? "Artikel aktualisiert."
-            : "Artikel veröffentlicht.";
-
-    }
-    catch(error){
+    } catch (error) {
 
         console.error(
             error
@@ -5459,21 +2643,22 @@ async function saveArticle(){
 
 
         message.textContent =
-            "Fehler: "+
+            "Fehler: " +
             (
-                error.message||
+                error.message ||
                 "Unbekannter Fehler"
             );
 
-    }
-    finally{
+    } finally {
 
         saveButton.disabled =
             false;
 
 
         saveButton.textContent =
-            "Veröffentlichen";
+            editingId !== null
+                ? "Änderungen speichern"
+                : "📰 Veröffentlichen";
 
     }
 
@@ -5481,81 +2666,87 @@ async function saveArticle(){
 
 
 /* =====================================================
-EDIT
+   ARTIKEL BEARBEITEN
 ===================================================== */
 
-function editArticle(
-    id
-){
+function editArticle(id) {
 
     const article =
         articles.find(
-            item =>
-                String(
-                    item.id
-                ) ===
-                String(id)
+            x =>
+                x.id === id
         );
 
 
-    if(!article)
+    if (!article) {
         return;
+    }
 
 
     editingId =
-        article.id;
+        id;
 
 
     editingImageUrl =
-        article.image_url||
+        article.image_url ||
         null;
 
 
-    document.getElementById(
-        "formTitle"
-    ).textContent =
-        "Artikel bearbeiten";
+    document
+        .getElementById(
+            "formTitle"
+        )
+        .textContent =
+            "Artikel bearbeiten";
 
 
-    document.getElementById(
-        "title"
-    ).value =
-        article.title||
-        "";
+    document
+        .getElementById(
+            "title"
+        )
+        .value =
+            article.title || "";
 
 
-    document.getElementById(
-        "description"
-    ).value =
-        article.description||
-        "";
+    document
+        .getElementById(
+            "description"
+        )
+        .value =
+            article.description || "";
 
 
-    document.getElementById(
-        "category"
-    ).value =
-        article.category||
-        "Deutschland";
+    document
+        .getElementById(
+            "category"
+        )
+        .value =
+            article.category ||
+            "Deutschland";
 
 
-    document.getElementById(
-        "region"
-    ).value =
-        article.region||
-        "";
+    document
+        .getElementById(
+            "region"
+        )
+        .value =
+            article.region || "";
 
 
-    document.getElementById(
-        "content"
-    ).value =
-        article.content||
-        "";
+    document
+        .getElementById(
+            "content"
+        )
+        .value =
+            article.content || "";
 
 
-    document.getElementById(
-        "imageFile"
-    ).value =
-        "";
+    document
+        .getElementById(
+            "imageFile"
+        )
+        .value =
+            "";
 
 
     const preview =
@@ -5564,91 +2755,82 @@ function editArticle(
         );
 
 
-    if(
+    const current =
+        document.getElementById(
+            "currentImage"
+        );
+
+
+    if (
         article.image_url
-    ){
+    ) {
 
         preview.src =
             article.image_url;
 
-
         preview.style.display =
             "block";
 
+        current.textContent =
+            "Aktuelles Bild – du kannst ein neues Bild auswählen.";
 
-        document.getElementById(
-            "currentImage"
-        ).textContent =
-            "Aktuelles Bild – du kannst ein neues auswählen.";
-
-    }
-    else{
+    } else {
 
         preview.style.display =
             "none";
 
-
-        preview.removeAttribute(
-            "src"
-        );
-
-
-        document.getElementById(
-            "currentImage"
-        ).textContent =
+        current.textContent =
             "";
 
     }
 
 
-    document.getElementById(
-        "saveButton"
-    ).textContent =
-        "Änderungen speichern";
+    document
+        .getElementById(
+            "saveButton"
+        )
+        .textContent =
+            "Änderungen speichern";
 
 
     window.scrollTo({
-        top:0,
-        behavior:"smooth"
+        top: 0,
+        behavior: "smooth"
     });
 
 }
 
 
 /* =====================================================
-DELETE
+   ARTIKEL LÖSCHEN
 ===================================================== */
 
-async function deleteArticle(
-    id
-){
+async function deleteArticle(id) {
 
     const article =
         articles.find(
-            item =>
-                String(
-                    item.id
-                ) ===
-                String(id)
+            x =>
+                x.id === id
         );
 
 
-    if(!article)
+    if (!article) {
         return;
+    }
 
 
-    if(
+    if (
         !confirm(
             `„${article.title}“ wirklich löschen?`
         )
-    ){
+    ) {
 
         return;
 
     }
 
 
-    try{
+    try {
 
         const {
             error
@@ -5658,11 +2840,13 @@ async function deleteArticle(
                 .delete()
                 .eq(
                     "id",
-                    article.id
+                    id
                 );
 
 
-        if(error){
+        if (
+            error
+        ) {
 
             throw error;
 
@@ -5674,8 +2858,8 @@ async function deleteArticle(
 
         renderAdmin();
 
-    }
-    catch(error){
+
+    } catch (error) {
 
         console.error(
             error
@@ -5683,9 +2867,9 @@ async function deleteArticle(
 
 
         alert(
-            "Fehler beim Löschen:\n\n"+
+            "Fehler beim Löschen:\n\n" +
             (
-                error.message||
+                error.message ||
                 "Unbekannter Fehler"
             )
         );
@@ -5696,10 +2880,10 @@ async function deleteArticle(
 
 
 /* =====================================================
-CLEAR FORM
+   FORM ZURÜCKSETZEN
 ===================================================== */
 
-function clearForm(){
+function clearForm() {
 
     editingId =
         null;
@@ -5709,46 +2893,60 @@ function clearForm(){
         null;
 
 
-    document.getElementById(
-        "formTitle"
-    ).textContent =
-        "Neuer Artikel";
+    document
+        .getElementById(
+            "formTitle"
+        )
+        .textContent =
+            "Neuer Artikel";
 
 
-    document.getElementById(
-        "title"
-    ).value =
-        "";
+    document
+        .getElementById(
+            "title"
+        )
+        .value =
+            "";
 
 
-    document.getElementById(
-        "description"
-    ).value =
-        "";
+    document
+        .getElementById(
+            "description"
+        )
+        .value =
+            "";
 
 
-    document.getElementById(
-        "category"
-    ).value =
-        "Deutschland";
+    document
+        .getElementById(
+            "category"
+        )
+        .value =
+            "Deutschland";
 
 
-    document.getElementById(
-        "region"
-    ).value =
-        "";
+    document
+        .getElementById(
+            "region"
+        )
+        .value =
+            "";
 
 
-    document.getElementById(
-        "content"
-    ).value =
-        "";
+    document
+        .getElementById(
+            "content"
+        )
+        .value =
+            "";
 
 
-    document.getElementById(
-        "imageFile"
-    ).value =
-        "";
+    document
+        .getElementById(
+            "imageFile"
+        )
+        .value =
+            "";
 
 
     const preview =
@@ -5766,109 +2964,75 @@ function clearForm(){
     );
 
 
-    document.getElementById(
-        "currentImage"
-    ).textContent =
-        "";
+    document
+        .getElementById(
+            "currentImage"
+        )
+        .textContent =
+            "";
 
 
-    document.getElementById(
-        "saveButton"
-    ).textContent =
-        "Veröffentlichen";
+    document
+        .getElementById(
+            "saveButton"
+        )
+        .textContent =
+            "📰 Veröffentlichen";
+
+
+    document
+        .getElementById(
+            "formMessage"
+        )
+        .textContent =
+            "";
 
 }
 
 
 /* =====================================================
-HTML SICHER
+   HTML SICHER AUSGEBEN
 ===================================================== */
 
-function escapeHTML(
-    value
-){
+function escapeHTML(value) {
 
     return String(
         value ?? ""
     )
 
-    .replace(
-        /&/g,
-        "&amp;"
-    )
+        .replace(
+            /&/g,
+            "&amp;"
+        )
 
-    .replace(
-        /</g,
-        "&lt;"
-    )
+        .replace(
+            /</g,
+            "&lt;"
+        )
 
-    .replace(
-        />/g,
-        "&gt;"
-    )
+        .replace(
+            />/g,
+            "&gt;"
+        )
 
-    .replace(
-        /"/g,
-        "&quot;"
-    )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
 
-    .replace(
-        /'/g,
-        "&#039;"
-    );
-
-}
-
-
-/* =====================================================
-AUTOMATISCHE NEUE NEWS PRÜFUNG
-===================================================== */
-
-setInterval(
-    ()=>{
-        loadNews();
-    },
-    40000
-);
-
-
-/* =====================================================
-SERVICE WORKER
-===================================================== */
-
-if(
-    "serviceWorker" in navigator
-){
-
-    window.addEventListener(
-        "load",
-        ()=>{
-            navigator.serviceWorker
-                .register(
-                    "sw.js"
-                )
-                .catch(
-                    error =>
-                        console.warn(
-                            "Service Worker:",
-                            error
-                        )
-                );
-        }
-    );
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
 
 /* =====================================================
-START
+   START
 ===================================================== */
-
-loadKnownNewsIds();
 
 loadNews();
-
-showStart();
 
 </script>
 
