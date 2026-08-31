@@ -1368,6 +1368,101 @@ CONNECTIONS
     color:#777;
 }
 
+
+/* =====================================================
+NEUE NACHRICHTEN BENACHRICHTIGUNG
+===================================================== */
+
+.news-notification{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    width:min(420px,calc(100vw - 30px));
+
+    background:white;
+    border:1px solid #ddd;
+    border-radius:18px;
+
+    padding:18px;
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.18);
+
+    z-index:5000;
+
+    display:none;
+
+    animation:
+        newsNotificationIn .2s ease-out;
+}
+
+@keyframes newsNotificationIn{
+    from{
+        opacity:0;
+        transform:translateY(12px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.news-notification-label{
+    font-size:11px;
+    font-weight:900;
+    color:#777;
+    text-transform:uppercase;
+    letter-spacing:1.4px;
+    margin-bottom:7px;
+}
+
+.news-notification-title{
+    font-size:20px;
+    font-weight:800;
+    line-height:1.15;
+    margin-bottom:7px;
+}
+
+.news-notification-text{
+    color:#777;
+    font-size:14px;
+    line-height:1.45;
+}
+
+.news-notification-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+    margin-top:16px;
+}
+
+.news-notification-button{
+    border:0;
+    border-radius:10px;
+    padding:10px 14px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.news-notification-button.secondary{
+    background:#eee;
+    color:#111;
+}
+
+.news-notification-button.primary{
+    background:#111;
+    color:white;
+}
+
+@media(max-width:600px){
+    .news-notification{
+        left:15px;
+        right:15px;
+        bottom:15px;
+        width:auto;
+    }
+}
+
 /* =====================================================
 FOOTER
 ===================================================== */
@@ -2273,6 +2368,49 @@ ADMIN
 </main>
 
 
+
+<!-- =====================================================
+NEUE NEWS BENACHRICHTIGUNG
+===================================================== -->
+
+<div
+    id="newsNotification"
+    class="news-notification"
+    role="status"
+    aria-live="polite">
+
+    <div class="news-notification-label">
+        Neue Nachricht
+    </div>
+
+    <div
+        id="newsNotificationTitle"
+        class="news-notification-title">
+    </div>
+
+    <div class="news-notification-text">
+        Es gibt einen neuen Artikel. Möchtest du ihn ansehen?
+    </div>
+
+    <div class="news-notification-actions">
+
+        <button
+            class="news-notification-button secondary"
+            onclick="dismissNewsNotification()">
+            Später
+        </button>
+
+        <button
+            class="news-notification-button primary"
+            onclick="openNotificationArticle()">
+            Ansehen
+        </button>
+
+    </div>
+
+</div>
+
+
 <footer>
     © 2026 n: · Nachrichten
 </footer>
@@ -2706,6 +2844,300 @@ let activeFilter = "Alle";
 let editingId = null;
 
 let editingImageUrl = null;
+
+/* =====================================================
+NEWS-BENACHRICHTIGUNG
+===================================================== */
+
+let newsWatcherStarted = false;
+let newsWatcherInitialized = false;
+let lastKnownNewsId = null;
+let pendingNotificationArticleId = null;
+let newsWatcherTimer = null;
+
+
+
+
+/* =====================================================
+NEWS-BENACHRICHTIGUNG FUNKTIONEN
+===================================================== */
+
+function isNewsPageVisible(){
+
+    const home =
+        document.getElementById(
+            "home"
+        );
+
+    return !!home &&
+        home.style.display === "block";
+
+}
+
+
+async function fetchNewestNewsForWatcher(){
+
+    const {
+        data,
+        error
+    } =
+        await supabase
+            .from("news")
+            .select("id,created_at,title")
+            .order(
+                "created_at",
+                {
+                    ascending:false
+                }
+            )
+            .limit(1);
+
+    if(error){
+
+        console.warn(
+            "News-Watcher:",
+            error.message
+        );
+
+        return null;
+
+    }
+
+    if(
+        !Array.isArray(data) ||
+        !data.length
+    ){
+
+        return null;
+
+    }
+
+    return data[0];
+
+}
+
+
+function showNewsNotification(article){
+
+    if(!article){
+
+        return;
+
+    }
+
+    pendingNotificationArticleId =
+        article.id;
+
+    const box =
+        document.getElementById(
+            "newsNotification"
+        );
+
+    const title =
+        document.getElementById(
+            "newsNotificationTitle"
+        );
+
+    if(!box || !title){
+
+        return;
+
+    }
+
+    title.textContent =
+        article.title ||
+        "Neue Nachricht";
+
+    box.style.display =
+        "block";
+
+}
+
+
+function dismissNewsNotification(){
+
+    const box =
+        document.getElementById(
+            "newsNotification"
+        );
+
+    if(box){
+
+        box.style.display =
+            "none";
+
+    }
+
+    pendingNotificationArticleId =
+        null;
+
+}
+
+
+function openNotificationArticle(){
+
+    const id =
+        pendingNotificationArticleId;
+
+    dismissNewsNotification();
+
+    if(!id){
+
+        return;
+
+    }
+
+    /*
+       Wir laden die aktuellen Daten,
+       damit der neue Artikel garantiert
+       im articles-Array vorhanden ist.
+    */
+
+    loadNews().then(
+        ()=>{
+            openArticle(id);
+        }
+    );
+
+}
+
+
+async function checkForNewNews(){
+
+    if(!newsWatcherInitialized){
+
+        return;
+
+    }
+
+    const newest =
+        await fetchNewestNewsForWatcher();
+
+    if(!newest){
+
+        return;
+
+    }
+
+    /*
+       Beim allerersten erfolgreichen Check
+       wird nur der aktuelle Stand gespeichert.
+       Dadurch bekommt man beim Öffnen der
+       Website nicht sofort eine falsche Meldung.
+    */
+
+    if(lastKnownNewsId === null){
+
+        lastKnownNewsId =
+            String(newest.id);
+
+        return;
+
+    }
+
+    const newestId =
+        String(newest.id);
+
+    if(
+        newestId ===
+        lastKnownNewsId
+    ){
+
+        return;
+
+    }
+
+    /*
+       Neuer Datensatz erkannt.
+       Eine Bearbeitung eines vorhandenen Artikels
+       verändert die ID nicht und löst deshalb keine
+       Benachrichtigung aus.
+    */
+
+    lastKnownNewsId =
+        newestId;
+
+    if(
+        isNewsPageVisible()
+    ){
+
+        showNewsNotification(
+            newest
+        );
+
+    }
+
+}
+
+
+function initializeNewsWatcher(){
+
+    if(
+        newsWatcherInitialized
+    ){
+
+        return;
+
+    }
+
+    newsWatcherInitialized =
+        true;
+
+    fetchNewestNewsForWatcher()
+        .then(
+            newest=>{
+
+                if(newest){
+
+                    lastKnownNewsId =
+                        String(newest.id);
+
+                }
+
+                startNewsWatcher();
+
+            }
+        )
+        .catch(
+            error=>{
+
+                console.warn(
+                    "News-Watcher Start:",
+                    error
+                );
+
+                startNewsWatcher();
+
+            }
+        );
+
+}
+
+
+function startNewsWatcher(){
+
+    if(
+        newsWatcherStarted
+    ){
+
+        return;
+
+    }
+
+    newsWatcherStarted =
+        true;
+
+    /*
+       Alle 15 Sekunden prüfen.
+    */
+
+    newsWatcherTimer =
+        setInterval(
+            checkForNewNews,
+            15000
+        );
+
+}
 
 
 /* =====================================================
@@ -5829,6 +6261,21 @@ START
 ===================================================== */
 
 showStart();
+
+loadNews()
+    .then(
+        ()=>{
+            initializeNewsWatcher();
+        }
+    )
+    .catch(
+        error=>{
+            console.warn(
+                "News-Watcher konnte nicht initialisiert werden:",
+                error
+            );
+        }
+    );
 
 </script>
 
