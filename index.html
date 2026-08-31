@@ -1,725 +1,1055 @@
-index: <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
-
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
 <title>n: – Nachrichten</title>
 
+<link
+    rel="manifest"
+    href="manifest.json">
+
+<meta
+    name="theme-color"
+    content="#111111">
+
+<meta
+    name="apple-mobile-web-app-capable"
+    content="yes">
+
+<meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="default">
+
+<meta
+    name="apple-mobile-web-app-title"
+    content="n:">
+
+<link
+    rel="apple-touch-icon"
+    href="icons/icon-192.png">
+
+
 <style>
 
-* {
-    box-sizing: border-box;
+*{
+    box-sizing:border-box
 }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f4f5f7;
-    color: #111;
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f5f7;
+    color:#111;
 }
 
-/* =========================
-   HEADER
-========================= */
-
-header {
-    height: 72px;
-    padding: 0 28px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    background: rgba(255,255,255,.96);
-    border-bottom: 1px solid #ddd;
-
-    position: sticky;
-    top: 0;
-    z-index: 100;
+header{
+    height:72px;
+    padding:0 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid #ddd;
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
-.logo {
-    font-size: 40px;
-    font-weight: 900;
-    letter-spacing: -4px;
-    cursor: pointer;
+.logo{
+    font-size:40px;
+    font-weight:900;
+    letter-spacing:-4px;
+    cursor:pointer;
 }
 
-.header-actions {
-    display: flex;
-    gap: 8px;
+.header-actions{
+    display:flex;
+    gap:8px;
 }
 
-.header-btn {
-    border: 0;
-    background: transparent;
-
-    font-size: 20px;
-    padding: 10px;
-
-    border-radius: 10px;
-    cursor: pointer;
+.header-btn{
+    border:0;
+    background:transparent;
+    font-size:20px;
+    padding:10px;
+    border-radius:10px;
+    cursor:pointer;
 }
 
-.header-btn:hover {
-    background: #eee;
+.header-btn:hover{
+    background:#eee;
 }
 
-/* =========================
-   MAIN
-========================= */
-
-main {
-    max-width: 1200px;
-    margin: auto;
-    padding: 45px 20px 80px;
+main{
+    max-width:1200px;
+    margin:auto;
+    padding:45px 20px 80px;
 }
 
-/* =========================
-   HERO
-========================= */
-
-.hero {
-    margin-bottom: 25px;
+.start-page{
+    min-height:70vh;
 }
 
-.hero-label {
-    font-size: 12px;
-    font-weight: 800;
-    color: #777;
-
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+.start-hero{
+    text-align:center;
+    padding:35px 0 45px;
 }
 
-.hero h1 {
-    font-size: clamp(42px, 7vw, 72px);
-    line-height: .95;
-    letter-spacing: -4px;
-
-    margin: 8px 0;
+.start-label,
+.hero-label,
+.special-label{
+    font-size:12px;
+    font-weight:900;
+    color:#777;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
 }
 
-.hero p {
-    color: #777;
-    font-size: 18px;
+.start-hero h1,
+.hero h1,
+.special-header h1{
+    font-size:clamp(42px,7vw,80px);
+    line-height:.95;
+    letter-spacing:-5px;
+    margin:10px 0;
 }
 
-/* =========================
-   SEARCH
-========================= */
-
-.search {
-    display: none;
-    margin-bottom: 20px;
+.start-hero p,
+.hero p,
+.special-header p{
+    color:#777;
+    font-size:18px;
 }
 
-.search input {
-    width: 100%;
-
-    padding: 15px;
-
-    border: 1px solid #ddd;
-    border-radius: 13px;
-
-    outline: none;
-    font-size: 16px;
+.area-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
 }
 
-/* =========================
-   FILTER
-========================= */
-
-.filters {
-    display: flex;
-    gap: 8px;
-
-    overflow-x: auto;
-    padding-bottom: 20px;
+.area-card{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:24px;
+    padding:30px;
+    min-height:260px;
+    cursor:pointer;
+    transition:.2s;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 }
 
-.filter {
-    flex-shrink: 0;
-
-    padding: 10px 16px;
-
-    border: 1px solid #ddd;
-    border-radius: 999px;
-
-    background: white;
-
-    font-weight: 700;
-    cursor: pointer;
+.area-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px rgba(0,0,0,.1);
 }
 
-.filter.active {
-    background: #111;
-    color: white;
-    border-color: #111;
+.area-icon{
+    font-size:48px;
 }
 
-/* =========================
-   NEWS GRID
-========================= */
-
-.news-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 18px;
+.area-card h2{
+    font-size:30px;
+    margin:20px 0 8px;
+    letter-spacing:-1px;
 }
 
-.news-card {
-    background: white;
-
-    border: 1px solid #ddd;
-    border-radius: 20px;
-
-    overflow: hidden;
-    cursor: pointer;
-
-    transition: .2s;
+.area-card p{
+    color:#777;
+    line-height:1.5;
+    margin:0;
 }
 
-.news-card:hover {
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 12px 30px rgba(0,0,0,.08);
+.area-arrow{
+    margin-top:25px;
+    font-size:22px;
+    font-weight:900;
 }
 
-.news-image {
-    width: 100%;
-    height: 190px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ddd,
-            #fafafa
-        );
-
-    color: #999;
-
-    font-size: 38px;
-    font-weight: 900;
-
-    overflow: hidden;
+#home{
+    display:none;
 }
 
-.news-image img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-    display: block;
+.hero{
+    margin-bottom:25px;
 }
 
-.news-card-content {
-    padding: 20px;
+.search{
+    display:none;
+    margin-bottom:20px;
 }
 
-.news-meta {
-    font-size: 13px;
-    color: #777;
-
-    margin-bottom: 8px;
+.search input{
+    width:100%;
+    padding:15px;
+    border:1px solid #ddd;
+    border-radius:13px;
+    outline:none;
+    font-size:16px;
 }
 
-.news-card h2 {
-    margin: 0 0 10px;
-    font-size: 22px;
+.filters{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding-bottom:20px;
 }
 
-.news-card p {
-    color: #777;
-    line-height: 1.5;
-    margin: 0;
+.filter{
+    flex-shrink:0;
+    padding:10px 16px;
+    border:1px solid #ddd;
+    border-radius:999px;
+    background:white;
+    font-weight:700;
+    cursor:pointer;
 }
 
-/* =========================
-   FEATURED
-========================= */
-
-.featured {
-    grid-column: 1 / -1;
-
-    background: white;
-
-    border: 1px solid #ddd;
-    border-left: 5px solid #111;
-
-    border-radius: 20px;
-
-    overflow: hidden;
-    cursor: pointer;
+.filter.active{
+    background:#111;
+    color:white;
+    border-color:#111;
 }
 
-.featured-image {
-    width: 100%;
-    height: 280px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ddd,
-            #fafafa
-        );
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    color: #999;
-
-    font-size: 45px;
-    font-weight: 900;
-
-    overflow: hidden;
+.news-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
 }
 
-.featured-image img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-    display: block;
+.news-card{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:20px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.2s;
 }
 
-.featured-content {
-    padding: 25px;
+.news-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
 }
 
-.featured-label {
-    font-size: 12px;
-    font-weight: 900;
-    margin-bottom: 8px;
+.news-image{
+    width:100%;
+    height:190px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ddd,#fafafa);
+    color:#999;
+    font-size:38px;
+    font-weight:900;
+    overflow:hidden;
 }
 
-.featured h2 {
-    margin: 0;
-
-    font-size:
-        clamp(28px,4vw,40px);
+.news-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-/* =========================
-   STATUS
-========================= */
-
-.status-box {
-    grid-column: 1 / -1;
-
-    background: white;
-
-    border: 1px solid #ddd;
-
-    border-radius: 20px;
-
-    padding: 35px;
-
-    text-align: center;
-
-    color: #777;
+.news-card-content{
+    padding:20px;
 }
 
-/* =========================
-   ARTICLE
-========================= */
-
-.article {
-    display: none;
-
-    max-width: 850px;
-
-    margin: auto;
+.news-meta{
+    font-size:13px;
+    color:#777;
+    margin-bottom:8px;
 }
 
-.back {
-    padding: 10px 15px;
-
-    border: 1px solid #ddd;
-
-    background: white;
-
-    border-radius: 12px;
-
-    cursor: pointer;
-
-    font-weight: 700;
-
-    margin-bottom: 25px;
+.news-card h2{
+    margin:0 0 10px;
+    font-size:22px;
 }
 
-.article-meta {
-    color: #777;
-    margin-bottom: 12px;
+.news-card p{
+    color:#777;
+    line-height:1.5;
+    margin:0;
 }
 
-.article h1 {
-    font-size:
-        clamp(40px,7vw,70px);
-
-    line-height: .98;
-    letter-spacing: -4px;
-
-    margin: 0 0 25px;
+.featured{
+    grid-column:1/-1;
+    background:white;
+    border:1px solid #ddd;
+    border-left:5px solid #111;
+    border-radius:20px;
+    overflow:hidden;
+    cursor:pointer;
 }
 
-.article-image {
-    width: 100%;
-    min-height: 340px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ddd,
-            #fafafa
-        );
-
-    border-radius: 22px;
-
-    color: #999;
-
-    font-size: 40px;
-    font-weight: 900;
-
-    margin-bottom: 30px;
-
-    overflow: hidden;
+.featured-image{
+    width:100%;
+    height:280px;
+    background:linear-gradient(135deg,#ddd,#fafafa);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#999;
+    font-size:45px;
+    font-weight:900;
+    overflow:hidden;
 }
 
-.article-image img {
-    width: 100%;
-    max-height: 550px;
-
-    object-fit: cover;
-    display: block;
+.featured-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-.article-text {
-    font-size: 18px;
-    line-height: 1.8;
+.featured-content{
+    padding:25px;
 }
 
-/* =========================
-   ADMIN
-========================= */
-
-.admin {
-    display: none;
-
-    max-width: 900px;
-    margin: auto;
+.featured-label{
+    font-size:12px;
+    font-weight:900;
+    margin-bottom:8px;
 }
 
-.login {
-    max-width: 430px;
+.featured h2{
+    margin:0;
+    font-size:clamp(28px,4vw,40px);
+}
 
-    margin: 60px auto;
+.status-box{
+    grid-column:1/-1;
+    background:white;
+    border:1px solid #ddd;
+    border-radius:20px;
+    padding:35px;
+    text-align:center;
+    color:#777;
+}
 
-    padding: 30px;
+/* =====================================================
+NEUE-NACHRICHT-BENACHRICHTIGUNG
+===================================================== */
 
-    background: white;
+.news-notification{
+    display:none;
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    width:min(420px,calc(100% - 32px));
+    background:white;
+    border:1px solid #ddd;
+    border-radius:20px;
+    padding:22px;
+    box-shadow:0 20px 60px rgba(0,0,0,.18);
+    z-index:2000;
+    animation:notificationIn .25s ease;
+}
 
-    border: 1px solid #ddd;
+@keyframes notificationIn{
 
-    border-radius: 22px;
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.news-notification-title{
+    font-size:12px;
+    font-weight:900;
+    color:#777;
+    text-transform:uppercase;
+    letter-spacing:1.2px;
+    margin-bottom:7px;
+}
+
+.news-notification h3{
+    margin:0 0 8px;
+    font-size:22px;
+    line-height:1.15;
+}
+
+.news-notification p{
+    margin:0;
+    color:#666;
+    line-height:1.5;
+}
+
+.news-notification-actions{
+    display:flex;
+    gap:8px;
+    justify-content:flex-end;
+    margin-top:18px;
+}
+
+.notification-button{
+    border:0;
+    border-radius:11px;
+    padding:11px 16px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.notification-button.secondary{
+    background:#eee;
+    color:#111;
+}
+
+.notification-button.primary{
+    background:#111;
+    color:white;
+}
+
+/* =====================================================
+ARTIKEL
+===================================================== */
+
+.article{
+    display:none;
+    max-width:850px;
+    margin:auto;
+}
+
+.back{
+    padding:10px 15px;
+    border:1px solid #ddd;
+    background:white;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:700;
+    margin-bottom:25px;
+}
+
+.article-meta{
+    color:#777;
+    margin-bottom:12px;
+}
+
+.article h1{
+    font-size:clamp(40px,7vw,70px);
+    line-height:.98;
+    letter-spacing:-4px;
+    margin:0 0 25px;
+}
+
+.article-image{
+    width:100%;
+    min-height:340px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ddd,#fafafa);
+    border-radius:22px;
+    color:#999;
+    font-size:40px;
+    font-weight:900;
+    margin-bottom:30px;
+    overflow:hidden;
+}
+
+.article-image img{
+    width:100%;
+    max-height:550px;
+    object-fit:cover;
+}
+
+.article-text{
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* =====================================================
+VERKEHR
+===================================================== */
+
+.special-page{
+    display:none;
+    max-width:1000px;
+    margin:auto;
+}
+
+.special-box{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:22px;
+    padding:30px;
+    margin-bottom:15px;
+}
+
+.special-box h2{
+    margin-top:0;
+}
+
+.route-form{
+    display:grid;
+    grid-template-columns:1fr 1fr auto;
+    gap:10px;
+}
+
+.route-input{
+    width:100%;
+    padding:15px;
+    border:1px solid #ddd;
+    border-radius:13px;
+    font-size:16px;
+    outline:none;
+}
+
+.route-button,
+.traffic-button,
+.primary{
+    border:0;
+    background:#111;
+    color:white;
+    padding:15px 20px;
+    border-radius:13px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.route-result{
+    display:none;
+    margin-top:20px;
+}
+
+.route-summary{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-bottom:15px;
+}
+
+.route-stat{
+    background:#f5f5f5;
+    border-radius:15px;
+    padding:20px;
+}
+
+.route-stat small{
+    color:#777;
+    display:block;
+    margin-bottom:5px;
+}
+
+.route-stat strong{
+    font-size:24px;
+}
+
+.map-box{
+    height:350px;
+    border-radius:20px;
+    overflow:hidden;
+    background:#eee;
+    border:1px solid #ddd;
+}
+
+.map-box iframe{
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+.traffic-controls{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.road-input{
+    flex:1;
+    min-width:200px;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    font-size:16px;
+}
+
+.traffic-button.secondary,
+.secondary{
+    background:#eee;
+    color:#111;
+}
+
+.traffic-list{
+    display:grid;
+    gap:12px;
+    margin-top:20px;
+}
+
+.traffic-item{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:18px;
+    padding:20px;
+}
+
+.traffic-item.warning{
+    border-left:5px solid #f59e0b;
+}
+
+.traffic-item.closure{
+    border-left:5px solid #dc2626;
+}
+
+.traffic-item.roadwork{
+    border-left:5px solid #2563eb;
+}
+
+.traffic-item h3{
+    margin:0 0 8px;
+}
+
+.traffic-item p{
+    color:#666;
+    line-height:1.5;
+}
+
+.traffic-badge{
+    display:inline-block;
+    font-size:12px;
+    font-weight:900;
+    background:#eee;
+    padding:6px 9px;
+    border-radius:999px;
+    margin-bottom:10px;
+}
+
+/* =====================================================
+ADMIN
+===================================================== */
+
+.admin{
+    display:none;
+    max-width:900px;
+    margin:auto;
+}
+
+.login{
+    max-width:430px;
+    margin:60px auto;
+    padding:30px;
+    background:white;
+    border:1px solid #ddd;
+    border-radius:22px;
 }
 
 .login input,
 .form-box input,
 .form-box textarea,
-.form-box select {
-
-    width: 100%;
-
-    padding: 13px 14px;
-
-    margin: 7px 0 17px;
-
-    border: 1px solid #ddd;
-
-    border-radius: 12px;
-
-    background: white;
-
-    outline: none;
-
-    font-size: 16px;
+.form-box select{
+    width:100%;
+    padding:13px 14px;
+    margin:7px 0 17px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    background:white;
+    outline:none;
+    font-size:16px;
 }
 
-.form-box textarea {
-    min-height: 230px;
-    resize: vertical;
+.form-box textarea{
+    min-height:230px;
+    resize:vertical;
 }
 
-.form-box {
-    padding: 25px;
-
-    background: white;
-
-    border: 1px solid #ddd;
-
-    border-radius: 20px;
+.form-box{
+    padding:25px;
+    background:white;
+    border:1px solid #ddd;
+    border-radius:20px;
 }
 
-.form-box label {
-    display: block;
-    font-weight: 700;
+.form-box label{
+    display:block;
+    font-weight:700;
 }
 
-/* =========================
-   IMAGE UPLOAD
-========================= */
-
-.image-upload-box {
-    margin: 5px 0 20px;
-
-    padding: 18px;
-
-    border: 1px dashed #bbb;
-
-    border-radius: 15px;
-
-    background: #fafafa;
+.image-upload-box{
+    margin:5px 0 20px;
+    padding:18px;
+    border:1px dashed #bbb;
+    border-radius:15px;
+    background:#fafafa;
 }
 
-.image-upload-box input[type="file"] {
-    margin: 5px 0 0;
-
-    padding: 0;
-
-    border: 0;
-
-    background: transparent;
+.image-upload-box input[type=file]{
+    margin:5px 0 0;
+    padding:0;
+    border:0;
+    background:transparent;
 }
 
-.image-preview {
-    display: none;
-
-    width: 100%;
-
-    max-height: 280px;
-
-    object-fit: cover;
-
-    margin-top: 15px;
-
-    border-radius: 14px;
-
-    border: 1px solid #ddd;
+.image-preview{
+    display:none;
+    width:100%;
+    max-height:280px;
+    object-fit:cover;
+    margin-top:15px;
+    border-radius:14px;
+    border:1px solid #ddd;
 }
 
-.current-image {
-    margin-top: 10px;
-
-    color: #777;
-
-    font-size: 14px;
+.current-image{
+    display:none;
+    margin-top:10px;
+    color:#777;
+    font-size:14px;
 }
 
-/* =========================
-   BUTTONS
-========================= */
-
-.primary,
-.secondary,
-.small {
-
-    border: 0;
-
-    border-radius: 10px;
-
-    padding: 11px 16px;
-
-    font-weight: 800;
-
-    cursor: pointer;
+.admin-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
 }
 
-.primary {
-    background: #111;
-    color: white;
+.admin-list{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
 }
 
-.primary:hover {
-    background: #333;
+.admin-item{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:15px;
+    padding:17px;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    align-items:center;
 }
 
-.secondary {
-    background: #eee;
+.admin-item-title{
+    font-weight:800;
 }
 
-.secondary:hover {
-    background: #ddd;
+.admin-item small{
+    color:#777;
 }
 
-.primary:disabled {
-    opacity: .6;
-    cursor: wait;
+.admin-actions{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
 }
 
-.admin-top {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    margin-bottom: 25px;
+.small{
+    border:0;
+    border-radius:10px;
+    padding:11px 16px;
+    font-weight:800;
+    cursor:pointer;
 }
 
-.admin-list {
-    display: grid;
-
-    gap: 10px;
-
-    margin-top: 15px;
+.edit{
+    background:#e0e7ff;
 }
 
-.admin-item {
-    background: white;
-
-    border: 1px solid #ddd;
-
-    border-radius: 15px;
-
-    padding: 17px;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    gap: 15px;
+.delete{
+    background:#fee2e2;
+    color:#b91c1c;
 }
 
-.admin-item-title {
-    font-weight: 800;
+.connect{
+    background:#dcfce7;
+    color:#166534;
 }
 
-.admin-item small {
-    color: #777;
+.duplicate{
+    background:#fef3c7;
+    color:#92400e;
 }
 
-.admin-actions {
-    display: flex;
-    gap: 7px;
+.error{
+    color:#dc2626;
+    margin-top:12px;
 }
 
-.edit {
-    background: #e0e7ff;
+.success{
+    color:#15803d;
+    margin-top:12px;
 }
 
-.delete {
-    background: #fee2e2;
-    color: #b91c1c;
+/* =====================================================
+VERBINDUNGEN
+===================================================== */
+
+.connection-picker{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.5);
+    z-index:999;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
 }
 
-.error {
-    color: #dc2626;
-    margin-top: 12px;
+.connection-modal{
+    width:min(700px,100%);
+    max-height:85vh;
+    overflow:auto;
+    background:white;
+    border-radius:24px;
+    padding:25px;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
 }
 
-.success {
-    color: #15803d;
-    margin-top: 12px;
+.connection-header{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    align-items:flex-start;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
-footer {
-    text-align: center;
-
-    padding: 30px;
-
-    color: #777;
-
-    border-top: 1px solid #ddd;
+.connection-close{
+    border:0;
+    background:#eee;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:20px;
 }
 
-/* =========================
-   MOBILE
-========================= */
+.connection-search{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    margin:18px 0;
+    font-size:16px;
+    outline:none;
+}
 
-@media (max-width: 850px) {
+.connection-items{
+    display:grid;
+    gap:9px;
+}
 
-    .news-grid {
-        grid-template-columns:
-            repeat(2,1fr);
+.connection-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:15px;
+    cursor:pointer;
+}
+
+.connection-item:hover{
+    background:#f7f7f7;
+}
+
+.connection-item input{
+    width:20px;
+    height:20px;
+}
+
+.connection-item-main{
+    flex:1;
+}
+
+.connection-item-title{
+    font-weight:800;
+}
+
+.connection-item-meta{
+    color:#777;
+    font-size:13px;
+    margin-top:4px;
+}
+
+.connection-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+    margin-top:20px;
+}
+
+.related-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:10px;
+}
+
+.related-card{
+    background:#f7f7f7;
+    border:1px solid #ddd;
+    border-radius:14px;
+    padding:16px;
+    cursor:pointer;
+}
+
+.related-card:hover{
+    background:#eee;
+}
+
+.related-card strong{
+    display:block;
+    margin-bottom:6px;
+}
+
+.related-card small{
+    color:#777;
+}
+
+/* =====================================================
+SENDEPLAN
+===================================================== */
+
+.sendeplan-card{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:24px;
+    padding:30px;
+    min-height:260px;
+    cursor:pointer;
+    transition:.2s;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.sendeplan-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px rgba(0,0,0,.1);
+}
+
+.sendeplan-card .area-icon{
+    font-size:48px;
+}
+
+.sendeplan-card h2{
+    font-size:30px;
+    margin:20px 0 8px;
+    letter-spacing:-1px;
+}
+
+.sendeplan-card p{
+    color:#777;
+    line-height:1.5;
+    margin:0;
+}
+
+.sendeplan-card .area-arrow{
+    margin-top:25px;
+    font-size:22px;
+    font-weight:900;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#777;
+    border-top:1px solid #ddd;
+}
+
+@media(max-width:850px){
+
+    .news-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .area-grid{
+        grid-template-columns:1fr;
+    }
+
+    .route-form{
+        grid-template-columns:1fr;
     }
 
 }
 
-@media (max-width: 600px) {
+@media(max-width:600px){
 
-    .news-grid {
-        grid-template-columns: 1fr;
+    .news-grid{
+        grid-template-columns:1fr;
     }
 
-    .featured {
-        grid-column: auto;
+    .featured{
+        grid-column:auto;
     }
 
-    .admin-item {
-        flex-direction: column;
+    .route-summary{
+        grid-template-columns:1fr;
     }
 
-    .admin-actions {
-        width: 100%;
+    .admin-item{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .connection-modal{
+        padding:18px;
+    }
+
+    .news-notification{
+        right:16px;
+        bottom:16px;
+        width:calc(100% - 32px);
     }
 
 }
 
 </style>
-
 </head>
 
 
 <body>
 
+
 <header>
 
     <div
         class="logo"
-        onclick="showHome()">
-
+        onclick="showStart()">
         n:
-
     </div>
+
 
     <div class="header-actions">
 
+        <!-- Suche ist nur sinnvoll bei Nachrichten -->
+
         <button
             class="header-btn"
+            id="searchButton"
             onclick="toggleSearch()"
-            title="Suche">
-
+            title="Suche"
+            style="display:none">
             🔎
-
         </button>
+
+
+        <!-- Einrichtung/Homebildschirm nur auf Startseite -->
+
+        <button
+            class="header-btn"
+            id="installButton"
+            onclick="openInstallGuide()"
+            title="Zum Homebildschirm hinzufügen">
+            ▣
+        </button>
+
 
         <button
             class="header-btn"
             onclick="openAdmin()"
             title="Redaktion">
-
             🔐
-
         </button>
 
     </div>
@@ -730,11 +1060,157 @@ footer {
 <main>
 
 
-<!-- =========================
-     HOME
-========================= -->
+<!-- =====================================================
+STARTSEITE
+===================================================== -->
 
-<section id="home">
+<section
+    id="startPage"
+    class="start-page">
+
+    <div class="start-hero">
+
+        <div class="start-label">
+            n: Plattform
+        </div>
+
+        <h1>
+            Was möchtest du öffnen?
+        </h1>
+
+        <p>
+            Nachrichten, Verkehr und regionale Informationen.
+        </p>
+
+    </div>
+
+
+    <div class="area-grid">
+
+
+        <div
+            class="area-card"
+            onclick="openNews()">
+
+            <div>
+
+                <div class="area-icon">
+                    📰
+                </div>
+
+                <h2>
+                    n: Nachrichten
+                </h2>
+
+                <p>
+                    Aktuelle Nachrichten aus Deutschland,
+                    der Welt, der Region, Sport und Digital.
+                </p>
+
+            </div>
+
+            <div class="area-arrow">
+                →
+            </div>
+
+        </div>
+
+
+        <div
+            class="area-card"
+            onclick="openTraffic()">
+
+            <div>
+
+                <div class="area-icon">
+                    🚦
+                </div>
+
+                <h2>
+                    Verkehr & Route
+                </h2>
+
+                <p>
+                    Verkehrslage, Störungen und Routen
+                    übersichtlich auf einer Seite.
+                </p>
+
+            </div>
+
+            <div class="area-arrow">
+                →
+            </div>
+
+        </div>
+
+
+        <div
+            class="area-card"
+            onclick="openArea()">
+
+            <div>
+
+                <div class="area-icon">
+                    📍
+                </div>
+
+                <h2>
+                    n: Bereich
+                </h2>
+
+                <p>
+                    Dein persönlicher Bereich mit Standort,
+                    Wetter, lokalen Nachrichten und Veranstaltungen.
+                </p>
+
+            </div>
+
+            <div class="area-arrow">
+                →
+            </div>
+
+        </div>
+
+
+        <div
+            class="sendeplan-card"
+            onclick="openSendeplan()">
+
+            <div>
+
+                <div class="area-icon">
+                    📺
+                </div>
+
+                <h2>
+                    Sendeplan
+                </h2>
+
+                <p>
+                    Alle Sendungen, Termine und
+                    geplanten Nachrichten auf einen Blick.
+                </p>
+
+            </div>
+
+            <div class="area-arrow">
+                →
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+NEWS
+===================================================== -->
+
+<section
+    id="home">
 
     <div class="hero">
 
@@ -747,8 +1223,7 @@ footer {
         </h1>
 
         <p>
-            Aktuelle Nachrichten.
-            Einfach und direkt.
+            Aktuelle Nachrichten. Einfach und direkt.
         </p>
 
     </div>
@@ -772,49 +1247,37 @@ footer {
         <button
             class="filter active"
             onclick="filterNews('Alle',this)">
-
             Alle
-
         </button>
 
         <button
             class="filter"
             onclick="filterNews('Deutschland',this)">
-
-            🇩🇪 Deutschland
-
+            Deutschland
         </button>
 
         <button
             class="filter"
             onclick="filterNews('Welt',this)">
-
-            🌍 Welt
-
+            Welt
         </button>
 
         <button
             class="filter"
             onclick="filterNews('Region',this)">
-
-            📍 Region
-
+            Region
         </button>
 
         <button
             class="filter"
             onclick="filterNews('Sport',this)">
-
-            ⚽ Sport
-
+            Sport
         </button>
 
         <button
             class="filter"
             onclick="filterNews('Digital',this)">
-
-            💻 Digital
-
+            Digital
         </button>
 
     </div>
@@ -825,9 +1288,7 @@ footer {
         id="newsGrid">
 
         <div class="status-box">
-
             Nachrichten werden geladen …
-
         </div>
 
     </div>
@@ -835,9 +1296,9 @@ footer {
 </section>
 
 
-<!-- =========================
-     ARTICLE
-========================= -->
+<!-- =====================================================
+ARTIKEL
+===================================================== -->
 
 <section
     class="article"
@@ -845,10 +1306,8 @@ footer {
 
     <button
         class="back"
-        onclick="showHome()">
-
+        onclick="openNews()">
         ← Zurück
-
     </button>
 
     <div
@@ -863,9 +1322,7 @@ footer {
     <div
         class="article-image"
         id="articleImage">
-
         n:
-
     </div>
 
     <div
@@ -873,12 +1330,265 @@ footer {
         id="articleText">
     </div>
 
+    <div
+        id="articleConnections">
+    </div>
+
 </section>
 
 
-<!-- =========================
-     ADMIN
-========================= -->
+<!-- =====================================================
+VERKEHR
+===================================================== -->
+
+<section
+    id="traffic"
+    class="special-page">
+
+    <button
+        class="back"
+        onclick="showStart()">
+        ← Startseite
+    </button>
+
+    <div class="special-header">
+
+        <div class="special-label">
+            n: Verkehr
+        </div>
+
+        <h1>
+            Verkehr & Route
+        </h1>
+
+        <p>
+            Route berechnen und aktuelle Verkehrsmeldungen abrufen.
+        </p>
+
+    </div>
+
+
+    <div class="special-box">
+
+        <h2>
+            Route berechnen
+        </h2>
+
+        <p>
+            Gib Start und Ziel ein.
+        </p>
+
+        <div class="route-form">
+
+            <input
+                id="routeStart"
+                class="route-input"
+                placeholder="Start, z. B. Gelnhausen">
+
+            <input
+                id="routeDestination"
+                class="route-input"
+                placeholder="Ziel, z. B. Frankfurt">
+
+            <button
+                class="route-button"
+                onclick="calculateRoute()">
+                Route berechnen
+            </button>
+
+        </div>
+
+
+        <div
+            id="routeStatus"
+            style="margin-top:15px;color:#777;">
+        </div>
+
+
+        <div
+            id="routeResult"
+            class="route-result">
+
+            <div class="route-summary">
+
+                <div class="route-stat">
+
+                    <small>
+                        Entfernung
+                    </small>
+
+                    <strong id="routeDistance">
+                        –
+                    </strong>
+
+                </div>
+
+
+                <div class="route-stat">
+
+                    <small>
+                        Fahrzeit
+                    </small>
+
+                    <strong id="routeDuration">
+                        –
+                    </strong>
+
+                </div>
+
+
+                <div class="route-stat">
+
+                    <small>
+                        Route
+                    </small>
+
+                    <strong>
+                        Auto
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="map-box">
+
+                <iframe
+                    id="routeMap"
+                    loading="lazy">
+                </iframe>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="special-box">
+
+        <h2>
+            Verkehrsmeldungen
+        </h2>
+
+        <p>
+            Aktuelle Meldungen für eine Autobahn anzeigen.
+        </p>
+
+
+        <div class="traffic-controls">
+
+            <input
+                id="roadInput"
+                class="road-input"
+                placeholder="Autobahn, z. B. A3"
+                value="A3">
+
+
+            <button
+                class="traffic-button"
+                onclick="loadTraffic()">
+                Verkehr laden
+            </button>
+
+
+            <button
+                class="traffic-button secondary"
+                onclick="loadTraffic()">
+                Aktualisieren
+            </button>
+
+        </div>
+
+
+        <div
+            id="trafficStatus"
+            style="margin-top:15px;color:#777;">
+        </div>
+
+
+        <div
+            id="trafficList"
+            class="traffic-list">
+        </div>
+
+
+        <div class="source-note">
+            Datenquelle: Die Autobahn GmbH des Bundes.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+BEREICH
+===================================================== -->
+
+<section
+    id="area"
+    class="special-page">
+
+    <button
+        class="back"
+        onclick="showStart()">
+        ← Startseite
+    </button>
+
+
+    <div class="special-header">
+
+        <div class="special-label">
+            n: Bereich
+        </div>
+
+        <h1>
+            Dein Bereich.
+        </h1>
+
+        <p>
+            Regionale Informationen direkt auf einen Blick.
+        </p>
+
+    </div>
+
+
+    <div class="special-box">
+
+        <h2>
+            Regional
+        </h2>
+
+        <p>
+            Hier können regionale Nachrichten,
+            Veranstaltungen und Informationen aus deinem
+            Bereich erscheinen.
+        </p>
+
+    </div>
+
+
+    <div class="special-box">
+
+        <h2>
+            Veranstaltungen
+        </h2>
+
+        <p>
+            Dieser Bereich kann später mit lokalen
+            Veranstaltungen gefüllt werden.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+ADMIN
+===================================================== -->
 
 <section
     class="admin"
@@ -890,7 +1600,7 @@ footer {
         id="loginBox">
 
         <h2>
-            🔐 n: Redaktion
+            n: Redaktion
         </h2>
 
         <p>
@@ -910,9 +1620,7 @@ footer {
         <button
             class="primary"
             onclick="login()">
-
             Einloggen
-
         </button>
 
         <div
@@ -935,11 +1643,9 @@ footer {
             </h1>
 
             <button
-                class="secondary"
+                class="secondary small"
                 onclick="logout()">
-
                 Ausloggen
-
             </button>
 
         </div>
@@ -947,11 +1653,8 @@ footer {
 
         <div class="form-box">
 
-            <h2
-                id="formTitle">
-
+            <h2 id="formTitle">
                 Neuer Artikel
-
             </h2>
 
 
@@ -979,23 +1682,23 @@ footer {
 
             <select id="category">
 
-                <option value="Deutschland">
+                <option>
                     Deutschland
                 </option>
 
-                <option value="Welt">
+                <option>
                     Welt
                 </option>
 
-                <option value="Region">
+                <option>
                     Region
                 </option>
 
-                <option value="Sport">
+                <option>
                     Sport
                 </option>
 
-                <option value="Digital">
+                <option>
                     Digital
                 </option>
 
@@ -1020,9 +1723,20 @@ footer {
                 placeholder="Artikel schreiben..."></textarea>
 
 
+            <p
+                style="color:#777;font-size:13px">
+
+                Tipp:
+                <strong>**Text**</strong>
+                wird auf der Website automatisch fett dargestellt.
+
+            </p>
+
+
             <label>
                 Artikelbild
             </label>
+
 
             <div class="image-upload-box">
 
@@ -1032,10 +1746,12 @@ footer {
                     accept="image/*"
                     onchange="previewImage(event)">
 
+
                 <img
                     id="imagePreview"
                     class="image-preview"
                     alt="Bildvorschau">
+
 
                 <div
                     id="currentImage"
@@ -1049,18 +1765,16 @@ footer {
                 class="primary"
                 id="saveButton"
                 onclick="saveArticle()">
-
-                📰 Veröffentlichen
-
+                Veröffentlichen
             </button>
+
 
             <button
-                class="secondary"
+                class="secondary small"
                 onclick="clearForm()">
-
                 Abbrechen
-
             </button>
+
 
             <div
                 id="formMessage"
@@ -1088,52 +1802,146 @@ footer {
 
 
 <footer>
-
     © 2026 n: · Nachrichten
-
 </footer>
 
 
 <!-- =====================================================
-     SUPABASE JS
+NEUE NACHRICHT MELDUNG
 ===================================================== -->
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<div
+    id="newsNotification"
+    class="news-notification">
+
+    <div class="news-notification-title">
+        Neue Nachricht
+    </div>
+
+    <h3 id="notificationTitle">
+        Neue Nachricht verfügbar
+    </h3>
+
+    <p>
+        Es wurde gerade ein neuer Artikel veröffentlicht.
+        Möchtest du ihn jetzt ansehen?
+    </p>
+
+    <div class="news-notification-actions">
+
+        <button
+            class="notification-button secondary"
+            onclick="dismissNewsNotification()">
+            Später
+        </button>
+
+        <button
+            class="notification-button primary"
+            onclick="openNewNotificationArticle()">
+            Anschauen
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+VERBINDUNGS-FENSTER
+===================================================== -->
+
+<div
+    id="connectionPicker"
+    class="connection-picker"
+    onclick="outsideConnectionClick(event)">
+
+    <div class="connection-modal">
+
+        <div class="connection-header">
+
+            <div>
+
+                <div class="special-label">
+                    n: Redaktion
+                </div>
+
+                <h2 style="margin:8px 0">
+                    Artikel verbinden
+                </h2>
+
+                <p
+                    id="connectionSourceTitle"
+                    style="color:#777;margin:0">
+                </p>
+
+            </div>
+
+
+            <button
+                class="connection-close"
+                onclick="closeConnectionPicker()">
+                ×
+            </button>
+
+        </div>
+
+
+        <input
+            id="connectionSearch"
+            class="connection-search"
+            placeholder="Artikel suchen..."
+            oninput="renderConnectionItems">
+
+
+        <div
+            id="connectionItems"
+            class="connection-items">
+        </div>
+
+
+        <div
+            id="connectionPickerMessage"
+            class="success">
+        </div>
+
+
+        <div class="connection-actions">
+
+            <button
+                class="secondary small"
+                onclick="closeConnectionPicker()">
+                Abbrechen
+            </button>
+
+
+            <button
+                class="primary"
+                onclick="saveSelectedConnections()">
+                Verbindungen speichern
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 <script>
 
 /* =====================================================
-   SUPABASE
+SUPABASE
 ===================================================== */
 
 const SUPABASE_URL =
-    "https://eqzmsuncndfsiedyfifb.supabase.co";
+"https://eqzmsuncndfsiedyfifb.supabase.co";
 
 const SUPABASE_KEY =
-    "sb_publishable_eXY1gg_tIr-cRC2kdt0jbQ_QPfbEmkF";
+"sb_publishable_eXY1gg_tIr-cRC2kdt0jbQ_QPfbEmkF";
 
 const STORAGE_BUCKET =
-    "news-images";
+"news-images";
 
-
-const supabase =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY,
-        {
-            auth: {
-                persistSession: true,
-                autoRefreshToken: true,
-                detectSessionInUrl: false
-            }
-        }
-    );
-
-
-/* =====================================================
-   VARIABLEN
-===================================================== */
 
 let articles = [];
 
@@ -1145,133 +1953,1792 @@ let editingImageUrl = null;
 
 
 /* =====================================================
-   SESSION AUTOMATISCH ÜBERWACHEN
+BENACHRICHTIGUNGEN
 ===================================================== */
 
-supabase.auth.onAuthStateChange(
-    async (event, session) => {
+let newsCheckTimer = null;
 
-        console.log(
-            "Auth:",
-            event
-        );
+let notificationArticleId = null;
 
-        if (
-            event === "TOKEN_REFRESHED"
-        ) {
+let newsNotificationsInitialized = false;
 
-            console.log(
-                "🔄 Sitzung automatisch erneuert."
-            );
+
+/*
+    Wir speichern die zuletzt bekannten Artikel.
+    Dadurch wird beim ersten Laden NICHT sofort eine
+    Benachrichtigung für alle vorhandenen Nachrichten
+    ausgelöst.
+*/
+
+let knownNewsIds =
+    JSON.parse(
+        localStorage.getItem("n_known_news_ids") || "[]"
+    );
+
+
+function saveKnownNewsIds(){
+
+    localStorage.setItem(
+        "n_known_news_ids",
+        JSON.stringify(knownNewsIds)
+    );
+
+}
+
+
+/*
+    Prüft, ob der Benutzer gerade wirklich
+    im Nachrichten-Reiter ist.
+*/
+
+function isNewsPageOpen(){
+
+    return document.getElementById("home").style.display === "block";
+
+}
+
+
+/*
+    Browser-Benachrichtigungserlaubnis anfragen.
+*/
+
+async function requestNotificationPermission(){
+
+    if(!("Notification" in window)){
+        return;
+    }
+
+    if(Notification.permission === "default"){
+
+        try{
+
+            await Notification.requestPermission();
 
         }
+        catch(error){
 
-        if (
-            event === "SIGNED_OUT"
-        ) {
-
-            console.log(
-                "👋 Ausgeloggt."
+            console.warn(
+                "Benachrichtigungserlaubnis konnte nicht angefragt werden.",
+                error
             );
 
         }
 
     }
-);
+
+}
+
+
+/*
+    Startet die automatische Überwachung.
+*/
+
+function startNewsNotificationWatcher(){
+
+    stopNewsNotificationWatcher();
+
+    /*
+        Alle 30 Sekunden prüfen.
+    */
+
+    newsCheckTimer =
+        setInterval(
+            checkForNewNews,
+            30000
+        );
+
+}
+
+
+/*
+    Stoppt die Überwachung.
+*/
+
+function stopNewsNotificationWatcher(){
+
+    if(newsCheckTimer){
+
+        clearInterval(newsCheckTimer);
+
+        newsCheckTimer = null;
+
+    }
+
+}
+
+
+/*
+    Prüft Supabase auf neue Artikel.
+
+    Wichtig:
+    Wir vergleichen die ID des Artikels.
+
+    Wenn ein bestehender Artikel bearbeitet wird,
+    bleibt seine ID gleich.
+    Deshalb gibt es KEINE neue Benachrichtigung.
+
+    Ein neu veröffentlichter Artikel besitzt dagegen
+    eine neue ID.
+*/
+
+async function checkForNewNews(){
+
+    if(!isNewsPageOpen()){
+        return;
+    }
+
+    try{
+
+        const result =
+            await supabaseRequest(
+                "news?select=id,title,description,category,region,created_at&order=created_at.desc"
+            );
+
+        if(!Array.isArray(result)){
+            return;
+        }
+
+        /*
+            Beim allerersten Prüfen werden die aktuellen
+            Artikel lediglich als bekannt gespeichert.
+        */
+
+        if(!newsNotificationsInitialized){
+
+            result.forEach(article=>{
+
+                const id =
+                    String(article.id);
+
+                if(!knownNewsIds.includes(id)){
+
+                    knownNewsIds.push(id);
+
+                }
+
+            });
+
+            /*
+                Nicht unbegrenzt wachsen lassen.
+            */
+
+            knownNewsIds =
+                knownNewsIds.slice(-200);
+
+            saveKnownNewsIds();
+
+            newsNotificationsInitialized = true;
+
+            return;
+        }
+
+
+        /*
+            Neue Artikel suchen.
+        */
+
+        const newArticles =
+            result.filter(article=>{
+
+                const id =
+                    String(article.id);
+
+                return !knownNewsIds.includes(id);
+
+            });
+
+
+        if(!newArticles.length){
+
+            return;
+
+        }
+
+
+        /*
+            Neue Artikel als bekannt markieren.
+        */
+
+        newArticles.forEach(article=>{
+
+            const id =
+                String(article.id);
+
+            if(!knownNewsIds.includes(id)){
+
+                knownNewsIds.push(id);
+
+            }
+
+        });
+
+
+        knownNewsIds =
+            knownNewsIds.slice(-200);
+
+        saveKnownNewsIds();
+
+
+        /*
+            Den neuesten neuen Artikel anzeigen.
+        */
+
+        const newest =
+            newArticles[0];
+
+
+        showNewNewsNotification(newest);
+
+    }
+    catch(error){
+
+        console.warn(
+            "Fehler bei der Nachrichtenprüfung:",
+            error
+        );
+
+    }
+
+}
+
+
+/*
+    Zeigt unsere eigene Meldung auf der Website.
+*/
+
+function showNewNewsNotification(article){
+
+    if(!article){
+        return;
+    }
+
+    notificationArticleId =
+        String(article.id);
+
+
+    const title =
+        document.getElementById(
+            "notificationTitle"
+        );
+
+
+    title.textContent =
+        article.title ||
+        "Neue Nachricht verfügbar";
+
+
+    document.getElementById(
+        "newsNotification"
+    ).style.display="block";
+
+
+    /*
+        Zusätzlich eine echte Browser-Benachrichtigung
+        anzeigen, wenn der Benutzer diese erlaubt hat.
+    */
+
+    showBrowserNotification(article);
+
+}
+
+
+/*
+    Echte Browser-Benachrichtigung.
+
+    Das funktioniert auf unterstützten Browsern,
+    wenn die Berechtigung erteilt wurde.
+*/
+
+function showBrowserNotification(article){
+
+    if(!("Notification" in window)){
+        return;
+    }
+
+    if(Notification.permission !== "granted"){
+        return;
+    }
+
+    try{
+
+        const notification =
+            new Notification(
+                "n: – Neue Nachricht",
+                {
+                    body:
+                        article.title ||
+                        "Eine neue Nachricht wurde veröffentlicht.",
+                    icon:
+                        "icons/icon-192.png",
+                    tag:
+                        "n-new-news"
+                }
+            );
+
+
+        notification.onclick = function(){
+
+            window.focus();
+
+            notification.close();
+
+            openArticle(
+                article.id
+            );
+
+        };
+
+    }
+    catch(error){
+
+        console.warn(
+            "Browser-Benachrichtigung konnte nicht erstellt werden.",
+            error
+        );
+
+    }
+
+}
+
+
+/*
+    "Später".
+*/
+
+function dismissNewsNotification(){
+
+    document.getElementById(
+        "newsNotification"
+    ).style.display="none";
+
+    notificationArticleId = null;
+
+}
+
+
+/*
+    "Anschauen".
+*/
+
+function openNewNotificationArticle(){
+
+    if(!notificationArticleId){
+
+        dismissNewsNotification();
+
+        return;
+
+    }
+
+
+    const id =
+        notificationArticleId;
+
+
+    dismissNewsNotification();
+
+
+    openArticle(id);
+
+}
+
+
+/*
+    Falls der Nutzer die Seite öffnet und bereits
+    zuvor Artikel gesehen hat, werden die IDs
+    weiterverwendet.
+*/
+
+function initializeKnownNewsIds(){
+
+    if(!Array.isArray(knownNewsIds)){
+
+        knownNewsIds=[];
+
+    }
+
+}
 
 
 /* =====================================================
-   BILD VORSCHAU
+SEITEN
 ===================================================== */
 
-function previewImage(event) {
+function hideAllPages(){
+
+    document.getElementById(
+        "startPage"
+    ).style.display="none";
+
+
+    document.getElementById(
+        "home"
+    ).style.display="none";
+
+
+    document.getElementById(
+        "article"
+    ).style.display="none";
+
+
+    document.getElementById(
+        "traffic"
+    ).style.display="none";
+
+
+    document.getElementById(
+        "area"
+    ).style.display="none";
+
+
+    document.getElementById(
+        "admin"
+    ).style.display="none";
+
+
+    /*
+        Suchbutton und Installationsbutton
+        abhängig von der aktuellen Seite.
+    */
+
+    document.getElementById(
+        "searchButton"
+    ).style.display="none";
+
+
+    document.getElementById(
+        "installButton"
+    ).style.display="none";
+
+}
+
+
+/*
+    STARTSEITE
+*/
+
+function showStart(){
+
+    hideAllPages();
+
+
+    document.getElementById(
+        "startPage"
+    ).style.display="block";
+
+
+    /*
+        Einrichtung/Homebildschirm nur hier.
+    */
+
+    document.getElementById(
+        "installButton"
+    ).style.display="block";
+
+
+    /*
+        Beim Verlassen der Nachrichten wird
+        der Prüf-Timer beendet.
+    */
+
+    stopNewsNotificationWatcher();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/*
+    NACHRICHTEN
+*/
+
+async function openNews(){
+
+    hideAllPages();
+
+
+    document.getElementById(
+        "home"
+    ).style.display="block";
+
+
+    /*
+        Suchbutton erscheint nur bei Nachrichten.
+    */
+
+    document.getElementById(
+        "searchButton"
+    ).style.display="block";
+
+
+    /*
+        Homebildschirm-Button verschwindet hier.
+    */
+
+    document.getElementById(
+        "installButton"
+    ).style.display="none";
+
+
+    /*
+        Benachrichtigungserlaubnis anfragen.
+    */
+
+    requestNotificationPermission();
+
+
+    /*
+        Nachrichten laden.
+    */
+
+    await loadNews();
+
+
+    /*
+        Erst danach wird die Überwachung initialisiert.
+    */
+
+    newsNotificationsInitialized = false;
+
+
+    /*
+        Aktuelle Artikel als bekannt markieren.
+    */
+
+    try{
+
+        const result =
+            await supabaseRequest(
+                "news?select=id&order=created_at.desc"
+            );
+
+
+        if(Array.isArray(result)){
+
+            result.forEach(article=>{
+
+                const id =
+                    String(article.id);
+
+                if(!knownNewsIds.includes(id)){
+
+                    knownNewsIds.push(id);
+
+                }
+
+            });
+
+
+            knownNewsIds =
+                knownNewsIds.slice(-200);
+
+            saveKnownNewsIds();
+
+        }
+
+    }
+    catch(error){
+
+        console.warn(
+            "Bekannte Nachrichten konnten nicht gespeichert werden.",
+            error
+        );
+
+    }
+
+
+    newsNotificationsInitialized=true;
+
+
+    startNewsNotificationWatcher();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/*
+    VERKEHR
+*/
+
+function openTraffic(){
+
+    hideAllPages();
+
+
+    document.getElementById(
+        "traffic"
+    ).style.display="block";
+
+
+    stopNewsNotificationWatcher();
+
+
+    loadTraffic();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/*
+    BEREICH
+*/
+
+function openArea(){
+
+    hideAllPages();
+
+
+    document.getElementById(
+        "area"
+    ).style.display="block";
+
+
+    stopNewsNotificationWatcher();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/*
+    SENDEPLAN
+*/
+
+function openSendeplan(){
+
+    stopNewsNotificationWatcher();
+
+    window.location.href="sendeplan.html";
+
+}
+
+
+/* =====================================================
+INSTALLATIONS- / HOMEBILDSCHIRM-ANLEITUNG
+===================================================== */
+
+function openInstallGuide(){
+
+    /*
+        Die Installationsfunktion wird bewusst
+        über ein neues Fenster dargestellt.
+    */
+
+    const existing =
+        document.getElementById(
+            "installGuide"
+        );
+
+
+    if(existing){
+
+        existing.style.display="flex";
+
+        return;
+
+    }
+
+
+    const overlay =
+        document.createElement("div");
+
+
+    overlay.id="installGuide";
+
+
+    overlay.style.cssText=`
+
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,.55);
+        z-index:3000;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        padding:20px;
+
+    `;
+
+
+    overlay.innerHTML=`
+
+        <div style="
+
+            width:min(520px,100%);
+            max-height:90vh;
+            overflow:auto;
+            background:white;
+            border-radius:24px;
+            padding:28px;
+            box-shadow:0 25px 80px rgba(0,0,0,.3);
+
+        ">
+
+            <div style="
+
+                display:flex;
+                justify-content:space-between;
+                align-items:flex-start;
+                gap:15px;
+
+            ">
+
+                <div>
+
+                    <div style="
+
+                        font-size:12px;
+                        font-weight:900;
+                        color:#777;
+                        text-transform:uppercase;
+                        letter-spacing:1.4px;
+
+                    ">
+                        n: Einrichtung
+                    </div>
+
+                    <h2 style="
+                        margin:8px 0 0;
+                        font-size:30px;
+                    ">
+                        Zum Homebildschirm
+                    </h2>
+
+                </div>
+
+
+                <button
+                    onclick="closeInstallGuide()"
+                    style="
+
+                        border:0;
+                        background:#eee;
+                        width:40px;
+                        height:40px;
+                        border-radius:50%;
+                        font-size:20px;
+                        cursor:pointer;
+
+                    ">
+                    ×
+                </button>
+
+            </div>
+
+
+            <p style="
+                color:#666;
+                line-height:1.6;
+                margin-top:20px;
+            ">
+                Wähle dein Gerät aus, um die passende
+                Anleitung zu erhalten.
+            </p>
+
+
+            <div style="
+                display:grid;
+                gap:10px;
+                margin-top:20px;
+            ">
+
+                <button
+                    onclick="showInstallDevice('iphone')"
+                    style="
+
+                        text-align:left;
+                        padding:17px;
+                        border:1px solid #ddd;
+                        background:white;
+                        border-radius:15px;
+                        cursor:pointer;
+                        font-size:16px;
+                        font-weight:800;
+
+                    ">
+                    iPhone / iPad
+                </button>
+
+
+                <button
+                    onclick="showInstallDevice('android')"
+                    style="
+
+                        text-align:left;
+                        padding:17px;
+                        border:1px solid #ddd;
+                        background:white;
+                        border-radius:15px;
+                        cursor:pointer;
+                        font-size:16px;
+                        font-weight:800;
+
+                    ">
+                    Android
+                </button>
+
+
+                <button
+                    onclick="showInstallDevice('computer')"
+                    style="
+
+                        text-align:left;
+                        padding:17px;
+                        border:1px solid #ddd;
+                        background:white;
+                        border-radius:15px;
+                        cursor:pointer;
+                        font-size:16px;
+                        font-weight:800;
+
+                    ">
+                    Computer
+                </button>
+
+            </div>
+
+
+            <div
+                id="installDeviceContent"
+                style="margin-top:20px">
+            </div>
+
+        </div>
+
+    `;
+
+
+    document.body.appendChild(
+        overlay
+    );
+
+}
+
+
+function showInstallDevice(device){
+
+    const box =
+        document.getElementById(
+            "installDeviceContent"
+        );
+
+
+    if(!box) return;
+
+
+    if(device==="iphone"){
+
+        box.innerHTML=`
+
+            <div style="
+                background:#f5f5f5;
+                border-radius:16px;
+                padding:20px;
+            ">
+
+                <strong>
+                    iPhone / iPad
+                </strong>
+
+                <p style="
+                    color:#666;
+                    line-height:1.6;
+                ">
+                    Öffne diese Website in Safari.
+                    Tippe anschließend auf das
+                    Teilen-Symbol und wähle
+                    „Zum Home-Bildschirm“.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    if(device==="android"){
+
+        box.innerHTML=`
+
+            <div style="
+                background:#f5f5f5;
+                border-radius:16px;
+                padding:20px;
+            ">
+
+                <strong>
+                    Android
+                </strong>
+
+                <p style="
+                    color:#666;
+                    line-height:1.6;
+                ">
+                    Öffne diese Website in Chrome.
+                    Öffne das Browser-Menü und wähle
+                    „Zum Startbildschirm hinzufügen“
+                    beziehungsweise „App installieren“,
+                    falls diese Option angezeigt wird.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    if(device==="computer"){
+
+        box.innerHTML=`
+
+            <div style="
+                background:#f5f5f5;
+                border-radius:16px;
+                padding:20px;
+            ">
+
+                <strong>
+                    Computer
+                </strong>
+
+                <p style="
+                    color:#666;
+                    line-height:1.6;
+                ">
+                    Je nach Browser kann die Website
+                    über das Installationssymbol in
+                    der Adressleiste als App hinzugefügt
+                    werden.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+function closeInstallGuide(){
+
+    const overlay =
+        document.getElementById(
+            "installGuide"
+        );
+
+
+    if(overlay){
+
+        overlay.remove();
+
+    }
+
+}
+
+
+/* =====================================================
+ROUTE
+===================================================== */
+
+async function geocode(place){
+
+    const url =
+        "https://nominatim.openstreetmap.org/search?format=json&limit=1&q="+
+        encodeURIComponent(place);
+
+
+    const response =
+        await fetch(
+            url,
+            {
+                headers:{
+                    "Accept":
+                        "application/json"
+                }
+            }
+        );
+
+
+    if(!response.ok){
+
+        throw new Error(
+            "Ort konnte nicht gesucht werden."
+        );
+
+    }
+
+
+    const data =
+        await response.json();
+
+
+    if(!data.length){
+
+        throw new Error(
+            `„${place}“ wurde nicht gefunden.`
+        );
+
+    }
+
+
+    return {
+
+        lat:
+            parseFloat(data[0].lat),
+
+        lon:
+            parseFloat(data[0].lon),
+
+        name:
+            data[0].display_name
+
+    };
+
+}
+
+
+async function calculateRoute(){
+
+    const start =
+        document.getElementById(
+            "routeStart"
+        ).value.trim();
+
+
+    const destination =
+        document.getElementById(
+            "routeDestination"
+        ).value.trim();
+
+
+    const status =
+        document.getElementById(
+            "routeStatus"
+        );
+
+
+    const result =
+        document.getElementById(
+            "routeResult"
+        );
+
+
+    if(!start || !destination){
+
+        status.textContent =
+            "Bitte Start und Ziel eingeben.";
+
+        result.style.display="none";
+
+        return;
+
+    }
+
+
+    status.textContent =
+        "Orte werden gesucht …";
+
+
+    result.style.display="none";
+
+
+    try{
+
+        const startPoint =
+            await geocode(start);
+
+
+        status.textContent =
+            "Ziel wird gesucht …";
+
+
+        const endPoint =
+            await geocode(destination);
+
+
+        status.textContent =
+            "Route wird berechnet …";
+
+
+        const routeUrl =
+            `https://router.project-osrm.org/route/v1/driving/`+
+            `${startPoint.lon},${startPoint.lat};`+
+            `${endPoint.lon},${endPoint.lat}`+
+            `?overview=false`;
+
+
+        const response =
+            await fetch(routeUrl);
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Routenserver nicht erreichbar."
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        if(
+            data.code!=="Ok" ||
+            !data.routes ||
+            !data.routes.length
+        ){
+
+            throw new Error(
+                "Keine Route gefunden."
+            );
+
+        }
+
+
+        const route =
+            data.routes[0];
+
+
+        const distance =
+            route.distance/1000;
+
+
+        const duration =
+            route.duration/60;
+
+
+        document.getElementById(
+            "routeDistance"
+        ).textContent =
+            distance<10
+                ? distance.toFixed(1)+" km"
+                : Math.round(distance)+" km";
+
+
+        const hours =
+            Math.floor(duration/60);
+
+
+        const minutes =
+            Math.round(duration%60);
+
+
+        document.getElementById(
+            "routeDuration"
+        ).textContent =
+            hours>0
+                ? `${hours} h ${minutes} min`
+                : `${minutes} min`;
+
+
+        const minLat =
+            Math.min(
+                startPoint.lat,
+                endPoint.lat
+            );
+
+
+        const maxLat =
+            Math.max(
+                startPoint.lat,
+                endPoint.lat
+            );
+
+
+        const minLon =
+            Math.min(
+                startPoint.lon,
+                endPoint.lon
+            );
+
+
+        const maxLon =
+            Math.max(
+                startPoint.lon,
+                endPoint.lon
+            );
+
+
+        const paddingLat =
+            Math.max(
+                (maxLat-minLat)*.25,
+                .03
+            );
+
+
+        const paddingLon =
+            Math.max(
+                (maxLon-minLon)*.25,
+                .03
+            );
+
+
+        const bbox =
+            `${minLon-paddingLon},`+
+            `${minLat-paddingLat},`+
+            `${maxLon+paddingLon},`+
+            `${maxLat+paddingLat}`;
+
+
+        const mapUrl =
+            "https://www.openstreetmap.org/export/embed.html"+
+            "?bbox="+
+            encodeURIComponent(bbox)+
+            "&layer=mapnik"+
+            `&marker=${startPoint.lat},${startPoint.lon}`;
+
+
+        document.getElementById(
+            "routeMap"
+        ).src=mapUrl;
+
+
+        result.style.display="block";
+
+
+        status.innerHTML =
+            `<strong>${escapeHTML(startPoint.name)}</strong>`+
+            ` → `+
+            `<strong>${escapeHTML(endPoint.name)}</strong>`;
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        status.textContent =
+            "❌ "+error.message;
+
+        result.style.display="none";
+
+    }
+
+}
+
+
+/* =====================================================
+VERKEHR
+===================================================== */
+
+async function loadTraffic(){
+
+    const roadInput =
+        document.getElementById(
+            "roadInput"
+        )
+        .value
+        .trim()
+        .toUpperCase()
+        .replace(/\s/g,"");
+
+
+    const status =
+        document.getElementById(
+            "trafficStatus"
+        );
+
+
+    const list =
+        document.getElementById(
+            "trafficList"
+        );
+
+
+    if(!roadInput){
+
+        status.textContent =
+            "Bitte eine Autobahn eingeben, z. B. A3.";
+
+        return;
+
+    }
+
+
+    status.textContent =
+        `Verkehrsmeldungen für ${roadInput} werden geladen …`;
+
+
+    list.innerHTML="";
+
+
+    try{
+
+        const base =
+            "https://verkehr.autobahn.de/o/autobahn/"+
+            encodeURIComponent(roadInput)+
+            "/services/";
+
+
+        const endpoints=[
+
+            {
+                type:"warning",
+                name:"Verkehrsmeldungen",
+                url:base+"warning"
+            },
+
+            {
+                type:"closure",
+                name:"Sperrungen",
+                url:base+"closure"
+            },
+
+            {
+                type:"roadwork",
+                name:"Baustellen",
+                url:base+"roadworks"
+            }
+
+        ];
+
+
+        let allItems=[];
+
+
+        for(const endpoint of endpoints){
+
+            try{
+
+                const response =
+                    await fetch(
+                        endpoint.url
+                    );
+
+
+                if(!response.ok){
+                    continue;
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                const items =
+                    extractArray(data);
+
+
+                items.forEach(item=>{
+
+                    allItems.push({
+
+                        ...item,
+
+                        nType:
+                            endpoint.type,
+
+                        nTypeName:
+                            endpoint.name
+
+                    });
+
+                });
+
+            }
+            catch(error){
+
+                console.warn(
+                    endpoint.name,
+                    error
+                );
+
+            }
+
+        }
+
+
+        if(!allItems.length){
+
+            status.innerHTML =
+                `Keine aktuellen Meldungen für <strong>${escapeHTML(roadInput)}</strong> gefunden.`;
+
+            return;
+
+        }
+
+
+        status.innerHTML =
+            `<strong>${allItems.length}</strong> aktuelle Meldung(en) für <strong>${escapeHTML(roadInput)}</strong>`;
+
+
+        allItems.forEach(item=>{
+
+            const box =
+                document.createElement("div");
+
+
+            box.className =
+                "traffic-item "+
+                item.nType;
+
+
+            box.innerHTML=`
+
+                <span class="traffic-badge">
+
+                    ${trafficIcon(item.nType)}
+                    ${escapeHTML(item.nTypeName)}
+
+                </span>
+
+
+                <h3>
+                    ${escapeHTML(
+                        getTrafficTitle(item)
+                    )}
+                </h3>
+
+
+                <p>
+                    ${escapeHTML(
+                        getTrafficDescription(item)
+                    )}
+                </p>
+
+            `;
+
+
+            list.appendChild(box);
+
+        });
+
+    }
+    catch(error){
+
+        console.error(error);
+
+
+        status.textContent =
+            "Verkehrsdaten konnten nicht geladen werden.";
+
+
+        list.innerHTML=`
+
+            <div class="status-box">
+
+                <strong>
+                    Verkehrsdaten nicht verfügbar.
+                </strong>
+
+                <br><br>
+
+                Bitte später erneut versuchen.
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+function extractArray(data){
+
+    if(Array.isArray(data)){
+        return data;
+    }
+
+
+    const possibleKeys=[
+
+        "warning",
+        "warnings",
+        "closure",
+        "closures",
+        "roadworks",
+        "roadwork",
+        "items",
+        "roads"
+
+    ];
+
+
+    for(const key of possibleKeys){
+
+        if(Array.isArray(data[key])){
+
+            return data[key];
+
+        }
+
+    }
+
+
+    return [];
+
+}
+
+
+function getTrafficTitle(item){
+
+    return(
+
+        item.title||
+        item.headline||
+        item.subtitle||
+        item.description||
+        item.display_type||
+        item.type||
+        "Verkehrsmeldung"
+
+    );
+
+}
+
+
+function getTrafficDescription(item){
+
+    return(
+
+        item.description||
+        item.subtitle||
+        item.text||
+        item.message||
+        item.information||
+        item.detail||
+        "Keine weiteren Informationen verfügbar."
+
+    );
+
+}
+
+
+function trafficIcon(type){
+
+    if(type==="closure"){
+        return "Sperrung";
+    }
+
+    if(type==="roadwork"){
+        return "Baustelle";
+    }
+
+    return "Hinweis";
+
+}
+
+
+/* =====================================================
+SUPABASE
+===================================================== */
+
+async function supabaseRequest(
+    endpoint,
+    options={}
+){
+
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
+
+
+    const headers={
+
+        "apikey":
+            SUPABASE_KEY,
+
+        "Content-Type":
+            "application/json",
+
+        ...(options.headers||{})
+
+    };
+
+
+    if(token){
+
+        headers["Authorization"] =
+            `Bearer ${token}`;
+
+    }
+    else if(!headers["Authorization"]){
+
+        headers["Authorization"] =
+            `Bearer ${SUPABASE_KEY}`;
+
+    }
+
+
+    const response =
+        await fetch(
+
+            `${SUPABASE_URL}/rest/v1/${endpoint}`,
+
+            {
+                ...options,
+                headers
+            }
+
+        );
+
+
+    if(!response.ok){
+
+        const text =
+            await response.text();
+
+
+        if(
+            text.includes("JWT expired")||
+            response.status===401
+        ){
+
+            sessionStorage.removeItem(
+                "nAccessToken"
+            );
+
+            sessionStorage.removeItem(
+                "nUser"
+            );
+
+        }
+
+
+        throw new Error(
+            text||
+            "Supabase Fehler"
+        );
+
+    }
+
+
+    const text =
+        await response.text();
+
+
+    if(!text){
+        return null;
+    }
+
+
+    try{
+
+        return JSON.parse(text);
+
+    }
+    catch{
+
+        return null;
+
+    }
+
+}
+
+
+/* =====================================================
+BILD
+===================================================== */
+
+function previewImage(event){
 
     const file =
         event.target.files[0];
+
 
     const preview =
         document.getElementById(
             "imagePreview"
         );
 
-    if (!file) {
 
-        preview.style.display =
-            "none";
+    if(!file){
 
-        preview.removeAttribute(
-            "src"
-        );
+        preview.style.display="none";
+
+        preview.removeAttribute("src");
 
         return;
 
     }
 
-    if (
-        !file.type.startsWith(
-            "image/"
-        )
-    ) {
+
+    if(!file.type.startsWith("image/")){
 
         alert(
             "Bitte eine Bilddatei auswählen."
         );
 
-        event.target.value = "";
+
+        event.target.value="";
+
 
         return;
 
     }
 
-    if (
-        file.size >
-        10 * 1024 * 1024
-    ) {
-
-        alert(
-            "Das Bild darf maximal 10 MB groß sein."
-        );
-
-        event.target.value = "";
-
-        return;
-
-    }
 
     const reader =
         new FileReader();
 
-    reader.onload =
-        function(e) {
 
-            preview.src =
-                e.target.result;
+    reader.onload=e=>{
 
-            preview.style.display =
-                "block";
+        preview.src =
+            e.target.result;
 
-        };
+        preview.style.display =
+            "block";
+
+    };
+
 
     reader.readAsDataURL(file);
 
 }
 
 
-/* =====================================================
-   BILD HOCHLADEN
-===================================================== */
+async function uploadImage(file){
 
-async function uploadImage(file) {
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
 
-    if (!file) {
+
+    if(!token){
+
+        throw new Error(
+            "Nicht eingeloggt. Bitte erneut einloggen."
+        );
+
+    }
+
+
+    if(!file){
         return null;
     }
 
-    if (
-        !file.type.startsWith(
-            "image/"
-        )
-    ) {
+
+    if(!file.type.startsWith("image/")){
 
         throw new Error(
             "Die ausgewählte Datei ist kein Bild."
@@ -1279,34 +3746,11 @@ async function uploadImage(file) {
 
     }
 
-    if (
-        file.size >
-        10 * 1024 * 1024
-    ) {
+
+    if(file.size>10*1024*1024){
 
         throw new Error(
             "Das Bild ist zu groß. Maximal 10 MB."
-        );
-
-    }
-
-
-    const {
-        data: {
-            session
-        },
-        error: sessionError
-    } =
-        await supabase.auth.getSession();
-
-
-    if (
-        sessionError ||
-        !session
-    ) {
-
-        throw new Error(
-            "Deine Anmeldung ist abgelaufen. Bitte erneut einloggen."
         );
 
     }
@@ -1324,110 +3768,103 @@ async function uploadImage(file) {
 
 
     const filename =
-        ${Date.now()}-${crypto.randomUUID()}.${extension};
+        `${Date.now()}-${crypto.randomUUID()}.${extension}`;
 
 
-    const {
-        error
-    } =
-        await supabase.storage
-            .from(STORAGE_BUCKET)
-            .upload(
-                filename,
-                file,
-                {
-                    contentType:
+    const uploadUrl =
+        `${SUPABASE_URL}/storage/v1/object/`+
+        `${STORAGE_BUCKET}/${filename}`;
+
+
+    const response =
+        await fetch(
+
+            uploadUrl,
+
+            {
+                method:"POST",
+
+                headers:{
+
+                    "apikey":
+                        SUPABASE_KEY,
+
+                    "Authorization":
+                        `Bearer ${token}`,
+
+                    "Content-Type":
                         file.type,
-                    upsert:
-                        false
-                }
-            );
 
+                    "x-upsert":
+                        "false"
 
-    if (error) {
+                },
 
-        console.error(
-            "Upload:",
-            error
+                body:file
+
+            }
+
         );
 
+
+    if(!response.ok){
+
+        const errorText =
+            await response.text();
+
+
         throw new Error(
-            error.message
+
+            errorText||
+            `Bild-Upload fehlgeschlagen (${response.status})`
+
         );
 
     }
 
 
-    const {
-        data
-    } =
-        supabase.storage
-            .from(STORAGE_BUCKET)
-            .getPublicUrl(
-                filename
-            );
+    return(
 
+        `${SUPABASE_URL}/storage/v1/object/public/`+
+        `${STORAGE_BUCKET}/${filename}`
 
-    return data.publicUrl;
+    );
 
 }
 
 
 /* =====================================================
-   NEWS LADEN
+NEWS LADEN
 ===================================================== */
 
-async function loadNews() {
+async function loadNews(){
 
     const grid =
         document.getElementById(
             "newsGrid"
         );
 
-    grid.innerHTML = 
 
-        <div class="status-box">
+    try{
 
-            Nachrichten werden geladen …
+        grid.innerHTML=`
 
-        </div>
+            <div class="status-box">
+                Nachrichten werden geladen …
+            </div>
 
-    ;
-
-
-    try {
-
-        /*
-           Supabase übernimmt jetzt
-           automatisch das richtige
-           JWT und erneuert es bei Bedarf.
-        */
-
-        const {
-            data,
-            error
-        } =
-            await supabase
-                .from("news")
-                .select("*")
-                .order(
-                    "created_at",
-                    {
-                        ascending: false
-                    }
-                );
+        `;
 
 
-        if (error) {
-
-            throw error;
-
-        }
+        const result =
+            await supabaseRequest(
+                "news?select=*&order=created_at.desc"
+            );
 
 
         articles =
-            Array.isArray(data)
-                ? data
+            Array.isArray(result)
+                ? result
                 : [];
 
 
@@ -1436,14 +3873,15 @@ async function loadNews() {
         );
 
 
-    } catch (error) {
+        renderAdmin();
 
-        console.error(
-            error
-        );
+    }
+    catch(error){
+
+        console.error(error);
 
 
-        grid.innerHTML = 
+        grid.innerHTML=`
 
             <div class="status-box">
 
@@ -1454,23 +3892,12 @@ async function loadNews() {
                 <br><br>
 
                 ${escapeHTML(
-                    error.message ||
-                    "Unbekannter Fehler"
+                    error.message
                 )}
-
-                <br><br>
-
-                <button
-                    class="secondary"
-                    onclick="loadNews()">
-
-                    🔄 Erneut versuchen
-
-                </button>
 
             </div>
 
-        ;
+        `;
 
     }
 
@@ -1478,37 +3905,32 @@ async function loadNews() {
 
 
 /* =====================================================
-   BILD HTML
+NEWS DARSTELLUNG
 ===================================================== */
 
-function getNewsImageHTML(article) {
+function getNewsImageHTML(article){
 
-    if (
-        article.image_url
-    ) {
+    if(article.image_url){
 
-        return 
+        return`
 
             <img
                 src="${escapeHTML(article.image_url)}"
-                alt="${escapeHTML(article.title || "Artikelbild")}"
+                alt="${escapeHTML(article.title||"Artikelbild")}"
                 loading="lazy"
-                onerror="this.style.display='none'; this.parentElement.innerHTML='n:'">
+                onerror="this.parentElement.innerHTML='n:'">
 
-        ;
+        `;
 
     }
+
 
     return "n:";
 
 }
 
 
-/* =====================================================
-   NEWS RENDERN
-===================================================== */
-
-function renderNews(list) {
+function renderNews(list){
 
     const grid =
         document.getElementById(
@@ -1516,33 +3938,29 @@ function renderNews(list) {
         );
 
 
-    grid.innerHTML = "";
+    grid.innerHTML="";
 
 
-    if (
-        !list.length
-    ) {
+    if(!list.length){
 
-        grid.innerHTML = 
+        grid.innerHTML=`
 
             <div class="status-box">
-
                 Noch keine Nachrichten vorhanden.
-
             </div>
 
-        ;
+        `;
+
 
         return;
 
     }
 
 
-    if (
-        activeFilter === "Alle"
-        &&
-        list.length > 0
-    ) {
+    if(
+        activeFilter==="Alle" &&
+        list.length>0
+    ){
 
         const first =
             list[0];
@@ -1559,39 +3977,34 @@ function renderNews(list) {
 
 
         featured.onclick =
-            () =>
-                openArticle(
-                    first.id
-                );
+            ()=>openArticle(
+                first.id
+            );
 
 
-        featured.innerHTML = 
+        featured.innerHTML=`
 
             <div class="featured-image">
-
                 ${getNewsImageHTML(first)}
-
             </div>
+
 
             <div class="featured-content">
 
                 <div class="featured-label">
-
-                    ● AKTUELL
-
+                    AKTUELL
                 </div>
 
+
                 <h2>
-
-                    ${escapeHTML(
-                        first.title
+                    ${renderMarkdown(
+                        first.title||""
                     )}
-
                 </h2>
 
             </div>
 
-        ;
+        `;
 
 
         grid.appendChild(
@@ -1602,13 +4015,12 @@ function renderNews(list) {
 
 
     list.forEach(
-        (item,index) => {
+        (item,index)=>{
 
-            if (
-                activeFilter === "Alle"
-                &&
-                index === 0
-            ) {
+            if(
+                activeFilter==="Alle" &&
+                index===0
+            ){
 
                 return;
 
@@ -1626,55 +4038,51 @@ function renderNews(list) {
 
 
             card.onclick =
-                () =>
-                    openArticle(
-                        item.id
-                    );
+                ()=>openArticle(
+                    item.id
+                );
 
 
-            card.innerHTML = 
+            card.innerHTML=`
 
                 <div class="news-image">
-
                     ${getNewsImageHTML(item)}
-
                 </div>
+
 
                 <div class="news-card-content">
 
                     <div class="news-meta">
 
                         ${escapeHTML(
-                            item.category || ""
+                            item.category||""
                         )}
 
                         ·
 
                         ${escapeHTML(
-                            item.region || ""
+                            item.region||""
                         )}
 
                     </div>
 
+
                     <h2>
-
-                        ${escapeHTML(
-                            item.title || ""
+                        ${renderMarkdown(
+                            item.title||""
                         )}
-
                     </h2>
 
+
                     <p>
-
-                        ${escapeHTML(
-                            item.description || ""
+                        ${renderMarkdown(
+                            item.description||""
                         )}
-
                     </p>
 
                 </div>
 
-            ;
+            `;
 
 
             grid.appendChild(
@@ -1687,25 +4095,19 @@ function renderNews(list) {
 }
 
 
-/* =====================================================
-   FILTER
-===================================================== */
-
 function filterNews(
     category,
     button
-) {
+){
 
     activeFilter =
         category;
 
 
     document
-        .querySelectorAll(
-            ".filter"
-        )
+        .querySelectorAll(".filter")
         .forEach(
-            x =>
+            x=>
                 x.classList.remove(
                     "active"
                 )
@@ -1717,9 +4119,7 @@ function filterNews(
     );
 
 
-    if (
-        category === "Alle"
-    ) {
+    if(category==="Alle"){
 
         renderNews(
             articles
@@ -1732,12 +4132,9 @@ function filterNews(
 
     const filtered =
         articles.filter(
-            item =>
-                item.category ===
-                    category
-                ||
-                item.region ===
-                    category
+            item=>
+                item.category===category||
+                item.region===category
         );
 
 
@@ -1749,10 +4146,23 @@ function filterNews(
 
 
 /* =====================================================
-   SUCHE
+SUCHE
 ===================================================== */
 
-function toggleSearch() {
+function toggleSearch(){
+
+    if(
+        document.getElementById(
+            "home"
+        ).style.display!=="block"
+    ){
+
+        openNews();
+
+        return;
+
+    }
+
 
     const box =
         document.getElementById(
@@ -1760,43 +4170,41 @@ function toggleSearch() {
         );
 
 
-    if (
-        box.style.display ===
-        "block"
-    ) {
+    if(
+        box.style.display==="block"
+    ){
 
         box.style.display =
             "none";
 
-    } else {
+    }
+    else{
 
         box.style.display =
             "block";
 
-        document
-            .getElementById(
-                "searchInput"
-            )
-            .focus();
+
+        document.getElementById(
+            "searchInput"
+        ).focus();
 
     }
 
 }
 
 
-function searchNews() {
+function searchNews(){
 
     const value =
-        document
-            .getElementById(
-                "searchInput"
-            )
-            .value
-            .toLowerCase()
-            .trim();
+        document.getElementById(
+            "searchInput"
+        )
+        .value
+        .toLowerCase()
+        .trim();
 
 
-    if (!value) {
+    if(!value){
 
         renderNews(
             articles
@@ -1809,51 +4217,46 @@ function searchNews() {
 
     const results =
         articles.filter(
-            item => {
+            item=>
 
-                return (
+                String(
+                    item.title||""
+                )
+                .toLowerCase()
+                .includes(value)
 
-                    String(
-                        item.title || ""
-                    )
-                    .toLowerCase()
-                    .includes(value)
+                ||
 
-                    ||
+                String(
+                    item.description||""
+                )
+                .toLowerCase()
+                .includes(value)
 
-                    String(
-                        item.description || ""
-                    )
-                    .toLowerCase()
-                    .includes(value)
+                ||
 
-                    ||
+                String(
+                    item.content||""
+                )
+                .toLowerCase()
+                .includes(value)
 
-                    String(
-                        item.content || ""
-                    )
-                    .toLowerCase()
-                    .includes(value)
+                ||
 
-                    ||
+                String(
+                    item.category||""
+                )
+                .toLowerCase()
+                .includes(value)
 
-                    String(
-                        item.category || ""
-                    )
-                    .toLowerCase()
-                    .includes(value)
+                ||
 
-                    ||
+                String(
+                    item.region||""
+                )
+                .toLowerCase()
+                .includes(value)
 
-                    String(
-                        item.region || ""
-                    )
-                    .toLowerCase()
-                    .includes(value)
-
-                );
-
-            }
         );
 
 
@@ -1865,64 +4268,44 @@ function searchNews() {
 
 
 /* =====================================================
-   ARTIKEL ÖFFNEN
+ARTIKEL
 ===================================================== */
 
-function openArticle(id) {
+function openArticle(id){
 
     const article =
         articles.find(
-            x =>
-                x.id === id
+            x=>
+                String(x.id)===
+                String(id)
         );
 
 
-    if (!article) {
+    if(!article){
         return;
     }
 
 
-    document
-        .getElementById(
-            "home"
-        )
-        .style.display =
-            "none";
+    hideAllPages();
 
 
-    document
-        .getElementById(
-            "admin"
-        )
-        .style.display =
-            "none";
+    document.getElementById(
+        "article"
+    ).style.display="block";
 
 
-    document
-        .getElementById(
-            "article"
-        )
-        .style.display =
-            "block";
+    document.getElementById(
+        "articleMeta"
+    ).textContent =
+        `${article.category||""} · ${article.region||""}`;
 
 
-    document
-        .getElementById(
-            "articleMeta"
-        )
-        .textContent =
-
-        ${article.category || ""} · ${
-            article.region || ""
-        };
-
-
-    document
-        .getElementById(
-            "articleTitle"
-        )
-        .textContent =
-            article.title || "";
+    document.getElementById(
+        "articleTitle"
+    ).innerHTML =
+        renderMarkdown(
+            article.title||""
+        );
 
 
     const imageBox =
@@ -1931,20 +4314,19 @@ function openArticle(id) {
         );
 
 
-    if (
-        article.image_url
-    ) {
+    if(article.image_url){
 
-        imageBox.innerHTML = 
+        imageBox.innerHTML=`
 
             <img
                 src="${escapeHTML(article.image_url)}"
-                alt="${escapeHTML(article.title || "Artikelbild")}"
+                alt="${escapeHTML(article.title||"Artikelbild")}"
                 onerror="this.parentElement.innerHTML='n:'">
 
-        ;
+        `;
 
-    } else {
+    }
+    else{
 
         imageBox.innerHTML =
             "n:";
@@ -1952,139 +4334,119 @@ function openArticle(id) {
     }
 
 
-    document
-        .getElementById(
-            "articleText"
-        )
-        .innerHTML =
-
-        escapeHTML(
-            article.content || ""
-        )
-        .replace(
-            /\n/g,
-            "<br><br>"
+    document.getElementById(
+        "articleText"
+    ).innerHTML =
+        renderMarkdown(
+            article.content||""
         );
 
 
+    renderArticleConnections(
+        article.id
+    );
+
+
     window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        top:0,
+        behavior:"smooth"
     });
 
 }
 
 
 /* =====================================================
-   HOME
+MARKDOWN
 ===================================================== */
 
-function showHome() {
+function renderMarkdown(value){
 
-    document
-        .getElementById(
-            "article"
-        )
-        .style.display =
-            "none";
+    let text =
+        escapeHTML(
+            value||""
+        );
 
 
-    document
-        .getElementById(
-            "admin"
-        )
-        .style.display =
-            "none";
+    text =
+        text.replace(
+            /\*\*(.+?)\*\*/gs,
+            "<strong>$1</strong>"
+        );
 
 
-    document
-        .getElementById(
-            "home"
-        )
-        .style.display =
-            "block";
+    text =
+        text.replace(
+            /\r\n/g,
+            "\n"
+        );
+
+
+    text =
+        text.replace(
+            /\n/g,
+            "<br>"
+        );
+
+
+    return text;
+
+}
+
+
+/* =====================================================
+ADMIN
+===================================================== */
+
+function openAdmin(){
+
+    hideAllPages();
+
+
+    document.getElementById(
+        "admin"
+    ).style.display="block";
+
+
+    stopNewsNotificationWatcher();
+
+
+    checkSession();
 
 
     window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        top:0,
+        behavior:"smooth"
     });
 
 }
 
 
-/* =====================================================
-   ADMIN ÖFFNEN
-===================================================== */
-
-async function openAdmin() {
-
-    document
-        .getElementById(
-            "home"
-        )
-        .style.display =
-            "none";
-
-
-    document
-        .getElementById(
-            "article"
-        )
-        .style.display =
-            "none";
-
-
-    document
-        .getElementById(
-            "admin"
-        )
-        .style.display =
-            "block";
-
-
-    await checkSession();
-
-}
-
-
-/* =====================================================
-   LOGIN
-===================================================== */
-
-async function login() {
+async function login(){
 
     const email =
-        document
-            .getElementById(
-                "email"
-            )
-            .value
-            .trim();
+        document.getElementById(
+            "email"
+        )
+        .value
+        .trim();
 
 
     const password =
-        document
-            .getElementById(
-                "password"
-            )
-            .value;
+        document.getElementById(
+            "password"
+        ).value;
 
 
     const error =
-        document
-            .getElementById(
-                "loginError"
-            );
+        document.getElementById(
+            "loginError"
+        );
 
 
-    error.textContent = "";
+    error.textContent="";
 
 
-    if (
-        !email ||
-        !password
-    ) {
+    if(!email||!password){
 
         error.textContent =
             "Bitte E-Mail und Passwort eingeben.";
@@ -2094,202 +4456,161 @@ async function login() {
     }
 
 
-    try {
+    try{
 
-        const {
-            data,
-            error: loginError
-        } =
-            await supabase.auth
-                .signInWithPassword({
+        const response =
+            await fetch(
 
-                    email:
+                `${SUPABASE_URL}/auth/v1/token?grant_type=password`,
+
+                {
+
+                    method:"POST",
+
+                    headers:{
+
+                        "apikey":
+                            SUPABASE_KEY,
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body:JSON.stringify({
+
                         email,
-
-                    password:
                         password
 
-                });
+                    })
+
+                }
+
+            );
 
 
-        if (
-            loginError
-        ) {
+        const data =
+            await response.json();
 
-            throw loginError;
+
+        if(!response.ok){
+
+            throw new Error(
+
+                data.msg||
+                data.message||
+                "Login fehlgeschlagen."
+
+            );
 
         }
 
 
-        console.log(
-            "Login erfolgreich:",
-            data.user
+        sessionStorage.setItem(
+            "nAccessToken",
+            data.access_token
+        );
+
+
+        sessionStorage.setItem(
+            "nUser",
+            JSON.stringify(data.user)
         );
 
 
         showDashboard();
 
+    }
+    catch(error){
 
-    } catch (error) {
-
-        console.error(
-            error
-        );
+        console.error(error);
 
 
-        document
-            .getElementById(
-                "loginError"
-            )
-            .textContent =
-
-                "❌ " +
-                (
-                    error.message ||
-                    "Login fehlgeschlagen."
-                );
+        document.getElementById(
+            "loginError"
+        ).textContent =
+            "❌ "+error.message;
 
     }
 
 }
 
 
-/* =====================================================
-   SESSION PRÜFEN
-===================================================== */
+function checkSession(){
 
-async function checkSession() {
-
-    try {
-
-        const {
-            data,
-            error
-        } =
-            await supabase.auth
-                .getSession();
-
-
-        if (
-            error
-        ) {
-
-            throw error;
-
-        }
-
-
-        if (
-            data.session
-        ) {
-
-            showDashboard();
-
-        } else {
-
-            document
-                .getElementById(
-                    "loginBox"
-                )
-                .style.display =
-                    "block";
-
-
-            document
-                .getElementById(
-                    "dashboard"
-                )
-                .style.display =
-                    "none";
-
-        }
-
-    } catch (error) {
-
-        console.error(
-            error
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
         );
 
 
-        document
-            .getElementById(
-                "loginBox"
-            )
-            .style.display =
-                "block";
+    if(token){
+
+        showDashboard();
+
+    }
+    else{
+
+        document.getElementById(
+            "loginBox"
+        ).style.display="block";
 
 
-        document
-            .getElementById(
-                "dashboard"
-            )
-            .style.display =
-                "none";
+        document.getElementById(
+            "dashboard"
+        ).style.display="none";
 
     }
 
 }
 
 
-/* =====================================================
-   DASHBOARD
-===================================================== */
+function showDashboard(){
 
-function showDashboard() {
-
-    document
-        .getElementById(
-            "loginBox"
-        )
-        .style.display =
-            "none";
+    document.getElementById(
+        "loginBox"
+    ).style.display="none";
 
 
-    document
-        .getElementById(
-            "dashboard"
-        )
-        .style.display =
-            "block";
+    document.getElementById(
+        "dashboard"
+    ).style.display="block";
 
 
-    renderAdmin();
+    loadNews();
+
+}
+
+
+function logout(){
+
+    sessionStorage.removeItem(
+        "nAccessToken"
+    );
+
+
+    sessionStorage.removeItem(
+        "nUser"
+    );
+
+
+    document.getElementById(
+        "dashboard"
+    ).style.display="none";
+
+
+    document.getElementById(
+        "loginBox"
+    ).style.display="block";
 
 }
 
 
 /* =====================================================
-   LOGOUT
+ADMIN-LISTE
 ===================================================== */
 
-async function logout() {
-
-    await supabase.auth.signOut();
-
-
-    document
-        .getElementById(
-            "dashboard"
-        )
-        .style.display =
-            "none";
-
-
-    document
-        .getElementById(
-            "loginBox"
-        )
-        .style.display =
-            "block";
-
-}
-
-
-/* =====================================================
-   ADMIN LISTE
-===================================================== */
-
-function renderAdmin() {
+function renderAdmin(){
 
     const list =
         document.getElementById(
@@ -2297,22 +4618,24 @@ function renderAdmin() {
         );
 
 
-    list.innerHTML = "";
+    if(!list){
+        return;
+    }
 
 
-    if (
-        !articles.length
-    ) {
+    list.innerHTML="";
 
-        list.innerHTML = 
+
+    if(!articles.length){
+
+        list.innerHTML=`
 
             <div class="status-box">
-
                 Noch keine Artikel.
-
             </div>
 
-        ;
+        `;
+
 
         return;
 
@@ -2320,7 +4643,7 @@ function renderAdmin() {
 
 
     articles.forEach(
-        article => {
+        article=>{
 
             const item =
                 document.createElement(
@@ -2332,55 +4655,82 @@ function renderAdmin() {
                 "admin-item";
 
 
-            item.innerHTML = 
+            const connectionCount =
+                getConnections(
+                    article.id
+                ).length;
+
+
+            item.innerHTML=`
 
                 <div>
 
                     <div class="admin-item-title">
-
                         ${escapeHTML(
-                            article.title || ""
+                            article.title||""
                         )}
-
                     </div>
+
 
                     <small>
 
                         ${escapeHTML(
-                            article.category || ""
+                            article.category||""
                         )}
 
                         ·
 
                         ${escapeHTML(
-                            article.region || ""
+                            article.region||""
                         )}
+
+                        ${
+                            connectionCount
+
+                            ? ` · ${connectionCount} verbunden`
+
+                            : ""
+
+                        }
 
                     </small>
 
                 </div>
 
+
                 <div class="admin-actions">
+
 
                     <button
                         class="small edit"
                         onclick="editArticle(${article.id})">
-
                         Bearbeiten
-
                     </button>
+
+
+                    <button
+                        class="small connect"
+                        onclick="manageConnections(${article.id})">
+                        Verbinden
+                    </button>
+
+
+                    <button
+                        class="small duplicate"
+                        onclick="duplicateArticle(${article.id})">
+                        Duplizieren
+                    </button>
+
 
                     <button
                         class="small delete"
                         onclick="deleteArticle(${article.id})">
-
                         Löschen
-
                     </button>
 
                 </div>
 
-            ;
+            `;
 
 
             list.appendChild(
@@ -2394,61 +4744,54 @@ function renderAdmin() {
 
 
 /* =====================================================
-   ARTIKEL SPEICHERN
+ARTIKEL SPEICHERN
 ===================================================== */
 
-async function saveArticle() {
+async function saveArticle(){
 
     const title =
-        document
-            .getElementById(
-                "title"
-            )
-            .value
-            .trim();
+        document.getElementById(
+            "title"
+        )
+        .value
+        .trim();
 
 
     const description =
-        document
-            .getElementById(
-                "description"
-            )
-            .value
-            .trim();
+        document.getElementById(
+            "description"
+        )
+        .value
+        .trim();
 
 
     const category =
-        document
-            .getElementById(
-                "category"
-            )
-            .value;
+        document.getElementById(
+            "category"
+        ).value;
 
 
     const region =
-        document
-            .getElementById(
-                "region"
-            )
-            .value
-            .trim();
+        document.getElementById(
+            "region"
+        )
+        .value
+        .trim();
 
 
     const content =
-        document
-            .getElementById(
-                "content"
-            )
-            .value
-            .trim();
+        document.getElementById(
+            "content"
+        )
+        .value
+        .trim();
 
 
     const imageFile =
-        document
-            .getElementById(
-                "imageFile"
-            )
-            .files[0];
+        document.getElementById(
+            "imageFile"
+        )
+        .files[0];
 
 
     const message =
@@ -2463,53 +4806,64 @@ async function saveArticle() {
         );
 
 
-    if (
-        !title ||
-        !description ||
-        !region ||
+    if(
+        !title||
+        !description||
+        !region||
         !content
-    ) {
+    ){
 
         message.className =
             "error";
 
+
         message.textContent =
             "Bitte alle Felder ausfüllen.";
+
 
         return;
 
     }
 
 
-    try {
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
 
-        saveButton.disabled =
-            true;
 
-        saveButton.textContent =
-            "⏳ Wird gespeichert...";
+    if(!token){
 
         message.className =
-            "success";
+            "error";
+
 
         message.textContent =
-            "";
+            "Bitte erneut einloggen.";
 
 
-        /*
-           BILD
-        */
+        return;
+
+    }
+
+
+    try{
+
+        saveButton.disabled=true;
+
+
+        saveButton.textContent =
+            "Wird gespeichert...";
+
 
         let imageUrl =
             editingImageUrl;
 
 
-        if (
-            imageFile
-        ) {
+        if(imageFile){
 
             message.textContent =
-                "🖼️ Bild wird hochgeladen...";
+                "Bild wird hochgeladen...";
 
 
             imageUrl =
@@ -2520,103 +4874,99 @@ async function saveArticle() {
         }
 
 
-        /*
-           ARTIKEL
-        */
+        if(editingId!==null){
 
-        message.textContent =
-            "📰 Artikel wird gespeichert...";
+            /*
+                WICHTIG:
 
+                PATCH verändert nur den bestehenden Artikel.
+                Die ID bleibt gleich.
 
-        if (
-            editingId !== null
-        ) {
+                Dadurch wird bei einer Bearbeitung
+                KEINE neue Benachrichtigung ausgelöst.
+            */
 
-            const {
-                error
-            } =
-                await supabase
-                    .from("news")
-                    .update({
+            await supabaseRequest(
 
-                        title:
-                            title,
+                `news?id=eq.${editingId}`,
 
-                        description:
-                            description,
+                {
 
-                        category:
-                            category,
+                    method:"PATCH",
 
-                        region:
-                            region,
+                    headers:{
 
-                        content:
-                            content,
+                        "Authorization":
+                            `Bearer ${token}`,
 
-                        image_url:
-                            imageUrl
+                        "Prefer":
+                            "return=minimal"
+
+                    },
+
+                    body:JSON.stringify({
+
+                        title,
+                        description,
+                        category,
+                        region,
+                        content,
+                        image_url:imageUrl
 
                     })
-                    .eq(
-                        "id",
-                        editingId
-                    );
 
+                }
 
-            if (
-                error
-            ) {
-
-                throw error;
-
-            }
+            );
 
 
             message.textContent =
-                "✅ Artikel aktualisiert.";
+                "Artikel aktualisiert.";
 
-        } else {
+        }
+        else{
 
-            const {
-                error
-            } =
-                await supabase
-                    .from("news")
-                    .insert({
+            /*
+                POST erzeugt einen neuen Artikel
+                und damit eine neue ID.
+            */
 
-                        title:
-                            title,
+            await supabaseRequest(
 
-                        description:
-                            description,
+                "news",
 
-                        category:
-                            category,
+                {
 
-                        region:
-                            region,
+                    method:"POST",
 
-                        content:
-                            content,
+                    headers:{
 
-                        image_url:
-                            imageUrl
+                        "Authorization":
+                            `Bearer ${token}`,
 
-                    });
+                        "Prefer":
+                            "return=minimal"
 
+                    },
 
-            if (
-                error
-            ) {
+                    body:JSON.stringify({
 
-                throw error;
+                        title,
+                        description,
+                        category,
+                        region,
+                        content,
+                        image_url:imageUrl
 
-            }
+                    })
+
+                }
+
+            );
 
 
             message.textContent =
-                "📰 Artikel veröffentlicht.";
+                "Artikel veröffentlicht.";
 
         }
 
@@ -2626,15 +4976,10 @@ async function saveArticle() {
 
         await loadNews();
 
+    }
+    catch(error){
 
-        renderAdmin();
-
-
-    } catch (error) {
-
-        console.error(
-            error
-        );
+        console.error(error);
 
 
         message.className =
@@ -2642,22 +4987,18 @@ async function saveArticle() {
 
 
         message.textContent =
-            "Fehler: " +
-            (
-                error.message ||
-                "Unbekannter Fehler"
-            );
+            "Fehler: "+error.message;
 
-    } finally {
+    }
+    finally{
 
-        saveButton.disabled =
-            false;
+        saveButton.disabled=false;
 
 
         saveButton.textContent =
-            editingId !== null
+            editingId!==null
                 ? "Änderungen speichern"
-                : "📰 Veröffentlichen";
+                : "Veröffentlichen";
 
     }
 
@@ -2665,19 +5006,20 @@ async function saveArticle() {
 
 
 /* =====================================================
-   ARTIKEL BEARBEITEN
+EDIT
 ===================================================== */
 
-function editArticle(id) {
+function editArticle(id){
 
     const article =
         articles.find(
-            x =>
-                x.id === id
+            x=>
+                String(x.id)===
+                String(id)
         );
 
 
-    if (!article) {
+    if(!article){
         return;
     }
 
@@ -2687,65 +5029,50 @@ function editArticle(id) {
 
 
     editingImageUrl =
-        article.image_url ||
+        article.image_url||
         null;
 
 
-    document
-        .getElementById(
-            "formTitle"
-        )
-        .textContent =
-            "Artikel bearbeiten";
+    document.getElementById(
+        "formTitle"
+    ).textContent =
+        "Artikel bearbeiten";
 
 
-    document
-        .getElementById(
-            "title"
-        )
-        .value =
-            article.title || "";
+    document.getElementById(
+        "title"
+    ).value =
+        article.title||"";
 
 
-    document
-        .getElementById(
-            "description"
-        )
-        .value =
-            article.description || "";
+    document.getElementById(
+        "description"
+    ).value =
+        article.description||"";
 
 
-    document
-        .getElementById(
-            "category"
-        )
-        .value =
-            article.category ||
-            "Deutschland";
+    document.getElementById(
+        "category"
+    ).value =
+        article.category||
+        "Deutschland";
 
 
-    document
-        .getElementById(
-            "region"
-        )
-        .value =
-            article.region || "";
+    document.getElementById(
+        "region"
+    ).value =
+        article.region||"";
 
 
-    document
-        .getElementById(
-            "content"
-        )
-        .value =
-            article.content || "";
+    document.getElementById(
+        "content"
+    ).value =
+        article.content||"";
 
 
-    document
-        .getElementById(
-            "imageFile"
-        )
-        .value =
-            "";
+    document.getElementById(
+        "imageFile"
+    ).value="";
 
 
     const preview =
@@ -2760,117 +5087,232 @@ function editArticle(id) {
         );
 
 
-    if (
-        article.image_url
-    ) {
+    if(article.image_url){
 
         preview.src =
             article.image_url;
 
+
         preview.style.display =
             "block";
+
+
+        current.style.display =
+            "block";
+
 
         current.textContent =
             "Aktuelles Bild – du kannst ein neues Bild auswählen.";
 
-    } else {
+    }
+    else{
 
         preview.style.display =
             "none";
 
-        current.textContent =
-            "";
+
+        current.style.display =
+            "none";
 
     }
 
 
-    document
-        .getElementById(
-            "saveButton"
-        )
-        .textContent =
-            "Änderungen speichern";
+    document.getElementById(
+        "saveButton"
+    ).textContent =
+        "Änderungen speichern";
 
 
     window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        top:0,
+        behavior:"smooth"
     });
 
 }
 
 
 /* =====================================================
-   ARTIKEL LÖSCHEN
+DUPLIZIEREN
 ===================================================== */
 
-async function deleteArticle(id) {
+function duplicateArticle(id){
 
     const article =
         articles.find(
-            x =>
-                x.id === id
+            x=>
+                String(x.id)===
+                String(id)
         );
 
 
-    if (!article) {
+    if(!article){
         return;
     }
 
 
-    if (
+    editingId =
+        null;
+
+
+    editingImageUrl =
+        article.image_url||
+        null;
+
+
+    document.getElementById(
+        "formTitle"
+    ).textContent =
+        "Artikel duplizieren";
+
+
+    document.getElementById(
+        "title"
+    ).value =
+        (article.title||"")+" – Update";
+
+
+    document.getElementById(
+        "description"
+    ).value =
+        article.description||"";
+
+
+    document.getElementById(
+        "category"
+    ).value =
+        article.category||
+        "Deutschland";
+
+
+    document.getElementById(
+        "region"
+    ).value =
+        article.region||"";
+
+
+    document.getElementById(
+        "content"
+    ).value =
+        article.content||"";
+
+
+    document.getElementById(
+        "imageFile"
+    ).value="";
+
+
+    document.getElementById(
+        "saveButton"
+    ).textContent =
+        "Als neuen Artikel veröffentlichen";
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+DELETE
+===================================================== */
+
+async function deleteArticle(id){
+
+    const article =
+        articles.find(
+            x=>
+                String(x.id)===
+                String(id)
+        );
+
+
+    if(!article){
+        return;
+    }
+
+
+    if(
         !confirm(
-            „${article.title}“ wirklich löschen?
+            `„${article.title}“ wirklich löschen?`
         )
-    ) {
+    ){
 
         return;
 
     }
 
 
-    try {
-
-        const {
-            error
-        } =
-            await supabase
-                .from("news")
-                .delete()
-                .eq(
-                    "id",
-                    id
-                );
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
 
 
-        if (
-            error
-        ) {
+    if(!token){
 
-            throw error;
+        alert(
+            "Bitte erneut einloggen."
+        );
 
-        }
+
+        return;
+
+    }
+
+
+    try{
+
+        await supabaseRequest(
+
+            `news?id=eq.${id}`,
+
+            {
+
+                method:"DELETE",
+
+                headers:{
+
+                    "Authorization":
+                        `Bearer ${token}`
+
+                }
+
+            }
+
+        );
+
+
+        /*
+            Auch aus der bekannten Liste entfernen.
+        */
+
+        knownNewsIds =
+            knownNewsIds.filter(
+                x=>
+                    String(x)!==
+                    String(id)
+            );
+
+
+        saveKnownNewsIds();
 
 
         await loadNews();
 
+    }
+    catch(error){
 
-        renderAdmin();
-
-
-    } catch (error) {
-
-        console.error(
-            error
-        );
+        console.error(error);
 
 
         alert(
-            "Fehler beim Löschen:\n\n" +
-            (
-                error.message ||
-                "Unbekannter Fehler"
-            )
+
+            "Fehler beim Löschen:\n\n"+
+            error.message
+
         );
 
     }
@@ -2879,10 +5321,10 @@ async function deleteArticle(id) {
 
 
 /* =====================================================
-   FORM ZURÜCKSETZEN
+FORM RESET
 ===================================================== */
 
-function clearForm() {
+function clearForm(){
 
     editingId =
         null;
@@ -2892,60 +5334,41 @@ function clearForm() {
         null;
 
 
-    document
-        .getElementById(
-            "formTitle"
-        )
-        .textContent =
-            "Neuer Artikel";
+    document.getElementById(
+        "formTitle"
+    ).textContent =
+        "Neuer Artikel";
 
 
-    document
-        .getElementById(
-            "title"
-        )
-        .value =
-            "";
+    document.getElementById(
+        "title"
+    ).value="";
 
 
-    document
-        .getElementById(
-            "description"
-        )
-        .value =
-            "";
+    document.getElementById(
+        "description"
+    ).value="";
 
 
-    document
-        .getElementById(
-            "category"
-        )
-        .value =
-            "Deutschland";
+    document.getElementById(
+        "category"
+    ).value =
+        "Deutschland";
 
 
-    document
-        .getElementById(
-            "region"
-        )
-        .value =
-            "";
+    document.getElementById(
+        "region"
+    ).value="";
 
 
-    document
-        .getElementById(
-            "content"
-        )
-        .value =
-            "";
+    document.getElementById(
+        "content"
+    ).value="";
 
 
-    document
-        .getElementById(
-            "imageFile"
-        )
-        .value =
-            "";
+    document.getElementById(
+        "imageFile"
+    ).value="";
 
 
     const preview =
@@ -2963,77 +5386,646 @@ function clearForm() {
     );
 
 
-    document
-        .getElementById(
-            "currentImage"
-        )
-        .textContent =
-            "";
+    document.getElementById(
+        "currentImage"
+    ).style.display =
+        "none";
 
 
-    document
-        .getElementById(
-            "saveButton"
-        )
-        .textContent =
-            "📰 Veröffentlichen";
+    document.getElementById(
+        "currentImage"
+    ).textContent="";
 
 
-    document
-        .getElementById(
-            "formMessage"
-        )
-        .textContent =
-            "";
+    document.getElementById(
+        "saveButton"
+    ).textContent =
+        "Veröffentlichen";
+
+
+    document.getElementById(
+        "formMessage"
+    ).textContent="";
 
 }
 
 
 /* =====================================================
-   HTML SICHER AUSGEBEN
+ARTIKEL-VERBINDUNGEN
 ===================================================== */
 
-function escapeHTML(value) {
+let articleConnections =
+    JSON.parse(
+        localStorage.getItem(
+            "n_article_connections"
+        )||
+        "{}"
+    );
 
-    return String(
-        value ?? ""
+
+function saveConnections(){
+
+    localStorage.setItem(
+        "n_article_connections",
+        JSON.stringify(
+            articleConnections
+        )
+    );
+
+}
+
+
+function getConnections(id){
+
+    return Array.isArray(
+        articleConnections[id]
     )
+        ? articleConnections[id]
+        : [];
 
-        .replace(
-            /&/g,
-            "&amp;"
+}
+
+
+function connectArticles(a,b){
+
+    a=String(a);
+
+    b=String(b);
+
+
+    if(a===b){
+        return;
+    }
+
+
+    if(!articleConnections[a]){
+
+        articleConnections[a]=[];
+
+    }
+
+
+    if(!articleConnections[b]){
+
+        articleConnections[b]=[];
+
+    }
+
+
+    if(
+        !articleConnections[a].includes(b)
+    ){
+
+        articleConnections[a].push(b);
+
+    }
+
+
+    if(
+        !articleConnections[b].includes(a)
+    ){
+
+        articleConnections[b].push(a);
+
+    }
+
+}
+
+
+function disconnectArticles(a,b){
+
+    a=String(a);
+
+    b=String(b);
+
+
+    articleConnections[a] =
+        (
+            articleConnections[a]||
+            []
         )
+        .filter(
+            x=>
+                String(x)!==
+                b
+        );
 
-        .replace(
-            /</g,
-            "&lt;"
+
+    articleConnections[b] =
+        (
+            articleConnections[b]||
+            []
         )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
+        .filter(
+            x=>
+                String(x)!==
+                a
         );
 
 }
 
 
+window.connectionSourceId =
+    null;
+
+
+function manageConnections(id){
+
+    const article =
+        articles.find(
+            x=>
+                String(x.id)===
+                String(id)
+        );
+
+
+    if(!article){
+        return;
+    }
+
+
+    window.connectionSourceId =
+        String(id);
+
+
+    document.getElementById(
+        "connectionSourceTitle"
+    ).textContent =
+        "Verbindungen für: "+
+        (
+            article.title||
+            "Ohne Titel"
+        );
+
+
+    document.getElementById(
+        "connectionSearch"
+    ).value="";
+
+
+    document.getElementById(
+        "connectionPickerMessage"
+    ).textContent="";
+
+
+    renderConnectionItems();
+
+
+    document.getElementById(
+        "connectionPicker"
+    ).style.display =
+        "flex";
+
+}
+
+
+function renderConnectionItems(){
+
+    const container =
+        document.getElementById(
+            "connectionItems"
+        );
+
+
+    if(!container){
+        return;
+    }
+
+
+    const sourceId =
+        String(
+            window.connectionSourceId||
+            ""
+        );
+
+
+    const source =
+        articles.find(
+            x=>
+                String(x.id)===
+                sourceId
+        );
+
+
+    if(!source){
+
+        container.innerHTML="";
+
+        return;
+
+    }
+
+
+    const connected =
+        getConnections(
+            sourceId
+        )
+        .map(String);
+
+
+    const search =
+        (
+            document.getElementById(
+                "connectionSearch"
+            )?.value||
+            ""
+        )
+        .toLowerCase()
+        .trim();
+
+
+    const available =
+        articles.filter(
+            article=>{
+
+                if(
+                    String(article.id)===
+                    sourceId
+                ){
+
+                    return false;
+
+                }
+
+
+                const text =
+                    `${article.title||""} ${article.category||""} ${article.region||""}`
+                    .toLowerCase();
+
+
+                return !search||
+                    text.includes(search);
+
+            }
+        );
+
+
+    if(!available.length){
+
+        container.innerHTML=`
+
+            <div class="status-box">
+                Keine passenden Artikel gefunden.
+            </div>
+
+        `;
+
+
+        return;
+
+    }
+
+
+    container.innerHTML="";
+
+
+    available.forEach(
+        article=>{
+
+            const checked =
+                connected.includes(
+                    String(article.id)
+                );
+
+
+            const item =
+                document.createElement(
+                    "label"
+                );
+
+
+            item.className =
+                "connection-item";
+
+
+            item.innerHTML=`
+
+                <input
+                    type="checkbox"
+                    value="${escapeHTML(article.id)}"
+                    ${checked?"checked":""}>
+
+
+                <div class="connection-item-main">
+
+                    <div class="connection-item-title">
+
+                        ${escapeHTML(
+                            article.title||
+                            "Ohne Titel"
+                        )}
+
+                    </div>
+
+
+                    <div class="connection-item-meta">
+
+                        ${escapeHTML(
+                            article.category||
+                            ""
+                        )}
+
+                        ·
+
+                        ${escapeHTML(
+                            article.region||
+                            ""
+                        )}
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(
+                item
+            );
+
+        }
+    );
+
+}
+
+
+function saveSelectedConnections(){
+
+    const sourceId =
+        String(
+            window.connectionSourceId||
+            ""
+        );
+
+
+    if(!sourceId){
+        return;
+    }
+
+
+    const selected =
+        Array.from(
+
+            document.querySelectorAll(
+                "#connectionItems input[type='checkbox']:checked"
+            )
+
+        )
+        .map(
+            checkbox=>
+                String(
+                    checkbox.value
+                )
+        );
+
+
+    const oldConnections =
+        getConnections(
+            sourceId
+        )
+        .map(String);
+
+
+    oldConnections.forEach(
+        otherId=>{
+
+            disconnectArticles(
+                sourceId,
+                otherId
+            );
+
+        }
+    );
+
+
+    selected.forEach(
+        otherId=>{
+
+            connectArticles(
+                sourceId,
+                otherId
+            );
+
+        }
+    );
+
+
+    saveConnections();
+
+
+    renderAdmin();
+
+
+    renderArticleConnections(
+        sourceId
+    );
+
+
+    const message =
+        document.getElementById(
+            "connectionPickerMessage"
+        );
+
+
+    message.className =
+        "success";
+
+
+    message.textContent =
+        "Verbindungen gespeichert.";
+
+
+    setTimeout(
+        ()=>closeConnectionPicker(),
+        700
+    );
+
+}
+
+
+function closeConnectionPicker(){
+
+    document.getElementById(
+        "connectionPicker"
+    ).style.display =
+        "none";
+
+
+    window.connectionSourceId =
+        null;
+
+}
+
+
+function outsideConnectionClick(event){
+
+    if(
+        event.target===
+        document.getElementById(
+            "connectionPicker"
+        )
+    ){
+
+        closeConnectionPicker();
+
+    }
+
+}
+
+
 /* =====================================================
-   START
+VERBUNDENE ARTIKEL
 ===================================================== */
 
-loadNews();
+function renderArticleConnections(id){
 
-</script>
+    const box =
+        document.getElementById(
+            "articleConnections"
+        );
 
-</body>
-</html>
+
+    if(!box){
+        return;
+    }
+
+
+    const ids =
+        getConnections(id);
+
+
+    const related =
+        ids
+        .map(
+            x=>
+                articles.find(
+                    a=>
+                        String(a.id)===
+                        String(x)
+                )
+        )
+        .filter(Boolean);
+
+
+    if(!related.length){
+
+        box.innerHTML="";
+
+        return;
+
+    }
+
+
+    box.innerHTML=`
+
+        <div class="special-box">
+
+            <h2>
+                Dazu passend
+            </h2>
+
+
+            <div class="related-grid">
+
+                ${related.map(
+                    a=>`
+
+                    <div
+                        class="related-card"
+                        onclick="openArticle(${a.id})">
+
+                        <strong>
+
+                            ${renderMarkdown(
+                                a.title||""
+                            )}
+
+                        </strong>
+
+
+                        <small>
+
+                            ${escapeHTML(
+                                a.category||""
+                            )}
+
+                            ·
+
+                            ${escapeHTML(
+                                a.region||""
+                            )}
+
+                        </small>
+
+                    </div>
+
+                `
+                ).join("")}
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+HTML SICHER
+===================================================== */
+
+function escapeHTML(value){
+
+    return String(
+        value??""
+    )
+
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+
+    .replace(
+        /</g,
+        "&lt;"
+    )
+
+    .replace(
+        />/g,
+        "&gt;"
+    )
+
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================================
+START
+===================================================== */
+
+initializeKnownNewsIds();
+
+showStart();
+
+
+/*
+    Falls der Benutzer die Seite längere Zeit offen hat,
+    prüfen wir beim Zurückkehren automatisch erneut.
+*/
+
+document.addEventListener(
+    "visibilitychange",
+    ()=>{
+
+        if(
+            document.visibility
