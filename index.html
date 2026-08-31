@@ -14,6 +14,10 @@
 
 <style>
 
+/* =====================================================
+   GRUNDLAGEN
+===================================================== */
+
 *{
     box-sizing:border-box;
 }
@@ -40,8 +44,9 @@ button{
     cursor:pointer;
 }
 
+
 /* =====================================================
-HEADER
+   HEADER
 ===================================================== */
 
 header{
@@ -77,6 +82,7 @@ header{
     background:transparent;
 
     font-size:20px;
+
     padding:10px;
 
     border-radius:10px;
@@ -88,7 +94,8 @@ header{
     background:#eee;
 }
 
-/* INSTALLATIONSBUTTON */
+
+/* Installationsbutton nur Startseite */
 
 #installHeaderBtn{
     display:none;
@@ -96,44 +103,52 @@ header{
 
 
 /* =====================================================
-MAIN
+   MAIN
 ===================================================== */
 
 main{
     max-width:1200px;
+
     margin:auto;
+
     padding:45px 20px 80px;
 }
 
 
 /* =====================================================
-STARTSEITE
+   STARTSEITE
 ===================================================== */
 
 #startPage{
     display:block;
+
     min-height:70vh;
 }
 
 .start-hero{
     text-align:center;
-    padding:25px 0 35px;
+
+    padding:35px 0 45px;
 }
 
 .start-label{
     font-size:12px;
+
     font-weight:900;
 
     color:#777;
 
     text-transform:uppercase;
+
     letter-spacing:1.5px;
 }
 
 .start-hero h1{
-    font-size:clamp(48px,8vw,82px);
+    font-size:
+        clamp(48px,8vw,82px);
 
     line-height:.9;
+
     letter-spacing:-6px;
 
     margin:10px 0;
@@ -141,80 +156,154 @@ STARTSEITE
 
 .start-hero p{
     color:#777;
+
     font-size:18px;
-    margin:0;
 }
 
 
 /* =====================================================
-KOMPAKTE STARTLEISTE
+   GROSSE STARTSEITEN-KARTEN
 ===================================================== */
 
-.start-menu{
-    width:100%;
+.start-card-grid{
 
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:18px;
+}
+
+.start-card{
 
     background:white;
 
     border:1px solid #ddd;
 
-    border-radius:18px;
+    border-radius:24px;
 
-    overflow:hidden;
+    padding:30px;
+
+    min-height:235px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
 }
 
-.start-menu-button{
-    min-height:72px;
+.start-card:hover{
 
-    border:0;
-    border-right:1px solid #ddd;
+    transform:translateY(-5px);
 
-    background:white;
-
-    color:#111;
-
-    font-size:16px;
-    font-weight:800;
-
-    padding:15px;
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.10);
 }
 
-.start-menu-button:last-child{
-    border-right:0;
+.start-card-top{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:space-between;
+
+    gap:20px;
 }
 
-.start-menu-button:hover{
-    background:#f5f5f5;
+.start-card-symbol{
+
+    width:58px;
+    height:58px;
+
+    border-radius:16px;
+
+    background:#f0f0f0;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+
+    font-weight:900;
+
+    letter-spacing:-1px;
+}
+
+.start-card h2{
+
+    font-size:30px;
+
+    margin:25px 0 8px;
+
+    letter-spacing:-1px;
+}
+
+.start-card p{
+
+    color:#777;
+
+    line-height:1.5;
+
+    margin:0;
+
+    max-width:500px;
+}
+
+.start-card-arrow{
+
+    margin-top:25px;
+
+    font-size:24px;
+
+    font-weight:900;
 }
 
 
-/* =====================================================
-INSTALLATION
-===================================================== */
+/* Installation */
 
-.install-start-button{
-    width:100%;
+.start-install{
 
-    min-height:64px;
-
-    margin-top:15px;
+    grid-column:1/-1;
 
     background:#111;
 
     color:white;
 
-    border:0;
-
-    border-radius:16px;
-
-    font-size:16px;
-    font-weight:800;
+    border-color:#111;
 }
 
-.install-start-button:hover{
+.start-install:hover{
+
+    background:#161616;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.20);
+}
+
+.start-install .start-card-symbol{
+
     background:#222;
+
+    color:white;
+}
+
+.start-install p{
+
+    color:#aaa;
+}
+
+.start-install .start-card-arrow{
+
+    color:white;
 }
 
 
@@ -232,18 +321,22 @@ NEWS
 
 .hero-label{
     font-size:12px;
+
     font-weight:800;
 
     color:#777;
 
     text-transform:uppercase;
+
     letter-spacing:1.5px;
 }
 
 .hero h1{
-    font-size:clamp(42px,7vw,72px);
+    font-size:
+        clamp(42px,7vw,72px);
 
     line-height:.95;
+
     letter-spacing:-4px;
 
     margin:8px 0;
@@ -251,6 +344,7 @@ NEWS
 
 .hero p{
     color:#777;
+
     font-size:18px;
 }
 
@@ -260,11 +354,14 @@ SEARCH
 ===================================================== */
 
 .search{
+
     display:none;
+
     margin-bottom:20px;
 }
 
 .search input{
+
     width:100%;
 
     padding:15px;
@@ -284,6 +381,7 @@ FILTER
 ===================================================== */
 
 .filters{
+
     display:flex;
 
     gap:8px;
@@ -294,6 +392,7 @@ FILTER
 }
 
 .filter{
+
     flex-shrink:0;
 
     padding:10px 16px;
@@ -310,6 +409,7 @@ FILTER
 }
 
 .filter.active{
+
     background:#111;
 
     color:white;
@@ -323,6 +423,7 @@ NEWS GRID
 ===================================================== */
 
 .news-grid{
+
     display:grid;
 
     grid-template-columns:
@@ -332,6 +433,7 @@ NEWS GRID
 }
 
 .news-card{
+
     background:white;
 
     border:1px solid #ddd;
@@ -346,6 +448,7 @@ NEWS GRID
 }
 
 .news-card:hover{
+
     transform:translateY(-3px);
 
     box-shadow:
@@ -353,12 +456,15 @@ NEWS GRID
 }
 
 .news-image{
+
     width:100%;
+
     height:190px;
 
     display:flex;
 
     justify-content:center;
+
     align-items:center;
 
     background:
@@ -378,7 +484,9 @@ NEWS GRID
 }
 
 .news-image img{
+
     width:100%;
+
     height:100%;
 
     object-fit:cover;
@@ -387,10 +495,12 @@ NEWS GRID
 }
 
 .news-card-content{
+
     padding:20px;
 }
 
 .news-meta{
+
     font-size:13px;
 
     color:#777;
@@ -399,12 +509,14 @@ NEWS GRID
 }
 
 .news-card h2{
+
     margin:0 0 10px;
 
     font-size:22px;
 }
 
 .news-card p{
+
     color:#777;
 
     line-height:1.5;
@@ -418,6 +530,7 @@ FEATURED
 ===================================================== */
 
 .featured{
+
     grid-column:1/-1;
 
     background:white;
@@ -434,7 +547,9 @@ FEATURED
 }
 
 .featured-image{
+
     width:100%;
+
     height:280px;
 
     background:
@@ -447,6 +562,7 @@ FEATURED
     display:flex;
 
     justify-content:center;
+
     align-items:center;
 
     color:#999;
@@ -459,7 +575,9 @@ FEATURED
 }
 
 .featured-image img{
+
     width:100%;
+
     height:100%;
 
     object-fit:cover;
@@ -468,10 +586,12 @@ FEATURED
 }
 
 .featured-content{
+
     padding:25px;
 }
 
 .featured-label{
+
     font-size:12px;
 
     font-weight:900;
@@ -480,6 +600,7 @@ FEATURED
 }
 
 .featured h2{
+
     margin:0;
 
     font-size:
@@ -492,6 +613,7 @@ STATUS
 ===================================================== */
 
 .status-box{
+
     grid-column:1/-1;
 
     background:white;
@@ -513,6 +635,7 @@ ARTICLE
 ===================================================== */
 
 .article{
+
     display:none;
 
     max-width:850px;
@@ -521,6 +644,7 @@ ARTICLE
 }
 
 .back{
+
     padding:10px 15px;
 
     border:1px solid #ddd;
@@ -537,12 +661,14 @@ ARTICLE
 }
 
 .article-meta{
+
     color:#777;
 
     margin-bottom:12px;
 }
 
 .article h1{
+
     font-size:
         clamp(40px,7vw,70px);
 
@@ -554,6 +680,7 @@ ARTICLE
 }
 
 .article-image{
+
     width:100%;
 
     min-height:340px;
@@ -561,6 +688,7 @@ ARTICLE
     display:flex;
 
     justify-content:center;
+
     align-items:center;
 
     background:
@@ -584,6 +712,7 @@ ARTICLE
 }
 
 .article-image img{
+
     width:100%;
 
     max-height:550px;
@@ -594,6 +723,7 @@ ARTICLE
 }
 
 .article-text{
+
     font-size:18px;
 
     line-height:1.8;
@@ -601,10 +731,11 @@ ARTICLE
 
 
 /* =====================================================
-SPECIAL
+SPECIAL PAGES
 ===================================================== */
 
 .special-page{
+
     display:none;
 
     max-width:1000px;
@@ -613,10 +744,12 @@ SPECIAL
 }
 
 .special-header{
+
     margin-bottom:25px;
 }
 
 .special-label{
+
     font-size:12px;
 
     font-weight:900;
@@ -629,6 +762,7 @@ SPECIAL
 }
 
 .special-header h1{
+
     font-size:
         clamp(42px,7vw,76px);
 
@@ -640,11 +774,14 @@ SPECIAL
 }
 
 .special-header p{
+
     color:#777;
+
     font-size:18px;
 }
 
 .special-box{
+
     background:white;
 
     border:1px solid #ddd;
@@ -657,6 +794,7 @@ SPECIAL
 }
 
 .special-box h2{
+
     margin-top:0;
 }
 
@@ -666,6 +804,7 @@ ROUTE
 ===================================================== */
 
 .route-form{
+
     display:grid;
 
     grid-template-columns:
@@ -675,6 +814,7 @@ ROUTE
 }
 
 .route-input{
+
     width:100%;
 
     padding:15px;
@@ -688,9 +828,8 @@ ROUTE
     outline:none;
 }
 
-.route-button,
-.traffic-button,
-.primary{
+.route-button{
+
     border:0;
 
     background:#111;
@@ -707,12 +846,14 @@ ROUTE
 }
 
 .route-result{
+
     display:none;
 
     margin-top:20px;
 }
 
 .route-summary{
+
     display:grid;
 
     grid-template-columns:
@@ -724,6 +865,7 @@ ROUTE
 }
 
 .route-stat{
+
     background:#f5f5f5;
 
     border-radius:15px;
@@ -732,6 +874,7 @@ ROUTE
 }
 
 .route-stat small{
+
     color:#777;
 
     display:block;
@@ -740,10 +883,12 @@ ROUTE
 }
 
 .route-stat strong{
+
     font-size:24px;
 }
 
 .map-box{
+
     height:350px;
 
     border-radius:20px;
@@ -756,7 +901,9 @@ ROUTE
 }
 
 .map-box iframe{
+
     width:100%;
+
     height:100%;
 
     border:0;
@@ -768,6 +915,7 @@ TRAFFIC
 ===================================================== */
 
 .traffic-controls{
+
     display:flex;
 
     gap:10px;
@@ -776,6 +924,7 @@ TRAFFIC
 }
 
 .road-input{
+
     flex:1;
 
     min-width:200px;
@@ -789,14 +938,30 @@ TRAFFIC
     font-size:16px;
 }
 
-.traffic-button.secondary,
-.secondary{
+.traffic-button{
+
+    border:0;
+
+    background:#111;
+
+    color:white;
+
+    padding:14px 20px;
+
+    border-radius:12px;
+
+    font-weight:800;
+}
+
+.traffic-button.secondary{
+
     background:#eee;
 
     color:#111;
 }
 
 .traffic-list{
+
     display:grid;
 
     gap:12px;
@@ -805,6 +970,7 @@ TRAFFIC
 }
 
 .traffic-item{
+
     background:white;
 
     border:1px solid #ddd;
@@ -815,28 +981,34 @@ TRAFFIC
 }
 
 .traffic-item.warning{
+
     border-left:5px solid #f59e0b;
 }
 
 .traffic-item.closure{
+
     border-left:5px solid #dc2626;
 }
 
 .traffic-item.roadwork{
+
     border-left:5px solid #2563eb;
 }
 
 .traffic-item h3{
+
     margin:0 0 8px;
 }
 
 .traffic-item p{
+
     color:#666;
 
     line-height:1.5;
 }
 
 .traffic-badge{
+
     display:inline-block;
 
     font-size:12px;
@@ -853,6 +1025,7 @@ TRAFFIC
 }
 
 .source-note{
+
     margin-top:20px;
 
     color:#888;
@@ -866,6 +1039,7 @@ ADMIN
 ===================================================== */
 
 .admin{
+
     display:none;
 
     max-width:900px;
@@ -874,6 +1048,7 @@ ADMIN
 }
 
 .login{
+
     max-width:430px;
 
     margin:60px auto;
@@ -910,12 +1085,14 @@ ADMIN
 }
 
 .form-box textarea{
+
     min-height:230px;
 
     resize:vertical;
 }
 
 .form-box{
+
     padding:25px;
 
     background:white;
@@ -926,12 +1103,19 @@ ADMIN
 }
 
 .form-box label{
+
     display:block;
 
     font-weight:700;
 }
 
+
+/* =====================================================
+IMAGE UPLOAD
+===================================================== */
+
 .image-upload-box{
+
     margin:5px 0 20px;
 
     padding:18px;
@@ -944,6 +1128,7 @@ ADMIN
 }
 
 .image-upload-box input[type=file]{
+
     margin:5px 0 0;
 
     padding:0;
@@ -954,6 +1139,7 @@ ADMIN
 }
 
 .image-preview{
+
     display:none;
 
     width:100%;
@@ -970,6 +1156,7 @@ ADMIN
 }
 
 .current-image{
+
     margin-top:10px;
 
     color:#777;
@@ -977,13 +1164,59 @@ ADMIN
     font-size:14px;
 }
 
+
+/* =====================================================
+BUTTONS
+===================================================== */
+
+.primary,
+.secondary,
+.small{
+
+    border:0;
+
+    border-radius:10px;
+
+    padding:11px 16px;
+
+    font-weight:800;
+
+    cursor:pointer;
+}
+
+.primary{
+
+    background:#111;
+
+    color:white;
+}
+
+.primary:hover{
+
+    background:#333;
+}
+
+.secondary{
+
+    background:#eee;
+
+    color:#111;
+}
+
+.secondary:hover{
+
+    background:#ddd;
+}
+
 .primary:disabled{
+
     opacity:.6;
 
     cursor:wait;
 }
 
 .admin-top{
+
     display:flex;
 
     justify-content:space-between;
@@ -994,6 +1227,7 @@ ADMIN
 }
 
 .admin-list{
+
     display:grid;
 
     gap:10px;
@@ -1002,6 +1236,7 @@ ADMIN
 }
 
 .admin-item{
+
     background:white;
 
     border:1px solid #ddd;
@@ -1018,48 +1253,43 @@ ADMIN
 }
 
 .admin-item-title{
+
     font-weight:800;
 }
 
 .admin-item small{
+
     color:#777;
 }
 
 .admin-actions{
+
     display:flex;
 
     gap:7px;
 }
 
-.small{
-    border:0;
-
-    border-radius:10px;
-
-    padding:11px 16px;
-
-    font-weight:800;
-
-    cursor:pointer;
-}
-
 .edit{
+
     background:#e0e7ff;
 }
 
 .delete{
+
     background:#fee2e2;
 
     color:#b91c1c;
 }
 
 .error{
+
     color:#dc2626;
 
     margin-top:12px;
 }
 
 .success{
+
     color:#15803d;
 
     margin-top:12px;
@@ -1071,6 +1301,7 @@ INSTALLATIONSMODAL
 ===================================================== */
 
 .install-picker{
+
     display:none;
 
     position:fixed;
@@ -1089,6 +1320,7 @@ INSTALLATIONSMODAL
 }
 
 .install-modal{
+
     width:min(600px,100%);
 
     max-height:90vh;
@@ -1106,6 +1338,7 @@ INSTALLATIONSMODAL
 }
 
 .install-header{
+
     display:flex;
 
     justify-content:space-between;
@@ -1116,6 +1349,7 @@ INSTALLATIONSMODAL
 }
 
 .install-close{
+
     border:0;
 
     background:#eee;
@@ -1132,6 +1366,7 @@ INSTALLATIONSMODAL
 }
 
 .device-choice{
+
     display:grid;
 
     gap:10px;
@@ -1140,6 +1375,7 @@ INSTALLATIONSMODAL
 }
 
 .device-button{
+
     width:100%;
 
     text-align:left;
@@ -1156,12 +1392,14 @@ INSTALLATIONSMODAL
 }
 
 .device-button:hover{
+
     background:#f5f5f5;
 
     border-color:#111;
 }
 
 .device-button strong{
+
     display:block;
 
     font-size:18px;
@@ -1170,12 +1408,14 @@ INSTALLATIONSMODAL
 }
 
 .device-button span{
+
     color:#777;
 
     font-size:14px;
 }
 
 .install-instructions{
+
     display:none;
 
     margin-top:25px;
@@ -1186,16 +1426,19 @@ INSTALLATIONSMODAL
 }
 
 .install-instructions h3{
+
     margin-top:0;
 }
 
 .install-steps{
+
     display:grid;
 
     gap:12px;
 }
 
 .install-step{
+
     background:#f5f5f5;
 
     border-radius:15px;
@@ -1204,12 +1447,14 @@ INSTALLATIONSMODAL
 }
 
 .install-step strong{
+
     display:block;
 
     margin-bottom:5px;
 }
 
 .install-note{
+
     margin-top:18px;
 
     padding:15px;
@@ -1224,6 +1469,7 @@ INSTALLATIONSMODAL
 }
 
 .install-actions{
+
     display:flex;
 
     justify-content:flex-end;
@@ -1239,6 +1485,7 @@ FOOTER
 ===================================================== */
 
 footer{
+
     text-align:center;
 
     padding:30px;
@@ -1253,27 +1500,21 @@ footer{
 RESPONSIVE
 ===================================================== */
 
-@media(max-width:900px){
+@media(max-width:850px){
 
-    .start-menu{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
+    .start-card-grid{
 
-    .start-menu-button:nth-child(2){
-        border-right:0;
-    }
-
-    .start-menu-button:nth-child(-n+2){
-        border-bottom:1px solid #ddd;
+        grid-template-columns:1fr;
     }
 
     .news-grid{
+
         grid-template-columns:
             repeat(2,1fr);
     }
 
     .route-form{
+
         grid-template-columns:1fr;
     }
 
@@ -1282,54 +1523,49 @@ RESPONSIVE
 @media(max-width:600px){
 
     header{
+
         padding:0 18px;
     }
 
     .logo{
+
         font-size:36px;
     }
 
     main{
+
         padding:30px 15px 60px;
     }
 
-    .start-menu{
-        grid-template-columns:1fr;
-    }
-
-    .start-menu-button{
-        border-right:0;
-
-        border-bottom:1px solid #ddd;
-    }
-
-    .start-menu-button:last-child{
-        border-bottom:0;
-    }
-
     .news-grid{
+
         grid-template-columns:1fr;
     }
 
     .featured{
+
         grid-column:auto;
     }
 
     .route-summary{
+
         grid-template-columns:1fr;
     }
 
     .admin-item{
+
         flex-direction:column;
 
         align-items:flex-start;
     }
 
     .admin-actions{
+
         width:100%;
     }
 
     .install-modal{
+
         padding:20px;
     }
 
@@ -1339,8 +1575,13 @@ RESPONSIVE
 
 </head>
 
+
 <body>
 
+
+<!-- =====================================================
+HEADER
+===================================================== -->
 
 <header>
 
@@ -1372,7 +1613,7 @@ RESPONSIVE
             onclick="toggleSearch()"
             title="Suche">
 
-            /
+            🔎
 
         </button>
 
@@ -1382,7 +1623,7 @@ RESPONSIVE
             onclick="openAdmin()"
             title="Redaktion">
 
-            +
+            🔐
 
         </button>
 
@@ -1430,55 +1671,265 @@ STARTSEITE
     </div>
 
 
-    <div class="start-menu">
+    <div class="start-card-grid">
 
 
-        <button
-            class="start-menu-button"
+        <!-- NACHRICHTEN -->
+
+        <div
+            class="start-card"
             onclick="openNews()">
 
-            Nachrichten
 
-        </button>
+            <div>
 
 
-        <button
-            class="start-menu-button"
+                <div class="start-card-top">
+
+
+                    <div class="start-card-symbol">
+
+                        n:
+
+                    </div>
+
+
+                </div>
+
+
+                <h2>
+
+                    n: Nachrichten
+
+                </h2>
+
+
+                <p>
+
+                    Aktuelle Nachrichten aus Deutschland,
+                    der Welt, der Region, Sport und Digital.
+
+                </p>
+
+
+            </div>
+
+
+            <div class="start-card-arrow">
+
+                →
+
+            </div>
+
+
+        </div>
+
+
+        <!-- VERKEHR -->
+
+        <div
+            class="start-card"
             onclick="openTraffic()">
 
-            Verkehr & Route
 
-        </button>
+            <div>
 
 
-        <button
-            class="start-menu-button"
+                <div class="start-card-top">
+
+
+                    <div class="start-card-symbol">
+
+                        V
+
+                    </div>
+
+
+                </div>
+
+
+                <h2>
+
+                    Verkehr & Route
+
+                </h2>
+
+
+                <p>
+
+                    Verkehrslage, Störungen und Routen
+                    übersichtlich auf einer Seite.
+
+                </p>
+
+
+            </div>
+
+
+            <div class="start-card-arrow">
+
+                →
+
+            </div>
+
+
+        </div>
+
+
+        <!-- BEREICH -->
+
+        <div
+            class="start-card"
             onclick="openArea()">
 
-            n: Bereich
 
-        </button>
+            <div>
 
 
-        <button
-            class="start-menu-button"
+                <div class="start-card-top">
+
+
+                    <div class="start-card-symbol">
+
+                        +
+
+                    </div>
+
+
+                </div>
+
+
+                <h2>
+
+                    n: Bereich
+
+                </h2>
+
+
+                <p>
+
+                    Regionale Nachrichten, Veranstaltungen
+                    und Informationen.
+
+                </p>
+
+
+            </div>
+
+
+            <div class="start-card-arrow">
+
+                →
+
+            </div>
+
+
+        </div>
+
+
+        <!-- SENDEPLAN -->
+
+        <div
+            class="start-card"
             onclick="openSendeplan()">
 
-            Sendeplan
 
-        </button>
+            <div>
+
+
+                <div class="start-card-top">
+
+
+                    <div class="start-card-symbol">
+
+                        TV
+
+                    </div>
+
+
+                </div>
+
+
+                <h2>
+
+                    Sendeplan
+
+                </h2>
+
+
+                <p>
+
+                    Sendungen, Termine und geplante
+                    Nachrichten.
+
+                </p>
+
+
+            </div>
+
+
+            <div class="start-card-arrow">
+
+                →
+
+            </div>
+
+
+        </div>
+
+
+        <!-- INSTALLATION -->
+
+        <div
+            class="start-card start-install"
+            onclick="openInstallPicker()">
+
+
+            <div>
+
+
+                <div class="start-card-top">
+
+
+                    <div class="start-card-symbol">
+
+                        +
+
+                    </div>
+
+
+                </div>
+
+
+                <h2>
+
+                    n: installieren
+
+                </h2>
+
+
+                <p>
+
+                    Füge n: zum Home-Bildschirm hinzu
+                    und öffne die Seite wie eine App.
+
+                </p>
+
+
+            </div>
+
+
+            <div class="start-card-arrow">
+
+                →
+
+            </div>
+
+
+        </div>
 
 
     </div>
-
-
-    <button
-        class="install-start-button"
-        onclick="openInstallPicker()">
-
-        n: zum Home-Bildschirm hinzufügen
-
-    </button>
 
 
 </section>
@@ -1550,7 +2001,7 @@ NEWS
             class="filter"
             onclick="filterNews('Deutschland',this)">
 
-            Deutschland
+            🇩🇪 Deutschland
 
         </button>
 
@@ -1559,7 +2010,7 @@ NEWS
             class="filter"
             onclick="filterNews('Welt',this)">
 
-            Welt
+            🌍 Welt
 
         </button>
 
@@ -1568,7 +2019,7 @@ NEWS
             class="filter"
             onclick="filterNews('Region',this)">
 
-            Region
+            📍 Region
 
         </button>
 
@@ -1577,7 +2028,7 @@ NEWS
             class="filter"
             onclick="filterNews('Sport',this)">
 
-            Sport
+            ⚽ Sport
 
         </button>
 
@@ -1586,7 +2037,7 @@ NEWS
             class="filter"
             onclick="filterNews('Digital',this)">
 
-            Digital
+            💻 Digital
 
         </button>
 
@@ -1696,7 +2147,8 @@ VERKEHR
 
         <p>
 
-            Route berechnen und aktuelle Verkehrsmeldungen abrufen.
+            Route berechnen und aktuelle
+            Verkehrsmeldungen abrufen.
 
         </p>
 
@@ -1764,8 +2216,11 @@ VERKEHR
 
                 <div class="route-stat">
 
+
                     <small>
+
                         Entfernung
+
                     </small>
 
 
@@ -1782,8 +2237,11 @@ VERKEHR
 
                 <div class="route-stat">
 
+
                     <small>
+
                         Fahrzeit
+
                     </small>
 
 
@@ -1800,8 +2258,11 @@ VERKEHR
 
                 <div class="route-stat">
 
+
                     <small>
+
                         Route
+
                     </small>
 
 
@@ -1968,8 +2429,8 @@ BEREICH
         <p>
 
             Hier können regionale Nachrichten,
-            Veranstaltungen und Informationen aus deinem
-            Bereich erscheinen.
+            Veranstaltungen und Informationen
+            aus deinem Bereich erscheinen.
 
         </p>
 
@@ -2128,31 +2589,42 @@ ADMIN
             </label>
 
 
-            <select id="category">
+            <select
+                id="category">
 
 
                 <option value="Deutschland">
+
                     Deutschland
+
                 </option>
 
 
                 <option value="Welt">
+
                     Welt
+
                 </option>
 
 
                 <option value="Region">
+
                     Region
+
                 </option>
 
 
                 <option value="Sport">
+
                     Sport
+
                 </option>
 
 
                 <option value="Digital">
+
                     Digital
+
                 </option>
 
 
@@ -2273,7 +2745,7 @@ ADMIN
 
 
 <!-- =====================================================
-INSTALLATIONS-MODAL
+INSTALLATIONSMODAL
 ===================================================== -->
 
 <div
@@ -2401,6 +2873,8 @@ INSTALLATIONS-MODAL
         </div>
 
 
+        <!-- APPLE -->
+
         <div
             id="installApple"
             class="install-instructions">
@@ -2418,18 +2892,22 @@ INSTALLATIONS-MODAL
 
                 <div class="install-step">
 
+
                     <strong>
 
                         1. Safari öffnen
 
                     </strong>
 
+
                     Öffne n: direkt in Safari.
+
 
                 </div>
 
 
                 <div class="install-step">
+
 
                     <strong>
 
@@ -2437,12 +2915,16 @@ INSTALLATIONS-MODAL
 
                     </strong>
 
-                    Öffne das Teilen-Menü von Safari.
+
+                    Öffne das Teilen-Menü
+                    von Safari.
+
 
                 </div>
 
 
                 <div class="install-step">
+
 
                     <strong>
 
@@ -2450,14 +2932,17 @@ INSTALLATIONS-MODAL
 
                     </strong>
 
+
                     Wähle
                     „Zum Home-Bildschirm“
                     aus.
+
 
                 </div>
 
 
                 <div class="install-step">
+
 
                     <strong>
 
@@ -2465,8 +2950,10 @@ INSTALLATIONS-MODAL
 
                     </strong>
 
+
                     Bestätige mit
                     „Hinzufügen“.
+
 
                 </div>
 
@@ -2486,6 +2973,8 @@ INSTALLATIONS-MODAL
         </div>
 
 
+        <!-- ANDROID -->
+
         <div
             id="installAndroid"
             class="install-instructions">
@@ -2503,19 +2992,23 @@ INSTALLATIONS-MODAL
 
                 <div class="install-step">
 
+
                     <strong>
 
                         1. n: öffnen
 
                     </strong>
 
-                    Öffne n: in Chrome oder einem
-                    unterstützten Browser.
+
+                    Öffne n: in Chrome oder
+                    einem unterstützten Browser.
+
 
                 </div>
 
 
                 <div class="install-step">
+
 
                     <strong>
 
@@ -2523,12 +3016,15 @@ INSTALLATIONS-MODAL
 
                     </strong>
 
+
                     Öffne das Browser-Menü.
+
 
                 </div>
 
 
                 <div class="install-step">
+
 
                     <strong>
 
@@ -2536,15 +3032,18 @@ INSTALLATIONS-MODAL
 
                     </strong>
 
+
                     Wähle
                     „App installieren“
                     oder
                     „Zum Startbildschirm hinzufügen“.
 
+
                 </div>
 
 
                 <div class="install-step">
+
 
                     <strong>
 
@@ -2552,7 +3051,9 @@ INSTALLATIONS-MODAL
 
                     </strong>
 
+
                     Bestätige die Installation.
+
 
                 </div>
 
@@ -2562,6 +3063,8 @@ INSTALLATIONS-MODAL
 
         </div>
 
+
+        <!-- COMPUTER -->
 
         <div
             id="installComputer"
@@ -2580,19 +3083,23 @@ INSTALLATIONS-MODAL
 
                 <div class="install-step">
 
+
                     <strong>
 
                         1. n: öffnen
 
                     </strong>
 
+
                     Öffne n: in einem
                     unterstützten Browser.
+
 
                 </div>
 
 
                 <div class="install-step">
+
 
                     <strong>
 
@@ -2600,14 +3107,17 @@ INSTALLATIONS-MODAL
 
                     </strong>
 
+
                     Bei unterstützten Browsern kann
                     neben der Adresszeile ein
                     Installationssymbol erscheinen.
+
 
                 </div>
 
 
                 <div class="install-step">
+
 
                     <strong>
 
@@ -2615,7 +3125,9 @@ INSTALLATIONS-MODAL
 
                     </strong>
 
+
                     Klicke auf „Installieren“.
+
 
                 </div>
 
@@ -2655,7 +3167,6 @@ INSTALLATIONS-MODAL
 
     </div>
 
-
 </div>
 
 
@@ -2675,10 +3186,8 @@ SUPABASE
 const SUPABASE_URL =
     "https://eqzmsuncndfsiedyfifb.supabase.co";
 
-
 const SUPABASE_KEY =
     "sb_publishable_eXY1gg_tIr-cRC2kdt0jbQ_QPfbEmkF";
-
 
 const STORAGE_BUCKET =
     "news-images";
@@ -2719,37 +3228,38 @@ function hideAllPages(){
 
     document.getElementById(
         "startPage"
-    ).style.display="none";
-
+    ).style.display =
+        "none";
 
     document.getElementById(
         "home"
-    ).style.display="none";
-
+    ).style.display =
+        "none";
 
     document.getElementById(
         "article"
-    ).style.display="none";
-
+    ).style.display =
+        "none";
 
     document.getElementById(
         "traffic"
-    ).style.display="none";
-
+    ).style.display =
+        "none";
 
     document.getElementById(
         "area"
-    ).style.display="none";
-
+    ).style.display =
+        "none";
 
     document.getElementById(
         "admin"
-    ).style.display="none";
-
+    ).style.display =
+        "none";
 
     document.getElementById(
         "installHeaderBtn"
-    ).style.display="none";
+    ).style.display =
+        "none";
 
 }
 
@@ -2761,12 +3271,14 @@ function showStart(){
 
     document.getElementById(
         "startPage"
-    ).style.display="block";
+    ).style.display =
+        "block";
 
 
     document.getElementById(
         "installHeaderBtn"
-    ).style.display="block";
+    ).style.display =
+        "block";
 
 
     window.scrollTo({
@@ -2784,7 +3296,8 @@ function openNews(){
 
     document.getElementById(
         "home"
-    ).style.display="block";
+    ).style.display =
+        "block";
 
 
     loadNews();
@@ -2805,7 +3318,8 @@ function openTraffic(){
 
     document.getElementById(
         "traffic"
-    ).style.display="block";
+    ).style.display =
+        "block";
 
 
     loadTraffic();
@@ -2826,7 +3340,8 @@ function openArea(){
 
     document.getElementById(
         "area"
-    ).style.display="block";
+    ).style.display =
+        "block";
 
 
     window.scrollTo({
@@ -2851,9 +3366,14 @@ INSTALLATION
 
 function openInstallPicker(){
 
-    document.getElementById(
-        "installPicker"
-    ).style.display="flex";
+    const picker =
+        document.getElementById(
+            "installPicker"
+        );
+
+
+    picker.style.display =
+        "flex";
 
 
     backToDeviceChoice();
@@ -2865,7 +3385,8 @@ function closeInstallPicker(){
 
     document.getElementById(
         "installPicker"
-    ).style.display="none";
+    ).style.display =
+        "none";
 
 }
 
@@ -2875,7 +3396,7 @@ function outsideInstallClick(
 ){
 
     if(
-        event.target===
+        event.target ===
         document.getElementById(
             "installPicker"
         )
@@ -2892,17 +3413,20 @@ function hideAllInstallInstructions(){
 
     document.getElementById(
         "installApple"
-    ).style.display="none";
+    ).style.display =
+        "none";
 
 
     document.getElementById(
         "installAndroid"
-    ).style.display="none";
+    ).style.display =
+        "none";
 
 
     document.getElementById(
         "installComputer"
-    ).style.display="none";
+    ).style.display =
+        "none";
 
 }
 
@@ -2913,7 +3437,8 @@ function showInstallInstructions(
 
     document.getElementById(
         "deviceChoice"
-    ).style.display="none";
+    ).style.display =
+        "none";
 
 
     hideAllInstallInstructions();
@@ -2921,38 +3446,45 @@ function showInstallInstructions(
 
     document.getElementById(
         "installActions"
-    ).style.display="flex";
+    ).style.display =
+        "flex";
 
 
     if(
-        device==="apple"
+        device ===
+        "apple"
     ){
 
         document.getElementById(
             "installApple"
-        ).style.display="block";
+        ).style.display =
+            "block";
 
     }
 
 
     if(
-        device==="android"
+        device ===
+        "android"
     ){
 
         document.getElementById(
             "installAndroid"
-        ).style.display="block";
+        ).style.display =
+            "block";
 
     }
 
 
     if(
-        device==="computer"
+        device ===
+        "computer"
     ){
 
         document.getElementById(
             "installComputer"
-        ).style.display="block";
+        ).style.display =
+            "block";
 
     }
 
@@ -2963,7 +3495,8 @@ function backToDeviceChoice(){
 
     document.getElementById(
         "deviceChoice"
-    ).style.display="grid";
+    ).style.display =
+        "grid";
 
 
     hideAllInstallInstructions();
@@ -2971,7 +3504,8 @@ function backToDeviceChoice(){
 
     document.getElementById(
         "installActions"
-    ).style.display="none";
+    ).style.display =
+        "none";
 
 }
 
@@ -3054,7 +3588,9 @@ async function geocode(place){
         );
 
 
-    if(!response.ok){
+    if(
+        !response.ok
+    ){
 
         throw new Error(
             "Ort konnte nicht gesucht werden."
@@ -3067,7 +3603,9 @@ async function geocode(place){
         await response.json();
 
 
-    if(!data.length){
+    if(
+        !data.length
+    ){
 
         throw new Error(
             `„${place}“ wurde nicht gefunden.`
@@ -3076,7 +3614,7 @@ async function geocode(place){
     }
 
 
-    return{
+    return {
 
         lat:
             parseFloat(
@@ -3101,13 +3639,17 @@ async function calculateRoute(){
     const start =
         document.getElementById(
             "routeStart"
-        ).value.trim();
+        )
+        .value
+        .trim();
 
 
     const destination =
         document.getElementById(
             "routeDestination"
-        ).value.trim();
+        )
+        .value
+        .trim();
 
 
     const status =
@@ -3130,8 +3672,10 @@ async function calculateRoute(){
         status.textContent =
             "Bitte Start und Ziel eingeben.";
 
+
         result.style.display =
             "none";
+
 
         return;
 
@@ -3197,7 +3741,8 @@ async function calculateRoute(){
 
 
         if(
-            data.code!=="Ok" ||
+            data.code !==
+                "Ok" ||
             !data.routes ||
             !data.routes.length
         ){
@@ -3214,18 +3759,20 @@ async function calculateRoute(){
 
 
         const distance =
-            route.distance/1000;
+            route.distance /
+            1000;
 
 
         const duration =
-            route.duration/60;
+            route.duration /
+            60;
 
 
         document.getElementById(
             "routeDistance"
         ).textContent =
 
-            distance<10
+            distance < 10
             ? distance.toFixed(1)+" km"
             : Math.round(distance)+" km";
 
@@ -3246,7 +3793,7 @@ async function calculateRoute(){
             "routeDuration"
         ).textContent =
 
-            hours>0
+            hours > 0
             ? `${hours} h ${minutes} min`
             : `${minutes} min`;
 
@@ -3377,7 +3924,9 @@ async function loadTraffic(){
         );
 
 
-    if(!roadInput){
+    if(
+        !roadInput
+    ){
 
         status.textContent =
             "Bitte eine Autobahn eingeben, z. B. A3.";
@@ -3408,24 +3957,36 @@ async function loadTraffic(){
         const endpoints=[
 
             {
-                type:"warning",
-                name:"Verkehrsmeldungen",
+                type:
+                    "warning",
+
+                name:
+                    "Verkehrsmeldungen",
+
                 url:
                     base+
                     "warning"
             },
 
             {
-                type:"closure",
-                name:"Sperrungen",
+                type:
+                    "closure",
+
+                name:
+                    "Sperrungen",
+
                 url:
                     base+
                     "closure"
             },
 
             {
-                type:"roadwork",
-                name:"Baustellen",
+                type:
+                    "roadwork",
+
+                name:
+                    "Baustellen",
+
                 url:
                     base+
                     "roadworks"
@@ -3607,7 +4168,7 @@ function extractArray(data){
     }
 
 
-    const keys=[
+    const possibleKeys=[
 
         "warning",
         "warnings",
@@ -3623,7 +4184,7 @@ function extractArray(data){
 
     for(
         const key
-        of keys
+        of possibleKeys
     ){
 
         if(
@@ -3646,7 +4207,7 @@ function extractArray(data){
 
 function getTrafficTitle(item){
 
-    return(
+    return (
 
         item.title||
 
@@ -3669,7 +4230,7 @@ function getTrafficTitle(item){
 
 function getTrafficDescription(item){
 
-    return(
+    return (
 
         item.description||
 
@@ -3708,14 +4269,18 @@ function previewImage(
         );
 
 
-    if(!file){
+    if(
+        !file
+    ){
 
         preview.style.display =
             "none";
 
+
         preview.removeAttribute(
             "src"
         );
+
 
         return;
 
@@ -3789,7 +4354,9 @@ async function uploadImage(
     file
 ){
 
-    if(!file){
+    if(
+        !file
+    ){
 
         return null;
 
@@ -3852,7 +4419,9 @@ async function uploadImage(
             );
 
 
-    if(error){
+    if(
+        error
+    ){
 
         throw error;
 
@@ -3916,7 +4485,9 @@ async function loadNews(){
                 );
 
 
-        if(error){
+        if(
+            error
+        ){
 
             throw error;
 
@@ -3925,8 +4496,8 @@ async function loadNews(){
 
         articles =
             Array.isArray(data)
-                ? data
-                : [];
+            ? data
+            : [];
 
 
         renderNews(
@@ -3957,6 +4528,7 @@ async function loadNews(){
 
                 <br><br>
 
+
                 ${escapeHTML(
                     error.message||
                     "Unbekannter Fehler"
@@ -3984,7 +4556,7 @@ async function loadNews(){
 
 
 /* =====================================================
-NEWS BILD
+NEWS DARSTELLUNG
 ===================================================== */
 
 function getNewsImageHTML(
@@ -4012,10 +4584,6 @@ function getNewsImageHTML(
 
 }
 
-
-/* =====================================================
-NEWS RENDERN
-===================================================== */
 
 function renderNews(
     list
@@ -4053,7 +4621,8 @@ function renderNews(
 
     if(
         activeFilter ===
-            "Alle" &&
+            "Alle"
+        &&
         list.length > 0
     ){
 
@@ -4072,11 +4641,10 @@ function renderNews(
 
 
         featured.onclick =
-            ()=>{
+            () =>
                 openArticle(
                     first.id
                 );
-            };
 
 
         featured.innerHTML=`
@@ -4095,7 +4663,7 @@ function renderNews(
 
                 <div class="featured-label">
 
-                    AKTUELL
+                    ● AKTUELL
 
                 </div>
 
@@ -4130,7 +4698,8 @@ function renderNews(
 
             if(
                 activeFilter ===
-                    "Alle" &&
+                    "Alle"
+                &&
                 index === 0
             ){
 
@@ -4150,11 +4719,10 @@ function renderNews(
 
 
             card.onclick =
-                ()=>{
+                () =>
                     openArticle(
                         item.id
                     );
-                };
 
 
             card.innerHTML=`
@@ -4241,8 +4809,8 @@ function filterNews(
             ".filter"
         )
         .forEach(
-            item =>
-                item.classList.remove(
+            x =>
+                x.classList.remove(
                     "active"
                 )
         );
@@ -4345,7 +4913,9 @@ function searchNews(){
         .trim();
 
 
-    if(!value){
+    if(
+        !value
+    ){
 
         renderNews(
             articles
@@ -4434,9 +5004,9 @@ function openArticle(
 
     const article =
         articles.find(
-            item =>
+            x =>
                 String(
-                    item.id
+                    x.id
                 ) ===
                 String(
                     id
@@ -4444,7 +5014,9 @@ function openArticle(
         );
 
 
-    if(!article){
+    if(
+        !article
+    ){
 
         return;
 
@@ -4507,7 +5079,7 @@ function openArticle(
     }
     else{
 
-        imageBox.innerHTML =
+        imageBox.textContent =
             "n:";
 
     }
@@ -4560,6 +5132,12 @@ async function openAdmin(){
 
 
     await checkSession();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 
 }
 
@@ -4622,7 +5200,9 @@ async function login(){
                 });
 
 
-        if(loginError){
+        if(
+            loginError
+        ){
 
             throw loginError;
 
@@ -4642,7 +5222,6 @@ async function login(){
         document.getElementById(
             "loginError"
         ).textContent =
-
             "Fehler: "+
             (
                 error.message||
@@ -4666,7 +5245,9 @@ async function checkSession(){
                 .getSession();
 
 
-        if(error){
+        if(
+            error
+        ){
 
             throw error;
 
@@ -4758,7 +5339,7 @@ async function logout(){
 
 
 /* =====================================================
-ADMIN LISTE
+ADMIN-LISTE
 ===================================================== */
 
 function renderAdmin(){
@@ -4769,7 +5350,9 @@ function renderAdmin(){
         );
 
 
-    if(!list)
+    if(
+        !list
+    )
         return;
 
 
@@ -4868,7 +5451,6 @@ function renderAdmin(){
 
                 </div>
 
-
             `;
 
 
@@ -4883,7 +5465,7 @@ function renderAdmin(){
 
 
 /* =====================================================
-SAVE
+ARTIKEL SPEICHERN
 ===================================================== */
 
 async function saveArticle(){
@@ -4996,7 +5578,7 @@ async function saveArticle(){
         }
 
 
-        const articleData={
+        const articleData = {
 
             title:
                 title,
@@ -5038,7 +5620,9 @@ async function saveArticle(){
                     );
 
 
-            if(error){
+            if(
+                error
+            ){
 
                 throw error;
 
@@ -5061,7 +5645,9 @@ async function saveArticle(){
                     );
 
 
-            if(error){
+            if(
+                error
+            ){
 
                 throw error;
 
@@ -5117,7 +5703,7 @@ async function saveArticle(){
 
 
 /* =====================================================
-EDIT
+BEARBEITEN
 ===================================================== */
 
 function editArticle(
@@ -5126,15 +5712,19 @@ function editArticle(
 
     const article =
         articles.find(
-            item =>
+            x =>
                 String(
-                    item.id
+                    x.id
                 ) ===
-                String(id)
+                String(
+                    id
+                )
         );
 
 
-    if(!article)
+    if(
+        !article
+    )
         return;
 
 
@@ -5263,15 +5853,19 @@ async function deleteArticle(
 
     const article =
         articles.find(
-            item =>
+            x =>
                 String(
-                    item.id
+                    x.id
                 ) ===
-                String(id)
+                String(
+                    id
+                )
         );
 
 
-    if(!article)
+    if(
+        !article
+    )
         return;
 
 
@@ -5300,7 +5894,9 @@ async function deleteArticle(
                 );
 
 
-        if(error){
+        if(
+            error
+        ){
 
             throw error;
 
@@ -5334,7 +5930,7 @@ async function deleteArticle(
 
 
 /* =====================================================
-CLEAR
+CLEAR FORM
 ===================================================== */
 
 function clearForm(){
@@ -5462,25 +6058,6 @@ function escapeHTML(
     );
 
 }
-
-
-/* =====================================================
-AUTH
-===================================================== */
-
-supabase.auth.onAuthStateChange(
-    (
-        event,
-        session
-    )=>{
-
-        console.log(
-            "Auth:",
-            event
-        );
-
-    }
-);
 
 
 /* =====================================================
