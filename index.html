@@ -1,28 +1,15 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>n: – Nachrichten</title>
 
-<meta
-    name="theme-color"
-    content="#111111"
->
+<meta name="theme-color" content="#111111">
+<meta name="description" content="n: Nachrichten, Verkehr und regionale Informationen.">
 
-<meta
-    name="description"
-    content="n: Nachrichten, Verkehr und regionale Informationen."
->
-
-<link
-    rel="manifest"
-    href="manifest.json"
->
-
+<link rel="manifest" href="manifest.json">
 
 <style>
 
@@ -52,7 +39,6 @@ button{
     cursor:pointer;
 }
 
-
 /* =====================================================
 HEADER
 ===================================================== */
@@ -60,27 +46,22 @@ HEADER
 header{
     height:72px;
     padding:0 28px;
-
     display:flex;
     align-items:center;
     justify-content:space-between;
 
     background:rgba(255,255,255,.96);
-
     border-bottom:1px solid #ddd;
 
     position:sticky;
     top:0;
-
     z-index:100;
 }
 
 .logo{
     font-size:40px;
     font-weight:900;
-
     letter-spacing:-4px;
-
     cursor:pointer;
 }
 
@@ -96,14 +77,14 @@ header{
     font-size:20px;
 
     padding:10px;
-
     border-radius:10px;
+
+    cursor:pointer;
 }
 
 .header-btn:hover{
     background:#eee;
 }
-
 
 /* Installationsbutton */
 
@@ -111,179 +92,178 @@ header{
     display:none;
 }
 
-
 /* =====================================================
 MAIN
 ===================================================== */
 
 main{
     max-width:1200px;
-
     margin:auto;
-
     padding:45px 20px 80px;
 }
 
-
-/* =====================================================
-STARTSEITE
-===================================================== */
-
-#startPage{
-    display:block;
-
+.start-page{
     min-height:70vh;
 }
 
+/* =====================================================
+START
+===================================================== */
+
 .start-hero{
     text-align:center;
-
     padding:35px 0 45px;
 }
 
-.start-label{
+.start-label,
+.hero-label,
+.special-label{
     font-size:12px;
-
     font-weight:900;
 
     color:#777;
 
     text-transform:uppercase;
-
     letter-spacing:1.5px;
 }
 
-.start-hero h1{
-    font-size:
-        clamp(48px,8vw,82px);
+.start-hero h1,
+.hero h1,
+.special-header h1{
+    font-size:clamp(42px,7vw,80px);
 
-    line-height:.9;
+    line-height:.95;
 
-    letter-spacing:-6px;
+    letter-spacing:-5px;
 
     margin:10px 0;
 }
 
-.start-hero p{
+.start-hero p,
+.hero p,
+.special-header p{
     color:#777;
-
     font-size:18px;
 }
 
-
 /* =====================================================
-STARTKARTEN
+START CARDS
 ===================================================== */
 
-.start-grid{
+.area-grid{
     display:grid;
 
     grid-template-columns:
-        repeat(2,1fr);
+        repeat(3,1fr);
 
     gap:18px;
 }
 
-.start-card{
+.area-card,
+.sendeplan-card{
     background:white;
 
     border:1px solid #ddd;
-
     border-radius:24px;
 
     padding:30px;
 
-    min-height:245px;
+    min-height:260px;
 
     cursor:pointer;
 
     transition:.2s;
 
     display:flex;
-
     flex-direction:column;
-
     justify-content:space-between;
 }
 
-.start-card:hover{
+.area-card:hover,
+.sendeplan-card:hover{
     transform:translateY(-5px);
 
     box-shadow:
-        0 15px 35px rgba(0,0,0,.10);
+        0 15px 35px rgba(0,0,0,.1);
 }
 
-.start-symbol{
-    width:60px;
-    height:60px;
-
-    border-radius:16px;
-
-    background:#f0f0f0;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
+.area-icon{
+    font-size:38px;
     font-weight:900;
-
-    font-size:22px;
-
     color:#111;
 }
 
-.start-card h2{
-    margin:25px 0 8px;
-
+.area-card h2,
+.sendeplan-card h2{
     font-size:30px;
+
+    margin:20px 0 8px;
 
     letter-spacing:-1px;
 }
 
-.start-card p{
-    margin:0;
-
+.area-card p,
+.sendeplan-card p{
     color:#777;
 
     line-height:1.5;
+
+    margin:0;
 }
 
-.start-arrow{
+.area-arrow{
     margin-top:25px;
 
-    font-size:24px;
+    font-size:22px;
 
     font-weight:900;
 }
 
+/* =====================================================
+INSTALL CARD
+===================================================== */
 
-/* Installation */
-
-.start-install{
-    grid-column:1/-1;
-
+.install-card{
     background:#111;
-
     color:white;
 
-    border-color:#111;
+    border-radius:24px;
+
+    padding:30px;
+
+    min-height:260px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 }
 
-.start-install:hover{
-    background:#171717;
+.install-card:hover{
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.2);
 }
 
-.start-install .start-symbol{
-    background:#222;
-
+.install-card .area-icon{
     color:white;
 }
 
-.start-install p{
-    color:#aaa;
+.install-card p{
+    color:#bbb;
+
+    line-height:1.5;
+
+    margin:0;
 }
 
+.install-card .area-arrow{
+    color:white;
+}
 
 /* =====================================================
 NEWS
@@ -297,40 +277,6 @@ NEWS
     margin-bottom:25px;
 }
 
-.hero-label{
-    font-size:12px;
-
-    font-weight:800;
-
-    color:#777;
-
-    text-transform:uppercase;
-
-    letter-spacing:1.5px;
-}
-
-.hero h1{
-    font-size:
-        clamp(42px,7vw,72px);
-
-    line-height:.95;
-
-    letter-spacing:-4px;
-
-    margin:8px 0;
-}
-
-.hero p{
-    color:#777;
-
-    font-size:18px;
-}
-
-
-/* =====================================================
-SEARCH
-===================================================== */
-
 .search{
     display:none;
 
@@ -343,18 +289,12 @@ SEARCH
     padding:15px;
 
     border:1px solid #ddd;
-
     border-radius:13px;
 
     outline:none;
 
     font-size:16px;
 }
-
-
-/* =====================================================
-FILTER
-===================================================== */
 
 .filters{
     display:flex;
@@ -372,26 +312,21 @@ FILTER
     padding:10px 16px;
 
     border:1px solid #ddd;
-
     border-radius:999px;
 
     background:white;
 
     font-weight:700;
+
+    cursor:pointer;
 }
 
 .filter.active{
     background:#111;
-
     color:white;
 
     border-color:#111;
 }
-
-
-/* =====================================================
-NEWS GRID
-===================================================== */
 
 .news-grid{
     display:grid;
@@ -406,7 +341,6 @@ NEWS GRID
     background:white;
 
     border:1px solid #ddd;
-
     border-radius:20px;
 
     overflow:hidden;
@@ -425,13 +359,11 @@ NEWS GRID
 
 .news-image{
     width:100%;
-
     height:190px;
 
     display:flex;
 
     justify-content:center;
-
     align-items:center;
 
     background:
@@ -452,12 +384,9 @@ NEWS GRID
 
 .news-image img{
     width:100%;
-
     height:100%;
 
     object-fit:cover;
-
-    display:block;
 }
 
 .news-card-content{
@@ -486,11 +415,6 @@ NEWS GRID
     margin:0;
 }
 
-
-/* =====================================================
-FEATURED
-===================================================== */
-
 .featured{
     grid-column:1/-1;
 
@@ -509,7 +433,6 @@ FEATURED
 
 .featured-image{
     width:100%;
-
     height:280px;
 
     background:
@@ -522,7 +445,6 @@ FEATURED
     display:flex;
 
     justify-content:center;
-
     align-items:center;
 
     color:#999;
@@ -536,12 +458,9 @@ FEATURED
 
 .featured-image img{
     width:100%;
-
     height:100%;
 
     object-fit:cover;
-
-    display:block;
 }
 
 .featured-content{
@@ -563,11 +482,6 @@ FEATURED
         clamp(28px,4vw,40px);
 }
 
-
-/* =====================================================
-STATUS
-===================================================== */
-
 .status-box{
     grid-column:1/-1;
 
@@ -583,7 +497,6 @@ STATUS
 
     color:#777;
 }
-
 
 /* =====================================================
 ARTICLE
@@ -605,6 +518,8 @@ ARTICLE
     background:white;
 
     border-radius:12px;
+
+    cursor:pointer;
 
     font-weight:700;
 
@@ -636,7 +551,6 @@ ARTICLE
     display:flex;
 
     justify-content:center;
-
     align-items:center;
 
     background:
@@ -665,8 +579,6 @@ ARTICLE
     max-height:550px;
 
     object-fit:cover;
-
-    display:block;
 }
 
 .article-text{
@@ -675,9 +587,8 @@ ARTICLE
     line-height:1.8;
 }
 
-
 /* =====================================================
-SPECIAL
+SPECIAL PAGES
 ===================================================== */
 
 .special-page{
@@ -686,39 +597,6 @@ SPECIAL
     max-width:1000px;
 
     margin:auto;
-}
-
-.special-header{
-    margin-bottom:25px;
-}
-
-.special-label{
-    font-size:12px;
-
-    font-weight:900;
-
-    color:#777;
-
-    text-transform:uppercase;
-
-    letter-spacing:1.5px;
-}
-
-.special-header h1{
-    font-size:
-        clamp(42px,7vw,76px);
-
-    line-height:.95;
-
-    letter-spacing:-5px;
-
-    margin:10px 0;
-}
-
-.special-header p{
-    color:#777;
-
-    font-size:18px;
 }
 
 .special-box{
@@ -736,7 +614,6 @@ SPECIAL
 .special-box h2{
     margin-top:0;
 }
-
 
 /* =====================================================
 ROUTE
@@ -765,7 +642,9 @@ ROUTE
     outline:none;
 }
 
-.route-button{
+.route-button,
+.traffic-button,
+.primary{
     border:0;
 
     background:#111;
@@ -777,6 +656,8 @@ ROUTE
     border-radius:13px;
 
     font-weight:800;
+
+    cursor:pointer;
 }
 
 .route-result{
@@ -830,12 +711,10 @@ ROUTE
 
 .map-box iframe{
     width:100%;
-
     height:100%;
 
     border:0;
 }
-
 
 /* =====================================================
 TRAFFIC
@@ -863,21 +742,8 @@ TRAFFIC
     font-size:16px;
 }
 
-.traffic-button{
-    border:0;
-
-    background:#111;
-
-    color:white;
-
-    padding:14px 20px;
-
-    border-radius:12px;
-
-    font-weight:800;
-}
-
-.traffic-button.secondary{
+.traffic-button.secondary,
+.secondary{
     background:#eee;
 
     color:#111;
@@ -946,7 +812,6 @@ TRAFFIC
 
     font-size:13px;
 }
-
 
 /* =====================================================
 ADMIN
@@ -1056,41 +921,13 @@ ADMIN
 }
 
 .current-image{
+    display:none;
+
     margin-top:10px;
 
     color:#777;
 
     font-size:14px;
-}
-
-.primary,
-.secondary,
-.small{
-    border:0;
-
-    border-radius:10px;
-
-    padding:11px 16px;
-
-    font-weight:800;
-}
-
-.primary{
-    background:#111;
-
-    color:white;
-}
-
-.secondary{
-    background:#eee;
-
-    color:#111;
-}
-
-.primary:disabled{
-    opacity:.6;
-
-    cursor:wait;
 }
 
 .admin-top{
@@ -1125,6 +962,8 @@ ADMIN
     justify-content:space-between;
 
     gap:15px;
+
+    align-items:center;
 }
 
 .admin-item-title{
@@ -1139,6 +978,20 @@ ADMIN
     display:flex;
 
     gap:7px;
+
+    flex-wrap:wrap;
+}
+
+.small{
+    border:0;
+
+    border-radius:10px;
+
+    padding:11px 16px;
+
+    font-weight:800;
+
+    cursor:pointer;
 }
 
 .edit{
@@ -1149,6 +1002,18 @@ ADMIN
     background:#fee2e2;
 
     color:#b91c1c;
+}
+
+.connect{
+    background:#dcfce7;
+
+    color:#166534;
+}
+
+.duplicate{
+    background:#fef3c7;
+
+    color:#92400e;
 }
 
 .error{
@@ -1163,9 +1028,8 @@ ADMIN
     margin-top:12px;
 }
 
-
 /* =====================================================
-INSTALLATION
+INSTALLATIONS-MODAL
 ===================================================== */
 
 .install-picker{
@@ -1219,10 +1083,11 @@ INSTALLATION
     background:#eee;
 
     width:40px;
-
     height:40px;
 
     border-radius:50%;
+
+    cursor:pointer;
 
     font-size:20px;
 }
@@ -1329,6 +1194,179 @@ INSTALLATION
     margin-top:22px;
 }
 
+/* =====================================================
+CONNECTIONS
+===================================================== */
+
+.connection-picker{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.5);
+
+    z-index:999;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+}
+
+.connection-modal{
+    width:min(700px,100%);
+
+    max-height:85vh;
+
+    overflow:auto;
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:25px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.25);
+}
+
+.connection-header{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    align-items:flex-start;
+}
+
+.connection-close{
+    border:0;
+
+    background:#eee;
+
+    width:40px;
+
+    height:40px;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:20px;
+}
+
+.connection-search{
+    width:100%;
+
+    padding:14px;
+
+    border:1px solid #ddd;
+
+    border-radius:12px;
+
+    margin:18px 0;
+
+    font-size:16px;
+
+    outline:none;
+}
+
+.connection-items{
+    display:grid;
+
+    gap:9px;
+}
+
+.connection-item{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:14px;
+
+    border:1px solid #ddd;
+
+    border-radius:15px;
+
+    cursor:pointer;
+}
+
+.connection-item:hover{
+    background:#f7f7f7;
+}
+
+.connection-item input{
+    width:20px;
+
+    height:20px;
+}
+
+.connection-item-main{
+    flex:1;
+}
+
+.connection-item-title{
+    font-weight:800;
+}
+
+.connection-item-meta{
+    color:#777;
+
+    font-size:13px;
+
+    margin-top:4px;
+}
+
+.connection-actions{
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:8px;
+
+    margin-top:20px;
+}
+
+.related-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(220px,1fr));
+
+    gap:10px;
+}
+
+.related-card{
+    background:#f7f7f7;
+
+    border:1px solid #ddd;
+
+    border-radius:14px;
+
+    padding:16px;
+
+    cursor:pointer;
+}
+
+.related-card:hover{
+    background:#eee;
+}
+
+.related-card strong{
+    display:block;
+
+    margin-bottom:6px;
+}
+
+.related-card small{
+    color:#777;
+}
 
 /* =====================================================
 FOOTER
@@ -1344,20 +1382,19 @@ footer{
     border-top:1px solid #ddd;
 }
 
-
 /* =====================================================
 RESPONSIVE
 ===================================================== */
 
 @media(max-width:850px){
 
-    .start-grid{
-        grid-template-columns:1fr;
-    }
-
     .news-grid{
         grid-template-columns:
             repeat(2,1fr);
+    }
+
+    .area-grid{
+        grid-template-columns:1fr;
     }
 
     .route-form{
@@ -1374,10 +1411,6 @@ RESPONSIVE
 
     .logo{
         font-size:36px;
-    }
-
-    main{
-        padding:30px 15px 60px;
     }
 
     .news-grid{
@@ -1398,50 +1431,42 @@ RESPONSIVE
         align-items:flex-start;
     }
 
-    .admin-actions{
-        width:100%;
-    }
-
+    .connection-modal,
     .install-modal{
         padding:20px;
     }
 
 }
 
+/* =====================================================
+SCRIPT
+===================================================== */
+
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
-HEADER
-===================================================== -->
 
 <header>
 
     <div
         class="logo"
         onclick="showStart()">
-
         n:
-
     </div>
 
 
     <div class="header-actions">
 
+        <!-- NUR AUF STARTSEITE SICHTBAR -->
 
         <button
             id="installHeaderBtn"
             class="header-btn"
             onclick="openInstallPicker()"
             title="n: installieren">
-
-            +
-
+            ▣
         </button>
 
 
@@ -1449,9 +1474,7 @@ HEADER
             class="header-btn"
             onclick="toggleSearch()"
             title="Suche">
-
             /
-
         </button>
 
 
@@ -1459,11 +1482,8 @@ HEADER
             class="header-btn"
             onclick="openAdmin()"
             title="Redaktion">
-
             +
-
         </button>
-
 
     </div>
 
@@ -1478,215 +1498,137 @@ STARTSEITE
 ===================================================== -->
 
 <section
-    id="startPage">
-
+    id="startPage"
+    class="start-page">
 
     <div class="start-hero">
 
-
         <div class="start-label">
-
             n: Plattform
-
         </div>
 
-
         <h1>
-
             Was möchtest du öffnen?
-
         </h1>
 
-
         <p>
-
             Nachrichten, Verkehr und regionale Informationen.
-
         </p>
-
 
     </div>
 
 
-    <div class="start-grid">
+    <div class="area-grid">
 
-
-        <!-- NACHRICHTEN -->
 
         <div
-            class="start-card"
+            class="area-card"
             onclick="openNews()">
 
-
             <div>
 
-
-                <div class="start-symbol">
-
+                <div class="area-icon">
                     n:
-
                 </div>
 
-
                 <h2>
-
                     n: Nachrichten
-
                 </h2>
 
-
                 <p>
-
                     Aktuelle Nachrichten aus Deutschland,
                     der Welt, der Region, Sport und Digital.
-
                 </p>
 
-
             </div>
 
-
-            <div class="start-arrow">
-
+            <div class="area-arrow">
                 →
-
             </div>
-
 
         </div>
 
 
-        <!-- VERKEHR -->
-
         <div
-            class="start-card"
+            class="area-card"
             onclick="openTraffic()">
 
-
             <div>
 
-
-                <div class="start-symbol">
-
+                <div class="area-icon">
                     V
-
                 </div>
 
-
                 <h2>
-
                     Verkehr & Route
-
                 </h2>
 
-
                 <p>
-
                     Verkehrslage, Störungen und Routen
                     übersichtlich auf einer Seite.
-
                 </p>
 
-
             </div>
 
-
-            <div class="start-arrow">
-
+            <div class="area-arrow">
                 →
-
             </div>
-
 
         </div>
 
 
-        <!-- BEREICH -->
-
         <div
-            class="start-card"
+            class="area-card"
             onclick="openArea()">
 
-
             <div>
 
-
-                <div class="start-symbol">
-
+                <div class="area-icon">
                     +
-
                 </div>
 
-
                 <h2>
-
                     n: Bereich
-
                 </h2>
 
-
                 <p>
-
-                    Regionale Nachrichten,
-                    Veranstaltungen und Informationen.
-
+                    Dein persönlicher Bereich mit Standort,
+                    Wetter, lokalen Nachrichten und Veranstaltungen.
                 </p>
 
-
             </div>
 
-
-            <div class="start-arrow">
-
+            <div class="area-arrow">
                 →
-
             </div>
-
 
         </div>
 
 
-        <!-- SENDEPLAN -->
-
         <div
-            class="start-card"
+            class="sendeplan-card"
             onclick="openSendeplan()">
-
 
             <div>
 
-
-                <div class="start-symbol">
-
+                <div class="area-icon">
                     TV
-
                 </div>
 
-
                 <h2>
-
                     Sendeplan
-
                 </h2>
 
-
                 <p>
-
-                    Sendungen, Termine und geplante
-                    Nachrichten auf einen Blick.
-
+                    Alle Sendungen, Termine und
+                    geplanten Nachrichten auf einen Blick.
                 </p>
 
-
             </div>
 
-
-            <div class="start-arrow">
-
+            <div class="area-arrow">
                 →
-
             </div>
-
 
         </div>
 
@@ -1694,50 +1636,34 @@ STARTSEITE
         <!-- INSTALLATION -->
 
         <div
-            class="start-card start-install"
+            class="install-card"
             onclick="openInstallPicker()">
-
 
             <div>
 
-
-                <div class="start-symbol">
-
+                <div class="area-icon">
                     +
-
                 </div>
 
-
                 <h2>
-
                     n: installieren
-
                 </h2>
 
-
                 <p>
-
                     Füge n: zum Home-Bildschirm hinzu
                     und öffne die Seite wie eine App.
-
                 </p>
 
-
             </div>
 
-
-            <div class="start-arrow">
-
+            <div class="area-arrow">
                 →
-
             </div>
-
 
         </div>
 
 
     </div>
-
 
 </section>
 
@@ -1746,34 +1672,21 @@ STARTSEITE
 NEWS
 ===================================================== -->
 
-<section
-    id="home">
-
+<section id="home">
 
     <div class="hero">
 
-
         <div class="hero-label">
-
             n: Nachrichten
-
         </div>
 
-
         <h1>
-
             Was gerade passiert.
-
         </h1>
 
-
         <p>
-
-            Aktuelle Nachrichten.
-            Einfach und direkt.
-
+            Aktuelle Nachrichten. Einfach und direkt.
         </p>
-
 
     </div>
 
@@ -1782,73 +1695,52 @@ NEWS
         class="search"
         id="searchBox">
 
-
         <input
             id="searchInput"
             type="search"
             placeholder="Nachrichten durchsuchen..."
             oninput="searchNews()">
 
-
     </div>
 
 
     <div class="filters">
 
-
         <button
             class="filter active"
             onclick="filterNews('Alle',this)">
-
             Alle
-
         </button>
-
 
         <button
             class="filter"
             onclick="filterNews('Deutschland',this)">
-
-            🇩🇪 Deutschland
-
+            Deutschland
         </button>
-
 
         <button
             class="filter"
             onclick="filterNews('Welt',this)">
-
-            🌍 Welt
-
+            Welt
         </button>
-
 
         <button
             class="filter"
             onclick="filterNews('Region',this)">
-
-            📍 Region
-
+            Region
         </button>
-
 
         <button
             class="filter"
             onclick="filterNews('Sport',this)">
-
-            ⚽ Sport
-
+            Sport
         </button>
-
 
         <button
             class="filter"
             onclick="filterNews('Digital',this)">
-
-            💻 Digital
-
+            Digital
         </button>
-
 
     </div>
 
@@ -1857,16 +1749,11 @@ NEWS
         class="news-grid"
         id="newsGrid">
 
-
         <div class="status-box">
-
             Nachrichten werden geladen …
-
         </div>
 
-
     </div>
-
 
 </section>
 
@@ -1879,41 +1766,35 @@ ARTIKEL
     class="article"
     id="article">
 
-
     <button
         class="back"
         onclick="openNews()">
-
         ← Zurück
-
     </button>
-
 
     <div
         class="article-meta"
         id="articleMeta">
     </div>
 
-
     <h1
         id="articleTitle">
     </h1>
 
-
     <div
         class="article-image"
         id="articleImage">
-
         n:
-
     </div>
-
 
     <div
         class="article-text"
         id="articleText">
     </div>
 
+    <div
+        id="articleConnections">
+    </div>
 
 </section>
 
@@ -1926,63 +1807,42 @@ VERKEHR
     id="traffic"
     class="special-page">
 
-
     <button
         class="back"
         onclick="showStart()">
-
         ← Startseite
-
     </button>
 
 
     <div class="special-header">
 
-
         <div class="special-label">
-
             n: Verkehr
-
         </div>
 
-
         <h1>
-
             Verkehr & Route
-
         </h1>
 
-
         <p>
-
-            Route berechnen und aktuelle
-            Verkehrsmeldungen abrufen.
-
+            Route berechnen und aktuelle Verkehrsmeldungen abrufen.
         </p>
-
 
     </div>
 
 
     <div class="special-box">
 
-
         <h2>
-
             Route berechnen
-
         </h2>
 
-
         <p>
-
             Gib Start und Ziel ein.
-
         </p>
 
 
         <div class="route-form">
-
 
             <input
                 id="routeStart"
@@ -1999,11 +1859,8 @@ VERKEHR
             <button
                 class="route-button"
                 onclick="calculateRoute()">
-
                 Route berechnen
-
             </button>
-
 
         </div>
 
@@ -2018,112 +1875,77 @@ VERKEHR
             id="routeResult"
             class="route-result">
 
-
             <div class="route-summary">
-
 
                 <div class="route-stat">
 
-
                     <small>
-
                         Entfernung
-
                     </small>
-
 
                     <strong
                         id="routeDistance">
-
                         –
-
                     </strong>
-
 
                 </div>
 
 
                 <div class="route-stat">
 
-
                     <small>
-
                         Fahrzeit
-
                     </small>
-
 
                     <strong
                         id="routeDuration">
-
                         –
-
                     </strong>
-
 
                 </div>
 
 
                 <div class="route-stat">
 
-
                     <small>
-
                         Route
-
                     </small>
 
-
                     <strong>
-
                         Auto
-
                     </strong>
 
-
                 </div>
-
 
             </div>
 
 
             <div class="map-box">
 
-
                 <iframe
                     id="routeMap"
                     loading="lazy">
                 </iframe>
 
-
             </div>
 
-
         </div>
-
 
     </div>
 
 
     <div class="special-box">
 
-
         <h2>
-
             Verkehrsmeldungen
-
         </h2>
 
-
         <p>
-
             Aktuelle Meldungen für eine Autobahn anzeigen.
-
         </p>
 
 
         <div class="traffic-controls">
-
 
             <input
                 id="roadInput"
@@ -2135,20 +1957,15 @@ VERKEHR
             <button
                 class="traffic-button"
                 onclick="loadTraffic()">
-
                 Verkehr laden
-
             </button>
 
 
             <button
                 class="traffic-button secondary"
                 onclick="loadTraffic()">
-
                 Aktualisieren
-
             </button>
-
 
         </div>
 
@@ -2166,15 +1983,10 @@ VERKEHR
 
 
         <div class="source-note">
-
-            Datenquelle:
-            Die Autobahn GmbH des Bundes.
-
+            Datenquelle: Die Autobahn GmbH des Bundes.
         </div>
 
-
     </div>
-
 
 </section>
 
@@ -2187,85 +1999,57 @@ BEREICH
     id="area"
     class="special-page">
 
-
     <button
         class="back"
         onclick="showStart()">
-
         ← Startseite
-
     </button>
 
 
     <div class="special-header">
 
-
         <div class="special-label">
-
             n: Bereich
-
         </div>
 
-
         <h1>
-
             Dein Bereich.
-
         </h1>
 
-
         <p>
-
             Regionale Informationen direkt auf einen Blick.
-
         </p>
-
 
     </div>
 
 
     <div class="special-box">
 
-
         <h2>
-
             Regional
-
         </h2>
 
-
         <p>
-
             Hier können regionale Nachrichten,
-            Veranstaltungen und Informationen aus
-            deinem Bereich erscheinen.
-
+            Veranstaltungen und Informationen aus deinem
+            Bereich erscheinen.
         </p>
-
 
     </div>
 
 
     <div class="special-box">
 
-
         <h2>
-
             Veranstaltungen
-
         </h2>
 
-
         <p>
-
             Dieser Bereich kann später mit lokalen
             Veranstaltungen gefüllt werden.
-
         </p>
 
-
     </div>
-
 
 </section>
 
@@ -2283,18 +2067,12 @@ ADMIN
         class="login"
         id="loginBox">
 
-
         <h2>
-
             n: Redaktion
-
         </h2>
 
-
         <p>
-
             Anmeldung nur für die Redaktion.
-
         </p>
 
 
@@ -2313,9 +2091,7 @@ ADMIN
         <button
             class="primary"
             onclick="login()">
-
             Einloggen
-
         </button>
 
 
@@ -2323,7 +2099,6 @@ ADMIN
             class="error"
             id="loginError">
         </div>
-
 
     </div>
 
@@ -2335,43 +2110,30 @@ ADMIN
 
         <div class="admin-top">
 
-
             <h1>
-
                 Redaktion
-
             </h1>
 
 
             <button
-                class="secondary"
+                class="secondary small"
                 onclick="logout()">
-
                 Ausloggen
-
             </button>
-
 
         </div>
 
 
         <div class="form-box">
 
-
-            <h2
-                id="formTitle">
-
+            <h2 id="formTitle">
                 Neuer Artikel
-
             </h2>
 
 
             <label>
-
                 Überschrift
-
             </label>
-
 
             <input
                 id="title"
@@ -2379,11 +2141,8 @@ ADMIN
 
 
             <label>
-
                 Kurzbeschreibung
-
             </label>
-
 
             <input
                 id="description"
@@ -2391,60 +2150,37 @@ ADMIN
 
 
             <label>
-
                 Kategorie
-
             </label>
 
+            <select id="category">
 
-            <select
-                id="category">
-
-
-                <option value="Deutschland">
-
+                <option>
                     Deutschland
-
                 </option>
 
-
-                <option value="Welt">
-
+                <option>
                     Welt
-
                 </option>
 
-
-                <option value="Region">
-
+                <option>
                     Region
-
                 </option>
 
-
-                <option value="Sport">
-
+                <option>
                     Sport
-
                 </option>
 
-
-                <option value="Digital">
-
+                <option>
                     Digital
-
                 </option>
-
 
             </select>
 
 
             <label>
-
                 Region
-
             </label>
-
 
             <input
                 id="region"
@@ -2452,26 +2188,29 @@ ADMIN
 
 
             <label>
-
                 Artikel
-
             </label>
-
 
             <textarea
                 id="content"
                 placeholder="Artikel schreiben..."></textarea>
 
 
+            <p style="color:#777;font-size:13px">
+
+                Tipp:
+                <strong>**Text**</strong>
+                wird auf der Website automatisch fett dargestellt.
+
+            </p>
+
+
             <label>
-
                 Artikelbild
-
             </label>
 
 
             <div class="image-upload-box">
-
 
                 <input
                     id="imageFile"
@@ -2491,7 +2230,6 @@ ADMIN
                     class="current-image">
                 </div>
 
-
             </div>
 
 
@@ -2499,18 +2237,14 @@ ADMIN
                 class="primary"
                 id="saveButton"
                 onclick="saveArticle()">
-
                 Veröffentlichen
-
             </button>
 
 
             <button
-                class="secondary"
+                class="secondary small"
                 onclick="clearForm()">
-
                 Abbrechen
-
             </button>
 
 
@@ -2519,14 +2253,11 @@ ADMIN
                 class="success">
             </div>
 
-
         </div>
 
 
         <h2>
-
             Deine Artikel
-
         </h2>
 
 
@@ -2535,25 +2266,20 @@ ADMIN
             id="adminList">
         </div>
 
-
     </div>
 
-
 </section>
-
 
 </main>
 
 
 <footer>
-
     © 2026 n: · Nachrichten
-
 </footer>
 
 
 <!-- =====================================================
-INSTALLATIONSMODAL
+INSTALLATIONS-FENSTER
 ===================================================== -->
 
 <div
@@ -2567,30 +2293,20 @@ INSTALLATIONSMODAL
 
         <div class="install-header">
 
-
             <div>
 
-
                 <div class="special-label">
-
                     n: Installation
-
                 </div>
 
-
                 <h2 style="margin:8px 0">
-
                     n: zum Home-Bildschirm hinzufügen
-
                 </h2>
 
-
-                <p style="color:#777;margin:0">
-
+                <p
+                    style="color:#777;margin:0">
                     Wähle zuerst dein Gerät aus.
-
                 </p>
-
 
             </div>
 
@@ -2598,14 +2314,13 @@ INSTALLATIONSMODAL
             <button
                 class="install-close"
                 onclick="closeInstallPicker()">
-
                 ×
-
             </button>
-
 
         </div>
 
+
+        <!-- GERÄTEAUSWAHL -->
 
         <div
             id="deviceChoice"
@@ -2616,20 +2331,13 @@ INSTALLATIONSMODAL
                 class="device-button"
                 onclick="showInstallInstructions('apple')">
 
-
                 <strong>
-
                     iPhone / iPad
-
                 </strong>
 
-
                 <span>
-
                     Safari auf iOS oder iPadOS
-
                 </span>
-
 
             </button>
 
@@ -2638,20 +2346,13 @@ INSTALLATIONSMODAL
                 class="device-button"
                 onclick="showInstallInstructions('android')">
 
-
                 <strong>
-
                     Android
-
                 </strong>
 
-
                 <span>
-
-                    Chrome oder unterstützter Browser
-
+                    Chrome oder ein unterstützter Browser
                 </span>
-
 
             </button>
 
@@ -2660,48 +2361,36 @@ INSTALLATIONSMODAL
                 class="device-button"
                 onclick="showInstallInstructions('computer')">
 
-
                 <strong>
-
                     Computer
-
                 </strong>
 
-
                 <span>
-
                     Windows, macOS oder Linux
-
                 </span>
-
 
             </button>
 
-
         </div>
 
+
+        <!-- APPLE -->
 
         <div
             id="installApple"
             class="install-instructions">
 
-
             <h3>
-
                 iPhone oder iPad
-
             </h3>
 
 
             <div class="install-steps">
 
-
                 <div class="install-step">
 
                     <strong>
-
                         1. Safari öffnen
-
                     </strong>
 
                     Öffne n: direkt in Safari.
@@ -2712,13 +2401,11 @@ INSTALLATIONSMODAL
                 <div class="install-step">
 
                     <strong>
-
                         2. Teilen öffnen
-
                     </strong>
 
-                    Öffne das Teilen-Menü
-                    von Safari.
+                    Tippe unten bzw. oben auf das
+                    Teilen-Symbol von Safari.
 
                 </div>
 
@@ -2726,9 +2413,7 @@ INSTALLATIONSMODAL
                 <div class="install-step">
 
                     <strong>
-
                         3. Zum Home-Bildschirm
-
                     </strong>
 
                     Wähle
@@ -2741,16 +2426,13 @@ INSTALLATIONSMODAL
                 <div class="install-step">
 
                     <strong>
-
                         4. Hinzufügen
-
                     </strong>
 
                     Bestätige mit
                     „Hinzufügen“.
 
                 </div>
-
 
             </div>
 
@@ -2763,35 +2445,30 @@ INSTALLATIONSMODAL
 
             </div>
 
-
         </div>
 
+
+        <!-- ANDROID -->
 
         <div
             id="installAndroid"
             class="install-instructions">
 
-
             <h3>
-
                 Android
-
             </h3>
 
 
             <div class="install-steps">
 
-
                 <div class="install-step">
 
                     <strong>
-
-                        1. n: öffnen
-
+                        1. n: im Browser öffnen
                     </strong>
 
-                    Öffne n: in Chrome oder
-                    einem unterstützten Browser.
+                    Öffne diese Website in Chrome
+                    oder einem unterstützten Browser.
 
                 </div>
 
@@ -2799,12 +2476,10 @@ INSTALLATIONSMODAL
                 <div class="install-step">
 
                     <strong>
-
                         2. Browser-Menü öffnen
-
                     </strong>
 
-                    Öffne das Browser-Menü.
+                    Öffne das Menü des Browsers.
 
                 </div>
 
@@ -2812,15 +2487,12 @@ INSTALLATIONSMODAL
                 <div class="install-step">
 
                     <strong>
-
                         3. Installation auswählen
-
                     </strong>
 
                     Wähle
-                    „App installieren“
-                    oder
-                    „Zum Startbildschirm hinzufügen“.
+                    „Zum Startbildschirm hinzufügen“
+                    oder „App installieren“.
 
                 </div>
 
@@ -2828,46 +2500,47 @@ INSTALLATIONSMODAL
                 <div class="install-step">
 
                     <strong>
-
                         4. Bestätigen
-
                     </strong>
 
                     Bestätige die Installation.
 
                 </div>
 
-
             </div>
 
 
+            <div class="install-note">
+
+                Wenn dein Browser direkt eine
+                Installationsmeldung für n: anzeigt,
+                kannst du diese ebenfalls verwenden.
+
+            </div>
+
         </div>
 
+
+        <!-- COMPUTER -->
 
         <div
             id="installComputer"
             class="install-instructions">
 
-
             <h3>
-
                 Computer
-
             </h3>
 
 
             <div class="install-steps">
 
-
                 <div class="install-step">
 
                     <strong>
-
                         1. n: öffnen
-
                     </strong>
 
-                    Öffne n: in einem
+                    Öffne die Website in einem
                     unterstützten Browser.
 
                 </div>
@@ -2876,12 +2549,10 @@ INSTALLATIONSMODAL
                 <div class="install-step">
 
                     <strong>
-
-                        2. Installation suchen
-
+                        2. Installationssymbol suchen
                     </strong>
 
-                    Bei unterstützten Browsern kann
+                    In unterstützten Browsern kann
                     neben der Adresszeile ein
                     Installationssymbol erscheinen.
 
@@ -2891,18 +2562,15 @@ INSTALLATIONSMODAL
                 <div class="install-step">
 
                     <strong>
-
                         3. Installieren
-
                     </strong>
 
-                    Klicke auf „Installieren“.
+                    Klicke auf „Installieren“ und
+                    bestätige den Vorgang.
 
                 </div>
 
-
             </div>
-
 
         </div>
 
@@ -2912,27 +2580,20 @@ INSTALLATIONSMODAL
             id="installActions"
             style="display:none">
 
-
             <button
                 class="secondary small"
                 onclick="backToDeviceChoice()">
-
                 Zurück
-
             </button>
 
 
             <button
-                class="primary small"
+                class="primary"
                 onclick="closeInstallPicker()">
-
                 Fertig
-
             </button>
 
-
         </div>
-
 
     </div>
 
@@ -2940,10 +2601,86 @@ INSTALLATIONSMODAL
 
 
 <!-- =====================================================
-SUPABASE
+VERBINDUNGS-FENSTER
 ===================================================== -->
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<div
+    id="connectionPicker"
+    class="connection-picker"
+    onclick="outsideConnectionClick(event)">
+
+
+    <div class="connection-modal">
+
+
+        <div class="connection-header">
+
+            <div>
+
+                <div class="special-label">
+                    n: Redaktion
+                </div>
+
+                <h2 style="margin:8px 0">
+                    Artikel verbinden
+                </h2>
+
+                <p
+                    id="connectionSourceTitle"
+                    style="color:#777;margin:0">
+                </p>
+
+            </div>
+
+
+            <button
+                class="connection-close"
+                onclick="closeConnectionPicker()">
+                ×
+            </button>
+
+        </div>
+
+
+        <input
+            id="connectionSearch"
+            class="connection-search"
+            placeholder="Artikel suchen..."
+            oninput="renderConnectionItems">
+
+
+        <div
+            id="connectionItems"
+            class="connection-items">
+        </div>
+
+
+        <div
+            id="connectionPickerMessage"
+            class="success">
+        </div>
+
+
+        <div class="connection-actions">
+
+            <button
+                class="secondary small"
+                onclick="closeConnectionPicker()">
+                Abbrechen
+            </button>
+
+
+            <button
+                class="primary"
+                onclick="saveSelectedConnections()">
+                Verbindungen speichern
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 <script>
@@ -2953,34 +2690,14 @@ SUPABASE
 ===================================================== */
 
 const SUPABASE_URL =
-    "https://eqzmsuncndfsiedyfifb.supabase.co";
-
+"https://eqzmsuncndfsiedyfifb.supabase.co";
 
 const SUPABASE_KEY =
-    "sb_publishable_eXY1gg_tIr-cRC2kdt0jbQ_QPfbEmkF";
-
+"sb_publishable_eXY1gg_tIr-cRC2kdt0jbQ_QPfbEmkF";
 
 const STORAGE_BUCKET =
-    "news-images";
+"news-images";
 
-
-const supabase =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY,
-        {
-            auth:{
-                persistSession:true,
-                autoRefreshToken:true,
-                detectSessionInUrl:false
-            }
-        }
-    );
-
-
-/* =====================================================
-VARIABLEN
-===================================================== */
 
 let articles = [];
 
@@ -2990,8 +2707,6 @@ let editingId = null;
 
 let editingImageUrl = null;
 
-let deferredInstallPrompt = null;
-
 
 /* =====================================================
 SEITEN
@@ -2999,46 +2714,23 @@ SEITEN
 
 function hideAllPages(){
 
-    document.getElementById(
-        "startPage"
-    ).style.display =
-        "none";
+    document.getElementById("startPage").style.display="none";
 
+    document.getElementById("home").style.display="none";
 
-    document.getElementById(
-        "home"
-    ).style.display =
-        "none";
+    document.getElementById("article").style.display="none";
 
+    document.getElementById("traffic").style.display="none";
 
-    document.getElementById(
-        "article"
-    ).style.display =
-        "none";
+    document.getElementById("area").style.display="none";
 
+    document.getElementById("admin").style.display="none";
 
-    document.getElementById(
-        "traffic"
-    ).style.display =
-        "none";
+    /*
+    Installationsbutton oben nur auf der Startseite
+    */
 
-
-    document.getElementById(
-        "area"
-    ).style.display =
-        "none";
-
-
-    document.getElementById(
-        "admin"
-    ).style.display =
-        "none";
-
-
-    document.getElementById(
-        "installHeaderBtn"
-    ).style.display =
-        "none";
+    document.getElementById("installHeaderBtn").style.display="none";
 
 }
 
@@ -3047,18 +2739,13 @@ function showStart(){
 
     hideAllPages();
 
+    document.getElementById("startPage").style.display="block";
 
-    document.getElementById(
-        "startPage"
-    ).style.display =
-        "block";
+    /*
+    Handy-/Installationssymbol nur auf Startseite
+    */
 
-
-    document.getElementById(
-        "installHeaderBtn"
-    ).style.display =
-        "block";
-
+    document.getElementById("installHeaderBtn").style.display="block";
 
     window.scrollTo({
         top:0,
@@ -3072,15 +2759,9 @@ function openNews(){
 
     hideAllPages();
 
-
-    document.getElementById(
-        "home"
-    ).style.display =
-        "block";
-
+    document.getElementById("home").style.display="block";
 
     loadNews();
-
 
     window.scrollTo({
         top:0,
@@ -3094,15 +2775,9 @@ function openTraffic(){
 
     hideAllPages();
 
-
-    document.getElementById(
-        "traffic"
-    ).style.display =
-        "block";
-
+    document.getElementById("traffic").style.display="block";
 
     loadTraffic();
-
 
     window.scrollTo({
         top:0,
@@ -3116,12 +2791,7 @@ function openArea(){
 
     hideAllPages();
 
-
-    document.getElementById(
-        "area"
-    ).style.display =
-        "block";
-
+    document.getElementById("area").style.display="block";
 
     window.scrollTo({
         top:0,
@@ -3131,10 +2801,13 @@ function openArea(){
 }
 
 
+/* =====================================================
+SENDEPLAN
+===================================================== */
+
 function openSendeplan(){
 
-    window.location.href =
-        "sendeplan.html";
+    window.location.href="sendeplan.html";
 
 }
 
@@ -3145,11 +2818,10 @@ INSTALLATION
 
 function openInstallPicker(){
 
-    document.getElementById(
-        "installPicker"
-    ).style.display =
-        "flex";
+    const picker =
+        document.getElementById("installPicker");
 
+    picker.style.display="flex";
 
     backToDeviceChoice();
 
@@ -3158,23 +2830,17 @@ function openInstallPicker(){
 
 function closeInstallPicker(){
 
-    document.getElementById(
-        "installPicker"
-    ).style.display =
-        "none";
+    document.getElementById("installPicker")
+        .style.display="none";
 
 }
 
 
-function outsideInstallClick(
-    event
-){
+function outsideInstallClick(event){
 
     if(
         event.target ===
-        document.getElementById(
-            "installPicker"
-        )
+        document.getElementById("installPicker")
     ){
 
         closeInstallPicker();
@@ -3186,80 +2852,49 @@ function outsideInstallClick(
 
 function hideAllInstallInstructions(){
 
-    document.getElementById(
-        "installApple"
-    ).style.display =
-        "none";
+    document.getElementById("installApple")
+        .style.display="none";
 
+    document.getElementById("installAndroid")
+        .style.display="none";
 
-    document.getElementById(
-        "installAndroid"
-    ).style.display =
-        "none";
-
-
-    document.getElementById(
-        "installComputer"
-    ).style.display =
-        "none";
+    document.getElementById("installComputer")
+        .style.display="none";
 
 }
 
 
-function showInstallInstructions(
-    device
-){
+function showInstallInstructions(device){
 
-    document.getElementById(
-        "deviceChoice"
-    ).style.display =
-        "none";
-
+    document.getElementById("deviceChoice")
+        .style.display="none";
 
     hideAllInstallInstructions();
 
-
-    document.getElementById(
-        "installActions"
-    ).style.display =
-        "flex";
+    document.getElementById("installActions")
+        .style.display="flex";
 
 
-    if(
-        device ===
-        "apple"
-    ){
+    if(device==="apple"){
 
-        document.getElementById(
-            "installApple"
-        ).style.display =
-            "block";
+        document.getElementById("installApple")
+            .style.display="block";
 
     }
 
 
-    if(
-        device ===
-        "android"
-    ){
+    if(device==="android"){
 
-        document.getElementById(
-            "installAndroid"
-        ).style.display =
-            "block";
+        document.getElementById("installAndroid")
+            .style.display="block";
 
     }
 
 
-    if(
-        device ===
-        "computer"
-    ){
+    if(device==="computer"){
 
-        document.getElementById(
-            "installComputer"
-        ).style.display =
-            "block";
+        document.getElementById("installComputer")
+            .style.display="block";
 
     }
 
@@ -3268,26 +2903,23 @@ function showInstallInstructions(
 
 function backToDeviceChoice(){
 
-    document.getElementById(
-        "deviceChoice"
-    ).style.display =
-        "grid";
-
+    document.getElementById("deviceChoice")
+        .style.display="grid";
 
     hideAllInstallInstructions();
 
-
-    document.getElementById(
-        "installActions"
-    ).style.display =
-        "none";
+    document.getElementById("installActions")
+        .style.display="none";
 
 }
 
 
 /* =====================================================
-PWA
+PWA INSTALLATION
 ===================================================== */
+
+let deferredInstallPrompt = null;
+
 
 window.addEventListener(
     "beforeinstallprompt",
@@ -3295,8 +2927,7 @@ window.addEventListener(
 
         event.preventDefault();
 
-        deferredInstallPrompt =
-            event;
+        deferredInstallPrompt=event;
 
     }
 );
@@ -3304,17 +2935,13 @@ window.addEventListener(
 
 async function tryNativeInstall(){
 
-    if(
-        !deferredInstallPrompt
-    ){
+    if(!deferredInstallPrompt){
 
-        return;
+        return false;
 
     }
 
-
     deferredInstallPrompt.prompt();
-
 
     try{
 
@@ -3323,15 +2950,13 @@ async function tryNativeInstall(){
     }
     catch(error){
 
-        console.warn(
-            error
-        );
+        console.warn(error);
 
     }
 
+    deferredInstallPrompt=null;
 
-    deferredInstallPrompt =
-        null;
+    return true;
 
 }
 
@@ -3344,26 +2969,19 @@ async function geocode(place){
 
     const url =
         "https://nominatim.openstreetmap.org/search?format=json&limit=1&q="+
-        encodeURIComponent(
-            place
-        );
-
+        encodeURIComponent(place);
 
     const response =
         await fetch(
             url,
             {
                 headers:{
-                    "Accept":
-                        "application/json"
+                    "Accept":"application/json"
                 }
             }
         );
 
-
-    if(
-        !response.ok
-    ){
+    if(!response.ok){
 
         throw new Error(
             "Ort konnte nicht gesucht werden."
@@ -3371,14 +2989,10 @@ async function geocode(place){
 
     }
 
-
     const data =
         await response.json();
 
-
-    if(
-        !data.length
-    ){
+    if(!data.length){
 
         throw new Error(
             `„${place}“ wurde nicht gefunden.`
@@ -3386,21 +3000,13 @@ async function geocode(place){
 
     }
 
-
     return{
 
-        lat:
-            parseFloat(
-                data[0].lat
-            ),
+        lat:parseFloat(data[0].lat),
 
-        lon:
-            parseFloat(
-                data[0].lon
-            ),
+        lon:parseFloat(data[0].lon),
 
-        name:
-            data[0].display_name
+        name:data[0].display_name
 
     };
 
@@ -3412,17 +3018,13 @@ async function calculateRoute(){
     const start =
         document.getElementById(
             "routeStart"
-        )
-        .value
-        .trim();
+        ).value.trim();
 
 
     const destination =
         document.getElementById(
             "routeDestination"
-        )
-        .value
-        .trim();
+        ).value.trim();
 
 
     const status =
@@ -3445,10 +3047,7 @@ async function calculateRoute(){
         status.textContent =
             "Bitte Start und Ziel eingeben.";
 
-
-        result.style.display =
-            "none";
-
+        result.style.display="none";
 
         return;
 
@@ -3458,17 +3057,13 @@ async function calculateRoute(){
     status.textContent =
         "Orte werden gesucht …";
 
-
-    result.style.display =
-        "none";
+    result.style.display="none";
 
 
     try{
 
         const startPoint =
-            await geocode(
-                start
-            );
+            await geocode(start);
 
 
         status.textContent =
@@ -3476,9 +3071,7 @@ async function calculateRoute(){
 
 
         const endPoint =
-            await geocode(
-                destination
-            );
+            await geocode(destination);
 
 
         status.textContent =
@@ -3493,14 +3086,10 @@ async function calculateRoute(){
 
 
         const response =
-            await fetch(
-                routeUrl
-            );
+            await fetch(routeUrl);
 
 
-        if(
-            !response.ok
-        ){
+        if(!response.ok){
 
             throw new Error(
                 "Routenserver nicht erreichbar."
@@ -3514,8 +3103,7 @@ async function calculateRoute(){
 
 
         if(
-            data.code !==
-                "Ok" ||
+            data.code!=="Ok" ||
             !data.routes ||
             !data.routes.length
         ){
@@ -3532,43 +3120,33 @@ async function calculateRoute(){
 
 
         const distance =
-            route.distance /
-            1000;
+            route.distance/1000;
 
 
         const duration =
-            route.duration /
-            60;
+            route.duration/60;
 
 
         document.getElementById(
             "routeDistance"
         ).textContent =
-
-            distance < 10
+            distance<10
             ? distance.toFixed(1)+" km"
             : Math.round(distance)+" km";
 
 
         const hours =
-            Math.floor(
-                duration /
-                60
-            );
+            Math.floor(duration/60);
 
 
         const minutes =
-            Math.round(
-                duration %
-                60
-            );
+            Math.round(duration%60);
 
 
         document.getElementById(
             "routeDuration"
         ).textContent =
-
-            hours > 0
+            hours>0
             ? `${hours} h ${minutes} min`
             : `${minutes} min`;
 
@@ -3625,21 +3203,17 @@ async function calculateRoute(){
         const mapUrl =
             "https://www.openstreetmap.org/export/embed.html"+
             "?bbox="+
-            encodeURIComponent(
-                bbox
-            )+
+            encodeURIComponent(bbox)+
             "&layer=mapnik"+
             `&marker=${startPoint.lat},${startPoint.lon}`;
 
 
         document.getElementById(
             "routeMap"
-        ).src =
-            mapUrl;
+        ).src=mapUrl;
 
 
-        result.style.display =
-            "block";
+        result.style.display="block";
 
 
         status.innerHTML =
@@ -3650,18 +3224,12 @@ async function calculateRoute(){
     }
     catch(error){
 
-        console.error(
-            error
-        );
-
+        console.error(error);
 
         status.textContent =
-            "Fehler: "+
-            error.message;
+            "Fehler: "+error.message;
 
-
-        result.style.display =
-            "none";
+        result.style.display="none";
 
     }
 
@@ -3681,10 +3249,7 @@ async function loadTraffic(){
         .value
         .trim()
         .toUpperCase()
-        .replace(
-            /\s/g,
-            ""
-        );
+        .replace(/\s/g,"");
 
 
     const status =
@@ -3699,9 +3264,7 @@ async function loadTraffic(){
         );
 
 
-    if(
-        !roadInput
-    ){
+    if(!roadInput){
 
         status.textContent =
             "Bitte eine Autobahn eingeben, z. B. A3.";
@@ -3715,56 +3278,35 @@ async function loadTraffic(){
         `Verkehrsmeldungen für ${roadInput} werden geladen …`;
 
 
-    list.innerHTML =
-        "";
+    list.innerHTML="";
 
 
     try{
 
         const base =
             "https://verkehr.autobahn.de/o/autobahn/"+
-            encodeURIComponent(
-                roadInput
-            )+
+            encodeURIComponent(roadInput)+
             "/services/";
 
 
         const endpoints=[
 
             {
-                type:
-                    "warning",
-
-                name:
-                    "Verkehrsmeldungen",
-
-                url:
-                    base+
-                    "warning"
+                type:"warning",
+                name:"Verkehrsmeldungen",
+                url:base+"warning"
             },
 
             {
-                type:
-                    "closure",
-
-                name:
-                    "Sperrungen",
-
-                url:
-                    base+
-                    "closure"
+                type:"closure",
+                name:"Sperrungen",
+                url:base+"closure"
             },
 
             {
-                type:
-                    "roadwork",
-
-                name:
-                    "Baustellen",
-
-                url:
-                    base+
-                    "roadworks"
+                type:"roadwork",
+                name:"Baustellen",
+                url:base+"roadworks"
             }
 
         ];
@@ -3786,9 +3328,7 @@ async function loadTraffic(){
                     );
 
 
-                if(
-                    !response.ok
-                )
+                if(!response.ok)
                     continue;
 
 
@@ -3797,28 +3337,24 @@ async function loadTraffic(){
 
 
                 const items =
-                    extractArray(
-                        data
-                    );
+                    extractArray(data);
 
 
-                items.forEach(
-                    item=>{
+                items.forEach(item=>{
 
-                        allItems.push({
+                    allItems.push({
 
-                            ...item,
+                        ...item,
 
-                            nType:
-                                endpoint.type,
+                        nType:
+                            endpoint.type,
 
-                            nTypeName:
-                                endpoint.name
+                        nTypeName:
+                            endpoint.name
 
-                        });
+                    });
 
-                    }
-                );
+                });
 
             }
             catch(error){
@@ -3833,9 +3369,7 @@ async function loadTraffic(){
         }
 
 
-        if(
-            !allItems.length
-        ){
+        if(!allItems.length){
 
             status.innerHTML =
                 `Keine aktuellen Meldungen für <strong>${escapeHTML(roadInput)}</strong> gefunden.`;
@@ -3849,75 +3383,56 @@ async function loadTraffic(){
             `<strong>${allItems.length}</strong> aktuelle Meldung(en) für <strong>${escapeHTML(roadInput)}</strong>`;
 
 
-        allItems.forEach(
-            item=>{
+        allItems.forEach(item=>{
 
-                const box =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                box.className =
-                    "traffic-item "+
-                    item.nType;
-
-
-                box.innerHTML=`
-
-                    <span class="traffic-badge">
-
-                        ${escapeHTML(
-                            item.nTypeName
-                        )}
-
-                    </span>
-
-
-                    <h3>
-
-                        ${escapeHTML(
-                            getTrafficTitle(item)
-                        )}
-
-                    </h3>
-
-
-                    <p>
-
-                        ${escapeHTML(
-                            getTrafficDescription(item)
-                        )}
-
-                    </p>
-
-                `;
-
-
-                list.appendChild(
-                    box
+            const box =
+                document.createElement(
+                    "div"
                 );
 
-            }
-        );
+
+            box.className =
+                "traffic-item "+
+                item.nType;
+
+
+            box.innerHTML=`
+
+                <span class="traffic-badge">
+                    ${trafficIcon(item.nType)}
+                    ${escapeHTML(item.nTypeName)}
+                </span>
+
+                <h3>
+                    ${escapeHTML(getTrafficTitle(item))}
+                </h3>
+
+                <p>
+                    ${escapeHTML(getTrafficDescription(item))}
+                </p>
+
+            `;
+
+
+            list.appendChild(box);
+
+        });
 
     }
     catch(error){
 
-        console.error(
-            error
-        );
-
+        console.error(error);
 
         status.textContent =
             "Verkehrsdaten konnten nicht geladen werden.";
-
 
         list.innerHTML=`
 
             <div class="status-box">
 
-                Verkehrsdaten nicht verfügbar.
+                <strong>
+                    Verkehrsdaten nicht verfügbar.
+                </strong>
 
                 <br><br>
 
@@ -3934,9 +3449,7 @@ async function loadTraffic(){
 
 function extractArray(data){
 
-    if(
-        Array.isArray(data)
-    ){
+    if(Array.isArray(data)){
 
         return data;
 
@@ -3962,11 +3475,7 @@ function extractArray(data){
         of possibleKeys
     ){
 
-        if(
-            Array.isArray(
-                data[key]
-            )
-        ){
+        if(Array.isArray(data[key])){
 
             return data[key];
 
@@ -4026,13 +3535,130 @@ function getTrafficDescription(item){
 }
 
 
+function trafficIcon(type){
+
+    if(type==="closure")
+        return "Sperrung";
+
+    if(type==="roadwork")
+        return "Baustelle";
+
+    return "Warnung";
+
+}
+
+
+/* =====================================================
+SUPABASE
+===================================================== */
+
+async function supabaseRequest(
+    endpoint,
+    options={}
+){
+
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
+
+
+    const headers={
+
+        "apikey":
+            SUPABASE_KEY,
+
+        "Content-Type":
+            "application/json",
+
+        ...(options.headers||{})
+
+    };
+
+
+    if(token){
+
+        headers["Authorization"] =
+            `Bearer ${token}`;
+
+    }
+    else if(
+        !headers["Authorization"]
+    ){
+
+        headers["Authorization"] =
+            `Bearer ${SUPABASE_KEY}`;
+
+    }
+
+
+    const response =
+        await fetch(
+            `${SUPABASE_URL}/rest/v1/${endpoint}`,
+            {
+                ...options,
+                headers
+            }
+        );
+
+
+    if(!response.ok){
+
+        const text =
+            await response.text();
+
+
+        if(
+            text.includes("JWT expired")||
+            response.status===401
+        ){
+
+            sessionStorage.removeItem(
+                "nAccessToken"
+            );
+
+            sessionStorage.removeItem(
+                "nUser"
+            );
+
+        }
+
+
+        throw new Error(
+            text ||
+            "Supabase Fehler"
+        );
+
+    }
+
+
+    const text =
+        await response.text();
+
+
+    if(!text)
+        return null;
+
+
+    try{
+
+        return JSON.parse(text);
+
+    }
+    catch{
+
+        return null;
+
+    }
+
+}
+
+
 /* =====================================================
 BILD
 ===================================================== */
 
-function previewImage(
-    event
-){
+function previewImage(event){
 
     const file =
         event.target.files[0];
@@ -4044,18 +3670,11 @@ function previewImage(
         );
 
 
-    if(
-        !file
-    ){
+    if(!file){
 
-        preview.style.display =
-            "none";
+        preview.style.display="none";
 
-
-        preview.removeAttribute(
-            "src"
-        );
-
+        preview.removeAttribute("src");
 
         return;
 
@@ -4063,38 +3682,14 @@ function previewImage(
 
 
     if(
-        !file.type.startsWith(
-            "image/"
-        )
+        !file.type.startsWith("image/")
     ){
 
         alert(
             "Bitte eine Bilddatei auswählen."
         );
 
-
-        event.target.value =
-            "";
-
-
-        return;
-
-    }
-
-
-    if(
-        file.size >
-        10*1024*1024
-    ){
-
-        alert(
-            "Das Bild darf maximal 10 MB groß sein."
-        );
-
-
-        event.target.value =
-            "";
-
+        event.target.value="";
 
         return;
 
@@ -4105,56 +3700,61 @@ function previewImage(
         new FileReader();
 
 
-    reader.onload =
-        e=>{
+    reader.onload=e=>{
 
-            preview.src =
-                e.target.result;
+        preview.src =
+            e.target.result;
 
+        preview.style.display =
+            "block";
 
-            preview.style.display =
-                "block";
-
-        };
+    };
 
 
-    reader.readAsDataURL(
-        file
-    );
+    reader.readAsDataURL(file);
 
 }
 
 
-/* =====================================================
-UPLOAD
-===================================================== */
+async function uploadImage(file){
 
-async function uploadImage(
-    file
-){
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
 
-    if(
-        !file
-    )
+
+    if(!token){
+
+        throw new Error(
+            "Nicht eingeloggt. Bitte erneut einloggen."
+        );
+
+    }
+
+
+    if(!file)
         return null;
 
 
-    const {
-        data:{
-            session
-        },
-        error:sessionError
-    } =
-        await supabase.auth.getSession();
-
-
     if(
-        sessionError ||
-        !session
+        !file.type.startsWith("image/")
     ){
 
         throw new Error(
-            "Deine Anmeldung ist abgelaufen. Bitte erneut einloggen."
+            "Die ausgewählte Datei ist kein Bild."
+        );
+
+    }
+
+
+    if(
+        file.size >
+        10*1024*1024
+    ){
+
+        throw new Error(
+            "Das Bild ist zu groß. Maximal 10 MB."
         );
 
     }
@@ -4175,48 +3775,57 @@ async function uploadImage(
         `${Date.now()}-${crypto.randomUUID()}.${extension}`;
 
 
-    const {
-        error
-    } =
-        await supabase.storage
-            .from(
-                STORAGE_BUCKET
-            )
-            .upload(
-                filename,
-                file,
-                {
-                    contentType:
+    const uploadUrl =
+        `${SUPABASE_URL}/storage/v1/object/`+
+        `${STORAGE_BUCKET}/${filename}`;
+
+
+    const response =
+        await fetch(
+            uploadUrl,
+            {
+                method:"POST",
+
+                headers:{
+
+                    "apikey":
+                        SUPABASE_KEY,
+
+                    "Authorization":
+                        `Bearer ${token}`,
+
+                    "Content-Type":
                         file.type,
 
-                    upsert:
-                        false
-                }
-            );
+                    "x-upsert":
+                        "false"
+
+                },
+
+                body:file
+
+            }
+        );
 
 
-    if(
-        error
-    ){
+    if(!response.ok){
 
-        throw error;
+        const errorText =
+            await response.text();
+
+
+        throw new Error(
+            errorText ||
+            `Bild-Upload fehlgeschlagen (${response.status})`
+        );
 
     }
 
 
-    const {
-        data
-    } =
-        supabase.storage
-            .from(
-                STORAGE_BUCKET
-            )
-            .getPublicUrl(
-                filename
-            );
-
-
-    return data.publicUrl;
+    return(
+        `${SUPABASE_URL}/storage/v1/object/public/`+
+        `${STORAGE_BUCKET}/${filename}`
+    );
 
 }
 
@@ -4233,94 +3842,49 @@ async function loadNews(){
         );
 
 
-    grid.innerHTML=`
-
-        <div class="status-box">
-
-            Nachrichten werden geladen …
-
-        </div>
-
-    `;
-
-
     try{
 
-        const {
-            data,
-            error
-        } =
-            await supabase
-                .from("news")
-                .select("*")
-                .order(
-                    "created_at",
-                    {
-                        ascending:false
-                    }
-                );
+        grid.innerHTML=`
+
+            <div class="status-box">
+                Nachrichten werden geladen …
+            </div>
+
+        `;
 
 
-        if(
-            error
-        ){
-
-            throw error;
-
-        }
+        const result =
+            await supabaseRequest(
+                "news?select=*&order=created_at.desc"
+            );
 
 
         articles =
-            Array.isArray(data)
-            ? data
+            Array.isArray(result)
+            ? result
             : [];
 
 
-        renderNews(
-            articles
-        );
-
+        renderNews(articles);
 
         renderAdmin();
 
     }
     catch(error){
 
-        console.error(
-            error
-        );
-
+        console.error(error);
 
         grid.innerHTML=`
 
             <div class="status-box">
 
                 <strong>
-
                     Nachrichten konnten nicht geladen werden.
-
                 </strong>
 
-
                 <br><br>
 
-
-                ${escapeHTML(
-                    error.message||
-                    "Unbekannter Fehler"
-                )}
-
-
-                <br><br>
-
-
-                <button
-                    class="secondary"
-                    onclick="loadNews()">
-
-                    Erneut versuchen
-
-                </button>
+                ${escapeHTML(error.message)}
 
             </div>
 
@@ -4332,24 +3896,20 @@ async function loadNews(){
 
 
 /* =====================================================
-NEWS BILD
+NEWS DARSTELLUNG
 ===================================================== */
 
-function getNewsImageHTML(
-    article
-){
+function getNewsImageHTML(article){
 
-    if(
-        article.image_url
-    ){
+    if(article.image_url){
 
-        return `
+        return`
 
             <img
                 src="${escapeHTML(article.image_url)}"
                 alt="${escapeHTML(article.title||"Artikelbild")}"
                 loading="lazy"
-                onerror="this.parentElement.textContent='n:'">
+                onerror="this.parentElement.innerHTML='n:'">
 
         `;
 
@@ -4361,13 +3921,7 @@ function getNewsImageHTML(
 }
 
 
-/* =====================================================
-NEWS RENDERN
-===================================================== */
-
-function renderNews(
-    list
-){
+function renderNews(list){
 
     const grid =
         document.getElementById(
@@ -4375,24 +3929,18 @@ function renderNews(
         );
 
 
-    grid.innerHTML =
-        "";
+    grid.innerHTML="";
 
 
-    if(
-        !list.length
-    ){
+    if(!list.length){
 
         grid.innerHTML=`
 
             <div class="status-box">
-
                 Noch keine Nachrichten vorhanden.
-
             </div>
 
         `;
-
 
         return;
 
@@ -4400,9 +3948,8 @@ function renderNews(
 
 
     if(
-        activeFilter ===
-            "Alle" &&
-        list.length > 0
+        activeFilter==="Alle" &&
+        list.length>0
     ){
 
         const first =
@@ -4420,66 +3967,41 @@ function renderNews(
 
 
         featured.onclick =
-            ()=>{
-                openArticle(
-                    first.id
-                );
-            };
+            ()=>openArticle(first.id);
 
 
         featured.innerHTML=`
 
             <div class="featured-image">
-
-                ${getNewsImageHTML(
-                    first
-                )}
-
+                ${getNewsImageHTML(first)}
             </div>
-
 
             <div class="featured-content">
 
-
                 <div class="featured-label">
-
                     AKTUELL
-
                 </div>
 
-
                 <h2>
-
-                    ${escapeHTML(
-                        first.title||
-                        ""
-                    )}
-
+                    ${renderMarkdown(first.title||"")}
                 </h2>
-
 
             </div>
 
         `;
 
 
-        grid.appendChild(
-            featured
-        );
+        grid.appendChild(featured);
 
     }
 
 
     list.forEach(
-        (
-            item,
-            index
-        )=>{
+        (item,index)=>{
 
             if(
-                activeFilter ===
-                    "Alle" &&
-                index === 0
+                activeFilter==="Alle" &&
+                index===0
             ){
 
                 return;
@@ -4498,82 +4020,43 @@ function renderNews(
 
 
             card.onclick =
-                ()=>{
-                    openArticle(
-                        item.id
-                    );
-                };
+                ()=>openArticle(item.id);
 
 
             card.innerHTML=`
 
                 <div class="news-image">
-
-                    ${getNewsImageHTML(
-                        item
-                    )}
-
+                    ${getNewsImageHTML(item)}
                 </div>
-
 
                 <div class="news-card-content">
 
-
                     <div class="news-meta">
-
-                        ${escapeHTML(
-                            item.category||
-                            ""
-                        )}
-
+                        ${escapeHTML(item.category||"")}
                         ·
-
-                        ${escapeHTML(
-                            item.region||
-                            ""
-                        )}
-
+                        ${escapeHTML(item.region||"")}
                     </div>
 
-
                     <h2>
-
-                        ${escapeHTML(
-                            item.title||
-                            ""
-                        )}
-
+                        ${renderMarkdown(item.title||"")}
                     </h2>
 
-
                     <p>
-
-                        ${escapeHTML(
-                            item.description||
-                            ""
-                        )}
-
+                        ${renderMarkdown(item.description||"")}
                     </p>
-
 
                 </div>
 
             `;
 
 
-            grid.appendChild(
-                card
-            );
+            grid.appendChild(card);
 
         }
     );
 
 }
 
-
-/* =====================================================
-FILTER
-===================================================== */
 
 function filterNews(
     category,
@@ -4585,31 +4068,21 @@ function filterNews(
 
 
     document
-        .querySelectorAll(
-            ".filter"
-        )
+        .querySelectorAll(".filter")
         .forEach(
-            x =>
+            x=>
                 x.classList.remove(
                     "active"
                 )
         );
 
 
-    button.classList.add(
-        "active"
-    );
+    button.classList.add("active");
 
 
-    if(
-        category ===
-        "Alle"
-    ){
+    if(category==="Alle"){
 
-        renderNews(
-            articles
-        );
-
+        renderNews(articles);
 
         return;
 
@@ -4618,18 +4091,13 @@ function filterNews(
 
     const filtered =
         articles.filter(
-            item =>
-                item.category ===
-                    category
-                ||
-                item.region ===
-                    category
+            item=>
+                item.category===category ||
+                item.region===category
         );
 
 
-    renderNews(
-        filtered
-    );
+    renderNews(filtered);
 
 }
 
@@ -4643,8 +4111,7 @@ function toggleSearch(){
     if(
         document.getElementById(
             "home"
-        ).style.display !==
-        "block"
+        ).style.display!=="block"
     ){
 
         openNews();
@@ -4659,19 +4126,15 @@ function toggleSearch(){
 
 
     if(
-        box.style.display ===
-        "block"
+        box.style.display==="block"
     ){
 
-        box.style.display =
-            "none";
+        box.style.display="none";
 
     }
     else{
 
-        box.style.display =
-            "block";
-
+        box.style.display="block";
 
         document.getElementById(
             "searchInput"
@@ -4693,14 +4156,9 @@ function searchNews(){
         .trim();
 
 
-    if(
-        !value
-    ){
+    if(!value){
 
-        renderNews(
-            articles
-        );
-
+        renderNews(articles);
 
         return;
 
@@ -4709,57 +4167,40 @@ function searchNews(){
 
     const results =
         articles.filter(
-            item =>
+            item=>
 
-                String(
-                    item.title||
-                    ""
-                )
-                .toLowerCase()
-                .includes(value)
+                String(item.title||"")
+                    .toLowerCase()
+                    .includes(value)
 
                 ||
 
-                String(
-                    item.description||
-                    ""
-                )
-                .toLowerCase()
-                .includes(value)
+                String(item.description||"")
+                    .toLowerCase()
+                    .includes(value)
 
                 ||
 
-                String(
-                    item.content||
-                    ""
-                )
-                .toLowerCase()
-                .includes(value)
+                String(item.content||"")
+                    .toLowerCase()
+                    .includes(value)
 
                 ||
 
-                String(
-                    item.category||
-                    ""
-                )
-                .toLowerCase()
-                .includes(value)
+                String(item.category||"")
+                    .toLowerCase()
+                    .includes(value)
 
                 ||
 
-                String(
-                    item.region||
-                    ""
-                )
-                .toLowerCase()
-                .includes(value)
+                String(item.region||"")
+                    .toLowerCase()
+                    .includes(value)
 
         );
 
 
-    renderNews(
-        results
-    );
+    renderNews(results);
 
 }
 
@@ -4768,25 +4209,17 @@ function searchNews(){
 ARTIKEL
 ===================================================== */
 
-function openArticle(
-    id
-){
+function openArticle(id){
 
     const article =
         articles.find(
-            item =>
-                String(
-                    item.id
-                ) ===
-                String(
-                    id
-                )
+            x=>
+                String(x.id)===
+                String(id)
         );
 
 
-    if(
-        !article
-    )
+    if(!article)
         return;
 
 
@@ -4795,24 +4228,21 @@ function openArticle(
 
     document.getElementById(
         "article"
-    ).style.display =
-        "block";
+    ).style.display="block";
 
 
     document.getElementById(
         "articleMeta"
     ).textContent =
-
-        `${article.category||""} · ${
-            article.region||""
-        }`;
+        `${article.category||""} · ${article.region||""}`;
 
 
     document.getElementById(
         "articleTitle"
-    ).textContent =
-        article.title||
-        "";
+    ).innerHTML =
+        renderMarkdown(
+            article.title||""
+        );
 
 
     const imageBox =
@@ -4821,24 +4251,21 @@ function openArticle(
         );
 
 
-    if(
-        article.image_url
-    ){
+    if(article.image_url){
 
         imageBox.innerHTML=`
 
             <img
                 src="${escapeHTML(article.image_url)}"
                 alt="${escapeHTML(article.title||"Artikelbild")}"
-                onerror="this.parentElement.textContent='n:'">
+                onerror="this.parentElement.innerHTML='n:'">
 
         `;
 
     }
     else{
 
-        imageBox.textContent =
-            "n:";
+        imageBox.innerHTML="n:";
 
     }
 
@@ -4846,15 +4273,14 @@ function openArticle(
     document.getElementById(
         "articleText"
     ).innerHTML =
-
-        escapeHTML(
-            article.content||
-            ""
-        )
-        .replace(
-            /\n/g,
-            "<br><br>"
+        renderMarkdown(
+            article.content||""
         );
+
+
+    renderArticleConnections(
+        article.id
+    );
 
 
     window.scrollTo({
@@ -4866,21 +4292,58 @@ function openArticle(
 
 
 /* =====================================================
+MARKDOWN
+===================================================== */
+
+function renderMarkdown(value){
+
+    let text =
+        escapeHTML(
+            value||""
+        );
+
+
+    text =
+        text.replace(
+            /\*\*(.+?)\*\*/gs,
+            "<strong>$1</strong>"
+        );
+
+
+    text =
+        text.replace(
+            /\r\n/g,
+            "\n"
+        );
+
+
+    text =
+        text.replace(
+            /\n/g,
+            "<br>"
+        );
+
+
+    return text;
+
+}
+
+
+/* =====================================================
 ADMIN
 ===================================================== */
 
-async function openAdmin(){
+function openAdmin(){
 
     hideAllPages();
 
 
     document.getElementById(
         "admin"
-    ).style.display =
-        "block";
+    ).style.display="block";
 
 
-    await checkSession();
+    checkSession();
 
 
     window.scrollTo({
@@ -4913,8 +4376,7 @@ async function login(){
         );
 
 
-    error.textContent =
-        "";
+    error.textContent="";
 
 
     if(
@@ -4932,29 +4394,59 @@ async function login(){
 
     try{
 
-        const {
-            data,
-            error:loginError
-        } =
-            await supabase.auth
-                .signInWithPassword({
+        const response =
+            await fetch(
+                `${SUPABASE_URL}/auth/v1/token?grant_type=password`,
+                {
+                    method:"POST",
 
-                    email:
+                    headers:{
+
+                        "apikey":
+                            SUPABASE_KEY,
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body:JSON.stringify({
+
                         email,
 
-                    password:
                         password
 
-                });
+                    })
+
+                }
+            );
 
 
-        if(
-            loginError
-        ){
+        const data =
+            await response.json();
 
-            throw loginError;
+
+        if(!response.ok){
+
+            throw new Error(
+                data.msg||
+                data.message||
+                "Login fehlgeschlagen."
+            );
 
         }
+
+
+        sessionStorage.setItem(
+            "nAccessToken",
+            data.access_token
+        );
+
+
+        sessionStorage.setItem(
+            "nUser",
+            JSON.stringify(data.user)
+        );
 
 
         showDashboard();
@@ -4962,86 +4454,41 @@ async function login(){
     }
     catch(error){
 
-        console.error(
-            error
-        );
-
+        console.error(error);
 
         document.getElementById(
             "loginError"
         ).textContent =
-            "Fehler: "+
-            (
-                error.message||
-                "Login fehlgeschlagen."
-            );
+            "Fehler: "+error.message;
 
     }
 
 }
 
 
-async function checkSession(){
+function checkSession(){
 
-    try{
-
-        const {
-            data,
-            error
-        } =
-            await supabase.auth
-                .getSession();
-
-
-        if(
-            error
-        ){
-
-            throw error;
-
-        }
-
-
-        if(
-            data.session
-        ){
-
-            showDashboard();
-
-        }
-        else{
-
-            document.getElementById(
-                "loginBox"
-            ).style.display =
-                "block";
-
-
-            document.getElementById(
-                "dashboard"
-            ).style.display =
-                "none";
-
-        }
-
-    }
-    catch(error){
-
-        console.error(
-            error
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
         );
 
 
+    if(token){
+
+        showDashboard();
+
+    }
+    else{
+
         document.getElementById(
             "loginBox"
-        ).style.display =
-            "block";
+        ).style.display="block";
 
 
         document.getElementById(
             "dashboard"
-        ).style.display =
-            "none";
+        ).style.display="none";
 
     }
 
@@ -5052,39 +4499,39 @@ function showDashboard(){
 
     document.getElementById(
         "loginBox"
-    ).style.display =
-        "none";
+    ).style.display="none";
 
 
     document.getElementById(
         "dashboard"
-    ).style.display =
-        "block";
+    ).style.display="block";
 
 
-    renderAdmin();
+    loadNews();
 
 }
 
 
-async function logout(){
+function logout(){
 
-    await supabase.auth.signOut();
+    sessionStorage.removeItem(
+        "nAccessToken"
+    );
+
+
+    sessionStorage.removeItem(
+        "nUser"
+    );
 
 
     document.getElementById(
         "dashboard"
-    ).style.display =
-        "none";
+    ).style.display="none";
 
 
     document.getElementById(
         "loginBox"
-    ).style.display =
-        "block";
-
-
-    showStart();
+    ).style.display="block";
 
 }
 
@@ -5101,30 +4548,22 @@ function renderAdmin(){
         );
 
 
-    if(
-        !list
-    )
+    if(!list)
         return;
 
 
-    list.innerHTML =
-        "";
+    list.innerHTML="";
 
 
-    if(
-        !articles.length
-    ){
+    if(!articles.length){
 
         list.innerHTML=`
 
             <div class="status-box">
-
                 Noch keine Artikel.
-
             </div>
 
         `;
-
 
         return;
 
@@ -5144,70 +4583,69 @@ function renderAdmin(){
                 "admin-item";
 
 
+            const connectionCount =
+                getConnections(
+                    article.id
+                ).length;
+
+
             item.innerHTML=`
 
                 <div>
 
-
                     <div class="admin-item-title">
-
-                        ${escapeHTML(
-                            article.title||
-                            ""
-                        )}
-
+                        ${escapeHTML(article.title||"")}
                     </div>
 
-
                     <small>
-
-                        ${escapeHTML(
-                            article.category||
-                            ""
-                        )}
-
+                        ${escapeHTML(article.category||"")}
                         ·
-
-                        ${escapeHTML(
-                            article.region||
-                            ""
-                        )}
-
+                        ${escapeHTML(article.region||"")}
+                        ${
+                            connectionCount
+                            ? ` · ${connectionCount} verbunden`
+                            : ""
+                        }
                     </small>
-
 
                 </div>
 
 
                 <div class="admin-actions">
 
-
                     <button
                         class="small edit"
                         onclick="editArticle(${article.id})">
-
                         Bearbeiten
+                    </button>
 
+
+                    <button
+                        class="small connect"
+                        onclick="manageConnections(${article.id})">
+                        Verbinden
+                    </button>
+
+
+                    <button
+                        class="small duplicate"
+                        onclick="duplicateArticle(${article.id})">
+                        Duplizieren
                     </button>
 
 
                     <button
                         class="small delete"
                         onclick="deleteArticle(${article.id})">
-
                         Löschen
-
                     </button>
-
 
                 </div>
 
             `;
 
 
-            list.appendChild(
-                item
-            );
+            list.appendChild(item);
 
         }
     );
@@ -5216,7 +4654,7 @@ function renderAdmin(){
 
 
 /* =====================================================
-SAVE
+ARTIKEL SPEICHERN
 ===================================================== */
 
 async function saveArticle(){
@@ -5224,47 +4662,37 @@ async function saveArticle(){
     const title =
         document.getElementById(
             "title"
-        )
-        .value
-        .trim();
+        ).value.trim();
 
 
     const description =
         document.getElementById(
             "description"
-        )
-        .value
-        .trim();
+        ).value.trim();
 
 
     const category =
         document.getElementById(
             "category"
-        )
-        .value;
+        ).value;
 
 
     const region =
         document.getElementById(
             "region"
-        )
-        .value
-        .trim();
+        ).value.trim();
 
 
     const content =
         document.getElementById(
             "content"
-        )
-        .value
-        .trim();
+        ).value.trim();
 
 
     const imageFile =
         document.getElementById(
             "imageFile"
-        )
-        .files[0];
+        ).files[0];
 
 
     const message =
@@ -5280,34 +4708,43 @@ async function saveArticle(){
 
 
     if(
-        !title ||
-        !description ||
-        !region ||
+        !title||
+        !description||
+        !region||
         !content
     ){
 
-        message.className =
-            "error";
-
+        message.className="error";
 
         message.textContent =
             "Bitte alle Felder ausfüllen.";
-
 
         return;
 
     }
 
 
-    const currentEditingId =
-        editingId;
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
+
+
+    if(!token){
+
+        message.className="error";
+
+        message.textContent =
+            "Bitte erneut einloggen.";
+
+        return;
+
+    }
 
 
     try{
 
-        saveButton.disabled =
-            true;
-
+        saveButton.disabled=true;
 
         saveButton.textContent =
             "Wird gespeichert...";
@@ -5317,9 +4754,11 @@ async function saveArticle(){
             editingImageUrl;
 
 
-        if(
-            imageFile
-        ){
+        if(imageFile){
+
+            message.textContent =
+                "Bild wird hochgeladen...";
+
 
             imageUrl =
                 await uploadImage(
@@ -5329,55 +4768,42 @@ async function saveArticle(){
         }
 
 
-        const articleData={
+        if(editingId!==null){
 
-            title:
-                title,
+            await supabaseRequest(
+                `news?id=eq.${editingId}`,
+                {
+                    method:"PATCH",
 
-            description:
-                description,
+                    headers:{
 
-            category:
-                category,
+                        "Authorization":
+                            `Bearer ${token}`,
 
-            region:
-                region,
+                        "Prefer":
+                            "return=minimal"
 
-            content:
-                content,
+                    },
 
-            image_url:
-                imageUrl
+                    body:JSON.stringify({
 
-        };
+                        title,
 
+                        description,
 
-        if(
-            currentEditingId !==
-            null
-        ){
+                        category,
 
-            const {
-                error
-            } =
-                await supabase
-                    .from("news")
-                    .update(
-                        articleData
-                    )
-                    .eq(
-                        "id",
-                        currentEditingId
-                    );
+                        region,
 
+                        content,
 
-            if(
-                error
-            ){
+                        image_url:
+                            imageUrl
 
-                throw error;
+                    })
 
-            }
+                }
+            );
 
 
             message.textContent =
@@ -5386,23 +4812,40 @@ async function saveArticle(){
         }
         else{
 
-            const {
-                error
-            } =
-                await supabase
-                    .from("news")
-                    .insert(
-                        articleData
-                    );
+            await supabaseRequest(
+                "news",
+                {
+                    method:"POST",
 
+                    headers:{
 
-            if(
-                error
-            ){
+                        "Authorization":
+                            `Bearer ${token}`,
 
-                throw error;
+                        "Prefer":
+                            "return=minimal"
 
-            }
+                    },
+
+                    body:JSON.stringify({
+
+                        title,
+
+                        description,
+
+                        category,
+
+                        region,
+
+                        content,
+
+                        image_url:
+                            imageUrl
+
+                    })
+
+                }
+            );
 
 
             message.textContent =
@@ -5413,40 +4856,27 @@ async function saveArticle(){
 
         clearForm();
 
-
         await loadNews();
-
-
-        renderAdmin();
 
     }
     catch(error){
 
-        console.error(
-            error
-        );
+        console.error(error);
 
-
-        message.className =
-            "error";
-
+        message.className="error";
 
         message.textContent =
-            "Fehler: "+
-            (
-                error.message||
-                "Unbekannter Fehler"
-            );
+            "Fehler: "+error.message;
 
     }
     finally{
 
-        saveButton.disabled =
-            false;
-
+        saveButton.disabled=false;
 
         saveButton.textContent =
-            "Veröffentlichen";
+            editingId!==null
+            ? "Änderungen speichern"
+            : "Veröffentlichen";
 
     }
 
@@ -5457,35 +4887,24 @@ async function saveArticle(){
 EDIT
 ===================================================== */
 
-function editArticle(
-    id
-){
+function editArticle(id){
 
     const article =
         articles.find(
-            item =>
-                String(
-                    item.id
-                ) ===
-                String(
-                    id
-                )
+            x=>
+                String(x.id)===
+                String(id)
         );
 
 
-    if(
-        !article
-    )
+    if(!article)
         return;
 
 
-    editingId =
-        article.id;
-
+    editingId=id;
 
     editingImageUrl =
-        article.image_url||
-        null;
+        article.image_url||null;
 
 
     document.getElementById(
@@ -5497,15 +4916,13 @@ function editArticle(
     document.getElementById(
         "title"
     ).value =
-        article.title||
-        "";
+        article.title||"";
 
 
     document.getElementById(
         "description"
     ).value =
-        article.description||
-        "";
+        article.description||"";
 
 
     document.getElementById(
@@ -5518,21 +4935,18 @@ function editArticle(
     document.getElementById(
         "region"
     ).value =
-        article.region||
-        "";
+        article.region||"";
 
 
     document.getElementById(
         "content"
     ).value =
-        article.content||
-        "";
+        article.content||"";
 
 
     document.getElementById(
         "imageFile"
-    ).value =
-        "";
+    ).value="";
 
 
     const preview =
@@ -5547,17 +4961,16 @@ function editArticle(
         );
 
 
-    if(
-        article.image_url
-    ){
+    if(article.image_url){
 
         preview.src =
             article.image_url;
 
-
         preview.style.display =
             "block";
 
+        current.style.display =
+            "block";
 
         current.textContent =
             "Aktuelles Bild – du kannst ein neues Bild auswählen.";
@@ -5565,17 +4978,9 @@ function editArticle(
     }
     else{
 
-        preview.style.display =
-            "none";
+        preview.style.display="none";
 
-
-        preview.removeAttribute(
-            "src"
-        );
-
-
-        current.textContent =
-            "";
+        current.style.display="none";
 
     }
 
@@ -5595,28 +5000,101 @@ function editArticle(
 
 
 /* =====================================================
-DELETE
+DUPLIZIEREN
 ===================================================== */
 
-async function deleteArticle(
-    id
-){
+function duplicateArticle(id){
 
     const article =
         articles.find(
-            item =>
-                String(
-                    item.id
-                ) ===
-                String(
-                    id
-                )
+            x=>
+                String(x.id)===
+                String(id)
         );
 
 
-    if(
-        !article
-    )
+    if(!article)
+        return;
+
+
+    editingId=null;
+
+    editingImageUrl =
+        article.image_url||null;
+
+
+    document.getElementById(
+        "formTitle"
+    ).textContent =
+        "Artikel duplizieren";
+
+
+    document.getElementById(
+        "title"
+    ).value =
+        (article.title||"")+
+        " – Update";
+
+
+    document.getElementById(
+        "description"
+    ).value =
+        article.description||"";
+
+
+    document.getElementById(
+        "category"
+    ).value =
+        article.category||
+        "Deutschland";
+
+
+    document.getElementById(
+        "region"
+    ).value =
+        article.region||"";
+
+
+    document.getElementById(
+        "content"
+    ).value =
+        article.content||"";
+
+
+    document.getElementById(
+        "imageFile"
+    ).value="";
+
+
+    document.getElementById(
+        "saveButton"
+    ).textContent =
+        "Als neuen Artikel veröffentlichen";
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+DELETE
+===================================================== */
+
+async function deleteArticle(id){
+
+    const article =
+        articles.find(
+            x=>
+                String(x.id)===
+                String(id)
+        );
+
+
+    if(!article)
         return;
 
 
@@ -5631,48 +5109,51 @@ async function deleteArticle(
     }
 
 
+    const token =
+        sessionStorage.getItem(
+            "nAccessToken"
+        );
+
+
+    if(!token){
+
+        alert(
+            "Bitte erneut einloggen."
+        );
+
+        return;
+
+    }
+
+
     try{
 
-        const {
-            error
-        } =
-            await supabase
-                .from("news")
-                .delete()
-                .eq(
-                    "id",
-                    article.id
-                );
+        await supabaseRequest(
+            `news?id=eq.${id}`,
+            {
+                method:"DELETE",
 
+                headers:{
 
-        if(
-            error
-        ){
+                    "Authorization":
+                        `Bearer ${token}`
 
-            throw error;
+                }
 
-        }
+            }
+        );
 
 
         await loadNews();
 
-
-        renderAdmin();
-
     }
     catch(error){
 
-        console.error(
-            error
-        );
-
+        console.error(error);
 
         alert(
             "Fehler beim Löschen:\n\n"+
-            (
-                error.message||
-                "Unbekannter Fehler"
-            )
+            error.message
         );
 
     }
@@ -5681,17 +5162,14 @@ async function deleteArticle(
 
 
 /* =====================================================
-CLEAR
+FORM RESET
 ===================================================== */
 
 function clearForm(){
 
-    editingId =
-        null;
+    editingId=null;
 
-
-    editingImageUrl =
-        null;
+    editingImageUrl=null;
 
 
     document.getElementById(
@@ -5702,14 +5180,12 @@ function clearForm(){
 
     document.getElementById(
         "title"
-    ).value =
-        "";
+    ).value="";
 
 
     document.getElementById(
         "description"
-    ).value =
-        "";
+    ).value="";
 
 
     document.getElementById(
@@ -5720,20 +5196,17 @@ function clearForm(){
 
     document.getElementById(
         "region"
-    ).value =
-        "";
+    ).value="";
 
 
     document.getElementById(
         "content"
-    ).value =
-        "";
+    ).value="";
 
 
     document.getElementById(
         "imageFile"
-    ).value =
-        "";
+    ).value="";
 
 
     const preview =
@@ -5753,8 +5226,13 @@ function clearForm(){
 
     document.getElementById(
         "currentImage"
-    ).textContent =
-        "";
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "currentImage"
+    ).textContent="";
 
 
     document.getElementById(
@@ -5765,8 +5243,545 @@ function clearForm(){
 
     document.getElementById(
         "formMessage"
+    ).textContent="";
+
+}
+
+
+/* =====================================================
+ARTIKEL-VERBINDUNGEN
+===================================================== */
+
+let articleConnections =
+    JSON.parse(
+        localStorage.getItem(
+            "n_article_connections"
+        )||"{}"
+    );
+
+
+function saveConnections(){
+
+    localStorage.setItem(
+        "n_article_connections",
+        JSON.stringify(
+            articleConnections
+        )
+    );
+
+}
+
+
+function getConnections(id){
+
+    return Array.isArray(
+        articleConnections[id]
+    )
+    ? articleConnections[id]
+    : [];
+
+}
+
+
+function connectArticles(a,b){
+
+    a=String(a);
+
+    b=String(b);
+
+
+    if(a===b)
+        return;
+
+
+    if(!articleConnections[a]){
+
+        articleConnections[a]=[];
+
+    }
+
+
+    if(!articleConnections[b]){
+
+        articleConnections[b]=[];
+
+    }
+
+
+    if(
+        !articleConnections[a]
+            .includes(b)
+    ){
+
+        articleConnections[a]
+            .push(b);
+
+    }
+
+
+    if(
+        !articleConnections[b]
+            .includes(a)
+    ){
+
+        articleConnections[b]
+            .push(a);
+
+    }
+
+}
+
+
+function disconnectArticles(a,b){
+
+    a=String(a);
+
+    b=String(b);
+
+
+    articleConnections[a] =
+        (
+            articleConnections[a]||
+            []
+        )
+        .filter(
+            x=>
+                String(x)!==b
+        );
+
+
+    articleConnections[b] =
+        (
+            articleConnections[b]||
+            []
+        )
+        .filter(
+            x=>
+                String(x)!==a
+        );
+
+}
+
+
+window.connectionSourceId=null;
+
+
+function manageConnections(id){
+
+    const article =
+        articles.find(
+            x=>
+                String(x.id)===
+                String(id)
+        );
+
+
+    if(!article)
+        return;
+
+
+    window.connectionSourceId =
+        String(id);
+
+
+    document.getElementById(
+        "connectionSourceTitle"
     ).textContent =
-        "";
+        "Verbindungen für: "+
+        (article.title||"Ohne Titel");
+
+
+    document.getElementById(
+        "connectionSearch"
+    ).value="";
+
+
+    document.getElementById(
+        "connectionPickerMessage"
+    ).textContent="";
+
+
+    renderConnectionItems();
+
+
+    document.getElementById(
+        "connectionPicker"
+    ).style.display="flex";
+
+}
+
+
+function renderConnectionItems(){
+
+    const container =
+        document.getElementById(
+            "connectionItems"
+        );
+
+
+    if(!container)
+        return;
+
+
+    const sourceId =
+        String(
+            window.connectionSourceId||
+            ""
+        );
+
+
+    const source =
+        articles.find(
+            x=>
+                String(x.id)===
+                sourceId
+        );
+
+
+    if(!source){
+
+        container.innerHTML="";
+
+        return;
+
+    }
+
+
+    const connected =
+        getConnections(
+            sourceId
+        ).map(String);
+
+
+    const search =
+        (
+            document.getElementById(
+                "connectionSearch"
+            )?.value||
+            ""
+        )
+        .toLowerCase()
+        .trim();
+
+
+    const available =
+        articles.filter(
+            article=>{
+
+                if(
+                    String(article.id)===
+                    sourceId
+                ){
+
+                    return false;
+
+                }
+
+
+                const text =
+                    `${article.title||""} ${article.category||""} ${article.region||""}`
+                    .toLowerCase();
+
+
+                return(
+                    !search||
+                    text.includes(search)
+                );
+
+            }
+        );
+
+
+    if(!available.length){
+
+        container.innerHTML=`
+
+            <div class="status-box">
+                Keine passenden Artikel gefunden.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML="";
+
+
+    available.forEach(
+        article=>{
+
+            const checked =
+                connected.includes(
+                    String(article.id)
+                );
+
+
+            const item =
+                document.createElement(
+                    "label"
+                );
+
+
+            item.className =
+                "connection-item";
+
+
+            item.innerHTML=`
+
+                <input
+                    type="checkbox"
+                    value="${escapeHTML(article.id)}"
+                    ${checked?"checked":""}>
+
+
+                <div class="connection-item-main">
+
+                    <div class="connection-item-title">
+                        ${escapeHTML(article.title||"Ohne Titel")}
+                    </div>
+
+
+                    <div class="connection-item-meta">
+                        ${escapeHTML(article.category||"")}
+                        ·
+                        ${escapeHTML(article.region||"")}
+                    </div>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(item);
+
+        }
+    );
+
+}
+
+
+/* Suche im Verbindungsfenster */
+
+document.addEventListener(
+    "input",
+    event=>{
+
+        if(
+            event.target.id===
+            "connectionSearch"
+        ){
+
+            renderConnectionItems();
+
+        }
+
+    }
+);
+
+
+function saveSelectedConnections(){
+
+    const sourceId =
+        String(
+            window.connectionSourceId||
+            ""
+        );
+
+
+    if(!sourceId)
+        return;
+
+
+    const selected =
+        Array.from(
+            document.querySelectorAll(
+                "#connectionItems input[type='checkbox']:checked"
+            )
+        )
+        .map(
+            checkbox=>
+                String(
+                    checkbox.value
+                )
+        );
+
+
+    const oldConnections =
+        getConnections(
+            sourceId
+        ).map(String);
+
+
+    oldConnections.forEach(
+        otherId=>{
+
+            disconnectArticles(
+                sourceId,
+                otherId
+            );
+
+        }
+    );
+
+
+    selected.forEach(
+        otherId=>{
+
+            connectArticles(
+                sourceId,
+                otherId
+            );
+
+        }
+    );
+
+
+    saveConnections();
+
+    renderAdmin();
+
+    renderArticleConnections(
+        sourceId
+    );
+
+
+    const message =
+        document.getElementById(
+            "connectionPickerMessage"
+        );
+
+
+    message.className =
+        "success";
+
+
+    message.textContent =
+        "Verbindungen gespeichert.";
+
+
+    setTimeout(
+        ()=>closeConnectionPicker(),
+        700
+    );
+
+}
+
+
+function closeConnectionPicker(){
+
+    document.getElementById(
+        "connectionPicker"
+    ).style.display="none";
+
+
+    window.connectionSourceId =
+        null;
+
+}
+
+
+function outsideConnectionClick(
+    event
+){
+
+    if(
+        event.target===
+        document.getElementById(
+            "connectionPicker"
+        )
+    ){
+
+        closeConnectionPicker();
+
+    }
+
+}
+
+
+/* =====================================================
+VERBUNDENE ARTIKEL
+===================================================== */
+
+function renderArticleConnections(id){
+
+    const box =
+        document.getElementById(
+            "articleConnections"
+        );
+
+
+    if(!box)
+        return;
+
+
+    const ids =
+        getConnections(id);
+
+
+    const related =
+        ids
+            .map(
+                x=>
+                    articles.find(
+                        a=>
+                            String(a.id)===
+                            String(x)
+                    )
+            )
+            .filter(Boolean);
+
+
+    if(!related.length){
+
+        box.innerHTML="";
+
+        return;
+
+    }
+
+
+    box.innerHTML=`
+
+        <div class="special-box">
+
+            <h2>
+                Dazu passend
+            </h2>
+
+            <div class="related-grid">
+
+                ${
+                    related.map(
+                        a=>`
+
+                            <div
+                                class="related-card"
+                                onclick="openArticle(${a.id})">
+
+                                <strong>
+                                    ${renderMarkdown(a.title||"")}
+                                </strong>
+
+                                <small>
+                                    ${escapeHTML(a.category||"")}
+                                    ·
+                                    ${escapeHTML(a.region||"")}
+                                </small>
+
+                            </div>
+
+                        `
+                    ).join("")
+                }
+
+            </div>
+
+        </div>
+
+    `;
 
 }
 
@@ -5775,12 +5790,10 @@ function clearForm(){
 HTML SICHER
 ===================================================== */
 
-function escapeHTML(
-    value
-){
+function escapeHTML(value){
 
     return String(
-        value ?? ""
+        value??""
     )
 
     .replace(
@@ -5816,8 +5829,6 @@ START
 ===================================================== */
 
 showStart();
-
-loadNews();
 
 </script>
 
