@@ -614,6 +614,7 @@ main{
 }
 
 .edit{background:#e0e7ff}
+
 .delete{
     background:#fee2e2;
     color:#b91c1c;
@@ -761,6 +762,48 @@ main{
     color:#777;
 }
 
+/* SENDEPLAN */
+
+.sendeplan-card{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:24px;
+    padding:30px;
+    min-height:260px;
+    cursor:pointer;
+    transition:.2s;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.sendeplan-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px rgba(0,0,0,.1);
+}
+
+.sendeplan-card .area-icon{
+    font-size:48px;
+}
+
+.sendeplan-card h2{
+    font-size:30px;
+    margin:20px 0 8px;
+    letter-spacing:-1px;
+}
+
+.sendeplan-card p{
+    color:#777;
+    line-height:1.5;
+    margin:0;
+}
+
+.sendeplan-card .area-arrow{
+    margin-top:25px;
+    font-size:22px;
+    font-weight:900;
+}
+
 footer{
     text-align:center;
     padding:30px;
@@ -769,17 +812,44 @@ footer{
 }
 
 @media(max-width:850px){
-    .news-grid{grid-template-columns:repeat(2,1fr)}
-    .area-grid{grid-template-columns:1fr}
-    .route-form{grid-template-columns:1fr}
+
+    .news-grid{
+        grid-template-columns:repeat(2,1fr)
+    }
+
+    .area-grid{
+        grid-template-columns:1fr
+    }
+
+    .route-form{
+        grid-template-columns:1fr
+    }
+
 }
 
 @media(max-width:600px){
-    .news-grid{grid-template-columns:1fr}
-    .featured{grid-column:auto}
-    .route-summary{grid-template-columns:1fr}
-    .admin-item{flex-direction:column;align-items:flex-start}
-    .connection-modal{padding:18px}
+
+    .news-grid{
+        grid-template-columns:1fr
+    }
+
+    .featured{
+        grid-column:auto
+    }
+
+    .route-summary{
+        grid-template-columns:1fr
+    }
+
+    .admin-item{
+        flex-direction:column;
+        align-items:flex-start
+    }
+
+    .connection-modal{
+        padding:18px
+    }
+
 }
 </style>
 </head>
@@ -787,73 +857,164 @@ footer{
 <body>
 
 <header>
+
     <div class="logo" onclick="showStart()">n:</div>
 
     <div class="header-actions">
-        <button class="header-btn" onclick="toggleSearch()" title="Suche">🔎</button>
-        <button class="header-btn" onclick="openAdmin()" title="Redaktion">🔐</button>
+
+        <button
+            class="header-btn"
+            onclick="toggleSearch()"
+            title="Suche">
+            🔎
+        </button>
+
+        <button
+            class="header-btn"
+            onclick="openAdmin()"
+            title="Redaktion">
+            🔐
+        </button>
+
     </div>
+
 </header>
+
 
 <main>
 
 <section id="startPage" class="start-page">
 
     <div class="start-hero">
-        <div class="start-label">n: Plattform</div>
 
-        <h1>Was möchtest du öffnen?</h1>
+        <div class="start-label">
+            n: Plattform
+        </div>
+
+        <h1>
+            Was möchtest du öffnen?
+        </h1>
 
         <p>
             Nachrichten, Verkehr und regionale Informationen.
         </p>
+
     </div>
+
 
     <div class="area-grid">
 
-        <div class="area-card" onclick="openNews()">
-            <div>
-                <div class="area-icon">📰</div>
+        <div
+            class="area-card"
+            onclick="openNews()">
 
-                <h2>n: Nachrichten</h2>
+            <div>
+
+                <div class="area-icon">
+                    📰
+                </div>
+
+                <h2>
+                    n: Nachrichten
+                </h2>
 
                 <p>
                     Aktuelle Nachrichten aus Deutschland,
                     der Welt, der Region, Sport und Digital.
                 </p>
+
             </div>
 
-            <div class="area-arrow">→</div>
+            <div class="area-arrow">
+                →
+            </div>
+
         </div>
 
-        <div class="area-card" onclick="openTraffic()">
-            <div>
-                <div class="area-icon">🚦</div>
 
-                <h2>Verkehr & Route</h2>
+        <div
+            class="area-card"
+            onclick="openTraffic()">
+
+            <div>
+
+                <div class="area-icon">
+                    🚦
+                </div>
+
+                <h2>
+                    Verkehr & Route
+                </h2>
 
                 <p>
                     Verkehrslage, Störungen und Routen
                     übersichtlich auf einer Seite.
                 </p>
+
             </div>
 
-            <div class="area-arrow">→</div>
+            <div class="area-arrow">
+                →
+            </div>
+
         </div>
 
-        <div class="area-card" onclick="openArea()">
-            <div>
-                <div class="area-icon">📍</div>
 
-                <h2>n: Bereich</h2>
+        <div
+            class="area-card"
+            onclick="openArea()">
+
+            <div>
+
+                <div class="area-icon">
+                    📍
+                </div>
+
+                <h2>
+                    n: Bereich
+                </h2>
 
                 <p>
                     Dein persönlicher Bereich mit Standort,
                     Wetter, lokalen Nachrichten und Veranstaltungen.
                 </p>
+
             </div>
 
-            <div class="area-arrow">→</div>
+            <div class="area-arrow">
+                →
+            </div>
+
+        </div>
+
+
+        <!-- NEU: SENDEPLAN -->
+
+        <div
+            class="sendeplan-card"
+            onclick="openSendeplan()">
+
+            <div>
+
+                <div class="area-icon">
+                    📺
+                </div>
+
+                <h2>
+                    Sendeplan
+                </h2>
+
+                <p>
+                    Alle Sendungen, Termine und
+                    geplanten Nachrichten auf einen Blick.
+                </p>
+
+            </div>
+
+            <div class="area-arrow">
+                →
+            </div>
+
         </div>
 
     </div>
@@ -864,96 +1025,139 @@ footer{
 <section id="home">
 
     <div class="hero">
-        <div class="hero-label">n: Nachrichten</div>
 
-        <h1>Was gerade passiert.</h1>
+        <div class="hero-label">
+            n: Nachrichten
+        </div>
 
-        <p>Aktuelle Nachrichten. Einfach und direkt.</p>
+        <h1>
+            Was gerade passiert.
+        </h1>
+
+        <p>
+            Aktuelle Nachrichten. Einfach und direkt.
+        </p>
+
     </div>
 
+
     <div class="search" id="searchBox">
+
         <input
             id="searchInput"
             type="search"
             placeholder="Nachrichten durchsuchen..."
             oninput="searchNews()">
+
     </div>
+
 
     <div class="filters">
 
-        <button class="filter active"
-                onclick="filterNews('Alle',this)">
+        <button
+            class="filter active"
+            onclick="filterNews('Alle',this)">
             Alle
         </button>
 
-        <button class="filter"
-                onclick="filterNews('Deutschland',this)">
+        <button
+            class="filter"
+            onclick="filterNews('Deutschland',this)">
             🇩🇪 Deutschland
         </button>
 
-        <button class="filter"
-                onclick="filterNews('Welt',this)">
+        <button
+            class="filter"
+            onclick="filterNews('Welt',this)">
             🌍 Welt
         </button>
 
-        <button class="filter"
-                onclick="filterNews('Region',this)">
+        <button
+            class="filter"
+            onclick="filterNews('Region',this)">
             📍 Region
         </button>
 
-        <button class="filter"
-                onclick="filterNews('Sport',this)">
+        <button
+            class="filter"
+            onclick="filterNews('Sport',this)">
             ⚽ Sport
         </button>
 
-        <button class="filter"
-                onclick="filterNews('Digital',this)">
+        <button
+            class="filter"
+            onclick="filterNews('Digital',this)">
             💻 Digital
         </button>
 
     </div>
 
-    <div class="news-grid" id="newsGrid">
+
+    <div
+        class="news-grid"
+        id="newsGrid">
+
         <div class="status-box">
             Nachrichten werden geladen …
         </div>
+
     </div>
 
 </section>
 
 
-<section class="article" id="article">
+<section
+    class="article"
+    id="article">
 
-    <button class="back" onclick="openNews()">
+    <button
+        class="back"
+        onclick="openNews()">
         ← Zurück
     </button>
 
-    <div class="article-meta" id="articleMeta"></div>
+    <div
+        class="article-meta"
+        id="articleMeta">
+    </div>
 
     <h1 id="articleTitle"></h1>
 
-    <div class="article-image" id="articleImage">
+    <div
+        class="article-image"
+        id="articleImage">
         n:
     </div>
 
-    <div class="article-text" id="articleText"></div>
+    <div
+        class="article-text"
+        id="articleText">
+    </div>
 
     <div id="articleConnections"></div>
 
 </section>
 
 
-<section id="traffic" class="special-page">
+<section
+    id="traffic"
+    class="special-page">
 
-    <button class="back" onclick="showStart()">
+    <button
+        class="back"
+        onclick="showStart()">
         ← Startseite
     </button>
 
     <div class="special-header">
 
-        <div class="special-label">n: Verkehr</div>
+        <div class="special-label">
+            n: Verkehr
+        </div>
 
-        <h1>Verkehr & Route</h1>
+        <h1>
+            Verkehr & Route
+        </h1>
 
         <p>
             Route berechnen und aktuelle Verkehrsmeldungen abrufen.
@@ -961,11 +1165,16 @@ footer{
 
     </div>
 
+
     <div class="special-box">
 
-        <h2>🗺️ Route berechnen</h2>
+        <h2>
+            🗺️ Route berechnen
+        </h2>
 
-        <p>Gib Start und Ziel ein.</p>
+        <p>
+            Gib Start und Ziel ein.
+        </p>
 
         <div class="route-form">
 
@@ -987,31 +1196,67 @@ footer{
 
         </div>
 
-        <div id="routeStatus" style="margin-top:15px;color:#777;"></div>
 
-        <div id="routeResult" class="route-result">
+        <div
+            id="routeStatus"
+            style="margin-top:15px;color:#777;">
+        </div>
+
+
+        <div
+            id="routeResult"
+            class="route-result">
 
             <div class="route-summary">
 
                 <div class="route-stat">
-                    <small>Entfernung</small>
-                    <strong id="routeDistance">–</strong>
+
+                    <small>
+                        Entfernung
+                    </small>
+
+                    <strong id="routeDistance">
+                        –
+                    </strong>
+
                 </div>
 
-                <div class="route-stat">
-                    <small>Fahrzeit</small>
-                    <strong id="routeDuration">–</strong>
-                </div>
 
                 <div class="route-stat">
-                    <small>Route</small>
-                    <strong>🚗 Auto</strong>
+
+                    <small>
+                        Fahrzeit
+                    </small>
+
+                    <strong id="routeDuration">
+                        –
+                    </strong>
+
+                </div>
+
+
+                <div class="route-stat">
+
+                    <small>
+                        Route
+                    </small>
+
+                    <strong>
+                        🚗 Auto
+                    </strong>
+
                 </div>
 
             </div>
 
+
             <div class="map-box">
-                <iframe id="routeMap" loading="lazy"></iframe>
+
+                <iframe
+                    id="routeMap"
+                    loading="lazy">
+                </iframe>
+
             </div>
 
         </div>
@@ -1021,11 +1266,14 @@ footer{
 
     <div class="special-box">
 
-        <h2>🚦 Verkehrsmeldungen</h2>
+        <h2>
+            🚦 Verkehrsmeldungen
+        </h2>
 
         <p>
             Aktuelle Meldungen für eine Autobahn anzeigen.
         </p>
+
 
         <div class="traffic-controls">
 
@@ -1049,11 +1297,18 @@ footer{
 
         </div>
 
-        <div id="trafficStatus"
-             style="margin-top:15px;color:#777;">
+
+        <div
+            id="trafficStatus"
+            style="margin-top:15px;color:#777;">
         </div>
 
-        <div id="trafficList" class="traffic-list"></div>
+
+        <div
+            id="trafficList"
+            class="traffic-list">
+        </div>
+
 
         <div class="source-note">
             Datenquelle: Die Autobahn GmbH des Bundes.
@@ -1064,17 +1319,25 @@ footer{
 </section>
 
 
-<section id="area" class="special-page">
+<section
+    id="area"
+    class="special-page">
 
-    <button class="back" onclick="showStart()">
+    <button
+        class="back"
+        onclick="showStart()">
         ← Startseite
     </button>
 
     <div class="special-header">
 
-        <div class="special-label">n: Bereich</div>
+        <div class="special-label">
+            n: Bereich
+        </div>
 
-        <h1>Dein Bereich.</h1>
+        <h1>
+            Dein Bereich.
+        </h1>
 
         <p>
             Regionale Informationen direkt auf einen Blick.
@@ -1082,9 +1345,12 @@ footer{
 
     </div>
 
+
     <div class="special-box">
 
-        <h2>📍 Regional</h2>
+        <h2>
+            📍 Regional
+        </h2>
 
         <p>
             Hier können regionale Nachrichten,
@@ -1094,9 +1360,12 @@ footer{
 
     </div>
 
+
     <div class="special-box">
 
-        <h2>📅 Veranstaltungen</h2>
+        <h2>
+            📅 Veranstaltungen
+        </h2>
 
         <p>
             Dieser Bereich kann später mit lokalen
@@ -1108,13 +1377,21 @@ footer{
 </section>
 
 
-<section class="admin" id="admin">
+<section
+    class="admin"
+    id="admin">
 
-    <div class="login" id="loginBox">
+    <div
+        class="login"
+        id="loginBox">
 
-        <h2>🔐 n: Redaktion</h2>
+        <h2>
+            🔐 n: Redaktion
+        </h2>
 
-        <p>Anmeldung nur für die Redaktion.</p>
+        <p>
+            Anmeldung nur für die Redaktion.
+        </p>
 
         <input
             id="email"
@@ -1126,22 +1403,33 @@ footer{
             type="password"
             placeholder="Passwort">
 
-        <button class="primary" onclick="login()">
+        <button
+            class="primary"
+            onclick="login()">
             Einloggen
         </button>
 
-        <div class="error" id="loginError"></div>
+        <div
+            class="error"
+            id="loginError">
+        </div>
 
     </div>
 
 
-    <div id="dashboard" style="display:none">
+    <div
+        id="dashboard"
+        style="display:none">
 
         <div class="admin-top">
 
-            <h1>Redaktion</h1>
+            <h1>
+                Redaktion
+            </h1>
 
-            <button class="secondary small" onclick="logout()">
+            <button
+                class="secondary small"
+                onclick="logout()">
                 Ausloggen
             </button>
 
@@ -1150,47 +1438,86 @@ footer{
 
         <div class="form-box">
 
-            <h2 id="formTitle">Neuer Artikel</h2>
+            <h2 id="formTitle">
+                Neuer Artikel
+            </h2>
 
-            <label>Überschrift</label>
+            <label>
+                Überschrift
+            </label>
 
             <input
                 id="title"
                 placeholder="Überschrift">
 
-            <label>Kurzbeschreibung</label>
+            <label>
+                Kurzbeschreibung
+            </label>
 
             <input
                 id="description"
                 placeholder="Kurze Zusammenfassung">
 
-            <label>Kategorie</label>
+            <label>
+                Kategorie
+            </label>
 
             <select id="category">
-                <option>Deutschland</option>
-                <option>Welt</option>
-                <option>Region</option>
-                <option>Sport</option>
-                <option>Digital</option>
+
+                <option>
+                    Deutschland
+                </option>
+
+                <option>
+                    Welt
+                </option>
+
+                <option>
+                    Region
+                </option>
+
+                <option>
+                    Sport
+                </option>
+
+                <option>
+                    Digital
+                </option>
+
             </select>
 
-            <label>Region</label>
+
+            <label>
+                Region
+            </label>
 
             <input
                 id="region"
                 placeholder="z. B. Hessen">
 
-            <label>Artikel</label>
+
+            <label>
+                Artikel
+            </label>
 
             <textarea
                 id="content"
                 placeholder="Artikel schreiben..."></textarea>
 
+
             <p style="color:#777;font-size:13px">
-                Tipp: <strong>**Text**</strong> wird auf der Website automatisch fett dargestellt.
+
+                Tipp:
+                <strong>**Text**</strong>
+                wird auf der Website automatisch fett dargestellt.
+
             </p>
 
-            <label>Artikelbild</label>
+
+            <label>
+                Artikelbild
+            </label>
+
 
             <div class="image-upload-box">
 
@@ -1212,6 +1539,7 @@ footer{
 
             </div>
 
+
             <button
                 class="primary"
                 id="saveButton"
@@ -1219,20 +1547,30 @@ footer{
                 📰 Veröffentlichen
             </button>
 
+
             <button
                 class="secondary small"
                 onclick="clearForm()">
                 Abbrechen
             </button>
 
-            <div id="formMessage" class="success"></div>
+
+            <div
+                id="formMessage"
+                class="success">
+            </div>
 
         </div>
 
 
-        <h2>Deine Artikel</h2>
+        <h2>
+            Deine Artikel
+        </h2>
 
-        <div class="admin-list" id="adminList"></div>
+        <div
+            class="admin-list"
+            id="adminList">
+        </div>
 
     </div>
 
@@ -1273,6 +1611,7 @@ footer{
                 </p>
 
             </div>
+
 
             <button
                 class="connection-close"
@@ -1417,6 +1756,17 @@ function openArea(){
         top:0,
         behavior:"smooth"
     });
+
+}
+
+
+/* =====================================================
+SENDEPLAN
+===================================================== */
+
+function openSendeplan(){
+
+    window.location.href="sendeplan.html";
 
 }
 
@@ -2361,19 +2711,11 @@ function renderMarkdown(value){
     let text =
         escapeHTML(value||"");
 
-    /*
-     * **Text** = fett
-     */
-
     text =
         text.replace(
             /\*\*(.+?)\*\*/gs,
             "<strong>$1</strong>"
         );
-
-    /*
-     * Zeilenumbrüche
-     */
 
     text =
         text.replace(/\r\n/g,"\n");
@@ -3042,12 +3384,6 @@ function clearForm(){
 ARTIKEL-VERBINDUNGEN
 ===================================================== */
 
-/*
- * Die Verbindungen werden bewusst lokal gespeichert.
- * Dadurch funktioniert das Feature sofort, ohne
- * dass die Supabase-Tabelle geändert werden muss.
- */
-
 let articleConnections =
     JSON.parse(
         localStorage.getItem("n_article_connections")||"{}"
@@ -3269,10 +3605,6 @@ function saveSelectedConnections(){
             checkbox=>String(checkbox.value)
         );
 
-    /*
-     * Alte Verbindungen des Artikels entfernen.
-     */
-
     const oldConnections =
         getConnections(sourceId).map(String);
 
@@ -3284,10 +3616,6 @@ function saveSelectedConnections(){
         );
 
     });
-
-    /*
-     * Neue Verbindungen setzen.
-     */
 
     selected.forEach(otherId=>{
 
@@ -3339,6 +3667,7 @@ function outsideConnectionClick(event){
 
         closeConnectionPicker();
     }
+
 }
 
 
@@ -3424,6 +3753,7 @@ function escapeHTML(value){
         .replace(/>/g,"&gt;")
         .replace(/"/g,"&quot;")
         .replace(/'/g,"&#039;");
+
 }
 
 
