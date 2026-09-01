@@ -1,0 +1,1984 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>n: Sport LIVE</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f5f7;
+    color:#111;
+}
+
+/* =========================
+HEADER
+========================= */
+
+header{
+    height:72px;
+    padding:0 28px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    background:rgba(255,255,255,.97);
+    border-bottom:1px solid #ddd;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:40px;
+    font-weight:900;
+    letter-spacing:-4px;
+    cursor:pointer;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.back-news{
+    border:0;
+    background:#111;
+    color:white;
+
+    padding:11px 17px;
+
+    border-radius:11px;
+
+    font-weight:800;
+
+    cursor:pointer;
+}
+
+/* =========================
+MAIN
+========================= */
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:35px 20px 80px;
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+    margin-bottom:25px;
+}
+
+.hero-label{
+    font-size:12px;
+    font-weight:900;
+    color:#777;
+
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+}
+
+.hero h1{
+    font-size:clamp(42px,7vw,76px);
+
+    line-height:.92;
+
+    letter-spacing:-5px;
+
+    margin:8px 0;
+}
+
+.hero p{
+    color:#777;
+    font-size:18px;
+    margin-bottom:0;
+}
+
+/* =========================
+LIVE STATUS
+========================= */
+
+.live-status{
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    margin-top:18px;
+
+    font-size:13px;
+
+    color:#777;
+}
+
+.live-dot{
+
+    width:9px;
+    height:9px;
+
+    background:#dc2626;
+
+    border-radius:50%;
+
+    animation:pulse 1.2s infinite;
+}
+
+@keyframes pulse{
+
+    0%{
+        opacity:1;
+    }
+
+    50%{
+        opacity:.35;
+    }
+
+    100%{
+        opacity:1;
+    }
+
+}
+
+/* =========================
+NAVIGATION
+========================= */
+
+.sport-nav{
+
+    display:flex;
+
+    gap:8px;
+
+    overflow-x:auto;
+
+    padding:5px 0 20px;
+}
+
+.sport-nav button{
+
+    flex-shrink:0;
+
+    padding:11px 17px;
+
+    border:1px solid #ddd;
+
+    background:white;
+
+    border-radius:999px;
+
+    font-weight:800;
+
+    cursor:pointer;
+}
+
+.sport-nav button:hover{
+    background:#eee;
+}
+
+.sport-nav button.active{
+
+    background:#111;
+
+    color:white;
+
+    border-color:#111;
+}
+
+/* =========================
+TOPSPIELE
+========================= */
+
+.section-title{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin:20px 0 12px;
+}
+
+.section-title h2{
+    margin:0;
+    font-size:27px;
+}
+
+.section-title span{
+    color:#777;
+    font-size:14px;
+}
+
+/* =========================
+TOP GRID
+========================= */
+
+.top-games{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:15px;
+
+    margin-bottom:25px;
+}
+
+.top-game{
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    border-radius:20px;
+
+    padding:20px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.top-game:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.08);
+}
+
+.top-game-label{
+
+    font-size:11px;
+
+    font-weight:900;
+
+    color:#dc2626;
+
+    margin-bottom:12px;
+}
+
+.top-game-league{
+
+    color:#777;
+
+    font-size:13px;
+
+    margin-bottom:15px;
+}
+
+.team{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:7px 0;
+
+    font-weight:800;
+}
+
+.score{
+
+    font-size:22px;
+
+    font-weight:900;
+}
+
+.top-game-status{
+
+    margin-top:14px;
+
+    padding-top:13px;
+
+    border-top:1px solid #eee;
+
+    color:#777;
+
+    font-size:13px;
+}
+
+/* =========================
+LIVE TICKER
+========================= */
+
+.live-box{
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    margin-bottom:30px;
+}
+
+.live-header{
+
+    padding:22px 24px;
+
+    border-bottom:1px solid #eee;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+}
+
+.live-header h2{
+
+    margin:0;
+
+    font-size:28px;
+}
+
+.live-header p{
+
+    margin:5px 0 0;
+
+    color:#777;
+}
+
+.refresh-countdown{
+
+    font-size:13px;
+
+    color:#777;
+}
+
+.ticker-list{
+
+    display:grid;
+}
+
+.ticker-item{
+
+    display:grid;
+
+    grid-template-columns:
+        90px 1fr 170px;
+
+    align-items:center;
+
+    gap:20px;
+
+    padding:18px 24px;
+
+    border-top:1px solid #eee;
+}
+
+.ticker-time{
+
+    color:#777;
+
+    font-size:13px;
+}
+
+.ticker-league{
+
+    color:#888;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    text-transform:uppercase;
+
+    letter-spacing:.7px;
+
+    margin-bottom:5px;
+}
+
+.ticker-name{
+
+    font-size:17px;
+
+    font-weight:800;
+}
+
+.ticker-score{
+
+    text-align:right;
+
+    font-size:18px;
+
+    font-weight:900;
+}
+
+.ticker-live{
+
+    color:#dc2626;
+
+    font-size:11px;
+
+    margin-right:6px;
+}
+
+.empty{
+
+    padding:40px 20px;
+
+    text-align:center;
+
+    color:#777;
+}
+
+/* =========================
+SPORT GRID
+========================= */
+
+.sport-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:15px;
+
+    margin-bottom:30px;
+}
+
+.sport-card{
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.sport-card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.07);
+}
+
+.sport-card-icon{
+
+    font-size:30px;
+
+    margin-bottom:12px;
+}
+
+.sport-card h3{
+
+    margin:0 0 7px;
+
+    font-size:20px;
+}
+
+.sport-card p{
+
+    margin:0;
+
+    color:#777;
+
+    line-height:1.45;
+
+    font-size:14px;
+}
+
+/* =========================
+COMPETITIONS
+========================= */
+
+.competitions{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:15px;
+
+    margin-bottom:30px;
+}
+
+.competition{
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    border-radius:18px;
+
+    padding:20px;
+
+}
+
+.competition strong{
+
+    display:block;
+
+    margin-bottom:6px;
+
+}
+
+.competition span{
+
+    color:#777;
+
+    font-size:14px;
+}
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+
+    text-align:center;
+
+    padding:30px;
+
+    color:#777;
+
+    border-top:1px solid #ddd;
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    .top-games{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .sport-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    header{
+        padding:0 16px;
+    }
+
+    .logo{
+        font-size:34px;
+    }
+
+    .back-news{
+        padding:9px 12px;
+    }
+
+    .top-games{
+
+        grid-template-columns:1fr;
+    }
+
+    .sport-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .competitions{
+
+        grid-template-columns:1fr;
+    }
+
+    .ticker-item{
+
+        grid-template-columns:
+            1fr auto;
+
+        gap:8px 12px;
+    }
+
+    .ticker-time{
+
+        grid-column:
+            1 / -1;
+    }
+
+    .ticker-score{
+
+        grid-column:2;
+    }
+
+}
+
+/* =========================
+DETAILS
+========================= */
+
+.details-panel{
+
+    display:none;
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    border-radius:22px;
+
+    padding:25px;
+
+    margin-bottom:30px;
+}
+
+.details-panel h2{
+    margin-top:0;
+}
+
+.details-panel button{
+
+    border:0;
+
+    background:#eee;
+
+    padding:10px 15px;
+
+    border-radius:10px;
+
+    font-weight:800;
+
+    cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div
+        class="logo"
+        onclick="goNews()">
+
+        n:
+
+    </div>
+
+    <div class="header-right">
+
+        <button
+            class="back-news"
+            onclick="goNews()">
+
+            ← Nachrichten
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<main>
+
+<!-- =========================
+HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-label">
+        n: Sport
+    </div>
+
+    <h1>
+        Sport LIVE.
+    </h1>
+
+    <p>
+        Ergebnisse, Live-Spiele, Topspiele und aktuelle
+        Sportdaten aus aller Welt.
+    </p>
+
+    <div class="live-status">
+
+        <span class="live-dot"></span>
+
+        <span id="updateStatus">
+            Live-Daten werden geladen …
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+SPORT NAV
+========================= -->
+
+<nav class="sport-nav">
+
+    <button
+        class="active"
+        onclick="selectSport('Alle',this)">
+        Alle
+    </button>
+
+    <button
+        onclick="selectSport('Fußball',this)">
+        Fußball
+    </button>
+
+    <button
+        onclick="selectSport('Basketball',this)">
+        Basketball
+    </button>
+
+    <button
+        onclick="selectSport('Tennis',this)">
+        Tennis
+    </button>
+
+    <button
+        onclick="selectSport('Eishockey',this)">
+        Eishockey
+    </button>
+
+    <button
+        onclick="selectSport('Baseball',this)">
+        Baseball
+    </button>
+
+    <button
+        onclick="selectSport('Football',this)">
+        Football
+    </button>
+
+    <button
+        onclick="selectSport('Golf',this)">
+        Golf
+    </button>
+
+</nav>
+
+
+<!-- =========================
+TOPSPIELE
+========================= -->
+
+<div class="section-title">
+
+    <h2>
+        Topspiele
+    </h2>
+
+    <span>
+        Auswahl der wichtigsten Begegnungen
+    </span>
+
+</div>
+
+
+<div
+    class="top-games"
+    id="topGames">
+
+    <div class="empty">
+        Topspiele werden geladen …
+    </div>
+
+</div>
+
+
+<!-- =========================
+LIVE TICKER
+========================= -->
+
+<div class="section-title">
+
+    <h2>
+        Live-Ticker
+    </h2>
+
+    <span>
+        Aktualisierung automatisch
+    </span>
+
+</div>
+
+
+<section class="live-box">
+
+    <div class="live-header">
+
+        <div>
+
+            <h2>
+                Alle aktuellen Spiele
+            </h2>
+
+            <p>
+                Laufende, kommende und kürzlich beendete
+                Begegnungen.
+            </p>
+
+        </div>
+
+        <div
+            class="refresh-countdown"
+            id="countdown">
+
+            Nächste Aktualisierung …
+            
+        </div>
+
+    </div>
+
+
+    <div
+        class="ticker-list"
+        id="tickerList">
+
+        <div class="empty">
+
+            Sportdaten werden geladen …
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+SPORTARTEN
+========================= -->
+
+<div class="section-title">
+
+    <h2>
+        Sportarten
+    </h2>
+
+</div>
+
+
+<div class="sport-grid">
+
+    <div
+        class="sport-card"
+        onclick="selectSportByName('Fußball')">
+
+        <div class="sport-card-icon">
+            ⚽
+        </div>
+
+        <h3>
+            Fußball
+        </h3>
+
+        <p>
+            Ligen, Ergebnisse, Spiele und Live-Ticker.
+        </p>
+
+    </div>
+
+
+    <div
+        class="sport-card"
+        onclick="selectSportByName('Basketball')">
+
+        <div class="sport-card-icon">
+            🏀
+        </div>
+
+        <h3>
+            Basketball
+        </h3>
+
+        <p>
+            NBA und weitere Wettbewerbe.
+        </p>
+
+    </div>
+
+
+    <div
+        class="sport-card"
+        onclick="selectSportByName('Tennis')">
+
+        <div class="sport-card-icon">
+            🎾
+        </div>
+
+        <h3>
+            Tennis
+        </h3>
+
+        <p>
+            ATP, WTA und laufende Matches.
+        </p>
+
+    </div>
+
+
+    <div
+        class="sport-card"
+        onclick="selectSportByName('Eishockey')">
+
+        <div class="sport-card-icon">
+            🏒
+        </div>
+
+        <h3>
+            Eishockey
+        </h3>
+
+        <p>
+            NHL und weitere Wettbewerbe.
+        </p>
+
+    </div>
+
+
+    <div
+        class="sport-card"
+        onclick="selectSportByName('Baseball')">
+
+        <div class="sport-card-icon">
+            ⚾
+        </div>
+
+        <h3>
+            Baseball
+        </h3>
+
+        <p>
+            MLB und internationale Spiele.
+        </p>
+
+    </div>
+
+
+    <div
+        class="sport-card"
+        onclick="selectSportByName('Football')">
+
+        <div class="sport-card-icon">
+            🏈
+        </div>
+
+        <h3>
+            Football
+        </h3>
+
+        <p>
+            NFL und aktuelle Begegnungen.
+        </p>
+
+    </div>
+
+
+    <div
+        class="sport-card"
+        onclick="selectSportByName('Golf')">
+
+        <div class="sport-card-icon">
+            ⛳
+        </div>
+
+        <h3>
+            Golf
+        </h3>
+
+        <p>
+            Turniere und aktuelle Ergebnisse.
+        </p>
+
+    </div>
+
+
+    <div class="sport-card">
+
+        <div class="sport-card-icon">
+            🏎️
+        </div>
+
+        <h3>
+            Motorsport
+        </h3>
+
+        <p>
+            Rennen, Qualifying und Meisterschaften.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+WICHTIGE WETTBEWERBE
+========================= -->
+
+<div class="section-title">
+
+    <h2>
+        Wettbewerbe
+    </h2>
+
+</div>
+
+
+<div class="competitions">
+
+    <div class="competition">
+
+        <strong>
+            Bundesliga
+        </strong>
+
+        <span>
+            Deutschland · Fußball
+        </span>
+
+    </div>
+
+
+    <div class="competition">
+
+        <strong>
+            UEFA Champions League
+        </strong>
+
+        <span>
+            Europa · Fußball
+        </span>
+
+    </div>
+
+
+    <div class="competition">
+
+        <strong>
+            NBA
+        </strong>
+
+        <span>
+            USA · Basketball
+        </span>
+
+    </div>
+
+
+    <div class="competition">
+
+        <strong>
+            NFL
+        </strong>
+
+        <span>
+            USA · Football
+        </span>
+
+    </div>
+
+
+    <div class="competition">
+
+        <strong>
+            NHL
+        </strong>
+
+        <span>
+            USA/Kanada · Eishockey
+        </span>
+
+    </div>
+
+
+    <div class="competition">
+
+        <strong>
+            ATP / WTA
+        </strong>
+
+        <span>
+            Weltweit · Tennis
+        </span>
+
+    </div>
+
+</div>
+
+
+</main>
+
+
+<footer>
+
+    © 2026 n: · Sport LIVE
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+SPORTDATEN
+===================================================== */
+
+const SOURCES = [
+
+    {
+        sport:"soccer",
+        league:"ger.1",
+        label:"Fußball",
+        name:"Bundesliga"
+    },
+
+    {
+        sport:"soccer",
+        league:"eng.1",
+        label:"Fußball",
+        name:"Premier League"
+    },
+
+    {
+        sport:"soccer",
+        league:"esp.1",
+        label:"Fußball",
+        name:"LaLiga"
+    },
+
+    {
+        sport:"soccer",
+        league:"ita.1",
+        label:"Fußball",
+        name:"Serie A"
+    },
+
+    {
+        sport:"soccer",
+        league:"fra.1",
+        label:"Fußball",
+        name:"Ligue 1"
+    },
+
+    {
+        sport:"soccer",
+        league:"uefa.champions",
+        label:"Fußball",
+        name:"Champions League"
+    },
+
+    {
+        sport:"basketball",
+        league:"nba",
+        label:"Basketball",
+        name:"NBA"
+    },
+
+    {
+        sport:"hockey",
+        league:"nhl",
+        label:"Eishockey",
+        name:"NHL"
+    },
+
+    {
+        sport:"baseball",
+        league:"mlb",
+        label:"Baseball",
+        name:"MLB"
+    },
+
+    {
+        sport:"football",
+        league:"nfl",
+        label:"Football",
+        name:"NFL"
+    },
+
+    {
+        sport:"tennis",
+        league:"atp",
+        label:"Tennis",
+        name:"ATP"
+    },
+
+    {
+        sport:"tennis",
+        league:"wta",
+        label:"Tennis",
+        name:"WTA"
+    },
+
+    {
+        sport:"golf",
+        league:"pga",
+        label:"Golf",
+        name:"PGA"
+    }
+
+];
+
+
+/* =====================================================
+VARIABLEN
+===================================================== */
+
+let games = [];
+
+let selectedSport = "Alle";
+
+let countdownSeconds = 20;
+
+let timer;
+
+
+/* =====================================================
+HTML SICHERHEIT
+===================================================== */
+
+function escapeHTML(value){
+
+    return String(value ?? "")
+
+        .replace(/&/g,"&amp;")
+
+        .replace(/</g,"&lt;")
+
+        .replace(/>/g,"&gt;")
+
+        .replace(/"/g,"&quot;")
+
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================================
+DATEN LADEN
+===================================================== */
+
+async function loadSports(){
+
+    const status =
+        document.getElementById(
+            "updateStatus"
+        );
+
+    status.textContent =
+        "Sportdaten werden aktualisiert …";
+
+
+    const requests =
+        SOURCES.map(
+            async source => {
+
+                const url =
+                    `https://site.api.espn.com/apis/site/v2/sports/${source.sport}/${source.league}/scoreboard`;
+
+                const response =
+                    await fetch(
+                        url,
+                        {
+                            cache:"no-store"
+                        }
+                    );
+
+                if(!response.ok){
+
+                    throw new Error(
+                        source.name
+                    );
+
+                }
+
+                const data =
+                    await response.json();
+
+
+                return (data.events || [])
+                    .map(
+                        event =>
+                            normalizeGame(
+                                event,
+                                source
+                            )
+                    );
+
+            }
+        );
+
+
+    const results =
+        await Promise.allSettled(
+            requests
+        );
+
+
+    games = [];
+
+
+    results.forEach(
+        result => {
+
+            if(
+                result.status ===
+                "fulfilled"
+            ){
+
+                games.push(
+                    ...result.value
+                );
+
+            }
+
+        }
+    );
+
+
+    games.sort(
+        (a,b) => {
+
+            if(
+                a.live !==
+                b.live
+            ){
+
+                return a.live
+                    ? -1
+                    : 1;
+
+            }
+
+
+            return (
+                new Date(a.date)
+                -
+                new Date(b.date)
+            );
+
+        }
+    );
+
+
+    render();
+
+
+    countdownSeconds = 20;
+
+    status.textContent =
+        "Live-Daten aktualisiert · " +
+        new Date()
+            .toLocaleTimeString(
+                "de-DE"
+            );
+
+}
+
+
+/* =====================================================
+SPIEL NORMALISIEREN
+===================================================== */
+
+function normalizeGame(
+    event,
+    source
+){
+
+    const competition =
+        event.competitions?.[0];
+
+    const competitors =
+        competition?.competitors || [];
+
+
+    let teams =
+        competitors.map(
+            team => {
+
+                const name =
+                    team.team?.shortDisplayName ||
+                    team.team?.displayName ||
+                    team.athlete?.displayName ||
+                    "Unbekannt";
+
+                const score =
+                    typeof team.score ===
+                    "object"
+
+                    ?
+
+                    (
+                        team.score.displayValue ??
+                        team.score.value ??
+                        ""
+                    )
+
+                    :
+
+                    (
+                        team.score ??
+                        ""
+                    );
+
+
+                return {
+                    name,
+                    score
+                };
+
+            }
+        );
+
+
+    const status =
+        event.status?.type;
+
+
+    const state =
+        status?.state || "";
+
+
+    const live =
+        state === "in"
+        ||
+        status?.name ===
+        "STATUS_IN_PROGRESS";
+
+
+    let statusText =
+        status?.shortDetail
+        ||
+        status?.detail
+        ||
+        "";
+
+
+    if(!statusText){
+
+        if(
+            status?.completed
+        ){
+
+            statusText =
+                "Beendet";
+
+        }else{
+
+            statusText =
+                new Date(
+                    event.date
+                ).toLocaleTimeString(
+                    "de-DE",
+                    {
+                        hour:"2-digit",
+                        minute:"2-digit"
+                    }
+                );
+
+        }
+
+    }
+
+
+    return {
+
+        id:
+            source.sport +
+            "-" +
+            source.league +
+            "-" +
+            event.id,
+
+        sport:
+            source.label,
+
+        league:
+            source.name,
+
+        name:
+            event.name ||
+            "Begegnung",
+
+        teams,
+
+        date:
+            event.date,
+
+        live,
+
+        status:
+            statusText
+
+    };
+
+}
+
+
+/* =====================================================
+RENDER
+===================================================== */
+
+function render(){
+
+    let visible =
+        games;
+
+
+    if(
+        selectedSport !==
+        "Alle"
+    ){
+
+        visible =
+            games.filter(
+                game =>
+                    game.sport ===
+                    selectedSport
+            );
+
+    }
+
+
+    renderTicker(
+        visible
+    );
+
+    renderTopGames(
+        visible
+    );
+
+}
+
+
+/* =====================================================
+TOPSPIELE
+===================================================== */
+
+function renderTopGames(
+    list
+){
+
+    const box =
+        document.getElementById(
+            "topGames"
+        );
+
+
+    if(!list.length){
+
+        box.innerHTML = `
+            <div class="empty">
+                Aktuell keine Topspiele verfügbar.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    const top =
+        list
+            .slice(0,3);
+
+
+    box.innerHTML =
+        top.map(
+            game => {
+
+                const teams =
+                    game.teams;
+
+
+                return `
+
+                    <div class="top-game">
+
+                        <div class="top-game-label">
+
+                            ${game.live
+                                ? "● LIVE"
+                                : "TOPSPIEL"}
+
+                        </div>
+
+
+                        <div class="top-game-league">
+
+                            ${escapeHTML(
+                                game.sport
+                            )}
+
+                            ·
+
+                            ${escapeHTML(
+                                game.league
+                            )}
+
+                        </div>
+
+
+                        ${
+                            teams
+                                .map(
+                                    team => `
+
+                                        <div class="team">
+
+                                            <span>
+
+                                                ${escapeHTML(
+                                                    team.name
+                                                )}
+
+                                            </span>
+
+                                            <span class="score">
+
+                                                ${escapeHTML(
+                                                    team.score
+                                                )}
+
+                                            </span>
+
+                                        </div>
+
+                                    `
+                                )
+                                .join("")
+                        }
+
+
+                        <div class="top-game-status">
+
+                            ${escapeHTML(
+                                game.status
+                            )}
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+        ).join("");
+
+}
+
+
+/* =====================================================
+LIVE TICKER
+===================================================== */
+
+function renderTicker(
+    list
+){
+
+    const box =
+        document.getElementById(
+            "tickerList"
+        );
+
+
+    if(!list.length){
+
+        box.innerHTML = `
+
+            <div class="empty">
+
+                Für diese Auswahl sind aktuell
+                keine Begegnungen verfügbar.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    box.innerHTML =
+        list
+            .slice(0,100)
+            .map(
+                game => {
+
+                    const teams =
+                        game.teams
+                            .map(
+                                team =>
+                                    `${escapeHTML(team.name)} ${escapeHTML(team.score)}`
+                            )
+                            .join(
+                                " · "
+                            );
+
+
+                    return `
+
+                        <div class="ticker-item">
+
+                            <div class="ticker-time">
+
+                                ${
+                                    new Date(
+                                        game.date
+                                    )
+                                    .toLocaleTimeString(
+                                        "de-DE",
+                                        {
+                                            hour:"2-digit",
+                                            minute:"2-digit"
+                                        }
+                                    )
+                                }
+
+                            </div>
+
+
+                            <div>
+
+                                <div class="ticker-league">
+
+                                    ${escapeHTML(
+                                        game.sport
+                                    )}
+
+                                    ·
+
+                                    ${escapeHTML(
+                                        game.league
+                                    )}
+
+                                </div>
+
+
+                                <div class="ticker-name">
+
+                                    ${escapeHTML(
+                                        game.name
+                                    )}
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="ticker-score">
+
+                                ${
+                                    game.live
+                                    ?
+
+                                    `<span class="ticker-live">
+                                        LIVE
+                                    </span>`
+
+                                    :
+
+                                    ""
+                                }
+
+                                ${teams}
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }
+            )
+            .join("");
+
+}
+
+
+/* =====================================================
+SPORT FILTER
+===================================================== */
+
+function selectSport(
+    sport,
+    button
+){
+
+    selectedSport =
+        sport;
+
+
+    document
+        .querySelectorAll(
+            ".sport-nav button"
+        )
+        .forEach(
+            item =>
+                item.classList.remove(
+                    "active"
+                )
+        );
+
+
+    button.classList.add(
+        "active"
+    );
+
+
+    render();
+
+}
+
+
+function selectSportByName(
+    sport
+){
+
+    const buttons =
+        document
+            .querySelectorAll(
+                ".sport-nav button"
+            );
+
+
+    buttons.forEach(
+        button => {
+
+            if(
+                button.textContent
+                    .trim()
+                ===
+                sport
+            ){
+
+                selectSport(
+                    sport,
+                    button
+                );
+
+            }
+
+        }
+    );
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+20 SEKUNDEN TIMER
+===================================================== */
+
+function startTimer(){
+
+    clearInterval(
+        timer
+    );
+
+
+    countdownSeconds =
+        20;
+
+
+    timer =
+        setInterval(
+            () => {
+
+                countdownSeconds--;
+
+
+                document
+                    .getElementById(
+                        "countdown"
+                    )
+                    .textContent =
+
+                    `Nächste Aktualisierung in ${countdownSeconds}s`;
+
+
+                if(
+                    countdownSeconds <= 0
+                ){
+
+                    loadSports();
+
+                }
+
+            },
+            1000
+        );
+
+}
+
+
+/* =====================================================
+ZURÜCK ZU NEWS
+===================================================== */
+
+function goNews(){
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+/* =====================================================
+START
+===================================================== */
+
+loadSports();
+
+startTimer();
+
+</script>
+
+</body>
+
+</html>
