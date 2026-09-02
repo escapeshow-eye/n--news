@@ -6856,6 +6856,52 @@ START
 showStart();
 
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
+    // Nur auf der Startseite ausführen
+    const path = window.location.pathname.toLowerCase();
+
+    if (
+        !path.endsWith("/index.html") &&
+        path !== "/" &&
+        path !== ""
+    ) {
+        return;
+    }
+
+    // Vorhandenes Karten-Gitter der Startseite suchen
+    const areaGrid = document.querySelector(".area-grid");
+
+    if (!areaGrid) {
+        return;
+    }
+
+    // Verhindern, dass die Karte doppelt eingefügt wird
+    if (areaGrid.querySelector('[data-spotlight-card="true"]')) {
+        return;
+    }
+
+    // Neue Spotlight-Karte erzeugen
+    const spotlight = document.createElement("a");
+
+    spotlight.href = "spotlight.html";
+    spotlight.className = "area-card";
+    spotlight.setAttribute("data-spotlight-card", "true");
+    spotlight.style.textDecoration = "none";
+    spotlight.style.color = "inherit";
+
+    spotlight.innerHTML = `
+        <div>
+            <h2>n: spotlight</h2>
+        </div>
+
+        <div class="area-arrow">→</div>
+    `;
+
+    // Nur die Startkarten erweitern
+    areaGrid.appendChild(spotlight);
+});
+</script>
 </body>
 </html>
