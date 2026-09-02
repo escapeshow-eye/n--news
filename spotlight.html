@@ -1,0 +1,2940 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>n: spotlight – Influencer & Medien</title>
+
+<style>
+    :root {
+        --bg: #f4f6f9;
+        --surface: #ffffff;
+        --surface-soft: #eef2f7;
+        --text: #101827;
+        --muted: #657083;
+        --line: #dfe4eb;
+        --blue: #123c73;
+        --blue-dark: #0b2850;
+        --accent: #2d6cdf;
+        --danger: #c62828;
+        --shadow: 0 12px 35px rgba(12, 31, 57, .10);
+        --radius: 16px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+        font: inherit;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    img {
+        max-width: 100%;
+        display: block;
+    }
+
+    /* HEADER */
+
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(255,255,255,.96);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+        max-width: 1250px;
+        margin: auto;
+        min-height: 76px;
+        padding: 0 22px;
+        display: flex;
+        align-items: center;
+        gap: 28px;
+    }
+
+    .logo {
+        font-size: 38px;
+        font-weight: 900;
+        letter-spacing: -3px;
+        color: var(--blue-dark);
+        white-space: nowrap;
+    }
+
+    .logo span {
+        font-weight: 500;
+    }
+
+    .spotlight-label {
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 1.8px;
+        text-transform: uppercase;
+        color: var(--accent);
+        padding-left: 17px;
+        border-left: 1px solid var(--line);
+        white-space: nowrap;
+    }
+
+    nav {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    nav button {
+        border: 0;
+        background: transparent;
+        padding: 11px 13px;
+        color: #465267;
+        font-weight: 700;
+        border-radius: 9px;
+    }
+
+    nav button:hover,
+    nav button.active {
+        background: var(--surface-soft);
+        color: var(--blue-dark);
+    }
+
+    .header-actions {
+        display: flex;
+        gap: 8px;
+    }
+
+    .header-btn {
+        border: 1px solid var(--line);
+        background: white;
+        color: var(--blue-dark);
+        padding: 10px 13px;
+        border-radius: 9px;
+        font-weight: 700;
+    }
+
+    .header-btn:hover {
+        border-color: #b9c5d6;
+        background: var(--surface-soft);
+    }
+
+    /* PAGE */
+
+    main {
+        min-height: calc(100vh - 160px);
+    }
+
+    .page {
+        max-width: 1250px;
+        margin: auto;
+        padding: 38px 22px 70px;
+    }
+
+    .hidden {
+        display: none !important;
+    }
+
+    /* HERO */
+
+    .intro {
+        padding: 24px 0 30px;
+    }
+
+    .eyebrow {
+        color: var(--accent);
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 900;
+        margin-bottom: 10px;
+    }
+
+    .intro h1 {
+        margin: 0;
+        font-size: clamp(38px, 6vw, 72px);
+        line-height: .98;
+        letter-spacing: -3px;
+        max-width: 900px;
+    }
+
+    .intro p {
+        margin: 20px 0 0;
+        color: var(--muted);
+        font-size: 19px;
+        line-height: 1.55;
+        max-width: 720px;
+    }
+
+    .category-bar {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 8px 0 22px;
+        scrollbar-width: thin;
+    }
+
+    .category-btn {
+        flex: 0 0 auto;
+        border: 1px solid var(--line);
+        background: white;
+        color: #4e5b70;
+        border-radius: 999px;
+        padding: 10px 17px;
+        font-weight: 700;
+    }
+
+    .category-btn:hover,
+    .category-btn.active {
+        background: var(--blue-dark);
+        color: white;
+        border-color: var(--blue-dark);
+    }
+
+    /* FEATURED */
+
+    .featured {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        min-height: 470px;
+        background: #0b1d35;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        margin-bottom: 45px;
+    }
+
+    .featured-image {
+        min-height: 470px;
+        background:
+            linear-gradient(135deg, #163f75, #0b1d35);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .featured-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .featured-image.no-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255,255,255,.18);
+        font-size: 90px;
+        font-weight: 900;
+    }
+
+    .featured-content {
+        color: white;
+        padding: 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .featured-category {
+        color: #8db8ff;
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 1.8px;
+        margin-bottom: 15px;
+    }
+
+    .featured-content h2 {
+        font-size: clamp(30px, 4vw, 49px);
+        line-height: 1.03;
+        letter-spacing: -1.8px;
+        margin: 0 0 18px;
+    }
+
+    .featured-content p {
+        color: #bdc9da;
+        line-height: 1.6;
+        font-size: 16px;
+        margin: 0 0 25px;
+    }
+
+    .read-btn {
+        width: fit-content;
+        border: 0;
+        background: white;
+        color: var(--blue-dark);
+        padding: 12px 18px;
+        border-radius: 9px;
+        font-weight: 800;
+    }
+
+    .read-btn:hover {
+        background: #eaf1ff;
+    }
+
+    /* SECTION */
+
+    .section-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 20px;
+        margin: 0 0 18px;
+    }
+
+    .section-heading h2 {
+        margin: 0;
+        font-size: 30px;
+        letter-spacing: -1px;
+    }
+
+    .section-heading span {
+        color: var(--muted);
+        font-size: 14px;
+    }
+
+    /* ARTICLES */
+
+    .article-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+    }
+
+    .article-card {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        transition: transform .18s ease, box-shadow .18s ease;
+        box-shadow: 0 3px 12px rgba(12,31,57,.04);
+    }
+
+    .article-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow);
+    }
+
+    .card-image {
+        height: 205px;
+        background: linear-gradient(135deg, #dfe8f5, #bfcce0);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #73829a;
+        font-weight: 900;
+        font-size: 36px;
+    }
+
+    .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: 20px;
+    }
+
+    .card-category {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1.3px;
+        font-weight: 900;
+        color: var(--accent);
+        margin-bottom: 9px;
+    }
+
+    .card-title {
+        margin: 0;
+        font-size: 21px;
+        line-height: 1.18;
+        letter-spacing: -.4px;
+    }
+
+    .card-description {
+        margin: 11px 0 15px;
+        color: var(--muted);
+        line-height: 1.5;
+        font-size: 14px;
+    }
+
+    .card-meta {
+        color: #7c8798;
+        font-size: 12px;
+    }
+
+    .empty {
+        background: white;
+        border: 1px dashed #c9d2df;
+        padding: 45px;
+        border-radius: var(--radius);
+        text-align: center;
+        color: var(--muted);
+    }
+
+    /* SEARCH */
+
+    .search-panel {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 18px;
+        margin-bottom: 28px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .search-panel input {
+        flex: 1;
+        min-width: 0;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        padding: 13px 15px;
+        outline: none;
+    }
+
+    .search-panel input:focus {
+        border-color: var(--accent);
+    }
+
+    .search-panel button {
+        border: 0;
+        background: var(--blue-dark);
+        color: white;
+        border-radius: 9px;
+        padding: 0 20px;
+        font-weight: 800;
+    }
+
+    /* ARTICLE PAGE */
+
+    .article-page {
+        max-width: 950px;
+        margin: auto;
+    }
+
+    .back-btn {
+        border: 0;
+        background: transparent;
+        color: var(--blue);
+        padding: 0;
+        margin-bottom: 25px;
+        font-weight: 800;
+    }
+
+    .article-header .article-category {
+        color: var(--accent);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1.7px;
+        font-weight: 900;
+    }
+
+    .article-header h1 {
+        margin: 12px 0 16px;
+        font-size: clamp(38px, 6vw, 68px);
+        line-height: 1;
+        letter-spacing: -3px;
+    }
+
+    .article-header .article-lead {
+        color: var(--muted);
+        font-size: 20px;
+        line-height: 1.55;
+        max-width: 800px;
+    }
+
+    .article-meta {
+        margin: 20px 0 28px;
+        color: #778397;
+        font-size: 13px;
+    }
+
+    .article-main-image {
+        width: 100%;
+        max-height: 600px;
+        object-fit: cover;
+        border-radius: 20px;
+        margin-bottom: 28px;
+        box-shadow: var(--shadow);
+    }
+
+    .article-main-placeholder {
+        width: 100%;
+        min-height: 300px;
+        border-radius: 20px;
+        background: #dce4ef;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #73829a;
+        font-weight: 900;
+        font-size: 60px;
+        margin-bottom: 28px;
+    }
+
+    .article-body {
+        font-size: 18px;
+        line-height: 1.78;
+        color: #263244;
+    }
+
+    .article-body p {
+        margin: 0 0 22px;
+    }
+
+    /* GALLERY */
+
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin: 20px 0 35px;
+    }
+
+    .gallery-item {
+        height: 145px;
+        border: 0;
+        padding: 0;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #e1e7ef;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform .2s ease;
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.04);
+    }
+
+    /* VIDEO */
+
+    .article-video {
+        margin: 30px 0;
+    }
+
+    .article-video video {
+        width: 100%;
+        max-height: 650px;
+        border-radius: 16px;
+        background: #000;
+    }
+
+    /* LIGHTBOX */
+
+    .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 500;
+        background: rgba(0,0,0,.94);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 50px;
+    }
+
+    .lightbox.open {
+        display: flex;
+    }
+
+    .lightbox img {
+        max-width: min(1100px, 90vw);
+        max-height: 85vh;
+        object-fit: contain;
+    }
+
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+        position: fixed;
+        border: 0;
+        background: rgba(255,255,255,.12);
+        color: white;
+        border-radius: 50%;
+        width: 46px;
+        height: 46px;
+        font-size: 24px;
+    }
+
+    .lightbox-close {
+        right: 22px;
+        top: 20px;
+    }
+
+    .lightbox-prev {
+        left: 22px;
+        top: 50%;
+    }
+
+    .lightbox-next {
+        right: 22px;
+        top: 50%;
+    }
+
+    .lightbox-counter {
+        position: fixed;
+        bottom: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #d7dce5;
+        font-size: 13px;
+    }
+
+    /* ADMIN */
+
+    .admin-page {
+        max-width: 1050px;
+        margin: auto;
+    }
+
+    .admin-login,
+    .admin-panel {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 28px;
+        box-shadow: var(--shadow);
+    }
+
+    .admin-login {
+        max-width: 500px;
+        margin: 30px auto;
+    }
+
+    .admin-login h1,
+    .admin-panel h1 {
+        margin-top: 0;
+    }
+
+    .field {
+        margin-bottom: 17px;
+    }
+
+    .field label {
+        display: block;
+        margin-bottom: 7px;
+        font-weight: 800;
+        font-size: 13px;
+        color: #3f4b5d;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        padding: 12px 13px;
+        outline: none;
+        background: white;
+    }
+
+    .field textarea {
+        min-height: 220px;
+        resize: vertical;
+        line-height: 1.6;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+        border-color: var(--accent);
+    }
+
+    .form-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin-top: 20px;
+    }
+
+    .primary-btn,
+    .secondary-btn,
+    .danger-btn {
+        border-radius: 9px;
+        padding: 11px 16px;
+        font-weight: 800;
+    }
+
+    .primary-btn {
+        border: 0;
+        background: var(--blue-dark);
+        color: white;
+    }
+
+    .secondary-btn {
+        border: 1px solid var(--line);
+        background: white;
+        color: var(--blue-dark);
+    }
+
+    .danger-btn {
+        border: 0;
+        background: #fff0f0;
+        color: var(--danger);
+    }
+
+    .media-box {
+        border: 1px dashed #c8d2df;
+        border-radius: 12px;
+        padding: 15px;
+        background: #fafbfd;
+        margin-top: 8px;
+    }
+
+    .media-box input {
+        border: 0;
+        padding: 0;
+    }
+
+    .media-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: 13px;
+    }
+
+    .media-preview {
+        position: relative;
+        height: 130px;
+        border-radius: 9px;
+        overflow: hidden;
+        background: #dfe5ee;
+    }
+
+    .media-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .media-remove {
+        position: absolute;
+        right: 6px;
+        top: 6px;
+        width: 28px;
+        height: 28px;
+        border: 0;
+        border-radius: 50%;
+        background: rgba(0,0,0,.72);
+        color: white;
+        font-weight: 900;
+    }
+
+    .video-preview {
+        margin-top: 12px;
+    }
+
+    .video-preview video {
+        width: 100%;
+        max-height: 320px;
+        border-radius: 10px;
+        background: #000;
+    }
+
+    .admin-list {
+        margin-top: 35px;
+    }
+
+    .admin-item {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        padding: 13px 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .admin-item-image {
+        width: 90px;
+        height: 65px;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #e1e7ef;
+        flex: 0 0 auto;
+    }
+
+    .admin-item-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .admin-item-info {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .admin-item-title {
+        font-weight: 800;
+        margin-bottom: 5px;
+    }
+
+    .admin-item-meta {
+        font-size: 12px;
+        color: var(--muted);
+    }
+
+    .admin-item-actions {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+
+    .status {
+        padding: 11px 13px;
+        border-radius: 9px;
+        margin-bottom: 15px;
+        display: none;
+        font-size: 14px;
+    }
+
+    .status.show {
+        display: block;
+    }
+
+    .status.success {
+        background: #eaf7ef;
+        color: #196b3b;
+    }
+
+    .status.error {
+        background: #fff0f0;
+        color: #a51f1f;
+    }
+
+    /* FOOTER */
+
+    footer {
+        border-top: 1px solid var(--line);
+        background: white;
+        color: #788395;
+        padding: 28px 22px;
+    }
+
+    .footer-inner {
+        max-width: 1250px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 950px) {
+        .header-inner {
+            gap: 15px;
+        }
+
+        .spotlight-label {
+            display: none;
+        }
+
+        nav {
+            overflow-x: auto;
+        }
+
+        .featured {
+            grid-template-columns: 1fr;
+        }
+
+        .featured-image {
+            min-height: 300px;
+        }
+
+        .article-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 650px) {
+        .header-inner {
+            min-height: 66px;
+            padding: 0 15px;
+        }
+
+        .logo {
+            font-size: 32px;
+        }
+
+        .header-actions {
+            display: none;
+        }
+
+        nav button {
+            padding: 9px 8px;
+            font-size: 12px;
+        }
+
+        .page {
+            padding: 25px 15px 50px;
+        }
+
+        .intro h1 {
+            letter-spacing: -2px;
+        }
+
+        .featured-content {
+            padding: 28px;
+        }
+
+        .featured-image {
+            min-height: 230px;
+        }
+
+        .article-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .gallery {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .gallery-item {
+            height: 130px;
+        }
+
+        .media-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .search-panel {
+            flex-direction: column;
+        }
+
+        .search-panel button {
+            padding: 12px;
+        }
+
+        .admin-item {
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .footer-inner {
+            flex-direction: column;
+        }
+
+        .lightbox {
+            padding: 20px;
+        }
+
+        .lightbox-prev {
+            left: 10px;
+        }
+
+        .lightbox-next {
+            right: 10px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+        <a href="#start" class="logo">n<span>:</span></a>
+
+        <div class="spotlight-label">SPOTLIGHT</div>
+
+        <nav>
+            <button onclick="showHome()" id="navHome">Start</button>
+            <button onclick="showCategory('Influencer')">Influencer</button>
+            <button onclick="showCategory('Streaming')">Streaming</button>
+            <button onclick="showCategory('YouTube')">YouTube</button>
+            <button onclick="showCategory('Social Media')">Social Media</button>
+            <button onclick="showCategory('TV & Medien')">TV & Medien</button>
+        </nav>
+
+        <div class="header-actions">
+            <button class="header-btn" onclick="showSearch()">Suche</button>
+            <button class="header-btn" onclick="showAdmin()">Redaktion</button>
+        </div>
+    </div>
+</header>
+
+<main>
+
+    <!-- START -->
+    <section id="homePage" class="page">
+
+        <div class="intro">
+            <div class="eyebrow">n: spotlight</div>
+            <h1>Die Welt der Influencer & Medien.</h1>
+            <p>
+                Erfahre alles über Creator, Streaming, Social Media, YouTube,
+                TV und die Menschen hinter den großen Formaten.
+            </p>
+        </div>
+
+        <div class="category-bar">
+            <button class="category-btn active" onclick="showHome()">Alle</button>
+            <button class="category-btn" onclick="showCategory('Influencer')">Influencer</button>
+            <button class="category-btn" onclick="showCategory('Streaming')">Streaming</button>
+            <button class="category-btn" onclick="showCategory('YouTube')">YouTube</button>
+            <button class="category-btn" onclick="showCategory('Social Media')">Social Media</button>
+            <button class="category-btn" onclick="showCategory('TV & Medien')">TV & Medien</button>
+        </div>
+
+        <div id="featuredContainer"></div>
+
+        <div class="section-heading">
+            <h2>Aktuelle Geschichten</h2>
+            <span id="articleCount"></span>
+        </div>
+
+        <div id="articleGrid" class="article-grid"></div>
+
+    </section>
+
+    <!-- SEARCH -->
+    <section id="searchPage" class="page hidden">
+
+        <div class="intro">
+            <div class="eyebrow">n: spotlight</div>
+            <h1>Suche</h1>
+            <p>Durchsuche alle Spotlight-Artikel.</p>
+        </div>
+
+        <div class="search-panel">
+            <input
+                id="searchInput"
+                type="search"
+                placeholder="Nach Artikeln, Creatorn oder Themen suchen..."
+                onkeydown="if(event.key === 'Enter') performSearch()"
+            >
+            <button onclick="performSearch()">Suchen</button>
+        </div>
+
+        <div id="searchResults" class="article-grid"></div>
+
+    </section>
+
+    <!-- ARTICLE -->
+    <section id="articlePage" class="page hidden">
+
+        <article class="article-page">
+
+            <button class="back-btn" onclick="goBack()">
+                ← Zurück zu n: spotlight
+            </button>
+
+            <div class="article-header">
+                <div id="articleCategory" class="article-category"></div>
+                <h1 id="articleTitle"></h1>
+                <div id="articleLead" class="article-lead"></div>
+                <div id="articleMeta" class="article-meta"></div>
+            </div>
+
+            <div id="articleMainImage"></div>
+
+            <div id="articleGallery" class="gallery"></div>
+
+            <div id="articleVideo" class="article-video"></div>
+
+            <div id="articleContent" class="article-body"></div>
+
+        </article>
+
+    </section>
+
+    <!-- ADMIN -->
+    <section id="adminPage" class="page hidden">
+
+        <div class="admin-page">
+
+            <div id="loginBox" class="admin-login">
+
+                <div class="eyebrow">n: spotlight</div>
+                <h1>Redaktion</h1>
+
+                <p style="color:var(--muted);line-height:1.5;">
+                    Melde dich mit deinem bestehenden n:-Redaktionskonto an.
+                </p>
+
+                <div id="loginStatus" class="status"></div>
+
+                <div class="field">
+                    <label>E-Mail</label>
+                    <input id="loginEmail" type="email" autocomplete="username">
+                </div>
+
+                <div class="field">
+                    <label>Passwort</label>
+                    <input id="loginPassword" type="password" autocomplete="current-password">
+                </div>
+
+                <button class="primary-btn" onclick="login()">
+                    Anmelden
+                </button>
+
+            </div>
+
+            <div id="adminDashboard" class="admin-panel hidden">
+
+                <div style="display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap;">
+                    <div>
+                        <div class="eyebrow">Redaktion</div>
+                        <h1 id="editorHeading">Neuen Artikel erstellen</h1>
+                    </div>
+
+                    <button class="secondary-btn" onclick="logout()">
+                        Abmelden
+                    </button>
+                </div>
+
+                <div id="adminStatus" class="status"></div>
+
+                <div class="field">
+                    <label>Titel</label>
+                    <input id="editTitle" type="text" placeholder="Titel des Spotlight-Artikels">
+                </div>
+
+                <div class="field">
+                    <label>Kurzbeschreibung</label>
+                    <textarea
+                        id="editDescription"
+                        style="min-height:100px;"
+                        placeholder="Kurzer Vorspann für die Startseite..."
+                    ></textarea>
+                </div>
+
+                <div class="field">
+                    <label>Kategorie</label>
+                    <select id="editCategory">
+                        <option value="Influencer">Influencer</option>
+                        <option value="Streaming">Streaming</option>
+                        <option value="YouTube">YouTube</option>
+                        <option value="Social Media">Social Media</option>
+                        <option value="TV & Medien">TV & Medien</option>
+                        <option value="Creator">Creator</option>
+                        <option value="Medien">Medien</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Artikeltext</label>
+                    <textarea
+                        id="editContent"
+                        placeholder="Artikeltext hier schreiben..."
+                    ></textarea>
+                    <small style="color:var(--muted);">
+                        Leerzeilen werden im veröffentlichten Artikel als neue Absätze dargestellt.
+                    </small>
+                </div>
+
+                <div class="field">
+                    <label>Bilder</label>
+
+                    <div class="media-box">
+
+                        <input
+                            id="imageFiles"
+                            type="file"
+                            accept="image/*"
+                            multiple
+                            onchange="handleImageSelection(event)"
+                        >
+
+                        <div style="margin-top:8px;color:var(--muted);font-size:13px;">
+                            Du kannst mehrere Bilder gleichzeitig auswählen.
+                            Das erste Bild wird als Hauptbild verwendet.
+                            Maximal 10 MB pro Bild.
+                        </div>
+
+                        <div id="adminImages" class="media-grid"></div>
+
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Video – optional</label>
+
+                    <div class="media-box">
+
+                        <input
+                            id="videoFile"
+                            type="file"
+                            accept="video/mp4,video/webm,video/quicktime"
+                            onchange="handleVideoSelection(event)"
+                        >
+
+                        <div style="margin-top:8px;color:var(--muted);font-size:13px;">
+                            Unterstützt MP4, WebM und MOV. Maximal 100 MB.
+                        </div>
+
+                        <div id="adminVideo" class="video-preview"></div>
+
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button class="primary-btn" onclick="saveArticle()">
+                        Artikel veröffentlichen
+                    </button>
+
+                    <button class="secondary-btn" onclick="clearEditor()">
+                        Formular leeren
+                    </button>
+                </div>
+
+                <div class="admin-list">
+
+                    <div class="section-heading">
+                        <h2>Spotlight-Artikel</h2>
+                        <span id="adminArticleCount"></span>
+                    </div>
+
+                    <div id="adminArticles"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div>n: spotlight</div>
+        <div>Influencer · Streaming · Social Media · TV · YouTube</div>
+    </div>
+</footer>
+
+<!-- LIGHTBOX -->
+
+<div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox()">×</button>
+    <button class="lightbox-prev" onclick="previousImage(event)">‹</button>
+
+    <img id="lightboxImage" src="" alt="">
+
+    <button class="lightbox-next" onclick="nextImage(event)">›</button>
+
+    <div id="lightboxCounter" class="lightbox-counter"></div>
+</div>
+
+<script>
+/* =========================================================
+   SUPABASE
+   ========================================================= */
+
+const SUPABASE_URL = "https://eqzmsuncndfsiedyfifb.supabase.co";
+const SUPABASE_KEY = "sb_publishable_eXY1gg_tIr-cRC2kdt0jbQ_QPfbEmkF";
+const STORAGE_BUCKET = "news-images";
+
+let spotlightArticles = [];
+
+let editingId = null;
+
+let editingImageUrls = [];
+let selectedImageFiles = [];
+
+let editingVideoUrl = "";
+let selectedVideoFile = null;
+
+let currentArticleImages = [];
+let currentLightboxIndex = 0;
+
+
+/* =========================================================
+   BASIC HELPERS
+   ========================================================= */
+
+function escapeHTML(value) {
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+
+function formatDate(dateString) {
+    if (!dateString) return "";
+
+    const date = new Date(dateString);
+
+    return date.toLocaleDateString("de-DE", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+    });
+}
+
+
+function formatArticleContent(text) {
+    if (!text) return "";
+
+    const safe = escapeHTML(text);
+
+    return safe
+        .split(/\n\s*\n/)
+        .map(paragraph => {
+            return "<p>" + paragraph.replace(/\n/g, "<br>") + "</p>";
+        })
+        .join("");
+}
+
+
+function getImages(article) {
+    let images = [];
+
+    if (Array.isArray(article.image_urls)) {
+        images = article.image_urls.filter(Boolean);
+    } else if (typeof article.image_urls === "string") {
+        try {
+            const parsed = JSON.parse(article.image_urls);
+
+            if (Array.isArray(parsed)) {
+                images = parsed.filter(Boolean);
+            }
+        } catch (error) {
+            images = [];
+        }
+    }
+
+    if (article.image_url && !images.includes(article.image_url)) {
+        images.unshift(article.image_url);
+    }
+
+    return [...new Set(images)];
+}
+
+
+function showStatus(elementId, message, type) {
+    const el = document.getElementById(elementId);
+
+    if (!el) return;
+
+    el.className = "status show " + type;
+    el.textContent = message;
+}
+
+
+function clearStatus(elementId) {
+    const el = document.getElementById(elementId);
+
+    if (!el) return;
+
+    el.className = "status";
+    el.textContent = "";
+}
+
+
+/* =========================================================
+   SUPABASE REQUEST
+   ========================================================= */
+
+async function supabaseRequest(path, options = {}) {
+
+    const token = sessionStorage.getItem("nAccessToken");
+
+    const headers = {
+        "apikey": SUPABASE_KEY,
+        "Content-Type": "application/json",
+        ...options.headers
+    };
+
+    if (token) {
+        headers["Authorization"] = "Bearer " + token;
+    } else {
+        headers["Authorization"] = "Bearer " + SUPABASE_KEY;
+    }
+
+    const response = await fetch(SUPABASE_URL + path, {
+        ...options,
+        headers
+    });
+
+    const text = await response.text();
+
+    let data = null;
+
+    try {
+        data = text ? JSON.parse(text) : null;
+    } catch {
+        data = text;
+    }
+
+    if (!response.ok) {
+        throw new Error(
+            data?.message ||
+            data?.error_description ||
+            data?.error ||
+            "Supabase-Fehler " + response.status
+        );
+    }
+
+    return data;
+}
+
+
+/* =========================================================
+   LOAD ARTICLES
+   ========================================================= */
+
+async function loadSpotlightArticles() {
+
+    try {
+
+        spotlightArticles = await supabaseRequest(
+            "/rest/v1/spotlight_articles?select=*&order=created_at.desc"
+        );
+
+        if (!Array.isArray(spotlightArticles)) {
+            spotlightArticles = [];
+        }
+
+        renderHome();
+
+    } catch (error) {
+
+        console.error(error);
+
+        document.getElementById("featuredContainer").innerHTML = `
+            <div class="empty">
+                Die Spotlight-Artikel konnten momentan nicht geladen werden.
+            </div>
+        `;
+
+        document.getElementById("articleGrid").innerHTML = "";
+    }
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+function hidePages() {
+
+    document.getElementById("homePage").classList.add("hidden");
+    document.getElementById("searchPage").classList.add("hidden");
+    document.getElementById("articlePage").classList.add("hidden");
+    document.getElementById("adminPage").classList.add("hidden");
+}
+
+
+function showHome() {
+
+    hidePages();
+
+    document.getElementById("homePage").classList.remove("hidden");
+
+    renderHome();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+function showCategory(category) {
+
+    hidePages();
+
+    document.getElementById("homePage").classList.remove("hidden");
+
+    renderHome(category);
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+function showSearch() {
+
+    hidePages();
+
+    document.getElementById("searchPage").classList.remove("hidden");
+
+    document.getElementById("searchInput").focus();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+function goBack() {
+
+    if (document.referrer && history.length > 1) {
+        history.back();
+    } else {
+        showHome();
+    }
+}
+
+
+/* =========================================================
+   HOME
+   ========================================================= */
+
+function renderHome(category = "") {
+
+    let articles = [...spotlightArticles];
+
+    if (category) {
+        articles = articles.filter(article =>
+            String(article.category || "").toLowerCase() === category.toLowerCase()
+        );
+    }
+
+    const featuredContainer =
+        document.getElementById("featuredContainer");
+
+    const grid =
+        document.getElementById("articleGrid");
+
+    const count =
+        document.getElementById("articleCount");
+
+    if (category) {
+
+        featuredContainer.innerHTML = `
+            <div class="section-heading" style="margin-bottom:25px;">
+                <h2>${escapeHTML(category)}</h2>
+                <span>Spotlight</span>
+            </div>
+        `;
+
+        grid.innerHTML = renderCards(articles);
+
+        count.textContent =
+            articles.length + (articles.length === 1 ? " Artikel" : " Artikel");
+
+        return;
+    }
+
+    if (!articles.length) {
+
+        featuredContainer.innerHTML = `
+            <div class="empty">
+                Noch keine Spotlight-Artikel veröffentlicht.
+            </div>
+        `;
+
+        grid.innerHTML = "";
+
+        count.textContent = "";
+
+        return;
+    }
+
+    const featured = articles[0];
+
+    featuredContainer.innerHTML = renderFeatured(featured);
+
+    const remaining = articles.slice(1);
+
+    grid.innerHTML = renderCards(remaining);
+
+    count.textContent =
+        articles.length +
+        (articles.length === 1 ? " Artikel" : " Artikel");
+}
+
+
+function renderFeatured(article) {
+
+    const images = getImages(article);
+
+    const imageHTML = images.length
+        ? `<img src="${escapeHTML(images[0])}" alt="">`
+        : `<div class="featured-image no-image">n:</div>`;
+
+    return `
+        <div class="featured">
+
+            <div class="featured-image">
+                ${imageHTML}
+            </div>
+
+            <div class="featured-content">
+
+                <div class="featured-category">
+                    ${escapeHTML(article.category || "Spotlight")}
+                </div>
+
+                <h2>
+                    ${escapeHTML(article.title || "Ohne Titel")}
+                </h2>
+
+                <p>
+                    ${escapeHTML(article.description || "")}
+                </p>
+
+                <button
+                    class="read-btn"
+                    onclick="openArticle('${escapeHTML(article.id)}')"
+                >
+                    Artikel lesen
+                </button>
+
+            </div>
+
+        </div>
+    `;
+}
+
+
+function renderCards(articles) {
+
+    if (!articles.length) {
+
+        return `
+            <div class="empty" style="grid-column:1/-1;">
+                Keine Artikel in dieser Kategorie gefunden.
+            </div>
+        `;
+    }
+
+    return articles.map(article => {
+
+        const images = getImages(article);
+
+        const imageHTML = images.length
+            ? `<img src="${escapeHTML(images[0])}" alt="">`
+            : `<span>n:</span>`;
+
+        return `
+            <article
+                class="article-card"
+                onclick="openArticle('${escapeHTML(article.id)}')"
+                style="cursor:pointer;"
+            >
+
+                <div class="card-image">
+                    ${imageHTML}
+                </div>
+
+                <div class="card-content">
+
+                    <div class="card-category">
+                        ${escapeHTML(article.category || "Spotlight")}
+                    </div>
+
+                    <h3 class="card-title">
+                        ${escapeHTML(article.title || "Ohne Titel")}
+                    </h3>
+
+                    <p class="card-description">
+                        ${escapeHTML(article.description || "")}
+                    </p>
+
+                    <div class="card-meta">
+                        ${formatDate(article.created_at)}
+                    </div>
+
+                </div>
+
+            </article>
+        `;
+
+    }).join("");
+}
+
+
+/* =========================================================
+   ARTICLE
+   ========================================================= */
+
+function openArticle(id) {
+
+    const article = spotlightArticles.find(
+        item => String(item.id) === String(id)
+    );
+
+    if (!article) return;
+
+    hidePages();
+
+    document.getElementById("articlePage").classList.remove("hidden");
+
+    document.getElementById("articleCategory").textContent =
+        article.category || "Spotlight";
+
+    document.getElementById("articleTitle").textContent =
+        article.title || "";
+
+    document.getElementById("articleLead").textContent =
+        article.description || "";
+
+    document.getElementById("articleMeta").textContent =
+        "Veröffentlicht am " + formatDate(article.created_at);
+
+    const images = getImages(article);
+
+    currentArticleImages = images;
+
+    const mainImageBox =
+        document.getElementById("articleMainImage");
+
+    const gallery =
+        document.getElementById("articleGallery");
+
+    if (images.length) {
+
+        mainImageBox.innerHTML = `
+            <img
+                class="article-main-image"
+                src="${escapeHTML(images[0])}"
+                alt="${escapeHTML(article.title || "")}"
+                onclick="openLightbox(0)"
+                style="cursor:zoom-in;"
+            >
+        `;
+
+        if (images.length > 1) {
+
+            gallery.innerHTML = images.map((url, index) => `
+                <button
+                    class="gallery-item"
+                    onclick="openLightbox(${index})"
+                    aria-label="Bild ${index + 1} öffnen"
+                >
+                    <img src="${escapeHTML(url)}" alt="">
+                </button>
+            `).join("");
+
+        } else {
+            gallery.innerHTML = "";
+        }
+
+    } else {
+
+        mainImageBox.innerHTML = `
+            <div class="article-main-placeholder">n:</div>
+        `;
+
+        gallery.innerHTML = "";
+    }
+
+    const videoBox =
+        document.getElementById("articleVideo");
+
+    if (article.video_url) {
+
+        videoBox.innerHTML = `
+            <video controls preload="metadata">
+                <source src="${escapeHTML(article.video_url)}">
+                Dein Browser unterstützt dieses Video nicht.
+            </video>
+        `;
+
+    } else {
+
+        videoBox.innerHTML = "";
+    }
+
+    document.getElementById("articleContent").innerHTML =
+        formatArticleContent(article.content || "");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+    history.replaceState(
+        null,
+        "",
+        "#article-" + encodeURIComponent(article.id)
+    );
+}
+
+
+/* =========================================================
+   LIGHTBOX
+   ========================================================= */
+
+function openLightbox(index) {
+
+    if (!currentArticleImages.length) return;
+
+    currentLightboxIndex = index;
+
+    updateLightbox();
+
+    document.getElementById("lightbox").classList.add("open");
+
+    document.body.style.overflow = "hidden";
+}
+
+
+function updateLightbox() {
+
+    const image =
+        document.getElementById("lightboxImage");
+
+    const counter =
+        document.getElementById("lightboxCounter");
+
+    image.src = currentArticleImages[currentLightboxIndex];
+
+    counter.textContent =
+        (currentLightboxIndex + 1) +
+        " / " +
+        currentArticleImages.length;
+}
+
+
+function closeLightbox(event) {
+
+    if (event && event.target) {
+
+        const tag = event.target.tagName;
+
+        if (
+            tag === "IMG" ||
+            tag === "BUTTON"
+        ) {
+            return;
+        }
+    }
+
+    document.getElementById("lightbox").classList.remove("open");
+
+    document.body.style.overflow = "";
+}
+
+
+function previousImage(event) {
+
+    if (event) event.stopPropagation();
+
+    if (!currentArticleImages.length) return;
+
+    currentLightboxIndex--;
+
+    if (currentLightboxIndex < 0) {
+        currentLightboxIndex =
+            currentArticleImages.length - 1;
+    }
+
+    updateLightbox();
+}
+
+
+function nextImage(event) {
+
+    if (event) event.stopPropagation();
+
+    if (!currentArticleImages.length) return;
+
+    currentLightboxIndex++;
+
+    if (
+        currentLightboxIndex >=
+        currentArticleImages.length
+    ) {
+        currentLightboxIndex = 0;
+    }
+
+    updateLightbox();
+}
+
+
+document.addEventListener("keydown", event => {
+
+    const lightbox =
+        document.getElementById("lightbox");
+
+    if (!lightbox.classList.contains("open")) return;
+
+    if (event.key === "Escape") {
+        closeLightbox();
+    }
+
+    if (event.key === "ArrowLeft") {
+        previousImage();
+    }
+
+    if (event.key === "ArrowRight") {
+        nextImage();
+    }
+});
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+function performSearch() {
+
+    const query =
+        document.getElementById("searchInput")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const resultBox =
+        document.getElementById("searchResults");
+
+    if (!query) {
+
+        resultBox.innerHTML = `
+            <div class="empty" style="grid-column:1/-1;">
+                Gib einen Suchbegriff ein.
+            </div>
+        `;
+
+        return;
+    }
+
+    const results = spotlightArticles.filter(article => {
+
+        const combined = [
+            article.title,
+            article.description,
+            article.category,
+            article.content
+        ]
+            .filter(Boolean)
+            .join(" ")
+            .toLowerCase();
+
+        return combined.includes(query);
+    });
+
+    resultBox.innerHTML = renderCards(results);
+
+}
+
+
+/* =========================================================
+   AUTH
+   ========================================================= */
+
+async function login() {
+
+    clearStatus("loginStatus");
+
+    const email =
+        document.getElementById("loginEmail").value.trim();
+
+    const password =
+        document.getElementById("loginPassword").value;
+
+    if (!email || !password) {
+
+        showStatus(
+            "loginStatus",
+            "Bitte E-Mail und Passwort eingeben.",
+            "error"
+        );
+
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            SUPABASE_URL + "/auth/v1/token?grant_type=password",
+            {
+                method: "POST",
+
+                headers: {
+                    "apikey": SUPABASE_KEY,
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    email,
+                    password
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                data.error_description ||
+                data.msg ||
+                "Anmeldung fehlgeschlagen."
+            );
+        }
+
+        sessionStorage.setItem(
+            "nAccessToken",
+            data.access_token
+        );
+
+        sessionStorage.setItem(
+            "nUser",
+            JSON.stringify(data.user || {})
+        );
+
+        showAdminDashboard();
+
+    } catch (error) {
+
+        console.error(error);
+
+        showStatus(
+            "loginStatus",
+            error.message || "Anmeldung fehlgeschlagen.",
+            "error"
+        );
+    }
+}
+
+
+function logout() {
+
+    sessionStorage.removeItem("nAccessToken");
+    sessionStorage.removeItem("nUser");
+
+    editingId = null;
+
+    showAdmin();
+}
+
+
+function checkSession() {
+
+    const token =
+        sessionStorage.getItem("nAccessToken");
+
+    if (token) {
+        showAdminDashboard();
+    }
+}
+
+
+function showAdmin() {
+
+    hidePages();
+
+    document.getElementById("adminPage").classList.remove("hidden");
+
+    const token =
+        sessionStorage.getItem("nAccessToken");
+
+    if (token) {
+        showAdminDashboard();
+    } else {
+        document.getElementById("loginBox").classList.remove("hidden");
+        document.getElementById("adminDashboard").classList.add("hidden");
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+function showAdminDashboard() {
+
+    document.getElementById("loginBox").classList.add("hidden");
+
+    document
+        .getElementById("adminDashboard")
+        .classList.remove("hidden");
+
+    renderAdminArticles();
+}
+
+
+/* =========================================================
+   ADMIN IMAGE HANDLING
+   ========================================================= */
+
+function handleImageSelection(event) {
+
+    const files =
+        Array.from(event.target.files || []);
+
+    selectedImageFiles.push(...files);
+
+    renderAdminImages();
+
+    event.target.value = "";
+}
+
+
+function renderAdminImages() {
+
+    const container =
+        document.getElementById("adminImages");
+
+    let html = "";
+
+    editingImageUrls.forEach((url, index) => {
+
+        html += `
+            <div class="media-preview">
+
+                <img
+                    src="${escapeHTML(url)}"
+                    alt=""
+                >
+
+                <button
+                    class="media-remove"
+                    onclick="removeExistingImage(${index})"
+                    title="Bild entfernen"
+                >
+                    ×
+                </button>
+
+            </div>
+        `;
+    });
+
+    selectedImageFiles.forEach((file, index) => {
+
+        const previewURL =
+            URL.createObjectURL(file);
+
+        html += `
+            <div class="media-preview">
+
+                <img
+                    src="${previewURL}"
+                    alt=""
+                >
+
+                <button
+                    class="media-remove"
+                    onclick="removeSelectedImage(${index})"
+                    title="Bild entfernen"
+                >
+                    ×
+                </button>
+
+            </div>
+        `;
+    });
+
+    container.innerHTML = html;
+}
+
+
+function removeExistingImage(index) {
+
+    editingImageUrls.splice(index, 1);
+
+    renderAdminImages();
+}
+
+
+function removeSelectedImage(index) {
+
+    selectedImageFiles.splice(index, 1);
+
+    renderAdminImages();
+}
+
+
+/* =========================================================
+   ADMIN VIDEO
+   ========================================================= */
+
+function handleVideoSelection(event) {
+
+    const file =
+        event.target.files?.[0];
+
+    if (!file) return;
+
+    if (file.size > 100 * 1024 * 1024) {
+
+        showStatus(
+            "adminStatus",
+            "Das Video darf maximal 100 MB groß sein.",
+            "error"
+        );
+
+        event.target.value = "";
+
+        return;
+    }
+
+    selectedVideoFile = file;
+
+    renderAdminVideo();
+
+    event.target.value = "";
+}
+
+
+function renderAdminVideo() {
+
+    const container =
+        document.getElementById("adminVideo");
+
+    if (selectedVideoFile) {
+
+        const url =
+            URL.createObjectURL(selectedVideoFile);
+
+        container.innerHTML = `
+            <video controls>
+                <source src="${url}">
+            </video>
+
+            <button
+                class="danger-btn"
+                style="margin-top:8px;"
+                onclick="removeSelectedVideo()"
+            >
+                Video entfernen
+            </button>
+        `;
+
+        return;
+    }
+
+    if (editingVideoUrl) {
+
+        container.innerHTML = `
+            <video controls preload="metadata">
+                <source src="${escapeHTML(editingVideoUrl)}">
+            </video>
+
+            <button
+                class="danger-btn"
+                style="margin-top:8px;"
+                onclick="removeExistingVideo()"
+            >
+                Vorhandenes Video entfernen
+            </button>
+        `;
+
+        return;
+    }
+
+    container.innerHTML = "";
+}
+
+
+function removeSelectedVideo() {
+
+    selectedVideoFile = null;
+
+    renderAdminVideo();
+}
+
+
+function removeExistingVideo() {
+
+    editingVideoUrl = "";
+
+    renderAdminVideo();
+}
+
+
+/* =========================================================
+   STORAGE UPLOAD
+   ========================================================= */
+
+async function uploadFile(file, prefix) {
+
+    const token =
+        sessionStorage.getItem("nAccessToken");
+
+    if (!token) {
+        throw new Error("Nicht angemeldet.");
+    }
+
+    const extension =
+        file.name.includes(".")
+            ? file.name.substring(file.name.lastIndexOf("."))
+            : "";
+
+    const filename =
+        prefix +
+        "-" +
+        Date.now() +
+        "-" +
+        Math.random().toString(36).slice(2, 9) +
+        extension.toLowerCase();
+
+    const response = await fetch(
+        SUPABASE_URL +
+        "/storage/v1/object/" +
+        STORAGE_BUCKET +
+        "/" +
+        encodeURIComponent(filename),
+        {
+            method: "POST",
+
+            headers: {
+                "apikey": SUPABASE_KEY,
+                "Authorization": "Bearer " + token,
+                "Content-Type": file.type || "application/octet-stream",
+                "x-upsert": "false"
+            },
+
+            body: file
+        }
+    );
+
+    const text = await response.text();
+
+    let data = null;
+
+    try {
+        data = text ? JSON.parse(text) : null;
+    } catch {
+        data = null;
+    }
+
+    if (!response.ok) {
+
+        throw new Error(
+            data?.message ||
+            data?.error ||
+            "Upload fehlgeschlagen."
+        );
+    }
+
+    return (
+        SUPABASE_URL +
+        "/storage/v1/object/public/" +
+        STORAGE_BUCKET +
+        "/" +
+        encodeURIComponent(filename)
+    );
+}
+
+
+async function uploadSelectedImages() {
+
+    const uploaded = [];
+
+    for (const file of selectedImageFiles) {
+
+        if (file.size > 10 * 1024 * 1024) {
+            throw new Error(
+                `Das Bild "${file.name}" ist größer als 10 MB.`
+            );
+        }
+
+        if (!file.type.startsWith("image/")) {
+            throw new Error(
+                `"${file.name}" ist kein Bild.`
+            );
+        }
+
+        const url =
+            await uploadFile(
+                file,
+                "spotlight"
+            );
+
+        uploaded.push(url);
+    }
+
+    return uploaded;
+}
+
+
+async function uploadSelectedVideo() {
+
+    if (!selectedVideoFile) {
+        return "";
+    }
+
+    if (selectedVideoFile.size > 100 * 1024 * 1024) {
+        throw new Error(
+            "Das Video darf maximal 100 MB groß sein."
+        );
+    }
+
+    if (!selectedVideoFile.type.startsWith("video/")) {
+        throw new Error(
+            "Die ausgewählte Datei ist kein Video."
+        );
+    }
+
+    return await uploadFile(
+        selectedVideoFile,
+        "spotlight-video"
+    );
+}
+
+
+/* =========================================================
+   SAVE ARTICLE
+   ========================================================= */
+
+async function saveArticle() {
+
+    clearStatus("adminStatus");
+
+    const token =
+        sessionStorage.getItem("nAccessToken");
+
+    if (!token) {
+
+        showStatus(
+            "adminStatus",
+            "Bitte zuerst anmelden.",
+            "error"
+        );
+
+        return;
+    }
+
+    const title =
+        document.getElementById("editTitle").value.trim();
+
+    const description =
+        document.getElementById("editDescription").value.trim();
+
+    const category =
+        document.getElementById("editCategory").value;
+
+    const content =
+        document.getElementById("editContent").value.trim();
+
+    if (!title) {
+
+        showStatus(
+            "adminStatus",
+            "Bitte einen Titel eingeben.",
+            "error"
+        );
+
+        return;
+    }
+
+    if (!content) {
+
+        showStatus(
+            "adminStatus",
+            "Bitte einen Artikeltext eingeben.",
+            "error"
+        );
+
+        return;
+    }
+
+    const saveButton =
+        document.querySelector(".form-actions .primary-btn");
+
+    const originalButtonText =
+        saveButton.textContent;
+
+    saveButton.disabled = true;
+    saveButton.textContent = "Wird gespeichert...";
+
+    try {
+
+        /*
+         * 1. Neue Bilder hochladen
+         */
+
+        const uploadedImages =
+            await uploadSelectedImages();
+
+        const finalImages = [
+            ...editingImageUrls,
+            ...uploadedImages
+        ];
+
+        /*
+         * 2. Neues Video hochladen
+         */
+
+        let finalVideoUrl =
+            editingVideoUrl || "";
+
+        if (selectedVideoFile) {
+
+            finalVideoUrl =
+                await uploadSelectedVideo();
+        }
+
+        /*
+         * 3. Hauptbild = erstes Bild
+         */
+
+        const finalImageUrl =
+            finalImages.length
+                ? finalImages[0]
+                : null;
+
+        /*
+         * 4. Daten speichern
+         */
+
+        const articleData = {
+            title,
+            description,
+            category,
+            content,
+            image_url: finalImageUrl,
+            image_urls: finalImages,
+            video_url: finalVideoUrl || null
+        };
+
+        if (editingId) {
+
+            await supabaseRequest(
+                "/rest/v1/spotlight_articles?id=eq." +
+                encodeURIComponent(editingId),
+                {
+                    method: "PATCH",
+                    headers: {
+                        "Prefer": "return=representation"
+                    },
+                    body: JSON.stringify(articleData)
+                }
+            );
+
+            showStatus(
+                "adminStatus",
+                "Artikel wurde aktualisiert.",
+                "success"
+            );
+
+        } else {
+
+            await supabaseRequest(
+                "/rest/v1/spotlight_articles",
+                {
+                    method: "POST",
+                    headers: {
+                        "Prefer": "return=representation"
+                    },
+                    body: JSON.stringify(articleData)
+                }
+            );
+
+            showStatus(
+                "adminStatus",
+                "Artikel wurde veröffentlicht.",
+                "success"
+            );
+        }
+
+        editingId = null;
+
+        await loadSpotlightArticles();
+
+        renderAdminArticles();
+
+        clearEditor(false);
+
+        document.getElementById("editorHeading").textContent =
+            "Neuen Artikel erstellen";
+
+    } catch (error) {
+
+        console.error(error);
+
+        showStatus(
+            "adminStatus",
+            error.message || "Beim Speichern ist ein Fehler aufgetreten.",
+            "error"
+        );
+
+    } finally {
+
+        saveButton.disabled = false;
+
+        saveButton.textContent =
+            originalButtonText;
+    }
+}
+
+
+/* =========================================================
+   EDIT ARTICLE
+   ========================================================= */
+
+function editArticle(id) {
+
+    const article =
+        spotlightArticles.find(
+            item => String(item.id) === String(id)
+        );
+
+    if (!article) return;
+
+    editingId = article.id;
+
+    document.getElementById("editorHeading").textContent =
+        "Artikel bearbeiten";
+
+    document.getElementById("editTitle").value =
+        article.title || "";
+
+    document.getElementById("editDescription").value =
+        article.description || "";
+
+    document.getElementById("editCategory").value =
+        article.category || "Influencer";
+
+    document.getElementById("editContent").value =
+        article.content || "";
+
+    editingImageUrls =
+        getImages(article);
+
+    selectedImageFiles = [];
+
+    editingVideoUrl =
+        article.video_url || "";
+
+    selectedVideoFile = null;
+
+    renderAdminImages();
+
+    renderAdminVideo();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================================================
+   DUPLICATE
+   ========================================================= */
+
+function duplicateArticle(id) {
+
+    const article =
+        spotlightArticles.find(
+            item => String(item.id) === String(id)
+        );
+
+    if (!article) return;
+
+    editingId = null;
+
+    document.getElementById("editorHeading").textContent =
+        "Artikel duplizieren";
+
+    document.getElementById("editTitle").value =
+        (article.title || "") + " – Kopie";
+
+    document.getElementById("editDescription").value =
+        article.description || "";
+
+    document.getElementById("editCategory").value =
+        article.category || "Influencer";
+
+    document.getElementById("editContent").value =
+        article.content || "";
+
+    editingImageUrls =
+        getImages(article);
+
+    selectedImageFiles = [];
+
+    editingVideoUrl =
+        article.video_url || "";
+
+    selectedVideoFile = null;
+
+    renderAdminImages();
+
+    renderAdminVideo();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================================================
+   CLEAR EDITOR
+   ========================================================= */
+
+function clearEditor(clearStatusToo = true) {
+
+    editingId = null;
+
+    document.getElementById("editorHeading").textContent =
+        "Neuen Artikel erstellen";
+
+    document.getElementById("editTitle").value = "";
+
+    document.getElementById("editDescription").value = "";
+
+    document.getElementById("editCategory").value =
+        "Influencer";
+
+    document.getElementById("editContent").value = "";
+
+    editingImageUrls = [];
+
+    selectedImageFiles = [];
+
+    editingVideoUrl = "";
+
+    selectedVideoFile = null;
+
+    document.getElementById("imageFiles").value = "";
+
+    document.getElementById("videoFile").value = "";
+
+    renderAdminImages();
+
+    renderAdminVideo();
+
+    if (clearStatusToo) {
+        clearStatus("adminStatus");
+    }
+}
+
+
+/* =========================================================
+   DELETE ARTICLE
+   ========================================================= */
+
+async function deleteArticle(id) {
+
+    const article =
+        spotlightArticles.find(
+            item => String(item.id) === String(id)
+        );
+
+    if (!article) return;
+
+    const confirmed =
+        confirm(
+            "Diesen Spotlight-Artikel wirklich löschen?"
+        );
+
+    if (!confirmed) return;
+
+    try {
+
+        await supabaseRequest(
+            "/rest/v1/spotlight_articles?id=eq." +
+            encodeURIComponent(id),
+            {
+                method: "DELETE"
+            }
+        );
+
+        await loadSpotlightArticles();
+
+        renderAdminArticles();
+
+        showStatus(
+            "adminStatus",
+            "Artikel wurde gelöscht.",
+            "success"
+        );
+
+    } catch (error) {
+
+        console.error(error);
+
+        showStatus(
+            "adminStatus",
+            error.message || "Artikel konnte nicht gelöscht werden.",
+            "error"
+        );
+    }
+}
+
+
+/* =========================================================
+   ADMIN ARTICLE LIST
+   ========================================================= */
+
+function renderAdminArticles() {
+
+    const container =
+        document.getElementById("adminArticles");
+
+    const count =
+        document.getElementById("adminArticleCount");
+
+    if (!container) return;
+
+    count.textContent =
+        spotlightArticles.length +
+        (spotlightArticles.length === 1
+            ? " Artikel"
+            : " Artikel");
+
+    if (!spotlightArticles.length) {
+
+        container.innerHTML = `
+            <div class="empty">
+                Noch keine Spotlight-Artikel vorhanden.
+            </div>
+        `;
+
+        return;
+    }
+
+    container.innerHTML =
+        spotlightArticles.map(article => {
+
+            const images =
+                getImages(article);
+
+            const imageHTML =
+                images.length
+                    ? `<img src="${escapeHTML(images[0])}" alt="">`
+                    : "";
+
+            return `
+                <div class="admin-item">
+
+                    <div class="admin-item-image">
+                        ${imageHTML}
+                    </div>
+
+                    <div class="admin-item-info">
+
+                        <div class="admin-item-title">
+                            ${escapeHTML(article.title || "Ohne Titel")}
+                        </div>
+
+                        <div class="admin-item-meta">
+                            ${escapeHTML(article.category || "Spotlight")}
+                            ·
+                            ${formatDate(article.created_at)}
+                            ${images.length ? " · " + images.length + " Bild(er)" : ""}
+                            ${article.video_url ? " · Video" : ""}
+                        </div>
+
+                    </div>
+
+                    <div class="admin-item-actions">
+
+                        <button
+                            class="secondary-btn"
+                            onclick="openArticle('${escapeHTML(article.id)}')"
+                        >
+                            Ansehen
+                        </button>
+
+                        <button
+                            class="secondary-btn"
+                            onclick="editArticle('${escapeHTML(article.id)}')"
+                        >
+                            Bearbeiten
+                        </button>
+
+                        <button
+                            class="secondary-btn"
+                            onclick="duplicateArticle('${escapeHTML(article.id)}')"
+                        >
+                            Duplizieren
+                        </button>
+
+                        <button
+                            class="danger-btn"
+                            onclick="deleteArticle('${escapeHTML(article.id)}')"
+                        >
+                            Löschen
+                        </button>
+
+                    </div>
+
+                </div>
+            `;
+
+        }).join("");
+}
+
+
+/* =========================================================
+   HASH ROUTING
+   ========================================================= */
+
+function handleHash() {
+
+    const hash =
+        window.location.hash;
+
+    if (hash.startsWith("#article-")) {
+
+        const id =
+            decodeURIComponent(
+                hash.substring("#article-".length)
+            );
+
+        const article =
+            spotlightArticles.find(
+                item => String(item.id) === String(id)
+            );
+
+        if (article) {
+            openArticle(id);
+            return;
+        }
+    }
+
+    showHome();
+}
+
+
+window.addEventListener("hashchange", handleHash);
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+async function init() {
+
+    await loadSpotlightArticles();
+
+    checkSession();
+
+    handleHash();
+}
+
+
+init();
+</script>
+
+</body>
+</html>
