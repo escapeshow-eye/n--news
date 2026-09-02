@@ -1293,7 +1293,7 @@ onclick="openTraffic()">
 <div>
 
 <h2>
-Verkehr & Route
+Verkehr &amp; Route
 </h2>
 
 <p>
@@ -1416,7 +1416,7 @@ id="searchBox">
 id="searchInput"
 type="search"
 placeholder="Nachrichten durchsuchen..."
-oninput="searchNews()">
+oninput="searchNews">
 
 </div>
 
@@ -1540,7 +1540,7 @@ n: Verkehr
 </div>
 
 <h1>
-Verkehr & Route
+Verkehr &amp; Route
 </h1>
 
 <p>
@@ -2395,22 +2395,12 @@ function getArticleImages(article){
 
 let images=[];
 
-
-/*
-    Neues JSON-Array
-*/
-
 if(Array.isArray(article.image_urls)){
 
 images=
 article.image_urls.filter(Boolean);
 
 }
-
-
-/*
-    Falls Supabase das Feld als String liefert
-*/
 
 else if(
 typeof article.image_urls==="string"
@@ -2445,11 +2435,6 @@ article.image_urls.trim()
 
 }
 
-
-/*
-    Kompatibilität mit alten Artikeln
-*/
-
 if(
 article.image_url &&
 !images.includes(article.image_url)
@@ -2458,7 +2443,6 @@ article.image_url &&
 images.unshift(article.image_url);
 
 }
-
 
 return images;
 
@@ -2577,7 +2561,6 @@ return;
 
 }
 
-
 if(
 activeFilter==="Alle" &&
 list.length>0
@@ -2616,7 +2599,6 @@ ${escapeHTML(first.title||"")}
 grid.appendChild(featured);
 
 }
-
 
 list.forEach((item,index)=>{
 
@@ -2822,25 +2804,21 @@ document
 .getElementById("article")
 .style.display="block";
 
-
 document
 .getElementById("articleMeta")
 .textContent=
 `${article.category||""} · ${article.region||""}`;
-
 
 document
 .getElementById("articleTitle")
 .textContent=
 article.title||"";
 
-
 const images=
 getArticleImages(article);
 
 const imageBox=
 document.getElementById("articleImage");
-
 
 if(images.length){
 
@@ -2865,11 +2843,9 @@ imageBox.onclick=null;
 
 }
 
-
 renderArticleGallery(images);
 
 renderArticleVideo(article.video_url);
-
 
 document
 .getElementById("articleText")
@@ -2877,9 +2853,7 @@ document
 escapeHTML(article.content||"")
 .replace(/\n/g,"<br><br>");
 
-
 renderArticleConnections(id);
-
 
 window.scrollTo({
 top:0,
@@ -2911,7 +2885,6 @@ document.createElement("div");
 
 gallery.className=
 "article-gallery";
-
 
 images.forEach(
 (url,index)=>{
@@ -2965,8 +2938,7 @@ return;
 const wrapper=
 document.createElement("div");
 
-wrapper.className=
-"article-video";
+wrapper.className="article-video";
 
 wrapper.innerHTML=`
 
@@ -3050,17 +3022,14 @@ document.getElementById("lightboxPrev");
 const next=
 document.getElementById("lightboxNext");
 
-
 image.src=
 lightboxImages[lightboxIndex];
 
 image.alt=
 `Bild ${lightboxIndex+1}`;
 
-
 counter.textContent=
 `${lightboxIndex+1} / ${lightboxImages.length}`;
-
 
 if(lightboxImages.length<=1){
 
@@ -3403,13 +3372,6 @@ return;
 
 }
 
-
-/*
-    Beim Bearbeiten werden neue Bilder
-    zusätzlich zu den bestehenden Bildern
-    gespeichert.
-*/
-
 selectedImageFiles.push(...files);
 
 renderAdminImages();
@@ -3430,11 +3392,6 @@ document.getElementById("imageAdminGrid");
 
 grid.innerHTML="";
 
-
-/*
-    EXISTIERENDE BILDER
-*/
-
 editingImageUrls.forEach(
 (url,index)=>{
 
@@ -3443,7 +3400,6 @@ document.createElement("div");
 
 item.className=
 "admin-image-item";
-
 
 item.innerHTML=`
 
@@ -3481,11 +3437,6 @@ grid.appendChild(item);
 
 }
 );
-
-
-/*
-    NEUE AUSGEWÄHLTE BILDER
-*/
 
 selectedImageFiles.forEach(
 (file,index)=>{
@@ -3538,7 +3489,6 @@ item.appendChild(info);
 
 grid.appendChild(item);
 
-
 const reader=
 new FileReader();
 
@@ -3554,11 +3504,6 @@ reader.readAsDataURL(file);
 
 }
 );
-
-
-/*
-    Wenn gar keine Bilder vorhanden sind
-*/
 
 if(
 !editingImageUrls.length &&
@@ -3610,16 +3555,10 @@ removedExistingImages.push(removed);
 
 editingImageUrls.splice(index,1);
 
-
-/*
-    Hauptbild neu setzen
-*/
-
 editingImageUrl=
 editingImageUrls.length
 ?editingImageUrls[0]
 :null;
-
 
 renderAdminImages();
 
@@ -3997,7 +3936,6 @@ const button=
 document
 .getElementById("saveButton");
 
-
 if(
 !title||
 !description||
@@ -4013,7 +3951,6 @@ message.textContent=
 return;
 
 }
-
 
 const token=
 sessionStorage.getItem(
@@ -4031,7 +3968,6 @@ return;
 
 }
 
-
 try{
 
 button.disabled=true;
@@ -4039,16 +3975,10 @@ button.disabled=true;
 button.textContent=
 "Speichern...";
 
-
-/* =====================================================
-BILDER
-===================================================== */
-
 let finalImages=
 [
 ...editingImageUrls
 ];
-
 
 if(
 selectedImageFiles.length
@@ -4080,34 +4010,18 @@ finalImages.push(url);
 
 }
 
-
-/*
-    Bilder normalisieren
-*/
-
 finalImages=
 finalImages.filter(
 url=>Boolean(url)
 );
-
-
-/*
-    Erstes Bild ist Hauptbild
-*/
 
 const finalImageUrl=
 finalImages.length
 ?finalImages[0]
 :null;
 
-
-/* =====================================================
-VIDEO
-===================================================== */
-
 let finalVideoUrl=
 editingVideoUrl||null;
-
 
 if(selectedVideoFile){
 
@@ -4122,11 +4036,6 @@ selectedVideoFile
 );
 
 }
-
-
-/* =====================================================
-PAYLOAD
-===================================================== */
 
 const payload={
 
@@ -4147,11 +4056,6 @@ image_urls:finalImages,
 video_url:finalVideoUrl
 
 };
-
-
-/* =====================================================
-NEU
-===================================================== */
 
 if(editingId===null){
 
@@ -4184,11 +4088,6 @@ message.textContent=
 
 }
 
-
-/* =====================================================
-BEARBEITEN
-===================================================== */
-
 else{
 
 await supabaseRequest(
@@ -4220,17 +4119,7 @@ message.textContent=
 
 }
 
-
-/*
-    Formular zurücksetzen
-*/
-
 clearForm();
-
-
-/*
-    News neu laden
-*/
 
 await loadNews();
 
@@ -4276,7 +4165,6 @@ return;
 
 list.innerHTML="";
 
-
 if(!articles.length){
 
 list.innerHTML=`
@@ -4291,7 +4179,6 @@ return;
 
 }
 
-
 articles.forEach(
 article=>{
 
@@ -4301,7 +4188,6 @@ document.createElement("div");
 item.className=
 "admin-item";
 
-
 const imageCount=
 getArticleImages(article).length;
 
@@ -4309,7 +4195,6 @@ const video=
 article.video_url
 ?" · Video"
 :"";
-
 
 item.innerHTML=`
 
@@ -4346,7 +4231,6 @@ ${video}
 
 </div>
 
-
 <div class="admin-actions">
 
 <button
@@ -4357,7 +4241,6 @@ Bearbeiten
 
 </button>
 
-
 <button
 class="small delete"
 onclick="deleteArticle(${article.id})">
@@ -4365,7 +4248,6 @@ onclick="deleteArticle(${article.id})">
 Löschen
 
 </button>
-
 
 <button
 class="small"
@@ -4375,7 +4257,6 @@ onclick="manageConnections(${article.id})">
 Verbinden
 
 </button>
-
 
 <button
 class="small"
@@ -4434,55 +4315,41 @@ selectedVideoFile=null;
 
 removedExistingImages=[];
 
-
-/* FORM */
-
 document
 .getElementById("formTitle")
 .textContent=
 "Artikel bearbeiten";
-
 
 document
 .getElementById("title")
 .value=
 article.title||"";
 
-
 document
 .getElementById("description")
 .value=
 article.description||"";
-
 
 document
 .getElementById("category")
 .value=
 article.category||"Deutschland";
 
-
 document
 .getElementById("region")
 .value=
 article.region||"";
-
 
 document
 .getElementById("content")
 .value=
 article.content||"";
 
-
-/* BILDER */
-
 document
 .getElementById("imageFile")
 .value="";
 
 renderAdminImages();
-
-
-/* VIDEO */
 
 document
 .getElementById("videoFile")
@@ -4491,7 +4358,6 @@ document
 document
 .getElementById("videoPreview")
 .style.display="none";
-
 
 const currentVideoBox=
 document.getElementById(
@@ -4502,7 +4368,6 @@ const currentVideoPreview=
 document.getElementById(
 "currentVideoPreview"
 );
-
 
 if(editingVideoUrl){
 
@@ -4524,17 +4389,14 @@ currentVideoBox.style.display=
 
 }
 
-
 document
 .getElementById("saveButton")
 .textContent=
 "Änderungen speichern";
 
-
 document
 .getElementById("formMessage")
 .textContent="";
-
 
 window.scrollTo({
 top:0,
@@ -4580,42 +4442,35 @@ selectedVideoFile=null;
 
 removedExistingImages=[];
 
-
 document
 .getElementById("formTitle")
 .textContent=
 "Artikel duplizieren";
-
 
 document
 .getElementById("title")
 .value=
 `${article.title||""} – Update`;
 
-
 document
 .getElementById("description")
 .value=
 article.description||"";
-
 
 document
 .getElementById("category")
 .value=
 article.category||"Deutschland";
 
-
 document
 .getElementById("region")
 .value=
 article.region||"";
 
-
 document
 .getElementById("content")
 .value=
 article.content||"";
-
 
 document
 .getElementById("imageFile")
@@ -4623,16 +4478,13 @@ document
 
 renderAdminImages();
 
-
 document
 .getElementById("videoFile")
 .value="";
 
-
 document
 .getElementById("videoPreview")
 .style.display="none";
-
 
 const currentVideoBox=
 document.getElementById(
@@ -4643,7 +4495,6 @@ const currentVideoPreview=
 document.getElementById(
 "currentVideoPreview"
 );
-
 
 if(editingVideoUrl){
 
@@ -4661,12 +4512,10 @@ currentVideoBox.style.display=
 
 }
 
-
 document
 .getElementById("saveButton")
 .textContent=
 "Als neuen Artikel veröffentlichen";
-
 
 window.scrollTo({
 top:0,
@@ -4696,53 +4545,43 @@ selectedVideoFile=null;
 
 removedExistingImages=[];
 
-
 document
 .getElementById("formTitle")
 .textContent=
 "Neuer Artikel";
 
-
 document
 .getElementById("title")
 .value="";
 
-
 document
 .getElementById("description")
 .value="";
-
 
 document
 .getElementById("category")
 .value=
 "Deutschland";
 
-
 document
 .getElementById("region")
 .value="";
-
 
 document
 .getElementById("content")
 .value="";
 
-
 document
 .getElementById("imageFile")
 .value="";
-
 
 document
 .getElementById("videoFile")
 .value="";
 
-
 document
 .getElementById("imageAdminGrid")
 .innerHTML="";
-
 
 const videoPreview=
 document.getElementById(
@@ -4757,7 +4596,6 @@ videoPreview.removeAttribute(
 
 videoPreview.style.display=
 "none";
-
 
 const currentVideoBox=
 document.getElementById(
@@ -4778,12 +4616,10 @@ currentVideoPreview.removeAttribute(
 currentVideoBox.style.display=
 "none";
 
-
 document
 .getElementById("saveButton")
 .textContent=
 "Veröffentlichen";
-
 
 document
 .getElementById("formMessage")
@@ -4819,7 +4655,6 @@ return;
 
 }
 
-
 const token=
 sessionStorage.getItem(
 "nAccessToken"
@@ -4834,7 +4669,6 @@ alert(
 return;
 
 }
-
 
 try{
 
@@ -4851,7 +4685,6 @@ headers:{
 
 }
 );
-
 
 await loadNews();
 
@@ -4887,7 +4720,6 @@ articleConnections
 
 }
 
-
 function getConnections(id){
 
 return Array.isArray(
@@ -4897,7 +4729,6 @@ articleConnections[id]
 :[];
 
 }
-
 
 function connectArticles(a,b){
 
@@ -4945,7 +4776,6 @@ saveConnections();
 
 }
 
-
 function disconnectArticles(a,b){
 
 a=String(a);
@@ -4967,7 +4797,6 @@ x=>String(x)!==a
 saveConnections();
 
 }
-
 
 function manageConnections(id){
 
@@ -5075,7 +4904,6 @@ a=>String(a.id)===String(x)
 )
 .filter(Boolean);
 
-
 if(!related.length){
 
 box.innerHTML="";
@@ -5083,7 +4911,6 @@ box.innerHTML="";
 return;
 
 }
-
 
 box.innerHTML=`
 
@@ -5228,7 +5055,6 @@ const result=
 document
 .getElementById("routeResult");
 
-
 if(
 !start||
 !destination
@@ -5244,13 +5070,11 @@ return;
 
 }
 
-
 status.textContent=
 "Orte werden gesucht …";
 
 result.style.display=
 "none";
-
 
 try{
 
@@ -5266,13 +5090,11 @@ await geocode(destination);
 status.textContent=
 "Route wird berechnet …";
 
-
 const routeUrl=
 `https://router.project-osrm.org/route/v1/driving/`+
 `${startPoint.lon},${startPoint.lat};`+
 `${endPoint.lon},${endPoint.lat}`+
 `?overview=false`;
-
 
 const response=
 await fetch(routeUrl);
@@ -5284,7 +5106,6 @@ throw new Error(
 );
 
 }
-
 
 const data=
 await response.json();
@@ -5301,7 +5122,6 @@ throw new Error(
 
 }
 
-
 const route=
 data.routes[0];
 
@@ -5311,14 +5131,12 @@ route.distance/1000;
 const duration=
 route.duration/60;
 
-
 document
 .getElementById("routeDistance")
 .textContent=
 distance<10
 ?distance.toFixed(1)+" km"
 :Math.round(distance)+" km";
-
 
 const hours=
 Math.floor(
@@ -5330,14 +5148,12 @@ Math.round(
 duration%60
 );
 
-
 document
 .getElementById("routeDuration")
 .textContent=
 hours>0
 ?`${hours} h ${minutes} min`
 :`${minutes} min`;
-
 
 const minLat=
 Math.min(
@@ -5363,7 +5179,6 @@ startPoint.lon,
 endPoint.lon
 );
 
-
 const paddingLat=
 Math.max(
 (maxLat-minLat)*.25,
@@ -5376,13 +5191,11 @@ Math.max(
 .03
 );
 
-
 const bbox=
 `${minLon-paddingLon},`+
 `${minLat-paddingLat},`+
 `${maxLon+paddingLon},`+
 `${maxLat+paddingLat}`;
-
 
 const mapUrl=
 "https://www.openstreetmap.org/export/embed.html"+
@@ -5391,15 +5204,12 @@ encodeURIComponent(bbox)+
 "&layer=mapnik"+
 `&marker=${startPoint.lat},${startPoint.lon}`;
 
-
 document
 .getElementById("routeMap")
 .src=mapUrl;
 
-
 result.style.display=
 "block";
-
 
 status.innerHTML=
 `<strong>${escapeHTML(startPoint.name)}</strong>`+
@@ -5444,7 +5254,6 @@ const list=
 document
 .getElementById("trafficList");
 
-
 if(!roadInput){
 
 status.textContent=
@@ -5454,12 +5263,10 @@ return;
 
 }
 
-
 status.textContent=
 `Verkehrsmeldungen für ${roadInput} werden geladen …`;
 
 list.innerHTML="";
-
 
 try{
 
@@ -5467,7 +5274,6 @@ const base=
 "https://verkehr.autobahn.de/o/autobahn/"+
 encodeURIComponent(roadInput)+
 "/services/";
-
 
 const endpoints=[
 
@@ -5491,9 +5297,7 @@ url:base+"roadworks"
 
 ];
 
-
 let allItems=[];
-
 
 for(
 const endpoint
@@ -5518,7 +5322,6 @@ await response.json();
 
 const items=
 extractArray(data);
-
 
 items.forEach(
 item=>{
@@ -5550,7 +5353,6 @@ error
 
 }
 
-
 if(!allItems.length){
 
 status.innerHTML=
@@ -5560,10 +5362,8 @@ return;
 
 }
 
-
 status.innerHTML=
 `<strong>${allItems.length}</strong> aktuelle Meldung(en) für <strong>${escapeHTML(roadInput)}</strong>`;
-
 
 allItems.forEach(
 item=>{
@@ -5575,13 +5375,11 @@ box.className=
 "traffic-item "+
 item.nType;
 
-
 const title=
 getTrafficTitle(item);
 
 const description=
 getTrafficDescription(item);
-
 
 box.innerHTML=`
 
@@ -5602,7 +5400,6 @@ ${escapeHTML(description)}
 </p>
 
 `;
-
 
 list.appendChild(box);
 
@@ -5656,7 +5453,6 @@ const keys=[
 "items",
 "roads"
 ];
-
 
 for(
 const key
@@ -5726,13 +5522,11 @@ document
 "areaLocationSub"
 );
 
-
 name.textContent=
 "Standort wird gesucht …";
 
 sub.textContent=
 "Bitte Standortfreigabe bestätigen.";
-
 
 if(
 !navigator.geolocation
@@ -5748,7 +5542,6 @@ return;
 
 }
 
-
 navigator.geolocation.getCurrentPosition(
 
 async position=>{
@@ -5763,20 +5556,16 @@ position.coords.longitude
 
 };
 
-
 localStorage.setItem(
 "n_user_location",
 JSON.stringify(userLocation)
 );
 
-
 name.textContent=
 "Standort gefunden";
 
-
 sub.textContent=
 `${userLocation.lat.toFixed(4)}, ${userLocation.lon.toFixed(4)}`;
-
 
 await loadPersonalAreaData();
 
@@ -5882,7 +5671,6 @@ Region wird ermittelt …
 
 `;
 
-
 if(
 !loadSavedLocation()
 ){
@@ -5892,7 +5680,6 @@ requestLocation();
 return;
 
 }
-
 
 await loadPersonalAreaData();
 
@@ -5909,7 +5696,6 @@ return;
 
 }
 
-
 const name=
 document
 .getElementById(
@@ -5922,14 +5708,11 @@ document
 "areaLocationSub"
 );
 
-
 name.textContent=
 "Region wird ermittelt …";
 
-
 sub.textContent=
 `${userLocation.lat.toFixed(4)}, ${userLocation.lon.toFixed(4)}`;
-
 
 try{
 
@@ -5942,7 +5725,6 @@ userLocation.lon
 userPlace=
 place;
 
-
 name.textContent=
 place.city||
 place.town||
@@ -5951,7 +5733,6 @@ place.municipality||
 place.county||
 "Deine Region";
 
-
 sub.textContent=
 [
 place.state,
@@ -5959,7 +5740,6 @@ place.country
 ]
 .filter(Boolean)
 .join(" · ");
-
 
 await Promise.all([
 
@@ -6005,7 +5785,6 @@ const url=
 `&lat=${encodeURIComponent(lat)}`+
 `&lon=${encodeURIComponent(lon)}`;
 
-
 const response=
 await fetch(
 url,
@@ -6016,7 +5795,6 @@ headers:{
 }
 );
 
-
 if(!response.ok){
 
 throw new Error(
@@ -6024,7 +5802,6 @@ throw new Error(
 );
 
 }
-
 
 const data=
 await response.json();
@@ -6062,7 +5839,6 @@ const url=
 "weather_code,wind_speed_10m"+
 "&timezone=auto";
 
-
 const response=
 await fetch(url);
 
@@ -6073,7 +5849,6 @@ throw new Error(
 );
 
 }
-
 
 const data=
 await response.json();
@@ -6111,7 +5886,6 @@ getWeatherDescription(
 current.weather_code
 );
 
-
 box.innerHTML=`
 
 <div class="area-weather">
@@ -6140,7 +5914,6 @@ ${weather.icon}
 
 </div>
 
-
 <div class="weather-stat">
 
 <small>
@@ -6152,7 +5925,6 @@ ${humidity} %
 </strong>
 
 </div>
-
 
 <div class="weather-stat">
 
@@ -6166,7 +5938,6 @@ ${wind} km/h
 
 </div>
 
-
 <div class="weather-stat">
 
 <small>
@@ -6178,7 +5949,6 @@ ${rain} mm
 </strong>
 
 </div>
-
 
 <div class="weather-stat">
 
@@ -6304,7 +6074,6 @@ console.error(error);
 
 }
 
-
 if(!articles.length){
 
 list.innerHTML=`
@@ -6321,9 +6090,7 @@ return;
 
 }
 
-
 const regionNames=[];
-
 
 if(userPlace){
 
@@ -6355,7 +6122,6 @@ userPlace[key]
 
 }
 
-
 const regional=
 articles.filter(
 article=>{
@@ -6374,7 +6140,6 @@ String(article.description||"")
 )
 .toLowerCase();
 
-
 return regionNames.some(
 name=>
 name&&
@@ -6386,7 +6151,6 @@ content.includes(name)
 
 }
 );
-
 
 if(!regional.length){
 
@@ -6414,9 +6178,7 @@ return;
 
 }
 
-
 list.innerHTML="";
-
 
 regional
 .slice(0,6)
@@ -6431,7 +6193,6 @@ item.className=
 
 item.onclick=
 ()=>openArticle(article.id);
-
 
 item.innerHTML=`
 
@@ -6459,7 +6220,6 @@ article.title||""
 
 `;
 
-
 list.appendChild(item);
 
 }
@@ -6485,11 +6245,9 @@ return;
 
 }
 
-
 try{
 
 const radius=15000;
-
 
 const query=`
 
@@ -6545,7 +6303,6 @@ out center tags;
 
 `;
 
-
 const response=
 await fetch(
 "https://overpass-api.de/api/interpreter",
@@ -6555,7 +6312,6 @@ body:query
 }
 );
 
-
 if(!response.ok){
 
 throw new Error(
@@ -6563,7 +6319,6 @@ throw new Error(
 );
 
 }
-
 
 const data=
 await response.json();
@@ -6573,12 +6328,10 @@ Array.isArray(data.elements)
 ?data.elements
 :[];
 
-
 const unique=[];
 
 const seen=
 new Set();
-
 
 elements.forEach(
 item=>{
@@ -6591,17 +6344,14 @@ tags.name||
 tags.event||
 tags.description;
 
-
 if(!title){
 
 return;
 
 }
 
-
 const key=
 title.toLowerCase();
-
 
 if(seen.has(key)){
 
@@ -6609,9 +6359,7 @@ return;
 
 }
 
-
 seen.add(key);
-
 
 unique.push({
 
@@ -6635,7 +6383,6 @@ getEventType(tags)
 }
 );
 
-
 if(!unique.length){
 
 list.innerHTML=`
@@ -6652,9 +6399,7 @@ return;
 
 }
 
-
 list.innerHTML="";
-
 
 unique
 .slice(0,8)
@@ -6666,7 +6411,6 @@ document.createElement("div");
 
 card.className=
 "event-card";
-
 
 card.innerHTML=`
 
@@ -6697,7 +6441,6 @@ event.city
 </div>
 
 `;
-
 
 list.appendChild(card);
 
@@ -6780,7 +6523,6 @@ return;
 
 }
 
-
 const city=
 userPlace.city||
 userPlace.town||
@@ -6789,13 +6531,11 @@ userPlace.municipality||
 userPlace.county||
 "deiner Region";
 
-
 const state=
 userPlace.state||"";
 
 const postcode=
 userPlace.postcode||"";
-
 
 box.innerHTML=`
 
@@ -6816,7 +6556,6 @@ DEINE REGION
 
 </div>
 
-
 <div style="
 font-size:30px;
 font-weight:900;
@@ -6825,7 +6564,6 @@ letter-spacing:-1px;">
 ${escapeHTML(city)}
 
 </div>
-
 
 <div style="
 color:#777;
@@ -6856,52 +6594,46 @@ START
 showStart();
 
 </script>
+
+
+<!-- =====================================================
+N: SPOTLIGHT – NUR AUF DER STARTSEITE
+===================================================== -->
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Nur auf der Startseite ausführen
-    const path = window.location.pathname.toLowerCase();
-
-    if (
-        !path.endsWith("/index.html") &&
-        path !== "/" &&
-        path !== ""
-    ) {
-        return;
-    }
-
-    // Vorhandenes Karten-Gitter der Startseite suchen
     const areaGrid = document.querySelector(".area-grid");
 
     if (!areaGrid) {
         return;
     }
 
-    // Verhindern, dass die Karte doppelt eingefügt wird
-    if (areaGrid.querySelector('[data-spotlight-card="true"]')) {
+    if (areaGrid.querySelector(".spotlight-card")) {
         return;
     }
 
-    // Neue Spotlight-Karte erzeugen
-    const spotlight = document.createElement("a");
+    const spotlightCard = document.createElement("a");
 
-    spotlight.href = "spotlight.html";
-    spotlight.className = "area-card";
-    spotlight.setAttribute("data-spotlight-card", "true");
-    spotlight.style.textDecoration = "none";
-    spotlight.style.color = "inherit";
+    spotlightCard.className = "area-card spotlight-card";
+    spotlightCard.href = "spotlight.html";
+    spotlightCard.style.textDecoration = "none";
+    spotlightCard.style.color = "inherit";
 
-    spotlight.innerHTML = `
+    spotlightCard.innerHTML = `
         <div>
             <h2>n: spotlight</h2>
         </div>
 
-        <div class="area-arrow">→</div>
+        <div class="area-arrow">
+            →
+        </div>
     `;
 
-    // Nur die Startkarten erweitern
-    areaGrid.appendChild(spotlight);
+    areaGrid.appendChild(spotlightCard);
+
 });
 </script>
+
 </body>
 </html>
