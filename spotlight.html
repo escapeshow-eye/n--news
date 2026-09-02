@@ -15,14 +15,15 @@
 }
 
 :root{
-    --bg:#08090c;
-    --bg2:#101218;
-    --card:#15171d;
-    --card2:#1b1e26;
-    --text:#f5f6f8;
-    --muted:#9da2ad;
-    --line:#292d37;
-    --accent:#ffffff;
+    --bg:#f5f6f8;
+    --surface:#ffffff;
+    --surface-soft:#f0f2f5;
+    --text:#111318;
+    --muted:#737984;
+    --border:#e2e5e9;
+    --dark:#15171c;
+    --dark-soft:#20232a;
+    --shadow:0 8px 30px rgba(15,20,30,.07);
 }
 
 html{
@@ -31,10 +32,7 @@ html{
 
 body{
     font-family:Inter,Arial,Helvetica,sans-serif;
-    background:
-        radial-gradient(circle at 75% -10%,#242a38 0,transparent 34%),
-        radial-gradient(circle at 5% 20%,#171a23 0,transparent 30%),
-        var(--bg);
+    background:var(--bg);
     color:var(--text);
     min-height:100vh;
 }
@@ -47,57 +45,61 @@ body{
     position:sticky;
     top:0;
     z-index:100;
-    height:74px;
+    height:72px;
     display:flex;
     align-items:center;
     justify-content:space-between;
     padding:0 5vw;
-    border-bottom:1px solid rgba(255,255,255,.08);
-    background:rgba(8,9,12,.82);
+    background:rgba(255,255,255,.94);
     backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--border);
 }
 
 .logo{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+    color:#111318;
     text-decoration:none;
-    color:#fff;
     font-size:31px;
     font-weight:900;
     letter-spacing:-2px;
 }
 
 .logo span{
-    font-size:13px;
-    letter-spacing:2px;
-    margin-left:8px;
-    color:#9da2ad;
-    font-weight:600;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    color:#7c818a;
 }
 
 .nav{
     display:flex;
+    gap:5px;
     align-items:center;
-    gap:8px;
 }
 
 .nav button{
     border:0;
     background:transparent;
-    color:#aeb3bd;
-    padding:10px 13px;
-    border-radius:10px;
+    color:#666c76;
+    padding:9px 12px;
+    border-radius:9px;
+    font-size:13px;
     cursor:pointer;
-    font-size:14px;
-    transition:.2s;
+    transition:.18s;
 }
 
 .nav button:hover,
 .nav button.active{
-    color:#fff;
-    background:#1b1e25;
+    background:#eef0f3;
+    color:#111318;
 }
 
-.login-btn{
-    border:1px solid #30343e !important;
+.nav .login-btn{
+    border:1px solid var(--border);
+    margin-left:7px;
+    color:#111318;
 }
 
 /* =========================
@@ -105,22 +107,14 @@ body{
 ========================= */
 
 .hero{
+    width:min(1400px,90%);
+    margin:34px auto 0;
+    min-height:390px;
     position:relative;
     overflow:hidden;
-    min-height:480px;
-    display:flex;
-    align-items:flex-end;
-    padding:70px 5vw 55px;
-    border-bottom:1px solid rgba(255,255,255,.06);
-}
-
-.hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-        linear-gradient(90deg,rgba(8,9,12,.98) 0%,rgba(8,9,12,.78) 40%,rgba(8,9,12,.22) 100%);
-    z-index:1;
+    border-radius:26px;
+    background:#17191e;
+    box-shadow:var(--shadow);
 }
 
 .hero-image{
@@ -128,29 +122,41 @@ body{
     inset:0;
     background-size:cover;
     background-position:center;
-    opacity:.72;
-    filter:saturate(.85);
+    opacity:.55;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        90deg,
+        rgba(12,14,18,.96) 0%,
+        rgba(12,14,18,.78) 42%,
+        rgba(12,14,18,.15) 100%
+    );
 }
 
 .hero-content{
     position:relative;
     z-index:2;
-    width:min(900px,100%);
+    max-width:850px;
+    padding:65px;
+    color:#fff;
 }
 
-.kicker{
+.hero-kicker{
     display:inline-flex;
     align-items:center;
     gap:8px;
-    color:#c4c8d0;
-    font-size:12px;
-    font-weight:800;
-    text-transform:uppercase;
-    letter-spacing:1.5px;
     margin-bottom:18px;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:1.7px;
+    font-weight:800;
+    color:#cfd3da;
 }
 
-.kicker::before{
+.hero-kicker::before{
     content:"";
     width:7px;
     height:7px;
@@ -159,16 +165,15 @@ body{
 }
 
 .hero h1{
-    font-size:clamp(38px,6vw,76px);
+    font-size:clamp(42px,6vw,72px);
     line-height:.98;
     letter-spacing:-3px;
-    max-width:900px;
     margin-bottom:22px;
 }
 
 .hero p{
-    max-width:720px;
-    color:#c0c4cc;
+    max-width:650px;
+    color:#c5c9d0;
     font-size:17px;
     line-height:1.65;
 }
@@ -180,19 +185,18 @@ body{
 main{
     width:min(1400px,90%);
     margin:0 auto;
-    padding:48px 0 90px;
+    padding:45px 0 90px;
 }
 
 .section-head{
     display:flex;
-    align-items:end;
     justify-content:space-between;
-    gap:25px;
-    margin-bottom:24px;
+    align-items:end;
+    margin-bottom:20px;
 }
 
 .section-head h2{
-    font-size:28px;
+    font-size:29px;
     letter-spacing:-1px;
 }
 
@@ -202,52 +206,53 @@ main{
 }
 
 /* =========================
-   SEARCH / FILTER
+   FILTER
 ========================= */
 
 .tools{
     display:flex;
     gap:12px;
-    margin-bottom:35px;
+    margin-bottom:15px;
 }
 
 .search{
-    flex:1;
-    background:#111319;
-    border:1px solid var(--line);
-    border-radius:13px;
-    color:#fff;
+    width:100%;
     padding:14px 16px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:#fff;
     outline:none;
-    font-size:14px;
+    font:inherit;
+    color:var(--text);
 }
 
 .search:focus{
-    border-color:#555b68;
+    border-color:#aeb3bb;
 }
 
 .categories{
     display:flex;
-    gap:8px;
     flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:32px;
 }
 
 .category{
-    border:1px solid var(--line);
-    background:#111319;
-    color:#9da2ad;
-    padding:10px 14px;
+    border:1px solid var(--border);
+    background:#fff;
+    color:#6f747d;
     border-radius:999px;
+    padding:9px 14px;
+    font-size:12px;
     cursor:pointer;
-    font-size:13px;
-    transition:.2s;
+    transition:.18s;
 }
 
 .category:hover,
 .category.active{
-    background:#fff;
-    color:#08090c;
-    border-color:#fff;
+    background:#15171c;
+    border-color:#15171c;
+    color:#fff;
 }
 
 /* =========================
@@ -256,116 +261,118 @@ main{
 
 .featured{
     display:grid;
-    grid-template-columns:1.4fr 1fr;
-    min-height:380px;
-    background:linear-gradient(135deg,#171a21,#101218);
-    border:1px solid var(--line);
-    border-radius:24px;
+    grid-template-columns:1.25fr 1fr;
+    min-height:390px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:22px;
     overflow:hidden;
     cursor:pointer;
-    transition:.25s;
-    margin-bottom:55px;
+    box-shadow:var(--shadow);
+    transition:.2s;
+    margin-bottom:42px;
 }
 
 .featured:hover{
     transform:translateY(-3px);
-    border-color:#414652;
 }
 
 .featured-image{
-    min-height:380px;
+    min-height:390px;
+    background:#e9ebee;
     background-size:cover;
     background-position:center;
 }
 
 .featured-content{
-    padding:40px;
+    padding:42px;
     display:flex;
-    flex-direction:column;
     justify-content:center;
+    flex-direction:column;
 }
 
-.featured-content .label{
-    color:#9da2ad;
-    font-size:12px;
+.featured-label{
+    color:#858a93;
+    font-size:11px;
+    font-weight:800;
     text-transform:uppercase;
     letter-spacing:1.5px;
-    font-weight:800;
-    margin-bottom:15px;
+    margin-bottom:13px;
 }
 
-.featured-content h2{
-    font-size:clamp(27px,3vw,45px);
-    line-height:1.05;
-    letter-spacing:-1.5px;
-    margin-bottom:18px;
+.featured-title{
+    font-size:clamp(28px,3vw,44px);
+    line-height:1.04;
+    letter-spacing:-1.7px;
+    margin-bottom:17px;
 }
 
-.featured-content p{
-    color:#aeb3bd;
-    line-height:1.6;
+.featured-description{
+    color:#747a84;
+    line-height:1.65;
+    font-size:15px;
 }
 
 /* =========================
-   GRID
+   ARTICLE GRID
 ========================= */
 
 .article-grid{
     display:grid;
     grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:20px;
+    gap:19px;
 }
 
 .article-card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:19px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:17px;
     overflow:hidden;
     cursor:pointer;
-    transition:.22s;
+    box-shadow:0 4px 18px rgba(15,20,30,.04);
+    transition:.2s;
 }
 
 .article-card:hover{
-    transform:translateY(-4px);
-    background:var(--card2);
-    border-color:#3a3e48;
+    transform:translateY(-3px);
+    box-shadow:var(--shadow);
 }
 
 .card-image{
     width:100%;
     aspect-ratio:16/9;
-    background:#20232b;
+    background:#e9ebee;
     background-size:cover;
     background-position:center;
 }
 
 .card-body{
-    padding:21px;
+    padding:19px;
 }
 
 .card-category{
-    color:#8e94a0;
-    text-transform:uppercase;
-    letter-spacing:1.2px;
+    color:#8a8f98;
     font-size:10px;
     font-weight:800;
-    margin-bottom:10px;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    margin-bottom:9px;
 }
 
 .card-title{
     font-size:20px;
-    line-height:1.2;
-    letter-spacing:-.4px;
-    margin-bottom:10px;
+    line-height:1.18;
+    letter-spacing:-.5px;
+    margin-bottom:9px;
 }
 
 .card-description{
-    color:#9298a3;
+    color:#7b818a;
     font-size:14px;
     line-height:1.55;
     display:-webkit-box;
-    -webkit-line-clamp:3;
     -webkit-box-orient:vertical;
+    -webkit-line-clamp:3;
     overflow:hidden;
 }
 
@@ -380,38 +387,35 @@ main{
 }
 
 .back{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    background:#171a21;
-    color:#d5d8de;
-    border:1px solid var(--line);
-    border-radius:10px;
+    border:1px solid var(--border);
+    background:#fff;
+    color:#22262d;
     padding:10px 14px;
+    border-radius:10px;
     cursor:pointer;
-    margin-bottom:30px;
+    margin-bottom:28px;
 }
 
 .article-meta{
-    color:#969ca7;
-    font-size:12px;
-    text-transform:uppercase;
-    letter-spacing:1.2px;
+    color:#80858e;
+    font-size:11px;
     font-weight:800;
-    margin-bottom:16px;
+    text-transform:uppercase;
+    letter-spacing:1.4px;
+    margin-bottom:13px;
 }
 
 .article-view h1{
-    font-size:clamp(38px,6vw,70px);
+    font-size:clamp(40px,6vw,70px);
     line-height:1;
     letter-spacing:-3px;
     margin-bottom:20px;
 }
 
 .article-lead{
-    color:#b6bbc4;
+    color:#6d737d;
     font-size:19px;
-    line-height:1.6;
+    line-height:1.65;
     margin-bottom:30px;
 }
 
@@ -420,13 +424,14 @@ main{
     max-height:650px;
     object-fit:cover;
     border-radius:20px;
-    margin-bottom:28px;
+    margin-bottom:30px;
+    cursor:pointer;
 }
 
 .article-content{
     font-size:17px;
-    line-height:1.8;
-    color:#d4d7dd;
+    line-height:1.85;
+    color:#292d34;
     white-space:pre-wrap;
 }
 
@@ -434,37 +439,21 @@ main{
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:15px;
-    margin-top:30px;
+    margin-top:32px;
 }
 
 .article-images img{
     width:100%;
-    border-radius:16px;
+    border-radius:15px;
     cursor:pointer;
-    transition:.2s;
-}
-
-.article-images img:hover{
-    opacity:.8;
 }
 
 .article-video{
     width:100%;
-    margin-top:30px;
-    border-radius:18px;
+    margin-top:32px;
+    border:0;
+    border-radius:17px;
     background:#000;
-}
-
-/* =========================
-   EMPTY
-========================= */
-
-.empty{
-    text-align:center;
-    padding:80px 20px;
-    color:#777d88;
-    border:1px dashed #30343d;
-    border-radius:18px;
 }
 
 /* =========================
@@ -473,21 +462,34 @@ main{
 
 .admin{
     display:none;
-    background:#101218;
-    border:1px solid var(--line);
+    background:#fff;
+    border:1px solid var(--border);
     border-radius:20px;
-    padding:25px;
-    margin-bottom:45px;
+    padding:27px;
+    margin-bottom:42px;
+    box-shadow:var(--shadow);
 }
 
-.admin h2{
-    margin-bottom:20px;
+.admin-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:22px;
+}
+
+.admin-top h2{
+    font-size:23px;
+}
+
+.admin-note{
+    color:#8a9099;
+    font-size:13px;
 }
 
 .form-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:14px;
+    gap:15px;
 }
 
 .field{
@@ -501,58 +503,199 @@ main{
 }
 
 .field label{
-    color:#8e94a0;
+    color:#555b65;
     font-size:12px;
-    font-weight:700;
+    font-weight:800;
 }
 
 .field input,
 .field textarea,
 .field select{
-    background:#090a0e;
-    border:1px solid #2c3039;
-    color:#fff;
+    width:100%;
+    border:1px solid var(--border);
     border-radius:10px;
-    padding:12px;
+    padding:12px 13px;
+    background:#fafbfc;
+    color:#15171c;
     outline:none;
-    font-family:inherit;
+    font:inherit;
 }
 
 .field textarea{
-    min-height:160px;
+    min-height:145px;
     resize:vertical;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+    border-color:#9da3ad;
+    background:#fff;
+}
+
+/* FILE PICKER */
+
+.file-row{
+    display:flex;
+    gap:9px;
+    align-items:center;
+}
+
+.file-row input[type="text"]{
+    flex:1;
+}
+
+.file-button{
+    flex-shrink:0;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:44px;
+    padding:0 15px;
+    border:1px solid #d7dae0;
+    border-radius:10px;
+    background:#f3f4f6;
+    color:#22262c;
+    cursor:pointer;
+    font-size:13px;
+    font-weight:700;
+    transition:.18s;
+}
+
+.file-button:hover{
+    background:#e8eaed;
+}
+
+.file-input{
+    display:none;
+}
+
+.file-info{
+    color:#8a9099;
+    font-size:12px;
+}
+
+.preview{
+    display:none;
+    width:160px;
+    max-height:100px;
+    object-fit:cover;
+    border-radius:9px;
+    margin-top:7px;
+    border:1px solid var(--border);
+}
+
+.upload-progress{
+    display:none;
+    margin-top:5px;
+    color:#747a84;
+    font-size:12px;
 }
 
 .admin-actions{
     display:flex;
     flex-wrap:wrap;
     gap:9px;
-    margin-top:15px;
+    margin-top:20px;
 }
 
 .btn{
-    border:1px solid #343842;
-    background:#1a1d24;
-    color:#fff;
-    border-radius:10px;
+    border:1px solid var(--border);
+    background:#f3f4f6;
+    color:#20242a;
     padding:11px 15px;
+    border-radius:10px;
     cursor:pointer;
+    font-weight:700;
+    font-size:13px;
+}
+
+.btn:hover{
+    background:#e8eaed;
 }
 
 .btn.primary{
-    background:#fff;
-    color:#08090c;
-    border-color:#fff;
+    background:#15171c;
+    border-color:#15171c;
+    color:#fff;
+}
+
+.btn.primary:hover{
+    background:#292c33;
 }
 
 .btn.danger{
-    color:#ff8c8c;
+    color:#b73d3d;
 }
 
 .status{
-    margin-top:12px;
-    color:#8e94a0;
+    color:#747a84;
     font-size:13px;
+    margin-top:13px;
+}
+
+/* =========================
+   ADMIN ARTICLE LIST
+========================= */
+
+.admin-list{
+    margin-top:30px;
+    border-top:1px solid var(--border);
+    padding-top:22px;
+}
+
+.admin-list h3{
+    font-size:16px;
+    margin-bottom:13px;
+}
+
+.admin-item{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    align-items:center;
+    padding:13px 0;
+    border-bottom:1px solid #eef0f2;
+}
+
+.admin-item-title{
+    font-size:14px;
+    font-weight:700;
+}
+
+.admin-item-category{
+    color:#8a9099;
+    font-size:11px;
+    margin-top:4px;
+}
+
+.admin-item-actions{
+    display:flex;
+    gap:6px;
+    flex-shrink:0;
+}
+
+.small-btn{
+    border:1px solid var(--border);
+    background:#f6f7f8;
+    border-radius:8px;
+    padding:7px 9px;
+    cursor:pointer;
+    font-size:11px;
+}
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+    grid-column:1/-1;
+    padding:65px 20px;
+    text-align:center;
+    color:#888e97;
+    background:#fff;
+    border:1px dashed #d8dbe0;
+    border-radius:17px;
 }
 
 /* =========================
@@ -560,29 +703,28 @@ main{
 ========================= */
 
 .lightbox{
+    display:none;
     position:fixed;
     inset:0;
-    z-index:999;
-    display:none;
+    z-index:1000;
     align-items:center;
     justify-content:center;
-    background:rgba(0,0,0,.92);
     padding:30px;
+    background:rgba(0,0,0,.9);
 }
 
 .lightbox img{
     max-width:95vw;
     max-height:90vh;
-    object-fit:contain;
     border-radius:12px;
 }
 
 .lightbox-close{
     position:absolute;
-    top:20px;
     right:25px;
+    top:18px;
     color:#fff;
-    font-size:30px;
+    font-size:31px;
     cursor:pointer;
 }
 
@@ -591,6 +733,7 @@ main{
 ========================= */
 
 @media(max-width:1000px){
+
     .article-grid{
         grid-template-columns:repeat(2,minmax(0,1fr));
     }
@@ -605,30 +748,33 @@ main{
 }
 
 @media(max-width:700px){
+
     .header{
-        padding:0 20px;
+        padding:0 18px;
     }
 
     .nav button:not(.login-btn){
         display:none;
     }
 
-    main{
-        width:calc(100% - 30px);
-        padding-top:30px;
+    .hero{
+        width:calc(100% - 24px);
+        margin-top:20px;
+        min-height:410px;
+        border-radius:20px;
     }
 
-    .hero{
-        min-height:430px;
-        padding:45px 20px;
+    .hero-content{
+        padding:35px 27px;
     }
 
     .hero h1{
         letter-spacing:-2px;
     }
 
-    .tools{
-        flex-direction:column;
+    main{
+        width:calc(100% - 24px);
+        padding-top:32px;
     }
 
     .article-grid{
@@ -636,11 +782,7 @@ main{
     }
 
     .featured-content{
-        padding:25px;
-    }
-
-    .article-images{
-        grid-template-columns:1fr;
+        padding:28px;
     }
 
     .form-grid{
@@ -650,6 +792,24 @@ main{
     .field.full{
         grid-column:auto;
     }
+
+    .file-row{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .file-button{
+        width:100%;
+    }
+
+    .article-images{
+        grid-template-columns:1fr;
+    }
+
+    .admin-item{
+        align-items:flex-start;
+        flex-direction:column;
+    }
 }
 </style>
 </head>
@@ -657,49 +817,83 @@ main{
 <body>
 
 <header class="header">
+
     <a href="index.html" class="logo">
         n:<span>spotlight</span>
     </a>
 
     <nav class="nav">
         <button class="active" onclick="showHome()">Spotlight</button>
-        <button onclick="filterCategory('Creator')">Creator</button>
-        <button onclick="filterCategory('YouTube')">YouTube</button>
-        <button onclick="filterCategory('Streaming')">Streaming</button>
-        <button onclick="filterCategory('TV & Medien')">TV & Medien</button>
+        <button onclick="filterCategory('Creator',this)">Creator</button>
+        <button onclick="filterCategory('YouTube',this)">YouTube</button>
+        <button onclick="filterCategory('Streaming',this)">Streaming</button>
+        <button onclick="filterCategory('TV & Medien',this)">TV & Medien</button>
         <button class="login-btn" onclick="toggleAdmin()">Redaktion</button>
     </nav>
+
 </header>
 
-<section class="hero" id="hero">
+
+<section class="hero">
+
     <div class="hero-image" id="heroImage"></div>
+    <div class="hero-overlay"></div>
 
     <div class="hero-content">
-        <div class="kicker">n: spotlight</div>
-        <h1>Creator. Medien. Trends.</h1>
+
+        <div class="hero-kicker">
+            n: spotlight
+        </div>
+
+        <h1>
+            Creator.<br>
+            Medien.<br>
+            Trends.
+        </h1>
+
         <p>
-            Die Welt der Creator, Streaming, YouTube, Social Media
-            und TV – kompakt, aktuell und im n:-Look.
+            Nachrichten und Geschichten aus der Welt von
+            Creator, YouTube, Streaming, Social Media und TV.
         </p>
+
     </div>
+
 </section>
+
 
 <main>
 
-    <!-- ADMIN -->
+    <!-- =====================
+         ADMIN
+    ====================== -->
+
     <section class="admin" id="adminPanel">
 
-        <h2>Spotlight-Redaktion</h2>
+        <div class="admin-top">
+            <div>
+                <h2>Spotlight-Redaktion</h2>
+                <div class="admin-note">
+                    Artikel verwalten und neue Beiträge veröffentlichen
+                </div>
+            </div>
+        </div>
+
 
         <div class="form-grid">
 
             <div class="field full">
                 <label>Titel</label>
-                <input id="titleInput" type="text">
+                <input
+                    id="titleInput"
+                    type="text"
+                    placeholder="Titel des Artikels"
+                >
             </div>
+
 
             <div class="field">
                 <label>Kategorie</label>
+
                 <select id="categoryInput">
                     <option value="Creator">Creator</option>
                     <option value="YouTube">YouTube</option>
@@ -709,54 +903,208 @@ main{
                 </select>
             </div>
 
+
+            <!-- HAUPTBILD -->
+
             <div class="field">
-                <label>Bild-URL</label>
-                <input id="imageInput" type="text">
+
+                <label>Hauptbild</label>
+
+                <div class="file-row">
+
+                    <input
+                        id="imageInput"
+                        type="text"
+                        placeholder="Bild-URL oder Datei auswählen"
+                    >
+
+                    <label class="file-button">
+                        Datei auswählen
+                        <input
+                            id="imageFile"
+                            class="file-input"
+                            type="file"
+                            accept="image/*"
+                            onchange="handleMainImage(this)"
+                        >
+                    </label>
+
+                </div>
+
+                <div class="file-info" id="imageFileInfo"></div>
+
+                <img
+                    class="preview"
+                    id="imagePreview"
+                    alt=""
+                >
+
             </div>
 
+
             <div class="field full">
+
                 <label>Kurzbeschreibung</label>
-                <textarea id="descriptionInput"></textarea>
+
+                <textarea
+                    id="descriptionInput"
+                    placeholder="Kurze Zusammenfassung des Artikels"
+                ></textarea>
+
             </div>
 
+
             <div class="field full">
+
                 <label>Artikeltext</label>
-                <textarea id="contentInput"></textarea>
+
+                <textarea
+                    id="contentInput"
+                    placeholder="Der vollständige Artikeltext"
+                ></textarea>
+
             </div>
 
-            <div class="field full">
-                <label>Weitere Bild-URLs – eine pro Zeile</label>
-                <textarea id="imagesInput"></textarea>
-            </div>
+
+            <!-- WEITERE BILDER -->
 
             <div class="field full">
-                <label>Video-URL (optional)</label>
-                <input id="videoInput" type="text">
+
+                <label>Weitere Bilder</label>
+
+                <label class="file-button">
+
+                    Dateien auswählen
+
+                    <input
+                        id="imagesFile"
+                        class="file-input"
+                        type="file"
+                        accept="image/*"
+                        multiple
+                        onchange="handleAdditionalImages(this)"
+                    >
+
+                </label>
+
+                <div
+                    class="file-info"
+                    id="imagesFileInfo"
+                >
+                    Mehrere Bilder gleichzeitig möglich.
+                </div>
+
+                <textarea
+                    id="imagesInput"
+                    placeholder="Oder Bild-URLs manuell eingeben – eine URL pro Zeile"
+                ></textarea>
+
+            </div>
+
+
+            <!-- VIDEO -->
+
+            <div class="field full">
+
+                <label>Video</label>
+
+                <div class="file-row">
+
+                    <input
+                        id="videoInput"
+                        type="text"
+                        placeholder="Video-URL oder Datei auswählen"
+                    >
+
+                    <label class="file-button">
+
+                        Datei auswählen
+
+                        <input
+                            id="videoFile"
+                            class="file-input"
+                            type="file"
+                            accept="video/*"
+                            onchange="handleVideo(this)"
+                        >
+
+                    </label>
+
+                </div>
+
+                <div
+                    class="file-info"
+                    id="videoFileInfo"
+                >
+                    MP4, WebM und andere Browser-kompatible Videoformate.
+                </div>
+
             </div>
 
         </div>
+
 
         <div class="admin-actions">
-            <button class="btn primary" onclick="saveArticle()">Artikel speichern</button>
-            <button class="btn" onclick="clearForm()">Formular leeren</button>
-            <button class="btn" onclick="loadArticles()">Aktualisieren</button>
+
+            <button
+                class="btn primary"
+                onclick="saveArticle()"
+            >
+                Artikel speichern
+            </button>
+
+            <button
+                class="btn"
+                onclick="clearForm()"
+            >
+                Formular leeren
+            </button>
+
+            <button
+                class="btn"
+                onclick="loadArticles()"
+            >
+                Aktualisieren
+            </button>
+
         </div>
 
-        <div class="status" id="adminStatus"></div>
+
+        <div
+            class="status"
+            id="adminStatus"
+        ></div>
+
+
+        <div class="admin-list">
+
+            <h3>Vorhandene Spotlight-Artikel</h3>
+
+            <div id="adminArticleList"></div>
+
+        </div>
 
     </section>
 
-    <!-- HOME -->
+
+    <!-- =====================
+         HOME
+    ====================== -->
+
     <section id="homeView">
 
         <div class="section-head">
+
             <div>
                 <h2>Aktuell im Spotlight</h2>
-                <p>Creator, Streaming, Social Media und Medien</p>
+                <p>Die neuesten Geschichten aus der Creator- und Medienwelt</p>
             </div>
+
         </div>
 
+
         <div class="tools">
+
             <input
                 class="search"
                 id="searchInput"
@@ -764,29 +1112,80 @@ main{
                 placeholder="Spotlight durchsuchen..."
                 oninput="renderArticles()"
             >
+
         </div>
+
 
         <div class="categories">
-            <button class="category active" onclick="filterCategory('Alle',this)">Alle</button>
-            <button class="category" onclick="filterCategory('Creator',this)">Creator</button>
-            <button class="category" onclick="filterCategory('YouTube',this)">YouTube</button>
-            <button class="category" onclick="filterCategory('Streaming',this)">Streaming</button>
-            <button class="category" onclick="filterCategory('Social Media',this)">Social Media</button>
-            <button class="category" onclick="filterCategory('TV & Medien',this)">TV & Medien</button>
+
+            <button
+                class="category active"
+                onclick="filterCategory('Alle',this)"
+            >
+                Alle
+            </button>
+
+            <button
+                class="category"
+                onclick="filterCategory('Creator',this)"
+            >
+                Creator
+            </button>
+
+            <button
+                class="category"
+                onclick="filterCategory('YouTube',this)"
+            >
+                YouTube
+            </button>
+
+            <button
+                class="category"
+                onclick="filterCategory('Streaming',this)"
+            >
+                Streaming
+            </button>
+
+            <button
+                class="category"
+                onclick="filterCategory('Social Media',this)"
+            >
+                Social Media
+            </button>
+
+            <button
+                class="category"
+                onclick="filterCategory('TV & Medien',this)"
+            >
+                TV & Medien
+            </button>
+
         </div>
 
-        <div style="height:30px"></div>
 
         <div id="featuredContainer"></div>
 
-        <div id="articleGrid" class="article-grid"></div>
+        <div
+            id="articleGrid"
+            class="article-grid"
+        ></div>
 
     </section>
 
-    <!-- ARTICLE -->
-    <section id="articleView" class="article-view">
 
-        <button class="back" onclick="showHome()">
+    <!-- =====================
+         ARTICLE
+    ====================== -->
+
+    <section
+        id="articleView"
+        class="article-view"
+    >
+
+        <button
+            class="back"
+            onclick="showHome()"
+        >
             ← Zurück zu Spotlight
         </button>
 
@@ -796,18 +1195,36 @@ main{
 
 </main>
 
+
 <!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <div class="lightbox-close">×</div>
-    <img id="lightboxImage" src="" alt="">
+
+<div
+    class="lightbox"
+    id="lightbox"
+    onclick="closeLightbox()"
+>
+
+    <div class="lightbox-close">
+        ×
+    </div>
+
+    <img
+        id="lightboxImage"
+        src=""
+        alt=""
+    >
+
 </div>
 
+
 <script>
+
 /* =========================================================
    SUPABASE
 ========================================================= */
 
-const SUPABASE_URL = "https://eqzmsuncndfsiedyfifb.supabase.co";
+const SUPABASE_URL =
+    "https://eqzmsuncndfsiedyfifb.supabase.co";
 
 const SUPABASE_KEY =
     "sb_publishable_eXY1gg_tIr-cRC2kdt0jbQ_QPfbEmkF";
@@ -831,16 +1248,26 @@ let editingId = null;
 
 async function loadArticles(){
 
-    const { data, error } =
+    const {
+        data,
+        error
+    } =
         await supabaseClient
         .from("spotlight_articles")
         .select("*")
         .order("created_at",{ascending:false});
 
     if(error){
+
         console.error(error);
+
         document.getElementById("articleGrid").innerHTML =
-            `<div class="empty">Die Spotlight-Artikel konnten nicht geladen werden.</div>`;
+            `
+            <div class="empty">
+                Die Spotlight-Artikel konnten nicht geladen werden.
+            </div>
+            `;
+
         return;
     }
 
@@ -848,6 +1275,7 @@ async function loadArticles(){
 
     renderArticles();
     renderHero();
+    renderAdminList();
 }
 
 
@@ -860,18 +1288,23 @@ function renderHero(){
     const latest = articles[0];
 
     if(!latest){
+
+        document.getElementById("heroImage").style.backgroundImage =
+            "none";
+
         return;
     }
 
-    const heroImage =
-        latest.image_url ||
-        "";
+    if(latest.image_url){
 
-    document.getElementById("heroImage").style.backgroundImage =
-        heroImage
-        ? `url("${heroImage}")`
-        : "none";
+        document.getElementById("heroImage").style.backgroundImage =
+            `url("${escapeAttribute(latest.image_url)}")`;
 
+    }else{
+
+        document.getElementById("heroImage").style.backgroundImage =
+            "none";
+    }
 }
 
 
@@ -888,98 +1321,133 @@ function renderArticles(){
         document.getElementById("featuredContainer");
 
     const search =
-        document.getElementById("searchInput")
+        document
+        .getElementById("searchInput")
         .value
         .toLowerCase()
         .trim();
 
-    let filtered = articles.filter(article => {
+    const filtered =
+        articles.filter(article => {
 
-        const matchesCategory =
-            currentCategory === "Alle" ||
-            article.category === currentCategory;
+            const matchesCategory =
+                currentCategory === "Alle" ||
+                article.category === currentCategory;
 
-        const searchable =
-            `${article.title || ""} ${article.description || ""} ${article.content || ""} ${article.category || ""}`
-            .toLowerCase();
+            const searchable =
+                `
+                ${article.title || ""}
+                ${article.description || ""}
+                ${article.content || ""}
+                ${article.category || ""}
+                `
+                .toLowerCase();
 
-        const matchesSearch =
-            !search || searchable.includes(search);
+            const matchesSearch =
+                !search ||
+                searchable.includes(search);
 
-        return matchesCategory && matchesSearch;
-    });
+            return matchesCategory && matchesSearch;
+
+        });
+
 
     featured.innerHTML = "";
+
 
     if(filtered.length === 0){
 
         grid.innerHTML =
-            `<div class="empty" style="grid-column:1/-1">
+            `
+            <div class="empty">
                 Keine passenden Spotlight-Artikel gefunden.
-             </div>`;
+            </div>
+            `;
 
         return;
     }
 
+
     const first = filtered[0];
 
-    featured.innerHTML = `
-        <article class="featured"
-                 onclick="openArticle(${first.id})">
 
-            <div class="featured-image"
-                 style="background-image:url('${escapeAttribute(first.image_url || "")}')">
-            </div>
+    featured.innerHTML =
+        `
+        <article
+            class="featured"
+            onclick="openArticle(${first.id})"
+        >
+
+            <div
+                class="featured-image"
+                style="background-image:url('${escapeAttribute(first.image_url || "")}')"
+            ></div>
 
             <div class="featured-content">
 
-                <div class="label">
+                <div class="featured-label">
                     ${escapeHtml(first.category || "Spotlight")}
                 </div>
 
-                <h2>
+                <div class="featured-title">
                     ${escapeHtml(first.title || "Ohne Titel")}
-                </h2>
+                </div>
 
-                <p>
+                <div class="featured-description">
                     ${escapeHtml(first.description || "")}
-                </p>
-
-            </div>
-
-        </article>
-    `;
-
-    const rest = filtered.slice(1);
-
-    grid.innerHTML = rest.map(article => `
-
-        <article class="article-card"
-                 onclick="openArticle(${article.id})">
-
-            <div class="card-image"
-                 style="background-image:url('${escapeAttribute(article.image_url || "")}')">
-            </div>
-
-            <div class="card-body">
-
-                <div class="card-category">
-                    ${escapeHtml(article.category || "Spotlight")}
-                </div>
-
-                <div class="card-title">
-                    ${escapeHtml(article.title || "Ohne Titel")}
-                </div>
-
-                <div class="card-description">
-                    ${escapeHtml(article.description || "")}
                 </div>
 
             </div>
 
         </article>
+        `;
 
-    `).join("");
+
+    const rest =
+        filtered.slice(1);
+
+
+    if(rest.length === 0){
+
+        grid.innerHTML = "";
+        return;
+    }
+
+
+    grid.innerHTML =
+        rest.map(article =>
+
+            `
+            <article
+                class="article-card"
+                onclick="openArticle(${article.id})"
+            >
+
+                <div
+                    class="card-image"
+                    style="background-image:url('${escapeAttribute(article.image_url || "")}')"
+                ></div>
+
+                <div class="card-body">
+
+                    <div class="card-category">
+                        ${escapeHtml(article.category || "Spotlight")}
+                    </div>
+
+                    <div class="card-title">
+                        ${escapeHtml(article.title || "Ohne Titel")}
+                    </div>
+
+                    <div class="card-description">
+                        ${escapeHtml(article.description || "")}
+                    </div>
+
+                </div>
+
+            </article>
+            `
+
+        ).join("");
 }
 
 
@@ -993,18 +1461,15 @@ function filterCategory(category,button){
 
     document
         .querySelectorAll(".category")
-        .forEach(btn => btn.classList.remove("active"));
+        .forEach(btn =>
+            btn.classList.remove("active")
+        );
 
     if(button){
         button.classList.add("active");
     }
 
     renderArticles();
-
-    window.scrollTo({
-        top:document.querySelector("main").offsetTop - 80,
-        behavior:"smooth"
-    });
 }
 
 
@@ -1014,8 +1479,11 @@ function filterCategory(category,button){
 
 function showHome(){
 
-    document.getElementById("homeView").style.display = "block";
-    document.getElementById("articleView").style.display = "none";
+    document.getElementById("homeView").style.display =
+        "block";
+
+    document.getElementById("articleView").style.display =
+        "none";
 
     window.scrollTo({
         top:0,
@@ -1031,79 +1499,98 @@ function showHome(){
 function openArticle(id){
 
     const article =
-        articles.find(a => Number(a.id) === Number(id));
+        articles.find(
+            a => Number(a.id) === Number(id)
+        );
 
     if(!article){
         return;
     }
 
-    document.getElementById("homeView").style.display = "none";
-    document.getElementById("articleView").style.display = "block";
+
+    document.getElementById("homeView").style.display =
+        "none";
+
+    document.getElementById("articleView").style.display =
+        "block";
+
 
     const additionalImages =
         Array.isArray(article.image_urls)
         ? article.image_urls
         : [];
 
+
     let imagesHTML = "";
+
 
     if(additionalImages.length){
 
-        imagesHTML = `
+        imagesHTML =
+            `
             <div class="article-images">
 
-                ${additionalImages.map(url => `
-                    <img
-                        src="${escapeAttribute(url)}"
-                        alt=""
-                        onclick="event.stopPropagation();openLightbox('${escapeAttribute(url)}')"
-                    >
-                `).join("")}
+                ${
+                    additionalImages.map(url =>
+
+                        `
+                        <img
+                            src="${escapeAttribute(url)}"
+                            alt=""
+                            onclick="event.stopPropagation();openLightbox('${escapeAttribute(url)}')"
+                        >
+                        `
+
+                    ).join("")
+                }
 
             </div>
-        `;
+            `;
     }
+
 
     let videoHTML = "";
 
+
     if(article.video_url){
 
-        const videoUrl = article.video_url;
-
         if(
-            videoUrl.includes("youtube.com") ||
-            videoUrl.includes("youtu.be")
+            article.video_url.includes("youtube.com") ||
+            article.video_url.includes("youtu.be")
         ){
 
             const embed =
-                convertYoutubeUrl(videoUrl);
+                convertYoutubeUrl(article.video_url);
 
             if(embed){
 
-                videoHTML = `
+                videoHTML =
+                    `
                     <iframe
                         class="article-video"
                         height="500"
                         src="${escapeAttribute(embed)}"
-                        frameborder="0"
                         allowfullscreen>
                     </iframe>
-                `;
+                    `;
             }
 
         }else{
 
-            videoHTML = `
+            videoHTML =
+                `
                 <video
                     class="article-video"
                     controls
-                    src="${escapeAttribute(videoUrl)}">
+                    src="${escapeAttribute(article.video_url)}">
                 </video>
-            `;
+                `;
         }
     }
 
-    document.getElementById("articleContainer").innerHTML = `
+
+    document.getElementById("articleContainer").innerHTML =
+        `
 
         <div class="article-meta">
             ${escapeHtml(article.category || "Spotlight")}
@@ -1119,7 +1606,8 @@ function openArticle(id){
 
         ${
             article.image_url
-            ? `
+            ?
+            `
             <img
                 class="article-main-image"
                 src="${escapeAttribute(article.image_url)}"
@@ -1127,7 +1615,8 @@ function openArticle(id){
                 onclick="openLightbox('${escapeAttribute(article.image_url)}')"
             >
             `
-            : ""
+            :
+            ""
         }
 
         <div class="article-content">
@@ -1138,7 +1627,8 @@ function openArticle(id){
 
         ${videoHTML}
 
-    `;
+        `;
+
 
     window.scrollTo({
         top:0,
@@ -1160,7 +1650,9 @@ function convertYoutubeUrl(url){
 
         let videoId = "";
 
-        if(parsed.hostname.includes("youtu.be")){
+        if(
+            parsed.hostname.includes("youtu.be")
+        ){
 
             videoId =
                 parsed.pathname.substring(1);
@@ -1175,16 +1667,19 @@ function convertYoutubeUrl(url){
             return null;
         }
 
-        return `https://www.youtube.com/embed/${videoId}`;
+        return `
+            https://www.youtube.com/embed/${videoId}
+        `;
 
     }catch{
+
         return null;
     }
 }
 
 
 /* =========================================================
-   ADMIN
+   ADMIN LOGIN
 ========================================================= */
 
 async function toggleAdmin(){
@@ -1192,11 +1687,13 @@ async function toggleAdmin(){
     const panel =
         document.getElementById("adminPanel");
 
+
     if(panel.style.display === "block"){
 
         panel.style.display = "none";
         return;
     }
+
 
     const {
         data:{
@@ -1204,6 +1701,7 @@ async function toggleAdmin(){
         }
     } =
         await supabaseClient.auth.getSession();
+
 
     if(!session){
 
@@ -1214,6 +1712,7 @@ async function toggleAdmin(){
             return;
         }
 
+
         const password =
             prompt("Passwort:");
 
@@ -1221,13 +1720,16 @@ async function toggleAdmin(){
             return;
         }
 
+
         const {
             error
         } =
-            await supabaseClient.auth.signInWithPassword({
+            await supabaseClient.auth
+            .signInWithPassword({
                 email,
                 password
             });
+
 
         if(error){
 
@@ -1240,6 +1742,7 @@ async function toggleAdmin(){
         }
     }
 
+
     panel.style.display = "block";
 
     panel.scrollIntoView({
@@ -1249,13 +1752,155 @@ async function toggleAdmin(){
 
 
 /* =========================================================
-   SAVE
+   MAIN IMAGE FILE
+========================================================= */
+
+function handleMainImage(input){
+
+    const file =
+        input.files[0];
+
+    if(!file){
+        return;
+    }
+
+
+    document.getElementById("imageFileInfo").textContent =
+        file.name;
+
+
+    const preview =
+        document.getElementById("imagePreview");
+
+    preview.src =
+        URL.createObjectURL(file);
+
+    preview.style.display =
+        "block";
+}
+
+
+/* =========================================================
+   ADDITIONAL IMAGE FILES
+========================================================= */
+
+function handleAdditionalImages(input){
+
+    const files =
+        Array.from(input.files);
+
+
+    if(!files.length){
+        return;
+    }
+
+
+    document.getElementById("imagesFileInfo").textContent =
+        `${files.length} Bild${files.length === 1 ? "" : "er"} ausgewählt.`;
+}
+
+
+/* =========================================================
+   VIDEO FILE
+========================================================= */
+
+function handleVideo(input){
+
+    const file =
+        input.files[0];
+
+    if(!file){
+        return;
+    }
+
+
+    document.getElementById("videoFileInfo").textContent =
+        file.name;
+}
+
+
+/* =========================================================
+   UPLOAD
+========================================================= */
+
+async function uploadFile(file){
+
+    if(!file){
+        return null;
+    }
+
+
+    const extension =
+        file.name.includes(".")
+        ? file.name.split(".").pop()
+        : "bin";
+
+
+    const safeName =
+        file.name
+        .replace(/\.[^/.]+$/,"")
+        .replace(/[^a-zA-Z0-9_-]/g,"-")
+        .substring(0,80);
+
+
+    const fileName =
+        `${Date.now()}-${Math.random().toString(36).substring(2,9)}-${safeName}.${extension}`;
+
+
+    const filePath =
+        `spotlight/${fileName}`;
+
+
+    const {
+        error
+    } =
+        await supabaseClient
+        .storage
+        .from(BUCKET)
+        .upload(
+            filePath,
+            file,
+            {
+                cacheControl:"3600",
+                upsert:false
+            }
+        );
+
+
+    if(error){
+
+        throw error;
+    }
+
+
+    const {
+        data
+    } =
+        supabaseClient
+        .storage
+        .from(BUCKET)
+        .getPublicUrl(filePath);
+
+
+    return data.publicUrl;
+}
+
+
+/* =========================================================
+   SAVE ARTICLE
 ========================================================= */
 
 async function saveArticle(){
 
+    const status =
+        document.getElementById("adminStatus");
+
+
     const title =
-        document.getElementById("titleInput").value.trim();
+        document.getElementById("titleInput")
+        .value
+        .trim();
+
 
     if(!title){
 
@@ -1263,78 +1908,173 @@ async function saveArticle(){
         return;
     }
 
-    const category =
-        document.getElementById("categoryInput").value;
 
-    const description =
-        document.getElementById("descriptionInput").value.trim();
+    try{
 
-    const content =
-        document.getElementById("contentInput").value.trim();
+        status.textContent =
+            "Artikel wird gespeichert...";
 
-    const image_url =
-        document.getElementById("imageInput").value.trim();
 
-    const video_url =
-        document.getElementById("videoInput").value.trim();
+        const category =
+            document.getElementById("categoryInput")
+            .value;
 
-    const image_urls =
-        document.getElementById("imagesInput")
-        .value
-        .split("\n")
-        .map(x => x.trim())
-        .filter(Boolean);
 
-    const payload = {
-        title,
-        category,
-        description,
-        content,
-        image_url,
-        image_urls,
-        video_url
-    };
+        const description =
+            document.getElementById("descriptionInput")
+            .value
+            .trim();
 
-    let result;
 
-    if(editingId){
+        const content =
+            document.getElementById("contentInput")
+            .value
+            .trim();
 
-        result =
-            await supabaseClient
-            .from("spotlight_articles")
-            .update(payload)
-            .eq("id",editingId);
 
-    }else{
+        let imageUrl =
+            document.getElementById("imageInput")
+            .value
+            .trim();
 
-        result =
-            await supabaseClient
-            .from("spotlight_articles")
-            .insert(payload);
+
+        let videoUrl =
+            document.getElementById("videoInput")
+            .value
+            .trim();
+
+
+        let imageUrls =
+            document.getElementById("imagesInput")
+            .value
+            .split("\n")
+            .map(x => x.trim())
+            .filter(Boolean);
+
+
+        /* Hauptbild hochladen */
+
+        const mainFile =
+            document.getElementById("imageFile")
+            .files[0];
+
+
+        if(mainFile){
+
+            status.textContent =
+                "Hauptbild wird hochgeladen...";
+
+            imageUrl =
+                await uploadFile(mainFile);
+        }
+
+
+        /* Weitere Bilder hochladen */
+
+        const additionalFiles =
+            Array.from(
+                document.getElementById("imagesFile")
+                .files
+            );
+
+
+        if(additionalFiles.length){
+
+            status.textContent =
+                "Weitere Bilder werden hochgeladen...";
+
+
+            for(const file of additionalFiles){
+
+                const url =
+                    await uploadFile(file);
+
+                if(url){
+                    imageUrls.push(url);
+                }
+            }
+        }
+
+
+        /* Video hochladen */
+
+        const videoFile =
+            document.getElementById("videoFile")
+            .files[0];
+
+
+        if(videoFile){
+
+            status.textContent =
+                "Video wird hochgeladen...";
+
+            videoUrl =
+                await uploadFile(videoFile);
+        }
+
+
+        const payload = {
+
+            title,
+            description,
+            category,
+            content,
+            image_url:imageUrl,
+            image_urls:imageUrls,
+            video_url:videoUrl
+
+        };
+
+
+        let result;
+
+
+        if(editingId){
+
+            result =
+                await supabaseClient
+                .from("spotlight_articles")
+                .update(payload)
+                .eq("id",editingId);
+
+        }else{
+
+            result =
+                await supabaseClient
+                .from("spotlight_articles")
+                .insert(payload);
+        }
+
+
+        if(result.error){
+
+            throw result.error;
+        }
+
+
+        status.textContent =
+            editingId
+            ? "Artikel erfolgreich aktualisiert."
+            : "Artikel erfolgreich veröffentlicht.";
+
+
+        clearForm();
+
+        await loadArticles();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        status.textContent =
+            "Fehler: " + error.message;
     }
-
-    if(result.error){
-
-        console.error(result.error);
-
-        document.getElementById("adminStatus").textContent =
-            "Fehler: " + result.error.message;
-
-        return;
-    }
-
-    document.getElementById("adminStatus").textContent =
-        editingId
-        ? "Artikel aktualisiert."
-        : "Artikel veröffentlicht.";
-
-    clearForm();
-    await loadArticles();
 }
 
 
 /* =========================================================
-   CLEAR
+   CLEAR FORM
 ========================================================= */
 
 function clearForm(){
@@ -1347,6 +2087,20 @@ function clearForm(){
     document.getElementById("imageInput").value = "";
     document.getElementById("imagesInput").value = "";
     document.getElementById("videoInput").value = "";
+
+    document.getElementById("imageFile").value = "";
+    document.getElementById("imagesFile").value = "";
+    document.getElementById("videoFile").value = "";
+
+    document.getElementById("imageFileInfo").textContent = "";
+    document.getElementById("imagesFileInfo").textContent =
+        "Mehrere Bilder gleichzeitig möglich.";
+
+    document.getElementById("videoFileInfo").textContent =
+        "MP4, WebM und andere Browser-kompatible Videoformate.";
+
+    document.getElementById("imagePreview").style.display =
+        "none";
 }
 
 
@@ -1357,38 +2111,51 @@ function clearForm(){
 function editArticle(id){
 
     const article =
-        articles.find(a => Number(a.id) === Number(id));
+        articles.find(
+            a => Number(a.id) === Number(id)
+        );
 
     if(!article){
         return;
     }
 
+
     editingId = article.id;
+
 
     document.getElementById("titleInput").value =
         article.title || "";
 
+
     document.getElementById("categoryInput").value =
         article.category || "Creator";
+
 
     document.getElementById("descriptionInput").value =
         article.description || "";
 
+
     document.getElementById("contentInput").value =
         article.content || "";
+
 
     document.getElementById("imageInput").value =
         article.image_url || "";
 
+
     document.getElementById("videoInput").value =
         article.video_url || "";
+
 
     document.getElementById("imagesInput").value =
         Array.isArray(article.image_urls)
         ? article.image_urls.join("\n")
         : "";
 
-    document.getElementById("adminPanel").style.display = "block";
+
+    document.getElementById("adminPanel").style.display =
+        "block";
+
 
     document.getElementById("adminPanel").scrollIntoView({
         behavior:"smooth"
@@ -1402,9 +2169,14 @@ function editArticle(id){
 
 async function deleteArticle(id){
 
-    if(!confirm("Diesen Spotlight-Artikel wirklich löschen?")){
+    if(
+        !confirm(
+            "Diesen Spotlight-Artikel wirklich löschen?"
+        )
+    ){
         return;
     }
+
 
     const {
         error
@@ -1413,6 +2185,7 @@ async function deleteArticle(id){
         .from("spotlight_articles")
         .delete()
         .eq("id",id);
+
 
     if(error){
 
@@ -1423,6 +2196,7 @@ async function deleteArticle(id){
 
         return;
     }
+
 
     await loadArticles();
 }
@@ -1435,21 +2209,42 @@ async function deleteArticle(id){
 async function duplicateArticle(id){
 
     const article =
-        articles.find(a => Number(a.id) === Number(id));
+        articles.find(
+            a => Number(a.id) === Number(id)
+        );
+
 
     if(!article){
         return;
     }
 
+
     const copy = {
-        title: (article.title || "") + " – Kopie",
-        description: article.description,
-        category: article.category,
-        content: article.content,
-        image_url: article.image_url,
-        image_urls: article.image_urls || [],
-        video_url: article.video_url
+
+        title:
+            (article.title || "") +
+            " – Kopie",
+
+        description:
+            article.description,
+
+        category:
+            article.category,
+
+        content:
+            article.content,
+
+        image_url:
+            article.image_url,
+
+        image_urls:
+            article.image_urls || [],
+
+        video_url:
+            article.video_url
+
     };
+
 
     const {
         error
@@ -1457,6 +2252,7 @@ async function duplicateArticle(id){
         await supabaseClient
         .from("spotlight_articles")
         .insert(copy);
+
 
     if(error){
 
@@ -1468,28 +2264,110 @@ async function duplicateArticle(id){
         return;
     }
 
+
     await loadArticles();
 }
 
 
 /* =========================================================
-   IMAGE LIGHTBOX
+   ADMIN LIST
 ========================================================= */
 
-function openLightbox(url){
+function renderAdminList(){
 
-    document.getElementById("lightboxImage").src = url;
-    document.getElementById("lightbox").style.display = "flex";
-}
+    const container =
+        document.getElementById("adminArticleList");
 
-function closeLightbox(){
 
-    document.getElementById("lightbox").style.display = "none";
+    if(!articles.length){
+
+        container.innerHTML =
+            `
+            <div class="admin-note">
+                Noch keine Spotlight-Artikel vorhanden.
+            </div>
+            `;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        articles.map(article =>
+
+            `
+            <div class="admin-item">
+
+                <div>
+
+                    <div class="admin-item-title">
+                        ${escapeHtml(article.title || "Ohne Titel")}
+                    </div>
+
+                    <div class="admin-item-category">
+                        ${escapeHtml(article.category || "Spotlight")}
+                    </div>
+
+                </div>
+
+                <div class="admin-item-actions">
+
+                    <button
+                        class="small-btn"
+                        onclick="editArticle(${article.id})"
+                    >
+                        Bearbeiten
+                    </button>
+
+                    <button
+                        class="small-btn"
+                        onclick="duplicateArticle(${article.id})"
+                    >
+                        Duplizieren
+                    </button>
+
+                    <button
+                        class="small-btn"
+                        onclick="deleteArticle(${article.id})"
+                    >
+                        Löschen
+                    </button>
+
+                </div>
+
+            </div>
+            `
+
+        ).join("");
 }
 
 
 /* =========================================================
-   ESCAPE HELPERS
+   LIGHTBOX
+========================================================= */
+
+function openLightbox(url){
+
+    document.getElementById("lightboxImage").src =
+        url;
+
+    document.getElementById("lightbox").style.display =
+        "flex";
+}
+
+
+function closeLightbox(){
+
+    document.getElementById("lightbox").style.display =
+        "none";
+
+    document.getElementById("lightboxImage").src =
+        "";
+}
+
+
+/* =========================================================
+   ESCAPE
 ========================================================= */
 
 function escapeHtml(value){
@@ -1501,6 +2379,7 @@ function escapeHtml(value){
         .replaceAll('"',"&quot;")
         .replaceAll("'","&#039;");
 }
+
 
 function escapeAttribute(value){
 
@@ -1520,7 +2399,6 @@ supabaseClient.auth.onAuthStateChange(
             console.log(
                 "Spotlight-Redaktion angemeldet."
             );
-
         }
     }
 );
