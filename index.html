@@ -240,6 +240,14 @@ main{
     display:block;
 }
 
+.media-error-label{
+    color:#777;
+    font-size:15px;
+    font-weight:700;
+    text-align:center;
+    padding:20px;
+}
+
 .news-card-content{
     padding:20px;
 }
@@ -366,6 +374,10 @@ main{
     max-height:550px;
     object-fit:cover;
     display:block;
+}
+
+.article-image .media-error-label{
+    font-size:18px;
 }
 
 /* GALERIE */
@@ -2391,58 +2403,100 @@ return String(value??"")
 BILDER ERMITTELN
 ===================================================== */
 
+function normalizeMediaUrl(value){
+
+if(!value){
+return null;
+}
+
+let url=String(value).trim();
+
+if(!url){
+return null;
+}
+
+/* Bereits vollständige URL */
+if(/^https?:\/\//i.test(url)){
+return url;
+}
+
+/* Supabase Storage-Pfad robust in eine öffentliche URL umwandeln */
+url=url.replace(/^\/+/,"");
+
+if(url.startsWith("storage/v1/object/public/")){
+return `${SUPABASE_URL}/${url}`;
+}
+
+if(url.startsWith(`${STORAGE_BUCKET}/`)){
+url=url.substring(STORAGE_BUCKET.length+1);
+}
+
+/* Falls nur der Dateiname bzw. ein Storage-Pfad gespeichert wurde */
+const encodedPath=url
+.split("/")
+.map(part=>encodeURIComponent(part))
+.join("/");
+
+return `${SUPABASE_URL}/storage/v1/object/public/${STORAGE_BUCKET}/${encodedPath}`;
+
+}
+
+
 function getArticleImages(article){
 
-let images=[];
+const images=[];
 
-if(Array.isArray(article.image_urls)){
+/*
+Das einzelne Hauptbild hat Priorität.
+Damit wird ein eventuell veraltetes image_urls-Feld nicht mehr
+vor das aktuelle image_url gesetzt.
+*/
+const mainImage=normalizeMediaUrl(article?.image_url);
 
-images=
-article.image_urls.filter(Boolean);
-
+if(mainImage){
+images.push(mainImage);
 }
 
-else if(
-typeof article.image_urls==="string"
-){
+let storedImages=article?.image_urls;
 
+if(Array.isArray(storedImages)){
+storedImages=storedImages;
+}
+else if(typeof storedImages==="string"){
+
+const raw=storedImages.trim();
+
+if(raw){
 try{
-
-const parsed=
-JSON.parse(article.image_urls);
-
-if(Array.isArray(parsed)){
-
-images=
-parsed.filter(Boolean);
-
-}
-
+const parsed=JSON.parse(raw);
+storedImages=Array.isArray(parsed)
+?parsed
+:[raw];
 }
 catch{
-
-if(
-article.image_urls.trim()
-){
-
-images=[
-article.image_urls.trim()
-];
-
+storedImages=[raw];
+}
+}
+else{
+storedImages=[];
 }
 
 }
-
+else{
+storedImages=[];
 }
 
-if(
-article.image_url &&
-!images.includes(article.image_url)
-){
+storedImages
+.filter(Boolean)
+.forEach(value=>{
 
-images.unshift(article.image_url);
+const url=normalizeMediaUrl(value);
 
+if(url && !images.includes(url)){
+images.push(url);
 }
+
+});
 
 return images;
 
@@ -2453,29 +2507,60 @@ return images;
 NEWS BILD
 ===================================================== */
 
-function getNewsImageHTML(article){
+function createNewsImage(article){
 
-const images=
-getArticleImages(article);
+const images=getArticleImages(article);
+const wrapper=document.createElement("div");
+wrapper.className="news-image";
 
 if(!images.length){
+wrapper.textContent="n:";
+return wrapper;
+}
 
-return"n:";
+const image=document.createElement("img");
+image.alt=article?.title||"Artikelbild";
+image.loading="lazy";
+
+let index=0;
+
+const tryNextImage=()=>{
+
+console.error("n:-Bild konnte nicht geladen werden:",images[index]);
+index++;
+
+if(index<images.length){
+image.src=images[index];
+return;
+}
+
+wrapper.innerHTML="";
+const error=document.createElement("span");
+error.className="media-error-label";
+error.textContent="Bild nicht verfügbar";
+wrapper.appendChild(error);
+
+};
+
+image.onerror=tryNextImage;
+image.onload=()=>{
+wrapper.classList.add("image-loaded");
+};
+
+image.src=images[0];
+wrapper.appendChild(image);
+
+return wrapper;
 
 }
 
-return`
 
-<img
-src="${escapeHTML(images[0])}"
-alt="${escapeHTML(article.title||"Artikelbild")}"
-loading="lazy"
-onerror="this.parentElement.innerHTML='n:'">
+function getNewsImageHTML(article){
 
-`;
+const wrapper=createNewsImage(article);
+return wrapper.outerHTML;
 
 }
-
 
 /* =====================================================
 NEWS LADEN
@@ -2822,23 +2907,41 @@ document.getElementById("articleImage");
 
 if(images.length){
 
-imageBox.innerHTML=`
+imageBox.innerHTML="";
 
-<img
-src="${escapeHTML(images[0])}"
-alt="${escapeHTML(article.title||"Artikelbild")}"
-onerror="this.parentElement.innerHTML='n:'">
+const image=document.createElement("img");
+image.alt=article.title||"Artikelbild";
 
-`;
+let imageIndex=0;
+
+image.onerror=()=>{
+
+console.error("n:-Artikelbild konnte nicht geladen werden:",images[imageIndex]);
+imageIndex++;
+
+if(imageIndex<images.length){
+image.src=images[imageIndex];
+return;
+}
+
+imageBox.innerHTML="";
+const error=document.createElement("span");
+error.className="media-error-label";
+error.textContent="Bild nicht verfügbar";
+imageBox.appendChild(error);
+
+};
+
+image.src=images[0];
+imageBox.appendChild(image);
 
 imageBox.onclick=
-()=>openLightbox(images,0);
+()=>openLightbox(images,imageIndex);
 
 }
 else{
 
 imageBox.innerHTML="n:";
-
 imageBox.onclick=null;
 
 }
@@ -2895,7 +2998,7 @@ document.createElement("img");
 image.className=
 "gallery-thumb";
 
-image.src=url;
+image.src=normalizeMediaUrl(url)||url;
 
 image.alt=
 `Artikelbild ${index+1}`;
