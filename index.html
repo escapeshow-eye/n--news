@@ -4042,6 +4042,12 @@ selectedVideoFile
 
 }
 
+/*
+Wichtig: image_urls wird als JSON-Text gespeichert.
+Damit funktioniert die Speicherung sowohl dann, wenn die Spalte
+als text als auch dann, wenn sie als json/jsonb angelegt wurde.
+getArticleImages() kann beide Varianten lesen.
+*/
 const payload={
 
 title:title,
@@ -4056,72 +4062,69 @@ content:content,
 
 image_url:finalImageUrl,
 
-image_urls:finalImages,
+image_urls:JSON.stringify(finalImages),
 
 video_url:finalVideoUrl
 
 };
 
+let savedRows=null;
+
 if(editingId===null){
 
-await supabaseRequest(
-"news",
-{
+ savedRows=await supabaseRequest(
+ "news",
+ {
+ method:"POST",
+ headers:{
+ "Authorization":`Bearer ${token}`,
+ "Prefer":"return=representation"
+ },
+ body:JSON.stringify(payload)
+ }
+ );
 
-method:"POST",
-
-headers:{
-
-"Authorization":
-`Bearer ${token}`,
-
-"Prefer":
-"return=minimal"
-
-},
-
-body:
-JSON.stringify(payload)
-
-}
-);
-
-message.className="success";
-
-message.textContent=
-"Artikel veröffentlicht.";
+ message.className="success";
+ message.textContent="Artikel veröffentlicht.";
 
 }
 
 else{
 
-await supabaseRequest(
-`news?id=eq.${editingId}`,
-{
+ savedRows=await supabaseRequest(
+ `news?id=eq.${editingId}`,
+ {
+ method:"PATCH",
+ headers:{
+ "Authorization":`Bearer ${token}`,
+ "Prefer":"return=representation"
+ },
+ body:JSON.stringify(payload)
+ }
+ );
 
-method:"PATCH",
-
-headers:{
-
-"Authorization":
-`Bearer ${token}`,
-
-"Prefer":
-"return=minimal"
-
-},
-
-body:
-JSON.stringify(payload)
+ message.className="success";
+ message.textContent="Artikel aktualisiert.";
 
 }
-);
 
-message.className="success";
+/*
+Nicht nur "Speichern..." anzeigen, sondern kontrollieren,
+dass Supabase die Medien tatsächlich zurückliefert.
+*/
+const savedArticle=
+ Array.isArray(savedRows) ? savedRows[0] : null;
 
-message.textContent=
-"Artikel aktualisiert.";
+if(savedArticle){
+ const savedImages=getArticleImages(savedArticle);
+ const imageMissing=finalImages.length>0 && savedImages.length===0;
+ const videoMissing=Boolean(finalVideoUrl) && !savedArticle.video_url;
 
+ if(imageMissing || videoMissing){
+   throw new Error(
+     "Der Artikel wurde gespeichert, aber Bild/Video wurde nicht in der Datenbank übernommen. Bitte die Spalten image_url, image_urls und video_url in Supabase prüfen."
+   );
+ }
 }
 
 clearForm();
