@@ -2825,11 +2825,8 @@ if(images.length){
 imageBox.innerHTML=`
 
 <img
-src="${escapeHTML(normalizeMediaUrl(images[0]))}"
+src="${escapeHTML(images[0])}"
 alt="${escapeHTML(article.title||"Artikelbild")}"
-loading="eager"
-decoding="async"
-referrerpolicy="no-referrer"
 onerror="this.parentElement.innerHTML='n:'">
 
 `;
@@ -2870,32 +2867,6 @@ behavior:"smooth"
 GALERIE
 ===================================================== */
 
-function normalizeMediaUrl(url){
-
-if(!url){
-return "";
-}
-
-url=String(url).trim();
-
-if(!url){
-return "";
-}
-
-/* Bereits vollständige URLs unverändert verwenden. */
-if(/^https?:\/\//i.test(url)){
-return url;
-}
-
-/* Falls aus älteren Datensätzen nur der Dateiname gespeichert wurde. */
-if(url.startsWith("/")){
-return SUPABASE_URL+url;
-}
-
-return `${SUPABASE_URL}/storage/v1/object/public/${STORAGE_BUCKET}/${url}`;
-
-}
-
 function renderArticleGallery(images){
 
 const box=
@@ -2903,50 +2874,46 @@ document.getElementById("articleGallery");
 
 box.innerHTML="";
 
-if(!Array.isArray(images)||images.length<=1){
+if(images.length<=1){
+
 return;
+
 }
 
 const gallery=
 document.createElement("div");
 
-gallery.className="article-gallery";
+gallery.className=
+"article-gallery";
 
 images.forEach(
 (url,index)=>{
 
-const mediaUrl=normalizeMediaUrl(url);
-
-if(!mediaUrl){
-return;
-}
-
 const image=
 document.createElement("img");
 
-image.className="gallery-thumb";
-image.src=mediaUrl;
-image.alt=`Artikelbild ${index+1}`;
+image.className=
+"gallery-thumb";
+
+image.src=url;
+
+image.alt=
+`Artikelbild ${index+1}`;
+
 image.loading="lazy";
-image.decoding="async";
-image.referrerPolicy="no-referrer";
 
 image.onclick=
 ()=>openLightbox(images,index);
 
 image.onerror=
-()=>{
-image.remove();
-};
+()=>image.remove();
 
 gallery.appendChild(image);
 
 }
 );
 
-if(gallery.children.length){
 box.appendChild(gallery);
-}
 
 }
 
@@ -2962,10 +2929,10 @@ document.getElementById("articleVideo");
 
 box.innerHTML="";
 
-const mediaUrl=normalizeMediaUrl(videoUrl);
+if(!videoUrl){
 
-if(!mediaUrl){
 return;
+
 }
 
 const wrapper=
@@ -2973,31 +2940,24 @@ document.createElement("div");
 
 wrapper.className="article-video";
 
-const title=
-document.createElement("h2");
-title.textContent="Video";
+wrapper.innerHTML=`
 
-const video=
-document.createElement("video");
-video.controls=true;
-video.playsInline=true;
-video.preload="metadata";
-video.src=mediaUrl;
-video.referrerPolicy="no-referrer";
-video.setAttribute("controlsList","nodownload");
+<h2>
+Video
+</h2>
 
-const fallback=
-document.createElement("div");
-fallback.textContent="Das Video konnte nicht geladen werden.";
-fallback.style.display="none";
+<video
+controls
+playsinline
+preload="metadata"
+src="${escapeHTML(videoUrl)}">
 
-video.addEventListener("error",()=>{
-fallback.style.display="block";
-});
+Dein Browser unterstützt die Videowiedergabe nicht.
 
-wrapper.appendChild(title);
-wrapper.appendChild(video);
-wrapper.appendChild(fallback);
+</video>
+
+`;
+
 box.appendChild(wrapper);
 
 }
@@ -4042,7 +4002,12 @@ selectedImageFiles[i]
 
 if(url){
 
-finalImages.push(url);
+/*
+Wenn ein neues Bild hochgeladen wird, soll es das
+Hauptbild des Artikels werden. Deshalb kommt es vorne
+in die Liste statt ans Ende.
+*/
+finalImages.unshift(url);
 
 }
 
